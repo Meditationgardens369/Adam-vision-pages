@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before We Meet</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Before we meet, Helena">
+<meta property="og:description" content="A few quick questions so I turn up knowing how the clinic runs. About three minutes, mostly taps.">
+<meta name="theme-color" content="#0F5C58">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* Helena: owns a dental clinic nearby. Built from the dental section of the
+   Algarve pipeline playbook: evening implant enquiries, recall, treatment plans.
+   The option wording feeds the dashboard rules, so change both together. */
+window.INTAKE = {
+  slug: "helena",
+  name: "Helena",
+  business: "Dental clinic owner",
+  headline: "worst",
+  questions: [
+    { id: "count", type: "number", short: "Chairs", unit: "chairs", label: "Number of dental chairs", def: 3, min: 1, max: 50,
+      q: "How many dental chairs does the clinic have?", hint: "Treatment chairs in use, roughly." },
+    { id: "software", type: "one", short: "Appointments and records",
+      q: "What do you use for appointments and patient records?",
+      hint: "This one decides most of what I would build.",
+      opts: ["Dedicated clinic software", "A general calendar, like Google", "A paper diary", "Reception handles it, I am not sure"],
+      follow: { when: "Dedicated clinic software", key: "softwareName", placeholder: "What is it called? (optional)" } },
+    { id: "volume", type: "one", short: "New enquiries a week",
+      q: "Roughly how many new patient enquiries come in each week?",
+      opts: ["Under 5", "5 to 15", "15 to 40", "More than 40"] },
+    { id: "booking", type: "many", short: "How patients book",
+      q: "How do patients get in touch to book?", hint: "Tap all that apply.",
+      opts: ["Phone calls", "WhatsApp", "An online booking page", "Email or the website form", "Instagram or Facebook", "They walk in"] },
+    { id: "reception", type: "one", short: "Who answers",
+      q: "Who answers the phone and the messages?",
+      opts: ["A dedicated receptionist", "Whoever is free, often me", "The dental nurses, between patients", "It goes to voicemail a lot"] },
+    { id: "afterhours", type: "one", short: "Evening enquiries",
+      q: "Someone messages about implants at nine in the evening. What happens before the next morning?",
+      opts: ["It gets a reply that evening", "Nothing until we open", "It depends who sees it", "I am honestly not sure"] },
+    { id: "noshow", type: "one", short: "No-shows",
+      q: "How often does a patient not turn up, or cancel on the day?",
+      opts: ["Rarely", "A few times a week", "Most days", "More than I would like to admit"] },
+    { id: "recall", type: "one", short: "Six-month check-ups",
+      q: "When a patient is due their six-month check-up, what happens?",
+      opts: ["They get a reminder automatically", "We call them when we have time", "We wait for them to book", "I am not sure it happens at all"] },
+    { id: "plans", type: "one", short: "Treatment quotes",
+      q: "Someone gets a quote for implants or aligners and says they will think about it. What happens next?",
+      opts: ["We follow up on a schedule", "Someone calls if they remember", "We wait for them to come back", "Most we never hear from again"] },
+    { id: "hours", type: "one", short: "Time on admin",
+      q: "In a normal week, how much of the clinic's day goes on phones, messages and admin?",
+      hint: "Everyone's time added together, roughly.",
+      opts: ["Under 2 hours", "2 to 4 hours", "4 to 6 hours", "More than 6 hours"] },
+    { id: "want", type: "one", short: "A year from now",
+      q: "Twelve months from now, which would you rather have?",
+      hint: "You can have either. They are genuinely different things to build.",
+      opts: ["A fuller diary", "A calmer front desk", "Both, honestly"] },
+    { id: "worst", type: "text", short: "Worst hour",
+      q: "Last one. What is the worst hour of the clinic's week?",
+      hint: "The one everyone dreads. A sentence or two is plenty. This is the answer I will read first.",
+      placeholder: "Monday morning, when the phone does not stop and the chairs are full, for example..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>

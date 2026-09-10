@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before We Meet</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Before we meet, Ola">
+<meta property="og:description" content="A few quick questions so I turn up knowing your business. About three minutes, mostly taps.">
+<meta name="theme-color" content="#0F5C58">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* Ola: tapas restaurant plus around 20 holiday rentals she manages alone,
+   Armacao de Pera. The option wording feeds the dashboard rules, so change both together. */
+window.INTAKE = {
+  slug: "ola",
+  name: "Ola",
+  business: "Property management, Armacao de Pera",
+  headline: "worst",
+  questions: [
+    { id: "count", type: "number", short: "Properties now", unit: "properties", label: "Number of properties", def: 20, min: 1, max: 500,
+      q: "How many properties do you look after right now?", hint: "Roughly is fine." },
+    { id: "system", type: "one", short: "Calendars",
+      q: "What do you use to keep the calendars straight across Airbnb and Booking?",
+      hint: "This one answer changes almost everything I would build, so it goes first.",
+      opts: ["A booking system that links them", "The Airbnb and Booking sites, plus my own calendar", "A spreadsheet", "Someone else deals with it"],
+      follow: { when: "A booking system that links them", key: "systemName", placeholder: "What is it called? (optional)" } },
+    { id: "channels", type: "many", short: "Where bookings come from",
+      q: "Where do the bookings actually come from?", hint: "Tap all that apply.",
+      opts: ["Booking.com", "Airbnb", "People contacting me directly", "Guests who come back", "Other agencies"] },
+    { id: "deal", type: "one", short: "How you are paid",
+      q: "How do you get paid for managing them?",
+      opts: ["Commission on each booking", "A fixed fee per property", "A mix, depends on the owner", "Rather talk about it in person"] },
+    { id: "payouts", type: "one", short: "Owner money",
+      q: "Do you handle the money, and pay the owners out?",
+      opts: ["Yes, it comes to me and I pay them", "No, they get paid directly", "Depends on the property"] },
+    { id: "number", type: "one", short: "Guest number",
+      q: "Which number do guests message you on?", hint: "No wrong answer. It just decides how things get set up.",
+      opts: ["My own personal WhatsApp", "A separate business number", "Both, and it is a mess"] },
+    { id: "cleaners", type: "one", short: "Cleaners",
+      q: "How do the cleaners find out about a turnover?",
+      opts: ["I message them each time", "They can see the calendar", "A cleaning company sorts it", "It varies"] },
+    { id: "boletim", type: "one", short: "Boletim",
+      q: "The boletim de alojamento for foreign guests. How does that get done?",
+      hint: "Genuinely no judgement here. Most people I ask pick the last one.",
+      opts: ["I do each one by hand", "My booking system files them", "My accountant handles it", "It does not always get done"] },
+    { id: "hours", type: "one", short: "Hours on messages",
+      q: "In July, roughly how much of your day goes on messages?",
+      opts: ["Under 2 hours", "2 to 4 hours", "4 to 6 hours", "More than 6 hours"] },
+    { id: "want", type: "one", short: "A year from now",
+      q: "Twelve months from now, which would you rather have?",
+      hint: "You can have either. They are genuinely different things to build.",
+      opts: ["More properties", "My evenings back", "Both, honestly"] },
+    { id: "worst", type: "text", short: "Worst hour",
+      q: "Last one. What is the worst hour of your week?",
+      hint: "The one you dread. A sentence or two is plenty. This is the answer I will read first.",
+      placeholder: "Sunday nights working out what each owner is owed, for example..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>

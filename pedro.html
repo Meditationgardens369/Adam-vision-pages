@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before We Meet</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Before we meet, Pedro">
+<meta property="og:description" content="A few quick questions so I turn up knowing how your team works. About five minutes.">
+<meta name="theme-color" content="#0F5C58">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* Pedro: estate agent, one of a team of three inside a 70 to 80 person agency.
+   Questions brainstormed by Adam. The option wording feeds the dashboard rules
+   in Prospect_Dashboard.html, so change both together. */
+window.INTAKE = {
+  slug: "pedro",
+  name: "Pedro",
+  business: "Estate agent, team of three in a 70 to 80 person agency",
+  headline: "repetitive",
+  questions: [
+    { id: "leads", type: "many", short: "Where leads come from", section: "Where leads come from",
+      q: "Where do most enquiries come from right now?", hint: "Tap all that apply.",
+      opts: ["WhatsApp", "Instagram", "Idealista", "Imovirtual", "Referrals", "Walk-ins"] },
+    { id: "volume", type: "one", short: "Enquiries a week",
+      q: "Roughly how many new enquiries does your team get each week?",
+      opts: ["Under 5", "5 to 15", "15 to 40", "More than 40"] },
+
+    { id: "speed", type: "one", short: "First reply", section: "How it works now",
+      q: "When a new lead comes in, how fast does it usually get a first reply?",
+      opts: ["Within minutes", "Within the hour", "Same day", "Next day or later"] },
+    { id: "crm", type: "one", short: "Where leads are tracked",
+      q: "Is there a CRM or spreadsheet in use now, or is it mostly memory and WhatsApp chats?",
+      hint: "This one decides most of what I would build.",
+      opts: ["A proper CRM", "The agency's own system", "A spreadsheet", "Mostly memory and WhatsApp chats"],
+      follow: { when: ["A proper CRM", "The agency's own system"], key: "crmName", placeholder: "What is it called? (optional)" } },
+    { id: "cold", type: "one", short: "After 24 hours",
+      q: "If nobody follows up on a lead within the first 24 hours, what usually happens?",
+      opts: ["Someone always picks it up", "It usually goes cold", "It depends how busy we are", "Honestly, I do not know"] },
+
+    { id: "split", type: "one", short: "How leads are split", section: "Your team",
+      q: "How are leads split between you and your two teammates?",
+      opts: ["By property type", "By area", "By whoever is free", "There is no real system"] },
+    { id: "shared", type: "one", short: "Inbox and calendar",
+      q: "Is there a shared inbox or calendar, or does each of you manage your own?",
+      opts: ["A shared inbox and calendar", "A shared calendar, separate inboxes", "Each of us has our own", "A mix, and it is messy"] },
+
+    { id: "repetitive", type: "text", short: "Most repetitive task", section: "What gets in the way",
+      q: "What is the single most repetitive question or task eating your time each week?",
+      hint: "A sentence or two is plenty. This is the answer I will read first.",
+      placeholder: "Answering the same five questions about every listing, for example..." },
+    { id: "lost", type: "many", short: "Where deals are lost",
+      q: "Where do you feel deals are actually being lost?", hint: "Tap all that apply.",
+      opts: ["Slow replies", "No follow-up", "Disorganisation", "Leads landing with the wrong person", "Other agencies moving faster"] },
+
+    { id: "perfect", type: "text", short: "Three months from now", section: "What a win looks like",
+      q: "If this worked perfectly, what would change in your day-to-day three months from now?",
+      placeholder: "I would stop checking WhatsApp at dinner, for example..." },
+    { id: "metric", type: "many", short: "Numbers that matter",
+      q: "Is there a number you would want to see move?", hint: "Tap any that matter.",
+      opts: ["More viewings booked", "Faster first replies", "Fewer leads falling through", "More deals closed"] },
+
+    { id: "manager", type: "text", short: "What the manager needs", section: "The bigger picture",
+      q: "Last one. What would your manager need to see to take this seriously for the whole team of seventy or eighty?",
+      placeholder: "Proof that it works for the three of us first, in numbers, for example..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>

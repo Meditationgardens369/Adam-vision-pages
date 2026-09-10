@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ola's Next Twelve Months</title>
+<meta name="description" content="A twelve month picture of what twenty holiday rentals could look like running on the same one person.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ola's Next Twelve Months">
+<meta property="og:description" content="You are not short of properties. You are short of hours. Have a read, then nine quick questions.">
+<meta name="theme-color" content="#0F5C58">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --limestone: #EFF1EF;
+    --card: #FAFBFA;
+    --card-2: #E5EAE8;
+    --basalt: #191F1D;
+    --ink: #1E2523;
+    --muted: #59635F;
+    --faint: #8A938F;
+    --line: #D6DBD8;
+    --atlantic: #0F5C58;
+    --atlantic-soft: #DCE8E6;
+    --sun: #A87708;
+    --sun-soft: #F0E7CF;
+    --clay: #9E4231;
+    --clay-soft: #F1DFDA;
+    --shadow: 0 1px 2px rgba(25,31,29,.05), 0 12px 30px rgba(25,31,29,.07);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --limestone: #101514; --card: #171E1C; --card-2: #202826; --basalt: #E9EDEB;
+      --ink: #E4E9E7; --muted: #97A19D; --faint: #6C7672; --line: #2A3331;
+      --atlantic: #63BCB2; --atlantic-soft: #152E2C; --sun: #D9B35C; --sun-soft: #2B2413;
+      --clay: #DD8C79; --clay-soft: #2E1B16;
+      --shadow: 0 1px 2px rgba(0,0,0,.5), 0 14px 36px rgba(0,0,0,.45);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --limestone: #101514; --card: #171E1C; --card-2: #202826; --basalt: #E9EDEB;
+    --ink: #E4E9E7; --muted: #97A19D; --faint: #6C7672; --line: #2A3331;
+    --atlantic: #63BCB2; --atlantic-soft: #152E2C; --sun: #D9B35C; --sun-soft: #2B2413;
+    --clay: #DD8C79; --clay-soft: #2E1B16;
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 14px 36px rgba(0,0,0,.45);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  body {
+    margin: 0;
+    background: var(--limestone);
+    color: var(--ink);
+    font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 22px 90px; }
+
+  .eyebrow {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--faint); margin: 0;
+  }
+
+  h1 {
+    font-family: Newsreader, Georgia, serif; font-weight: 300;
+    font-size: clamp(34px, 8vw, 54px); line-height: 1.08; letter-spacing: -.015em;
+    margin: 14px 0 18px; text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--atlantic); }
+
+  h2 {
+    font-family: Newsreader, Georgia, serif; font-weight: 400;
+    font-size: clamp(25px, 5.4vw, 33px); line-height: 1.18; letter-spacing: -.01em;
+    margin: 0 0 10px; text-wrap: balance;
+  }
+  h3 { font-size: 17px; font-weight: 600; margin: 0 0 8px; letter-spacing: -.005em; }
+
+  p { margin: 0 0 15px; }
+  .lede { font-size: 18.5px; color: var(--muted); line-height: 1.55; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13.5px; line-height: 1.5; }
+
+  header.top { padding: 52px 0 8px; }
+
+  .calcada {
+    height: 9px; margin: 44px 0; opacity: .22;
+    background-image:
+      repeating-linear-gradient(45deg, var(--basalt) 0 1px, transparent 1px 9px),
+      repeating-linear-gradient(-45deg, var(--basalt) 0 1px, transparent 1px 9px);
+  }
+
+  .switch { display: inline-flex; gap: 3px; padding: 3px; background: var(--card-2); border-radius: 999px; margin: 4px 0 20px; }
+  .switch button {
+    font: 600 13.5px "Instrument Sans", sans-serif; border: 0; background: transparent;
+    color: var(--muted); padding: 8px 16px; border-radius: 999px; cursor: pointer;
+    transition: background .18s ease, color .18s ease;
+  }
+  .switch button[aria-selected="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(25,31,29,.12); }
+  .switch button:focus-visible { outline: 2px solid var(--atlantic); outline-offset: 2px; }
+
+  .morning { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 22px 22px 8px; box-shadow: var(--shadow); }
+  .clock { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); display: block; margin-bottom: 14px; }
+  .morning ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+  .morning li { display: grid; grid-template-columns: 7px 1fr; gap: 12px; align-items: start; font-size: 15.5px; }
+  .morning li::before { content: ""; width: 7px; height: 7px; margin-top: 9px; border-radius: 50%; background: var(--dot, var(--faint)); }
+  #panel-now { --dot: var(--clay); }
+  #panel-then { --dot: var(--atlantic); }
+  .morning .closer { margin: 18px -22px 0; padding: 15px 22px; border-top: 1px solid var(--line); background: var(--tint, transparent); font-size: 14.5px; color: var(--muted); }
+  #panel-now .closer { --tint: var(--clay-soft); }
+  #panel-then .closer { --tint: var(--atlantic-soft); }
+
+  .q { display: grid; grid-template-columns: 96px 1fr; gap: 22px; padding: 26px 0; border-top: 1px solid var(--line); }
+  .q:last-child { border-bottom: 1px solid var(--line); }
+  .q .when { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--atlantic); padding-top: 3px; }
+  .q ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .q li { font-size: 15px; color: var(--muted); padding-left: 17px; position: relative; }
+  .q li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 1px; background: var(--faint); }
+
+  .season { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 22px 20px 18px; box-shadow: var(--shadow); overflow-x: auto; }
+  .band { display: grid; grid-template-columns: repeat(12, minmax(28px, 1fr)); gap: 4px; align-items: end; min-width: 400px; }
+  .band .col { display: flex; flex-direction: column; gap: 6px; justify-content: flex-end; }
+  .band .bar { border-radius: 2px 2px 0 0; background: var(--atlantic); opacity: .85; }
+  .band .m { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 9.5px; letter-spacing: .06em; text-align: center; color: var(--faint); }
+  .bracket { min-width: 400px; display: grid; grid-template-columns: repeat(12, minmax(28px, 1fr)); gap: 4px; margin-top: 10px; }
+  .bracket .mark { grid-column: 1 / span 2; border-top: 1px solid var(--sun); border-left: 1px solid var(--sun); border-right: 1px solid var(--sun); height: 9px; }
+  .bracket-note { min-width: 400px; font-size: 13px; color: var(--sun); font-weight: 600; margin: 6px 0 0; }
+
+  .calc { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 24px 22px; box-shadow: var(--shadow); }
+  .calc > label { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); display: block; margin-bottom: 14px; }
+  input[type="range"] { width: 100%; -webkit-appearance: none; appearance: none; background: transparent; margin: 0 0 6px; }
+  input[type="range"]::-webkit-slider-runnable-track { height: 3px; background: var(--line); border-radius: 2px; }
+  input[type="range"]::-moz-range-track { height: 3px; background: var(--line); border-radius: 2px; }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 26px; height: 26px; margin-top: -11.5px; border-radius: 50%; background: var(--atlantic); border: 3px solid var(--card); box-shadow: 0 1px 6px rgba(25,31,29,.28); cursor: pointer; }
+  input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--atlantic); border: 3px solid var(--card); box-shadow: 0 1px 6px rgba(25,31,29,.28); cursor: pointer; }
+  input[type="range"]:focus-visible { outline: 2px solid var(--atlantic); outline-offset: 6px; border-radius: 4px; }
+  .ticks { display: flex; justify-content: space-between; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10.5px; color: var(--faint); }
+  .readout { margin-top: 26px; display: flex; flex-direction: column; gap: 20px; }
+  .metric { display: flex; flex-direction: column; gap: 5px; }
+  .metric .k { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--faint); }
+  .metric .v { font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+  .metric .v small { font-size: 15px; color: var(--muted); font-family: "Instrument Sans", sans-serif; letter-spacing: 0; }
+  .metric .note { font-size: 13.5px; color: var(--muted); }
+
+  .hours { display: flex; flex-direction: column; gap: 11px; margin-top: 4px; }
+  .hrow { display: flex; flex-direction: column; gap: 5px; }
+  .hlabel { font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; }
+  .hlabel b { font-family: "JetBrains Mono", ui-monospace, monospace; font-weight: 500; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .htrack { height: 9px; background: var(--card-2); border-radius: 2px; position: relative; }
+  .hfill { height: 100%; border-radius: 2px; transition: width .2s ease; }
+  .hfill.old { background: var(--clay); }
+  .hfill.new { background: var(--atlantic); }
+  .ceiling { position: absolute; top: -4px; bottom: -4px; width: 1px; background: var(--faint); }
+
+  .callout { border-left: 2px solid var(--sun); background: var(--sun-soft); padding: 20px 22px; border-radius: 0 4px 4px 0; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  details.assump { margin-top: 40px; border-top: 1px solid var(--line); padding-top: 18px; }
+  details.assump summary { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--faint); cursor: pointer; list-style: none; }
+  details.assump summary::-webkit-details-marker { display: none; }
+  details.assump summary::before { content: "+ "; }
+  details.assump[open] summary::before { content: "\2212 "; }
+  table { border-collapse: collapse; width: 100%; margin-top: 16px; font-size: 13.5px; }
+  th, td { text-align: left; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; color: var(--faint); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+  td.num { font-family: "JetBrains Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .qz { display: flex; flex-direction: column; gap: 14px; }
+  .qcard { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 20px 20px 18px; }
+  .qcard.done { border-color: var(--atlantic); }
+  .qnum { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10.5px; letter-spacing: .13em; color: var(--faint); display: block; margin-bottom: 7px; }
+  .qtext { font-size: 16.5px; font-weight: 600; margin: 0 0 4px; line-height: 1.35; }
+  .qhint { font-size: 13px; color: var(--faint); margin: 0 0 14px; }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opts button {
+    font: 500 14px "Instrument Sans", sans-serif; background: var(--card-2); color: var(--ink);
+    border: 1px solid transparent; padding: 9px 14px; border-radius: 999px; cursor: pointer; text-align: left;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .opts button:hover { border-color: var(--faint); }
+  .opts button[aria-pressed="true"] { background: var(--atlantic); color: var(--card); border-color: var(--atlantic); }
+  .opts button:focus-visible { outline: 2px solid var(--atlantic); outline-offset: 2px; }
+  .qcard input[type="text"], .qcard textarea {
+    width: 100%; margin-top: 10px; font: 400 15px "Instrument Sans", sans-serif; color: var(--ink);
+    background: var(--limestone); border: 1px solid var(--line); border-radius: 3px; padding: 10px 12px; resize: vertical;
+  }
+  .qcard input[type="text"]:focus, .qcard textarea:focus { outline: 2px solid var(--atlantic); outline-offset: 0; border-color: transparent; }
+
+  .sendbar {
+    position: sticky; bottom: 0; z-index: 5;
+    margin: 22px -22px 0; padding: 16px 22px calc(16px + env(safe-area-inset-bottom));
+    background: var(--card); border-top: 1px solid var(--line);
+    box-shadow: 0 -8px 24px rgba(25,31,29,.08);
+    display: flex; flex-direction: column; gap: 11px;
+  }
+  .progress { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); }
+  .pbar { flex: 1; height: 4px; background: var(--card-2); border-radius: 2px; overflow: hidden; }
+  .pbar span { display: block; height: 100%; background: var(--atlantic); width: 0%; transition: width .25s ease; }
+  .send {
+    display: block; width: 100%; text-align: center; text-decoration: none;
+    font: 600 16px "Instrument Sans", sans-serif; background: var(--atlantic); color: var(--card);
+    border: 0; border-radius: 3px; padding: 15px 18px; cursor: pointer;
+  }
+  .send:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .send[disabled], .send[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+  .send.ghost { background: var(--card-2); color: var(--ink); font-weight: 500; font-size: 14px; padding: 11px; }
+  .sendnote { font-size: 12.5px; color: var(--faint); text-align: center; margin: 0; }
+  .sendnote.bad { color: var(--clay); }
+
+  .thanks { background: var(--atlantic-soft); border: 1px solid var(--atlantic); border-radius: 4px; padding: 26px 24px; text-align: center; }
+  .thanks h3 { font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 26px; margin-bottom: 8px; }
+  .thanks p:last-child { margin-bottom: 0; }
+
+  .close-q { border: 1px solid var(--atlantic); border-radius: 4px; padding: 26px 24px; background: var(--atlantic-soft); }
+  .close-q h2 { margin-bottom: 12px; }
+  .close-q p:last-child { margin-bottom: 0; }
+
+  footer.sig { margin-top: 44px; font-size: 14.5px; color: var(--muted); }
+
+  @media (max-width: 560px) {
+    .q { grid-template-columns: 1fr; gap: 8px; }
+    .q .when { padding-top: 0; }
+    .metric .v { font-size: 31px; }
+    .opts button { font-size: 13.5px; padding: 9px 13px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <p class="eyebrow">Prepared for Ola &middot; Arma&ccedil;&atilde;o de P&ecirc;ra &middot; September 2026</p>
+    <h1>You are not short of properties. You are short of <em>hours</em>.</h1>
+    <p class="lede">Twenty properties, one of you, and every single one costs you the same amount of typing. That is the ceiling. Here is what the next twelve months could look like on the other side of it.</p>
+    <p class="small muted">Have a read, drag the slider, then there are nine quick questions at the bottom. About four minutes on your phone.</p>
+  </header>
+
+  <div class="calcada"></div>
+
+  <section>
+    <h2>Two mornings</h2>
+    <p class="muted">Same business. Same you. Twelve months apart.</p>
+
+    <div class="switch" role="tablist" aria-label="Which morning">
+      <button role="tab" id="tab-now" aria-controls="panel-now" aria-selected="true">This September</button>
+      <button role="tab" id="tab-then" aria-controls="panel-then" aria-selected="false">Next September</button>
+    </div>
+
+    <div class="morning" id="panel-now" role="tabpanel" aria-labelledby="tab-now">
+      <span class="clock">07:00 &middot; today</span>
+      <ul>
+        <li>Fourteen messages came in overnight. Three of them in German.</li>
+        <li>A guest was locked out at midnight and is still waiting to hear from you.</li>
+        <li>The cleaner does not know about the eleven o'clock checkout.</li>
+        <li>An owner wants to know how his place did last month, and working it out will cost you an evening.</li>
+        <li>Two enquiries came in on Booking at 1am. One of them has already booked somewhere else.</li>
+      </ul>
+      <p class="closer">Nothing has actually happened yet today, and you are already behind.</p>
+    </div>
+
+    <div class="morning" id="panel-then" role="tabpanel" aria-labelledby="tab-then" hidden>
+      <span class="clock">07:00 &middot; twelve months from now</span>
+      <ul>
+        <li>One page. Three arrivals, two turnovers, everybody already told.</li>
+        <li>The locked-out guest had her door code at four minutes past midnight, in German.</li>
+        <li>Confirm the pool man for Thursday. That is the only thing waiting on you.</li>
+        <li>Last month's owner report is written and sitting there, ready for you to press send.</li>
+        <li>Both overnight enquiries were answered inside a minute. One has already paid.</li>
+      </ul>
+      <p class="closer">You are finished by twenty past seven.</p>
+    </div>
+
+    <p class="small muted" style="margin-top:18px">There is nothing clever in that second list. It is the same work you do now. It just does not need you awake for it.</p>
+  </section>
+
+  <div class="calcada"></div>
+
+  <section>
+    <h2>How we get there</h2>
+    <p class="muted">Four stages across the year. Each one is useful the day it goes live, so you are never sitting waiting for the whole thing to be finished.</p>
+
+    <div style="margin-top:22px">
+      <div class="q">
+        <div class="when">Months<br>1 to 3</div>
+        <div>
+          <h3>One inbox, one brain</h3>
+          <p class="muted small" style="margin-bottom:0">This is the part that gives you your evenings back, and it is first for a reason.</p>
+          <ul>
+            <li>Booking, Airbnb, WhatsApp, email and Instagram all landing in one place instead of five</li>
+            <li>Every enquiry answered inside a minute, in the guest's own language, at any hour</li>
+            <li>Directions, door codes, wifi and checkout times sending themselves at the right moment</li>
+            <li>Review requests going out after every stay, timed properly, without you remembering</li>
+            <li>The turnover schedule building itself from the checkouts and reaching the cleaners each week</li>
+            <li>One proper record of every property, owner, booking and guest you have</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="when">Months<br>4 to 6</div>
+        <div>
+          <h3>The back office runs itself</h3>
+          <p class="muted small" style="margin-bottom:0">The admin that eats your Sundays stops being something you do.</p>
+          <ul>
+            <li>A guest reports a broken air conditioner, a job opens, the right man is messaged, the owner is told, and it is all on the record</li>
+            <li>Foreign guest details collected at booking, so the boletim de alojamento is ready inside the three working day window instead of being remembered late</li>
+            <li>Tourist tax handled property by property, because it depends which council each one sits in</li>
+            <li>A monthly report per property: nights sold, revenue, occupancy, what was spent, what the owner is owed</li>
+            <li>Guest invoices issued, and one clean file a month for your accountant</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="when">Months<br>7 to 9</div>
+        <div>
+          <h3>You stop being the bottleneck</h3>
+          <p class="muted small" style="margin-bottom:0">Now it starts bringing money in rather than only saving time.</p>
+          <ul>
+            <li>Your own booking page that takes payment, so you are not renting only through the platforms</li>
+            <li>Early check-in, late checkout, a transfer, a hamper, a mid-stay clean, a table at the restaurant, all offered at the moment guests are actually willing to buy</li>
+            <li>Past guests invited back before each season opens, while they are still deciding</li>
+            <li>One morning page: arrivals, departures, turnovers, money owed, open jobs, decisions waiting on you. You can ask it questions in plain English.</li>
+            <li>One day a month producing a month of posts across every platform, with every message they generate landing in the same inbox as everything else</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="when">Months<br>10 to 12</div>
+        <div>
+          <h3>An agency, not a person</h3>
+          <p class="muted small" style="margin-bottom:0">This is the year that changes what the business is worth.</p>
+          <ul>
+            <li>That monthly owner report becomes the reason owners come to you. Nobody else in Arma&ccedil;&atilde;o de P&ecirc;ra sends anything like it.</li>
+            <li>A page that shows an owner what their property would earn with you</li>
+            <li>Taking on a new property becomes a checklist the system runs, not a week of your life</li>
+            <li>Properties twenty-one through forty, without adding hours</li>
+            <li>The restaurant and the rentals finally feeding each other in both directions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="calcada"></div>
+
+  <section>
+    <h2>The part you may not have spotted</h2>
+    <p>The restaurant closes for two months in winter. You have always treated that as the quiet bit of the year.</p>
+    <p>Winter is also exactly when property owners sit down and decide who is managing their place next season.</p>
+
+    <div class="season" style="margin:26px 0 20px">
+      <p class="eyebrow" style="margin-bottom:16px">The Algarve rental year, roughly</p>
+      <div class="band" id="band"></div>
+      <div class="bracket"><div class="mark"></div></div>
+      <p class="bracket-note">Your quietest weeks are your best selling weeks</p>
+    </div>
+
+    <div class="callout">
+      <p><strong>So the timing is on your side.</strong> The months when you have the most time are the months when owners are most willing to move. By next January the system is already running, the owner reports are already going out, and the thing that wins you new properties is doing the work while the restaurant is shut.</p>
+    </div>
+  </section>
+
+  <div class="calcada"></div>
+
+  <section>
+    <h2>What it is actually worth</h2>
+    <p class="muted">Drag this. It is your business, so put it wherever feels right to you.</p>
+
+    <div class="calc" style="margin-top:22px">
+      <label for="props">Properties under management</label>
+      <input type="range" id="props" min="20" max="40" step="1" value="20" aria-describedby="props-val">
+      <div class="ticks"><span>20</span><span>30</span><span>40</span></div>
+
+      <div class="readout">
+        <div class="metric">
+          <span class="k">Properties</span>
+          <span class="v" id="props-val">20</span>
+        </div>
+        <div class="metric">
+          <span class="k">Your commission, the way things run today</span>
+          <span class="v" id="base">&euro;72,000<small> a year</small></span>
+        </div>
+        <div class="metric">
+          <span class="k">Your commission with the system running</span>
+          <span class="v" style="color:var(--atlantic)" id="total">&euro;86,400<small> a year</small></span>
+          <span class="note" id="uplift-note">Faster replies, direct bookings and well-timed extras add about &euro;14,400 on top.</span>
+        </div>
+        <div class="metric">
+          <span class="k">Hours a day, in season</span>
+          <div class="hours">
+            <div class="hrow">
+              <div class="hlabel"><span>The way you do it now</span><b id="h-old">4.5 h</b></div>
+              <div class="htrack"><div class="hfill old" id="bar-old" style="width:50%"></div><div class="ceiling" id="ceil"></div></div>
+            </div>
+            <div class="hrow">
+              <div class="hlabel"><span>With the system running</span><b id="h-new">1.2 h</b></div>
+              <div class="htrack"><div class="hfill new" id="bar-new" style="width:13%"></div></div>
+            </div>
+          </div>
+          <span class="note" id="hours-note">The faint line is where a workable day runs out. The way things run today, you reach it somewhere around twenty-seven properties.</span>
+        </div>
+      </div>
+
+      <details class="assump">
+        <summary>Where these numbers come from</summary>
+        <p class="small muted" style="margin-top:14px">These are placeholders, not promises. They are the shape of the thing, using ordinary Algarve figures. When we meet we swap every one of them for your real numbers and see what it actually says.</p>
+        <table>
+          <tr><th>Assumption</th><th>Used here</th></tr>
+          <tr><td>Gross booking revenue per property, per year</td><td class="num">&euro;18,000</td></tr>
+          <tr><td>Your commission</td><td class="num">20%</td></tr>
+          <tr><td>Stays per property, per year</td><td class="num">about 20</td></tr>
+          <tr><td>Two extra booked weeks per property, from answering faster and filling the shoulder season</td><td class="num">+&euro;280</td></tr>
+          <tr><td>Moving 15% of bookings direct, your share of the platform commission saved</td><td class="num">+&euro;200</td></tr>
+          <tr><td>Extras taken up on 4 stays in 10, at &euro;60, after costs</td><td class="num">+&euro;240</td></tr>
+          <tr><td><strong>Added per property, per year</strong></td><td class="num"><strong>+&euro;720</strong></td></tr>
+        </table>
+      </details>
+    </div>
+  </section>
+
+  <div class="calcada"></div>
+
+  <section id="questions">
+    <h2>Nine quick questions</h2>
+    <p class="muted">So I turn up knowing your business instead of guessing at it. Mostly taps. Only the last one needs typing, and it is the one I care about most.</p>
+
+    <div class="qz" id="qz" style="margin-top:24px"></div>
+
+    <div class="sendbar" id="sendbar">
+      <div class="progress">
+        <span id="pcount">0 of 10 answered</span>
+        <span class="pbar"><span id="pfill"></span></span>
+      </div>
+      <button class="send" id="submit" type="button" disabled>Send my answers to Adam</button>
+      <a class="send ghost" id="whatsapp" href="#" target="_blank" rel="noopener">Or send them on WhatsApp instead</a>
+      <p class="sendnote" id="sendnote">Nothing is shared with anyone else. It goes straight to Adam.</p>
+    </div>
+
+    <div class="thanks" id="thanks" hidden>
+      <h3>Got it, thank you.</h3>
+      <p class="muted">Your answers are with Adam. He will have read them before you meet, so you can skip straight past the boring questions.</p>
+      <p class="small muted" id="thanks-worst"></p>
+    </div>
+  </section>
+
+  <div class="calcada"></div>
+
+  <section>
+    <div class="close-q">
+      <h2>One last thing</h2>
+      <p>There is no charge in this document and nothing to sign. It is a picture of what your business could look like, and nine questions so that when we sit down we are talking about your actual numbers rather than my guesses.</p>
+      <p>Bring your worst hour of the week. That is usually where the real money is hiding.</p>
+    </div>
+
+    <footer class="sig">
+      <p>Adam</p>
+    </footer>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------------- Configuration ----------------
+     PROSPECT is what tags this submission in the dashboard.
+     Override it in the link with ?p=someone-else to reuse this page. */
+  var SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+  var WHATSAPP = "351922102740";
+
+  var params = new URLSearchParams(location.search);
+  var PROSPECT = (params.get('p') || 'ola').slice(0, 60);
+  var PROSPECT_NAME = params.get('name') || 'Ola';
+  var BUSINESS = params.get('biz') || 'Property management, Armacao de Pera';
+
+  /* ---------------- Two mornings ---------------- */
+  var tabs = { now: document.getElementById('tab-now'), then: document.getElementById('tab-then') };
+  var panels = { now: document.getElementById('panel-now'), then: document.getElementById('panel-then') };
+  function show(which) {
+    Object.keys(tabs).forEach(function (k) {
+      var on = k === which;
+      tabs[k].setAttribute('aria-selected', on ? 'true' : 'false');
+      panels[k].hidden = !on;
+    });
+  }
+  tabs.now.addEventListener('click', function () { show('now'); });
+  tabs.then.addEventListener('click', function () { show('then'); });
+
+  /* ---------------- Season band ---------------- */
+  var months = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
+  var intensity = [10, 12, 34, 52, 70, 86, 100, 100, 84, 58, 24, 14];
+  var band = document.getElementById('band');
+  intensity.forEach(function (v, i) {
+    var col = document.createElement('div');
+    col.className = 'col';
+    var bar = document.createElement('div');
+    bar.className = 'bar';
+    bar.style.height = Math.round(14 + v * 0.78) + 'px';
+    if (i < 2) { bar.style.background = 'var(--sun)'; bar.style.opacity = '.9'; }
+    var m = document.createElement('div');
+    m.className = 'm';
+    m.textContent = months[i];
+    col.appendChild(bar);
+    col.appendChild(m);
+    band.appendChild(col);
+  });
+
+  /* ---------------- Slider ---------------- */
+  var GROSS = 18000, RATE = 0.20, UPLIFT = 720;
+  var HOURS_NOW_AT_20 = 4.5, MAX_HOURS = 9, WORKABLE = 6;
+
+  var slider = document.getElementById('props');
+  var el = {
+    props: document.getElementById('props-val'),
+    base: document.getElementById('base'),
+    total: document.getElementById('total'),
+    upliftNote: document.getElementById('uplift-note'),
+    hOld: document.getElementById('h-old'),
+    hNew: document.getElementById('h-new'),
+    barOld: document.getElementById('bar-old'),
+    barNew: document.getElementById('bar-new'),
+    hoursNote: document.getElementById('hours-note'),
+    ceil: document.getElementById('ceil')
+  };
+  function euros(n) { return '€' + Math.round(n).toLocaleString('en-GB'); }
+  function trim(n) { return n.toFixed(1).replace(/\.0$/, ''); }
+  el.ceil.style.left = (WORKABLE / MAX_HOURS * 100) + '%';
+
+  function renderCalc() {
+    var p = parseInt(slider.value, 10);
+    var base = p * GROSS * RATE;
+    var uplift = p * UPLIFT;
+    var hOld = HOURS_NOW_AT_20 * (p / 20);
+    var hNew = 0.75 + p * 0.02;
+
+    el.props.textContent = p;
+    el.base.innerHTML = euros(base) + '<small> a year</small>';
+    el.total.innerHTML = euros(base + uplift) + '<small> a year</small>';
+    el.upliftNote.textContent = 'Faster replies, direct bookings and well-timed extras add about ' + euros(uplift) + ' on top.';
+    el.hOld.textContent = trim(hOld) + ' h';
+    el.hNew.textContent = trim(hNew) + ' h';
+    el.barOld.style.width = Math.min(100, hOld / MAX_HOURS * 100) + '%';
+    el.barNew.style.width = (hNew / MAX_HOURS * 100) + '%';
+
+    if (hOld > WORKABLE) {
+      el.hoursNote.textContent = 'At ' + p + ' properties, the old way is ' + trim(hOld) + ' hours of messages a day, seven days a week. That is past the line. It is not a discipline problem, there are simply not enough hours in the day.';
+    } else {
+      el.hoursNote.textContent = 'The faint line is where a workable day runs out. The way things run today, you reach it somewhere around twenty-seven properties.';
+    }
+    state.properties = p;
+    save();
+    renderSend();
+  }
+
+  /* ---------------- Questions ---------------- */
+  var QUESTIONS = [
+    {
+      id: 'system',
+      q: 'What do you use to keep the calendars straight across Airbnb and Booking?',
+      hint: 'This one answer changes almost everything I would build, so it is first.',
+      opts: ['A booking system that links them', 'The Airbnb and Booking sites, plus my own calendar', 'A spreadsheet', 'Someone else deals with it'],
+      text: { key: 'systemName', placeholder: 'If it has a name, what is it? (optional)' }
+    },
+    { id: 'channels', q: 'Where do the bookings actually come from?', hint: 'Tap all that apply.', multi: true,
+      opts: ['Booking.com', 'Airbnb', 'People contacting me directly', 'Guests who come back', 'Other agencies'] },
+    { id: 'deal', q: 'How do you get paid for managing them?',
+      opts: ['Commission on each booking', 'A fixed fee per property', 'A mix, depends on the owner', 'Rather talk about it in person'] },
+    { id: 'payouts', q: 'Do you handle the money, and pay the owners out?',
+      opts: ['Yes, it comes to me and I pay them', 'No, they get paid directly', 'Depends on the property'] },
+    { id: 'number', q: 'Which number do guests message you on?', hint: 'No wrong answer. It just decides how we set things up.',
+      opts: ['My own personal WhatsApp', 'A separate business number', 'Both, and it is a mess'] },
+    { id: 'cleaners', q: 'How do the cleaners find out about a turnover?',
+      opts: ['I message them each time', 'They can see the calendar', 'A cleaning company sorts it', 'It varies'] },
+    { id: 'boletim', q: 'The boletim de alojamento for foreign guests. How does that get done?',
+      hint: 'Genuinely no judgement here. Most people I ask say the last one.',
+      opts: ['I do each one by hand', 'My booking system files them', 'My accountant handles it', 'It does not always get done'] },
+    { id: 'hours', q: 'In July, roughly how much of your day goes on messages?',
+      opts: ['Under 2 hours', '2 to 4 hours', '4 to 6 hours', 'More than 6 hours'] },
+    { id: 'want', q: 'Twelve months from now, which would you rather have?',
+      hint: 'You can have either. They are genuinely different builds.',
+      opts: ['More properties', 'My evenings back', 'Both, honestly'] },
+    { id: 'worst', q: 'What is the worst hour of your week?',
+      hint: 'The one you dread. This is the question I actually care about.',
+      area: { key: 'worst', placeholder: 'Sunday nights doing the owner numbers, for example...' } }
+  ];
+
+  var state = { properties: 20, answers: {}, text: {} };
+  var STORAGE = 'intake-' + PROSPECT + '-v1';
+
+  function save() { try { localStorage.setItem(STORAGE, JSON.stringify(state)); } catch (e) { /* private mode */ } }
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORAGE);
+      if (!raw) { return; }
+      var parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') {
+        state.properties = parsed.properties || 20;
+        state.answers = parsed.answers || {};
+        state.text = parsed.text || {};
+      }
+    } catch (e) { /* nothing stored */ }
+  }
+  load();
+
+  var qz = document.getElementById('qz');
+
+  QUESTIONS.forEach(function (question, i) {
+    var card = document.createElement('div');
+    card.className = 'qcard';
+    card.id = 'card-' + question.id;
+
+    var num = document.createElement('span');
+    num.className = 'qnum';
+    num.textContent = String(i + 1).padStart(2, '0');
+    card.appendChild(num);
+
+    var qt = document.createElement('p');
+    qt.className = 'qtext';
+    qt.textContent = question.q;
+    card.appendChild(qt);
+
+    if (question.hint) {
+      var hint = document.createElement('p');
+      hint.className = 'qhint';
+      hint.textContent = question.hint;
+      card.appendChild(hint);
+    }
+
+    if (question.opts) {
+      var wrap = document.createElement('div');
+      wrap.className = 'opts';
+      question.opts.forEach(function (labelText) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = labelText;
+        b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', function () {
+          if (question.multi) {
+            var list = state.answers[question.id] || [];
+            var at = list.indexOf(labelText);
+            if (at === -1) { list.push(labelText); } else { list.splice(at, 1); }
+            state.answers[question.id] = list;
+          } else {
+            state.answers[question.id] = state.answers[question.id] === labelText ? null : labelText;
+          }
+          save();
+          paint();
+          renderSend();
+        });
+        wrap.appendChild(b);
+      });
+      card.appendChild(wrap);
+    }
+
+    if (question.text) {
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.placeholder = question.text.placeholder;
+      input.value = state.text[question.text.key] || '';
+      input.addEventListener('input', function () { state.text[question.text.key] = input.value; save(); renderSend(); });
+      card.appendChild(input);
+    }
+
+    if (question.area) {
+      var ta = document.createElement('textarea');
+      ta.rows = 3;
+      ta.placeholder = question.area.placeholder;
+      ta.value = state.text[question.area.key] || '';
+      ta.addEventListener('input', function () { state.text[question.area.key] = ta.value; save(); paint(); renderSend(); });
+      card.appendChild(ta);
+    }
+
+    qz.appendChild(card);
+  });
+
+  function answered(question) {
+    if (question.area) { return !!(state.text[question.area.key] || '').trim(); }
+    var a = state.answers[question.id];
+    if (question.multi) { return Array.isArray(a) && a.length > 0; }
+    return !!a;
+  }
+
+  function paint() {
+    QUESTIONS.forEach(function (question) {
+      var card = document.getElementById('card-' + question.id);
+      var buttons = card.querySelectorAll('.opts button');
+      Array.prototype.forEach.call(buttons, function (b) {
+        var a = state.answers[question.id];
+        var on = question.multi ? (Array.isArray(a) && a.indexOf(b.textContent) !== -1) : a === b.textContent;
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      card.classList.toggle('done', answered(question));
+    });
+  }
+
+  function answerValue(question) {
+    if (question.area) { return (state.text[question.area.key] || '').trim(); }
+    if (question.multi) { return state.answers[question.id] || []; }
+    return state.answers[question.id] || '';
+  }
+
+  function buildPayload() {
+    var answers = {};
+    QUESTIONS.forEach(function (question) {
+      answers[question.id] = { question: question.q, answer: answerValue(question) };
+      if (question.text) {
+        var extra = (state.text[question.text.key] || '').trim();
+        if (extra) { answers[question.id].detail = extra; }
+      }
+    });
+    return {
+      prospect_slug: PROSPECT,
+      prospect_name: PROSPECT_NAME,
+      business: BUSINESS,
+      properties_target: state.properties,
+      answers: answers,
+      worst_hour: (state.text.worst || '').trim() || null,
+      source: 'web'
+    };
+  }
+
+  function buildMessage() {
+    var lines = ['Hi Adam, here are my answers from the page you sent.', ''];
+    QUESTIONS.forEach(function (question, i) {
+      var v = answerValue(question);
+      if (Array.isArray(v)) { v = v.join(', '); }
+      if (!v) { v = '(skipped)'; }
+      lines.push((i + 1) + '. ' + question.q);
+      lines.push('   ' + v);
+      if (question.text) {
+        var extra = (state.text[question.text.key] || '').trim();
+        if (extra) { lines.push('   (' + extra + ')'); }
+      }
+      lines.push('');
+    });
+    lines.push('I left the slider on ' + state.properties + ' properties.');
+    return lines.join('\n');
+  }
+
+  var submitBtn = document.getElementById('submit');
+  var waLink = document.getElementById('whatsapp');
+  var pcount = document.getElementById('pcount');
+  var pfill = document.getElementById('pfill');
+  var sendnote = document.getElementById('sendnote');
+  var sendbar = document.getElementById('sendbar');
+  var thanks = document.getElementById('thanks');
+  var thanksWorst = document.getElementById('thanks-worst');
+
+  function renderSend() {
+    var done = QUESTIONS.filter(answered).length;
+    var total = QUESTIONS.length;
+    pcount.textContent = done + ' of ' + total + ' answered';
+    pfill.style.width = (done / total * 100) + '%';
+    submitBtn.disabled = done === 0;
+    waLink.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(buildMessage());
+  }
+
+  submitBtn.addEventListener('click', function () {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    sendnote.classList.remove('bad');
+    sendnote.textContent = 'One moment.';
+
+    fetch(SUPABASE_URL + '/rest/v1/intake_responses', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(buildPayload())
+    }).then(function (res) {
+      if (!res.ok) { throw new Error('status ' + res.status); }
+      var worst = (state.text.worst || '').trim();
+      if (worst) { thanksWorst.textContent = 'And yes, we will talk about ' + worst.charAt(0).toLowerCase() + worst.slice(1); }
+      sendbar.hidden = true;
+      thanks.hidden = false;
+      thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      try { localStorage.removeItem(STORAGE); } catch (e) { /* fine */ }
+    }).catch(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Try sending again';
+      sendnote.classList.add('bad');
+      sendnote.textContent = 'That did not go through. Use the WhatsApp button just below instead, it works the same.';
+    });
+  });
+
+  slider.value = state.properties;
+  paint();
+  renderCalc();
+  slider.addEventListener('input', renderCalc);
+})();
+</script>
+</body>
+</html>
