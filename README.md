@@ -9,7 +9,7 @@ or just ask Claude.
 | `ola.html` | Ola, holiday rentals, Armação de Pêra | 11, one typed |
 | `pedro.html` | Pedro, estate agent, team of three in a 70 to 80 person agency | 12, three typed |
 | `helena.html` | Helena, dental clinic owner | 12, one typed |
-| `lara.html` | Lara, massage and Bowen therapy plus Zigzag kids' parties | 13, two typed |
+| `lara.html` | Lara, massage and Bowen therapy plus Zigzag kids' parties and festivals | 15, two typed |
 | `vision.html` | Ola's twelve month vision, for screen-sharing on the Zoom call | |
 | `index.html` | A neutral front door. Nobody should need it. | |
 | `assets/` | The shared engine and styles. Every page above uses them. | |
