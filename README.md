@@ -9,37 +9,30 @@ or just ask Claude.
 | `ola.html` | Ola, holiday rentals, Armação de Pêra | 11, one typed |
 | `pedro.html` | Pedro, estate agent, team of three in a 70 to 80 person agency | 12, three typed |
 | `helena.html` | Helena, dental clinic owner | 12, one typed |
+| `lara.html` | Lara, massage and Bowen therapy plus Zigzag kids' parties | 13, two typed |
 | `vision.html` | Ola's twelve month vision, for screen-sharing on the Zoom call | |
 | `index.html` | A neutral front door. Nobody should need it. | |
 | `assets/` | The shared engine and styles. Every page above uses them. | |
 
-## Put it online
+## Publishing a change
 
-GitHub Pages, five minutes, free, and you get a real URL you control.
-
-1. Make a new **public** repo, for example `before-we-meet`
-2. Upload everything in this `prospect-site` folder, so `ola.html` and the `assets` folder sit at the repo root
-3. Settings, then Pages, then Source: `Deploy from a branch`, branch `main`, folder `/ (root)`
-4. Wait a minute. Your site is `https://<your-username>.github.io/before-we-meet/`
+This folder is the repo. It is wired to
+[Meditationgardens369/Adam-vision-pages](https://github.com/Meditationgardens369/Adam-vision-pages),
+and GitHub Pages serves it at https://meditationgardens369.github.io/Adam-vision-pages/
 
 ```bash
-git init
-git add .
-git commit -m "Prospect question pages"
-git branch -M main
-git remote add origin https://github.com/<your-username>/before-we-meet.git
-git push -u origin main
+git add . && git commit -m "Add Lara's page" && git push
 ```
 
-Netlify Drop works too if you would rather not touch git. Drag this whole folder onto
-https://app.netlify.com/drop and you have a URL in about ten seconds.
+Pages rebuilds in about a minute. There is nothing to upload by hand any more.
 
 ## The links to send
 
 ```
-https://<your-username>.github.io/before-we-meet/ola.html
-https://<your-username>.github.io/before-we-meet/pedro.html
-https://<your-username>.github.io/before-we-meet/helena.html
+https://meditationgardens369.github.io/Adam-vision-pages/ola.html
+https://meditationgardens369.github.io/Adam-vision-pages/pedro.html
+https://meditationgardens369.github.io/Adam-vision-pages/helena.html
+https://meditationgardens369.github.io/Adam-vision-pages/lara.html
 ```
 
 Each page labels its own answers, so there is nothing to add to the link and no way for one

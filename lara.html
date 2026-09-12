@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before We Meet</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Before we meet, Lara">
+<meta property="og:description" content="A few quick questions so I turn up knowing how your week actually runs. About four minutes, mostly taps.">
+<meta name="theme-color" content="#0F5C58">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* Lara Costa: two businesses in one life. Massage, Bowen therapy and beauty work,
+   some of it inside hotels, some with her own clients. Plus Zigzag, the children's
+   entertainment side: face painting and birthday parties. Also theatre.
+
+   She has already said an online booking system would not work for her, so this
+   page never assumes one. Question 10 asks her why instead, and that typed answer
+   is the one to read before the call.
+
+   The point of the page is to find out which of her worlds is worth building in:
+   the hotels probably pay more, the kids side is closer to her heart, and the
+   hotel question is there to check whether the hotel work is automatable at all.
+
+   The option wording feeds the dashboard rules, so change both together. */
+window.INTAKE = {
+  slug: "lara",
+  name: "Lara",
+  business: "Massage and Bowen therapy, plus Zigzag children's entertainment",
+  headline: "worst",
+  questions: [
+    { id: "worlds", type: "many", short: "What is running",
+      q: "Which parts of your work are actually running at the moment?",
+      hint: "Tap all that apply. I would rather see the whole picture than guess at half of it.",
+      opts: ["Massage and treatments in hotels", "Treatments with my own private clients", "Bowen therapy", "Beauty treatments", "Zigzag, the parties and face painting", "Theatre and performing"] },
+    { id: "earner", type: "one", short: "Biggest earner",
+      q: "In a normal month, which one brings in the most money?",
+      opts: ["The hotel work", "My own private clients", "Zigzag, the kids side", "They are about even", "It changes every month"] },
+    { id: "heart", type: "one", short: "Closest to her heart",
+      q: "And if you could only keep one, which would it be?",
+      hint: "Money aside. This one tells me where to point everything.",
+      opts: ["The hotel work", "My own private clients", "Zigzag, the kids side", "I am not ready to drop any of them"] },
+    { id: "volume", type: "one", short: "New enquiries a week",
+      q: "Roughly how many new enquiries reach you in a week, across everything?",
+      hint: "Someone asking about a massage, a party, a price. All of it added together.",
+      opts: ["Under 5", "5 to 15", "15 to 40", "More than 40"] },
+    { id: "channels", type: "many", short: "Where enquiries arrive",
+      q: "Where do those enquiries actually arrive?", hint: "Tap all that apply.",
+      opts: ["WhatsApp", "Instagram or Facebook messages", "Phone calls", "The hotel passes them to me", "Email", "Word of mouth, in person"] },
+    { id: "diary", type: "one", short: "Where the diary lives",
+      q: "Where does your diary live?",
+      hint: "The real answer, not the tidy one.",
+      opts: ["In my head", "A paper diary or notebook", "The calendar on my phone", "A booking app of some kind", "Different places for the different sides of my work"],
+      follow: { when: "A booking app of some kind", key: "diaryName", placeholder: "Which one? (optional)" } },
+    { id: "hotel", type: "one", short: "How hotels give work",
+      q: "How do the hotels give you work?",
+      hint: "This decides whether I can help on that side at all, so be blunt.",
+      opts: ["They have a rota and I turn up", "They message me when a guest wants a treatment", "Guests book at reception and I find out later", "It is different at each hotel"] },
+    { id: "parties", type: "one", short: "Party enquiries",
+      q: "A parent messages about a birthday party. How does it usually go from there?",
+      opts: ["A few messages back and forth, then it is booked", "Lots of messages, and often it fades out", "A phone call sorts it", "It depends how busy I am"] },
+    { id: "repeat", type: "one", short: "After the work is done",
+      q: "After a treatment or a party is done, does that person ever hear from you again?",
+      opts: ["I always follow up", "Only if I remember", "They come back on their own", "Not really, and I know I should"] },
+    { id: "nobooking", type: "text", short: "Why booking will not work",
+      q: "You said an online booking system would not work for you. Tell me why.",
+      hint: "This is genuinely the most useful thing you can tell me. I would rather build the right thing than the obvious thing.",
+      placeholder: "The hotel decides my hours, every party needs a conversation first, that kind of thing..." },
+    { id: "hours", type: "one", short: "Time on admin",
+      q: "In a normal week, how much of your time goes on messages, prices and arranging things?",
+      hint: "Not the work itself. The organising around it.",
+      opts: ["Under 2 hours", "2 to 4 hours", "4 to 6 hours", "More than 6 hours"] },
+    { id: "want", type: "one", short: "A year from now",
+      q: "Twelve months from now, which would you rather have?",
+      hint: "Pick the one you would actually notice.",
+      opts: ["More of the treatment work", "More kids parties booked", "My evenings back"] },
+    { id: "worst", type: "text", short: "Worst hour",
+      q: "Last one. What is the worst hour of your week?",
+      hint: "The one you dread. A sentence or two is plenty. This is the answer I will read first.",
+      placeholder: "Sunday night, when I am working out where I am supposed to be all week, for example..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>
