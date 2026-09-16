@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O Seguimento da Clínica</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="O que a clínica já faz bem, onde fica o dinheiro por recuperar, e um teste de duas semanas.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Helena, o seguimento da clínica">
+<meta property="og:description" content="A clínica já faz o difícil. Falta o seguimento.">
+<meta name="theme-color" content="#1F5E73">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #EEF2F3;
+    --card: #FAFCFC;
+    --card-2: #E2E9EB;
+    --ink: #16211F;
+    --muted: #536167;
+    --faint: #85929A;
+    --line: #D3DCDF;
+    --petrol: #1F5E73;
+    --petrol-soft: #DAE8EC;
+    --amber: #A5601F;
+    --amber-soft: #F3E6D8;
+    --ok: #2E7457;
+    --ok-soft: #DDEDE5;
+    --shadow: 0 1px 2px rgba(22,33,31,.05), 0 12px 30px rgba(22,33,31,.07);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #0E1416; --card: #151D20; --card-2: #1F292D; --ink: #E3EAEC;
+      --muted: #97A5AB; --faint: #6B787E; --line: #283337;
+      --petrol: #6FB6CC; --petrol-soft: #16303A; --amber: #E0A566; --amber-soft: #2E2214;
+      --ok: #74C39E; --ok-soft: #14291F;
+      --shadow: 0 1px 2px rgba(0,0,0,.5), 0 14px 36px rgba(0,0,0,.45);
+      color-scheme: dark;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html.lang-en .pt, html:not(.lang-en) .en { display: none !important; }
+
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16.5px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 20px 80px; }
+
+  .bar {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--ground) 88%, transparent);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding: calc(10px + env(safe-area-inset-top, 0px)) 20px 10px;
+  }
+  .bar-in { max-width: 680px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .langs { display: inline-flex; padding: 3px; background: var(--card-2); border-radius: 999px; }
+  .langs button {
+    font: 600 13px "Instrument Sans", sans-serif; border: 0; background: transparent; color: var(--muted);
+    padding: 7px 14px; border-radius: 999px; cursor: pointer; min-width: 48px;
+  }
+  .langs button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(22,33,31,.14); }
+  button:focus-visible, input:focus-visible { outline: 2px solid var(--petrol); outline-offset: 2px; }
+
+  .eyebrow { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10.5px; letter-spacing: .15em; text-transform: uppercase; color: var(--faint); margin: 0; }
+  h1 {
+    font-family: Newsreader, Georgia, serif; font-weight: 300;
+    font-size: clamp(34px, 8.6vw, 52px); line-height: 1.07; letter-spacing: -.015em;
+    margin: 14px 0 18px; text-wrap: balance;
+  }
+  h1 em, h2 em { font-style: italic; color: var(--petrol); }
+  h2 {
+    font-family: Newsreader, Georgia, serif; font-weight: 400;
+    font-size: clamp(26px, 6vw, 34px); line-height: 1.15; letter-spacing: -.01em;
+    margin: 0 0 10px; text-wrap: balance;
+  }
+  h3 { font-size: 17px; font-weight: 600; margin: 0 0 6px; line-height: 1.35; }
+  p { margin: 0 0 14px; }
+  .lede { font-size: 19px; color: var(--muted); line-height: 1.5; }
+  .muted { color: var(--muted); }
+  .small { font-size: 14px; line-height: 1.5; }
+  header.top { padding: 40px 0 4px; }
+
+  /* odontogram divider: FDI numbering, upper arch */
+  .odonto { display: flex; justify-content: center; gap: 3px; margin: 42px 0; opacity: .55; }
+  .odonto span {
+    flex: 0 1 26px; min-width: 0; height: 30px; border: 1px solid var(--faint); border-radius: 6px 6px 9px 9px;
+    font: 500 8.5px "JetBrains Mono", monospace; color: var(--faint);
+    display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3px;
+  }
+  .odonto span.mid { margin-left: 7px; }
+  .odonto span.hl { border-color: var(--amber); color: var(--amber); background: var(--amber-soft); }
+
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; margin-top: 22px; }
+  .fact { background: var(--card); padding: 14px 14px 12px; }
+  .fact b { display: block; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 28px; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .fact span { font-size: 12.5px; color: var(--muted); line-height: 1.35; display: block; margin-top: 4px; }
+
+  .have { list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .have li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 13px 15px; }
+  .tick { width: 26px; height: 26px; border-radius: 50%; background: var(--ok-soft); color: var(--ok); display: grid; place-items: center; font-weight: 600; font-size: 14px; }
+  .have li b { display: block; font-weight: 600; }
+  .have li span { font-size: 14.5px; color: var(--muted); }
+  .promise { margin-top: 18px; font-family: Newsreader, Georgia, serif; font-style: italic; font-size: 21px; color: var(--petrol); }
+
+  /* patient path */
+  .path { margin-top: 24px; display: flex; flex-direction: column; }
+  .step { display: grid; grid-template-columns: 44px 1fr; gap: 14px; position: relative; padding-bottom: 22px; }
+  .step:last-child { padding-bottom: 0; }
+  .step::before { content: ""; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: var(--line); }
+  .step:last-child::before { display: none; }
+  .node { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font: 500 12px "JetBrains Mono", monospace; background: var(--ok-soft); color: var(--ok); border: 1px solid var(--ok); }
+  .step.gap .node { background: var(--amber-soft); color: var(--amber); border: 1.5px dashed var(--amber); }
+  .step .body { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; }
+  .step.gap .body { border-color: var(--amber); background: var(--amber-soft); }
+  .step .money { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); letter-spacing: .03em; }
+  .step .state { display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); }
+  .step.gap .state { background: var(--card); color: var(--amber); }
+  .quote { font-family: Newsreader, Georgia, serif; font-style: italic; font-size: 19px; }
+
+  /* two front desks */
+  .switch { display: inline-flex; gap: 3px; padding: 3px; background: var(--card-2); border-radius: 999px; margin: 6px 0 16px; }
+  .switch button { font: 600 14px "Instrument Sans", sans-serif; border: 0; background: transparent; color: var(--muted); padding: 9px 16px; border-radius: 999px; cursor: pointer; }
+  .switch button[aria-selected="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(22,33,31,.14); }
+  .desk { background: var(--card); border: 1px solid var(--line); border-radius: 6px; box-shadow: var(--shadow); overflow: hidden; }
+  .door { display: grid; grid-template-columns: 94px 1fr; gap: 12px; padding: 13px 16px; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .door:last-of-type { border-bottom: 0; }
+  .door .ch { font: 500 10.5px "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); padding-top: 3px; }
+  .desk .closer { padding: 14px 16px; font-size: 14.5px; color: var(--muted); border-top: 1px solid var(--line); }
+  #desk-now .closer { background: var(--amber-soft); }
+  #desk-then .closer { background: var(--petrol-soft); }
+
+  /* calculator */
+  .calc { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 22px 18px; box-shadow: var(--shadow); margin-top: 20px; }
+  .slider { margin-bottom: 24px; }
+  .slider label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 14.5px; font-weight: 500; margin-bottom: 10px; }
+  .slider label output { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 15px; color: var(--petrol); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  input[type="range"] { width: 100%; -webkit-appearance: none; appearance: none; background: transparent; margin: 0; height: 30px; }
+  input[type="range"]::-webkit-slider-runnable-track { height: 4px; background: var(--card-2); border-radius: 2px; }
+  input[type="range"]::-moz-range-track { height: 4px; background: var(--card-2); border-radius: 2px; }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 28px; height: 28px; margin-top: -12px; border-radius: 50%; background: var(--petrol); border: 3px solid var(--card); box-shadow: 0 1px 6px rgba(22,33,31,.3); }
+  input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--petrol); border: 3px solid var(--card); box-shadow: 0 1px 6px rgba(22,33,31,.3); }
+  .slider .hint { font-size: 12.5px; color: var(--faint); margin: 4px 0 0; }
+  .result { border-top: 1px solid var(--line); padding-top: 18px; }
+  .result .k { font: 500 10.5px "JetBrains Mono", monospace; letter-spacing: .13em; text-transform: uppercase; color: var(--faint); }
+  .result .v { font-family: Newsreader, Georgia, serif; font-size: clamp(40px, 11vw, 54px); line-height: 1.05; letter-spacing: -.02em; color: var(--petrol); font-variant-numeric: tabular-nums; margin: 4px 0 6px; }
+  .result .sub { font-size: 14.5px; color: var(--muted); margin: 0; }
+  .honest { margin-top: 16px; font-size: 13.5px; color: var(--muted); border-left: 2px solid var(--amber); padding: 4px 0 4px 12px; }
+
+  /* how it works */
+  .pieces { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+  .piece { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 18px 18px 8px; }
+  .piece .tag { font: 500 10.5px "JetBrains Mono", monospace; letter-spacing: .13em; text-transform: uppercase; color: var(--petrol); display: block; margin-bottom: 6px; }
+  .piece ul { margin: 8px 0 10px; padding-left: 18px; color: var(--muted); font-size: 15px; }
+  .piece li { margin-bottom: 5px; }
+  .piece.first { border-color: var(--petrol); box-shadow: var(--shadow); }
+  .timeline { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0 12px; }
+  .timeline span { font: 500 12px "JetBrains Mono", monospace; padding: 5px 9px; border-radius: 4px; background: var(--petrol-soft); color: var(--petrol); }
+  .timeline span.stop { background: var(--card-2); color: var(--muted); }
+
+  .unchanged { margin-top: 18px; display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 6px; background: var(--petrol-soft); font-size: 15px; }
+  .unchanged b { color: var(--petrol); }
+
+  .privacy { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .privacy li { background: var(--card); padding: 13px 16px; font-size: 15px; }
+
+  /* trial */
+  .weeks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+  .week { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 16px; }
+  .week .n { font: 500 10.5px "JetBrains Mono", monospace; letter-spacing: .13em; text-transform: uppercase; color: var(--faint); display: block; margin-bottom: 6px; }
+  .week p { font-size: 14.5px; color: var(--muted); margin: 0; }
+  .end { margin-top: 10px; background: var(--card); border: 1px solid var(--petrol); border-radius: 6px; padding: 16px; }
+  .end ul { margin: 6px 0 0; padding-left: 18px; font-size: 15px; color: var(--muted); }
+  .cost { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-top: 14px; padding: 16px; border-radius: 6px; background: var(--card-2); }
+  .cost b { font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 30px; }
+
+  .ask { border: 1px solid var(--petrol); border-radius: 6px; padding: 22px 20px; background: var(--petrol-soft); }
+  .ask ol { margin: 10px 0 0; padding-left: 20px; }
+  .ask li { margin-bottom: 8px; }
+  footer.sig { margin-top: 38px; font-size: 15px; color: var(--muted); }
+
+  @media (max-width: 480px) {
+    .facts { grid-template-columns: 1fr 1fr 1fr; }
+    .fact { padding: 12px 10px 10px; }
+    .fact b { font-size: 24px; }
+    .door { grid-template-columns: 1fr; gap: 2px; }
+    .weeks { grid-template-columns: 1fr; }
+    .odonto span { height: 24px; font-size: 7px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <span class="brand"><span class="pt">Para a Helena</span><span class="en">For Helena</span></span>
+    <div class="langs" role="group" aria-label="Idioma / Language">
+      <button type="button" id="lang-pt" data-lang="pt" aria-pressed="true">PT</button>
+      <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="top">
+    <p class="eyebrow"><span class="pt">Preparado a partir das suas 12 respostas &middot; setembro 2026</span><span class="en">Built from your 12 answers &middot; September 2026</span></p>
+    <h1>
+      <span class="pt">A clínica já faz a parte difícil. Falta o <em>seguimento</em>.</span>
+      <span class="en">The clinic already does the hard part. What's missing is the <em>follow-up</em>.</span>
+    </h1>
+    <p class="lede">
+      <span class="pt">Os pacientes voltam, o software é bom e alguém responde até às nove da noite. O que se perde está depois do orçamento, quando o paciente diz "vou pensar".</span>
+      <span class="en">Patients come back, the software is good, and someone answers until nine at night. What gets lost comes after the quote, when a patient says "I'll think about it".</span>
+    </p>
+
+    <div class="facts">
+      <div class="fact"><b>2</b><span class="pt">cadeiras</span><span class="en">chairs</span></div>
+      <div class="fact"><b>5&ndash;15</b><span class="pt">pedidos novos por semana</span><span class="en">new enquiries a week</span></div>
+      <div class="fact"><b>6h+</b><span class="pt">por semana em telefone e mensagens</span><span class="en">a week on phones and messages</span></div>
+    </div>
+  </header>
+
+  <div class="odonto" aria-hidden="true"></div>
+
+  <section>
+    <h2><span class="pt">O que já funciona</span><span class="en">What already works</span></h2>
+    <p class="muted"><span class="pt">Muitas clínicas não têm metade disto.</span><span class="en">Plenty of clinics don't have half of this.</span></p>
+    <ul class="have">
+      <li><span class="tick">&#10003;</span><div><b>Newsoft</b><span class="pt">Marcações, fichas, planos de tratamento e faturação num só sítio.</span><span class="en">Appointments, records, treatment plans and billing in one place.</span></div></li>
+      <li><span class="tick">&#10003;</span><div><b><span class="pt">Consultas de revisão automáticas</span><span class="en">Automatic check-up reminders</span></b><span class="pt">Os pacientes são lembrados sem ninguém ter de ligar.</span><span class="en">Patients get reminded without anyone picking up the phone.</span></div></li>
+      <li><span class="tick">&#10003;</span><div><b><span class="pt">Uma rececionista dedicada</span><span class="en">A dedicated receptionist</span></b><span class="pt">Alguém cujo trabalho é atender. Nem todas as clínicas pequenas têm.</span><span class="en">Someone whose job is answering. Not every small clinic has that.</span></div></li>
+      <li><span class="tick">&#10003;</span><div><b><span class="pt">Resposta na mesma noite</span><span class="en">Same-evening replies</span></b><span class="pt">Uma mensagem às 21h tem resposta antes de manhã.</span><span class="en">A message at 9pm gets an answer before morning.</span></div></li>
+      <li><span class="tick">&#10003;</span><div><b><span class="pt">Urgências fora de horas</span><span class="en">Urgent care outside hours</span></b><span class="pt">A clínica atende quando outras já fecharam.</span><span class="en">The clinic is there when others have already closed.</span></div></li>
+    </ul>
+    <p class="promise"><span class="pt">Não vou mexer em nada disto.</span><span class="en">I'm not touching any of this.</span></p>
+  </section>
+
+  <div class="odonto" aria-hidden="true"></div>
+
+  <section>
+    <h2><span class="pt">O caminho de um paciente</span><span class="en">A patient's path</span></h2>
+    <p class="muted"><span class="pt">Os dois primeiros passos já estão resolvidos. O terceiro é onde está o dinheiro.</span><span class="en">The first two steps are already handled. The third is where the money is.</span></p>
+    <div class="path">
+      <div class="step">
+        <div class="node">1</div>
+        <div class="body">
+          <h3><span class="pt">Vem a uma consulta de rotina</span><span class="en">Comes in for a routine visit</span></h3>
+          <span class="money">&euro;60&ndash;80</span><br>
+          <span class="state"><span class="pt">Automático</span><span class="en">Automatic</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="node">2</div>
+        <div class="body">
+          <h3><span class="pt">Recebe um plano de tratamento</span><span class="en">Gets a treatment plan</span></h3>
+          <span class="money"><span class="pt">implantes, alinhadores: &euro;1.500&ndash;5.000</span><span class="en">implants, aligners: &euro;1,500&ndash;5,000</span></span><br>
+          <span class="state"><span class="pt">Feito pela médica</span><span class="en">Done by the dentist</span></span>
+        </div>
+      </div>
+      <div class="step gap">
+        <div class="node">3</div>
+        <div class="body">
+          <h3><span class="pt">Diz "vou pensar". E depois?</span><span class="en">Says "I'll think about it". Then what?</span></h3>
+          <p class="quote" style="margin:6px 0 0"><span class="pt">"Alguém liga, se se lembrar."</span><span class="en">"Someone calls if they remember."</span></p>
+          <span class="state"><span class="pt">A sua resposta</span><span class="en">Your answer</span></span>
+        </div>
+      </div>
+    </div>
+    <p class="small muted" style="margin-top:18px"><span class="pt">Cada orçamento que ficou por aceitar já está guardado no Newsoft, com nome, telefone e valor. Ninguém está a trabalhar essa lista.</span><span class="en">Every quote that was never accepted is already saved in Newsoft, with a name, a phone number and a value. Nobody is working that list.</span></p>
+  </section>
+
+  <div class="odonto" aria-hidden="true"></div>
+
+  <section>
+    <h2><span class="pt">Cinco portas, uma rececionista</span><span class="en">Five doors, one receptionist</span></h2>
+    <p class="muted"><span class="pt">Escolheu uma receção mais calma em vez de uma agenda mais cheia. É por aqui que se chega lá.</span><span class="en">You chose a calmer front desk over a fuller diary. This is how you get there.</span></p>
+
+    <div class="switch" role="tablist" aria-label="Receção">
+      <button role="tab" id="tab-now" aria-controls="desk-now" aria-selected="true"><span class="pt">Hoje</span><span class="en">Today</span></button>
+      <button role="tab" id="tab-then" aria-controls="desk-then" aria-selected="false"><span class="pt">Daqui a um ano</span><span class="en">A year from now</span></button>
+    </div>
+
+    <div class="desk" id="desk-now" role="tabpanel" aria-labelledby="tab-now">
+      <div class="door"><span class="ch"><span class="pt">Telefone</span><span class="en">Phone</span></span><span><span class="pt">Toca com as duas cadeiras ocupadas. Quem atende larga o que está a fazer.</span><span class="en">It rings with both chairs full. Whoever answers drops what they're doing.</span></span></div>
+      <div class="door"><span class="ch">WhatsApp</span><span><span class="pt">Às 21h pergunta-se pelo preço de um implante. Alguém responde do sofá.</span><span class="en">At 9pm someone asks what an implant costs. Somebody answers from the sofa.</span></span></div>
+      <div class="door"><span class="ch"><span class="pt">Email / site</span><span class="en">Email / site</span></span><span><span class="pt">O formulário fica à espera até de manhã, atrás de tudo o resto.</span><span class="en">The form waits until morning, behind everything else.</span></span></div>
+      <div class="door"><span class="ch"><span class="pt">Marcação online</span><span class="en">Online booking</span></span><span><span class="pt">Funciona para quem já sabe o que quer. Quem tem dúvidas não marca.</span><span class="en">Works for people who know what they want. People with questions don't book.</span></span></div>
+      <div class="door"><span class="ch"><span class="pt">Ao balcão</span><span class="en">Walk-in</span></span><span><span class="pt">Chega enquanto o telefone toca e as mensagens se acumulam.</span><span class="en">Arrives while the phone rings and the messages pile up.</span></span></div>
+      <p class="closer"><span class="pt">E o orçamento de junho continua sem telefonema.</span><span class="en">And the quote from June still hasn't had its phone call.</span></p>
+    </div>
+
+    <div class="desk" id="desk-then" role="tabpanel" aria-labelledby="tab-then" hidden>
+      <div class="door"><span class="ch"><span class="pt">Tudo junto</span><span class="en">One place</span></span><span><span class="pt">WhatsApp, email, site e chamadas perdidas chegam a um só ecrã.</span><span class="en">WhatsApp, email, the website and missed calls land on one screen.</span></span></div>
+      <div class="door"><span class="ch"><span class="pt">Perguntas</span><span class="en">Questions</span></span><span><span class="pt">Horários, preços base, morada, seguros: respondidos logo, em português ou inglês.</span><span class="en">Opening hours, starting prices, address, insurers: answered straight away, in Portuguese or English.</span></span></div>
+      <div class="door"><span class="ch"><span class="pt">Urgências</span><span class="en">Urgent</span></span><span><span class="pt">Fora de horas, o paciente recebe logo instruções claras. A médica só é chamada quando é mesmo urgente.</span><span class="en">After hours, the patient gets clear instructions straight away. The dentist is only called when it really is urgent.</span></span></div>
+      <div class="door"><span class="ch"><span class="pt">Orçamentos</span><span class="en">Quotes</span></span><span><span class="pt">Cada "vou pensar" recebe uma mensagem simpática no momento certo, e pára assim que o paciente responde.</span><span class="en">Every "I'll think about it" gets a friendly message at the right moment, and stops the second the patient replies.</span></span></div>
+      <div class="door"><span class="ch"><span class="pt">Receção</span><span class="en">Front desk</span></span><span><span class="pt">Só vê o que precisa de uma pessoa: marcar, decidir, tranquilizar.</span><span class="en">Only sees what needs a person: booking, deciding, reassuring.</span></span></div>
+      <p class="closer"><span class="pt">O Newsoft continua a ser onde tudo fica registado.</span><span class="en">Newsoft is still where everything gets recorded.</span></p>
+    </div>
+  </section>
+
+  <div class="odonto" aria-hidden="true"></div>
+
+  <section>
+    <h2><span class="pt">Quanto vale o seguimento?</span><span class="en">What is the follow-up worth?</span></h2>
+    <p class="muted"><span class="pt">Mexa nos valores. A clínica é sua, os números também.</span><span class="en">Move these. It's your clinic, so they're your numbers.</span></p>
+
+    <div class="calc">
+      <div class="slider">
+        <label for="quiet"><span><span class="pt">Orçamentos que ficam sem resposta, por mês</span><span class="en">Quotes that go quiet each month</span></span><output id="quiet-v">4</output></label>
+        <input type="range" id="quiet" min="1" max="20" step="1" value="4">
+      </div>
+      <div class="slider">
+        <label for="value"><span><span class="pt">Valor médio de um desses planos</span><span class="en">Average value of one of those plans</span></span><output id="value-v">&euro;1,500</output></label>
+        <input type="range" id="value" min="300" max="5000" step="100" value="1500">
+      </div>
+      <div class="slider">
+        <label for="back"><span><span class="pt">Em cada 10, quantos voltam com um bom seguimento</span><span class="en">Out of 10, how many come back with good follow-up</span></span><output id="back-v">2</output></label>
+        <input type="range" id="back" min="1" max="5" step="1" value="2">
+        <p class="hint"><span class="pt">Um ou dois em dez é uma estimativa prudente.</span><span class="en">One or two in ten is a cautious guess.</span></p>
+      </div>
+      <div class="result" aria-live="polite">
+        <div class="k"><span class="pt">Tratamentos recuperados num ano</span><span class="en">Treatment recovered in a year</span></div>
+        <div class="v" id="total">&euro;13,200</div>
+        <p class="sub" id="sub"></p>
+      </div>
+      <p class="honest"><span class="pt">Isto é uma ilustração, não uma promessa. Contado em 11 meses de trabalho. Em duas semanas vemos os números reais da clínica.</span><span class="en">This is an illustration, not a promise. Counted over 11 working months. In two weeks we see the clinic's real numbers.</span></p>
+    </div>
+  </section>
+
+  <div class="odonto" aria-hidden="true"></div>
+
+  <section>
+    <h2><span class="pt">Como funciona</span><span class="en">How it works</span></h2>
+    <p class="muted"><span class="pt">Três peças. A primeira sozinha já paga as outras.</span><span class="en">Three pieces. The first one pays for the others on its own.</span></p>
+
+    <div class="pieces">
+      <div class="piece first">
+        <span class="tag"><span class="pt">Primeiro</span><span class="en">First</span></span>
+        <h3><span class="pt">Seguimento dos orçamentos</span><span class="en">Quote follow-up</span></h3>
+        <p class="small muted" style="margin:0"><span class="pt">A partir de uma exportação do Newsoft que a clínica controla. Cada paciente recebe mensagens curtas, no seu idioma:</span><span class="en">Built from a Newsoft export the clinic controls. Each patient gets short messages, in their own language:</span></p>
+        <div class="timeline">
+          <span><span class="pt">dia 3</span><span class="en">day 3</span></span>
+          <span><span class="pt">dia 10</span><span class="en">day 10</span></span>
+          <span><span class="pt">dia 30</span><span class="en">day 30</span></span>
+          <span class="stop"><span class="pt">pára quando responde ou marca</span><span class="en">stops when they reply or book</span></span>
+        </div>
+        <ul>
+          <li><span class="pt">Aprova cada texto antes de sair a primeira mensagem.</span><span class="en">You approve every text before the first message goes out.</span></li>
+          <li><span class="pt">Dúvidas sobre o tratamento vão para a clínica, nunca são respondidas por um robô.</span><span class="en">Questions about the treatment go to the clinic, never answered by a bot.</span></li>
+        </ul>
+      </div>
+      <div class="piece">
+        <span class="tag"><span class="pt">Depois</span><span class="en">Next</span></span>
+        <h3><span class="pt">Uma caixa para as cinco portas</span><span class="en">One inbox for all five doors</span></h3>
+        <ul>
+          <li><span class="pt">As perguntas de rotina são respondidas logo.</span><span class="en">Routine questions answered straight away.</span></li>
+          <li><span class="pt">A rececionista só vê o que precisa de uma pessoa.</span><span class="en">The receptionist only sees what needs a person.</span></li>
+        </ul>
+      </div>
+      <div class="piece">
+        <span class="tag"><span class="pt">Depois</span><span class="en">Then</span></span>
+        <h3><span class="pt">Fora de horas e urgências</span><span class="en">After hours and urgent care</span></h3>
+        <ul>
+          <li><span class="pt">Resposta imediata, em qualquer idioma, a qualquer hora.</span><span class="en">An instant reply, any language, any hour.</span></li>
+          <li><span class="pt">Ninguém tem de responder do sofá, a não ser que seja mesmo urgente.</span><span class="en">Nobody answers from the sofa unless it really is urgent.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="unchanged">
+      <span class="tick">&#10003;</span>
+      <span><b><span class="pt">Nada muda no Newsoft.</span><span class="en">Nothing changes in Newsoft.</span></b> <span class="pt">Nem software novo para aprender.</span><span class="en">No new software to learn.</span></span>
+    </div>
+
+    <ul class="privacy">
+      <li><span class="pt">Os dados dos pacientes ficam com a clínica. Só se usa o necessário: nome, contacto, data e valor do orçamento.</span><span class="en">Patient data stays with the clinic. Only what's needed is used: name, contact, date and quote value.</span></li>
+      <li><span class="pt">Só se contacta quem aceitou ser contactado pela clínica.</span><span class="en">Only patients who agreed to be contacted by the clinic get a message.</span></li>
+      <li><span class="pt">As mensagens nunca falam de diagnósticos. Só convidam a voltar a falar.</span><span class="en">Messages never mention diagnoses. They just invite the patient to talk again.</span></li>
+      <li><span class="pt">Revemos tudo juntos, com o RGPD em mente, antes de começar.</span><span class="en">We go through it together, with GDPR in mind, before anything starts.</span></li>
+    </ul>
+  </section>
+
+  <div class="odonto" aria-hidden="true"></div>
+
+  <section>
+    <h2><span class="pt">Duas semanas para <em>ver</em></span><span class="en">Two weeks to <em>see</em></span></h2>
+    <p class="muted"><span class="pt">Com orçamentos reais da clínica, não com uma demonstração.</span><span class="en">On the clinic's real quotes, not a demo.</span></p>
+    <div class="weeks">
+      <div class="week">
+        <span class="n"><span class="pt">Semana 1</span><span class="en">Week 1</span></span>
+        <p><span class="pt">Exportamos os orçamentos por aceitar dos últimos seis meses. Escrevemos as mensagens juntos. A Helena aprova.</span><span class="en">We export the unaccepted quotes from the last six months. We write the messages together. You approve them.</span></p>
+      </div>
+      <div class="week">
+        <span class="n"><span class="pt">Semana 2</span><span class="en">Week 2</span></span>
+        <p><span class="pt">As mensagens saem. As respostas chegam à receção. Contamos tudo.</span><span class="en">The messages go out. Replies reach the front desk. We count everything.</span></p>
+      </div>
+    </div>
+    <div class="end">
+      <h3><span class="pt">No fim, fica a saber</span><span class="en">At the end, you'll know</span></h3>
+      <ul>
+        <li><span class="pt">Quantos orçamentos estavam parados, e quanto valiam</span><span class="en">How many quotes were sitting there, and what they were worth</span></li>
+        <li><span class="pt">Quantos pacientes responderam</span><span class="en">How many patients replied</span></li>
+        <li><span class="pt">Quantos marcaram, e o valor desses tratamentos</span><span class="en">How many booked, and what those treatments are worth</span></li>
+      </ul>
+    </div>
+    <div class="cost">
+      <span><span class="pt">O que paga nas duas semanas</span><span class="en">What you pay for the two weeks</span></span>
+      <b><span class="pt">Só as ferramentas, &euro;20&ndash;70</span><span class="en">Just the tools, &euro;20&ndash;70</span></b>
+    </div>
+    <p class="small muted" style="margin-top:12px"><span class="pt">Se não resultar, desliga-se e ficamos amigos.</span><span class="en">If it doesn't work, we switch it off and stay friends.</span></p>
+  </section>
+
+  <div class="odonto" aria-hidden="true"></div>
+
+  <section class="ask">
+    <h2><span class="pt">O que preciso da clínica</span><span class="en">What I need from the clinic</span></h2>
+    <ol>
+      <li><span class="pt">Uma exportação dos orçamentos por aceitar, dos últimos seis meses</span><span class="en">An export of unaccepted quotes from the last six months</span></li>
+      <li><span class="pt">Vinte minutos com a rececionista</span><span class="en">Twenty minutes with the receptionist</span></li>
+      <li><span class="pt">A sua aprovação em cada mensagem</span><span class="en">Your sign-off on every message</span></li>
+    </ol>
+  </section>
+
+  <footer class="sig">
+    <p><span class="pt">Obrigado pelas respostas, Helena. Foram elas que fizeram esta página.</span><span class="en">Thank you for the answers, Helena. They're what this page is made of.</span></p>
+    <p>Adam</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var lang = 'pt';
+  try {
+    var q = new URLSearchParams(location.search).get('lang');
+    lang = q === 'en' || q === 'pt' ? q : (localStorage.getItem('helena-lang') || 'pt');
+  } catch (e) {}
+
+  function setLang(l) {
+    lang = l;
+    root.classList.toggle('lang-en', l === 'en');
+    root.lang = l === 'en' ? 'en' : 'pt-PT';
+    document.querySelectorAll('.langs button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === l));
+    });
+    try { localStorage.setItem('helena-lang', l); } catch (e) {}
+    calc();
+  }
+  document.querySelectorAll('.langs button').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.dataset.lang); });
+  });
+
+  // odontogram dividers: FDI upper arch 18..11 | 21..28, gap tooth highlighted
+  var teeth = [18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28];
+  document.querySelectorAll('.odonto').forEach(function (row, i) {
+    row.innerHTML = teeth.map(function (t, j) {
+      var cls = (j === 8 ? 'mid' : '') + (i === 1 && t === 26 ? ' hl' : '');
+      return '<span class="' + cls.trim() + '">' + t + '</span>';
+    }).join('');
+  });
+
+  // two front desks
+  var tabs = [['tab-now', 'desk-now'], ['tab-then', 'desk-then']];
+  tabs.forEach(function (pair) {
+    document.getElementById(pair[0]).addEventListener('click', function () {
+      tabs.forEach(function (p) {
+        var on = p[0] === pair[0];
+        document.getElementById(p[0]).setAttribute('aria-selected', String(on));
+        document.getElementById(p[1]).hidden = !on;
+      });
+    });
+  });
+
+  // calculator
+  var quiet = document.getElementById('quiet'), value = document.getElementById('value'), back = document.getElementById('back');
+  function money(n) {
+    return lang === 'en'
+      ? '€' + n.toLocaleString('en-GB')
+      : n.toLocaleString('pt-PT', { useGrouping: 'always' }).replace(/\s/g, '.') + ' €';
+  }
+  function calc() {
+    var q = +quiet.value, v = +value.value, b = +back.value;
+    var perMonth = q * b / 10;
+    var year = Math.round(perMonth * v * 11);
+    document.getElementById('quiet-v').textContent = q;
+    document.getElementById('value-v').textContent = money(v);
+    document.getElementById('back-v').textContent = b;
+    document.getElementById('total').textContent = money(year);
+    var cases = Math.round(perMonth * 11 * 10) / 10;
+    var casesTxt = String(cases).replace('.', lang === 'en' ? '.' : ',');
+    document.getElementById('sub').textContent = lang === 'en'
+      ? 'About ' + casesTxt + ' treatment plans a year that would otherwise have gone quiet.'
+      : 'Cerca de ' + casesTxt + ' planos de tratamento por ano que de outra forma ficariam parados.';
+  }
+  [quiet, value, back].forEach(function (el) { el.addEventListener('input', calc); });
+
+  setLang(lang);
+})();
+</script>
+</body>
+</html>
