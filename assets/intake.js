@@ -155,7 +155,8 @@
 
     var kids = [
       h('p', { class: 'eyebrow', text: 'Hi ' + NAME }),
-      h('h1', { html: 'A few quick questions, so I turn up knowing your business <em>instead of guessing at it.</em>' }),
+      h('h1', { html: C.introTitle || 'A few quick questions, so I turn up knowing your business <em>instead of guessing at it.</em>' }),
+      C.introNote ? h('p', { class: 'muted', text: C.introNote }) : null,
       h('p', { class: 'muted', text: cap(word(TOTAL)) + ' of them. ' + typing + ' About ' + word(minutes) + ' minutes.' }),
       h('p', { class: 'muted', text: 'You can stop halfway and come back later on the same device. It remembers where you were.' }),
       h('p', { class: 'muted', text: 'Nothing here is shared with anyone else. It comes straight to me.' }),

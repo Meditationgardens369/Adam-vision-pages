@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before We Meet</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Round two, Pedro">
+<meta property="og:description" content="Your first answers were great. A few deeper questions so our meeting can go straight to the plan.">
+<meta name="theme-color" content="#0F5C58">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* Pedro, round two. Written 17 Sep 2026 after his first answers (pedro.html):
+   40+ enquiries a week from WhatsApp, Idealista and referrals, "Maxworks" plus the
+   agency's Excel, same-day replies, leads split by whoever is free, deals lost to
+   slow replies and no follow-up. He wants more time in the field winning listings,
+   and his manager wants speed and full visibility of every lead.
+
+   These questions fill the gaps a build depends on (systems, WhatsApp setup, how
+   Idealista leads arrive, where listing facts live), set a baseline for the case
+   study numbers, and ask what the buyers actually write. He writes thoughtful
+   answers, so more of these are typed than on round one.
+
+   Question ids deliberately avoid the ones used in Prospect_Dashboard.html rules. */
+window.INTAKE = {
+  slug: "pedro-2",
+  name: "Pedro",
+  business: "Estate agent, team of three in a 70 to 80 person agency (round two)",
+  headline: "asked",
+  introTitle: "Your first answers were brilliant. <em>Here is round two.</em>",
+  introNote: "These go one level deeper, so when we sit down we can talk about the plan instead of filling in blanks. Answer in as much or as little detail as you like, and skip anything you would rather explain in person.",
+  questions: [
+    { id: "teamsize", type: "one", short: "Whose 40+ enquiries", section: "Your numbers",
+      q: "You said more than 40 new enquiries a week. Is that for the three of you together, or for each of you?",
+      opts: ["The three of us together", "Each of us", "More like the whole agency", "Honestly, a rough guess"] },
+    { id: "viewings", type: "number", short: "Viewings a week",
+      q: "In a normal week, how many viewings does your team do?",
+      hint: "A rough number is fine. This becomes the starting line we measure against.",
+      min: 1, max: 200, def: 5, unit: "viewings a week" },
+    { id: "samehours", type: "one", short: "What same day means",
+      q: "You said a new lead usually gets a reply the same day. In hours, what does that usually mean?",
+      opts: ["Under an hour", "One to three hours", "Three to eight hours", "The evening, or later"] },
+    { id: "deals", type: "text", short: "Sales and commission",
+      q: "Roughly how many sales does your team close in a year, and what is a typical commission on one?",
+      hint: "Ballpark is fine, and skip it if you would rather tell me in person. It is how we will show your manager what one extra sale is worth.",
+      placeholder: "About 20 a year, typical commission around..." },
+
+    { id: "maxwork", type: "text", short: "What Maxworks does", section: "Your tools",
+      q: "What do you actually use Maxworks for, day to day? And is it the MaxWork platform RE/MAX agencies use?",
+      placeholder: "We log contacts and listings there, but not the follow-ups, for example..." },
+    { id: "truth", type: "one", short: "The real picture",
+      q: "Between Maxworks and the agency spreadsheet, which one shows the real picture of your leads?",
+      opts: ["Maxworks", "The spreadsheet", "They hold different things", "Neither is fully up to date"] },
+    { id: "wa", type: "one", short: "Which WhatsApp",
+      q: "Which WhatsApp do you use with clients?",
+      hint: "This decides how an assistant could plug in.",
+      opts: ["My personal WhatsApp", "The WhatsApp Business app", "A company number the team shares", "A mix of these"] },
+    { id: "idealista", type: "many", short: "How Idealista leads arrive",
+      q: "When someone enquires on Idealista, how does it reach you?", hint: "Tap all that apply.",
+      opts: ["An email notification", "Inside the Idealista app or portal", "It lands in Maxworks", "The office passes it on", "The buyer calls or WhatsApps directly"] },
+    { id: "facts", type: "many", short: "Where listing facts live",
+      q: "When a buyer asks about a property, where do you look up the answer?", hint: "Tap all that apply.",
+      opts: ["Maxworks", "The listing on Idealista or our website", "A property sheet or shared folder", "I ask the owner", "I usually know it by heart"] },
+
+    { id: "asked", type: "text", short: "What buyers ask", section: "The messages themselves",
+      q: "Think of the last ten buyer messages you answered. What were they actually asking?",
+      hint: "This is the one I will read first. The more real examples, the better.",
+      placeholder: "Is it still available, is the price negotiable, what are the condo fees, can I see it on Saturday..." },
+    { id: "langs", type: "many", short: "Buyer languages",
+      q: "What languages do your buyers write in?", hint: "Tap all that apply.",
+      opts: ["Portuguese", "English", "French", "German", "Dutch", "Other"],
+      follow: { when: "Other", key: "langsOther", placeholder: "Which others? (optional)" } },
+    { id: "newlisting", type: "text", short: "When a new listing arrives",
+      q: "Walk me through what happens when a new property comes onto the market, from the moment you have it to the first viewing.",
+      hint: "You said this is when the questions pile up, so the detail really helps.",
+      placeholder: "Photos, listing goes live, we message buyers we think will like it, then..." },
+    { id: "chase", type: "text", short: "Follow-up today",
+      q: "What does a good follow-up look like for you today? And at what point does a lead stop getting one?",
+      placeholder: "A message two days after a viewing, then usually nothing unless they write back..." },
+
+    { id: "owners", type: "text", short: "Winning new listings", section: "Your time in the field",
+      q: "You said you want more time to win new properties. How do you find new owners today, and what would you do with five extra hours a week?",
+      placeholder: "Mostly referrals and door to door in a few areas. With more time I would..." },
+
+    { id: "rules", type: "one", short: "Agency rules", section: "The bigger picture",
+      q: "Is there anything the agency would not let you automate, or send out under its name?",
+      opts: ["Not that I know of", "Yes, there are rules", "I would need to ask"],
+      follow: { when: "Yes, there are rules", key: "rulesDetail", placeholder: "What kind of rules? (optional)" } },
+    { id: "boss", type: "one", short: "Manager at the meeting",
+      q: "Would your manager want to be part of our next meeting?",
+      opts: ["Yes, from the start", "Once there is a clear plan", "Once the three of us have results", "Not sure yet"] }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>
