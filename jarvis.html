@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Business, Your Jarvis</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Want help setting up AI in your business?">
+<meta property="og:description" content="A few quick questions about how your business runs. About four minutes, mostly taps.">
+<meta name="theme-color" content="#6B3FD4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* Public page, linked from the "Your Own Jarvis" guide. Anyone can fill it in,
+   so the name comes from the "name" answer rather than the page. The first
+   question doubles as the check on whether people actually tried the guide.
+   The option wording feeds the dashboard rules, so change both together. */
+window.INTAKE = {
+  slug: "jarvis-guide",
+  name: "there",
+  nameFrom: "name",
+  business: "Lead from the Jarvis guide",
+  headline: "job",
+  brand: "Aligned AI · Your own Jarvis",
+  greeting: "Hi there",
+  introTitle: "Want this working in your business? <em>Tell me how it runs.</em>",
+  introNote: "I'm setting AI up with a handful of local businesses right now. If you'd like my help with yours, this tells me where to start.",
+  questions: [
+    { id: "tried", type: "one", short: "The Jarvis guide",
+      q: "First, how far did you get with the Jarvis guide?",
+      opts: ["I set it up and gave it a job", "I set it up but haven't really used it", "I got stuck partway", "I haven't tried it yet"],
+      follow: { when: "I got stuck partway", key: "stuckWhere", placeholder: "Where did you get stuck? (optional)" } },
+    { id: "kind", type: "one", short: "Business",
+      q: "What kind of business do you run?",
+      opts: ["Holistic practice or therapy", "Coaching or courses", "Clinic or health practice", "Property or holiday rentals", "Local service business", "Something else"],
+      follow: { when: "Something else", key: "kindOther", placeholder: "What is it? (optional)" } },
+    { id: "team", type: "one", short: "Team size",
+      q: "How many people work in it, you included?",
+      opts: ["Just me", "2 to 5", "6 to 20", "More than 20"] },
+    { id: "contact", type: "many", short: "How customers get in touch",
+      q: "How do customers usually get in touch?", hint: "Tap all that apply.",
+      opts: ["Phone calls", "WhatsApp", "Email or the website form", "Instagram or Facebook", "An online booking page", "They walk in"] },
+    { id: "drains", type: "many", short: "What eats the week",
+      q: "Which of these eat most of your week?", hint: "Tap all that apply.",
+      opts: ["Replying to messages", "Booking and reminders", "Following up on quotes", "Content and social media", "Invoices and admin", "Finding new clients"] },
+    { id: "hours", type: "one", short: "Time on admin",
+      q: "In a normal week, how much time goes on messages and admin?",
+      hint: "Everyone's time added together, roughly.",
+      opts: ["Under 2 hours", "2 to 4 hours", "4 to 6 hours", "More than 6 hours"] },
+    { id: "ai", type: "one", short: "AI today",
+      q: "How are you using AI at the moment?",
+      opts: ["Not at all yet", "ChatGPT now and then", "Most days, for bits and pieces", "It's part of how we work"] },
+    { id: "help", type: "one", short: "Help wanted",
+      q: "What kind of help would suit you best?",
+      opts: ["Set it up for me", "Show me and my team how", "A short call to point me in the right direction", "Not sure yet"] },
+    { id: "job", type: "text", short: "First job",
+      q: "If you had a Jarvis tomorrow, what's the first job you'd hand it?",
+      hint: "The task you'd most love off your plate. A sentence or two is plenty. This is the answer I'll read first.",
+      placeholder: "Replying to every booking enquiry on WhatsApp, for example..." },
+    { id: "name", type: "text", short: "Name",
+      q: "What's your name, and what's the business called?",
+      placeholder: "Maria, Casa Verde Yoga" },
+    { id: "reach", type: "text", short: "Best way to reach you",
+      q: "Where's best to reach you?",
+      hint: "An email address or a WhatsApp number. I'll only use it to reply to this.",
+      placeholder: "you@example.com or +351..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>

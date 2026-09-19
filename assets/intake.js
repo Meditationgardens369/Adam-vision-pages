@@ -17,6 +17,11 @@
   var NAME = String(C.name || 'there').slice(0, 60);
   var BUSINESS = String(C.business || '').slice(0, 200);
   var Q = C.questions || [];
+  // Public pages (no known prospect) set nameFrom to the typed question that asks for a name.
+  function who() {
+    var typed = C.nameFrom ? ((state.text[C.nameFrom] || '').trim().split(/[,\n]/)[0].trim()) : '';
+    return (typed || NAME).slice(0, 60);
+  }
 
   var TEXT_IDS = Q.filter(function (q) { return q.type === 'text'; }).map(function (q) { return q.id; });
   // The typed answer that goes into the worst_hour column and the thank-you quote.
@@ -45,7 +50,7 @@
   var track = document.getElementById('track');
   var trackfill = document.getElementById('trackfill');
   var calcada = document.getElementById('calcada');
-  document.getElementById('brand').textContent = 'Before we meet · ' + NAME;
+  document.getElementById('brand').textContent = C.brand || ('Before we meet · ' + NAME);
 
   /* ---------------- State ---------------- */
   var STORAGE = 'questions-' + PROSPECT + '-v2';
@@ -154,7 +159,7 @@
     var minutes = Math.max(3, Math.round(TOTAL * 0.2 + TEXT_IDS.length * 0.7));
 
     var kids = [
-      h('p', { class: 'eyebrow', text: 'Hi ' + NAME }),
+      h('p', { class: 'eyebrow', text: C.greeting || ('Hi ' + NAME) }),
       h('h1', { html: C.introTitle || 'A few quick questions, so I turn up knowing your business <em>instead of guessing at it.</em>' }),
       C.introNote ? h('p', { class: 'muted', text: C.introNote }) : null,
       h('p', { class: 'muted', text: cap(word(TOTAL)) + ' of them. ' + typing + ' About ' + word(minutes) + ' minutes.' }),
@@ -333,7 +338,7 @@
   function doneScreen() {
     var kids = [
       h('p', { class: 'eyebrow', text: 'Sent' }),
-      h('h1', { html: 'Thank you, ' + escapeHtml(NAME) + '. <em>That is all I need.</em>' }),
+      h('h1', { html: 'Thank you, ' + escapeHtml(who()) + '. <em>That is all I need.</em>' }),
       h('p', { class: 'muted', text: 'I will have read it properly before we speak, so we can skip the boring questions and go straight to the interesting part.' })
     ];
     var headline = HEADLINE ? (state.text[HEADLINE] || '').trim() : '';
@@ -360,7 +365,7 @@
     });
     return {
       prospect_slug: PROSPECT,
-      prospect_name: NAME,
+      prospect_name: who(),
       business: BUSINESS,
       properties_target: null,
       answers: answers,
