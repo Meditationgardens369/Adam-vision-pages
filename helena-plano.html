@@ -587,13 +587,13 @@
 
   /* 4. patient grid */
   var TOTAL = 200, ACTIVE = 67, grid = document.getElementById('pgrid'), waveT = [];
-  // a fixed scatter, so the picture is the same every time she looks at it
-  var isActive = [], seed = 7;
+  // a fixed scatter, so the picture is the same every time she looks at it.
+  // walking a stride that shares no factor with 200 visits every cell exactly once.
+  var isActive = [], STRIDE = 63, at = 11;
   for (var s0 = 0; s0 < TOTAL; s0++) isActive.push(false);
-  for (var picked = 0; picked < ACTIVE; ) {
-    seed = (seed * 1103515245 + 12345) % 2147483648;
-    var idx = seed % TOTAL;
-    if (!isActive[idx]) { isActive[idx] = true; picked++; }
+  for (var picked = 0; picked < ACTIVE; picked++) {
+    isActive[at] = true;
+    at = (at + STRIDE) % TOTAL;
   }
   for (var i = 0; i < TOTAL; i++) { var c = document.createElement('i'); c.className = 'p'; grid.appendChild(c); }
   var cells = grid.children;
