@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dentes &amp; Companhia, daqui a um ano</title>
+<title>Dentes &amp; Companhia, o plano</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="O que a clínica já faz bem, onde fica o dinheiro por recuperar, e um teste de duas semanas.">
+<meta name="description" content="Uma pessoa, dez trabalhos, 4.000 fichas. O que ligamos primeiro e o que isso vale.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Dentes & Companhia, daqui a um ano">
-<meta property="og:description" content="A clínica já faz a parte difícil. Falta o seguimento.">
+<meta property="og:title" content="Dentes & Companhia, o plano">
+<meta property="og:description" content="O que já tem, o que vamos ligar primeiro, e o que isso vale.">
 <meta name="theme-color" content="#F27B4C">
 <meta name="color-scheme" content="light only">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>">
@@ -16,24 +16,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap">
 <style>
-  /* One bright look on purpose, in the clinic's own colours. No dark mode. */
+  /* Helena's page, in the clinic's own colours. Light only: she opens it between patients.
+     Every number is either something she said or a slider she moves herself. */
   :root {
-    --white: #FFFFFF;
-    --panel: #F7F8F4;
-    --ink: #22302B;
-    --muted: #5C6B66;
-    --faint: #98A39E;
-    --line: #E4E8E1;
-    --orange: #F27B4C;
-    --orange-text: #C0501E;
-    --orange-soft: #FDE9DF;
-    --green: #6CAC3E;
-    --green-text: #3D7A1B;
-    --green-soft: #E7F2DE;
-    --sun: #F2B544;
-    --sun-soft: #FDF1D6;
-    --grey: #C3CAC6;
-    --red: #D8452F;
+    --white: #FFFFFF; --panel: #F7F8F4; --ink: #22302B; --muted: #5C6B66; --faint: #98A39E;
+    --line: #E4E8E1; --orange: #F27B4C; --orange-text: #B94A1B; --orange-soft: #FDE9DF;
+    --green: #6CAC3E; --green-text: #3D7A1B; --green-soft: #E7F2DE;
+    --sun: #F2B544; --sun-soft: #FDF1D6; --grey: #C3CAC6; --red: #D8452F; --red-soft: #FBE3DF;
     color-scheme: light;
   }
   * { box-sizing: border-box; }
@@ -42,213 +31,210 @@
   html, body { height: 100%; }
   body {
     margin: 0; background: var(--white); color: var(--ink);
-    font: 16px/1.55 "Work Sans", "Helvetica Neue", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    display: flex; flex-direction: column; overflow: hidden;
+    font: 16px/1.55 "Work Sans", system-ui, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; overflow: hidden;
   }
-  button { font-family: inherit; }
+  button, input { font-family: inherit; }
   button:focus-visible, input:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
 
-  /* top bar */
-  .top {
-    flex: none; display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 10px;
-    border-bottom: 1px solid var(--line); background: var(--white);
-  }
-  .mark { display: flex; align-items: center; gap: 8px; font: 800 14px/1.05 Montserrat, sans-serif; letter-spacing: .02em; text-transform: uppercase; }
-  .mark i { width: 26px; height: 26px; border-radius: 9px 9px 12px 12px; background: var(--orange); position: relative; flex: none; }
-  .mark i::after { content: ""; position: absolute; top: -5px; left: 10px; width: 9px; height: 8px; border-radius: 8px 0 8px 0; background: var(--green); }
-  .mark b { color: var(--orange-text); }
-  .mark span span { color: var(--green-text); }
+  .top { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: calc(9px + env(safe-area-inset-top, 0px)) 16px 9px; border-bottom: 1px solid var(--line); }
+  .mark { display: flex; align-items: center; gap: 8px; font: 800 13px/1.05 Montserrat, sans-serif; text-transform: uppercase; }
+  .mark i { width: 24px; height: 24px; border-radius: 9px 9px 12px 12px; background: var(--orange); position: relative; flex: none; }
+  .mark i::after { content: ""; position: absolute; top: -5px; left: 9px; width: 9px; height: 8px; border-radius: 8px 0 8px 0; background: var(--green); }
+  .mark b { color: var(--orange-text); } .mark span span { color: var(--green-text); }
   .langs { display: inline-flex; padding: 3px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; }
   .langs button { font: 700 12.5px Montserrat, sans-serif; border: 0; background: transparent; color: var(--muted); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
   .langs button[aria-pressed="true"] { background: var(--orange); color: #fff; }
 
-  /* slides */
   main { flex: 1; position: relative; overflow: hidden; }
-  .slide {
-    position: absolute; inset: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
-    padding: 22px 18px 28px; opacity: 0; visibility: hidden; transform: translateX(24px);
-    transition: opacity .28s ease, transform .28s ease, visibility 0s linear .28s;
-  }
-  .slide.on { opacity: 1; visibility: visible; transform: none; transition: opacity .28s ease, transform .28s ease; }
-  .slide.left { transform: translateX(-24px); }
-  .inner { max-width: 560px; margin: 0 auto; }
+  .slide { position: absolute; inset: 0; overflow-y: auto; padding: 20px 18px 26px;
+    opacity: 0; visibility: hidden; transform: translateX(22px);
+    transition: opacity .26s ease, transform .26s ease, visibility 0s linear .26s; }
+  .slide.on { opacity: 1; visibility: visible; transform: none; transition: opacity .26s ease, transform .26s ease; }
+  .slide.left { transform: translateX(-22px); }
+  .inner { max-width: 620px; margin: 0 auto; }
 
-  .kicker { display: inline-flex; align-items: center; gap: 6px; font: 700 11px Montserrat, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-text); background: var(--orange-soft); padding: 5px 10px; border-radius: 999px; margin: 0 0 12px; }
+  .kicker { display: inline-block; font: 700 11px Montserrat, sans-serif; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--orange-text); background: var(--orange-soft); padding: 5px 10px; border-radius: 999px; margin: 0 0 10px; }
   .kicker.g { color: var(--green-text); background: var(--green-soft); }
   h1, h2 { font-family: Montserrat, sans-serif; font-weight: 800; letter-spacing: -.02em; text-wrap: balance; margin: 0 0 10px; }
-  h1 { font-size: clamp(30px, 8.4vw, 44px); line-height: 1.08; }
-  h2 { font-size: clamp(24px, 6.6vw, 32px); line-height: 1.12; }
+  h1 { font-size: clamp(29px, 8vw, 42px); line-height: 1.08; }
+  h2 { font-size: clamp(23px, 6.2vw, 31px); line-height: 1.14; }
   h1 em, h2 em { font-style: normal; color: var(--orange); }
   h1 .gr, h2 .gr { color: var(--green); }
-  h3 { font: 700 16px/1.3 Montserrat, sans-serif; margin: 0 0 4px; }
+  h3 { font: 700 15.5px/1.3 Montserrat, sans-serif; margin: 0 0 4px; }
   p { margin: 0 0 12px; }
-  .lede { font-size: 17.5px; color: var(--muted); }
-  .muted { color: var(--muted); }
-  .small { font-size: 13.5px; line-height: 1.45; }
+  .lede { font-size: 17px; color: var(--muted); }
+  .muted { color: var(--muted); } .small { font-size: 13.5px; line-height: 1.45; }
+  .note { font-size: 12.5px; color: var(--muted); background: var(--panel); border-radius: 12px; padding: 10px 12px; margin-top: 12px; }
 
-  /* cover */
-  .cover-art { display: flex; gap: 8px; margin: 6px 0 22px; }
-  .cover-art span { flex: 1; height: 10px; border-radius: 99px; background: var(--orange); }
-  .cover-art span:nth-child(2) { background: var(--sun); }
-  .cover-art span:nth-child(3) { background: var(--green); }
-  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 20px 0; }
-  .fact { border-radius: 16px; padding: 14px 10px 12px; text-align: center; }
-  .fact:nth-child(1) { background: var(--orange-soft); }
-  .fact:nth-child(2) { background: var(--sun-soft); }
+  .cover-art { display: flex; gap: 7px; margin: 4px 0 18px; }
+  .cover-art span { flex: 1; height: 9px; border-radius: 99px; background: var(--orange); }
+  .cover-art span:nth-child(2) { background: var(--sun); } .cover-art span:nth-child(3) { background: var(--green); }
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin: 18px 0; }
+  .fact { border-radius: 14px; padding: 12px 8px; text-align: center; background: var(--panel); }
+  .fact:nth-child(1) { background: var(--orange-soft); } .fact:nth-child(2) { background: var(--sun-soft); }
   .fact:nth-child(3) { background: var(--green-soft); }
-  .fact b { display: block; font: 800 26px/1 Montserrat, sans-serif; font-variant-numeric: tabular-nums; }
-  .fact span { display: block; font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.3; }
-  .go { display: inline-flex; align-items: center; gap: 8px; border: 0; cursor: pointer; background: var(--orange); color: #fff; font: 700 16px Montserrat, sans-serif; padding: 14px 22px; border-radius: 999px; box-shadow: 0 6px 18px rgba(242,123,76,.35); }
-  .hint { font-size: 13px; color: var(--faint); margin-top: 12px; }
+  .fact b { display: block; font: 800 22px/1 Montserrat, sans-serif; font-variant-numeric: tabular-nums; }
+  .fact span { display: block; font-size: 11.5px; color: var(--muted); margin-top: 5px; line-height: 1.25; }
+  .go { display: inline-flex; align-items: center; gap: 8px; border: 0; cursor: pointer; background: var(--orange); color: #fff;
+    font: 700 16px Montserrat, sans-serif; padding: 14px 22px; border-radius: 999px; box-shadow: 0 6px 18px rgba(242,123,76,.35); }
 
-  /* what works */
-  .works { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
-  .work { background: var(--green-soft); border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 6px; }
-  .work .tk { width: 28px; height: 28px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font-weight: 700; }
-  .work b { font: 700 14.5px/1.25 Montserrat, sans-serif; }
-  .work span { font-size: 13px; color: var(--muted); line-height: 1.35; }
-  .work.wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 12px; }
-  .promise { margin-top: 18px; text-align: center; font: 800 20px Montserrat, sans-serif; color: var(--green-text); }
+  /* jobs grid */
+  .jobs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; margin-top: 14px; }
+  .job { background: var(--panel); border-radius: 12px; padding: 11px 12px; font-size: 13.5px; font-weight: 500;
+    opacity: 0; transform: translateY(6px); transition: opacity .3s ease, transform .3s ease; }
+  .job.in { opacity: 1; transform: none; }
+  .job.love { background: var(--green-soft); color: var(--green-text); font-weight: 600; }
+  .onep { margin-top: 16px; padding: 14px 16px; border-radius: 14px; background: var(--orange-soft); font: 700 17px Montserrat, sans-serif; color: var(--orange-text); }
 
-  /* toggles */
-  .seg { display: flex; padding: 4px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; margin: 14px 0; }
-  .seg button { flex: 1; border: 0; background: transparent; cursor: pointer; font: 700 14px Montserrat, sans-serif; color: var(--muted); padding: 10px 8px; border-radius: 999px; transition: background .25s, color .25s; }
+  /* gauge */
+  .gauge { display: flex; align-items: center; gap: 16px; margin-top: 16px; }
+  .ring { --v: 40; width: 116px; height: 116px; flex: none; border-radius: 50%;
+    background: conic-gradient(var(--green) calc(var(--v) * 1%), var(--line) 0);
+    display: grid; place-items: center; transition: --v .9s ease; }
+  .ring::after { content: ""; position: absolute; }
+  .ring b { width: 88px; height: 88px; border-radius: 50%; background: var(--white); display: grid; place-items: center;
+    font: 800 25px Montserrat, sans-serif; font-variant-numeric: tabular-nums; }
+  @property --v { syntax: '<number>'; inherits: false; initial-value: 40; }
+  .mods { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+  .mods li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; padding: 10px 12px;
+    border-radius: 12px; background: var(--panel); font-size: 14px; }
+  .mods li i { width: 24px; height: 24px; border-radius: 50%; background: var(--grey); color: #fff; display: grid; place-items: center;
+    font: 800 12px Montserrat, sans-serif; font-style: normal; transition: background .3s ease; }
+  .mods li.on { background: var(--green-soft); } .mods li.on i { background: var(--green); }
+  .mods li b { display: block; }
+
+  /* patient grid */
+  .pgrid { display: grid; grid-template-columns: repeat(20, 1fr); gap: 3px; padding: 14px; background: var(--panel); border-radius: 16px; }
+  .p { aspect-ratio: 1; border-radius: 2px; background: var(--grey); transition: background .5s ease, transform .5s ease; }
+  .p.active { background: var(--green); } .p.woke { background: var(--orange); transform: scale(1.35); border-radius: 50%; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 10px 2px 0; font-size: 12.5px; color: var(--muted); }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; }
+  .tally { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-top: 12px; }
+  .tile { border-radius: 14px; padding: 11px 12px; background: var(--panel); }
+  .tile .k { font-size: 11.5px; color: var(--muted); line-height: 1.25; }
+  .tile .v { font: 800 23px/1.15 Montserrat, sans-serif; font-variant-numeric: tabular-nums; }
+  .tile.hot { background: var(--green-soft); } .tile.hot .v { color: var(--green-text); }
+
+  .seg { display: flex; padding: 4px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; margin: 12px 0; }
+  .seg button { flex: 1; border: 0; background: transparent; cursor: pointer; font: 700 13.5px Montserrat, sans-serif;
+    color: var(--muted); padding: 10px 6px; border-radius: 999px; transition: background .25s, color .25s; }
   .seg button[aria-pressed="true"].now { background: var(--orange); color: #fff; }
   .seg button[aria-pressed="true"].then { background: var(--green); color: #fff; }
 
-  /* patients funnel */
-  .dots { display: grid; grid-template-columns: repeat(10, 1fr); gap: 7px; padding: 16px; background: var(--panel); border-radius: 18px; }
-  .dot { aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--grey); transition: background .45s ease, transform .45s ease, opacity .45s ease; position: relative; }
-  .dot.yes { background: var(--green); }
-  .dot.think { background: var(--orange); }
-  .dot.lost { background: var(--grey); opacity: .45; transform: scale(.72); }
-  .dot.back { background: var(--green); box-shadow: 0 0 0 3px var(--sun); transform: scale(1.08); }
-  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 10px 2px 0; font-size: 12.5px; color: var(--muted); }
-  .legend i { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
-  .tally { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
-  .tile { border-radius: 16px; padding: 13px 14px; background: var(--panel); transition: background .35s; }
-  .tile .k { font-size: 12px; color: var(--muted); }
-  .tile .v { font: 800 28px/1.1 Montserrat, sans-serif; font-variant-numeric: tabular-nums; }
-  .tile.hot { background: var(--green-soft); }
-  .tile.hot .v { color: var(--green-text); }
-  .quoteline { margin-top: 14px; padding: 12px 14px; border-radius: 14px; background: var(--orange-soft); font-size: 15px; }
-  .quoteline b { color: var(--orange-text); }
-  .quoteline.good { background: var(--green-soft); }
-  .quoteline.good b { color: var(--green-text); }
+  /* quotes bars */
+  .qbars { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .qrow { display: grid; grid-template-columns: 1fr 52px; gap: 10px; align-items: center; }
+  .qlab { font-size: 13.5px; }
+  .qtrack { height: 34px; border-radius: 10px; background: var(--panel); overflow: hidden; }
+  .qtrack i { display: block; height: 100%; border-radius: 10px; background: var(--grey); width: 0; transition: width .7s ease, background .4s; }
+  .qrow.win .qtrack i { background: var(--green); } .qrow.warm .qtrack i { background: var(--orange); }
+  .qnum { font: 800 19px Montserrat, sans-serif; text-align: right; font-variant-numeric: tabular-nums; }
+  .qgain { margin-top: 12px; padding: 13px 15px; border-radius: 14px; background: var(--green-soft); color: var(--green-text); font: 700 17px Montserrat, sans-serif; }
 
-  /* front desk phone */
-  .phone { border-radius: 26px; border: 8px solid var(--ink); background: var(--white); overflow: hidden; box-shadow: 0 14px 34px rgba(34,48,43,.18); }
-  .ph-head { display: flex; justify-content: space-between; align-items: center; padding: 9px 14px; font: 700 13px Montserrat, sans-serif; color: #fff; background: var(--orange); transition: background .35s; }
-  .phone.calm .ph-head { background: var(--green); }
-  .badge { background: #fff; color: var(--red); border-radius: 999px; padding: 2px 9px; font-size: 12px; font-variant-numeric: tabular-nums; transition: color .35s; }
-  .phone.calm .badge { color: var(--green-text); }
-  .row { display: grid; grid-template-columns: 36px 1fr auto; gap: 10px; align-items: center; padding: 10px 12px; border-bottom: 1px solid var(--line); transition: background .35s; }
-  .row:last-child { border-bottom: 0; }
-  .ic { width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center; font: 800 12px Montserrat, sans-serif; color: #fff; }
-  .ic.tel { background: #5C6B66; } .ic.wa { background: #25A55F; } .ic.em { background: #3B7FC4; } .ic.web { background: var(--sun); color: var(--ink); } .ic.desk { background: var(--orange); }
-  .row .t { font-size: 13.5px; line-height: 1.3; }
-  .row .t small { display: block; color: var(--faint); font-size: 11.5px; }
-  .st { font: 700 11px Montserrat, sans-serif; padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
-  .st.wait { background: var(--orange-soft); color: var(--orange-text); }
-  .st.done { background: var(--green-soft); color: var(--green-text); }
-  .st.you { background: var(--sun-soft); color: #8A5A00; }
-  .meter { margin-top: 16px; }
-  .meter .lab { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
-  .meter .lab b { font-family: Montserrat, sans-serif; color: var(--ink); }
-  .bar { height: 14px; border-radius: 99px; background: var(--panel); border: 1px solid var(--line); overflow: hidden; }
-  .bar i { display: block; height: 100%; border-radius: 99px; background: var(--orange); width: 92%; transition: width .6s ease, background .6s ease; }
-  .bar.calm i { width: 34%; background: var(--green); }
-
-  /* chat demo */
-  .scen { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin: 12px 0; scrollbar-width: none; }
-  .scen button { flex: none; border: 1.5px solid var(--line); background: var(--white); border-radius: 14px; padding: 9px 12px; text-align: left; cursor: pointer; }
-  .scen button b { display: block; font: 700 13.5px Montserrat, sans-serif; }
-  .scen button small { color: var(--muted); font-size: 12px; }
+  /* chat */
+  .scen { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 4px; margin: 10px 0; scrollbar-width: none; }
+  .scen button { flex: none; border: 1.5px solid var(--line); background: var(--white); border-radius: 13px; padding: 8px 11px; text-align: left; cursor: pointer; }
+  .scen button b { display: block; font: 700 13px Montserrat, sans-serif; }
+  .scen button small { color: var(--muted); font-size: 11.5px; }
   .scen button[aria-pressed="true"] { border-color: var(--orange); background: var(--orange-soft); }
-  .wa { border-radius: 22px; overflow: hidden; border: 1px solid var(--line); }
-  .wa-head { background: #1F6E54; color: #fff; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
-  .wa-head .av { width: 32px; height: 32px; border-radius: 50%; background: var(--orange); display: grid; place-items: center; font: 800 12px Montserrat, sans-serif; }
-  .wa-head b { font: 700 14px Montserrat, sans-serif; display: block; }
-  .wa-head small { font-size: 11.5px; opacity: .85; }
-  .wa-body { background: #EFE9E0; padding: 14px 10px; min-height: 300px; display: flex; flex-direction: column; gap: 8px; }
-  .msg { max-width: 84%; padding: 8px 11px 6px; border-radius: 12px; font-size: 14.5px; line-height: 1.4; box-shadow: 0 1px 1px rgba(0,0,0,.08); animation: pop .25s ease both; }
-  .msg time { display: block; text-align: right; font-size: 10.5px; color: #7B8580; margin-top: 2px; }
+  .wa { border-radius: 20px; overflow: hidden; border: 1px solid var(--line); }
+  .wa-head { background: #1F6E54; color: #fff; padding: 9px 13px; display: flex; align-items: center; gap: 10px; }
+  .wa-head .av { width: 30px; height: 30px; border-radius: 50%; background: var(--orange); display: grid; place-items: center; font: 800 11px Montserrat, sans-serif; }
+  .wa-head b { font: 700 13.5px Montserrat, sans-serif; display: block; } .wa-head small { font-size: 11px; opacity: .85; }
+  .wa-body { background: #EFE9E0; padding: 13px 10px; min-height: 250px; display: flex; flex-direction: column; gap: 7px; }
+  .msg { max-width: 85%; padding: 8px 11px 5px; border-radius: 12px; font-size: 14px; line-height: 1.4; box-shadow: 0 1px 1px rgba(0,0,0,.08); animation: pop .25s ease both; }
+  .msg time { display: block; text-align: right; font-size: 10px; color: #7B8580; margin-top: 2px; }
   .msg.in { align-self: flex-start; background: #fff; border-top-left-radius: 3px; }
   .msg.out { align-self: flex-end; background: #DCF5C8; border-top-right-radius: 3px; }
-  .msg.sys { align-self: center; background: var(--sun-soft); color: #7A4E00; font: 600 12.5px "Work Sans", sans-serif; border-radius: 999px; padding: 6px 12px; text-align: center; max-width: 94%; }
-  .typing { align-self: flex-end; background: #DCF5C8; border-radius: 12px; padding: 10px 12px; display: flex; gap: 4px; }
+  .msg.sys { align-self: center; background: var(--sun-soft); color: #7A4E00; font: 600 12px "Work Sans", sans-serif; border-radius: 999px; padding: 6px 12px; text-align: center; max-width: 94%; }
+  .typing { align-self: flex-end; background: #DCF5C8; border-radius: 12px; padding: 9px 12px; display: flex; gap: 4px; }
   .typing i { width: 6px; height: 6px; border-radius: 50%; background: #6F8F66; animation: blink 1s infinite; }
   .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
   @keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
   @keyframes blink { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
-  .replay { margin-top: 10px; border: 0; background: none; color: var(--orange-text); font: 700 14px Montserrat, sans-serif; cursor: pointer; padding: 6px 0; }
+  .replay { margin-top: 8px; border: 0; background: none; color: var(--orange-text); font: 700 14px Montserrat, sans-serif; cursor: pointer; padding: 6px 0; }
 
-  /* calculator */
-  .sl { margin-bottom: 16px; }
-  .sl label { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  /* emergency */
+  .ecall { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); }
+  .ehead { padding: 10px 14px; font: 700 13.5px Montserrat, sans-serif; color: #fff; background: var(--orange); transition: background .35s; display: flex; justify-content: space-between; }
+  .ecall.calm .ehead { background: var(--green); }
+  .estep { display: grid; grid-template-columns: 30px 1fr; gap: 10px; padding: 11px 13px; border-bottom: 1px solid var(--line); font-size: 13.5px; align-items: center; }
+  .estep:last-child { border-bottom: 0; }
+  .estep i { width: 30px; height: 30px; border-radius: 50%; background: var(--orange-soft); color: var(--orange-text); display: grid; place-items: center; font: 800 12px Montserrat, sans-serif; font-style: normal; transition: background .3s, color .3s; }
+  .ecall.calm .estep i { background: var(--green-soft); color: var(--green-text); }
+  .estep b { display: block; }
+  .estep small { color: var(--muted); }
+
+  /* sliders + money */
+  .sl { margin-bottom: 14px; }
+  .sl label { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; font-size: 14px; font-weight: 500; margin-bottom: 2px; }
   .sl output { font: 800 17px Montserrat, sans-serif; color: var(--orange-text); white-space: nowrap; font-variant-numeric: tabular-nums; }
-  input[type="range"] { width: 100%; -webkit-appearance: none; appearance: none; background: transparent; height: 32px; margin: 0; }
+  input[type="range"] { width: 100%; -webkit-appearance: none; appearance: none; background: transparent; height: 30px; margin: 0; }
   input[type="range"]::-webkit-slider-runnable-track { height: 8px; border-radius: 99px; background: linear-gradient(90deg, var(--orange) var(--p, 20%), var(--line) var(--p, 20%)); }
   input[type="range"]::-moz-range-track { height: 8px; border-radius: 99px; background: var(--line); }
   input[type="range"]::-moz-range-progress { height: 8px; border-radius: 99px; background: var(--orange); }
   input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; margin-top: -10px; border-radius: 50%; background: #fff; border: 4px solid var(--orange); box-shadow: 0 2px 8px rgba(0,0,0,.18); }
   input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 4px solid var(--orange); }
-  .big { margin-top: 6px; padding: 16px; border-radius: 18px; background: var(--green-soft); }
-  .big .k { font-size: 13px; color: var(--green-text); font-weight: 600; }
-  .big .v { font: 800 clamp(36px, 11vw, 48px)/1.05 Montserrat, sans-serif; color: var(--green-text); font-variant-numeric: tabular-nums; }
-  .big .s { font-size: 13.5px; color: var(--muted); margin: 2px 0 0; }
-  .chart { display: flex; align-items: flex-end; gap: 4px; height: 130px; margin-top: 14px; padding: 0 2px; border-bottom: 2px solid var(--line); }
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
+  .vs > div { border-radius: 16px; padding: 14px; }
+  .vs .today { background: var(--panel); } .vs .after { background: var(--green-soft); }
+  .vs .k { font-size: 12px; color: var(--muted); } .vs .after .k { color: var(--green-text); }
+  .vs b { display: block; font: 800 clamp(24px, 7vw, 32px)/1.1 Montserrat, sans-serif; font-variant-numeric: tabular-nums; margin: 3px 0 2px; }
+  .vs .after b { color: var(--green-text); }
+  .vs .yr { font-size: 12.5px; color: var(--muted); }
+  .chart { display: flex; align-items: flex-end; gap: 4px; height: 110px; margin-top: 14px; border-bottom: 2px solid var(--line); }
   .chart div { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
-  .chart i { display: block; border-radius: 6px 6px 0 0; background: linear-gradient(180deg, var(--green), #8FC56A); transition: height .45s ease; min-height: 2px; }
-  .months { display: flex; gap: 4px; padding: 5px 2px 0; }
-  .months span { flex: 1; text-align: center; font: 600 10px Montserrat, sans-serif; color: var(--faint); }
-  .honest { margin-top: 12px; font-size: 12.5px; color: var(--muted); padding: 10px 12px; border-radius: 12px; background: var(--panel); }
+  .chart i { display: block; border-radius: 5px 5px 0 0; background: linear-gradient(180deg, var(--green), #8FC56A); transition: height .45s ease; min-height: 2px; }
+  .months { display: flex; gap: 4px; padding: 5px 0 0; }
+  .months span { flex: 1; text-align: center; font: 600 9.5px Montserrat, sans-serif; color: var(--faint); }
 
-  /* trial */
-  .steps { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
-  .stp { display: grid; grid-template-columns: 54px 1fr; gap: 12px; align-items: start; padding: 14px; border-radius: 16px; background: var(--panel); }
-  .stp .n { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; text-align: center; font: 800 11px/1.1 Montserrat, sans-serif; color: #fff; background: var(--orange); }
-  .stp:nth-child(2) .n { background: var(--sun); color: var(--ink); }
-  .stp:nth-child(3) .n { background: var(--green); }
-  .stp p { margin: 0; font-size: 14px; color: var(--muted); }
-  .cost { margin-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; padding: 14px 16px; border-radius: 16px; border: 2px dashed var(--green); }
-  .cost b { font: 800 22px Montserrat, sans-serif; color: var(--green-text); }
-  .asks { margin: 14px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .asks li { display: flex; gap: 10px; align-items: center; padding: 11px 13px; border-radius: 14px; border: 1px solid var(--line); font-size: 14.5px; }
-  .asks li i { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--orange-soft); color: var(--orange-text); display: grid; place-items: center; font: 800 13px Montserrat, sans-serif; font-style: normal; }
-  .privacy { margin-top: 14px; font-size: 12.5px; color: var(--muted); }
+  /* tourism */
+  .journey { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+  .jst { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: center; padding: 12px 13px; border-radius: 14px; background: var(--panel); }
+  .jst i { width: 34px; height: 34px; border-radius: 50%; background: var(--sun-soft); color: #8A5A00; display: grid; place-items: center; font: 800 13px Montserrat, sans-serif; font-style: normal; }
+  .jst b { display: block; font-size: 14.5px; } .jst small { color: var(--muted); font-size: 12.5px; }
+  .bigcase { margin-top: 14px; padding: 16px; border-radius: 16px; background: var(--sun-soft); text-align: center; }
+  .bigcase b { display: block; font: 800 32px Montserrat, sans-serif; color: #8A5A00; }
+  .bigcase span { font-size: 13.5px; color: var(--muted); }
+
+  /* plan */
+  .phases { display: flex; flex-direction: column; gap: 9px; margin-top: 12px; }
+  .ph { display: grid; grid-template-columns: 62px 1fr; gap: 12px; padding: 13px; border-radius: 15px; background: var(--panel); }
+  .ph .n { width: 62px; border-radius: 13px; display: grid; place-items: center; text-align: center; color: #fff; font: 800 10.5px/1.2 Montserrat, sans-serif; padding: 8px 4px; }
+  .ph:nth-child(1) .n { background: var(--orange); } .ph:nth-child(2) .n { background: var(--sun); color: var(--ink); }
+  .ph:nth-child(3) .n { background: var(--green); } .ph:nth-child(4) .n { background: var(--green-text); }
+  .ph p { margin: 0; font-size: 13.5px; color: var(--muted); }
+  .ph .meas { display: inline-block; margin-top: 6px; font-size: 11.5px; font-weight: 600; background: var(--white); border-radius: 999px; padding: 3px 9px; color: var(--orange-text); }
+  .cost { margin-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; padding: 13px 15px; border-radius: 15px; border: 2px dashed var(--green); }
+  .cost b { font: 800 20px Montserrat, sans-serif; color: var(--green-text); }
+  .asks { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .asks li { display: flex; gap: 10px; align-items: center; padding: 11px 13px; border-radius: 13px; border: 1px solid var(--line); font-size: 14px; }
+  .asks li i { flex: none; width: 25px; height: 25px; border-radius: 50%; background: var(--orange-soft); color: var(--orange-text); display: grid; place-items: center; font: 800 12px Montserrat, sans-serif; font-style: normal; }
+  .privacy { margin-top: 12px; font-size: 12.5px; color: var(--muted); }
   .privacy summary { cursor: pointer; font-weight: 600; color: var(--ink); }
   .privacy ul { padding-left: 18px; margin: 8px 0 0; }
-  .sign { margin-top: 18px; text-align: center; font: 800 22px Montserrat, sans-serif; }
-  .sign small { display: block; font: 400 14px "Work Sans", sans-serif; color: var(--muted); margin-top: 4px; }
+  .sign { margin-top: 16px; text-align: center; font: 800 21px Montserrat, sans-serif; }
+  .sign small { display: block; font: 400 13.5px "Work Sans", sans-serif; color: var(--muted); margin-top: 4px; }
 
-  /* bottom nav */
-  .nav {
-    flex: none; display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
-    border-top: 1px solid var(--line); background: var(--white);
-  }
-  .nav button.arrow { border: 0; cursor: pointer; border-radius: 999px; font: 700 14px Montserrat, sans-serif; padding: 11px 16px; min-width: 96px; }
-  #prev { background: var(--panel); color: var(--muted); }
-  #next { background: var(--orange); color: #fff; }
+  .nav { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 9px 14px calc(9px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); }
+  .nav button.arrow { border: 0; cursor: pointer; border-radius: 999px; font: 700 14px Montserrat, sans-serif; padding: 11px 15px; }
+  #prev { background: var(--panel); color: var(--muted); } #next { background: var(--orange); color: #fff; }
   .nav button.arrow:disabled { opacity: .35; cursor: default; }
-  .pips { display: flex; gap: 6px; align-items: center; }
-  .pips button { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 99px; background: var(--line); cursor: pointer; transition: width .25s, background .25s; }
-  .pips button[aria-current="step"] { width: 24px; background: var(--orange); }
+  .pips { display: flex; gap: 5px; }
+  .pips button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 99px; background: var(--line); cursor: pointer; transition: width .25s, background .25s; }
+  .pips button[aria-current="step"] { width: 22px; background: var(--orange); }
 
-  @media (min-width: 700px) {
-    .works { grid-template-columns: repeat(3, 1fr); }
-    .work.wide { grid-column: auto; flex-direction: column; align-items: flex-start; }
+  @media (min-width: 680px) { .jobs { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 380px) {
+    .facts { grid-template-columns: 1fr 1fr; } .fact b { font-size: 20px; }
+    .nav button.arrow { padding: 10px 12px; font-size: 13px; }
+    .tally { grid-template-columns: 1fr; }
   }
-  @media (max-width: 360px) {
-    .nav button.arrow { min-width: 0; padding: 10px 12px; }
-    .fact b { font-size: 22px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { transition: none !important; animation: none !important; }
-  }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
 </style>
 </head>
 <body>
@@ -256,178 +242,233 @@
 <header class="top">
   <div class="mark"><i aria-hidden="true"></i><span><b>Dentes</b> &amp;<br><span>Companhia</span></span></div>
   <div class="langs" role="group" aria-label="Idioma / Language">
-    <button type="button" id="lang-pt" data-lang="pt" aria-pressed="true">PT</button>
-    <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+    <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
   </div>
 </header>
 
 <main id="deck">
 
-  <!-- 1. cover -->
-  <section class="slide on" data-i="0" aria-label="1">
+  <!-- 1 cover -->
+  <section class="slide on" aria-label="1">
     <div class="inner">
       <div class="cover-art" aria-hidden="true"><span></span><span></span><span></span></div>
-      <p class="kicker"><span class="pt">Para a Helena</span><span class="en">For Helena</span></p>
-      <h1>
-        <span class="pt">A clínica já faz a parte difícil. Falta o <em>seguimento</em>.</span>
-        <span class="en">The clinic already does the hard part. What's missing is the <em>follow-up</em>.</span>
-      </h1>
-      <p class="lede">
-        <span class="pt">Feito a partir das suas 12 respostas. Cinco minutos, sempre a tocar em "Seguinte".</span>
-        <span class="en">Built from your 12 answers. Five minutes, just keep tapping "Next".</span>
-      </p>
+      <p class="kicker"><span class="pt">Para a Helena &middot; 23 de setembro</span><span class="en">For Helena &middot; 23 September</span></p>
+      <h1><span class="pt">Sete anos, 4.000 fichas, e <em>uma pessoa</em> a segurar tudo.</span><span class="en">Seven years, 4,000 records, and <em>one person</em> holding it together.</span></h1>
+      <p class="lede"><span class="pt">Não falta trabalho nem talento. Falta tempo. Aqui está o que podemos ligar primeiro, e o que isso vale.</span><span class="en">There's no shortage of work or skill. There's a shortage of time. Here's what we can switch on first, and what it's worth.</span></p>
       <div class="facts">
+        <div class="fact"><b>4.000</b><span class="pt">fichas no Newsoft</span><span class="en">records in Newsoft</span></div>
+        <div class="fact"><b>40%</b><span class="pt">do Newsoft em uso</span><span class="en">of Newsoft in use</span></div>
         <div class="fact"><b>2</b><span class="pt">cadeiras</span><span class="en">chairs</span></div>
-        <div class="fact"><b>5&ndash;15</b><span class="pt">pedidos novos por semana</span><span class="en">new enquiries a week</span></div>
-        <div class="fact"><b>6h+</b><span class="pt">por semana em telefone e mensagens</span><span class="en">a week on phones and messages</span></div>
+        <div class="fact"><b>1</b><span class="pt">Helena</span><span class="en">Helena</span></div>
       </div>
       <button class="go" type="button" data-goto="1"><span class="pt">Começar</span><span class="en">Start</span> &rarr;</button>
     </div>
   </section>
 
-  <!-- 2. what works -->
-  <section class="slide" data-i="1" aria-label="2">
+  <!-- 2 one person, ten jobs -->
+  <section class="slide" aria-label="2">
     <div class="inner">
-      <p class="kicker g"><span class="pt">O que já funciona</span><span class="en">What already works</span></p>
-      <h2><span class="pt">Muitas clínicas não têm <span class="gr">metade disto</span>.</span><span class="en">Plenty of clinics don't have <span class="gr">half of this</span>.</span></h2>
-      <div class="works">
-        <div class="work"><span class="tk">&#10003;</span><b>Newsoft</b><span><span class="pt">Agenda, fichas, orçamentos e faturação.</span><span class="en">Diary, records, quotes and billing.</span></span></div>
-        <div class="work"><span class="tk">&#10003;</span><b><span class="pt">Revisões automáticas</span><span class="en">Automatic check-ups</span></b><span><span class="pt">Ninguém tem de ligar a lembrar.</span><span class="en">Nobody has to phone to remind.</span></span></div>
-        <div class="work"><span class="tk">&#10003;</span><b><span class="pt">Rececionista dedicada</span><span class="en">A dedicated receptionist</span></b><span><span class="pt">Alguém cujo trabalho é atender.</span><span class="en">Someone whose job is answering.</span></span></div>
-        <div class="work"><span class="tk">&#10003;</span><b><span class="pt">Resposta na mesma noite</span><span class="en">Same-evening replies</span></b><span><span class="pt">Uma mensagem às 21h tem resposta.</span><span class="en">A 9pm message gets an answer.</span></span></div>
-        <div class="work wide"><span class="tk">&#10003;</span><div><b><span class="pt">Urgências 24 horas</span><span class="en">24-hour urgent care</span></b><br><span><span class="pt">A clínica está lá quando as outras já fecharam.</span><span class="en">The clinic is there when others have closed.</span></span></div></div>
+      <p class="kicker"><span class="pt">O ponto de partida</span><span class="en">Where we start</span></p>
+      <h2><span class="pt">Uma pessoa. <em>Dez trabalhos.</em></span><span class="en">One person. <em>Ten jobs.</em></span></h2>
+      <div class="jobs" id="jobs">
+        <div class="job"><span class="pt">Atender o telefone</span><span class="en">Answering the phone</span></div>
+        <div class="job"><span class="pt">Marcar consultas</span><span class="en">Booking appointments</span></div>
+        <div class="job"><span class="pt">Lembrar os pacientes</span><span class="en">Reminding patients</span></div>
+        <div class="job"><span class="pt">Comprar material para implantes</span><span class="en">Buying implant supplies</span></div>
+        <div class="job"><span class="pt">Organizar os dias de cirurgia</span><span class="en">Organising surgery days</span></div>
+        <div class="job"><span class="pt">Fazer orçamentos</span><span class="en">Writing quotes</span></div>
+        <div class="job"><span class="pt">Triagem das urgências às 23h</span><span class="en">Triaging emergencies at 11pm</span></div>
+        <div class="job"><span class="pt">Vir fazer o raio-X de madrugada</span><span class="en">Coming in at night for the X-ray</span></div>
+        <div class="job"><span class="pt">Limpar a clínica</span><span class="en">Cleaning the clinic</span></div>
+        <div class="job love"><span class="pt">Estar na sala com a Dra. Sofia</span><span class="en">Being in the room with Dra Sofia</span></div>
       </div>
-      <p class="promise"><span class="pt">Não vou mexer em nada disto.</span><span class="en">I'm not touching any of this.</span></p>
+      <p class="onep"><span class="pt">Só um destes é o que mais gosta de fazer.</span><span class="en">Only one of these is the part you love.</span></p>
+      <p class="note"><span class="pt">O objetivo de tudo o que se segue: tirar-lhe trabalho de cima sem tirar nada do que é seu. Mais dinheiro, menos caos.</span><span class="en">The point of everything that follows: take work off your plate without taking away anything that's yours. More money, less chaos.</span></p>
     </div>
   </section>
 
-  <!-- 3. patients -->
-  <section class="slide" data-i="2" aria-label="3">
+  <!-- 3 newsoft -->
+  <section class="slide" aria-label="3">
     <div class="inner">
-      <p class="kicker"><span class="pt">Onde está o dinheiro</span><span class="en">Where the money is</span></p>
-      <h2><span class="pt">30 orçamentos. O que acontece a quem diz <em>"vou pensar"</em>?</span><span class="en">30 quotes. What happens to people who say <em>"I'll think about it"</em>?</span></h2>
-      <div class="seg" role="group">
-        <button type="button" class="now" id="f-now" aria-pressed="true"><span class="pt">Hoje</span><span class="en">Today</span></button>
-        <button type="button" class="then" id="f-then" aria-pressed="false"><span class="pt">Com seguimento</span><span class="en">With follow-up</span></button>
+      <p class="kicker g"><span class="pt">Primeiro passo</span><span class="en">First step</span></p>
+      <h2><span class="pt">Já paga o Newsoft todo. Usa <em>40%</em>.</span><span class="en">You already pay for all of Newsoft. You use <em>40%</em>.</span></h2>
+      <div class="gauge">
+        <div class="ring" id="ring"><b id="ringv">40%</b></div>
+        <div>
+          <p class="small muted" style="margin:0"><span class="pt">O resto já está pago. Só precisa de alguém que se sente consigo e ligue, com o apoio do Newsoft ao lado.</span><span class="en">The rest is already paid for. It just needs someone to sit with you and switch it on, with Newsoft support alongside.</span></p>
+          <button class="replay" id="switch"><span class="pt">Ligar o resto &rarr;</span><span class="en">Switch on the rest &rarr;</span></button>
+        </div>
       </div>
-      <div class="dots" id="dots" aria-hidden="true"></div>
+      <ul class="mods" id="mods">
+        <li><i>&#10003;</i><div><b><span class="pt">Cópia de segurança</span><span class="en">Backup</span></b><span class="small muted"><span class="pt">Sete anos de fichas. Isto é o primeiro de tudo.</span><span class="en">Seven years of records. This one comes before everything else.</span></span></div></li>
+        <li><i>&#10003;</i><div><b><span class="pt">Revisões aos 6 meses, automáticas</span><span class="en">Automatic six-month recalls</span></b><span class="small muted"><span class="pt">Deixa de ser a Helena a lembrar-se.</span><span class="en">It stops depending on you remembering.</span></span></div></li>
+        <li><i>&#10003;</i><div><b><span class="pt">Confirmação da consulta por SMS</span><span class="en">Appointment confirmation by SMS</span></b><span class="small muted"><span class="pt">Menos faltas, menos cadeira parada.</span><span class="en">Fewer no-shows, less empty chair.</span></span></div></li>
+        <li><i>&#10003;</i><div><b><span class="pt">Agendas dos médicos</span><span class="en">Dentists' schedules</span></b><span class="small muted"><span class="pt">Cada médico com a sua agenda, sem passar por si.</span><span class="en">Each dentist with their own diary, without going through you.</span></span></div></li>
+        <li><i>&#10003;</i><div><b><span class="pt">Lista de orçamentos por aceitar</span><span class="en">The unaccepted quotes list</span></b><span class="small muted"><span class="pt">Uma exportação. É daqui que vem o passo seguinte.</span><span class="en">One export. This is where the next step comes from.</span></span></div></li>
+      </ul>
+      <p class="note"><span class="pt">Nada de software novo para aprender. É o que já tem, a funcionar.</span><span class="en">No new software to learn. It's what you already have, working.</span></p>
+    </div>
+  </section>
+
+  <!-- 4 the 4000 -->
+  <section class="slide" aria-label="4">
+    <div class="inner">
+      <p class="kicker"><span class="pt">O maior tesouro que tem</span><span class="en">The biggest asset you have</span></p>
+      <h2><span class="pt">4.000 pessoas que <span class="gr">já confiam em si</span>.</span><span class="en">4,000 people who <span class="gr">already trust you</span>.</span></h2>
+      <p class="muted small"><span class="pt">Cada quadrado são 20 pacientes. Os cinzentos não aparecem há mais de um ano.</span><span class="en">Each square is 20 patients. The grey ones haven't been in for over a year.</span></p>
+      <div class="pgrid" id="pgrid" aria-hidden="true"></div>
       <div class="legend">
-        <span><i style="background:var(--green)"></i><span class="pt">Aceitou</span><span class="en">Said yes</span></span>
-        <span><i style="background:var(--orange)"></i><span class="pt">"Vou pensar"</span><span class="en">"I'll think about it"</span></span>
-        <span><i style="background:var(--grey)"></i><span class="pt">Nunca mais voltou</span><span class="en">Never came back</span></span>
-        <span><i style="background:var(--green);box-shadow:0 0 0 2px var(--sun)"></i><span class="pt">Voltou</span><span class="en">Came back</span></span>
+        <span><i style="background:var(--green)"></i><span class="pt">Ativos</span><span class="en">Active</span></span>
+        <span><i style="background:var(--grey)"></i><span class="pt">Adormecidos</span><span class="en">Dormant</span></span>
+        <span><i style="background:var(--orange);border-radius:50%"></i><span class="pt">Convidados a voltar</span><span class="en">Invited back</span></span>
       </div>
       <div class="tally">
-        <div class="tile" id="t-back"><div class="k"><span class="pt">Voltaram</span><span class="en">Came back</span></div><div class="v" id="n-back">1</div></div>
-        <div class="tile" id="t-lost"><div class="k"><span class="pt">Perdidos</span><span class="en">Lost</span></div><div class="v" id="n-lost">17</div></div>
+        <div class="tile"><div class="k"><span class="pt">Adormecidos</span><span class="en">Dormant</span></div><div class="v" id="n-dorm">2.600</div></div>
+        <div class="tile"><div class="k"><span class="pt">Convidados por mês</span><span class="en">Invited per month</span></div><div class="v" id="n-wave">300</div></div>
+        <div class="tile hot"><div class="k"><span class="pt">Voltam por mês</span><span class="en">Come back a month</span></div><div class="v" id="n-ret">12</div></div>
       </div>
-      <p class="quoteline" id="fq">
-        <span class="pt">Hoje: <b>"Alguém liga, se se lembrar."</b> As suas palavras.</span>
-        <span class="en">Today: <b>"Someone calls if they remember."</b> Your words.</span>
-      </p>
-      <p class="small muted"><span class="pt">Exemplo ilustrativo. Cada ponto é um orçamento que já está guardado no Newsoft, com nome, telefone e valor.</span><span class="en">An illustration. Each dot is a quote already saved in Newsoft, with a name, a phone number and a value.</span></p>
+      <button class="replay" id="wake"><span class="pt">&#8635; Ver a primeira vaga</span><span class="en">&#8635; Watch the first wave</span></button>
+      <p class="note"><span class="pt">Aos poucos, nunca todos de uma vez. Só se convida quem a agenda consegue receber, e só quem aceitou ser contactado.</span><span class="en">Gradually, never everyone at once. We only invite as many as the diary can take, and only patients who agreed to be contacted.</span></p>
     </div>
   </section>
 
-  <!-- 4. front desk -->
-  <section class="slide" data-i="3" aria-label="4">
+  <!-- 5 quotes -->
+  <section class="slide" aria-label="5">
     <div class="inner">
-      <p class="kicker"><span class="pt">Cinco portas, uma rececionista</span><span class="en">Five doors, one receptionist</span></p>
-      <h2><span class="pt">Escolheu uma <span class="gr">receção mais calma</span>. É assim.</span><span class="en">You chose a <span class="gr">calmer front desk</span>. This is it.</span></h2>
+      <p class="kicker"><span class="pt">Os orçamentos parados</span><span class="en">The quotes sitting still</span></p>
+      <h2><span class="pt">O casal da Bélgica ainda não respondeu.</span><span class="en">The couple from Belgium still hasn't replied.</span></h2>
+      <p class="muted small"><span class="pt">Em cada 30 orçamentos de implantes, o que acontece hoje e o que acontece com um lembrete cuidado.</span><span class="en">Out of every 30 implant quotes, what happens today and what happens with a careful reminder.</span></p>
       <div class="seg" role="group">
-        <button type="button" class="now" id="d-now" aria-pressed="true"><span class="pt">Hoje, 21:07</span><span class="en">Today, 9:07pm</span></button>
-        <button type="button" class="then" id="d-then" aria-pressed="false"><span class="pt">Daqui a um ano</span><span class="en">A year from now</span></button>
+        <button type="button" class="now" id="q-now" aria-pressed="true"><span class="pt">Hoje</span><span class="en">Today</span></button>
+        <button type="button" class="then" id="q-then" aria-pressed="false"><span class="pt">Com lembrete</span><span class="en">With a reminder</span></button>
       </div>
-      <div class="phone" id="phone">
-        <div class="ph-head"><span><span class="pt">Por responder</span><span class="en">Waiting on you</span></span><span class="badge" id="badge">14</span></div>
-        <div class="row"><span class="ic tel">TEL</span><span class="t"><span class="pt">3 chamadas perdidas</span><span class="en">3 missed calls</span><small><span class="pt">durante tratamentos</span><span class="en">during treatments</span></small></span><span class="st wait" data-now="Por ligar|To call back" data-then="Mensagem enviada|Texted back">Por ligar</span></div>
-        <div class="row"><span class="ic wa">WA</span><span class="t"><span class="pt">"Quanto custa um implante?"</span><span class="en">"How much is an implant?"</span><small>21:07 &middot; <span class="pt">em inglês</span><span class="en">in English</span></small></span><span class="st wait" data-now="Do sofá|From the sofa" data-then="Em 1 min|In 1 min">Do sofá</span></div>
-        <div class="row"><span class="ic em">@</span><span class="t"><span class="pt">Pedido de marcação</span><span class="en">Booking request</span><small><span class="pt">Gmail, desde ontem</span><span class="en">Gmail, since yesterday</span></small></span><span class="st wait" data-now="À espera|Waiting" data-then="Respondido|Answered">À espera</span></div>
-        <div class="row"><span class="ic web">WEB</span><span class="t"><span class="pt">Formulário do site</span><span class="en">Website form</span><small><span class="pt">"Tenho dúvidas sobre alinhadores"</span><span class="en">"Questions about aligners"</span></small></span><span class="st wait" data-now="Amanhã|Tomorrow" data-then="Para si|For you">Amanhã</span></div>
-        <div class="row"><span class="ic desk">!</span><span class="t"><span class="pt">Orçamento de junho</span><span class="en">Quote from June</span><small><span class="pt">implante, &euro;2.400</span><span class="en">implant, &euro;2,400</span></small></span><span class="st wait" data-now="Esquecido|Forgotten" data-then="Voltou a falar|Talking again">Esquecido</span></div>
+      <div class="qbars">
+        <div class="qrow"><div><div class="qlab"><span class="pt">Orçamentos enviados</span><span class="en">Quotes sent</span></div><div class="qtrack"><i data-now="100" data-then="100"></i></div></div><div class="qnum">30</div></div>
+        <div class="qrow warm"><div><div class="qlab"><span class="pt">Ficam sem resposta</span><span class="en">Go quiet</span></div><div class="qtrack"><i data-now="60" data-then="60"></i></div></div><div class="qnum">18</div></div>
+        <div class="qrow win"><div><div class="qlab"><span class="pt">Voltam a falar consigo</span><span class="en">Come back to you</span></div><div class="qtrack"><i data-now="7" data-then="27"></i></div></div><div class="qnum" id="q-back">2</div></div>
       </div>
-      <div class="meter">
-        <div class="lab"><span><span class="pt">Carga na receção</span><span class="en">Load on the front desk</span></span><b id="load"><span class="pt">Alta</span><span class="en">High</span></b></div>
-        <div class="bar" id="loadbar"><i></i></div>
-      </div>
-      <p class="small muted" style="margin-top:12px"><span class="pt">O Newsoft continua a ser onde tudo fica registado. A receção só vê o que precisa de uma pessoa.</span><span class="en">Newsoft is still where everything gets recorded. The front desk only sees what needs a person.</span></p>
+      <p class="qgain" id="q-gain"><span class="pt">Hoje: cerca de 2 em cada 30.</span><span class="en">Today: about 2 in every 30.</span></p>
+      <p class="note"><span class="pt">Com as suas palavras, nunca a insistir. A Helena escolhe quem recebe e aprova o texto. Quem está a fugir, não recebe nada.</span><span class="en">In your words, never pushy. You choose who gets one and you approve the wording. Anyone who's avoiding it gets nothing.</span></p>
     </div>
   </section>
 
-  <!-- 5. live demo -->
-  <section class="slide" data-i="4" aria-label="5">
+  <!-- 6 chat -->
+  <section class="slide" aria-label="6">
     <div class="inner">
-      <p class="kicker g"><span class="pt">Veja a funcionar</span><span class="en">See it work</span></p>
+      <p class="kicker g"><span class="pt">Como soa</span><span class="en">How it sounds</span></p>
       <h2><span class="pt">Três momentos. Escolha um.</span><span class="en">Three moments. Pick one.</span></h2>
       <div class="scen" role="group">
-        <button type="button" data-scen="implant" aria-pressed="true"><b><span class="pt">Implante, 21:12</span><span class="en">Implant, 9:12pm</span></b><small><span class="pt">turista, em inglês</span><span class="en">tourist, in English</span></small></button>
-        <button type="button" data-scen="urgent" aria-pressed="false"><b><span class="pt">Urgência, 23:40</span><span class="en">Urgent, 11:40pm</span></b><small><span class="pt">dor forte</span><span class="en">bad pain</span></small></button>
-        <button type="button" data-scen="quote" aria-pressed="false"><b><span class="pt">Orçamento, dia 10</span><span class="en">Quote, day 10</span></b><small><span class="pt">o "vou pensar"</span><span class="en">the "I'll think"</span></small></button>
+        <button type="button" data-scen="quote" aria-pressed="true"><b><span class="pt">O orçamento</span><span class="en">The quote</span></b><small><span class="pt">14 dias depois</span><span class="en">14 days later</span></small></button>
+        <button type="button" data-scen="wake"><b><span class="pt">O adormecido</span><span class="en">The dormant one</span></b><small><span class="pt">não vem há 2 anos</span><span class="en">2 years away</span></small></button>
+        <button type="button" data-scen="night"><b><span class="pt">A urgência</span><span class="en">The emergency</span></b><small>23:40</small></button>
       </div>
       <div class="wa">
-        <div class="wa-head"><span class="av">D&amp;C</span><span><b>Dentes &amp; Companhia</b><small><span class="pt">responde a qualquer hora</span><span class="en">replies any time</span></small></span></div>
+        <div class="wa-head"><span class="av">D&amp;C</span><span><b>Dentes &amp; Companhia</b><small><span class="pt">no idioma do paciente</span><span class="en">in the patient's language</span></small></span></div>
         <div class="wa-body" id="chat" aria-live="polite"></div>
       </div>
       <button type="button" class="replay" id="replay">&#8635; <span class="pt">Ver outra vez</span><span class="en">Play again</span></button>
-      <p class="small muted"><span class="pt">Cada paciente recebe a mensagem no seu idioma. A Helena aprova os textos antes de começar. Dúvidas clínicas vão sempre para a equipa.</span><span class="en">Each patient gets messages in their own language. You approve the wording before anything starts. Clinical questions always go to the team.</span></p>
     </div>
   </section>
 
-  <!-- 6. calculator -->
-  <section class="slide" data-i="5" aria-label="6">
+  <!-- 7 emergency -->
+  <section class="slide" aria-label="7">
+    <div class="inner">
+      <p class="kicker"><span class="pt">As urgências</span><span class="en">Emergencies</span></p>
+      <h2><span class="pt">A triagem continua a ser sua. <span class="gr">A conversa das 23h não.</span></span><span class="en">The triage stays yours. <span class="gr">The 11pm conversation doesn't.</span></span></h2>
+      <div class="seg" role="group">
+        <button type="button" class="now" id="e-now" aria-pressed="true"><span class="pt">Hoje</span><span class="en">Today</span></button>
+        <button type="button" class="then" id="e-then" aria-pressed="false"><span class="pt">Com o sistema</span><span class="en">With the system</span></button>
+      </div>
+      <div class="ecall" id="ecall">
+        <div class="ehead"><span><span class="pt">Chamada das 23:40</span><span class="en">The 11:40pm call</span></span><span id="e-time">20 min</span></div>
+        <div class="estep"><i>1</i><div><b><span class="pt">As perguntas todas</span><span class="en">All the questions</span></b><small id="e1"></small></div></div>
+        <div class="estep"><i>2</i><div><b><span class="pt">Explicar o processo e o preço</span><span class="en">Explaining the process and the price</span></b><small id="e2"></small></div></div>
+        <div class="estep"><i>3</i><div><b><span class="pt">Decidir se é mesmo urgência</span><span class="en">Deciding if it really is urgent</span></b><small id="e3"></small></div></div>
+        <div class="estep"><i>4</i><div><b><span class="pt">Vir fazer o raio-X</span><span class="en">Coming in for the X-ray</span></b><small id="e4"></small></div></div>
+      </div>
+      <p class="note"><span class="pt">O sistema nunca diz o que o paciente tem. Faz as suas perguntas, diz o preço, e manda-lhe o resumo. Quem decide é sempre a Helena, e o diagnóstico é sempre da Dra. Sofia.</span><span class="en">The system never tells a patient what's wrong with them. It asks your questions, states the price, and sends you the summary. You always decide, and the diagnosis is always Dra Sofia's.</span></p>
+    </div>
+  </section>
+
+  <!-- 8 money -->
+  <section class="slide" aria-label="8">
     <div class="inner">
       <p class="kicker"><span class="pt">Os seus números</span><span class="en">Your numbers</span></p>
-      <h2><span class="pt">Quanto vale o <span class="gr">seguimento</span>?</span><span class="en">What is the <span class="gr">follow-up</span> worth?</span></h2>
+      <h2><span class="pt">Quanto vale acordar a sua própria lista?</span><span class="en">What is waking your own list worth?</span></h2>
       <div class="sl">
-        <label for="quiet"><span><span class="pt">Orçamentos que ficam parados, por mês</span><span class="en">Quotes that go quiet each month</span></span><output id="quiet-v">4</output></label>
-        <input type="range" id="quiet" min="1" max="20" step="1" value="4">
+        <label for="s-wave"><span><span class="pt">Pacientes convidados por mês</span><span class="en">Patients invited a month</span></span><output id="v-wave">300</output></label>
+        <input type="range" id="s-wave" min="50" max="600" step="25" value="300">
       </div>
       <div class="sl">
-        <label for="value"><span><span class="pt">Valor médio de cada um</span><span class="en">Average value of each</span></span><output id="value-v"></output></label>
-        <input type="range" id="value" min="300" max="5000" step="100" value="1500">
+        <label for="s-rate"><span><span class="pt">Em cada 100, quantos voltam</span><span class="en">Out of 100, how many come back</span></span><output id="v-rate">4</output></label>
+        <input type="range" id="s-rate" min="1" max="10" step="1" value="4">
       </div>
       <div class="sl">
-        <label for="back"><span><span class="pt">Em cada 10, quantos voltam</span><span class="en">Out of 10, how many come back</span></span><output id="back-v">2</output></label>
-        <input type="range" id="back" min="1" max="5" step="1" value="2">
+        <label for="s-val"><span><span class="pt">Valor médio do que fazem quando voltam</span><span class="en">Average value of what they have done</span></span><output id="v-val">500 &euro;</output></label>
+        <input type="range" id="s-val" min="70" max="2000" step="10" value="500">
       </div>
-      <div class="big" aria-live="polite">
-        <div class="k"><span class="pt">Tratamentos recuperados num ano</span><span class="en">Treatment recovered in a year</span></div>
-        <div class="v" id="total"></div>
-        <p class="s" id="sub"></p>
+      <div class="vs">
+        <div class="today"><div class="k"><span class="pt">Hoje, desta lista</span><span class="en">Today, from this list</span></div><b>0 &euro;</b><div class="yr"><span class="pt">ninguém está a contactá-los</span><span class="en">nobody is contacting them</span></div></div>
+        <div class="after"><div class="k"><span class="pt">Com o sistema</span><span class="en">With the system</span></div><b id="m-month">6.000 &euro;</b><div class="yr"><span id="m-year">72.000 &euro;</span> <span class="pt">por ano</span><span class="en">a year</span></div></div>
       </div>
       <div class="chart" id="chart" aria-hidden="true"></div>
       <div class="months" id="months" aria-hidden="true"></div>
-      <p class="honest"><span class="pt">Uma ilustração, não uma promessa. Um ou dois em dez é uma estimativa prudente. Em duas semanas vemos os números reais.</span><span class="en">An illustration, not a promise. One or two in ten is a cautious guess. In two weeks we see the real numbers.</span></p>
+      <p class="note"><span class="pt">Uma ilustração com os seus números, não uma promessa. Não conta implantes nem All-on-4, que são muito mais por caso. Nas duas primeiras semanas vemos os números reais.</span><span class="en">An illustration using your numbers, not a promise. It doesn't count implants or All-on-4, which are worth far more per case. In the first two weeks we see the real numbers.</span></p>
     </div>
   </section>
 
-  <!-- 7. trial -->
-  <section class="slide" data-i="6" aria-label="7">
+  <!-- 9 tourism -->
+  <section class="slide" aria-label="9">
     <div class="inner">
-      <p class="kicker g"><span class="pt">O próximo passo</span><span class="en">The next step</span></p>
-      <h2><span class="pt">Duas semanas, com orçamentos <span class="gr">reais</span>.</span><span class="en">Two weeks, on <span class="gr">real</span> quotes.</span></h2>
-      <div class="steps">
-        <div class="stp"><span class="n"><span class="pt">SEMANA<br>1</span><span class="en">WEEK<br>1</span></span><div><h3><span class="pt">Preparar</span><span class="en">Prepare</span></h3><p><span class="pt">Exportamos do Newsoft os orçamentos por aceitar dos últimos seis meses. Escrevemos as mensagens juntos.</span><span class="en">We export the unaccepted quotes from the last six months out of Newsoft. We write the messages together.</span></p></div></div>
-        <div class="stp"><span class="n"><span class="pt">SEMANA<br>2</span><span class="en">WEEK<br>2</span></span><div><h3><span class="pt">Enviar</span><span class="en">Send</span></h3><p><span class="pt">As mensagens saem. As respostas chegam à receção.</span><span class="en">The messages go out. Replies reach the front desk.</span></p></div></div>
-        <div class="stp"><span class="n"><span class="pt">FIM</span><span class="en">END</span></span><div><h3><span class="pt">Contar</span><span class="en">Count</span></h3><p><span class="pt">Quantos orçamentos estavam parados, quantos responderam, quantos marcaram e quanto valem.</span><span class="en">How many quotes were sitting there, how many replied, how many booked, and what they're worth.</span></p></div></div>
+      <p class="kicker"><span class="pt">O que isto abre</span><span class="en">What this opens up</span></p>
+      <h2><span class="pt">Alemanha e Luxemburgo, <em>em alemão</em>.</span><span class="en">Germany and Luxembourg, <em>in German</em>.</span></h2>
+      <p class="muted small"><span class="pt">Fala três línguas e conhece quem tem casas para alugar. Isso é uma viagem inteira que mais ninguém aqui oferece.</span><span class="en">You speak three languages and you know people with places to rent. That's a whole trip nobody else here offers.</span></p>
+      <div class="journey">
+        <div class="jst"><i>1</i><div><b><span class="pt">Pergunta em alemão, à noite</span><span class="en">A question in German, at night</span></b><small><span class="pt">respondida na hora, com fotos de casos reais</span><span class="en">answered on the spot, with real case photos</span></small></div></div>
+        <div class="jst"><i>2</i><div><b><span class="pt">Orçamento e plano da viagem</span><span class="en">Quote and trip plan</span></b><small><span class="pt">tratamento, dias, e onde ficar</span><span class="en">treatment, days, and where to stay</span></small></div></div>
+        <div class="jst"><i>3</i><div><b><span class="pt">Uma semana no Algarve</span><span class="en">A week in the Algarve</span></b><small><span class="pt">poupam 2 a 3 vezes o preço do país deles</span><span class="en">they save two to three times what it costs at home</span></small></div></div>
+        <div class="jst"><i>4</i><div><b><span class="pt">Almoço no fim, como já faz</span><span class="en">Lunch at the end, as you already do</span></b><small><span class="pt">e uma história que traz os próximos</span><span class="en">and a story that brings the next ones</span></small></div></div>
       </div>
-      <div class="cost"><span><span class="pt">Custo das duas semanas</span><span class="en">Cost of the two weeks</span></span><b><span class="pt">Só ferramentas, &euro;20&ndash;70</span><span class="en">Tools only, &euro;20&ndash;70</span></b></div>
-      <h3 style="margin-top:18px"><span class="pt">O que preciso da clínica</span><span class="en">What I need from the clinic</span></h3>
+      <div class="bigcase"><b>20.000 &euro;</b><span class="pt">foi o All-on-4 que me mostrou. Dois por ano mudam o ano da clínica.</span><span class="en">was the All-on-4 you showed me. Two a year changes the clinic's year.</span></div>
+    </div>
+  </section>
+
+  <!-- 10 plan -->
+  <section class="slide" aria-label="10">
+    <div class="inner">
+      <p class="kicker g"><span class="pt">O plano</span><span class="en">The plan</span></p>
+      <h2><span class="pt">Por onde começamos, e o que se mede.</span><span class="en">Where we start, and what gets measured.</span></h2>
+      <div class="phases">
+        <div class="ph"><span class="n"><span class="pt">SEMANAS<br>1&ndash;2</span><span class="en">WEEKS<br>1&ndash;2</span></span><div><h3><span class="pt">Ligar o Newsoft</span><span class="en">Switch on Newsoft</span></h3><p><span class="pt">Cópia de segurança, revisões automáticas, confirmações, agendas, e a lista de orçamentos.</span><span class="en">Backup, automatic recalls, confirmations, schedules, and the quotes list.</span></p><span class="meas"><span class="pt">mede-se: o que ficou a funcionar</span><span class="en">measured: what is running</span></span></div></div>
+        <div class="ph"><span class="n"><span class="pt">SEMANAS<br>3&ndash;4</span><span class="en">WEEKS<br>3&ndash;4</span></span><div><h3><span class="pt">Os orçamentos parados</span><span class="en">The quotes sitting still</span></h3><p><span class="pt">A Helena escolhe, aprova os textos, e os lembretes saem.</span><span class="en">You choose, you approve the wording, the reminders go out.</span></p><span class="meas"><span class="pt">mede-se: respostas e tratamentos marcados</span><span class="en">measured: replies and treatments booked</span></span></div></div>
+        <div class="ph"><span class="n"><span class="pt">MÊS<br>2&ndash;3</span><span class="en">MONTH<br>2&ndash;3</span></span><div><h3><span class="pt">Acordar a lista, aos poucos</span><span class="en">Wake the list, gradually</span></h3><p><span class="pt">E a triagem das urgências deixa de lhe comer as noites.</span><span class="en">And emergency intake stops eating your nights.</span></p><span class="meas"><span class="pt">mede-se: consultas e cadeira ocupada</span><span class="en">measured: appointments and chair time</span></span></div></div>
+        <div class="ph"><span class="n"><span class="pt">MÊS<br>4+</span><span class="en">MONTH<br>4+</span></span><div><h3><span class="pt">Alemanha e Luxemburgo</span><span class="en">Germany and Luxembourg</span></h3><p><span class="pt">Quando a casa estiver calma, abrimos a porta lá fora.</span><span class="en">Once the house is calm, we open the door abroad.</span></p><span class="meas"><span class="pt">mede-se: pedidos de fora</span><span class="en">measured: enquiries from abroad</span></span></div></div>
+      </div>
+      <div class="cost"><span><span class="pt">As duas primeiras semanas</span><span class="en">The first two weeks</span></span><b><span class="pt">Só ferramentas, 20&ndash;70 &euro;</span><span class="en">Tools only, &euro;20&ndash;70</span></b></div>
+    </div>
+  </section>
+
+  <!-- 11 asks -->
+  <section class="slide" aria-label="11">
+    <div class="inner">
+      <p class="kicker"><span class="pt">Para arrancar</span><span class="en">To get going</span></p>
+      <h2><span class="pt">Três coisas, e o resto é comigo.</span><span class="en">Three things, and the rest is mine.</span></h2>
       <ul class="asks">
-        <li><i>1</i><span><span class="pt">Uma exportação dos orçamentos por aceitar</span><span class="en">An export of unaccepted quotes</span></span></li>
-        <li><i>2</i><span><span class="pt">Vinte minutos com a rececionista</span><span class="en">Twenty minutes with the receptionist</span></span></li>
+        <li><i>1</i><span><span class="pt">Uma manhã comigo e com o apoio do Newsoft</span><span class="en">One morning with me and Newsoft support</span></span></li>
+        <li><i>2</i><span><span class="pt">A exportação dos orçamentos por aceitar</span><span class="en">The export of unaccepted quotes</span></span></li>
         <li><i>3</i><span><span class="pt">A sua aprovação em cada mensagem</span><span class="en">Your sign-off on every message</span></span></li>
       </ul>
       <details class="privacy">
         <summary><span class="pt">E os dados dos pacientes?</span><span class="en">What about patient data?</span></summary>
         <ul>
-          <li><span class="pt">Ficam com a clínica. Só se usa nome, contacto, data e valor do orçamento.</span><span class="en">They stay with the clinic. Only name, contact, quote date and value are used.</span></li>
-          <li><span class="pt">Só se contacta quem aceitou ser contactado.</span><span class="en">Only patients who agreed to be contacted get a message.</span></li>
+          <li><span class="pt">Ficam no Newsoft, consigo. Usa-se nome, contacto, data e valor.</span><span class="en">They stay in Newsoft, with you. We use name, contact, date and value.</span></li>
+          <li><span class="pt">Só se contacta quem aceitou ser contactado.</span><span class="en">Only patients who agreed to be contacted.</span></li>
           <li><span class="pt">As mensagens nunca falam de diagnósticos.</span><span class="en">Messages never mention diagnoses.</span></li>
-          <li><span class="pt">Revemos tudo juntos, com o RGPD em mente, antes de começar.</span><span class="en">We go through it together, with GDPR in mind, before anything starts.</span></li>
+          <li><span class="pt">Assinamos um papel simples sobre o tratamento dos dados, com o RGPD em mente.</span><span class="en">We sign a simple data-handling agreement, with GDPR in mind.</span></li>
         </ul>
       </details>
-      <p class="sign"><span class="pt">Começamos quando?</span><span class="en">When shall we start?</span><small><span class="pt">Se não resultar, desliga-se e ficamos amigos. Adam</span><span class="en">If it doesn't work, we switch it off and stay friends. Adam</span></small></p>
+      <p class="sign"><span class="pt">Começamos esta semana?</span><span class="en">Shall we start this week?</span><small><span class="pt">Se não resultar, desliga-se e ficamos amigos. Adam</span><span class="en">If it doesn't work, we switch it off and stay friends. Adam</span></small></p>
     </div>
   </section>
 
@@ -441,247 +482,245 @@
 
 <script>
 (function () {
-  var root = document.documentElement;
-  var lang = 'pt';
+  var root = document.documentElement, lang = 'pt';
   try {
     var q = new URLSearchParams(location.search).get('lang');
     lang = q === 'en' || q === 'pt' ? q : (localStorage.getItem('helena-lang') || 'pt');
   } catch (e) {}
   function T(pt, en) { return lang === 'en' ? en : pt; }
-
-  /* ---------- slides ---------- */
-  var slides = [].slice.call(document.querySelectorAll('.slide'));
-  var pips = document.getElementById('pips');
-  var cur = 0;
+  function money(n) {
+    return lang === 'en' ? '€' + num(n) : num(n) + ' €';
+  }
+  function num(n) {
+    var sep = lang === 'en' ? ',' : '.';
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+  }
+  /* slides */
+  var slides = [].slice.call(document.querySelectorAll('.slide')), pips = document.getElementById('pips'), cur = 0;
   slides.forEach(function (s, i) {
     var b = document.createElement('button');
-    b.type = 'button';
-    b.setAttribute('aria-label', String(i + 1));
+    b.type = 'button'; b.setAttribute('aria-label', String(i + 1));
     b.addEventListener('click', function () { show(i); });
     pips.appendChild(b);
   });
   function show(i) {
     i = Math.max(0, Math.min(slides.length - 1, i));
-    slides.forEach(function (s, k) {
-      s.classList.toggle('on', k === i);
-      s.classList.toggle('left', k < i);
-    });
-    [].forEach.call(pips.children, function (p, k) {
-      if (k === i) p.setAttribute('aria-current', 'step'); else p.removeAttribute('aria-current');
-    });
+    slides.forEach(function (s, k) { s.classList.toggle('on', k === i); s.classList.toggle('left', k < i); });
+    [].forEach.call(pips.children, function (p, k) { k === i ? p.setAttribute('aria-current', 'step') : p.removeAttribute('aria-current'); });
     document.getElementById('prev').disabled = i === 0;
     document.getElementById('next').disabled = i === slides.length - 1;
-    slides[i].scrollTop = 0;
-    cur = i;
+    slides[i].scrollTop = 0; cur = i;
     try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
-    if (i === 2) runFunnel();
-    if (i === 4) play(scen);
+    if (i === 1) runJobs();
+    if (i === 2) runRing();
+    if (i === 3) runWave();
+    if (i === 4) runQuotes();
+    if (i === 5) play(scen);
   }
   document.getElementById('prev').addEventListener('click', function () { show(cur - 1); });
   document.getElementById('next').addEventListener('click', function () { show(cur + 1); });
-  document.querySelectorAll('[data-goto]').forEach(function (b) {
-    b.addEventListener('click', function () { show(+b.dataset.goto); });
-  });
+  document.querySelectorAll('[data-goto]').forEach(function (b) { b.addEventListener('click', function () { show(+b.dataset.goto); }); });
   document.addEventListener('keydown', function (e) {
     if (e.target.tagName === 'INPUT') return;
     if (e.key === 'ArrowRight') show(cur + 1);
     if (e.key === 'ArrowLeft') show(cur - 1);
   });
-  var sx = null, sy = null;
-  document.getElementById('deck').addEventListener('touchstart', function (e) {
+  var sx = null, sy = null, deck = document.getElementById('deck');
+  deck.addEventListener('touchstart', function (e) {
     if (e.target.closest('input, .scen')) { sx = null; return; }
     sx = e.touches[0].clientX; sy = e.touches[0].clientY;
   }, { passive: true });
-  document.getElementById('deck').addEventListener('touchend', function (e) {
+  deck.addEventListener('touchend', function (e) {
     if (sx === null) return;
     var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
     if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) show(cur + (dx < 0 ? 1 : -1));
     sx = null;
   });
 
-  /* ---------- language ---------- */
+  /* language */
   function setLang(l) {
     lang = l;
     root.classList.toggle('lang-en', l === 'en');
     root.lang = l === 'en' ? 'en' : 'pt-PT';
-    document.querySelectorAll('.langs button').forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.dataset.lang === l));
-    });
+    document.querySelectorAll('.langs button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === l)); });
     try { localStorage.setItem('helena-lang', l); } catch (e) {}
-    deskLabels();
-    calc();
+    emergency(); quoteLabels(); calc(); waveLabels();
   }
-  document.querySelectorAll('.langs button').forEach(function (b) {
-    b.addEventListener('click', function () { setLang(b.dataset.lang); });
+  document.querySelectorAll('.langs button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.lang); }); });
+
+  /* 2. jobs */
+  var jobT = [];
+  function runJobs() {
+    jobT.forEach(clearTimeout); jobT = [];
+    var js = document.querySelectorAll('#jobs .job');
+    js.forEach(function (j) { j.classList.remove('in'); });
+    js.forEach(function (j, i) { jobT.push(setTimeout(function () { j.classList.add('in'); }, 90 * i)); });
+  }
+
+  /* 3. newsoft ring */
+  var ringOn = false, ringT = [];
+  function runRing() {
+    ringT.forEach(clearTimeout); ringT = [];
+    ringOn = false;
+    document.getElementById('ring').style.setProperty('--v', 40);
+    document.getElementById('ringv').textContent = '40%';
+    document.querySelectorAll('#mods li').forEach(function (li) { li.classList.remove('on'); });
+  }
+  document.getElementById('switch').addEventListener('click', function () {
+    if (ringOn) { runRing(); return; }
+    ringOn = true;
+    document.getElementById('ring').style.setProperty('--v', 100);
+    var n = 40;
+    var iv = setInterval(function () { n += 2; document.getElementById('ringv').textContent = n + '%'; if (n >= 100) clearInterval(iv); }, 18);
+    document.querySelectorAll('#mods li').forEach(function (li, i) {
+      ringT.push(setTimeout(function () { li.classList.add('on'); }, 180 * i));
+    });
   });
 
-  /* ---------- funnel ---------- */
-  // 30 quotes: 12 accept on the day, 18 say "I'll think". Today 1 of 18 returns; with follow-up 4 do.
-  var dotsEl = document.getElementById('dots');
-  var N = 30, YES = 12;
-  var order = [16, 3, 27, 9, 21, 14, 6, 24, 1, 19, 11, 29, 5, 17, 22, 8, 26, 13];
-  for (var d = 0; d < N; d++) { var el = document.createElement('i'); el.className = 'dot'; dotsEl.appendChild(el); }
-  var dots = dotsEl.children;
-  var yesSet = {}; [0, 2, 4, 7, 10, 12, 15, 18, 20, 23, 25, 28].forEach(function (k) { yesSet[k] = 1; });
-  var thinkIdx = []; for (var k = 0; k < N; k++) if (!yesSet[k]) thinkIdx.push(k);
-  var followUp = false, timers = [];
-  function clearTimers() { timers.forEach(clearTimeout); timers = []; }
-  function runFunnel() {
-    clearTimers();
-    var back = followUp ? 4 : 1;
-    for (var i = 0; i < N; i++) dots[i].className = 'dot' + (yesSet[i] ? ' yes' : ' think');
-    setTally('-', '-', false);
-    timers.push(setTimeout(function () {
-      thinkIdx.forEach(function (idx, j) {
-        timers.push(setTimeout(function () {
-          dots[idx].className = 'dot ' + (j < back ? 'back' : 'lost');
-        }, j * 70));
-      });
-      timers.push(setTimeout(function () { setTally(back, 18 - back, followUp); }, thinkIdx.length * 70 + 150));
-    }, 700));
-    document.getElementById('fq').className = 'quoteline' + (followUp ? ' good' : '');
-    document.getElementById('fq').innerHTML = followUp
-      ? '<span class="pt">Com seguimento: <b>mensagens no dia 3, 10 e 30</b>, que param quando o paciente responde.</span><span class="en">With follow-up: <b>messages on day 3, 10 and 30</b>, stopping when the patient replies.</span>'
-      : '<span class="pt">Hoje: <b>"Alguém liga, se se lembrar."</b> As suas palavras.</span><span class="en">Today: <b>"Someone calls if they remember."</b> Your words.</span>';
+  /* 4. patient grid */
+  var TOTAL = 200, ACTIVE = 67, grid = document.getElementById('pgrid'), waveT = [];
+  // a fixed scatter, so the picture is the same every time she looks at it
+  var isActive = [], seed = 7;
+  for (var s0 = 0; s0 < TOTAL; s0++) isActive.push(false);
+  for (var picked = 0; picked < ACTIVE; ) {
+    seed = (seed * 1103515245 + 12345) % 2147483648;
+    var idx = seed % TOTAL;
+    if (!isActive[idx]) { isActive[idx] = true; picked++; }
   }
-  function setTally(b, l, hot) {
-    document.getElementById('n-back').textContent = b;
-    document.getElementById('n-lost').textContent = l;
-    document.getElementById('t-back').classList.toggle('hot', hot);
+  for (var i = 0; i < TOTAL; i++) { var c = document.createElement('i'); c.className = 'p'; grid.appendChild(c); }
+  var cells = grid.children;
+  function runWave() {
+    waveT.forEach(clearTimeout); waveT = [];
+    for (var i = 0; i < TOTAL; i++) cells[i].className = 'p' + (isActive[i] ? ' active' : '');
+    waveLabels();
   }
-  function pair(a, b, on) { a.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-pressed', String(!on)); }
-  var fNow = document.getElementById('f-now'), fThen = document.getElementById('f-then');
-  fNow.addEventListener('click', function () { followUp = false; pair(fNow, fThen, true); runFunnel(); });
-  fThen.addEventListener('click', function () { followUp = true; pair(fNow, fThen, false); runFunnel(); });
-
-  /* ---------- front desk ---------- */
-  var calm = false, badgeTimer = null;
-  var dNow = document.getElementById('d-now'), dThen = document.getElementById('d-then');
-  function deskLabels() {
-    document.querySelectorAll('#phone .st').forEach(function (st, i) {
-      var pairTxt = (calm ? st.dataset.then : st.dataset.now).split('|');
-      st.textContent = T(pairTxt[0], pairTxt[1]);
-      st.className = 'st ' + (calm ? (i === 3 ? 'you' : 'done') : 'wait');
+  function waveLabels() {
+    document.getElementById('n-dorm').textContent = num(2600);
+    document.getElementById('n-wave').textContent = num(300);
+    document.getElementById('n-ret').textContent = '12';
+  }
+  document.getElementById('wake').addEventListener('click', function () {
+    runWave();
+    var dormant = [];
+    for (var i = 0; i < TOTAL; i++) if (!cells[i].classList.contains('active')) dormant.push(i);
+    var step = Math.floor(dormant.length / 15) || 1;
+    var spread = [];
+    for (var k = 0; k < dormant.length && spread.length < 15; k += step) spread.push(dormant[k]);
+    spread.forEach(function (idx, j) {
+      waveT.push(setTimeout(function () { cells[idx].classList.add('woke'); }, 80 * j));
     });
-    document.getElementById('load').innerHTML = calm
-      ? '<span class="pt">Calma</span><span class="en">Calm</span>'
-      : '<span class="pt">Alta</span><span class="en">High</span>';
-  }
-  function setDesk(on) {
-    calm = on;
-    pair(dNow, dThen, !on);
-    document.getElementById('phone').classList.toggle('calm', on);
-    document.getElementById('loadbar').classList.toggle('calm', on);
-    deskLabels();
-    var badge = document.getElementById('badge');
-    var from = +badge.textContent, to = on ? 1 : 14;
-    clearInterval(badgeTimer);
-    badgeTimer = setInterval(function () {
-      from += from > to ? -1 : 1;
-      badge.textContent = from;
-      if (from === to) clearInterval(badgeTimer);
-    }, 45);
-  }
-  dNow.addEventListener('click', function () { setDesk(false); });
-  dThen.addEventListener('click', function () { setDesk(true); });
+  });
 
-  /* ---------- chat demo ---------- */
+  /* 5. quotes */
+  var qThen = false;
+  function runQuotes() {
+    document.querySelectorAll('.qtrack i').forEach(function (bar) {
+      bar.style.width = '0%';
+      setTimeout(function () { bar.style.width = (qThen ? bar.dataset.then : bar.dataset.now) + '%'; }, 60);
+    });
+    document.getElementById('q-back').textContent = qThen ? '8' : '2';
+    quoteLabels();
+  }
+  function quoteLabels() {
+    document.getElementById('q-gain').innerHTML = qThen
+      ? '<span class="pt">Com lembrete: mais 6 conversas em cada 30. A 1.800 &euro; cada, s&atilde;o <b>10.800 &euro;</b>.</span><span class="en">With a reminder: six more conversations in every 30. At &euro;1,800 each, that\'s <b>&euro;10,800</b>.</span>'
+      : '<span class="pt">Hoje: cerca de 2 em cada 30.</span><span class="en">Today: about 2 in every 30.</span>';
+  }
+  function pairBtn(a, b, on) { a.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-pressed', String(!on)); }
+  var qN = document.getElementById('q-now'), qT = document.getElementById('q-then');
+  qN.addEventListener('click', function () { qThen = false; pairBtn(qN, qT, true); runQuotes(); });
+  qT.addEventListener('click', function () { qThen = true; pairBtn(qN, qT, false); runQuotes(); });
+
+  /* 6. chat */
   var SCRIPTS = {
-    implant: [
-      ['in', 'Hi! How much is a dental implant? I\'m on holiday here until Sunday.', '21:12'],
-      ['out', 'Hi, thanks for writing to Dentes & Companhia. The price depends on a quick assessment, which we do in a first consultation. We have Friday at 10:00 or Saturday at 9:30. Shall I hold one for you?', '21:12'],
-      ['in', 'Saturday please!', '21:14'],
-      ['out', 'Done, Saturday 9:30 is held for you. Reception will confirm first thing in the morning. See you soon!', '21:14'],
-      ['sys', 'Receção: 1 marcação para confirmar às 9h|Front desk: 1 booking to confirm at 9am']
-    ],
-    urgent: [
-      ['in', 'Boa noite. Tenho uma dor muito forte num dente e a cara está a inchar.', '23:40'],
-      ['out', 'Lamentamos muito. Vamos avisar já a médica de serviço, que lhe liga nos próximos minutos. Se tiver dificuldade em respirar ou engolir, ligue 112.', '23:40'],
-      ['sys', 'Médica de serviço avisada, com nome e telefone|Dentist on call alerted, with name and number'],
-      ['in', 'Obrigada, fico à espera.', '23:41']
-    ],
     quote: [
-      ['out', 'Olá Marta, fala a Dentes & Companhia. Ficou com alguma dúvida sobre o plano de tratamento que falámos? Se quiser, marcamos 15 minutos para conversar, sem compromisso.', '10:00'],
-      ['in', 'Olá! Sim, tinha algumas dúvidas sobre o pagamento.', '10:26'],
-      ['out', 'Claro. A receção liga-lhe ainda hoje para explicar. Qual é a melhor hora?', '10:26'],
-      ['in', 'Depois das 17h.', '10:31'],
-      ['sys', 'Passado à receção: ligar à Marta depois das 17h|Handed to front desk: call Marta after 5pm']
+      ['out', 'Olá Sra. Marta, é a Dentes & Companhia. Sei que teve umas semanas cheias com o regresso às aulas. Não é para insistir, é só para dizer que o seu plano continua aqui e que estamos cá quando quiser. Se tiver alguma dúvida, é só dizer.', '10:04'],
+      ['in', 'Olá! Obrigada. Tinha mesmo ficado com dúvidas sobre o pagamento.', '10:26'],
+      ['out', 'Com certeza. A Helena liga-lhe hoje para falar sobre isso. Qual é a melhor hora?', '10:27'],
+      ['in', 'Depois das 17h, por favor.', '10:31'],
+      ['sys', 'Para a Helena: ligar à Marta depois das 17h|For Helena: call Marta after 5pm']
+    ],
+    wake: [
+      ['out', 'Olá Sr. João. Já passaram dois anos desde a sua última consulta na Dentes & Companhia. Quer que lhe guarde meia hora para uma revisão? Assim ficamos descansados que está tudo bem.', '11:15'],
+      ['in', 'Ui, dois anos já? Pode ser na próxima semana.', '11:40'],
+      ['out', 'Tenho quinta às 15h ou sábado às 10h. Qual prefere?', '11:40'],
+      ['in', 'Sábado às 10h.', '11:42'],
+      ['sys', 'Marcação para confirmar no Newsoft|Booking to confirm in Newsoft']
+    ],
+    night: [
+      ['in', 'Boa noite, tenho uma dor muito forte e a cara inchada.', '23:40'],
+      ['out', 'Lamento muito. Vou fazer-lhe três perguntas rápidas para a Helena saber o que se passa. Desde quando tem a dor? Tem febre? Consegue abrir a boca?', '23:40'],
+      ['in', 'Desde ontem, sem febre, abro com dificuldade.', '23:42'],
+      ['out', 'Obrigado. A consulta de urgência é 60 €, mais a medicação. A Helena vê já a sua mensagem e liga-lhe. Se tiver dificuldade em respirar ou engolir, ligue 112.', '23:42'],
+      ['sys', 'Resumo enviado à Helena, com as respostas|Summary sent to Helena, with the answers']
     ]
   };
-  var chat = document.getElementById('chat');
-  var scen = 'implant', chatTimers = [];
+  var chat = document.getElementById('chat'), scen = 'quote', chatT = [];
   function play(name) {
     scen = name;
-    chatTimers.forEach(clearTimeout); chatTimers = [];
-    chat.innerHTML = '';
-    var t = 300;
+    chatT.forEach(clearTimeout); chatT = []; chat.innerHTML = '';
+    var t = 250;
     SCRIPTS[name].forEach(function (m) {
-      var isOut = m[0] === 'out';
-      if (isOut) {
-        chatTimers.push(setTimeout(function () {
-          var ty = document.createElement('div'); ty.className = 'typing'; ty.innerHTML = '<i></i><i></i><i></i>';
-          chat.appendChild(ty);
+      if (m[0] === 'out') {
+        chatT.push(setTimeout(function () {
+          var ty = document.createElement('div'); ty.className = 'typing'; ty.innerHTML = '<i></i><i></i><i></i>'; chat.appendChild(ty);
         }, t));
-        t += 900;
+        t += 850;
       }
-      chatTimers.push(setTimeout(function () {
+      chatT.push(setTimeout(function () {
         var ty = chat.querySelector('.typing'); if (ty) ty.remove();
         var el = document.createElement('div');
         el.className = 'msg ' + m[0];
         if (m[0] === 'sys') { var p = m[1].split('|'); el.textContent = T(p[0], p[1]); }
         else { el.textContent = m[1]; var tm = document.createElement('time'); tm.textContent = m[2]; el.appendChild(tm); }
         chat.appendChild(el);
+        chat.scrollTop = chat.scrollHeight;
       }, t));
-      t += m[0] === 'in' ? 1100 : 900;
+      t += m[0] === 'in' ? 1000 : 850;
     });
-    document.querySelectorAll('.scen button').forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.dataset.scen === name));
-    });
+    document.querySelectorAll('.scen button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.scen === name)); });
   }
-  document.querySelectorAll('.scen button').forEach(function (b) {
-    b.addEventListener('click', function () { play(b.dataset.scen); });
-  });
+  document.querySelectorAll('.scen button').forEach(function (b) { b.addEventListener('click', function () { play(b.dataset.scen); }); });
   document.getElementById('replay').addEventListener('click', function () { play(scen); });
 
-  /* ---------- calculator ---------- */
-  var quiet = document.getElementById('quiet'), value = document.getElementById('value'), back = document.getElementById('back');
+  /* 7. emergency */
+  var eCalm = false, eN = document.getElementById('e-now'), eT = document.getElementById('e-then');
+  function emergency() {
+    document.getElementById('ecall').classList.toggle('calm', eCalm);
+    document.getElementById('e-time').textContent = eCalm ? T('2 min sua', '2 min of yours') : T('20 min sua', '20 min of yours');
+    document.getElementById('e1').textContent = eCalm ? T('feitas por mensagem, antes de si', 'asked by message, before you') : T('ao telefone, acordada', 'on the phone, wide awake');
+    document.getElementById('e2').textContent = eCalm ? T('já está dito, com o preço', 'already said, with the price') : T('outra vez, de cada vez', 'again, every time');
+    document.getElementById('e3').textContent = eCalm ? T('lê o resumo e decide', 'you read the summary and decide') : T('só depois de 20 minutos ao telefone', 'only after 20 minutes on the phone');
+    document.getElementById('e4').textContent = eCalm ? T('só quando vale mesmo a pena', 'only when it is really needed') : T('sempre', 'every time');
+  }
+  eN.addEventListener('click', function () { eCalm = false; pairBtn(eN, eT, true); emergency(); });
+  eT.addEventListener('click', function () { eCalm = true; pairBtn(eN, eT, false); emergency(); });
+
+  /* 8. calculator */
+  var sw = document.getElementById('s-wave'), sr = document.getElementById('s-rate'), sv = document.getElementById('s-val');
   var chartEl = document.getElementById('chart'), monthsEl = document.getElementById('months');
   for (var m = 0; m < 12; m++) { var col = document.createElement('div'); col.appendChild(document.createElement('i')); chartEl.appendChild(col); monthsEl.appendChild(document.createElement('span')); }
-  var MPT = ['O', 'N', 'D', 'J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S'];
-  var MEN = ['O', 'N', 'D', 'J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S'];
-  function money(n) {
-    return lang === 'en'
-      ? '€' + n.toLocaleString('en-GB')
-      : n.toLocaleString('pt-PT', { useGrouping: 'always' }).replace(/\s/g, '.') + ' €';
-  }
+  var MN = ['O', 'N', 'D', 'J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S'];
   function fill(el) { el.style.setProperty('--p', ((el.value - el.min) / (el.max - el.min) * 100) + '%'); }
   function calc() {
-    var q = +quiet.value, v = +value.value, b = +back.value;
-    var perMonth = q * b / 10 * v;
-    var year = Math.round(perMonth * 12);
-    document.getElementById('quiet-v').textContent = q;
-    document.getElementById('value-v').textContent = money(v);
-    document.getElementById('back-v').textContent = b;
-    document.getElementById('total').textContent = money(year);
-    var cases = Math.round(q * b / 10 * 12 * 10) / 10;
-    var c = String(cases).replace('.', lang === 'en' ? '.' : ',');
-    document.getElementById('sub').textContent = T(
-      'Cerca de ' + c + ' planos de tratamento por ano que hoje ficam parados.',
-      'About ' + c + ' treatment plans a year that currently go quiet.');
-    // cumulative bars on a fixed €60k scale, so moving a slider visibly grows them
-    [].forEach.call(chartEl.children, function (colEl, i) {
-      colEl.firstChild.style.height = Math.min(100, Math.max(2, perMonth * (i + 1) / 60000 * 100)) + '%';
-      colEl.title = money(Math.round(perMonth * (i + 1)));
+    var w = +sw.value, r = +sr.value, v = +sv.value;
+    var perMonth = Math.round(w * r / 100 * v);
+    document.getElementById('v-wave').textContent = num(w);
+    document.getElementById('v-rate').textContent = r;
+    document.getElementById('v-val').textContent = money(v);
+    document.getElementById('m-month').textContent = money(perMonth);
+    document.getElementById('m-year').textContent = money(perMonth * 12);
+    [].forEach.call(chartEl.children, function (c, i) {
+      c.firstChild.style.height = Math.min(100, Math.max(2, perMonth * (i + 1) / 90000 * 100)) + '%';
     });
-    [].forEach.call(monthsEl.children, function (s, i) { s.textContent = (lang === 'en' ? MEN : MPT)[i]; });
-    [quiet, value, back].forEach(fill);
+    [].forEach.call(monthsEl.children, function (s, i) { s.textContent = MN[i]; });
+    [sw, sr, sv].forEach(fill);
   }
-  [quiet, value, back].forEach(function (el) { el.addEventListener('input', calc); });
+  [sw, sr, sv].forEach(function (el) { el.addEventListener('input', calc); });
 
-  /* ---------- start ---------- */
+  /* start */
   setLang(lang);
-  var start = 0;
-  var h = parseInt((location.hash || '').slice(1), 10);
+  var start = 0, h = parseInt((location.hash || '').slice(1), 10);
   if (h >= 1 && h <= slides.length) start = h - 1;
   show(start);
 })();
