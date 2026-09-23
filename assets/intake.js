@@ -140,7 +140,7 @@
     var inQuestions = step >= 1 && step <= TOTAL;
     track.hidden = !inQuestions;
     calcada.hidden = inQuestions;
-    countEl.textContent = inQuestions ? step + ' of ' + TOTAL : '';
+    countEl.textContent = inQuestions ? t('of', '{a} of {b}').replace('{a}', step).replace('{b}', TOTAL) : '';
     if (inQuestions) { trackfill.style.width = ((step - 1) / TOTAL * 100) + '%'; }
 
     stage.innerHTML = '';
@@ -293,7 +293,7 @@
   function reviewScreen() {
     var screen = h('section', { class: 'screen' });
     var n = answeredCount();
-    screen.appendChild(h('p', { class: 'eyebrow', text: n + ' of ' + TOTAL + ' answered' }));
+    screen.appendChild(h('p', { class: 'eyebrow', text: t('answered', '{a} of {b} answered').replace('{a}', n).replace('{b}', TOTAL) }));
     screen.appendChild(h('h2', { text: t('reviewTitle', 'That is everything. Have a quick look, then send it over.') }));
     screen.appendChild(h('p', { class: 'hint', text: t('reviewHint', 'Tap Change on anything you want to redo.') }));
 
