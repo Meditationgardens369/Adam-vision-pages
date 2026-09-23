@@ -53,6 +53,8 @@
     transition: opacity .26s ease, transform .26s ease, visibility 0s linear .26s; }
   .slide.on { opacity: 1; visibility: visible; transform: none; transition: opacity .26s ease, transform .26s ease; }
   .slide.left { transform: translateX(-22px); }
+  /* fail-safe: without JS the first slide is still readable */
+  .slide:first-of-type { opacity: 1; visibility: visible; transform: none; }
   .inner { max-width: 620px; margin: 0 auto; }
 
   .kicker { display: inline-block; font: 700 11px Montserrat, sans-serif; letter-spacing: .12em; text-transform: uppercase;
@@ -482,6 +484,12 @@
 
 <script>
 (function () {
+  function rescue(err) {
+    var first = document.querySelector('.slide');
+    if (first) { first.classList.add('on'); }
+    if (window.console) console.error('deck:', err);
+  }
+  try {
   var root = document.documentElement, lang = 'pt';
   try {
     var q = new URLSearchParams(location.search).get('lang');
@@ -723,6 +731,7 @@
   var start = 0, h = parseInt((location.hash || '').slice(1), 10);
   if (h >= 1 && h <= slides.length) start = h - 1;
   show(start);
+  } catch (err) { rescue(err); }
 })();
 </script>
 </body>
