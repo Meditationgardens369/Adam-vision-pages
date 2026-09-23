@@ -53,8 +53,8 @@
     transition: opacity .26s ease, transform .26s ease, visibility 0s linear .26s; }
   .slide.on { opacity: 1; visibility: visible; transform: none; transition: opacity .26s ease, transform .26s ease; }
   .slide.left { transform: translateX(-22px); }
-  /* fail-safe: without JS the first slide is still readable */
-  .slide:first-of-type { opacity: 1; visibility: visible; transform: none; }
+  /* fail-safe: until the script takes over, the first slide is readable */
+  html:not(.js) .slide:first-of-type { opacity: 1; visibility: visible; transform: none; }
   .inner { max-width: 620px; margin: 0 auto; }
 
   .kicker { display: inline-block; font: 700 11px Montserrat, sans-serif; letter-spacing: .12em; text-transform: uppercase;
@@ -491,6 +491,7 @@
   }
   try {
   var root = document.documentElement, lang = 'pt';
+  root.className += ' js';
   try {
     var q = new URLSearchParams(location.search).get('lang');
     lang = q === 'en' || q === 'pt' ? q : (localStorage.getItem('helena-lang') || 'pt');
