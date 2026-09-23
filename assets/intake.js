@@ -17,6 +17,10 @@
   var NAME = String(C.name || 'there').slice(0, 60);
   var BUSINESS = String(C.business || '').slice(0, 200);
   var Q = C.questions || [];
+  /* Optional per-page wording, so a page can run in another language.
+     Any key left out falls back to the English below. */
+  var UI = C.ui || {};
+  function t(key, fallback) { return typeof UI[key] === 'string' ? UI[key] : fallback; }
   // Public pages (no known prospect) set nameFrom to the typed question that asks for a name.
   function who() {
     var typed = C.nameFrom ? ((state.text[C.nameFrom] || '').trim().split(/[,\n]/)[0].trim()) : '';
@@ -163,16 +167,16 @@
       h('h1', { html: C.introTitle || 'A few quick questions, so I turn up knowing your business <em>instead of guessing at it.</em>' }),
       C.introNote ? h('p', { class: 'muted', text: C.introNote }) : null,
       h('p', { class: 'muted', text: cap(word(TOTAL)) + ' of them. ' + typing + ' About ' + word(minutes) + ' minutes.' }),
-      h('p', { class: 'muted', text: 'You can stop halfway and come back later on the same device. It remembers where you were.' }),
-      h('p', { class: 'muted', text: 'Nothing here is shared with anyone else. It comes straight to me.' }),
+      h('p', { class: 'muted', text: t('resume', 'You can stop halfway and come back later on the same device. It remembers where you were.') }),
+      h('p', { class: 'muted', text: t('private', 'Nothing here is shared with anyone else. It comes straight to me.') }),
       h('p', { class: 'sig', text: 'Adam' })
     ];
     var actions = h('div', { class: 'stack', style: 'margin-top:28px' });
     if (hadSaved) {
-      actions.appendChild(h('button', { class: 'btn block', type: 'button', text: 'Carry on where I left off', on: { click: function () { go(savedStep || firstUnanswered()); } } }));
-      actions.appendChild(h('button', { class: 'link', type: 'button', text: 'Start again from the beginning', on: { click: function () { state.answers = {}; state.text = {}; hadSaved = false; go(1); } } }));
+      actions.appendChild(h('button', { class: 'btn block', type: 'button', text: t('continue', 'Carry on where I left off'), on: { click: function () { go(savedStep || firstUnanswered()); } } }));
+      actions.appendChild(h('button', { class: 'link', type: 'button', text: t('restart', 'Start again from the beginning'), on: { click: function () { state.answers = {}; state.text = {}; hadSaved = false; go(1); } } }));
     } else {
-      actions.appendChild(h('button', { class: 'btn block', type: 'button', text: 'Start', on: { click: function () { go(1); } } }));
+      actions.appendChild(h('button', { class: 'btn block', type: 'button', text: t('start', 'Start'), on: { click: function () { go(1); } } }));
     }
     kids.push(actions);
     return h('section', { class: 'screen' }, kids);
@@ -195,7 +199,7 @@
       returnToReview = false;
       if (returning) { go(REVIEW); } else { go(step >= TOTAL ? REVIEW : step + 1); }
     }
-    var nextBtn = h('button', { class: 'btn', type: 'button', text: returning ? 'Back to summary' : (step === TOTAL ? 'Done' : 'Next'), on: { click: advance } });
+    var nextBtn = h('button', { class: 'btn', type: 'button', text: returning ? t('toSummary', 'Back to summary') : (step === TOTAL ? t('done', 'Done') : t('next', 'Next')), on: { click: advance } });
 
     if (q.type === 'number') {
       var min = q.min || 1, max = q.max || 500;
@@ -269,7 +273,7 @@
     }
 
     var left = h('button', { class: 'link back', type: 'button', text: step === 1 ? 'Back' : 'Previous', on: { click: function () { returnToReview = false; go(step - 1); } } });
-    var skipBtn = h('button', { class: 'link', type: 'button', text: 'Skip', on: { click: advance } });
+    var skipBtn = h('button', { class: 'link', type: 'button', text: t('skip', 'Skip'), on: { click: advance } });
     var rightGroup = h('div', { style: 'display:flex; gap:14px; align-items:center' }, [skipBtn, nextBtn]);
     screen.appendChild(h('div', { class: 'actions' }, [left, rightGroup]));
 
@@ -290,8 +294,8 @@
     var screen = h('section', { class: 'screen' });
     var n = answeredCount();
     screen.appendChild(h('p', { class: 'eyebrow', text: n + ' of ' + TOTAL + ' answered' }));
-    screen.appendChild(h('h2', { text: 'That is everything. Have a quick look, then send it over.' }));
-    screen.appendChild(h('p', { class: 'hint', text: 'Tap Change on anything you want to redo.' }));
+    screen.appendChild(h('h2', { text: t('reviewTitle', 'That is everything. Have a quick look, then send it over.') }));
+    screen.appendChild(h('p', { class: 'hint', text: t('reviewHint', 'Tap Change on anything you want to redo.') }));
 
     var list = h('div', { class: 'review' });
     Q.forEach(function (q, i) {
@@ -299,20 +303,20 @@
       list.appendChild(h('div', { class: 'rrow' }, [
         h('span', { class: 'rl', text: q.short || ('Question ' + (i + 1)) }),
         h('span', { class: 'ra' + (v ? '' : ' skipped'), text: v || 'skipped' }),
-        h('button', { class: 'link', type: 'button', text: 'Change', 'aria-label': 'Change ' + (q.short || 'this answer'), on: { click: function () { returnToReview = true; go(i + 1); } } })
+        h('button', { class: 'link', type: 'button', text: t('change', 'Change'), 'aria-label': t('change', 'Change') + ' ' + (q.short || 'this answer'), on: { click: function () { returnToReview = true; go(i + 1); } } })
       ]));
     });
     screen.appendChild(list);
 
-    var note = h('p', { class: 'note', text: 'It goes straight to Adam, nobody else.' });
-    var send = h('button', { class: 'btn block', type: 'button', text: 'Send to Adam' });
-    var wa = h('a', { class: 'btn block quiet', href: 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(buildMessage()), target: '_blank', rel: 'noopener', text: 'Or send it on WhatsApp instead' });
+    var note = h('p', { class: 'note', text: t('sendNote', 'It goes straight to Adam, nobody else.') });
+    var send = h('button', { class: 'btn block', type: 'button', text: t('send', 'Send to Adam') });
+    var wa = h('a', { class: 'btn block quiet', href: 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(buildMessage()), target: '_blank', rel: 'noopener', text: t('whatsapp', 'Or send it on WhatsApp instead') });
 
     if (n === 0) { send.disabled = true; note.textContent = 'Answer at least one question first.'; }
 
     send.addEventListener('click', function () {
       send.disabled = true;
-      send.textContent = 'Sending...';
+      send.textContent = t('sending', 'Sending...');
       note.classList.remove('bad');
       note.textContent = 'One moment.';
       submit().then(function () {
@@ -322,7 +326,7 @@
         window.scrollTo(0, 0);
       }).catch(function () {
         send.disabled = false;
-        send.textContent = 'Try again';
+        send.textContent = t('retry', 'Try again');
         note.classList.add('bad');
         note.textContent = 'That did not go through. The WhatsApp button just below sends exactly the same answers.';
       });
@@ -330,20 +334,20 @@
 
     screen.appendChild(h('div', { class: 'stack' }, [send, wa, note]));
     screen.appendChild(h('div', { class: 'actions' }, [
-      h('button', { class: 'link back', type: 'button', text: 'Previous', on: { click: function () { go(TOTAL); } } })
+      h('button', { class: 'link back', type: 'button', text: t('previous', 'Previous'), on: { click: function () { go(TOTAL); } } })
     ]));
     return screen;
   }
 
   function doneScreen() {
     var kids = [
-      h('p', { class: 'eyebrow', text: 'Sent' }),
-      h('h1', { html: 'Thank you, ' + escapeHtml(who()) + '. <em>That is all I need.</em>' }),
-      h('p', { class: 'muted', text: 'I will have read it properly before we speak, so we can skip the boring questions and go straight to the interesting part.' })
+      h('p', { class: 'eyebrow', text: t('sentEyebrow', 'Sent') }),
+      h('h1', { html: t('sentTitle', 'Thank you, {name}. <em>That is all I need.</em>').replace('{name}', escapeHtml(who())) }),
+      h('p', { class: 'muted', text: t('sentBody', 'I will have read it properly before we speak, so we can skip the boring questions and go straight to the interesting part.') })
     ];
     var headline = HEADLINE ? (state.text[HEADLINE] || '').trim() : '';
     if (headline) {
-      kids.push(h('p', { class: 'muted', style: 'margin:22px 0 0', text: 'We will start with this one:' }));
+      kids.push(h('p', { class: 'muted', style: 'margin:22px 0 0', text: t('sentFirst', 'We will start with this one:') }));
       kids.push(h('p', { class: 'quote', text: headline }));
     }
     kids.push(h('p', { class: 'sig', style: 'margin-top:28px', text: 'Adam' }));
