@@ -272,7 +272,7 @@
       screen.appendChild(ta);
     }
 
-    var left = h('button', { class: 'link back', type: 'button', text: step === 1 ? 'Back' : 'Previous', on: { click: function () { returnToReview = false; go(step - 1); } } });
+    var left = h('button', { class: 'link back', type: 'button', text: step === 1 ? t('back', 'Back') : t('previous', 'Previous'), on: { click: function () { returnToReview = false; go(step - 1); } } });
     var skipBtn = h('button', { class: 'link', type: 'button', text: t('skip', 'Skip'), on: { click: advance } });
     var rightGroup = h('div', { style: 'display:flex; gap:14px; align-items:center' }, [skipBtn, nextBtn]);
     screen.appendChild(h('div', { class: 'actions' }, [left, rightGroup]));
