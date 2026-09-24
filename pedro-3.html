@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before We Start</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The last set of questions">
+<meta property="og:description" content="Numbers to confirm and one thing about WhatsApp, so the build starts on facts.">
+<meta name="theme-color" content="#0F5C58">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* Pedro, round three. Written 24 Sep 2026, the night after he said yes.
+   Purpose: settle the things the build and the price depend on.
+   1. The channel split. Email is open to us today. WhatsApp needs Meta business
+      verification, a number that leaves the normal app, and paid templates, so
+      how much arrives where decides what phase one even is.
+   2. His sales numbers. He wrote "30 to 50 a year, 4%" and said "6 to 10 a month,
+      15 to 20k kept" out loud. Four times apart. Nothing goes in front of his
+      colleagues until this is settled.
+   3. Listing volume, since the listing sheet is built per property.
+   4. Who on the team does what, and what they pay for already.
+
+   Meant to be answered by the four of them together. Question ids avoid the ones
+   used by Prospect_Dashboard.html rules. */
+window.INTAKE = {
+  slug: "pedro-3",
+  name: "Pedro",
+  business: "RE/MAX team of four, Algarve (round three, before the build)",
+  headline: "nevr",
+  introTitle: "Last set, and then I build. <em>Answer it with the team if you can.</em>",
+  introNote: "Most of these are taps. Two of them settle numbers we talked about on the call, and a few decide whether the assistant works through email, WhatsApp, or both. Guesses are fine where you are not sure, just say so.",
+  questions: [
+    { id: "chmail", type: "number", short: "Of 10, by email", section: "Where the ten last enquiries came from",
+      q: "Think of your last ten new enquiries. How many arrived by email?",
+      hint: "Including the lead notifications Idealista sends you. The four numbers here should add up to about ten.",
+      min: 0, max: 10, def: 4, unit: "out of ten" },
+    { id: "chwapp", type: "number", short: "Of 10, by WhatsApp",
+      q: "And how many came straight to WhatsApp?",
+      min: 0, max: 10, def: 3, unit: "out of ten" },
+    { id: "chcall", type: "number", short: "Of 10, by phone",
+      q: "How many were a phone call?",
+      min: 0, max: 10, def: 2, unit: "out of ten" },
+    { id: "chother", type: "number", short: "Of 10, other",
+      q: "And how many came another way, the office, a referral, someone walking in?",
+      min: 0, max: 10, def: 1, unit: "out of ten" },
+
+    { id: "seenum", type: "one", short: "Can buyers see the number", section: "About WhatsApp",
+      q: "Can a buyer find your phone number on the portal and message you without going through the form?",
+      opts: ["Yes, the number is right there", "Only after they enquire", "No, they have to use the form", "I am not sure"] },
+    { id: "secondnum", type: "one", short: "A second number",
+      q: "Would you be open to a second WhatsApp number that the assistant answers from?",
+      hint: "Your own number stays exactly as it is. The second one handles first questions, and hands anyone serious straight to you.",
+      opts: ["Yes, that sounds fine", "Maybe, tell me more first", "I would rather keep one number", "The agency would have to agree"] },
+    { id: "spare", type: "one", short: "A spare number",
+      q: "If we do set up a second number, do you have one, or should I get one?",
+      hint: "It costs a few euros. Once it is on the business platform it leaves the normal WhatsApp app, which is exactly why it should not be your own number.",
+      opts: ["I have a spare number we could use", "Get one, I will cover it", "Let us talk about it first"] },
+    { id: "showname", type: "text", short: "Name shown to buyers",
+      q: "What name should a buyer see when that number writes to them?",
+      hint: "If it says RE/MAX, the brand has to approve it, which takes time. Your own team name needs nobody's permission and can go live this week.",
+      placeholder: "Pedro and team, or the name we trade under..." },
+    { id: "wabiz", type: "many", short: "WhatsApp Business features",
+      q: "Inside the WhatsApp Business app, do you use any of these?", hint: "Tap all that apply.",
+      opts: ["Labels", "Quick replies", "Away messages", "The catalogue", "Honestly, none of them"] },
+    { id: "inbox", type: "text", short: "Where lead mail lands",
+      q: "Which email address do the Idealista lead notifications arrive at?",
+      hint: "Your own, a shared team one, or the office. This is the first thing I connect.",
+      placeholder: "They go to my own RE/MAX address, and the office gets a copy..." },
+
+    { id: "salesmo", type: "number", short: "Sales a month", section: "The numbers, so I stop guessing",
+      q: "In a normal month, how many sales does the team close, all four of you together?",
+      hint: "On the call you said six to ten. In the written answers it read as thirty to fifty a year. I would rather have the real one than average them.",
+      min: 1, max: 20, def: 8, unit: "sales a month" },
+    { id: "keepsale", type: "one", short: "Kept per sale",
+      q: "On an average sale, what does the team keep after the RE/MAX fee?",
+      opts: ["Under 5,000 euros", "5,000 to 10,000", "10,000 to 15,000", "15,000 to 20,000", "More than 20,000"] },
+    { id: "peror", type: "one", short: "Team or each",
+      q: "Are those two answers for the whole team, or for you on your own?",
+      opts: ["The whole team of four", "Just me", "A bit of both, it varies"] },
+    { id: "yr2026", type: "text", short: "Month by month 2026",
+      q: "Could you give me this year month by month, January to now? Sales closed, and what the team kept.",
+      hint: "This is the single most valuable thing on the page. It is the line we measure everything against, and in a year it is the proof that this worked. A MaxWork export or a screenshot works just as well, send it on WhatsApp.",
+      placeholder: "Jan 6 sales / 42k, Feb 4 / 31k, Mar..." },
+    { id: "season", type: "one", short: "Seasonal pattern",
+      q: "Is there a pattern to the year?",
+      opts: ["Summer is much stronger", "Spring and autumn are the peaks", "Winter is when owners decide", "It is fairly even", "It changes every year"] },
+    { id: "liveprops", type: "number", short: "Listings live now",
+      q: "How many properties does the team have listed right now?",
+      hint: "This sets how much work the first week is, because each one gets a row with the facts buyers ask about.",
+      min: 1, max: 200, def: 25, unit: "properties" },
+    { id: "newprops", type: "number", short: "New listings a month",
+      q: "And how many new ones do you take on in a normal month?",
+      min: 0, max: 40, def: 4, unit: "a month" },
+
+    { id: "whodoes", type: "text", short: "Who does what", section: "The four of you",
+      q: "In a sentence each, what does each of the four of you actually do?",
+      hint: "Names are useful. It decides who gets what on the board.",
+      placeholder: "Me: back office and listings. Ana: viewings and buyers. ..." },
+    { id: "firstuser", type: "one", short: "Who starts",
+      q: "Who should be the first to use it, before the others?",
+      opts: ["Me alone, then the others", "Me and one colleague", "All four from the start"] },
+    { id: "paidtools", type: "many", short: "Tools already paid for",
+      q: "What do you already pay for, outside MaxWork?", hint: "Tap all that apply.",
+      opts: ["A newsletter or email tool", "Canva or similar", "A scheduling or booking link", "Extra portal subscriptions", "Cloud storage", "Nothing extra"],
+      follow: { when: ["A newsletter or email tool", "Canva or similar", "A scheduling or booking link", "Extra portal subscriptions", "Cloud storage"], key: "toolNames", placeholder: "Which ones, roughly? (optional)" } },
+    { id: "newsltr", type: "text", short: "The newsletter",
+      q: "You mentioned a newsletter to previous clients when a listing goes live. What is it sent with, and how often?",
+      placeholder: "We send it from... about once a month..." },
+
+    { id: "askedrm", type: "one", short: "Asked the agency", section: "Two last things",
+      q: "Have you been able to ask what the agency allows to be sent automatically under the RE/MAX name?",
+      opts: ["Yes, and it is fine", "Yes, with conditions", "Not yet, I will ask", "I would rather not ask yet"] },
+    { id: "nevr", type: "text", short: "Never automate this",
+      q: "What must never be automated, no matter how good it gets?",
+      hint: "This is the one I will read first, and it becomes a rule in the system.",
+      placeholder: "Anything about price negotiation, or the first message to an owner, for example..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>

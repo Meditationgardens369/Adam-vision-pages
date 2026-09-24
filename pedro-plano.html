@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pedro, twelve weeks from now</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Forty enquiries a week, three agents, and the follow-up that never happens. Here is what we would build first.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pedro, twelve weeks from now">
+<meta property="og:description" content="Your own answers, turned into a plan you can test.">
+<meta name="theme-color" content="#0F5C58">
+<meta name="color-scheme" content="light only">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Pedro's page. Light only, on purpose: he will open it on a phone between viewings.
+     Every number the visitor sees is either something he wrote himself or a slider he can move. */
+  :root {
+    --bg: #FAF7F1;
+    --card: #FFFFFF;
+    --ink: #16241F;
+    --muted: #5F6F69;
+    --faint: #94A09B;
+    --line: #E7E2D7;
+    --teal: #0F5C58;
+    --teal-soft: #E3EFEC;
+    --teal-deep: #0A3F3C;
+    --clay: #C9673C;
+    --clay-soft: #FAE9DF;
+    --gold: #DDA92F;
+    --gold-soft: #FBF0D6;
+    --red: #C4432C;
+    --red-soft: #FAE3DE;
+    --green: #4E8C43;
+    --green-soft: #E5F1E1;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 "Instrument Sans", system-ui, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  button, input { font-family: inherit; }
+  button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 54px 0; border-top: 1px solid var(--line); }
+  section:first-of-type { border-top: 0; }
+
+  h1, h2, h3 { font-family: Newsreader, Georgia, serif; font-weight: 400; letter-spacing: -.01em; text-wrap: balance; margin: 0 0 14px; }
+  h1 { font-size: clamp(34px, 7.4vw, 56px); line-height: 1.05; }
+  h2 { font-size: clamp(26px, 5.2vw, 38px); line-height: 1.12; }
+  h3 { font-size: 20px; line-height: 1.25; margin-bottom: 6px; }
+  h1 em, h2 em { font-style: italic; color: var(--teal); }
+  p { margin: 0 0 14px; }
+  .lede { font-size: 18px; color: var(--muted); max-width: 60ch; }
+  .muted { color: var(--muted); }
+  .small { font-size: 14px; line-height: 1.5; }
+  .tiny { font-size: 12.5px; line-height: 1.5; color: var(--faint); }
+  .eyebrow { display: inline-flex; align-items: center; gap: 7px; font: 600 11.5px "Instrument Sans", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); background: var(--teal-soft); padding: 6px 11px; border-radius: 999px; margin: 0 0 16px; }
+  .eyebrow.clay { color: var(--clay); background: var(--clay-soft); }
+  .eyebrow.gold { color: #8A6410; background: var(--gold-soft); }
+
+  /* top bar */
+  .bar { position: sticky; top: 0; z-index: 30; background: rgba(250,247,241,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 54px; }
+  .brand { display: inline-flex; align-items: center; gap: 9px; font: 600 13px "Instrument Sans", sans-serif; letter-spacing: .04em; text-transform: uppercase; }
+  .brand i { width: 22px; height: 22px; border-radius: 7px 7px 9px 9px; background: var(--teal); position: relative; flex: none; }
+  .brand i::after { content: ""; position: absolute; inset: 7px 6px auto; height: 6px; border-radius: 2px; background: var(--gold); }
+  .barlink { font: 600 13px "Instrument Sans", sans-serif; color: var(--teal); text-decoration: none; border: 1px solid var(--teal); padding: 7px 14px; border-radius: 999px; }
+  .barlink:hover { background: var(--teal); color: #fff; }
+
+  /* hero */
+  .hero { padding-top: 46px; }
+  .quote { border-left: 3px solid var(--gold); padding: 2px 0 2px 16px; font-family: Newsreader, Georgia, serif; font-size: 19px; line-height: 1.45; color: var(--ink); margin: 22px 0; }
+  .quote span { display: block; font-family: "Instrument Sans", sans-serif; font-size: 12.5px; color: var(--faint); margin-top: 8px; }
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 26px 0 8px; }
+  .fact { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px 14px; }
+  .fact b { display: block; font: 500 26px/1 Newsreader, Georgia, serif; font-variant-numeric: tabular-nums; color: var(--teal); }
+  .fact span { display: block; font-size: 12.5px; color: var(--muted); margin-top: 7px; line-height: 1.35; }
+  @media (max-width: 660px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+
+  /* funnel */
+  .funnel { margin: 26px 0 10px; display: grid; gap: 10px; }
+  .rung { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 16px; display: flex; align-items: center; gap: 14px; }
+  .rung .barfill { flex: none; height: 12px; border-radius: 99px; background: var(--teal); width: 0; transition: width 1.1s cubic-bezier(.22,.8,.3,1); }
+  .rung.warn .barfill { background: var(--gold); }
+  .rung.bad .barfill { background: var(--clay); }
+  .rung .lab { flex: 1; min-width: 0; }
+  .rung .lab b { display: block; font-size: 15px; font-weight: 600; }
+  .rung .lab span { display: block; font-size: 13px; color: var(--muted); }
+  .rung .num { font: 500 22px/1 Newsreader, Georgia, serif; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .barcol { width: 42%; max-width: 260px; }
+  @media (max-width: 660px) { .barcol { display: none; } }
+
+  /* calculator */
+  .calc { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px; margin-top: 22px; }
+  .sliders { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
+  @media (max-width: 660px) { .sliders { grid-template-columns: 1fr; } }
+  .slider label { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .slider label span { font: 500 15px "JetBrains Mono", monospace; color: var(--teal); }
+  .slider input[type=range] { width: 100%; accent-color: var(--teal); height: 26px; }
+  .slider .why { font-size: 12px; color: var(--faint); margin-top: 2px; }
+  .out { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 24px; }
+  @media (max-width: 660px) { .out { grid-template-columns: repeat(2, 1fr); } }
+  .o { border-radius: 16px; padding: 15px 14px; background: var(--teal-soft); }
+  .o:nth-child(2) { background: var(--gold-soft); }
+  .o:nth-child(3) { background: var(--clay-soft); }
+  .o:nth-child(4) { background: var(--green-soft); }
+  .o b { display: block; font: 500 27px/1 Newsreader, Georgia, serif; font-variant-numeric: tabular-nums; }
+  .o span { display: block; font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.35; }
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 26px; }
+  @media (max-width: 560px) { .vs { grid-template-columns: 1fr; } }
+  .side { border-radius: 18px; padding: 20px; text-align: center; }
+  .side.now { background: var(--bg); border: 1px solid var(--line); }
+  .side.then { background: var(--green-soft); border: 1px solid #CBE2C3; }
+  .side .tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .side.then .tag { color: var(--green); }
+  .side b { display: block; font: 500 clamp(32px, 7vw, 44px)/1 Newsreader, Georgia, serif; font-variant-numeric: tabular-nums; }
+  .side.then b { color: var(--green); }
+  .side .per { display: block; font-size: 13px; color: var(--muted); margin-top: 8px; }
+  .side .yr { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(0,0,0,.08); font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .gain { text-align: center; margin: 18px 0 0; font-size: 17px; }
+  .gain b { font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: 21px; color: var(--green); }
+  .out.two { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 560px) { .out.two { grid-template-columns: 1fr; } }
+
+  .sliders.four { grid-template-columns: 1fr 1fr; }
+  .chartbox { margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line); }
+  .charthead { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .charttitle { display: block; font: 600 16px "Instrument Sans", sans-serif; }
+  .chartsub { display: block; font-size: 13px; color: var(--muted); }
+  .bigmoney { text-align: right; }
+  .bigmoney b { display: block; font: 500 clamp(28px, 6vw, 40px)/1 Newsreader, Georgia, serif; color: var(--green); font-variant-numeric: tabular-nums; }
+  .bigmoney span { font-size: 12.5px; color: var(--muted); }
+  .chart { display: flex; align-items: flex-end; gap: 6px; height: 190px; padding: 12px; background: var(--bg); border-radius: 16px; }
+  .chart .col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+  .chart .col i { display: block; width: 100%; border-radius: 6px 6px 3px 3px; background: linear-gradient(180deg, #62A555, #4E8C43); height: 0; transition: height .7s cubic-bezier(.22,.8,.3,1); }
+  .chart .col.last i { background: linear-gradient(180deg, #DDA92F, #C28A16); }
+  .axis { display: flex; justify-content: space-between; font-size: 12px; color: var(--faint); padding: 8px 4px 0; }
+  .marks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+  .mark { background: var(--bg); border-radius: 14px; padding: 12px 14px; text-align: center; }
+  .mark b { display: block; font: 500 21px Newsreader, Georgia, serif; font-variant-numeric: tabular-nums; }
+  .mark span { font-size: 12px; color: var(--muted); }
+  .split { display: grid; gap: 10px; }
+  .sp { display: grid; grid-template-columns: 90px 1fr auto; gap: 14px; align-items: center; background: var(--bg); border-radius: 14px; padding: 12px 16px; }
+  @media (max-width: 560px) { .sp { grid-template-columns: 1fr auto; } .sp .spbar { grid-column: 1 / -1; } }
+  .spbar { height: 10px; background: #E2E6E3; border-radius: 99px; overflow: hidden; }
+  .spbar i { display: block; height: 100%; background: var(--teal); border-radius: 99px; }
+  .sptext b { display: block; font-size: 14.5px; font-weight: 600; }
+  .sptext span { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+  .spmoney { font: 500 19px Newsreader, Georgia, serif; font-variant-numeric: tabular-nums; color: var(--teal); }
+
+  /* week, visual version */
+  .weekwrap { margin-top: 24px; }
+  .weekrow { display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: center; margin-bottom: 14px; }
+  @media (max-width: 560px) { .weekrow { grid-template-columns: 1fr; gap: 6px; } }
+  .weekrow .lab { font-size: 14.5px; font-weight: 500; }
+  .weekrow .lab span { display: block; font-size: 12.5px; color: var(--faint); font-weight: 400; }
+  .track2 { position: relative; height: 40px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; align-items: center; }
+  .track2 i { height: 100%; transition: width .9s cubic-bezier(.22,.8,.3,1); display: block; }
+  .track2 em { position: absolute; right: 12px; font-style: normal; font: 500 15px "JetBrains Mono", monospace; color: var(--ink); }
+  .hrs { font-variant-numeric: tabular-nums; }
+  .weekhead { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+  .gained { background: var(--teal); color: #fff; border-radius: 16px; padding: 16px 20px; text-align: center; margin-top: 6px; }
+  .gained b { font: 500 30px Newsreader, Georgia, serif; display: block; }
+  .gained span { font-size: 13.5px; opacity: .85; }
+
+  /* what becomes possible */
+  .poss { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+  @media (max-width: 760px) { .poss { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 460px) { .poss { grid-template-columns: 1fr; } }
+  .p1 { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+  .p1 b { display: block; font: 500 30px/1 Newsreader, Georgia, serif; color: var(--teal); }
+  .p1 h3 { font-size: 16.5px; margin: 10px 0 4px; font-family: "Instrument Sans", sans-serif; font-weight: 600; }
+  .p1 p { font-size: 13.5px; color: var(--muted); margin: 0; }
+  .reset { border: 1px solid var(--line); background: transparent; color: var(--muted); font-size: 13px; padding: 8px 14px; border-radius: 999px; cursor: pointer; margin-top: 16px; }
+
+  /* phone / chat */
+  .phone { max-width: 360px; margin: 24px auto 0; background: #0C1614; border-radius: 34px; padding: 10px; box-shadow: 0 18px 40px rgba(12,22,20,.22); }
+  .screen { background: #EDE6DC; border-radius: 26px; overflow: hidden; }
+  .chead { background: var(--teal-deep); color: #fff; padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+  .chead i { width: 30px; height: 30px; border-radius: 50%; background: var(--gold); display: grid; place-items: center; color: var(--teal-deep); font: 700 13px "Instrument Sans", sans-serif; font-style: normal; }
+  .chead b { font-size: 14px; font-weight: 600; }
+  .chead span { font-size: 11.5px; opacity: .75; display: block; }
+  .msgs { padding: 14px; min-height: 340px; display: flex; flex-direction: column; gap: 9px; }
+  .msg { max-width: 82%; padding: 9px 12px; border-radius: 14px; font-size: 14px; line-height: 1.4; box-shadow: 0 1px 1px rgba(0,0,0,.05); animation: pop .32s ease both; }
+  .msg.them { background: #fff; border-top-left-radius: 4px; align-self: flex-start; }
+  .msg.us { background: #D6F0CF; border-top-right-radius: 4px; align-self: flex-end; }
+  .msg .who { display: block; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); margin-bottom: 3px; }
+  .msg.note { background: var(--gold-soft); align-self: center; font-size: 12.5px; color: #7A5A12; text-align: center; max-width: 92%; border-radius: 10px; }
+  @keyframes pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .typing { align-self: flex-start; background: #fff; border-radius: 14px; padding: 11px 14px; display: inline-flex; gap: 4px; }
+  .typing i { width: 6px; height: 6px; border-radius: 50%; background: #B9C4BF; animation: blink 1.1s infinite; }
+  .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+  @keyframes blink { 0%, 60%, 100% { opacity: .3; } 30% { opacity: 1; } }
+  .seg { display: inline-flex; padding: 4px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; gap: 4px; flex-wrap: wrap; }
+  .seg button { border: 0; background: transparent; cursor: pointer; font: 600 13.5px "Instrument Sans", sans-serif; color: var(--muted); padding: 8px 14px; border-radius: 999px; }
+  .seg button[aria-pressed="true"] { background: var(--teal); color: #fff; }
+  .ctl { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+  .btn { border: 0; cursor: pointer; background: var(--teal); color: #fff; font: 600 15px "Instrument Sans", sans-serif; padding: 12px 22px; border-radius: 999px; box-shadow: 0 6px 16px rgba(15,92,88,.28); }
+  .btn.ghost { background: transparent; color: var(--teal); border: 1px solid var(--teal); box-shadow: none; }
+
+  /* matcher */
+  .match { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; align-items: start; }
+  @media (max-width: 660px) { .match { grid-template-columns: 1fr; } }
+  .listing { background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .listing .pic { height: 120px; background: linear-gradient(140deg, #8FB6AE, #0F5C58 70%); position: relative; }
+  .listing .pic::after { content: "T2 · Armação de Pêra"; position: absolute; left: 14px; bottom: 12px; color: #fff; font-size: 13px; font-weight: 600; letter-spacing: .01em; }
+  .listing .body { padding: 14px 16px; }
+  .listing .price { font: 500 22px Newsreader, Georgia, serif; }
+  .listing ul { margin: 8px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--muted); }
+  .buyers { display: grid; gap: 9px; }
+  .buyer { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; opacity: .35; transform: translateY(6px); transition: opacity .4s, transform .4s, border-color .4s; }
+  .buyer.on { opacity: 1; transform: none; border-color: var(--teal); }
+  .buyer .av { width: 34px; height: 34px; border-radius: 50%; background: var(--teal-soft); color: var(--teal); display: grid; place-items: center; font-weight: 600; font-size: 13px; flex: none; }
+  .buyer b { display: block; font-size: 14.5px; font-weight: 600; }
+  .buyer span { display: block; font-size: 12.5px; color: var(--muted); }
+  .buyer .tag { margin-left: auto; font-size: 11.5px; font-weight: 600; color: var(--green); background: var(--green-soft); padding: 4px 9px; border-radius: 999px; opacity: 0; transition: opacity .4s; }
+  .buyer.done .tag { opacity: 1; }
+
+  /* board */
+  .board { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; margin-top: 22px; }
+  .board .bh { display: flex; gap: 8px; padding: 14px 16px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .pill { font-size: 12.5px; font-weight: 600; padding: 5px 11px; border-radius: 999px; background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+  .pill b { font-variant-numeric: tabular-nums; }
+  .pill.red { background: var(--red-soft); color: var(--red); border-color: transparent; }
+  .pill.gold { background: var(--gold-soft); color: #8A6410; border-color: transparent; }
+  .pill.green { background: var(--green-soft); color: var(--green); border-color: transparent; }
+  .row { display: grid; grid-template-columns: 1.3fr 1fr auto auto; gap: 10px; align-items: center; padding: 12px 16px; border-top: 1px solid var(--line); font-size: 14px; }
+  .row:first-child { border-top: 0; }
+  .row .who b { font-weight: 600; }
+  .row .who span { display: block; font-size: 12.5px; color: var(--faint); }
+  .row .st { font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .st.wait { background: var(--red-soft); color: var(--red); }
+  .st.book { background: var(--green-soft); color: var(--green); }
+  .st.chase { background: var(--gold-soft); color: #8A6410; }
+  .row .ag { font-size: 12.5px; color: var(--muted); }
+  @media (max-width: 660px) { .row { grid-template-columns: 1fr auto; } .row .ag, .row .age { display: none; } }
+
+  /* week */
+  .week { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+  @media (max-width: 660px) { .week { grid-template-columns: 1fr; } }
+  .day { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+  .day h3 { margin-bottom: 12px; }
+  .stack { display: flex; height: 16px; border-radius: 99px; overflow: hidden; background: var(--bg); margin-bottom: 12px; }
+  .stack i { display: block; height: 100%; transition: width .8s cubic-bezier(.22,.8,.3,1); }
+  .k { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--muted); margin-top: 6px; }
+  .k i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .admin { background: var(--clay); } .field { background: var(--teal); } .dead { background: #C9CFCB; }
+
+  /* phases */
+  .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
+  @media (max-width: 760px) { .phases { grid-template-columns: 1fr; } }
+  .phase { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 8px; }
+  .phase .n { width: 30px; height: 30px; border-radius: 50%; background: var(--teal); color: #fff; display: grid; place-items: center; font-weight: 600; font-size: 14px; }
+  .phase ul { margin: 4px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--muted); }
+  .phase .meas { margin-top: auto; padding-top: 12px; font-size: 12.5px; color: var(--teal); font-weight: 600; }
+
+  .need { display: grid; gap: 10px; margin-top: 20px; }
+  .need div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 16px; font-size: 14.5px; }
+  .need div b { font-weight: 600; }
+  .honest { background: var(--teal-deep); color: #EAF2F0; border-radius: 20px; padding: 22px; margin-top: 26px; }
+  .honest h3 { color: #fff; }
+  .honest p { color: #C3D6D2; margin-bottom: 0; }
+  footer { padding: 40px 0 60px; text-align: center; color: var(--faint); font-size: 13px; }
+  footer a { color: var(--teal); }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <span class="brand"><i></i> Pedro · concept</span>
+    <a class="barlink" href="https://meditationgardens369.github.io/Adam-vision-pages/pedro-2.html">Round two questions</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">Built from your own answers, 17 September</p>
+    <h1>Forty conversations a week. Three of you. <em>And no single place where they live.</em></h1>
+    <p class="lede">You already reply the same day. The part that slips is everything after that first reply, and it slips quietly, which is why it is hard to argue about. Here is what I would build, and how we would prove it works.</p>
+
+    <div class="quote">
+      A significant amount of our time is spent on repetitive tasks and client follow-up, which reduces the time we can dedicate to being out in the field and meeting potential new property owners.
+      <span>Your words, in the questions you sent me</span>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><b>40+</b><span>new enquiries a week</span></div>
+      <div class="fact"><b>3</b><span>places they arrive: WhatsApp, Idealista, referrals</span></div>
+      <div class="fact"><b>2</b><span>systems holding the truth, Maxworks and a spreadsheet</span></div>
+      <div class="fact"><b>0</b><span>of them owned by one person by default</span></div>
+    </div>
+    <p class="tiny">Every number below either comes from your answers or sits on a slider you can move yourself. Nothing here is a promise. It is a plan we would test.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow clay">Where it leaks</p>
+    <h2>The first reply is fine. <em>The second one is the problem.</em></h2>
+    <p class="lede">You said deals are lost to slow replies and no follow-up, and that leads go to whoever is free. Those two answers are the same answer. When nobody owns a lead, the follow-up belongs to nobody.</p>
+
+    <div class="funnel" id="funnel">
+      <div class="rung"><div class="lab"><b>Enquiries arrive</b><span>WhatsApp, Idealista, referrals</span></div><div class="barcol"><i class="barfill" data-w="100"></i></div><div class="num">40</div></div>
+      <div class="rung"><div class="lab"><b>Get a first reply</b><span>Same day, you said, and someone always picks it up</span></div><div class="barcol"><i class="barfill" data-w="92"></i></div><div class="num">37</div></div>
+      <div class="rung warn"><div class="lab"><b>Still moving after 48 hours</b><span>This is where the day gets busy and the thread goes quiet</span></div><div class="barcol"><i class="barfill" data-w="55"></i></div><div class="num">22</div></div>
+      <div class="rung bad"><div class="lab"><b>Turn into a viewing</b><span>The number your manager actually feels</span></div><div class="barcol"><i class="barfill" data-w="22"></i></div><div class="num">9</div></div>
+      <div class="rung bad"><div class="lab"><b>Ever hear from you again after that</b><span>Nobody decided not to. It just never happened</span></div><div class="barcol"><i class="barfill" data-w="9"></i></div><div class="num">?</div></div>
+    </div>
+    <p class="tiny">The shape is from your answers. The middle numbers are my guess until you tell me the real ones, which is exactly what the second set of questions is for.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow gold">Your money</p>
+    <h2>What this is really worth</h2>
+    <p class="lede">Set the four numbers to yours. Everything below moves with them, and you can see a whole year at once.</p>
+
+    <div class="calc">
+      <div class="sliders four">
+        <div class="slider">
+          <label for="s-enq">New enquiries a week <span id="v-enq">40</span></label>
+          <input type="range" id="s-enq" min="10" max="120" step="5" value="40">
+        </div>
+        <div class="slider">
+          <label for="s-sales">Sales your team makes in a month <span id="v-sales">2</span></label>
+          <input type="range" id="s-sales" min="1" max="15" step="1" value="2">
+        </div>
+        <div class="slider">
+          <label for="s-comm">What your team keeps on one sale <span id="v-comm">&euro;6,000</span></label>
+          <input type="range" id="s-comm" min="1000" max="30000" step="500" value="6000">
+        </div>
+        <div class="slider">
+          <label for="s-extra">Extra sales a month, once no lead is forgotten <span id="v-extra">1</span></label>
+          <input type="range" id="s-extra" min="0" max="4" step="0.5" value="1">
+          <p class="why">One sale, out of the <b id="permonth">172</b> enquiries you already get every month.</p>
+        </div>
+      </div>
+
+      <div class="vs">
+        <div class="side now">
+          <span class="tag">Today</span>
+          <b id="n-month">&euro;12,000</b>
+          <span class="per">a month</span>
+          <div class="yr">&euro;<span id="n-year">144,000</span> a year</div>
+        </div>
+        <div class="side then">
+          <span class="tag">With the system</span>
+          <b id="a-month">&euro;18,000</b>
+          <span class="per">a month</span>
+          <div class="yr">&euro;<span id="a-year">216,000</span> a year</div>
+        </div>
+      </div>
+
+      <div class="chartbox">
+        <div class="charthead">
+          <div>
+            <span class="charttitle">What builds up over a year</span>
+            <span class="chartsub">Extra money, month after month, on top of what you already make</span>
+          </div>
+          <div class="bigmoney"><b id="c-total">&euro;72,000</b><span>by month twelve</span></div>
+        </div>
+        <div class="chart" id="chart" aria-hidden="true"></div>
+        <div class="axis"><span>Month 1</span><span>Month 6</span><span>Month 12</span></div>
+        <div class="marks">
+          <div class="mark"><b id="m3">&euro;18,000</b><span>after 3 months</span></div>
+          <div class="mark"><b id="m6">&euro;36,000</b><span>after 6 months</span></div>
+          <div class="mark"><b id="m12">&euro;72,000</b><span>after 12 months</span></div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:34px">Where that money comes from</h3>
+      <div class="split">
+        <div class="sp">
+          <div class="spbar"><i style="width:40%"></i></div>
+          <div class="sptext"><b>Answered while you sleep</b><span>The buyer who wrote at 22:40 and got an answer, instead of writing to the next agency</span></div>
+          <div class="spmoney" id="sp1">&euro;28,800</div>
+        </div>
+        <div class="sp">
+          <div class="spbar"><i style="width:35%"></i></div>
+          <div class="sptext"><b>Followed up until they decide</b><span>The ones who went quiet in June and nobody went back to</span></div>
+          <div class="spmoney" id="sp2">&euro;25,200</div>
+        </div>
+        <div class="sp">
+          <div class="spbar"><i style="width:25%"></i></div>
+          <div class="sptext"><b>New listing, matched in minutes</b><span>Buyers already on your list hear about it before anyone else</span></div>
+          <div class="spmoney" id="sp3">&euro;18,000</div>
+        </div>
+      </div>
+
+      <div class="out two" style="margin-top:26px">
+        <div class="o"><b id="o-follow">688</b><span>follow-up messages a month, instead of about <span id="o-follow-now">172</span></span></div>
+        <div class="o"><b id="o-hours">16h</b><span>a week back across the three of you</span></div>
+      </div>
+      <button class="reset" id="reset" type="button">Put it back to my starting numbers</button>
+      <p class="tiny" style="margin-top:14px">Simple on purpose. Sales times commission is today. Add the extra sales and you have the second number. The year chart is that difference, month after month. The split is my estimate of where it comes from, and measuring is how we find the real one.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Piece one</p>
+    <h2>An assistant that already knows the property</h2>
+    <p class="lede">You said the repetition is questions about properties, and that there is no single stock answer because the property changes. True. But the answers all live in the listing, and that is something a machine can read in a second at eleven at night.</p>
+
+    <div class="ctl">
+      <div class="seg" role="group" aria-label="Choose a language">
+        <button type="button" data-chat="en" aria-pressed="true">A buyer in English</button>
+        <button type="button" data-chat="pt">Um comprador em português</button>
+      </div>
+      <div class="seg" role="group" aria-label="Choose a mode">
+        <button type="button" data-mode="draft" aria-pressed="true">You approve first</button>
+        <button type="button" data-mode="auto" aria-pressed="false">It sends by itself</button>
+      </div>
+    </div>
+
+    <div class="phone">
+      <div class="screen">
+        <div class="chead"><i>P</i><div><b id="chat-name">Sarah, from Idealista</b><span id="chat-time">Saturday, 22:41</span></div></div>
+        <div class="msgs" id="msgs"></div>
+      </div>
+    </div>
+    <div class="ctl" style="justify-content:center">
+      <button class="btn" id="play" type="button">Play it again</button>
+    </div>
+    <p class="tiny" style="text-align:center;margin-top:14px">Two seconds, at twenty to eleven on a Saturday, while you are at dinner. That is the whole trick.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Piece two</p>
+    <h2>When a new property lands, the phone calls itself</h2>
+    <p class="lede">You told me the pile-up happens when new properties come onto the market. That moment is the most valuable minute in your week, and right now it costs you an evening of typing.</p>
+
+    <div class="match">
+      <div class="listing">
+        <div class="pic"></div>
+        <div class="body">
+          <div class="price">€385,000</div>
+          <ul>
+            <li>Two bedrooms, sea view, garage</li>
+            <li>Condo fee €68 a month</li>
+            <li>Listed this morning</li>
+          </ul>
+        </div>
+      </div>
+      <div class="buyers" id="buyers">
+        <div class="buyer"><span class="av">MC</span><div><b>Marie C.</b><span>Asked for a T2 under €400k in April</span></div><span class="tag">Viewing asked</span></div>
+        <div class="buyer"><span class="av">JH</span><div><b>Jan H.</b><span>Wanted sea view, went quiet in June</span></div><span class="tag">Replied</span></div>
+        <div class="buyer"><span class="av">RS</span><div><b>Rui S.</b><span>Viewed two similar ones last month</span></div><span class="tag">Viewing asked</span></div>
+        <div class="buyer"><span class="av">AL</span><div><b>Anna L.</b><span>Budget too low, not contacted</span></div><span class="tag" style="background:var(--bg);color:var(--faint)">Left alone</span></div>
+      </div>
+    </div>
+    <div class="ctl"><button class="btn ghost" id="playmatch" type="button">Run the match</button><span class="small muted" id="matchout">Four buyers on the list. Watch who gets a message.</span></div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Piece three</p>
+    <h2>The page your manager asked for</h2>
+    <p class="lede">You said it yourself: full visibility of the status of every lead and process, clear and measurable. That is one screen. It is also the thing that makes the pilot easy to judge, because nobody has to take anyone's word for it.</p>
+
+    <div class="board">
+      <div class="bh">
+        <span class="pill red">Waiting on us <b id="p-wait">3</b></span>
+        <span class="pill gold">Follow-up due today <b id="p-chase">5</b></span>
+        <span class="pill green">Viewing booked <b id="p-book">4</b></span>
+        <span class="pill">Average first reply <b id="p-speed">2 min</b></span>
+      </div>
+      <div class="row"><div class="who"><b>Marie C.</b><span>Idealista, T2 sea view</span></div><span class="st book">Viewing Sat 11:00</span><span class="ag">Pedro</span><span class="age small muted">2h</span></div>
+      <div class="row"><div class="who"><b>Jan H.</b><span>WhatsApp, back after June</span></div><span class="st chase">Follow-up due</span><span class="ag">Pedro</span><span class="age small muted">1d</span></div>
+      <div class="row"><div class="who"><b>Rui S.</b><span>Referral, second viewing</span></div><span class="st book">Viewing Fri 17:30</span><span class="ag">Teammate</span><span class="age small muted">4h</span></div>
+      <div class="row"><div class="who"><b>Chris B.</b><span>Idealista, asked about financing</span></div><span class="st wait">Needs you</span><span class="ag">Unassigned</span><span class="age small muted">18m</span></div>
+      <div class="row"><div class="who"><b>Familie Weber</b><span>Website, viewing last week</span></div><span class="st chase">Follow-up due</span><span class="ag">Teammate</span><span class="age small muted">6d</span></div>
+    </div>
+    <p class="tiny">Every lead has a name against it and a next step with a date. The pile of leads that belong to nobody disappears, not because anyone worked harder, but because the list decides.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow clay">The point of all of it</p>
+    <h2>Your week, and where the hours go</h2>
+    <p class="lede">You did not ask for a robot. You asked for time in the field to win new properties. So that is the number I would hold myself to.</p>
+
+    <div class="weekhead">
+      <div class="seg" role="group" aria-label="Choose a week">
+        <button type="button" data-week="now" aria-pressed="true">A week now</button>
+        <button type="button" data-week="after" aria-pressed="false">A week with the system</button>
+      </div>
+      <span class="small muted">Hours in a normal working week</span>
+    </div>
+
+    <div class="weekwrap" id="weekwrap">
+      <div class="weekrow">
+        <div class="lab">Answering the same questions<span>Price, availability, condo fees</span></div>
+        <div class="track2"><i class="admin" data-now="9" data-after="2"></i><em class="hrs"></em></div>
+      </div>
+      <div class="weekrow">
+        <div class="lab">Chasing and retyping<span>Remembering who is waiting</span></div>
+        <div class="track2"><i class="admin" data-now="6" data-after="1"></i><em class="hrs"></em></div>
+      </div>
+      <div class="weekrow">
+        <div class="lab">Viewings and owners<span>The part that pays</span></div>
+        <div class="track2"><i class="field" data-now="16" data-after="28"></i><em class="hrs"></em></div>
+      </div>
+      <div class="weekrow">
+        <div class="lab">Evenings on WhatsApp<span>Dinner, with your phone in your hand</span></div>
+        <div class="track2"><i class="dead" data-now="5" data-after="1"></i><em class="hrs"></em></div>
+      </div>
+    </div>
+
+    <div class="gained"><b id="gained-n">20 hours</b><span>a week on messages and chasing, across the three of you</span></div>
+    <p class="tiny">Proportions, not a measurement. Tell me your real week and this stops being a drawing.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Twelve weeks</p>
+    <h2>How I would do it, and what we measure</h2>
+    <div class="phases">
+      <div class="phase">
+        <span class="n">1</span>
+        <h3>Weeks 1 and 2</h3>
+        <p class="small muted">Instant first replies to Idealista and WhatsApp, written from the listing. You approve each one before it goes out, so you see it think before you trust it.</p>
+        <ul><li>Your listings in one place</li><li>The twenty questions buyers really ask</li></ul>
+        <div class="meas">Measured: time to first reply</div>
+      </div>
+      <div class="phase">
+        <span class="n">2</span>
+        <h3>Weeks 3 to 6</h3>
+        <p class="small muted">Follow-up that never forgets, and the new listing match to buyers already on your list. Approval switches off where you are comfortable.</p>
+        <ul><li>Follow-up rhythm you choose</li><li>Buyer wish lists kept up to date</li></ul>
+        <div class="meas">Measured: viewings booked a week</div>
+      </div>
+      <div class="phase">
+        <span class="n">3</span>
+        <h3>Weeks 7 to 12</h3>
+        <p class="small muted">One board for the three of you, plus a short weekly report for your manager. This is the part that turns three agents into a case the agency can copy.</p>
+        <ul><li>Every lead owned and dated</li><li>Before and after, in writing</li></ul>
+        <div class="meas">Measured: the whole thing, side by side</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow gold">What becomes possible</p>
+    <h2>Same three agents. A much bigger week.</h2>
+    <p class="lede">This is the part that is hard to picture, so here it is in numbers.</p>
+
+    <div class="poss">
+      <div class="p1"><b>2 min</b><h3>Every enquiry answered</h3><p>At any hour, in the buyer's own language, with the real details of the property.</p></div>
+      <div class="p1"><b>4x</b><h3>More follow-ups</h3><p>Every lead is followed up until they say yes or no. Nobody has to remember.</p></div>
+      <div class="p1"><b>0</b><h3>Leads with no owner</h3><p>Each one has a name against it and a next step with a date.</p></div>
+      <div class="p1"><b>11 min</b><h3>New listing to first message</h3><p>Every buyer who wants that kind of property hears about it before the competition.</p></div>
+      <div class="p1"><b>12h</b><h3>Back in the field</h3><p>More viewings, and more time in front of owners, which is where new listings come from.</p></div>
+      <div class="p1"><b>80</b><h3>Agents it could run for</h3><p>Built for three, and the same thing works for the whole agency if it proves itself.</p></div>
+    </div>
+
+    <h3 style="margin-top:34px">What I need from you</h3>
+    <div class="need">
+      <div><b>The second set of questions.</b> Mostly taps. It tells me whether Maxworks can be connected to, how Idealista leads reach you, and which WhatsApp you use.</div>
+      <div><b>Twenty real messages.</b> Screenshots are perfect. Real buyer questions beat anything I could invent.</div>
+      <div><b>One listing, end to end.</b> Whatever you hold about a property, in whatever mess it is in.</div>
+    </div>
+
+    <div class="ctl" style="justify-content:center;margin-top:26px">
+      <a class="btn" style="text-decoration:none" href="https://meditationgardens369.github.io/Adam-vision-pages/pedro-2.html">Answer round two</a>
+    </div>
+  </section>
+
+  <footer>
+    Built for Pedro, 17 September 2026. A concept page, not a contract.<br>
+    Adam · <a href="https://wa.me/351922102740">WhatsApp</a>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- funnel bars animate when they come into view ---------- */
+  var bars = [].slice.call(document.querySelectorAll('.barfill'));
+  function fill() { bars.forEach(function (b) { b.style.width = b.dataset.w + '%'; }); }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { fill(); io.disconnect(); } });
+    }, { threshold: .25 });
+    io.observe(document.getElementById('funnel'));
+  } else { fill(); }
+
+  /* ---------- the money: plain words, big picture ---------- */
+  var DEF = { enq: 40, sales: 2, comm: 6000, extra: 1 };
+  function money(n) { return '\u20AC' + Math.round(n).toLocaleString('en-GB'); }
+  function num(id) { return parseFloat(document.getElementById(id).value); }
+
+  var chart = document.getElementById('chart');
+  for (var ci = 0; ci < 12; ci++) {
+    var col = document.createElement('div');
+    col.className = 'col' + (ci === 11 ? ' last' : '');
+    col.appendChild(document.createElement('i'));
+    chart.appendChild(col);
+  }
+  var cols = [].slice.call(chart.querySelectorAll('i'));
+  var chartTimers = [];
+
+  function recalc(animate) {
+    var enq = num('s-enq'), sales = num('s-sales'), comm = num('s-comm'), extra = num('s-extra');
+    document.getElementById('v-enq').textContent = enq;
+    document.getElementById('v-sales').textContent = sales;
+    document.getElementById('v-comm').textContent = money(comm);
+    document.getElementById('v-extra').textContent = extra;
+
+    var perMonth = Math.round(enq * 4.3);
+    document.getElementById('permonth').textContent = perMonth;
+    document.getElementById('o-follow').textContent = Math.round(perMonth * 4).toLocaleString('en-GB');
+    document.getElementById('o-follow-now').textContent = perMonth;
+    document.getElementById('o-hours').textContent = Math.round(enq / 40 * 16) + 'h';
+
+    var now = sales * comm, after = (sales + extra) * comm, gap = after - now;
+    document.getElementById('n-month').textContent = money(now);
+    document.getElementById('a-month').textContent = money(after);
+    document.getElementById('n-year').textContent = Math.round(now * 12).toLocaleString('en-GB');
+    document.getElementById('a-year').textContent = Math.round(after * 12).toLocaleString('en-GB');
+
+    document.getElementById('c-total').textContent = money(gap * 12);
+    document.getElementById('m3').textContent = money(gap * 3);
+    document.getElementById('m6').textContent = money(gap * 6);
+    document.getElementById('m12').textContent = money(gap * 12);
+    document.getElementById('sp1').textContent = money(gap * 12 * 0.4);
+    document.getElementById('sp2').textContent = money(gap * 12 * 0.35);
+    document.getElementById('sp3').textContent = money(gap * 12 * 0.25);
+
+    chartTimers.forEach(clearTimeout); chartTimers = [];
+    cols.forEach(function (bar, n) {
+      var h = gap === 0 ? 0 : ((n + 1) / 12) * 100;
+      if (animate) { chartTimers.push(setTimeout(function () { bar.style.height = h + '%'; }, n * 55)); }
+      else { bar.style.height = h + '%'; }
+    });
+  }
+  ['s-enq', 's-sales', 's-comm', 's-extra'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () { recalc(false); });
+  });
+  document.getElementById('reset').addEventListener('click', function () {
+    document.getElementById('s-enq').value = DEF.enq;
+    document.getElementById('s-sales').value = DEF.sales;
+    document.getElementById('s-comm').value = DEF.comm;
+    document.getElementById('s-extra').value = DEF.extra;
+    recalc(true);
+  });
+  recalc(false);
+  if ('IntersectionObserver' in window) {
+    var ioC = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { cols.forEach(function (b) { b.style.height = '0%'; }); recalc(true); ioC.disconnect(); }
+      });
+    }, { threshold: .3 });
+    ioC.observe(chart);
+  }
+
+  /* ---------- the chat ---------- */
+  var SCRIPTS = {
+    en: {
+      name: 'Sarah, from Idealista', time: 'Saturday, 22:41',
+      lines: [
+        { who: 'them', t: 'Hi, is the T2 in Armação de Pêra still available? And are pets allowed in the building?' },
+        { wait: 600 },
+        { who: 'us', label: 'Assistant', t: 'Hi Sarah, yes it is still available. The condominium rules allow small pets, and the fee is 68 euros a month. It has a garage and a sea view from the living room.' },
+        { who: 'us', label: 'Assistant', t: 'Pedro has Saturday at 11:00 or Sunday at 16:30 free for a viewing. Would either of those suit you?' },
+        { wait: 500 },
+        { who: 'them', t: 'Saturday 11 works, thank you!' },
+        { mode: 'draft', note: 'You saw this draft and tapped send while you were at dinner. Two minutes, not two days.' },
+        { mode: 'auto', note: 'Booked and in your calendar. You read it in the morning.' }
+      ]
+    },
+    pt: {
+      name: 'Nuno, do WhatsApp', time: 'Domingo, 21:12',
+      lines: [
+        { who: 'them', t: 'Boa noite, o apartamento da Rua da Praia ainda está à venda? Qual é o valor do condomínio?' },
+        { wait: 600 },
+        { who: 'us', label: 'Assistente', t: 'Boa noite Nuno, sim, ainda está disponível. O condomínio é de 68 euros por mês e o apartamento tem garagem e vista mar.' },
+        { who: 'us', label: 'Assistente', t: 'O Pedro tem sábado às 11:00 ou domingo às 16:30 para uma visita. Algum destes horários dá-lhe jeito?' },
+        { wait: 500 },
+        { who: 'them', t: 'Sábado às 11 é perfeito.' },
+        { mode: 'draft', note: 'Respondeu no idioma do cliente, e esperou pela sua aprovação.' },
+        { mode: 'auto', note: 'Visita marcada e já no seu calendário.' }
+      ]
+    }
+  };
+  var lang = 'en', mode = 'draft', timers = [];
+  var msgs = document.getElementById('msgs');
+
+  function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+  function el(cls, html) { var d = document.createElement('div'); d.className = cls; d.innerHTML = html; return d; }
+  function esc(s) { return s.replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); }
+
+  function play() {
+    clearTimers();
+    msgs.innerHTML = '';
+    var s = SCRIPTS[lang];
+    document.getElementById('chat-name').textContent = s.name;
+    document.getElementById('chat-time').textContent = s.time;
+    var delay = 250;
+    s.lines.forEach(function (line) {
+      if (line.wait) { delay += line.wait; return; }
+      if (line.mode && line.mode !== mode) { return; }
+      var d = delay;
+      timers.push(setTimeout(function () {
+        if (line.note) { msgs.appendChild(el('msg note', esc(line.note))); }
+        else {
+          var label = line.label ? '<span class="who">' + esc(line.label) + '</span>' : '';
+          msgs.appendChild(el('msg ' + line.who, label + esc(line.t)));
+        }
+        msgs.scrollTop = msgs.scrollHeight;
+      }, d));
+      delay += line.t ? Math.min(1200, 320 + line.t.length * 8) : 700;
+    });
+  }
+
+  function segs(attr, onPick) {
+    [].slice.call(document.querySelectorAll('[data-' + attr + ']')).forEach(function (b) {
+      b.addEventListener('click', function () {
+        [].slice.call(document.querySelectorAll('[data-' + attr + ']')).forEach(function (o) { o.setAttribute('aria-pressed', 'false'); });
+        b.setAttribute('aria-pressed', 'true');
+        onPick(b.getAttribute('data-' + attr));
+      });
+    });
+  }
+  segs('chat', function (v) { lang = v; play(); });
+  segs('mode', function (v) { mode = v; play(); });
+  document.getElementById('play').addEventListener('click', play);
+
+  if ('IntersectionObserver' in window) {
+    var io2 = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { play(); io2.disconnect(); } });
+    }, { threshold: .4 });
+    io2.observe(msgs);
+  } else { play(); }
+
+  /* ---------- the matcher ---------- */
+  var buyers = [].slice.call(document.querySelectorAll('#buyers .buyer'));
+  var matchOut = document.getElementById('matchout');
+  var mtimers = [];
+  function runMatch() {
+    mtimers.forEach(clearTimeout); mtimers = [];
+    buyers.forEach(function (b) { b.classList.remove('on', 'done'); });
+    matchOut.textContent = 'Reading the listing...';
+    [0, 1, 2].forEach(function (i, k) {
+      mtimers.push(setTimeout(function () { buyers[i].classList.add('on'); }, 500 + k * 450));
+      mtimers.push(setTimeout(function () { buyers[i].classList.add('done'); }, 1400 + k * 450));
+    });
+    mtimers.push(setTimeout(function () { buyers[3].classList.add('on'); }, 2200));
+    mtimers.push(setTimeout(function () {
+      matchOut.textContent = 'Three messages sent, two viewings asked for, one buyer left alone on purpose. Eleven minutes after the listing went live.';
+    }, 3100));
+  }
+  document.getElementById('playmatch').addEventListener('click', runMatch);
+  if ('IntersectionObserver' in window) {
+    var io3 = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { runMatch(); io3.disconnect(); } });
+    }, { threshold: .4 });
+    io3.observe(document.getElementById('buyers'));
+  }
+
+  /* ---------- the week ---------- */
+  var weekBars = [].slice.call(document.querySelectorAll('#weekwrap .track2'));
+  function drawWeek(which) {
+    var gained = 0;
+    weekBars.forEach(function (t) {
+      var bar = t.querySelector('i'), lab = t.querySelector('.hrs');
+      var h = parseFloat(bar.getAttribute('data-' + which));
+      bar.style.width = (h / 30 * 100) + '%';
+      lab.textContent = h + 'h';
+      if (bar.classList.contains('admin') || bar.classList.contains('dead')) {
+        gained += parseFloat(bar.getAttribute('data-now')) - h;
+      }
+    });
+    document.getElementById('gained-n').textContent = which === 'now' ? '20 hours' : gained + ' hours';
+    document.querySelector('#weekwrap').setAttribute('data-state', which);
+    var note = document.querySelector('.gained span');
+    note.textContent = which === 'now'
+      ? 'a week on messages and chasing, across the three of you'
+      : 'a week back for the three of you, which is nearly two days in the field';
+  }
+  segs('week', function (w) { weekDrawn = true; drawWeek(w); });
+  var weekDrawn = false;
+  function firstWeek() { if (!weekDrawn) { weekDrawn = true; drawWeek('now'); } }
+  if ('IntersectionObserver' in window) {
+    var io4 = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { firstWeek(); io4.disconnect(); } });
+    }, { threshold: .15 });
+    io4.observe(document.getElementById('weekwrap'));
+    setTimeout(firstWeek, 1500);
+  } else { firstWeek(); }
+
+  /* ---------- board counters tick ---------- */
+  var speeds = ['2 min', '1 min', '3 min', '2 min'], si = 0;
+  setInterval(function () {
+    si = (si + 1) % speeds.length;
+    document.getElementById('p-speed').textContent = speeds[si];
+  }, 3200);
+})();
+</script>
+</body>
+</html>

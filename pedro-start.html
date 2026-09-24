@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What it costs to start</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Three months, what each of you gets, and the only money that changes hands.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What it costs to start">
+<meta property="og:description" content="Three months, and about the price of a tank of fuel a month for the four of you.">
+<meta name="theme-color" content="#0F5C58">
+<meta name="color-scheme" content="light only">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+  /* Shown to Pedro and his three colleagues. Same world as pedro-plano.html:
+     teal, sand, clay, gold. Light only, phone first. Adam: the one thing to set
+     before sending is the line under "after the three months". */
+  :root {
+    --bg: #FAF7F1; --card: #FFFFFF; --ink: #16241F; --muted: #5F6F69; --faint: #94A09B;
+    --line: #E7E2D7; --teal: #0F5C58; --teal-soft: #E3EFEC; --teal-deep: #0A3F3C;
+    --clay: #C9673C; --clay-soft: #FAE9DF; --gold: #DDA92F; --gold-soft: #FBF0D6;
+    --green: #4E8C43; --green-soft: #E5F1E1;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 "Instrument Sans", system-ui, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 46px 0; border-top: 1px solid var(--line); }
+  section:first-of-type { border-top: 0; padding-top: 40px; }
+  h1, h2, h3 { font-family: Newsreader, Georgia, serif; font-weight: 400; letter-spacing: -.01em; text-wrap: balance; margin: 0 0 14px; }
+  h1 { font-size: clamp(32px, 7vw, 50px); line-height: 1.06; }
+  h2 { font-size: clamp(24px, 5vw, 34px); line-height: 1.14; }
+  h3 { font-size: 19px; margin-bottom: 6px; }
+  h1 em, h2 em { font-style: italic; color: var(--teal); }
+  p { margin: 0 0 14px; }
+  .lede { font-size: 18px; color: var(--muted); max-width: 60ch; }
+  .small { font-size: 14px; line-height: 1.5; }
+  .tiny { font-size: 12.5px; line-height: 1.5; color: var(--faint); }
+  .eyebrow { display: inline-flex; font: 600 11.5px "Instrument Sans", sans-serif; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--teal); background: var(--teal-soft); padding: 6px 11px; border-radius: 999px; margin: 0 0 16px; }
+  .eyebrow.gold { color: #8A6410; background: var(--gold-soft); }
+  .eyebrow.clay { color: var(--clay); background: var(--clay-soft); }
+
+  .price { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 26px; margin-top: 24px; text-align: center; }
+  .price b { display: block; font: 500 clamp(44px, 12vw, 76px)/1 Newsreader, Georgia, serif; color: var(--teal); }
+  .price .per { font-size: 17px; color: var(--muted); margin-top: 10px; }
+  .price .note { font-size: 14px; color: var(--faint); margin-top: 14px; }
+  .items { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin-top: 22px; }
+  .item { background: var(--card); padding: 14px 18px; display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
+  .item span { font-size: 14.5px; }
+  .item span small { display: block; color: var(--muted); font-size: 12.5px; }
+  .item b { font-family: Newsreader, Georgia, serif; font-weight: 500; font-size: 17px; white-space: nowrap; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+  @media (max-width: 620px) { .cols { grid-template-columns: 1fr; } }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+  .card h3 { font-family: "Instrument Sans", sans-serif; font-weight: 600; font-size: 16.5px; }
+  .card p { margin: 0; font-size: 14px; color: var(--muted); }
+  .steps { display: grid; gap: 10px; margin-top: 20px; }
+  .stp { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; display: grid; grid-template-columns: 78px 1fr; gap: 16px; align-items: start; }
+  @media (max-width: 620px) { .stp { grid-template-columns: 1fr; gap: 6px; } }
+  .stp .wk { font: 600 12.5px "Instrument Sans", sans-serif; color: var(--teal); text-transform: uppercase; letter-spacing: .08em; padding-top: 2px; }
+  .stp b { display: block; font-size: 15.5px; }
+  .stp span { font-size: 14px; color: var(--muted); }
+  ul.plain { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 10px; }
+  ul.plain li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 16px; font-size: 15px; }
+  ul.plain li b { font-weight: 600; }
+  .later { background: var(--teal-deep); color: #EAF2F0; border-radius: 20px; padding: 24px; margin-top: 22px; }
+  .later h3 { color: #fff; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 22px; }
+  .later p { color: #C3D6D2; margin-bottom: 0; }
+  .btn { display: inline-block; text-decoration: none; background: var(--teal); color: #fff; font: 600 16px "Instrument Sans", sans-serif;
+    padding: 14px 26px; border-radius: 999px; box-shadow: 0 6px 16px rgba(15,92,88,.26); }
+  .center { text-align: center; }
+  footer { padding: 36px 0 60px; text-align: center; color: var(--faint); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section>
+    <p class="eyebrow">For Pedro, and the three of you</p>
+    <h1>Three months, and <em>almost no money.</em></h1>
+    <p class="lede">You are the first property team I am building this with, and I want the result more than I want your money. So the trial costs you the running cost of the tools, nothing else.</p>
+
+    <div class="price">
+      <b>€20 to €30</b>
+      <p class="per">a month, for all four of you together</p>
+      <p class="note">Not each. That is the whole team, billed at what it actually costs, with nothing added on top.</p>
+    </div>
+
+    <div class="items">
+      <div class="item"><span>The engine<small>Runs every workflow, day and night</small></span><b>€0</b></div>
+      <div class="item"><span>The AI that writes the drafts<small>Paid by the message, and your messages are short</small></span><b>€7 to €15</b></div>
+      <div class="item"><span>Where everything is stored<small>Leads, clients, timings, the board</small></span><b>€0</b></div>
+      <div class="item"><span>Reading your voice notes<small>So a note in the car becomes a record</small></span><b>about €3</b></div>
+      <div class="item"><span>Room for testing and mistakes<small>Mine, mostly</small></span><b>€10</b></div>
+    </div>
+    <p class="tiny" style="margin-top:14px">If it comes in under that, you pay under that. I will show you the actual bill every month.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow gold">What I do in those three months</p>
+    <h2>Build it, run it, and prove it with your own numbers</h2>
+    <div class="steps">
+      <div class="stp"><span class="wk">Weeks 1–2</span><div><b>Your enquiries get answered fast</b><span>Every new enquiry gets a reply written from the real details of the property, in the language it was written in. Nothing is sent without your approval. We measure how long a first reply takes today, and how long it takes after.</span></div></div>
+      <div class="stp"><span class="wk">Weeks 3–6</span><div><b>Nothing gets forgotten</b><span>Follow-up that runs on the interest level you set, high, medium or low. When a new property is about to go online, the buyers already on your list who fit it hear about it first.</span></div></div>
+      <div class="stp"><span class="wk">Weeks 7–12</span><div><b>You can see everything, and so can the office</b><span>One place showing every lead, who owns it and what happens next. Plus the view the office cares about: properties won, and properties about to go live.</span></div></div>
+    </div>
+    <p class="tiny" style="margin-top:14px">Plus ten or fifteen minutes with Pedro each week, at whatever time suits, so it keeps moving.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">How it works for each of you</p>
+    <h2>Nobody has to learn a new app</h2>
+    <div class="cols">
+      <div class="card"><h3>If you live on WhatsApp</h3><p>Keep doing exactly that. The drafts come to you, you read them and send. Voice notes work too, just talk and it gets filed.</p></div>
+      <div class="card"><h3>If you write everything on paper</h3><p>Keep the notebook. Photograph the page and send it. The system reads it and the rest of the team sees it, without you changing a thing.</p></div>
+      <div class="card"><h3>If you want to see it before you trust it</h3><p>Good. For the first weeks nothing goes out without a person pressing send. You decide, client by client, how much it is allowed to do.</p></div>
+      <div class="card"><h3>If you are already busy</h3><p>Setting up costs you almost nothing. I need twenty real messages, one property from start to finish, and the inbox your portal leads arrive in.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow clay">What it will not do</p>
+    <h2>It never pretends to be you</h2>
+    <ul class="plain">
+      <li><b>No client is put in a pipeline.</b> Anything that reads like a machine wrote it is a failure, and gets fixed.</li>
+      <li><b>You keep the judgement.</b> Which client gets what, and what must not be said before a viewing, is yours. The system follows your notes.</li>
+      <li><b>Nothing goes out under the RE/MAX name</b> until the agency says what is allowed.</li>
+      <li><b>Your data stays yours.</b> If we stop, you get everything, and there is nothing to cancel.</li>
+      <li><b>No contract, no lock-in.</b> If it is not working after a month, say so and we stop.</li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="eyebrow">After the three months</p>
+    <h2>We decide it together, with the numbers in front of us</h2>
+    <p class="lede">Either a flat monthly fee, or a share of what the system brings in. Which one makes sense depends on what those twelve weeks actually show, so I would rather agree it then than guess now.</p>
+    <div class="later">
+      <h3>Why it costs so little to start</h3>
+      <p>I am building my first property case study, and yours is the team I want it built with. You get the work at a price it will never be again. I get proof, with your permission and nothing you are not happy with. If the numbers do not move, I will say so rather than dress it up.</p>
+    </div>
+    <div class="center" style="margin-top:30px">
+      <a class="btn" href="https://meditationgardens369.github.io/Adam-vision-pages/pedro-3.html">Last few questions, then I start</a>
+      <p class="tiny" style="margin-top:12px">Ten minutes, mostly taps, best answered by the four of you together.</p>
+    </div>
+  </section>
+
+  <footer>Adam · <a href="https://wa.me/351922102740" style="color:var(--teal)">WhatsApp</a> · September 2026</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Four Minutes, From Your Side</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Four minutes, from your side">
+<meta property="og:description" content="Pedro asked me to build something for your team. I would rather hear how you work before I build anything.">
+<meta name="theme-color" content="#0F5C58">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* For Pedro's three colleagues, 24 Sep 2026. One page, one slug, so the first
+   question asks who is answering.
+
+   Deliberately short and mostly taps. One of them keeps a paper agenda and needs
+   to see a result before she believes any of this, so a 21 question form would
+   lose her on screen two. Pedro gets the long one (pedro-3), they get this.
+
+   The question that matters most here is "trust", because how they answer decides
+   how much the assistant is allowed to do in week one. Ids avoid the dashboard
+   rule ids. */
+window.INTAKE = {
+  slug: "pedro-team",
+  name: "there",
+  nameFrom: "whoyou",
+  brand: "Before we build · Pedro's team",
+  business: "Pedro's RE/MAX team, the other three",
+  headline: "eats",
+  introTitle: "Pedro asked me to build something for your team. <em>First I would like to hear how you work.</em>",
+  introNote: "I am Adam. I build systems that take the repetitive part of the work off people, and I am doing it with Pedro over the next three months. Nothing here changes how you do your job, and there is no right answer. Four minutes, mostly tapping.",
+  questions: [
+    { id: "whoyou", type: "text", short: "Who is answering",
+      q: "First, who am I talking to?",
+      hint: "Just your first name, so I know whose answers these are.",
+      placeholder: "Ana" },
+
+    { id: "arrive", type: "many", short: "Where enquiries reach them", section: "A normal week",
+      q: "Where do people usually reach you?", hint: "Tap all that apply.",
+      opts: ["WhatsApp", "Phone calls", "Email", "The office passes them on", "Face to face", "Social media"] },
+    { id: "howmany", type: "one", short: "New people a week",
+      q: "In a normal week, how many new people get in touch with you?",
+      opts: ["Under 5", "5 to 10", "10 to 20", "More than 20"] },
+    { id: "daylives", type: "one", short: "Where the day lives",
+      q: "Where does your day actually live?",
+      hint: "The honest answer, not the tidy one. Every answer here is fine, and I build around it.",
+      opts: ["The calendar on my phone", "A paper agenda or notebook", "MaxWork", "Mostly in my head", "A bit of all of them"] },
+    { id: "voice", type: "one", short: "Voice notes",
+      q: "Do you send voice notes during the day?",
+      hint: "This is how the system could pick things up without you typing anything.",
+      opts: ["All the time", "Sometimes", "Rarely", "Never, I prefer to write"] },
+
+    { id: "eats", type: "text", short: "What eats the time", section: "The part you would hand over",
+      q: "What part of your week do you wish you did not have to do?",
+      hint: "A sentence is plenty. This is the answer I will read first.",
+      placeholder: "Answering the same questions about properties, chasing people who went quiet..." },
+    { id: "handover", type: "many", short: "Happy to hand over",
+      q: "If something could do these for you, which would you actually let it?",
+      hint: "Tap the ones you would be comfortable with.",
+      opts: ["Answering first questions about a property", "Offering viewing times", "Reminding you who is waiting", "Following up people who went quiet", "Sending property details to a buyer", "Writing your notes up after a viewing"] },
+    { id: "trust", type: "one", short: "Comfort with AI replies",
+      q: "How do you feel about a system writing to your clients?",
+      hint: "Be blunt. How you answer decides how much it is allowed to do for you.",
+      opts: ["Fine, as long as I can read it first", "Fine for simple questions only", "I would want to watch it for a while", "Not comfortable with it at all"] },
+    { id: "proof", type: "one", short: "What would convince them",
+      q: "What would make you say, alright, I will use this?",
+      opts: ["Seeing it work for someone else first", "Trying it myself for a week", "Numbers showing it made a difference", "Someone setting it up so I do not have to"] },
+    { id: "nope", type: "text", short: "Never automate",
+      q: "Last one. What should never be handled by a system, whatever happens?",
+      placeholder: "Anything to do with price, or the first call with an owner..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>
