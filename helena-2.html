@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -12,8 +12,62 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="assets/intake.css">
+<style>
+  /* Dentes & Companhia. Her own colours and type, over the shared questions styles.
+     data-theme="light" on <html> keeps the shared dark palette switched off, because
+     this page is shown on her phone in a bright clinic. */
+  :root[data-theme="light"] {
+    --limestone: #FFFFFF;
+    --card: #FFFFFF;
+    --card-2: #F2F4EE;
+    --basalt: #22302B;
+    --ink: #22302B;
+    --muted: #5C6B66;
+    --faint: #8E9A94;
+    --line: #E4E8E1;
+    --atlantic: #F27B4C;        /* her orange, used for every accent */
+    --atlantic-soft: #FDE9DF;
+    --on-accent: #FFFFFF;
+    --clay: #C0501E;
+  }
+
+  body { font-family: "Work Sans", system-ui, "Helvetica Neue", Arial, sans-serif; }
+  .opt, .btn, .link, .field, .stepper button { font-family: "Work Sans", system-ui, sans-serif; }
+
+  h1, h2, .sig, .quote, .stepper input {
+    font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+    font-style: normal;
+  }
+  h1 { font-weight: 800; letter-spacing: -.02em; }
+  h1 em { font-style: normal; font-weight: 800; color: var(--atlantic); }
+  h2 { font-weight: 700; letter-spacing: -.015em; }
+  .sig { font-weight: 600; font-style: normal; font-size: 16px; }
+  .stepper input { font-weight: 800; }
+
+  .brand, .count, .eyebrow, .rrow .rl {
+    font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+  }
+  .eyebrow { color: #B94A1B; }
+
+  /* the shared black diagonal divider becomes her three colours */
+  .calcada {
+    height: 8px; border-radius: 99px; opacity: 1; background-image: none;
+    background: linear-gradient(90deg,
+      var(--atlantic) 0 33.3%, #F2B544 33.3% 66.6%, #6CAC3E 66.6% 100%);
+  }
+  .track span { background: var(--atlantic); }
+
+  .opt { border-radius: 12px; }
+  .opt[aria-pressed="true"] { border-color: var(--atlantic); border-width: 1.5px; }
+  .btn { border-radius: 999px; font-weight: 700; }
+  .btn.block { border-radius: 14px; }
+  .field { border-radius: 12px; }
+  .stepper button { border-radius: 50%; }
+  .quote { border-left-color: var(--atlantic); font-weight: 600; }
+</style>
 </head>
 <body>
 <script>
@@ -146,6 +200,6 @@ window.INTAKE = {
   ]
 };
 </script>
-<script src="assets/intake.js?v=3"></script>
+<script src="assets/intake.js?v=4"></script>
 </body>
 </html>
