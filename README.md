@@ -7,12 +7,16 @@ or just ask Claude.
 | File | Who | Questions |
 |---|---|---|
 | `ola.html` | Ola, holiday rentals, Armação de Pêra | 11, one typed |
+| `ola-2.html` | Ola, round two, sent after she signed on 25 Sep. Only the gaps she had not already answered. | 17, four typed |
+| `ola-start.html` | Ola's six week plan, the money and what she does first | |
 | `pedro.html` | Pedro, estate agent, team of three in a 70 to 80 person agency | 12, three typed |
+| `pedro-2.html` | Pedro, round two, written after his first answers | 16, six typed |
 | `helena.html` | Helena, dental clinic owner | 12, one typed |
 | `lara.html` | Lara, massage and Bowen therapy plus Zigzag kids' parties and festivals | 15, two typed |
 | `vision.html` | Ola's twelve month vision, for screen-sharing on the Zoom call | |
 | `index.html` | A neutral front door. Nobody should need it. | |
 | `assets/` | The shared engine and styles. Every page above uses them. | |
+| `pera-demo/` | Concept website for Ola: two doors, her nine real homes, AI assistant demo. Uses her live photos, so it needs real hosting rather than an artifact. | |
 
 ## Publishing a change
 
@@ -30,7 +34,10 @@ Pages rebuilds in about a minute. There is nothing to upload by hand any more.
 
 ```
 https://meditationgardens369.github.io/Adam-vision-pages/ola.html
+https://meditationgardens369.github.io/Adam-vision-pages/ola-start.html
+https://meditationgardens369.github.io/Adam-vision-pages/ola-2.html
 https://meditationgardens369.github.io/Adam-vision-pages/pedro.html
+https://meditationgardens369.github.io/Adam-vision-pages/pedro-2.html
 https://meditationgardens369.github.io/Adam-vision-pages/helena.html
 https://meditationgardens369.github.io/Adam-vision-pages/lara.html
 ```

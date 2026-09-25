@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The gaps, Ola</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A few things I could not work out on my own">
+<meta property="og:description" content="Only the gaps. Everything you already told me is written down.">
+<meta name="theme-color" content="#0F5C58">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* Ola, round two. Sent after she said yes on 25 Sep 2026.
+   RULE FOR THIS PAGE: only ask what she has not already answered. She has
+   already told us the property count, the 4-on-other-profiles and 3-unlicensed
+   split, the two days of owner reports, that bookings are basically all Airbnb
+   plus word of mouth, that she is happy to be filmed, and that commission runs
+   20 to 25 per cent. Asking any of that again reads as not listening.
+   The name is NOT a question here. Adam and Brigitte bring her options.
+   These options are new wording, so Prospect_Dashboard.html rules will not
+   fire on them. Read the answers through Claude instead. */
+window.INTAKE = {
+  slug: "ola-2",
+  name: "Ola",
+  business: "Pera Properties Management, Armacao de Pera",
+  headline: "threeweeks",
+  brand: "The gaps · Ola",
+  greeting: "Right then, Ola",
+  introTitle: "A few things <em>I could not work out on my own.</em>",
+  introNote: "Everything you already told me is written down, so none of that is in here. This is only the gaps, plus the numbers we measure against in three months. Some of it is money and it stays between us.",
+  sentTitle: "Got it, Ola. <em>Now I can start.</em>",
+  sentBody: "I will come back with the plan for the first three weeks, so you can see exactly what I am doing and in what order.",
+  sentFirst: "And this is the one I am building around:",
+  questions: [
+
+    /* ---- Portfolio detail we genuinely do not have ---- */
+    { id: "premium", section: "The top end", type: "text", short: "The premium villas",
+      q: "Which are the two high-end villas, and what do they charge a night in peak?",
+      hint: "Names and rough prices. These two are the whole argument for going upmarket, so I want them front and centre.",
+      placeholder: "For example: Casa X in Pera, about 650 a night in August..." },
+
+    { id: "ownerlang", type: "many", short: "Owner languages",
+      q: "What languages do you write to your owners in?",
+      hint: "Tap all of them. This decides what the monthly reports get written in.",
+      opts: ["Portuguese", "English", "Polish", "German", "Dutch", "French", "Other"] },
+
+    /* ---- The money, the part nobody has asked her ---- */
+    { id: "gross", section: "The numbers", type: "one", short: "Portfolio gross",
+      q: "Across all the properties, roughly what did the whole portfolio take last year?",
+      hint: "A band is fine, and it stays between us. I need it so that at the end we can show what this was actually worth.",
+      opts: ["Under 200,000", "200,000 to 400,000", "400,000 to 600,000", "Over 600,000", "Rather tell you in person"] },
+
+    { id: "commission", type: "one", short: "Commission, exactly",
+      q: "Your commission. Is it the same for every owner, or does it move?",
+      hint: "You said 20 to 25. The villa figures you gave me work out nearer 25, so I want the real split before I put numbers on anything.",
+      opts: ["Same for everyone", "Higher on the villas, lower on the flats", "Different for nearly every owner", "It moves, I would have to check"] },
+
+    { id: "msgnow", type: "one", short: "Message hours, now",
+      q: "Right now, in late September, how much of your day goes on guest messages?",
+      hint: "Today's number, not July's. This is the line we draw before I change anything.",
+      opts: ["Under 1 hour", "1 to 2 hours", "2 to 4 hours", "More than 4 hours"] },
+
+    { id: "empty", type: "one", short: "The empty months",
+      q: "November through to April, before the season starts. How full are the properties?",
+      hint: "Six months, not four. This is the gap I most want to close for you.",
+      opts: ["Almost completely empty", "Maybe a quarter full", "About half full", "Busier than people think"] },
+
+    { id: "worstadmin", type: "many", short: "Other admin",
+      q: "Besides guest messages and the owner reports, what else eats your week?",
+      hint: "Tap everything that applies.",
+      opts: ["Chasing cleaners and suppliers", "Invoicing and paying owners out", "The boletim de alojamento", "Pricing and calendar updates", "Fixing things that break", "Taking and editing photos", "Handling enquiries that never book"] },
+
+    /* ---- The guest list. Possibly the biggest thing on this page. ---- */
+    { id: "emails", section: "Your guest list", type: "number", short: "Guest contacts", unit: "guests", label: "Guests on file", def: 200, min: 0, max: 3000,
+      q: "Roughly how many past guests have you got contact details for in TalkGuest?",
+      hint: "You mentioned the emails are all in there. If it really is a few hundred, that is the most valuable thing you own and nobody is using it." },
+
+    { id: "emailexport", type: "one", short: "Can we export them",
+      q: "Can you get those contacts out of TalkGuest as a file?",
+      hint: "An export button, a spreadsheet, anything. If not I will go and find it myself.",
+      opts: ["Yes, I have exported before", "There is probably a button, I have never tried", "No idea, have a look yourself", "I do not think so"] },
+
+    { id: "consent", type: "one", short: "How emails were taken",
+      q: "When a guest gives you their email, is it only for check-in and the boletim, or do they agree to hear from you again?",
+      hint: "Boring, but it decides whether we can email them straight away or have to ask them first.",
+      opts: ["Only for check-in and the boletim", "There is a tick box about hearing from us", "I am not sure what it says", "They usually message me directly anyway"] },
+
+    { id: "reviewcount", type: "number", short: "People you can ask", unit: "people", label: "People you can ask", def: 20, min: 0, max: 300,
+      q: "How many of them could you realistically ask for a review in the next two weeks?",
+      hint: "Guests and owners both count. You said you have plenty, so put a real number on it." },
+
+    /* ---- What she already pays for ---- */
+    { id: "tgplan", section: "TalkGuest", type: "text", short: "TalkGuest plan",
+      q: "Which TalkGuest plan are you on, and what does it cost you a year?",
+      hint: "Only if it is quick to find. I think you are paying for an owner portal and a finance suite you have never switched on. If it is a hassle, skip it and I will look when I am next with you.",
+      placeholder: "The plan name, and the yearly figure if you have it..." },
+
+    /* ---- Practical ---- */
+    { id: "checkin", section: "Practical", type: "many", short: "Check-in days",
+      q: "Which days suit you for a short weekly catch-up?",
+      hint: "Tap everything that could work. Fifteen minutes, and it can be a call while you are driving.",
+      opts: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Any day, just message me"] },
+
+    { id: "checktime", type: "one", short: "Check-in time",
+      q: "And what time of day is realistic?",
+      opts: ["Early morning", "Late morning", "Afternoon", "Evening after the restaurant", "Whenever, I am usually driving"] },
+
+    { id: "casestudy", type: "one", short: "Case study",
+      q: "Can I write this up as a case study, with your name and your real numbers?",
+      hint: "You are the first one I am documenting properly. I will show you anything before it goes anywhere public.",
+      opts: ["Yes, all of it", "Yes, but keep the money private", "Yes, but no name", "Rather not"] },
+
+    /* ---- The two that matter most ---- */
+    { id: "threeweeks", section: "Last two", type: "text", short: "Three weeks",
+      q: "If only one thing changed in the next three weeks, what would it be?",
+      hint: "Whatever comes to mind first is usually the right answer. This is the one I read before anything else.",
+      placeholder: "For example: not checking my phone every ten minutes on a Sunday..." },
+
+    { id: "threemonths", type: "text", short: "Three months",
+      q: "And in three months, what would make you say this was worth doing?",
+      hint: "Different question. Three weeks is relief. Three months is what you actually want the business to be.",
+      placeholder: "Anything. More properties, fewer hours, being known, a season that is not only summer..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>
