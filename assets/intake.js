@@ -18,8 +18,10 @@
 
   function track(event, extra) {
     try {
-      var body = { slug: PROSPECT, event: event, path: location.pathname, referrer: document.referrer || null };
-      if (extra) { for (var k in extra) { if (extra.hasOwnProperty(k)) { body[k] = extra[k]; } } }
+      // location.pathname can be huge (a data: or blob: URL) when this runs inside a
+      // sandboxed viewer rather than a normal page, so it is always capped here.
+      var body = { slug: PROSPECT, event: String(event).slice(0, 40), path: String(location.pathname || '').slice(0, 200), referrer: (document.referrer || null) && document.referrer.slice(0, 200) };
+      if (extra) { for (var k in extra) { if (extra.hasOwnProperty(k)) { body[k] = typeof extra[k] === 'string' ? extra[k].slice(0, 200) : extra[k]; } } }
       fetch(SUPABASE_URL + '/rest/v1/page_events', {
         method: 'POST',
         keepalive: true,
