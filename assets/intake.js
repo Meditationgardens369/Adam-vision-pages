@@ -4,7 +4,11 @@
 
    The publishable key below can add a row to intake_responses and cannot
    read any back (row level security, insert-only). Never put a service role
-   or sb_secret_ key in this folder. */
+   or sb_secret_ key in this folder.
+
+   Tracking: every page using this engine also logs to page_events (same
+   insert-only publishable key, same locked-down policy) so you can see
+   opens and where people drop off, not just finished submissions. */
 (function () {
   "use strict";
 
@@ -12,10 +16,24 @@
   var SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
   var WHATSAPP = "351922102740";
 
+  function track(event, extra) {
+    try {
+      var body = { slug: PROSPECT, event: event, path: location.pathname, referrer: document.referrer || null };
+      if (extra) { for (var k in extra) { if (extra.hasOwnProperty(k)) { body[k] = extra[k]; } } }
+      fetch(SUPABASE_URL + '/rest/v1/page_events', {
+        method: 'POST',
+        keepalive: true,
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify(body)
+      }).catch(function () {});
+    } catch (e) { /* tracking must never break the page */ }
+  }
+
   var C = window.INTAKE || {};
   var PROSPECT = String(C.slug || 'unknown').slice(0, 60);
   var NAME = String(C.name || 'there').slice(0, 60);
   var BUSINESS = String(C.business || '').slice(0, 200);
+  track('view', { step: 0 });
   var Q = C.questions || [];
   /* Optional per-page wording, so a page can run in another language.
      Any key left out falls back to the English below. */
@@ -128,8 +146,14 @@
     return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
   }
 
+  function trackStep(step) {
+    if (step >= 1 && step <= TOTAL) { track('step', { step: step, label: (Q[step - 1] && Q[step - 1].short) || null }); }
+    else if (step === REVIEW) { track('review', { step: step }); }
+  }
+
   function go(step) {
     state.step = step;
+    trackStep(step);
     save();
     render();
     window.scrollTo(0, 0);
@@ -320,6 +344,7 @@
       note.classList.remove('bad');
       note.textContent = 'One moment.';
       submit().then(function () {
+        track('submitted', { step: DONE });
         clearSaved();
         state.step = DONE;
         render();
