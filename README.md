@@ -99,3 +99,31 @@ the main route.
 
 Answers keep the question text alongside the answer on purpose. When you reword a question next
 month, old responses still make sense.
+
+## Tracking opens and drop-off
+
+Every page using `assets/intake.js` also logs to `public.page_events`, insert-only with the
+same publishable key (verified the same way: it can add a row, not read one back). This is how
+you see people who opened a page or started the questions but never finished, not just the
+ones who submitted.
+
+| Column | Notes |
+|---|---|
+| `slug` | matches `prospect_slug` in `intake_responses`, so the two tables join |
+| `event` | `view` (page opened), `step` (reached that question), `review` (reached the summary), `submitted`, `cta_click` |
+| `step`, `label` | which question, and its short name |
+| `path`, `referrer` | which file, and what sent them there |
+| `created_at` | indexed descending |
+
+The Jarvis guide (the Claude artifact linked from the YouTube video) logs to the same table under
+slug `jarvis-guide-page`, separately from the questionnaire itself (slug `jarvis-guide`), so you
+can see guide opens and clicks on its two "answer some questions" buttons even though the guide
+lives outside this repo.
+
+Read it at `funnel.html` (https://meditationgardens369.github.io/Adam-vision-pages/funnel.html).
+Same key-gate pattern as `Prospect_Dashboard.html`: it asks for a Supabase key that can read
+(the pages themselves deliberately cannot), keeps it in your own browser, and is safe to commit
+because the file itself holds no secret.
+
+When you build the next lead magnet or prospect page, wire it into `page_events` the same way
+(or just use `assets/intake.js`, which already does it) so it shows up here automatically.
