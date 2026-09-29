@@ -71,7 +71,7 @@
 
   var stage = document.getElementById('stage');
   var countEl = document.getElementById('count');
-  var track = document.getElementById('track');
+  var trackEl = document.getElementById('track');   // the progress bar element, NOT the track() analytics function
   var trackfill = document.getElementById('trackfill');
   var calcada = document.getElementById('calcada');
   document.getElementById('brand').textContent = C.brand || ('Before we meet · ' + NAME);
@@ -164,7 +164,7 @@
   function render() {
     var step = state.step;
     var inQuestions = step >= 1 && step <= TOTAL;
-    track.hidden = !inQuestions;
+    trackEl.hidden = !inQuestions;
     calcada.hidden = inQuestions;
     countEl.textContent = inQuestions ? t('of', '{a} of {b}').replace('{a}', step).replace('{b}', TOTAL) : '';
     if (inQuestions) { trackfill.style.width = ((step - 1) / TOTAL * 100) + '%'; }
