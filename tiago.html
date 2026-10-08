@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before We Meet</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Before we meet, Tiago">
+<meta property="og:description" content="A few quick questions so I can see where the studio stands before I suggest anything. About four minutes, mostly taps.">
+<meta name="theme-color" content="#0d0c0a">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦴</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Work+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+<link rel="stylesheet" href="assets/osteostrong.css">
+</head>
+<body>
+<script>
+/* Tiago: owns OsteoStrong Lagos. Met in person 8 Oct 2026. He asked for help with
+   social media and Meta ads. These questions cover what the earlier agency did,
+   who owns the ad account, the funnel numbers and what the franchise allows.
+   Nothing here asks for a password. Account access is arranged in person at the
+   second visit. The option wording is free to change, no dashboard rules key on it yet. */
+window.INTAKE = {
+  slug: "tiago",
+  name: "Tiago",
+  business: "OsteoStrong Lagos",
+  headline: "bottleneck",
+  brand: "Osteostrong Lagos",
+  greeting: "Hi Tiago",
+  introTitle: "Let's grow the <em>studio.</em>",
+  ui: { howLong: "", resume: "", private: "" },
+  questions: [
+    { id: "members", type: "number", short: "Members", unit: "members", label: "Active members right now", def: 65, min: 0, max: 500,
+      q: "How many active members do you have right now?", hint: "You said around sixty-five. Change it if that has moved." },
+    { id: "room", type: "one", short: "Room to grow",
+      q: "How many more members could you comfortably look after with the current team and machines?",
+      hint: "This tells me how hard it is worth pushing.",
+      opts: ["Up to 10", "10 to 30", "30 to 60", "As many as want to come"] },
+    { id: "source", type: "many", short: "How members found you",
+      q: "How did most of your current members first hear about you?", hint: "Tap all that apply.",
+      opts: ["A doctor, physio or other professional sent them", "A friend or another member", "Facebook or Instagram", "Google search or Maps", "The agency's ads", "They walked past the studio", "A newsletter or an event"] },
+    { id: "enquiries", type: "one", short: "Enquiries a month",
+      q: "Roughly how many new enquiries reach you in a normal month?",
+      hint: "Calls, WhatsApp, the website form and walk-ins together.",
+      opts: ["Under 5", "5 to 15", "15 to 30", "More than 30", "I honestly do not know"] },
+    { id: "firstvisit", type: "one", short: "First visit to member",
+      q: "Of the people who come for a first session, how many end up becoming members?",
+      opts: ["Almost all of them", "About half", "Fewer than half", "I do not track it"] },
+    { id: "reply", type: "one", short: "Late enquiries",
+      q: "Someone messages on a Friday evening or at the weekend. What happens?",
+      opts: ["Answered the same day", "Answered on Monday", "It depends who sees it", "Honestly not sure"] },
+    { id: "crm", type: "many", short: "Go High Level use",
+      q: "You mentioned Go High Level. What do you actually use it for today?", hint: "Tap all that apply.",
+      opts: ["Booking calendar", "WhatsApp or SMS messages", "Automated follow-ups", "Email newsletters", "Website, forms or landing pages", "Tracking enquiries in a pipeline", "Asking for reviews", "Not much yet"] },
+    { id: "auto", type: "one", short: "Automatic messages",
+      q: "Which messages go out on their own, without anyone sending them?",
+      opts: ["Booking confirmations and reminders", "Follow-ups after a first visit", "Both of those", "Nothing is automatic yet"] },
+    { id: "aftercare", type: "one", short: "After the first session",
+      q: "What happens after someone's first session?",
+      opts: ["A personal message from us", "An automatic message", "Nothing until they book again", "I am not sure"] },
+    { id: "between", type: "many", short: "Between sessions",
+      q: "How do you stay in touch with members between their weekly sessions?", hint: "Tap all that apply.",
+      opts: ["WhatsApp, one to one", "A group chat", "Email", "Progress updates or results", "Events, challenges or tips", "Not in a planned way"] },
+    { id: "missed", type: "one", short: "A missed week",
+      q: "A member misses a week or two. What happens?",
+      opts: ["They get an automatic nudge", "Someone checks in personally", "Nothing, unless they come back", "I do not track it"] },
+    { id: "newsletter", type: "one", short: "Newsletter",
+      q: "Is there a newsletter or regular email to members and past enquiries?",
+      opts: ["Yes, regularly", "Sometimes", "Set up but not really used", "No"] },
+    { id: "reviews", type: "one", short: "Asking for reviews",
+      q: "How do you ask happy members for a Google review?",
+      opts: ["Automatically, after a visit", "Personally, now and then", "Rarely", "We do not ask yet"] },
+    { id: "agency", type: "many", short: "What the agency did",
+      q: "What did the agency do for you?", hint: "Tap all that apply.",
+      opts: ["Ran Facebook or Instagram ads", "Posted content", "Built or changed the website", "Set up the ad or business accounts", "Sent reports", "I am not sure what they did"] },
+    { id: "spend", type: "one", short: "What was spent",
+      q: "Roughly how much was spent on ads in total, including what the agency charged?",
+      opts: ["Under 500 euros", "500 to 2,000 euros", "More than 2,000 euros", "I do not remember"] },
+    { id: "results", type: "one", short: "What worked",
+      q: "Do you know which ads, if any, actually brought in members?",
+      opts: ["Yes, I have the figures", "A rough idea", "No idea", "No ads were really run"] },
+    { id: "account", type: "one", short: "Ad account owner",
+      q: "Whose name is the Facebook and Instagram ad account in?",
+      hint: "If the agency set it up, it matters, because you want to own it.",
+      opts: ["Mine", "The agency's", "The franchise's", "I am not sure"] },
+    { id: "rules", type: "one", short: "Franchise rules",
+      q: "What does the franchise let you post as your own content?",
+      hint: "Videos, member stories, health statements, the logo.",
+      opts: ["Anything that fits the brand", "Anything, but it needs approval", "Only the materials they send", "I am not sure"] },
+    { id: "scan", type: "one", short: "Bone density scan offer",
+      q: "Your Instagram mentions a Bone Density Scan offer. What is it exactly?",
+      hint: "I want to describe it correctly, and some wording rules apply to offers.",
+      opts: ["A DEXA scan at a partner clinic", "A scan on a device here at the studio", "A voucher or discount on something else", "It is not running any more"] },
+    { id: "ers", type: "one", short: "Health regulator",
+      q: "Is the studio registered with ERS, the Portuguese health regulator?",
+      hint: "It decides what has to appear in health advertising.",
+      opts: ["Yes", "No", "I am not sure", "I did not know I needed to be"] },
+    { id: "bestmember", type: "text", short: "Best member",
+      q: "Describe the kind of member you wish you had ten more of.",
+      hint: "Age, why they came, what they care about. A sentence or two is plenty.",
+      placeholder: "A woman in her late fifties who was told her bones were thinning and wants to stay strong for her grandchildren, for example..." },
+    { id: "bottleneck", type: "text", short: "Biggest bottleneck",
+      q: "Last one. If one thing about the studio got fixed this month, what would change the most?",
+      hint: "This is the answer I will read first.",
+      placeholder: "More people finding us, people dropping off after a month, too much of my time on admin..." }
+  ]
+};
+window.INTAKE.ui.howLong = window.INTAKE.questions.length + " quick questions. About " + Math.max(4, Math.round(window.INTAKE.questions.length * 0.25 + 1)) + " minutes.";
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>

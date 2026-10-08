@@ -1,0 +1,91 @@
+/* OsteoStrong look for Tiago's page only. Loaded after intake.css, so the other
+   prospect pages are untouched. Black, warm yellow, bold type, like the studio. */
+
+:root:root:root {
+  --limestone: #0d0c0a;
+  --card: #181713;
+  --card-2: #25231d;
+  --basalt: #f5b921;
+  --ink: #f6f2e9;
+  --muted: #c2bcae;
+  --faint: #8f897b;
+  --line: #2f2d26;
+  --atlantic: #f5b921;
+  --atlantic-soft: rgba(245, 185, 33, .14);
+  --on-accent: #14110a;
+  --clay: #ff8a70;
+  --clay-soft: #3a211b;
+  color-scheme: dark;
+}
+
+body {
+  font-family: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+  background:
+    radial-gradient(120% 55% at 50% -8%, rgba(245, 185, 33, .22) 0%, rgba(245, 185, 33, 0) 62%),
+    var(--limestone);
+  background-attachment: fixed;
+}
+
+.brand {
+  font: 800 11px Montserrat, sans-serif;
+  letter-spacing: .34em;
+  color: var(--atlantic);
+}
+.count { font-family: Montserrat, sans-serif; font-weight: 600; color: var(--faint); }
+
+/* The tile pattern is a Portuguese pavement motif for the other pages. Not here. */
+.calcada { display: none; }
+.track { background: var(--card-2); height: 4px; }
+
+.eyebrow { font: 800 11px Montserrat, sans-serif; letter-spacing: .24em; color: var(--atlantic); }
+
+h1 {
+  font: 900 clamp(34px, 9.5vw, 52px)/1.02 Montserrat, sans-serif;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  margin: 0 0 22px;
+}
+h1 em { font-style: normal; color: var(--atlantic); }
+
+h2 {
+  font: 700 clamp(22px, 6vw, 28px)/1.22 Montserrat, sans-serif;
+  letter-spacing: -.01em;
+}
+.hint { font-size: 14.5px; }
+
+.sig { font: 600 15px Montserrat, sans-serif; font-style: normal; color: var(--atlantic); letter-spacing: .04em; }
+
+.muted:empty { display: none; }
+
+.opt {
+  border-radius: 6px;
+  background: var(--card);
+  font: 500 16px/1.35 "Work Sans", sans-serif;
+  transition: border-color .15s ease, background .15s ease, transform .15s ease;
+}
+.opt:hover { border-color: var(--atlantic); transform: translateX(2px); }
+.opt[aria-pressed="true"] { border-color: var(--atlantic); background: var(--atlantic-soft); }
+.opt .mark { border-color: var(--faint); }
+.opt[aria-pressed="true"] .mark::after { background: var(--atlantic); }
+
+.stepper button { background: var(--card); color: var(--atlantic); border-color: var(--line); }
+.stepper input { font: 800 56px/1 Montserrat, sans-serif; }
+
+.field { border-radius: 6px; background: var(--card); }
+.field:focus { outline: 2px solid var(--atlantic); }
+
+.btn {
+  font: 800 13.5px Montserrat, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  padding: 16px 26px;
+  background: var(--atlantic);
+  color: var(--on-accent);
+  box-shadow: 0 10px 30px -12px rgba(245, 185, 33, .7);
+}
+.btn.quiet { background: var(--card-2); color: var(--ink); box-shadow: none; }
+.btn[disabled] { box-shadow: none; }
+
+.rrow .rl { font-family: Montserrat, sans-serif; font-weight: 700; letter-spacing: .14em; }
+.quote { border-left-color: var(--atlantic); font: 600 18px/1.4 Montserrat, sans-serif; font-style: normal; }
