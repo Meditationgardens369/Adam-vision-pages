@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Build a Second Brain with Obsidian and Claude Code</title>
+<meta name="description" content="A step-by-step guide: record your voice, and Claude Code files it into Obsidian for you. Tick the steps as you go.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Build a Second Brain with Obsidian and Claude Code">
+<meta property="og:description" content="Record your voice. Claude Code files it. A free step-by-step guide.">
+<meta name="theme-color" content="#6B3FD4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ground:#F4F3F8; --surface:#FFFFFF; --sunk:#EAE7F1; --ink:#17131F; --muted:#5F596E; --line:#DCD7E6;
+  --accent:#6B3FD4; --accent-ink:#FFFFFF; --accent-soft:#ECE5FC; --signal:#0E8FA8; --signal-soft:#DDF3F7; --warn:#A8641A; --warn-soft:#FBEEDD;
+  --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F0C15; --surface:#18141F; --sunk:#221D2B; --ink:#EEEAF6; --muted:#A59FB5; --line:#332D3F;
+    --accent:#A487F2; --accent-ink:#130E1C; --accent-soft:#2A2240; --signal:#5AD8F0; --signal-soft:#12303A; --warn:#E6A858; --warn-soft:#33250F;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F0C15; --surface:#18141F; --sunk:#221D2B; --ink:#EEEAF6; --muted:#A59FB5; --line:#332D3F;
+  --accent:#A487F2; --accent-ink:#130E1C; --accent-soft:#2A2240; --signal:#5AD8F0; --signal-soft:#12303A; --warn:#E6A858; --warn-soft:#33250F;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:17px/1.6 var(--body);padding-inline:20px;padding-block:32px 90px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:72px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(40px,7vw,76px);line-height:.98;font-weight:800}
+h2{font-size:clamp(26px,3.6vw,36px);line-height:1.1;font-weight:800}
+h3{font-size:19px;font-weight:600}
+p{margin:0;max-width:62ch}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+section{display:flex;flex-direction:column;gap:20px}
+.lede{font-size:20px;color:var(--muted)}
+button{font:inherit}
+button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.hero{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.hero-text{display:flex;flex-direction:column;gap:20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.orb{position:relative;width:230px;height:230px;max-width:100%;margin:0 auto}
+.orb svg{width:100%;height:100%;display:block}
+.orb .pct{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.orb .pct b{font:800 48px/1 var(--display);font-variant-numeric:tabular-nums}
+.orb .pct span{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.orb .spin{transform-origin:115px 115px;animation:spin 18s linear infinite}.orb .spin2{transform-origin:115px 115px;animation:spin 26s linear infinite reverse}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.needs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.needs div{padding:18px 20px 18px 0;display:flex;flex-direction:column;gap:4px}
+.needs div+div{padding-left:20px;border-left:1px solid var(--line)}
+.needs b{font:800 26px/1.1 var(--display)}
+.needs span{color:var(--muted);font-size:15px}
+@media (max-width:640px){.needs{grid-template-columns:1fr}.needs div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:760px){.how{grid-template-columns:1fr}}
+.how div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.how .n{font:500 12px var(--mono);color:var(--signal);letter-spacing:.08em}
+.how p{font-size:15px;color:var(--muted)}
+
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.step.done{border-color:color-mix(in srgb,var(--signal) 50%,var(--line))}
+.step summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:16px 18px}
+.step summary::-webkit-details-marker{display:none}
+.num{font:500 13px var(--mono);color:var(--muted);width:28px}
+.tick{appearance:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--line);background:var(--ground);cursor:pointer;display:grid;place-items:center;flex:none}
+.tick:checked{background:var(--signal);border-color:var(--signal)}
+.tick:checked::after{content:"";width:10px;height:6px;border-left:3px solid var(--ground);border-bottom:3px solid var(--ground);transform:rotate(-45deg) translate(1px,-1px)}
+.step h3{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.step .why{font:500 12px var(--mono);color:var(--muted);letter-spacing:.04em}
+.step .body{padding:0 18px 20px 76px;display:flex;flex-direction:column;gap:12px}
+@media (max-width:560px){.step .body{padding-left:18px}}
+.step ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.chev{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
+.step[open] .chev{transform:rotate(225deg)}
+.prompt{background:var(--signal-soft);border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.5;white-space:pre-wrap}
+.btn{border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--accent)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.tried{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--accent-soft);border-radius:14px;padding:18px 20px}
+.tried div{display:flex;flex-direction:column;gap:4px;flex:1 1 320px}
+.tried p{font-size:15px;color:var(--muted)}
+
+.folders{display:flex;flex-wrap:wrap;gap:8px}
+.folders span{font:500 14px var(--mono);background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:6px 12px}
+
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:15px}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.asks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (max-width:680px){.asks{grid-template-columns:1fr}}
+.ask{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.ask p{font-size:17px}
+.copy{align-self:flex-start;border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:8px;padding:5px 10px;font-size:13px;font-weight:600;cursor:pointer}
+
+.limits{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (max-width:680px){.limits{grid-template-columns:1fr}}
+.limit{background:var(--warn-soft);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.limit h3{color:var(--warn);font-size:17px}
+.limit p{font-size:15px}
+
+.close{background:var(--ink);color:var(--ground);border-radius:22px;padding:clamp(28px,5vw,52px);display:flex;flex-direction:column;gap:18px}
+.close h2{color:var(--ground);font-size:clamp(28px,4.4vw,46px)}
+.close p{color:color-mix(in srgb,var(--ground) 78%,var(--ink))}
+.close .cta{background:var(--ground);color:var(--ink);border-color:var(--ground);padding:13px 20px}
+.close .sig{font:500 13px var(--mono);letter-spacing:.08em;color:color-mix(in srgb,var(--ground) 60%,var(--ink))}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:9px 16px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">The SECOND BRAIN guide · from Adam, Aligned AI</div>
+    <h1>Record your voice. <em>It files itself.</em></h1>
+    <p class="lede">Two tools, Obsidian and Claude Code, and one habit: talk. Claude Code files what you say into the right place, so nothing you think of disappears. Tick the steps as you go and the ring fills up.</p>
+  </div>
+  <div class="orb" aria-live="polite">
+    <svg viewBox="0 0 230 230" aria-hidden="true">
+      <g class="spin"><circle cx="115" cy="115" r="108" fill="none" stroke="var(--signal)" stroke-width="1.5" stroke-dasharray="3 9" opacity=".6"/></g>
+      <g class="spin2"><circle cx="115" cy="115" r="98" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="60 40 20 40" opacity=".5"/></g>
+      <circle cx="115" cy="115" r="84" fill="none" stroke="var(--sunk)" stroke-width="12"/>
+      <circle id="ring" cx="115" cy="115" r="84" fill="none" stroke="var(--signal)" stroke-width="12" stroke-linecap="round" transform="rotate(-90 115 115)" stroke-dasharray="527.8" stroke-dashoffset="527.8" style="transition:stroke-dashoffset .5s ease"/>
+    </svg>
+    <div class="pct"><b id="pct">0%</b><span id="pct-label">built</span></div>
+  </div>
+</header>
+
+<section aria-labelledby="need-h">
+  <div class="eyebrow">Before you start</div>
+  <h2 id="need-h">What you need</h2>
+  <div class="needs">
+    <div><b>Obsidian</b><span>A free app for your notes. Download it for Windows or Mac.</span></div>
+    <div><b>Claude Code</b><span>It comes with the paid Claude plan. Check the current price when you sign up.</span></div>
+    <div><b>Your phone</b><span>Any voice recorder app. You talk, it makes a transcript, you send the transcript to Claude.</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="how-h">
+  <div class="eyebrow">How it works</div>
+  <h2 id="how-h">Talk. Send. Filed.</h2>
+  <div class="how">
+    <div><span class="n">01 · TALK</span><h3>Record your day</h3><p>On a walk, in the car, on the treadmill. Say what happened, what you feel, what you need to do.</p></div>
+    <div><span class="n">02 · SEND</span><h3>Give it to Claude Code</h3><p>Paste the transcript into your Second Brain project, or tell it which document it's in.</p></div>
+    <div><span class="n">03 · FILED</span><h3>It lands in the right place</h3><p>Projects, daily notes, people, ideas. A few seconds later, you can read it in Obsidian.</p></div>
+  </div>
+</section>
+
+<section aria-label="Setup">
+  <div class="eyebrow">Set it up · tick as you go</div>
+  <ol class="steps" id="steps"></ol>
+  <div class="tried" id="tried" hidden>
+    <div><h3>Your Second Brain is running. How did it go?</h3><p>Tell me how you got on, and if you'd like help setting this up for your business, I'll take a look.</p></div>
+    <a class="btn" id="cta-tried" href="second-brain.html" target="_blank" rel="noopener">Tell me how it went</a>
+  </div>
+</section>
+
+<section aria-labelledby="asks-h">
+  <div class="eyebrow">Once it has a few notes</div>
+  <h2 id="asks-h">Ask your brain anything</h2>
+  <p class="lede">Claude Code can read your whole vault, so you can ask questions the way you would ask a person who has been listening for weeks.</p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="asks" id="asks" role="tabpanel"></div>
+</section>
+
+<section aria-labelledby="lim-h">
+  <div class="eyebrow">Honest limits</div>
+  <h2 id="lim-h">Where to keep a hand on the wheel</h2>
+  <div class="limits">
+    <div class="limit"><h3>It only works if you use it</h3><p>The more you record, the more it knows and the more it can do for you. A few notes in the first week is normal. The real value shows up after a few weeks of daily or weekly notes.</p></div>
+    <div class="limit"><h3>Check how it files</h3><p>Open Obsidian after your first few notes and look at where things landed. If you don't like it, tell Claude Code in plain words and it will change how it files.</p></div>
+    <div class="limit"><h3>Your notes live on your computer</h3><p>Obsidian keeps your vault as a folder on your own computer. When Claude Code reads or files a note, that text goes through Claude, so only add what you are comfortable sharing with it.</p></div>
+    <div class="limit"><h3>Client and health details</h3><p>If you work with clients or patients, leave out names and private details unless you have their permission and have checked the rules where you work. Use first names or initials until you're sure.</p></div>
+  </div>
+</section>
+
+<section class="close" aria-labelledby="close-h">
+  <div class="sig">Adam · Aligned AI</div>
+  <h2 id="close-h">Want this set up for your business?</h2>
+  <p>I'm setting AI up with a handful of local businesses right now. If you'd like my help with yours, answer a few quick questions about how it runs. About four minutes, mostly taps, and it comes straight to me.</p>
+  <div class="row"><a class="btn cta" id="cta-close" href="second-brain.html" target="_blank" rel="noopener">Answer a few questions</a></div>
+  <p>Not ready for that? Set up the first three steps this week and record one voice note. That's all it takes to start.</p>
+</section>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const STEPS = [
+  {t:"Get Claude Code", why:"5 min", body:[
+    "Go to claude.ai and make an account if you don't have one. Claude Code comes with the paid plan, so you need to subscribe.",
+    "Open the Claude app. Use the toggle at the top (the little arrows) to switch to Claude Code. That's the side that works with files on your computer."]},
+  {t:"Download Obsidian and make a vault", why:"5 min", body:[
+    "Search for Obsidian, download it for your computer and follow the install steps. It's free and simple.",
+    "When it opens, create a new vault. The vault is just a folder on your computer where all your notes will live. Name it something like My Brain."]},
+  {t:"Make your starting folders", why:"3 min", body:[
+    "Inside the vault, make these folders. If you have no idea where to start, this is a good place:",
+    "folders",
+    "You can customise them for your life later. Claude Code files each note into the folder that fits, so the folders are how it knows where things go."]},
+  {t:"Create a project called My Brain", why:"2 min", body:[
+    "In Claude Code, create a new project and call it My Brain. Every time you want to file something or review your week, start a new chat inside that project. It keeps everything in one place."]},
+  {t:"Tell Claude Code to connect to Obsidian", why:"3 min", body:[
+    "This is the prompt from the video. Paste it into a chat in your My Brain project and press Enter. Claude Code can connect the apps for you, so you don't have to be technical.",
+    "If it needs something from you, it should tell you first and walk you through it."],
+    ask:"I just downloaded the Obsidian app. I want to use it as my second brain. Can you connect to my Obsidian? I'm going to start recording voice notes, and I'm going to upload the transcripts right here into this chat. I want you to file them into the Obsidian app, and let's start using it as our second brain so I get my life organized."},
+  {t:"Record your first voice note", why:"5 min", body:[
+    "Use your phone's recorder, or dictation on your computer, and talk about your day: what happened, who you spoke to, what you need to do, how you feel. Two or three minutes is plenty.",
+    "Then paste the transcript into your My Brain chat. If it is saved in a Google Doc, you can tell Claude Code which document it is in."],
+    ask:"I've got a transcript for you. I recorded some reflections on my day. File everything into my second brain: the daily note, any projects or ideas I mentioned, and a file for each person I talked about. Tell me what you filed and where, and list any open loops or things I said I'd do."},
+  {t:"Check what it filed", why:"3 min", body:[
+    "Open Obsidian. Look in your daily folder for today's note, and click through to the others it made.",
+    "Look at the graph view too. It shows how your notes connect to each other, and it grows every time you add something.",
+    "If something landed in the wrong place, say so in plain words and it will adjust."]},
+  {t:"Make recording a habit", why:"ongoing", body:[
+    "This is the one thing that decides whether it works for you. Talk about your day, your week, your projects, the people in your life, and send it to the brain.",
+    "Try a short note at the end of each day and a longer one at the end of each week. The more you give it, the more it can do for you."]},
+  {t:"Bonus: build the dashboard (the face of your brain)", why:"15 min", body:[
+    "After a few weeks of notes, ask Claude Code to build a visual dashboard from your vault, so you can see your whole life at a glance without opening individual files.",
+    "Start with the prompt below, then change it to suit your life. Ask for the tabs you would actually use."],
+    ask:"Build me an interactive dashboard from everything in my Obsidian vault, and open it in my browser. Make a Today tab with my biggest priority, what needs me in the next seven days, and anything coming up. Add a tab with all my projects at a glance, a tab with last week's wins, and a tab with my goals. Keep it simple and visual. Tell me how to refresh it when I add new notes."}
+];
+
+const ASKS = {
+  "Priorities":[
+    "Based on my last week's entries, what are my three biggest priorities?",
+    "What did I file weeks ago that I still haven't acted on?",
+    "What am I missing or forgetting?",
+    "What should I prepare for my meetings tomorrow?"
+  ],
+  "Patterns":[
+    "What patterns do you see in my behaviour or loops based on the last month of entries?",
+    "Have I mentioned feeling like this before? What helped last time?",
+    "What have I complained about more than once in the last two weeks?",
+    "Which of these should I deal with first?"
+  ],
+  "People":[
+    "What do I know about this person? Give me everything I've said about them.",
+    "Who have I not followed up with, and what did I say I'd do?",
+    "Draft a message to this person, based on what I told you about their week."
+  ],
+  "Weekly review":[
+    "Here's my week. File it and give me a short review: wins, open loops and what carries over.",
+    "Make a Sunday review I can share with my partner or team.",
+    "What did we get done this week compared with what I planned?"
+  ]
+};
+
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+
+/* Tracking: same insert-only publishable key and page_events table as every page
+   in this folder, so opens, copies and clicks show up in funnel.html next to the
+   questionnaire. Never blocks or breaks the page if it fails. */
+const SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+const SLUG = "second-brain-guide-page";
+function track(event, extra){
+  try {
+    const body = Object.assign({ slug: SLUG, event: String(event).slice(0,40), path: String(location.pathname||"").slice(0,200), referrer: document.referrer ? document.referrer.slice(0,200) : null }, extra || {});
+    fetch(SUPABASE_URL + "/rest/v1/page_events", {
+      method: "POST", keepalive: true,
+      headers: { apikey: SUPABASE_KEY, Authorization: "Bearer " + SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify(body)
+    }).catch(()=>{});
+  } catch(e){}
+}
+track("view", { step: 0 });
+
+const FOLDERS = ["Daily","Ideas","Meetings","People","Projects","Reference","Reviews"];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function toast(m){ const t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 1800); }
+async function copy(text){
+  try { await navigator.clipboard.writeText(text); toast("Copied. Now paste it into Claude Code"); track("copy"); }
+  catch(e){ window.prompt("Copy this:", text); }
+}
+
+let done = store.get("sb-done", []);
+function renderSteps(){
+  document.getElementById("steps").innerHTML = STEPS.map((s, i) => `
+    <li><details class="step${done.includes(i) ? " done" : ""}" ${i === 0 && !done.length ? "open" : ""}>
+      <summary>
+        <input type="checkbox" class="tick" data-i="${i}" ${done.includes(i) ? "checked" : ""} aria-label="Mark step ${i+1} done">
+        <h3><span class="num">0${i+1}</span>${esc(s.t)} <span class="why">${esc(s.why)}</span></h3>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="body">${s.body.map(b => b === "folders" ? `<div class="folders">${FOLDERS.map(f => `<span>${f}</span>`).join("")}</div>` : `<p>${esc(b)}</p>`).join("")}${s.ask ? `<div class="prompt">${esc(s.ask)}</div><button class="btn ghost" data-ask="${i}" style="align-self:flex-start">Copy the prompt</button>` : ""}</div>
+    </details></li>`).join("");
+  const pct = Math.round(done.length / STEPS.length * 100);
+  document.getElementById("pct").textContent = pct + "%";
+  document.getElementById("pct-label").textContent = pct === 100 ? "all built" : "built";
+  document.getElementById("ring").style.strokeDashoffset = 527.8 * (1 - pct / 100);
+  document.getElementById("tried").hidden = pct !== 100;
+}
+document.getElementById("steps").addEventListener("click", e => {
+  const a = e.target.closest("[data-ask]");
+  if (a) { e.preventDefault(); copy(STEPS[+a.dataset.ask].ask); return; }
+  const t = e.target.closest(".tick"); if (!t) return;
+  e.stopPropagation();
+  const i = +t.dataset.i;
+  done = t.checked ? [...new Set([...done, i])] : done.filter(x => x !== i);
+  store.set("sb-done", done);
+  const openI = [...document.querySelectorAll(".step")].findIndex(d => d.open);
+  renderSteps();
+  const all = document.querySelectorAll(".step");
+  if (t.checked && all[i + 1]) all[i + 1].open = true; else if (all[openI]) all[openI].open = true;
+  if (t.checked) track("step", { step: i + 1 });
+  if (done.length === STEPS.length) { toast("Your Second Brain is built. Nice."); track("completed", { step: STEPS.length }); }
+});
+
+document.getElementById("cta-tried").addEventListener("click", () => track("cta_click", { label: "tried" }));
+document.getElementById("cta-close").addEventListener("click", () => track("cta_click", { label: "close" }));
+
+let tab = store.get("sb-tab", "Priorities");
+if (!ASKS[tab]) tab = "Priorities";
+function renderAsks(){
+  document.getElementById("tabs").innerHTML = Object.keys(ASKS).map(k => `<button class="tab" role="tab" aria-selected="${k === tab}" data-k="${esc(k)}">${esc(k)}</button>`).join("");
+  document.getElementById("asks").innerHTML = ASKS[tab].map((a, i) => `<div class="ask"><p>“${esc(a)}”</p><button class="copy" data-a="${i}">Copy</button></div>`).join("");
+}
+document.getElementById("tabs").addEventListener("click", e => { const b = e.target.closest("[data-k]"); if (!b) return; tab = b.dataset.k; store.set("sb-tab", tab); renderAsks(); });
+document.getElementById("asks").addEventListener("click", e => { const b = e.target.closest("[data-a]"); if (b) copy(ASKS[tab][+b.dataset.a]); });
+
+renderSteps(); renderAsks();
+</script>
+</body>
+</html>

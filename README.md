@@ -14,6 +14,8 @@ or just ask Claude.
 | `helena.html` | Helena, dental clinic owner | 12, one typed |
 | `lara.html` | Lara, massage and Bowen therapy plus Zigzag kids' parties and festivals | 15, two typed |
 | `vision.html` | Ola's twelve month vision, for screen-sharing on the Zoom call | |
+| `second-brain-guide.html` | Public free guide: build a Second Brain with Obsidian and Claude Code. Logs views, steps, copies and clicks to `page_events` (slug `second-brain-guide-page`). | |
+| `second-brain.html` | Questionnaire at the end of that guide, for people who want help. Slug `second-brain-guide`. | 11, three typed |
 | `index.html` | A neutral front door. Nobody should need it. | |
 | `assets/` | The shared engine and styles. Every page above uses them. | |
 | `pera-demo/` | Concept website for Ola: two doors, her nine real homes, AI assistant demo. Uses her live photos, so it needs real hosting rather than an artifact. | |
