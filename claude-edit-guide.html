@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A step-by-step guide to letting Claude Code edit your videos. Tick the steps as you go.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Let Claude edit your videos">
+<meta property="og:description" content="Free step-by-step guide with the prompts. No editing software.">
+<meta name="theme-color" content="#6B3FD4">
+<title>Claude Video Editor Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ground:#F4F3F8; --surface:#FFFFFF; --sunk:#EAE7F1; --ink:#17131F; --muted:#5F596E; --line:#DCD7E6;
+  --accent:#6B3FD4; --accent-ink:#FFFFFF; --accent-soft:#ECE5FC; --signal:#0E8FA8; --signal-soft:#DDF3F7; --warn:#A8641A; --warn-soft:#FBEEDD;
+  --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F0C15; --surface:#18141F; --sunk:#221D2B; --ink:#EEEAF6; --muted:#A59FB5; --line:#332D3F;
+    --accent:#A487F2; --accent-ink:#130E1C; --accent-soft:#2A2240; --signal:#5AD8F0; --signal-soft:#12303A; --warn:#E6A858; --warn-soft:#33250F;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F0C15; --surface:#18141F; --sunk:#221D2B; --ink:#EEEAF6; --muted:#A59FB5; --line:#332D3F;
+  --accent:#A487F2; --accent-ink:#130E1C; --accent-soft:#2A2240; --signal:#5AD8F0; --signal-soft:#12303A; --warn:#E6A858; --warn-soft:#33250F;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--body);padding-inline:20px;padding-block:32px 90px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:72px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(40px,7vw,76px);line-height:.98;font-weight:800}
+h2{font-size:clamp(26px,3.6vw,36px);line-height:1.1;font-weight:800}
+h3{font-size:19px;font-weight:600}
+p{margin:0;max-width:62ch}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+section{display:flex;flex-direction:column;gap:20px}
+.lede{font-size:20px;color:var(--muted)}
+button{font:inherit}
+button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.hero-text{display:flex;flex-direction:column;gap:20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.orb{position:relative;width:230px;height:230px;max-width:100%;margin:0 auto}
+.orb svg{width:100%;height:100%;display:block}
+.orb .pct{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.orb .pct b{font:800 48px/1 var(--display);font-variant-numeric:tabular-nums}
+.orb .pct span{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.orb .spin{transform-origin:115px 115px;animation:spin 18s linear infinite}.orb .spin2{transform-origin:115px 115px;animation:spin 26s linear infinite reverse}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* needs */
+.needs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.needs div{padding:18px 20px 18px 0;display:flex;flex-direction:column;gap:4px}
+.needs div+div{padding-left:20px;border-left:1px solid var(--line)}
+.needs b{font:800 28px/1.1 var(--display)}
+.needs span{color:var(--muted);font-size:15px}
+@media (max-width:640px){.needs{grid-template-columns:1fr}.needs div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.step.done{border-color:color-mix(in srgb,var(--signal) 50%,var(--line))}
+.step summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:16px 18px}
+.step summary::-webkit-details-marker{display:none}
+.num{font:500 13px var(--mono);color:var(--muted);width:28px}
+.tick{appearance:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--line);background:var(--ground);cursor:pointer;display:grid;place-items:center;flex:none}
+.tick:checked{background:var(--signal);border-color:var(--signal)}
+.tick:checked::after{content:"";width:10px;height:6px;border-left:3px solid var(--ground);border-bottom:3px solid var(--ground);transform:rotate(-45deg) translate(1px,-1px)}
+.step h3{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.step .why{font:500 12px var(--mono);color:var(--muted);letter-spacing:.04em}
+.step .body{padding:0 18px 20px 76px;display:flex;flex-direction:column;gap:10px}
+@media (max-width:560px){.step .body{padding-left:18px}}
+.step ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.tried{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--accent-soft);border-radius:14px;padding:18px 20px}
+.tried div{display:flex;flex-direction:column;gap:4px;flex:1 1 320px}
+.tried p{font-size:15px;color:var(--muted)}
+a.btn{text-decoration:none;display:inline-block}
+.chev{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
+.step[open] .chev{transform:rotate(225deg)}
+
+/* builder */
+.builder{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px}
+@media (max-width:800px){.builder{grid-template-columns:1fr}}
+.fields{display:flex;flex-direction:column;gap:14px}
+label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:15px}
+label small{font-weight:400;color:var(--muted)}
+input[type=text],textarea,select{font:inherit;font-size:16px;color:var(--ink);background:var(--ground);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+textarea{resize:vertical;min-height:64px}
+.toggle{flex-direction:row;align-items:center;gap:10px;font-weight:500}
+.toggle input{width:18px;height:18px;accent-color:var(--accent)}
+.say{display:flex;flex-direction:column;gap:14px}
+.bubble{background:var(--signal-soft);border-radius:18px 18px 4px 18px;padding:18px 20px;font-size:19px;line-height:1.5;min-height:160px;white-space:pre-wrap}
+.bubble mark{background:none;color:var(--signal);font-weight:600}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent)}
+.hint{font-size:14px;color:var(--muted)}
+.wave{display:flex;gap:3px;align-items:center;height:26px}
+.wave i{width:4px;border-radius:2px;background:var(--signal);height:30%}
+@media (prefers-reduced-motion:no-preference){.speaking .wave i{animation:w 0.9s ease-in-out infinite}.wave i:nth-child(2n){animation-delay:.15s}.wave i:nth-child(3n){animation-delay:.3s}}
+@keyframes w{50%{height:100%}}
+
+/* tabs */
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:15px}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.asks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (max-width:680px){.asks{grid-template-columns:1fr}}
+.ask{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.ask p{font-size:17px}
+.ask .copy{align-self:flex-start;border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:8px;padding:5px 10px;font-size:13px;font-weight:600;cursor:pointer}
+
+/* schedule */
+.sched{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:860px){.sched{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.sched{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.when{font:500 12px var(--mono);color:var(--signal);letter-spacing:.06em;text-transform:uppercase}
+.card p{font-size:15px;color:var(--muted)}
+
+/* limits */
+.limits{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (max-width:680px){.limits{grid-template-columns:1fr}}
+.limit{background:var(--warn-soft);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.limit h3{color:var(--warn);font-size:17px}
+.limit p{font-size:15px}
+
+.close{background:var(--ink);color:var(--ground);border-radius:22px;padding:clamp(28px,5vw,52px);display:flex;flex-direction:column;gap:18px}
+.close h2{color:var(--ground);font-size:clamp(28px,4.4vw,46px)}
+.close p{color:color-mix(in srgb,var(--ground) 78%,var(--ink))}
+.close .cta{background:var(--ground);color:var(--ink);border-color:var(--ground);padding:13px 20px}
+.close .sig{font:500 13px var(--mono);letter-spacing:.08em;color:color-mix(in srgb,var(--ground) 60%,var(--ink))}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:9px 16px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+.toast.show{opacity:1}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">The CLAUDE VIDEO EDITOR guide · from Adam, Aligned AI</div>
+    <h1>Let <em>Claude</em> edit your videos.</h1>
+    <p class="lede">No editing software. You tell Claude Code what you need and it cuts the repeats, adds captions and builds the motion graphics. Tick the steps as you go and the ring fills up.</p>
+  </div>
+  <div class="orb" aria-live="polite">
+    <svg viewBox="0 0 230 230" aria-hidden="true">
+      <g class="spin"><circle cx="115" cy="115" r="108" fill="none" stroke="var(--signal)" stroke-width="1.5" stroke-dasharray="3 9" opacity=".6"/></g>
+      <g class="spin2"><circle cx="115" cy="115" r="98" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="60 40 20 40" opacity=".5"/></g>
+      <circle cx="115" cy="115" r="84" fill="none" stroke="var(--sunk)" stroke-width="12"/>
+      <circle id="ring" cx="115" cy="115" r="84" fill="none" stroke="var(--signal)" stroke-width="12" stroke-linecap="round" transform="rotate(-90 115 115)" stroke-dasharray="527.8" stroke-dashoffset="527.8" style="transition:stroke-dashoffset .5s ease"/>
+    </svg>
+    <div class="pct"><b id="pct">0%</b><span id="pct-label">edited</span></div>
+  </div>
+</header>
+
+<section aria-labelledby="need-h">
+  <div class="eyebrow">Before you start</div>
+  <h2 id="need-h">What you need</h2>
+  <div class="needs">
+    <div><b>A Claude Code subscription</b><span>It comes with the paid plan, about $24 a month when I recorded this. Check the price today.</span></div>
+    <div><b>Your footage on your computer</b><span>Face-cam clips, a screen recording, or both. The desktop app runs on Windows and Mac.</span></div>
+    <div><b>A short test clip</b><span>Start with two minutes of footage so you see how it works before you hand over a long video.</span></div>
+  </div>
+</section>
+
+<section aria-label="Setup">
+  <div class="eyebrow">Set it up · tick as you go</div>
+  <ol class="steps" id="steps"></ol>
+  <div class="tried" id="tried" hidden>
+    <div><h3>Your first video is edited. Did it work?</h3><p>Tell me how you got on, and if you'd like help setting this up for your business, I'll take a look.</p></div>
+    <a class="btn" id="cta-tried" href="claude-edit.html" target="_blank" rel="noopener">Tell me how it went</a>
+  </div>
+</section>
+
+<section aria-labelledby="build-h">
+  <div class="eyebrow">The one habit that changes everything</div>
+  <h2 id="build-h">Brief it like you would a human editor</h2>
+  <p class="lede">The clearer you are about who the video is for and how it should feel, the less you fix afterwards. Fill this in and you get the prompt to hand over your footage.</p>
+  <div class="builder">
+    <div class="fields">
+      <label for="f-kind">What kind of video is it?
+        <input type="text" id="f-kind" value="a 10-minute tutorial where I share my screen and talk to camera"></label>
+      <label for="f-who">Who is it for?
+        <input type="text" id="f-who" value="small business owners who hate editing"></label>
+      <label for="f-length">How long should it end up?
+        <input type="text" id="f-length" value="about 7 minutes"></label>
+      <label for="f-folder">Where is the footage?
+        <input type="text" id="f-folder" value="the folder called 1 Raw Footage inside my video folder"></label>
+      <label for="f-style">How should it look?
+        <input type="text" id="f-style" value="clean and premium, dark purple and orange, elegant serif titles"></label>
+      <label for="f-caps">Captions
+        <input type="text" id="f-caps" value="one line at a time with the spoken word highlighted, only in the first 40 seconds, and a captions file for YouTube"></label>
+      <label for="f-music">Music
+        <input type="text" id="f-music" value="none, my audio person adds it"></label>
+      <label for="f-must">Anything to keep or cut?
+        <textarea id="f-must">keep the part where I show the finished result, and cut every repeat and false start</textarea></label>
+    </div>
+    <div class="say" id="say">
+      <div class="row"><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="hint">Your prompt for Claude Code</span></div>
+      <div class="bubble" id="bubble" aria-live="polite"></div>
+      <div class="row">
+        <button class="btn" id="copy-say">Copy the prompt</button>
+        <button class="btn ghost" id="read-say">Read it out loud</button>
+      </div>
+      <p class="hint">Paste it into a new chat in Claude Code. It will read the transcript and tell you its plan before it edits anything. Say yes, or change the plan.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="asks-h">
+  <div class="eyebrow">Steal these</div>
+  <h2 id="asks-h">Notes that work</h2>
+  <p class="lede">Watch the first version, then give notes the way you would to a person. One note at a time. These are real ones I used.</p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="asks" id="asks" role="tabpanel"></div>
+</section>
+
+<section aria-labelledby="sched-h">
+  <div class="eyebrow">Once the video is done</div>
+  <h2 id="sched-h">More things to ask for</h2>
+  <p class="lede">The same chat can also package the video. Ask in your own words, or copy these.</p>
+  <div class="sched" id="sched"></div>
+</section>
+
+<section aria-labelledby="lim-h">
+  <div class="eyebrow">Honest limits</div>
+  <h2 id="lim-h">Where to keep a hand on the wheel</h2>
+  <div class="limits">
+    <div class="limit"><h3>Watch every cut</h3><p>Claude can cut a word in half, or keep a false start you wanted gone. Watch the whole video once, and ask it for the written transcript so you can read what stays.</p></div>
+    <div class="limit"><h3>Check what is on screen</h3><p>Screen recordings can show client names, emails and private details. Ask Claude to scan for them and blur them, then check yourself before you publish.</p></div>
+    <div class="limit"><h3>Start small</h3><p>Long videos take longer to process and use more of your plan. Do a two-minute clip first, then your real video. If Claude needs an account or a key for something, it should tell you before it starts.</p></div>
+    <div class="limit"><h3>Use music you are allowed to use</h3><p>Claude can mix music under your voice, but the track has to be one you have the rights to. Tools and limits change, so check what Claude shows you today.</p></div>
+  </div>
+</section>
+
+<section class="close" aria-labelledby="close-h">
+  <div class="sig">Adam · Aligned AI</div>
+  <h2 id="close-h">Want this set up for your business?</h2>
+  <p>I'm setting AI up with a handful of local businesses right now. If you'd like my help with yours, answer a few quick questions about how it runs. About four minutes, mostly taps, and it comes straight to me.</p>
+  <div class="row"><a class="btn cta" id="cta-close" href="claude-edit.html" target="_blank" rel="noopener">Answer a few questions</a></div>
+  <p>Not ready for that? Edit one small clip this week, then subscribe on YouTube. I show a new way to use these tools every week.</p>
+</section>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const STEPS = [
+  {t:"Get Claude Code", why:"5 min", body:[
+    "Go to claude.ai and make an account. Claude Code comes with the paid plan, so you need to subscribe.",
+    "Download the desktop app. Inside it, use the toggle at the top (the little arrows) to switch from Chat to Claude Code. That's the side that works on files on your computer, and it's the one that edits."]},
+  {t:"Put your videos in tidy folders", why:"5 min", body:[
+    "Claude works on files on your computer, so give it a clear home. For each video, make one folder with two folders inside: 1 Raw Footage and 2 Final Videos.",
+    "You can ask Claude to do the tidying for you. Copy the prompt below and paste it into Claude Code."],
+    ask:"Organise my video folders. Make one folder per video title, and inside each one a folder called 1 Raw Footage and a folder called 2 Final Videos. Put my raw clips in the right place. Don't delete anything, and tell me what you moved."},
+  {t:"Tell Claude to install what it needs", why:"3 min", body:[
+    "This is the prompt from the video. Paste it and press Enter. Claude Code installs the skills it needs, like the one that builds the animated motion graphics. You only do this once.",
+    "If it needs something from you, like an account or a key, it should tell you first and walk you through it."],
+    ask:"I want you to start editing my videos. Please install any skills you need to do it. I'm going to need some extra motion graphics, captions, some basic editing, and perhaps you could also add some music. If you need anything from me, like an account or a key, tell me in plain English first and walk me through it."},
+  {t:"Drop your footage in and brief it", why:"5 min", body:[
+    "Put a short test clip in 1 Raw Footage. Then use the prompt builder below and paste the result into Claude Code.",
+    "Be specific about who the video is for, how it should look and what to keep. That's the part that saves you time later."]},
+  {t:"Let it plan first, then edit", why:"5 min", body:[
+    "Before it touches anything, Claude should tell you its plan in plain English: what it will cut, what graphics it will add and how long the video will be.",
+    "Read the plan. Say yes, or change it. This is where you save yourself an hour."],
+    ask:"Before you edit anything, tell me your plan in plain English: what you'll cut, which graphics and captions you'll add, and how long the finished video will be. Wait for my OK."},
+  {t:"Watch it, then give notes like an editor", why:"15 min", body:[
+    "Watch the first version with a notebook. Give feedback in plain words, one note at a time. The Notes that work section below has the ones I used.",
+    "It usually takes a few rounds. Each one gets closer to what you had in mind."]},
+  {t:"Turn it into reels (optional)", why:"10 min", body:[
+    "Once the long video is done, ask Claude to find the moments that work on their own and cut them as vertical reels.",
+    "Ask for the list of picks first, so you can say yes before it builds anything."],
+    ask:"Find four moments in this video that work on their own, 20 to 45 seconds each. Each one should open on the payoff, not on me talking, and cut every false start. Show me the list of what you picked, with the exact lines, before you build anything. Then make them vertical 1080 by 1920, with the screen on top and me underneath, and captions word by word."}
+];
+
+const ASKS = {
+  "Cuts":[
+    "Read the transcript and list every line I said twice. Keep the best take of each one.",
+    "Cut every false start and long pause. Keep my real words and never rewrite them.",
+    "Check that every cut lands after a full word. Don't cut a word in half.",
+    "This part is a tangent. Cut it, and make sure the sentence before and after still joins up."
+  ],
+  "Opening":[
+    "The first 30 seconds are everything. Open on what I'm talking about, with a bold hook and something moving every few seconds.",
+    "Show the finished result first, then explain how I got there.",
+    "Put a short title line over the hook that says what the viewer gets, not what tool I used.",
+    "The opening is just me talking to camera. Add captions and graphics so people can see what I'm describing."
+  ],
+  "Look":[
+    "Too much space above my head. Move my face closer to the middle of the frame.",
+    "Make the graphics look more premium: an elegant serif font, soft shadows and polished icons, nothing basic.",
+    "Use my brand colours for everything: my main colour for highlights and one accent colour.",
+    "It feels busy. Remove anything that isn't helping the viewer understand."
+  ],
+  "Captions":[
+    "Show captions one line at a time, with the word I'm saying highlighted.",
+    "Don't burn captions into the long video. Give me a captions file I can upload to YouTube instead.",
+    "The captions cover my face. Move them lower, or above the line between the screen and me.",
+    "Use the same caption style in the reels, but make them bigger."
+  ],
+  "Graphics":[
+    "Show a graphic when I say a number or a tool name, and use the real number I said.",
+    "Add a gentle zoom in when I talk about something on the screen.",
+    "Highlights must never hide the text: use a soft tint and a thin underline only.",
+    "Anchor each graphic to the exact word I say, so it lands on that word."
+  ],
+  "Privacy":[
+    "Scan my screen recording for client names and blur them everywhere they appear, including inside the AI's answers.",
+    "Check the screen for anything private, like names, emails or health details, before you export.",
+    "List every moment where a name appears so I can check them myself."
+  ]
+};
+
+const SCHED = [
+  {when:"After the edit", t:"A captions file", p:"A file you upload to YouTube, so viewers can switch captions on.", ask:"Export a captions file (.srt) for the finished video that matches the final timing exactly."},
+  {when:"After the edit", t:"Titles and description", p:"Ask for options in your own words, not hype.", ask:"Write me three YouTube titles, a description and chapters with timestamps from this transcript. Use my real words and don't hype it."},
+  {when:"After the edit", t:"Thumbnail ideas", p:"Ideas to make the image from, with big words and one clear face.", ask:"Give me three thumbnail ideas for this video: one to three big words, one big face with a clear emotion, and a dark background with one accent colour."},
+  {when:"After the edit", t:"Reels from the video", p:"Short, vertical, opening on the payoff.", ask:"Find four moments in this video that work on their own, 20 to 45 seconds each, each opening on the payoff. Show me the list first."},
+  {when:"After the edit", t:"A loudness check", p:"Is the sound right for YouTube?", ask:"Check the loudness of the finished video and tell me if it's right for YouTube, which is around minus 14 LUFS. Don't change anything yet."},
+  {when:"After the edit", t:"A chapter list", p:"Timestamps from what I actually said.", ask:"Make a list of chapters with timestamps for this video, using short plain titles that say what the viewer will see."},
+  {when:"Ask in plain English", t:"Tighter pacing", p:"Faster, or slower, or calmer.", ask:"Tighten the pacing of the first half. Keep every point but cut anything that repeats."},
+  {when:"Ask in plain English", t:"Anything else", p:"If you can describe it, you can ask for it.", ask:"Add a feature to this video that helps the viewer follow along, for example a progress bar with the chapter name."}
+];
+
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+
+// Tracking: same insert-only publishable key + table as every page in
+// Adam-vision-pages, so this guide's opens and clicks show up alongside the
+// questionnaire's funnel. Never blocks or breaks the page if it fails.
+const SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+function track(event, extra){
+  try {
+    const body = Object.assign({ slug: "claude-edit-guide-page", event: String(event).slice(0,40), path: String(location.pathname||"").slice(0,200), referrer: document.referrer ? document.referrer.slice(0,200) : null }, extra || {});
+    fetch(SUPABASE_URL + "/rest/v1/page_events", {
+      method: "POST", keepalive: true,
+      headers: { apikey: SUPABASE_KEY, Authorization: "Bearer " + SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify(body)
+    }).catch(()=>{});
+  } catch(e){}
+}
+track("view", { step: 0 });
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function toast(m){ const t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 1800); }
+async function copy(text){
+  try { await navigator.clipboard.writeText(text); toast("Copied. Now paste it into Claude Code"); track("copy"); }
+  catch(e){ window.prompt("Copy this:", text); }
+}
+
+// steps + progress
+let done = store.get("ce-done", []);
+function renderSteps(){
+  document.getElementById("steps").innerHTML = STEPS.map((s, i) => `
+    <li><details class="step${done.includes(i) ? " done" : ""}" ${i === 0 && !done.length ? "open" : ""}>
+      <summary>
+        <input type="checkbox" class="tick" id="tick-${i}" data-i="${i}" ${done.includes(i) ? "checked" : ""} aria-label="Mark step ${i+1} done">
+        <h3><span class="num">0${i+1}</span>${esc(s.t)} <span class="why">${esc(s.why)}</span></h3>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="body">${s.body.map(b => `<p>${esc(b)}</p>`).join("")}${s.ask ? `<button class="btn ghost" data-ask="${i}" style="align-self:flex-start">Copy the prompt</button>` : ""}</div>
+    </details></li>`).join("");
+  const pct = Math.round(done.length / STEPS.length * 100);
+  document.getElementById("pct").textContent = pct + "%";
+  document.getElementById("pct-label").textContent = pct === 100 ? "all edited" : "edited";
+  document.getElementById("ring").style.strokeDashoffset = 527.8 * (1 - pct / 100);
+  document.getElementById("tried").hidden = pct !== 100;
+}
+document.getElementById("steps").addEventListener("click", e => {
+  const a = e.target.closest("[data-ask]");
+  if (a) { e.preventDefault(); copy(STEPS[+a.dataset.ask].ask); return; }
+  const t = e.target.closest(".tick"); if (!t) return;
+  e.stopPropagation();
+  const i = +t.dataset.i;
+  done = t.checked ? [...new Set([...done, i])] : done.filter(x => x !== i);
+  store.set("ce-done", done);
+  const openI = [...document.querySelectorAll(".step")].findIndex(d => d.open);
+  renderSteps();
+  const all = document.querySelectorAll(".step");
+  if (t.checked && all[i + 1]) all[i + 1].open = true; else if (all[openI]) all[openI].open = true;
+  if (t.checked) track("step", { step: i + 1 });
+  if (done.length === STEPS.length) { toast("Your video is edited. Nice."); track("completed", { step: STEPS.length }); }
+});
+
+document.getElementById("cta-tried").addEventListener("click", () => track("cta_click", { label: "tried" }));
+document.getElementById("cta-close").addEventListener("click", () => track("cta_click", { label: "close" }));
+
+// builder
+const F = id => document.getElementById(id);
+const fieldIds = ["f-kind","f-who","f-length","f-folder","f-style","f-caps","f-music","f-must"];
+const saved = store.get("ce-builder", null);
+if (saved){ fieldIds.forEach(id => { if (saved[id] !== undefined) F(id).value = saved[id]; }); }
+function sentence(){
+  const v = id => F(id).value.trim();
+  let s = `Hi Claude. Please edit my video. It's ${v("f-kind") || "…"}, for ${v("f-who") || "…"}, and it should end up ${v("f-length") || "…"}.`;
+  s += `\n\nThe footage is in ${v("f-folder") || "…"}. Transcribe it first and read the whole transcript.`;
+  s += `\n\nBefore you edit anything, tell me your plan in plain English: what you'll cut, what graphics you'll add and how long it will be. Wait for my OK.`;
+  s += `\n\nCut every repeat, false start and long pause. Keep my real words and never rewrite them.${v("f-must") ? " " + v("f-must").replace(/^./, c => c.toUpperCase()) + "." : ""}`;
+  s += `\n\nLook: ${v("f-style") || "clean and simple"}. Captions: ${v("f-caps") || "yes"}. Music: ${v("f-music") || "none"}.`;
+  s += `\n\nPut the finished video in the folder 2 Final Videos.`;
+  return s;
+}
+function renderSay(){
+  const s = sentence();
+  F("bubble").innerHTML = esc(s).replace(/(Hi Claude\.|Wait for my OK\.)/g, "<mark>$1</mark>");
+  const o = {}; fieldIds.forEach(id => o[id] = F(id).value); store.set("ce-builder", o);
+}
+fieldIds.forEach(id => F(id).addEventListener("input", renderSay));
+F("copy-say").onclick = () => copy(sentence());
+F("read-say").onclick = () => {
+  if (!("speechSynthesis" in window)) { toast("Your browser can't read aloud"); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(sentence().replace(/\n+/g, " "));
+  u.onstart = () => F("say").classList.add("speaking");
+  u.onend = u.onerror = () => F("say").classList.remove("speaking");
+  speechSynthesis.speak(u);
+};
+
+// notes
+let tab = store.get("ce-tab", "Cuts");
+if (!ASKS[tab]) tab = "Cuts";
+function renderAsks(){
+  F("tabs").innerHTML = Object.keys(ASKS).map(k => `<button class="tab" role="tab" aria-selected="${k === tab}" data-k="${esc(k)}">${esc(k)}</button>`).join("");
+  F("asks").innerHTML = ASKS[tab].map((a, i) => `<div class="ask"><p>“${esc(a)}”</p><button class="copy" data-a="${i}">Copy</button></div>`).join("");
+}
+F("tabs").addEventListener("click", e => { const b = e.target.closest("[data-k]"); if (!b) return; tab = b.dataset.k; store.set("ce-tab", tab); renderAsks(); });
+F("asks").addEventListener("click", e => { const b = e.target.closest("[data-a]"); if (b) copy(ASKS[tab][+b.dataset.a]); });
+
+// more things to ask for
+F("sched").innerHTML = SCHED.map((s, i) => `<div class="card"><span class="when">${esc(s.when)}</span><h3>${esc(s.t)}</h3><p>${esc(s.p)}</p><button class="copy" style="align-self:flex-start;border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:8px;padding:5px 10px;font-size:13px;font-weight:600;cursor:pointer" data-s="${i}">Copy the request</button></div>`).join("");
+F("sched").addEventListener("click", e => { const b = e.target.closest("[data-s]"); if (b) copy(SCHED[+b.dataset.s].ask); });
+
+renderSteps(); renderSay(); renderAsks();
+</script>
+
+</body>
+</html>
