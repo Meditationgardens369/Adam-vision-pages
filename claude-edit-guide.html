@@ -140,10 +140,26 @@ textarea{resize:vertical;min-height:64px}
 .close .sig{font:500 13px var(--mono);letter-spacing:.08em;color:color-mix(in srgb,var(--ground) 60%,var(--ink))}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:9px 16px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
 .toast.show{opacity:1}
+
+/* email gate */
+#gate{display:none;flex-direction:column;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;max-width:560px}
+body.locked #gate{display:flex}
+body.locked .wrap > :not(header):not(#gate){display:none}
+#gate h2{font-size:clamp(24px,3.4vw,32px)}
+#gate form{display:flex;flex-direction:column;gap:12px}
+#gate label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+#gate input[type=text],#gate input[type=email]{font:inherit;font-size:16px;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--ground);color:var(--ink)}
+#gate input:focus{outline:2px solid var(--accent);outline-offset:1px}
+#gate .consent{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.45;color:var(--muted);font-weight:400}
+#gate .consent input{margin-top:3px;flex:none}
+#gate .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+#gate .err{color:var(--warn);font-size:14px;min-height:1.2em}
+#gate .fine{font-size:13px;color:var(--muted)}
 </style>
 
 </head>
 <body>
+<script>try{if(localStorage.getItem("ce-unlocked")!=="1")document.body.classList.add("locked")}catch(e){document.body.classList.add("locked")}</script>
 <div class="wrap">
 
 <header class="hero">
@@ -162,6 +178,21 @@ textarea{resize:vertical;min-height:64px}
     <div class="pct"><b id="pct">0%</b><span id="pct-label">edited</span></div>
   </div>
 </header>
+
+<section id="gate" aria-labelledby="gate-h">
+  <div class="eyebrow">Free guide</div>
+  <h2 id="gate-h">Where should I send it?</h2>
+  <p>Put your name and email and the guide opens right here, with every prompt ready to copy.</p>
+  <form id="gate-form" novalidate>
+    <label class="f">First name<input type="text" id="g-name" name="name" autocomplete="given-name" maxlength="120" required></label>
+    <label class="f">Email<input type="email" id="g-email" name="email" autocomplete="email" maxlength="200" inputmode="email" required></label>
+    <input class="hp" type="text" id="g-company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="consent"><input type="checkbox" id="g-consent" required><span>Yes, send me the guide and the occasional email from Adam at Aligned AI. I can unsubscribe at any time.</span></label>
+    <div class="err" id="g-err" role="alert"></div>
+    <button class="btn" type="submit" id="g-btn">Show me the guide</button>
+  </form>
+  <p class="fine">No spam. Your details stay with Adam and are never sold.</p>
+</section>
 
 <section aria-labelledby="need-h">
   <div class="eyebrow">Before you start</div>
@@ -441,6 +472,37 @@ F("sched").innerHTML = SCHED.map((s, i) => `<div class="card"><span class="when"
 F("sched").addEventListener("click", e => { const b = e.target.closest("[data-s]"); if (b) copy(SCHED[+b.dataset.s].ask); });
 
 renderSteps(); renderSay(); renderAsks();
+
+// email gate: name + email first, then the guide opens
+(function(){
+  const form = document.getElementById("gate-form"); if (!form) return;
+  if (document.body.classList.contains("locked")) track("gate_view");
+  function unlock(){ try{localStorage.setItem("ce-unlocked","1");}catch(e){} document.body.classList.remove("locked"); window.scrollTo({top:0,behavior:"smooth"}); }
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const err = document.getElementById("g-err"), btn = document.getElementById("g-btn");
+    const name = document.getElementById("g-name").value.trim(), email = document.getElementById("g-email").value.trim();
+    const consent = document.getElementById("g-consent").checked, trap = document.getElementById("g-company").value;
+    err.textContent = "";
+    if (!name) { err.textContent = "Please add your first name."; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { err.textContent = "That email doesn't look right. Please check it."; return; }
+    if (!consent) { err.textContent = "Please tick the box so I can send you the guide."; return; }
+    if (trap) { unlock(); return; }
+    btn.disabled = true; btn.textContent = "One moment...";
+    let ok = false;
+    try {
+      const r = await fetch(SUPABASE_URL + "/rest/v1/guide_signups", {
+        method: "POST",
+        headers: { apikey: SUPABASE_KEY, Authorization: "Bearer " + SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+        body: JSON.stringify({ slug: "claude-edit-guide", name: name.slice(0,120), email: email.slice(0,200), consent: true, referrer: document.referrer ? document.referrer.slice(0,200) : null })
+      });
+      ok = r.ok;
+    } catch(x){ ok = false; }
+    track(ok ? "signup" : "signup_error");
+    btn.disabled = false; btn.textContent = "Show me the guide";
+    unlock();
+  });
+})();
 </script>
 
 </body>
