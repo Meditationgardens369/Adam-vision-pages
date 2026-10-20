@@ -13,6 +13,8 @@ or just ask Claude.
 | `pedro-2.html` | Pedro, round two, written after his first answers | 16, six typed |
 | `helena.html` | Helena, dental clinic owner | 12, one typed |
 | `lara.html` | Lara, massage and Bowen therapy plus Zigzag kids' parties and festivals | 15, two typed |
+| `saltys-how.html` | Dr Saltys, chiropractor in Lagoa. Visual explainer to send first: patient journey toggle, four pieces, one diary for him and Julie, a slider he moves himself. Ends with a button to the questions. | |
+| `saltys.html` | Dr Saltys, the questions page, white look (`assets/saltys.css`) | 16, two typed |
 | `vision.html` | Ola's twelve month vision, for screen-sharing on the Zoom call | |
 | `second-brain-guide.html` | Public free guide: build a Second Brain with Obsidian and Claude Code. Logs views, steps, copies and clicks to `page_events` (slug `second-brain-guide-page`). | |
 | `second-brain.html` | Questionnaire at the end of that guide, for people who want help. Slug `second-brain-guide`. | 11, three typed |

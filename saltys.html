@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before We Meet</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Before we meet, Dr Saltys">
+<meta property="og:description" content="A few quick questions so I understand how your clinic runs before I suggest anything. About five minutes, mostly taps.">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+<link rel="stylesheet" href="assets/saltys.css">
+</head>
+<body>
+<script>
+/* Dr Edward Saltys: chiropractor, Centro Quiroprático Saltys, Lagoa. Adam's own
+   chiropractor from some years ago. Phoned 20 Oct 2026, he said now is a better moment
+   to talk. Wife Julie is a sports therapist and masseuse who works alongside him.
+   No website, no booking system, no CRM, a Google profile with 7 reviews and 3 weak photos.
+   Per a 2023 press article he also works from Estoi and travels twice a month to Grandola,
+   and about 80% of patients are Portuguese. Treat that as unconfirmed, hence questions 2 and 4.
+
+   The page is there to answer one thing: where does help matter most. Systems for the
+   admin, more new patients, or bringing past patients back. Questions 6 and 16 separate those.
+   The future question is gentle on purpose. Do not assume he wants to grow.
+
+   No dashboard rules key on this wording yet. If that changes, add "saltys" to
+   check_prospect_rules.js and run it after any wording change. */
+window.INTAKE = {
+  slug: "saltys",
+  name: "Dr Saltys",
+  business: "Centro Quiroprático Saltys, Lagoa",
+  headline: "worst",
+  brand: "Centro Quiroprático Saltys",
+  greeting: "Hello Dr Saltys",
+  introTitle: "A few questions, so I understand <em>how your clinic runs.</em>",
+  introNote: "There are no right answers. I would rather see how things really work day to day than guess at it. Nothing here asks for a password or anything private.",
+  questions: [
+    { id: "team", type: "one", short: "Who is in the clinic",
+      q: "Who is in the clinic day to day?",
+      opts: ["Just you", "You and Julie", "You, Julie and someone on reception", "You and a few other practitioners"] },
+    { id: "sites", type: "many", short: "Where you see patients",
+      q: "Where do you see patients at the moment?", hint: "Tap all that apply.",
+      opts: ["Lagoa", "Estoi", "Grândola", "Home visits", "Somewhere else"] },
+    { id: "patients", type: "one", short: "Active patients",
+      q: "Roughly how many patients have been to see you in the last year?",
+      hint: "A rough guess is fine.",
+      opts: ["Under 100", "100 to 300", "300 to 700", "More than 700", "I honestly do not know"] },
+    { id: "mix", type: "one", short: "Who the patients are",
+      q: "Who are most of your patients?",
+      hint: "This tells me whether anything we build needs to speak Portuguese as well as English.",
+      opts: ["Mostly Portuguese", "A mix of Portuguese and foreign residents", "Mostly English speaking residents", "Many are visitors or tourists"] },
+    { id: "source", type: "many", short: "How patients find you",
+      q: "How do new patients usually find you?", hint: "Tap all that apply.",
+      opts: ["Word of mouth", "A doctor or physio sends them", "Google or Google Maps", "Facebook", "They walk past the clinic", "Other"] },
+    { id: "capacity", type: "one", short: "How full the week is",
+      q: "How full is your week right now?",
+      hint: "This tells me whether the priority is more patients or easier days.",
+      opts: ["Fully booked, I could not take more", "Busy, with a few gaps", "Quite a few gaps most weeks", "Quiet, I would like more patients"] },
+    { id: "channel", type: "many", short: "How people book",
+      q: "How do patients get in touch to book?", hint: "Tap all that apply.",
+      opts: ["Phone calls", "WhatsApp", "Facebook messages", "Text messages", "Email", "They book in person at the clinic"] },
+    { id: "diary", type: "one", short: "Where the diary lives",
+      q: "Where does your appointment diary live?",
+      hint: "The real answer, not the tidy one.",
+      opts: ["A paper diary", "The calendar on my phone", "A diary on the computer", "A clinic software package", "In my head"],
+      follow: { when: "A clinic software package", key: "diaryName", placeholder: "Which one? (optional)" } },
+    { id: "noshows", type: "one", short: "Missed appointments",
+      q: "How often does someone miss an appointment without telling you?",
+      opts: ["Almost never", "A few times a month", "Most weeks", "I have never counted"] },
+    { id: "reminders", type: "one", short: "Appointment reminders",
+      q: "Does anyone remind patients before their appointment?",
+      opts: ["Yes, you or Julie message or call them", "Only sometimes", "No, they just turn up", "Yes, it happens automatically"] },
+    { id: "recall", type: "one", short: "Bringing patients back",
+      q: "When a patient has not been in for six months or more, does anyone get in touch?",
+      hint: "After all these years, this may be where the most hidden value sits.",
+      opts: ["Always, we keep track", "Only when I happen to remember", "They come back on their own", "No, and I know it would help"] },
+    { id: "tried", type: "text", short: "Tried before",
+      q: "Have you tried any booking system or clinic software before? What happened?",
+      hint: "Even a short answer helps. If the answer is no, just say so.",
+      placeholder: "I tried one years ago and it was too complicated, for example..." },
+    { id: "hours", type: "one", short: "Time on admin",
+      q: "In a normal week, how much time goes on phone calls, messages, diary and paperwork?",
+      hint: "Not the treatments. The organising around them, yours and Julie's together.",
+      opts: ["Under 3 hours", "3 to 6 hours", "6 to 10 hours", "More than 10 hours"] },
+    { id: "want", type: "one", short: "What would help most",
+      q: "If one thing got easier this year, which would you pick?",
+      hint: "Pick the one you would really notice.",
+      opts: ["Less time on admin and phone calls", "More new patients", "Past patients coming back more often", "Being easier to find and book online", "Something extra alongside the clinic, like courses or content"] },
+    { id: "future", type: "one", short: "The next few years",
+      q: "Looking ahead a few years, what do you want the clinic to be?",
+      hint: "No wrong answer. It helps me suggest the right size of thing.",
+      opts: ["About the same, just smoother", "A bit busier", "Gradually less of my time, with more help", "Open to adding new things, like online work"] },
+    { id: "worst", type: "text", short: "Worst part of the week",
+      q: "Last one. What is the most tiring part of running the clinic?",
+      hint: "A sentence or two is plenty. This is the answer I will read first.",
+      placeholder: "Answering the phone while I am with a patient, for example..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+/* Clean white look for Dr Saltys' page only. Loaded after intake.css, so the other
+   prospect pages are untouched. White, soft grey cards, deep navy ink and one calm blue. */
+
+:root:root:root {
+  --limestone: #ffffff;
+  --card: #f6f8fb;
+  --card-2: #e6ecf3;
+  --basalt: #14233a;
+  --ink: #14233a;
+  --muted: #55627a;
+  --faint: #8794a8;
+  --line: #dde4ee;
+  --atlantic: #2a6aa6;
+  --atlantic-soft: #e4eef8;
+  --on-accent: #ffffff;
+  --clay: #b0553a;
+  --clay-soft: #f8e9e3;
+  color-scheme: light;
+}
+
+body {
+  font-family: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  background: #ffffff;
+}
+
+.brand { font: 600 12px Figtree, sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--atlantic); }
+.count { color: var(--faint); }
+
+/* The tile pattern is a Portuguese pavement motif for the other pages. A thin blue line here. */
+.calcada {
+  height: 2px; opacity: 1; margin-top: 16px;
+  background: linear-gradient(90deg, var(--atlantic) 0%, var(--atlantic) 14%, transparent 100%);
+}
+.track { background: var(--card-2); height: 4px; }
+
+.eyebrow { font: 600 12px Figtree, sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--atlantic); }
+
+h1 { font: 400 clamp(32px, 8.5vw, 46px)/1.1 Fraunces, Georgia, serif; letter-spacing: -.01em; }
+h1 em { font-style: italic; color: var(--atlantic); }
+h2 { font: 400 clamp(22px, 6vw, 28px)/1.25 Fraunces, Georgia, serif; }
+
+.muted:empty { display: none; }
+
+.opt { background: #ffffff; border-color: var(--line); border-radius: 12px; }
+.opt[aria-pressed="true"] { border-color: var(--atlantic); background: var(--atlantic-soft); }
+.opt[aria-pressed="true"] .mark { border-color: var(--atlantic); }
+.opt[aria-pressed="true"] .mark::after { background: var(--atlantic); }
+
+.btn { border-radius: 12px; background: var(--atlantic); color: var(--on-accent); }
+.sig { color: var(--atlantic); }
+.quote { border-left-color: var(--atlantic); }
