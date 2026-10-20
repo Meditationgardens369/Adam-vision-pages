@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A step-by-step guide to building your own team of bots with Grok Bots, one job at a time. Tick the steps as you go.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Build a team of digital employees with Grok Bots">
+<meta property="og:description" content="Free step-by-step guide with the prompts. One bot per job, one at a time.">
+<meta name="theme-color" content="#6B3FD4">
+<title>Build a Team of Digital Employees with Grok Bots</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ground:#F4F3F8; --surface:#FFFFFF; --sunk:#EAE7F1; --ink:#17131F; --muted:#5F596E; --line:#DCD7E6;
+  --accent:#6B3FD4; --accent-ink:#FFFFFF; --accent-soft:#ECE5FC; --signal:#0E8FA8; --signal-soft:#DDF3F7; --warn:#A8641A; --warn-soft:#FBEEDD;
+  --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F0C15; --surface:#18141F; --sunk:#221D2B; --ink:#EEEAF6; --muted:#A59FB5; --line:#332D3F;
+    --accent:#A487F2; --accent-ink:#130E1C; --accent-soft:#2A2240; --signal:#5AD8F0; --signal-soft:#12303A; --warn:#E6A858; --warn-soft:#33250F;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F0C15; --surface:#18141F; --sunk:#221D2B; --ink:#EEEAF6; --muted:#A59FB5; --line:#332D3F;
+  --accent:#A487F2; --accent-ink:#130E1C; --accent-soft:#2A2240; --signal:#5AD8F0; --signal-soft:#12303A; --warn:#E6A858; --warn-soft:#33250F;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--body);padding-inline:20px;padding-block:32px 90px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:72px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(40px,7vw,76px);line-height:.98;font-weight:800}
+h2{font-size:clamp(26px,3.6vw,36px);line-height:1.1;font-weight:800}
+h3{font-size:19px;font-weight:600}
+p{margin:0;max-width:62ch}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+section{display:flex;flex-direction:column;gap:20px}
+.lede{font-size:20px;color:var(--muted)}
+button{font:inherit}
+button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.hero-text{display:flex;flex-direction:column;gap:20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.orb{position:relative;width:230px;height:230px;max-width:100%;margin:0 auto}
+.orb svg{width:100%;height:100%;display:block}
+.orb .pct{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.orb .pct b{font:800 48px/1 var(--display);font-variant-numeric:tabular-nums}
+.orb .pct span{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.orb .spin{transform-origin:115px 115px;animation:spin 18s linear infinite}.orb .spin2{transform-origin:115px 115px;animation:spin 26s linear infinite reverse}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* needs */
+.needs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.needs div{padding:18px 20px 18px 0;display:flex;flex-direction:column;gap:4px}
+.needs div+div{padding-left:20px;border-left:1px solid var(--line)}
+.needs b{font:800 28px/1.1 var(--display)}
+.needs span{color:var(--muted);font-size:15px}
+@media (max-width:640px){.needs{grid-template-columns:1fr}.needs div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.step.done{border-color:color-mix(in srgb,var(--signal) 50%,var(--line))}
+.step summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:16px 18px}
+.step summary::-webkit-details-marker{display:none}
+.num{font:500 13px var(--mono);color:var(--muted);width:28px}
+.tick{appearance:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--line);background:var(--ground);cursor:pointer;display:grid;place-items:center;flex:none}
+.tick:checked{background:var(--signal);border-color:var(--signal)}
+.tick:checked::after{content:"";width:10px;height:6px;border-left:3px solid var(--ground);border-bottom:3px solid var(--ground);transform:rotate(-45deg) translate(1px,-1px)}
+.step h3{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.step .why{font:500 12px var(--mono);color:var(--muted);letter-spacing:.04em}
+.step .body{padding:0 18px 20px 76px;display:flex;flex-direction:column;gap:10px}
+@media (max-width:560px){.step .body{padding-left:18px}}
+.step ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.tried{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--accent-soft);border-radius:14px;padding:18px 20px}
+.tried div{display:flex;flex-direction:column;gap:4px;flex:1 1 320px}
+.tried p{font-size:15px;color:var(--muted)}
+a.btn{text-decoration:none;display:inline-block}
+.chev{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
+.step[open] .chev{transform:rotate(225deg)}
+
+/* builder */
+.builder{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px}
+@media (max-width:800px){.builder{grid-template-columns:1fr}}
+.fields{display:flex;flex-direction:column;gap:14px}
+label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:15px}
+label small{font-weight:400;color:var(--muted)}
+input[type=text],textarea,select{font:inherit;font-size:16px;color:var(--ink);background:var(--ground);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+textarea{resize:vertical;min-height:64px}
+.toggle{flex-direction:row;align-items:center;gap:10px;font-weight:500}
+.toggle input{width:18px;height:18px;accent-color:var(--accent)}
+.say{display:flex;flex-direction:column;gap:14px}
+.bubble{background:var(--signal-soft);border-radius:18px 18px 4px 18px;padding:18px 20px;font-size:19px;line-height:1.5;min-height:160px;white-space:pre-wrap}
+.bubble mark{background:none;color:var(--signal);font-weight:600}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent)}
+.hint{font-size:14px;color:var(--muted)}
+.wave{display:flex;gap:3px;align-items:center;height:26px}
+.wave i{width:4px;border-radius:2px;background:var(--signal);height:30%}
+@media (prefers-reduced-motion:no-preference){.speaking .wave i{animation:w 0.9s ease-in-out infinite}.wave i:nth-child(2n){animation-delay:.15s}.wave i:nth-child(3n){animation-delay:.3s}}
+@keyframes w{50%{height:100%}}
+
+.prompt{background:var(--signal-soft);border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.5;white-space:pre-wrap}
+/* tabs */
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:15px}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.asks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (max-width:680px){.asks{grid-template-columns:1fr}}
+.ask{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.ask p{font-size:17px}
+.ask .copy{align-self:flex-start;border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:8px;padding:5px 10px;font-size:13px;font-weight:600;cursor:pointer}
+
+/* schedule */
+.sched{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:860px){.sched{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.sched{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.when{font:500 12px var(--mono);color:var(--signal);letter-spacing:.06em;text-transform:uppercase}
+.card p{font-size:15px;color:var(--muted)}
+
+/* limits */
+.limits{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (max-width:680px){.limits{grid-template-columns:1fr}}
+.limit{background:var(--warn-soft);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.limit h3{color:var(--warn);font-size:17px}
+.limit p{font-size:15px}
+
+.close{background:var(--ink);color:var(--ground);border-radius:22px;padding:clamp(28px,5vw,52px);display:flex;flex-direction:column;gap:18px}
+.close h2{color:var(--ground);font-size:clamp(28px,4.4vw,46px)}
+.close p{color:color-mix(in srgb,var(--ground) 78%,var(--ink))}
+.close .cta{background:var(--ground);color:var(--ink);border-color:var(--ground);padding:13px 20px}
+.close .sig{font:500 13px var(--mono);letter-spacing:.08em;color:color-mix(in srgb,var(--ground) 60%,var(--ink))}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:9px 16px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+.toast.show{opacity:1}
+
+/* email gate */
+#gate{display:none;flex-direction:column;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;max-width:560px}
+body.locked #gate{display:flex}
+body.locked .wrap > :not(header):not(#gate){display:none}
+#gate h2{font-size:clamp(24px,3.4vw,32px)}
+#gate form{display:flex;flex-direction:column;gap:12px}
+#gate label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+#gate input[type=text],#gate input[type=email]{font:inherit;font-size:16px;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--ground);color:var(--ink)}
+#gate input:focus{outline:2px solid var(--accent);outline-offset:1px}
+#gate .consent{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.45;color:var(--muted);font-weight:400}
+#gate .consent input{margin-top:3px;flex:none}
+#gate .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+#gate .err{color:var(--warn);font-size:14px;min-height:1.2em}
+#gate .fine{font-size:13px;color:var(--muted)}
+</style>
+
+</head>
+<body>
+<script>try{if(localStorage.getItem("gb-unlocked")!=="1")document.body.classList.add("locked")}catch(e){document.body.classList.add("locked")}</script>
+<div class="wrap">
+
+<header class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">The GROK BOTS guide · from Adam, Aligned AI</div>
+    <h1>Build your own <em>team of bots.</em></h1>
+    <p class="lede">One bot for each job you don't want to do by hand. You decide the jobs, Claude or ChatGPT writes each bot's brief, and Grok Bots does the work in its own chat. Tick the steps as you go and the ring fills up.</p>
+  </div>
+  <div class="orb" aria-live="polite">
+    <svg viewBox="0 0 230 230" aria-hidden="true">
+      <g class="spin"><circle cx="115" cy="115" r="108" fill="none" stroke="var(--signal)" stroke-width="1.5" stroke-dasharray="3 9" opacity=".6"/></g>
+      <g class="spin2"><circle cx="115" cy="115" r="98" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="60 40 20 40" opacity=".5"/></g>
+      <circle cx="115" cy="115" r="84" fill="none" stroke="var(--sunk)" stroke-width="12"/>
+      <circle id="ring" cx="115" cy="115" r="84" fill="none" stroke="var(--signal)" stroke-width="12" stroke-linecap="round" transform="rotate(-90 115 115)" stroke-dasharray="527.8" stroke-dashoffset="527.8" style="transition:stroke-dashoffset .5s ease"/>
+    </svg>
+    <div class="pct"><b id="pct">0%</b><span id="pct-label">built</span></div>
+  </div>
+</header>
+
+<section id="gate" aria-labelledby="gate-h">
+  <div class="eyebrow">Free guide</div>
+  <h2 id="gate-h">Where should I send it?</h2>
+  <p>Put your name and email and the guide opens right here, with every prompt ready to copy.</p>
+  <form id="gate-form" novalidate>
+    <label class="f">First name<input type="text" id="g-name" name="name" autocomplete="given-name" maxlength="120" required></label>
+    <label class="f">Email<input type="email" id="g-email" name="email" autocomplete="email" maxlength="200" inputmode="email" required></label>
+    <input class="hp" type="text" id="g-company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="consent"><input type="checkbox" id="g-consent" required><span>Yes, send me the guide and the occasional email from Adam at Aligned AI. I can unsubscribe at any time.</span></label>
+    <div class="err" id="g-err" role="alert"></div>
+    <button class="btn" type="submit" id="g-btn">Show me the guide</button>
+  </form>
+  <p class="fine">No spam. Your details stay with Adam and are never sold.</p>
+</section>
+
+<section aria-labelledby="need-h">
+  <div class="eyebrow">Before you start</div>
+  <h2 id="need-h">What you need</h2>
+  <div class="needs">
+    <div><b>Grok Bots</b><span>The Grok Bots app and an account. Check the price on the sign-up screen before you pay for anything.</span></div>
+    <div><b>Claude or ChatGPT</b><span>To interview you and write each bot's brief. Use whichever you already have.</span></div>
+    <div><b>One real job</b><span>Pick something you do every week. A bot is only worth building if it takes a real job off you.</span></div>
+  </div>
+</section>
+
+<section aria-label="Setup">
+  <div class="eyebrow">Set it up · tick as you go</div>
+  <ol class="steps" id="steps"></ol>
+  <div class="tried" id="tried" hidden>
+    <div><h3>Your first bot is running. How did it go?</h3><p>Tell me how you got on, and if you'd like help setting this up for your business, I'll take a look.</p></div>
+    <a class="btn" id="cta-tried" href="grok.html" target="_blank" rel="noopener">Tell me how it went</a>
+  </div>
+</section>
+
+<section aria-labelledby="build-h">
+  <div class="eyebrow">Step 3 made easy</div>
+  <h2 id="build-h">Let an AI interview you first</h2>
+  <p class="lede">Don't write bot briefs from a blank page. Fill this in and you get the prompt that makes Claude or ChatGPT interview you, then write a brief for each bot.</p>
+  <div class="builder">
+    <div class="fields">
+      <label for="f-biz">What's your business?
+        <input type="text" id="f-biz" value="a small dental clinic"></label>
+      <label for="f-who">Who do you serve?
+        <input type="text" id="f-who" value="local families and professionals"></label>
+      <label for="f-jobs">Which three jobs eat your week?
+        <textarea id="f-jobs">social media posts, answering the same customer questions, finding new customers</textarea></label>
+      <label for="f-tools">Which tools do you already use?
+        <input type="text" id="f-tools" value="Instagram, YouTube, Google Calendar and email"></label>
+      <label for="f-rules">What must a bot never do without asking you?
+        <input type="text" id="f-rules" value="post, send messages, spend money or connect accounts"></label>
+      <label for="f-tone">How should your bots sound?
+        <input type="text" id="f-tone" value="warm, plain English, no hype"></label>
+    </div>
+    <div class="say" id="say">
+      <div class="row"><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="hint">Your prompt for Claude or ChatGPT</span></div>
+      <div class="bubble" id="bubble" aria-live="polite"></div>
+      <div class="row">
+        <button class="btn" id="copy-say">Copy the prompt</button>
+        <button class="btn ghost" id="read-say">Read it out loud</button>
+      </div>
+      <p class="hint">Paste it into a new chat. It will ask you questions one at a time. Answer in your own words, and ask it to write the first brief when you're done.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="asks-h">
+  <div class="eyebrow">Steal these</div>
+  <h2 id="asks-h">Rules and fixes that work</h2>
+  <p class="lede">Short sentences you can paste into any bot's chat. I use these all the time.</p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="asks" id="asks" role="tabpanel"></div>
+</section>
+
+<section aria-labelledby="sched-h">
+  <div class="eyebrow">Ideas for your first bots</div>
+  <h2 id="sched-h">Jobs a bot can take off you</h2>
+  <p class="lede">Copy a starting brief, then change it to fit your business. Build one at a time.</p>
+  <div class="sched" id="sched"></div>
+</section>
+
+<section aria-labelledby="lim-h">
+  <div class="eyebrow">Honest limits</div>
+  <h2 id="lim-h">Where to keep a hand on the wheel</h2>
+  <div class="limits">
+    <div class="limit"><h3>Check every claim</h3><p>Bots can sound sure and be wrong. Open the links, and ask for evidence every time. If it can't show you, don't use it.</p></div>
+    <div class="limit"><h3>Start with drafts only</h3><p>Let a bot research and draft first. Only let it post or send once you've seen several good results, and keep approving each one yourself.</p></div>
+    <div class="limit"><h3>Keep private details out</h3><p>Don't paste client, patient or family details into a bot. Use first names or leave details out until you're sure how your data is handled.</p></div>
+    <div class="limit"><h3>Watch the cost and your time</h3><p>Bots use credits or usage, and they take your attention to review. Start with one bot for a week before you add more.</p></div>
+  </div>
+</section>
+
+<section class="close" aria-labelledby="close-h">
+  <div class="sig">Adam · Aligned AI</div>
+  <h2 id="close-h">Want this set up for your business?</h2>
+  <p>I'm setting AI up with a handful of local businesses right now. If you'd like my help with yours, answer a few quick questions about how it runs. About four minutes, mostly taps, and it comes straight to me.</p>
+  <div class="row"><a class="btn cta" id="cta-close" href="grok.html" target="_blank" rel="noopener">Answer a few questions</a></div>
+  <p>Not ready for that? Build just the first bot this week and give it one small task. That is enough to see how it feels.</p>
+</section>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const STEPS = [{"t": "Get the Grok Bots app", "why": "5 min", "body": ["Search for Grok Bots, download it and make an account. Check the price on the sign-up screen before you pay for anything.", "When it opens you'll see a list of bots and a chat. Each bot is its own conversation with its own memory. I have one bot per job, and a short name and role for each, like Leo, YouTube manager."]}, {"t": "Pick three jobs, not ten", "why": "10 min", "body": ["Write down the jobs that eat your week. Posting on social media, answering the same questions, checking what other people in your field are doing, finding new customers, reading your numbers.", "Circle the three that cost you the most time. Then build only the first one. Add the next after a week. One at a time is the rule that kept me out of a mess."]}, {"t": "Let an AI interview you", "why": "10 min", "body": ["Use the builder below, copy the prompt and paste it into Claude or ChatGPT. It asks you questions one at a time, then writes a brief for each bot.", "This is how I set up my own bots. I had ChatGPT interview me first, and it wrote the brief for each one."]}, {"t": "Create your first bot and paste its brief", "why": "10 min", "body": ["In Grok Bots, add a new bot. Give it a name and a job, like Leo | YouTube Manager. Paste the brief into the chat.", "Then check it understood. Copy the prompt below and send it."], "ask": "Read the brief above. Reply in five short lines: what your job is, what you will produce, what you will not do without my approval, what you need from me, and what your first small task would be."}, {"t": "Give it one small first task", "why": "10 min", "body": ["Start with a small test, not a big job. Ask for a handful of results, with links, so you can check them.", "Copy the prompt below and change the topic to your own."], "ask": "Run one small test for me. Find five examples of [your topic]. For each one give me the link, the date, what you saw, and why it matters for my business. If you could not check something, say so. Do not post, send or change anything."}, {"t": "Check its work before you trust it", "why": "10 min", "body": ["Open every link it gives you. In my own tests, bots sometimes sent back things with no link, or claims that were not on the page. Reject those and tell the bot exactly what was wrong.", "A bot that is corrected clearly gets better. A bot that is never checked quietly makes things up."]}, {"t": "Connect only what the job needs", "why": "5 min", "body": ["If a bot needs your YouTube or Instagram, connect that one. Leave your email, calendar and drive until you trust it. Bots can connect to tools like Gmail, Google Calendar and Google Drive, so decide on purpose.", "Keep the rule in every brief: it can research and draft, but it never posts, sends or spends without your OK."]}, {"t": "Add a second bot, then a group", "why": "15 min", "body": ["After a week, if the first bot is useful, add the next one. You can also put a few bots in one group chat, for example a coordinator and a scout, and they reply to each other.", "Treat what they tell each other as unchecked until you've looked at it yourself."]}, {"t": "Do a 15-minute review each week", "why": "ongoing", "body": ["Once a week, look at what each bot produced. What was useful, what was wrong, what should change. Update the brief when you learn something.", "If a bot isn't earning its place, switch it off. Fewer bots that you trust beats a big team you don't."]}];
+
+const ASKS = {"Set the rules": ["You may research and draft. You may not post, send, buy, follow or connect accounts unless I reply approved with the exact wording.", "Always give me the link, the date and what you actually saw. If you couldn't check something, say so.", "Don't invent numbers. If a metric isn't visible, write not visible.", "Keep it short: three recommendations at most, each with the evidence behind it."], "Fix its work": ["I opened link 2 and it doesn't show what you said. Remove that claim and tell me what you can support.", "You gave me five results but only two have links. Give me only the two you can prove.", "That draft sounds like an advert. Rewrite it in plain words, with no hype.", "Don't repeat what I already know. Only tell me what's new since last time."], "Work as a team": ["Write a one-paragraph summary of what you found that another bot on my team can use.", "List the open questions you need me to answer before your next task.", "Here is what the other bot found. Tell me where you agree or disagree, and why."]};
+
+const SCHED = [{"when": "Social media", "t": "Social media manager", "p": "Keeps the calendar and drafts posts for you to approve.", "ask": "You are my social media manager. Draft posts in plain English that make sense to someone who doesn't know me. Keep a simple calendar. Never publish anything. Show me each draft and wait for my approval."}, {"when": "YouTube", "t": "YouTube manager", "p": "Reads your channel and gives feedback on your videos.", "ask": "You are my YouTube manager. Look at my public channel and give me feedback on my latest videos: titles, thumbnails and opening hooks. Give me the links you used. Do not change anything on my channel."}, {"when": "Instagram", "t": "Instagram analyst", "p": "Studies what works for other creators and suggests ideas.", "ask": "You are my Instagram analyst. Look at up to ten recent posts from [creator] and tell me what format they use, what the first three seconds look like, and what I could adapt in my own words. Give me links. Do not copy anything word for word."}, {"when": "LinkedIn", "t": "LinkedIn growth assistant", "p": "Finds posts worth commenting on and drafts a reply for your OK.", "ask": "You are my LinkedIn growth assistant. Find five recent posts from business owners in my field where I could add something useful. For each, give me the link and a short draft comment. Do not post, connect or message anyone."}, {"when": "New customers", "t": "Local opportunity scout", "p": "Finds local businesses that might need your help. Research only.", "ask": "You are my local opportunity scout. Find five local businesses that look like a fit for my service. For each, give me the link, what you saw and one simple thing I could offer. Mark anything you couldn't verify. Do not contact anyone."}, {"when": "Your team", "t": "Team coordinator", "p": "Keeps the other bots on track and tells you what needs your decision.", "ask": "You are my team coordinator. Each week, list what each bot produced, what needs my decision, and what is waiting on me. Keep it to one short page. Do not take any action on my behalf."}];
+
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+
+// Tracking: same insert-only publishable key + table as every page in Adam-vision-pages.
+// Never blocks or breaks the page if it fails.
+const SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+function track(event, extra){
+  try {
+    const body = Object.assign({ slug: "grok-guide-page", event: String(event).slice(0,40), path: String(location.pathname||"").slice(0,200), referrer: document.referrer ? document.referrer.slice(0,200) : null }, extra || {});
+    fetch(SUPABASE_URL + "/rest/v1/page_events", {
+      method: "POST", keepalive: true,
+      headers: { apikey: SUPABASE_KEY, Authorization: "Bearer " + SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify(body)
+    }).catch(()=>{});
+  } catch(e){}
+}
+track("view", { step: 0 });
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function toast(m){ const t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 1800); }
+async function copy(text){
+  try { await navigator.clipboard.writeText(text); toast("Copied. Now paste it where the step says"); track("copy"); }
+  catch(e){ window.prompt("Copy this:", text); }
+}
+
+let done = store.get("gb-done", []);
+function renderSteps(){
+  document.getElementById("steps").innerHTML = STEPS.map((s, i) => `
+    <li><details class="step${done.includes(i) ? " done" : ""}" ${i === 0 && !done.length ? "open" : ""}>
+      <summary>
+        <input type="checkbox" class="tick" id="tick-${i}" data-i="${i}" ${done.includes(i) ? "checked" : ""} aria-label="Mark step ${i+1} done">
+        <h3><span class="num">0${i+1}</span>${esc(s.t)} <span class="why">${esc(s.why)}</span></h3>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="body">${s.body.map(b => `<p>${esc(b)}</p>`).join("")}${s.ask ? `<div class="prompt">${esc(s.ask)}</div><button class="btn ghost" data-ask="${i}" style="align-self:flex-start">Copy the prompt</button>` : ""}</div>
+    </details></li>`).join("");
+  const pct = Math.round(done.length / STEPS.length * 100);
+  document.getElementById("pct").textContent = pct + "%";
+  document.getElementById("pct-label").textContent = pct === 100 ? "all built" : "built";
+  document.getElementById("ring").style.strokeDashoffset = 527.8 * (1 - pct / 100);
+  document.getElementById("tried").hidden = pct !== 100;
+}
+document.getElementById("steps").addEventListener("click", e => {
+  const a = e.target.closest("[data-ask]");
+  if (a) { e.preventDefault(); copy(STEPS[+a.dataset.ask].ask); return; }
+  const t = e.target.closest(".tick"); if (!t) return;
+  e.stopPropagation();
+  const i = +t.dataset.i;
+  done = t.checked ? [...new Set([...done, i])] : done.filter(x => x !== i);
+  store.set("gb-done", done);
+  const openI = [...document.querySelectorAll(".step")].findIndex(d => d.open);
+  renderSteps();
+  const all = document.querySelectorAll(".step");
+  if (t.checked && all[i + 1]) all[i + 1].open = true; else if (all[openI]) all[openI].open = true;
+  if (t.checked) track("step", { step: i + 1 });
+  if (done.length === STEPS.length) { toast("Your bot team is built. Nice."); track("completed", { step: STEPS.length }); }
+});
+
+document.getElementById("cta-tried").addEventListener("click", () => track("cta_click", { label: "tried" }));
+document.getElementById("cta-close").addEventListener("click", () => track("cta_click", { label: "close" }));
+
+// builder
+const F = id => document.getElementById(id);
+const fieldIds = ["f-biz", "f-who", "f-jobs", "f-tools", "f-rules", "f-tone"];
+const saved = store.get("gb-builder", null);
+if (saved){ fieldIds.forEach(id => { if (saved[id] !== undefined) F(id).value = saved[id]; }); }
+function sentence(){
+  const v = id => F(id).value.trim();
+  let s = `Hi. I want to build a small team of Grok Bots for my business.`;
+  s += `\n\nMy business: ${v("f-biz") || "…"}, serving ${v("f-who") || "…"}. The three jobs that eat my week: ${v("f-jobs") || "…"}. I already use: ${v("f-tools") || "…"}.`;
+  s += `\n\nPlease interview me first. Ask one question at a time, and stop after eight questions.`;
+  s += `\n\nThen write a separate brief for each bot, one at a time, starting with the bot that would save me the most time. Each brief should say: the bot's name and job, what it should produce, what it must never do without my approval (${v("f-rules") || "post, send or spend anything"}), how it should sound (${v("f-tone") || "plain English"}), and what it should ask me before it starts.`;
+  s += `\n\nRules for every bot: research and draft only. Give links, dates and what was actually seen. Say when something could not be checked. Never invent numbers or results.`;
+  s += `\n\nStart with your first question. Wait for my OK before you write any brief.`;
+  return s;
+}
+function renderSay(){
+  const s = sentence();
+  F("bubble").innerHTML = esc(s).replace(/(Hi\.|Wait for my OK before you write any brief\.)/g, "<mark>$1</mark>");
+  const o = {}; fieldIds.forEach(id => o[id] = F(id).value); store.set("gb-builder", o);
+}
+fieldIds.forEach(id => F(id).addEventListener("input", renderSay));
+F("copy-say").onclick = () => copy(sentence());
+F("read-say").onclick = () => {
+  if (!("speechSynthesis" in window)) { toast("Your browser can't read aloud"); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(sentence().replace(/\n+/g, " "));
+  u.onstart = () => F("say").classList.add("speaking");
+  u.onend = u.onerror = () => F("say").classList.remove("speaking");
+  speechSynthesis.speak(u);
+};
+
+// tabs
+let tab = store.get("gb-tab", "Set the rules");
+if (!ASKS[tab]) tab = "Set the rules";
+function renderAsks(){
+  F("tabs").innerHTML = Object.keys(ASKS).map(k => `<button class="tab" role="tab" aria-selected="${k === tab}" data-k="${esc(k)}">${esc(k)}</button>`).join("");
+  F("asks").innerHTML = ASKS[tab].map((a, i) => `<div class="ask"><p>“${esc(a)}”</p><button class="copy" data-a="${i}">Copy</button></div>`).join("");
+}
+F("tabs").addEventListener("click", e => { const b = e.target.closest("[data-k]"); if (!b) return; tab = b.dataset.k; store.set("gb-tab", tab); renderAsks(); });
+F("asks").addEventListener("click", e => { const b = e.target.closest("[data-a]"); if (b) copy(ASKS[tab][+b.dataset.a]); });
+
+// cards
+F("sched").innerHTML = SCHED.map((s, i) => `<div class="card"><span class="when">${esc(s.when)}</span><h3>${esc(s.t)}</h3><p>${esc(s.p)}</p><button class="copy" style="align-self:flex-start;border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:8px;padding:5px 10px;font-size:13px;font-weight:600;cursor:pointer" data-s="${i}">Copy the prompt</button></div>`).join("");
+F("sched").addEventListener("click", e => { const b = e.target.closest("[data-s]"); if (b) copy(SCHED[+b.dataset.s].ask); });
+
+renderSteps(); renderSay(); renderAsks();
+
+// email gate: name + email first, then the guide opens
+(function(){
+  const form = document.getElementById("gate-form"); if (!form) return;
+  if (document.body.classList.contains("locked")) track("gate_view");
+  function unlock(){ try{localStorage.setItem("gb-unlocked","1");}catch(e){} document.body.classList.remove("locked"); window.scrollTo({top:0,behavior:"smooth"}); }
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const err = document.getElementById("g-err"), btn = document.getElementById("g-btn");
+    const name = document.getElementById("g-name").value.trim(), email = document.getElementById("g-email").value.trim();
+    const consent = document.getElementById("g-consent").checked, trap = document.getElementById("g-company").value;
+    err.textContent = "";
+    if (!name) { err.textContent = "Please add your first name."; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { err.textContent = "That email doesn't look right. Please check it."; return; }
+    if (!consent) { err.textContent = "Please tick the box so I can send you the guide."; return; }
+    if (trap) { unlock(); return; }
+    btn.disabled = true; btn.textContent = "One moment...";
+    let ok = false;
+    try {
+      const r = await fetch(SUPABASE_URL + "/rest/v1/guide_signups", {
+        method: "POST",
+        headers: { apikey: SUPABASE_KEY, Authorization: "Bearer " + SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+        body: JSON.stringify({ slug: "grok-guide", name: name.slice(0,120), email: email.slice(0,200), consent: true, referrer: document.referrer ? document.referrer.slice(0,200) : null })
+      });
+      ok = r.ok;
+    } catch(x){ ok = false; }
+    track(ok ? "signup" : "signup_error");
+    btn.disabled = false; btn.textContent = "Show me the guide";
+    unlock();
+  });
+})();
+</script>
+
+</body>
+</html>

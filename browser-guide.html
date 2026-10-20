@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A step-by-step guide to letting Claude open pages, click and fill in forms in your own browser. Tick the steps as you go.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Let Claude use your browser">
+<meta property="og:description" content="Free step-by-step guide with the prompts. Hand over the boring clicking.">
+<meta name="theme-color" content="#6B3FD4">
+<title>Let Claude Use Your Browser</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ground:#F4F3F8; --surface:#FFFFFF; --sunk:#EAE7F1; --ink:#17131F; --muted:#5F596E; --line:#DCD7E6;
+  --accent:#6B3FD4; --accent-ink:#FFFFFF; --accent-soft:#ECE5FC; --signal:#0E8FA8; --signal-soft:#DDF3F7; --warn:#A8641A; --warn-soft:#FBEEDD;
+  --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F0C15; --surface:#18141F; --sunk:#221D2B; --ink:#EEEAF6; --muted:#A59FB5; --line:#332D3F;
+    --accent:#A487F2; --accent-ink:#130E1C; --accent-soft:#2A2240; --signal:#5AD8F0; --signal-soft:#12303A; --warn:#E6A858; --warn-soft:#33250F;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F0C15; --surface:#18141F; --sunk:#221D2B; --ink:#EEEAF6; --muted:#A59FB5; --line:#332D3F;
+  --accent:#A487F2; --accent-ink:#130E1C; --accent-soft:#2A2240; --signal:#5AD8F0; --signal-soft:#12303A; --warn:#E6A858; --warn-soft:#33250F;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--body);padding-inline:20px;padding-block:32px 90px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:72px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(40px,7vw,76px);line-height:.98;font-weight:800}
+h2{font-size:clamp(26px,3.6vw,36px);line-height:1.1;font-weight:800}
+h3{font-size:19px;font-weight:600}
+p{margin:0;max-width:62ch}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+section{display:flex;flex-direction:column;gap:20px}
+.lede{font-size:20px;color:var(--muted)}
+button{font:inherit}
+button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.hero-text{display:flex;flex-direction:column;gap:20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.orb{position:relative;width:230px;height:230px;max-width:100%;margin:0 auto}
+.orb svg{width:100%;height:100%;display:block}
+.orb .pct{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.orb .pct b{font:800 48px/1 var(--display);font-variant-numeric:tabular-nums}
+.orb .pct span{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.orb .spin{transform-origin:115px 115px;animation:spin 18s linear infinite}.orb .spin2{transform-origin:115px 115px;animation:spin 26s linear infinite reverse}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* needs */
+.needs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.needs div{padding:18px 20px 18px 0;display:flex;flex-direction:column;gap:4px}
+.needs div+div{padding-left:20px;border-left:1px solid var(--line)}
+.needs b{font:800 28px/1.1 var(--display)}
+.needs span{color:var(--muted);font-size:15px}
+@media (max-width:640px){.needs{grid-template-columns:1fr}.needs div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.step.done{border-color:color-mix(in srgb,var(--signal) 50%,var(--line))}
+.step summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:16px 18px}
+.step summary::-webkit-details-marker{display:none}
+.num{font:500 13px var(--mono);color:var(--muted);width:28px}
+.tick{appearance:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--line);background:var(--ground);cursor:pointer;display:grid;place-items:center;flex:none}
+.tick:checked{background:var(--signal);border-color:var(--signal)}
+.tick:checked::after{content:"";width:10px;height:6px;border-left:3px solid var(--ground);border-bottom:3px solid var(--ground);transform:rotate(-45deg) translate(1px,-1px)}
+.step h3{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.step .why{font:500 12px var(--mono);color:var(--muted);letter-spacing:.04em}
+.step .body{padding:0 18px 20px 76px;display:flex;flex-direction:column;gap:10px}
+@media (max-width:560px){.step .body{padding-left:18px}}
+.step ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.tried{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--accent-soft);border-radius:14px;padding:18px 20px}
+.tried div{display:flex;flex-direction:column;gap:4px;flex:1 1 320px}
+.tried p{font-size:15px;color:var(--muted)}
+a.btn{text-decoration:none;display:inline-block}
+.chev{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
+.step[open] .chev{transform:rotate(225deg)}
+
+/* builder */
+.builder{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px}
+@media (max-width:800px){.builder{grid-template-columns:1fr}}
+.fields{display:flex;flex-direction:column;gap:14px}
+label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:15px}
+label small{font-weight:400;color:var(--muted)}
+input[type=text],textarea,select{font:inherit;font-size:16px;color:var(--ink);background:var(--ground);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+textarea{resize:vertical;min-height:64px}
+.toggle{flex-direction:row;align-items:center;gap:10px;font-weight:500}
+.toggle input{width:18px;height:18px;accent-color:var(--accent)}
+.say{display:flex;flex-direction:column;gap:14px}
+.bubble{background:var(--signal-soft);border-radius:18px 18px 4px 18px;padding:18px 20px;font-size:19px;line-height:1.5;min-height:160px;white-space:pre-wrap}
+.bubble mark{background:none;color:var(--signal);font-weight:600}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent)}
+.hint{font-size:14px;color:var(--muted)}
+.wave{display:flex;gap:3px;align-items:center;height:26px}
+.wave i{width:4px;border-radius:2px;background:var(--signal);height:30%}
+@media (prefers-reduced-motion:no-preference){.speaking .wave i{animation:w 0.9s ease-in-out infinite}.wave i:nth-child(2n){animation-delay:.15s}.wave i:nth-child(3n){animation-delay:.3s}}
+@keyframes w{50%{height:100%}}
+
+.prompt{background:var(--signal-soft);border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.5;white-space:pre-wrap}
+/* tabs */
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:15px}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.asks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (max-width:680px){.asks{grid-template-columns:1fr}}
+.ask{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.ask p{font-size:17px}
+.ask .copy{align-self:flex-start;border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:8px;padding:5px 10px;font-size:13px;font-weight:600;cursor:pointer}
+
+/* schedule */
+.sched{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:860px){.sched{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.sched{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.when{font:500 12px var(--mono);color:var(--signal);letter-spacing:.06em;text-transform:uppercase}
+.card p{font-size:15px;color:var(--muted)}
+
+/* limits */
+.limits{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (max-width:680px){.limits{grid-template-columns:1fr}}
+.limit{background:var(--warn-soft);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.limit h3{color:var(--warn);font-size:17px}
+.limit p{font-size:15px}
+
+.close{background:var(--ink);color:var(--ground);border-radius:22px;padding:clamp(28px,5vw,52px);display:flex;flex-direction:column;gap:18px}
+.close h2{color:var(--ground);font-size:clamp(28px,4.4vw,46px)}
+.close p{color:color-mix(in srgb,var(--ground) 78%,var(--ink))}
+.close .cta{background:var(--ground);color:var(--ink);border-color:var(--ground);padding:13px 20px}
+.close .sig{font:500 13px var(--mono);letter-spacing:.08em;color:color-mix(in srgb,var(--ground) 60%,var(--ink))}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:9px 16px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+.toast.show{opacity:1}
+
+/* email gate */
+#gate{display:none;flex-direction:column;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;max-width:560px}
+body.locked #gate{display:flex}
+body.locked .wrap > :not(header):not(#gate){display:none}
+#gate h2{font-size:clamp(24px,3.4vw,32px)}
+#gate form{display:flex;flex-direction:column;gap:12px}
+#gate label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+#gate input[type=text],#gate input[type=email]{font:inherit;font-size:16px;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--ground);color:var(--ink)}
+#gate input:focus{outline:2px solid var(--accent);outline-offset:1px}
+#gate .consent{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.45;color:var(--muted);font-weight:400}
+#gate .consent input{margin-top:3px;flex:none}
+#gate .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+#gate .err{color:var(--warn);font-size:14px;min-height:1.2em}
+#gate .fine{font-size:13px;color:var(--muted)}
+</style>
+
+</head>
+<body>
+<script>try{if(localStorage.getItem("bw-unlocked")!=="1")document.body.classList.add("locked")}catch(e){document.body.classList.add("locked")}</script>
+<div class="wrap">
+
+<header class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">The CLAUDE BROWSER guide · from Adam, Aligned AI</div>
+    <h1>Let Claude do the <em>boring clicking.</em></h1>
+    <p class="lede">Claude can work inside your own Chrome. It opens pages, clicks, types and fills in forms while you watch. Tick the steps as you go and the ring fills up.</p>
+  </div>
+  <div class="orb" aria-live="polite">
+    <svg viewBox="0 0 230 230" aria-hidden="true">
+      <g class="spin"><circle cx="115" cy="115" r="108" fill="none" stroke="var(--signal)" stroke-width="1.5" stroke-dasharray="3 9" opacity=".6"/></g>
+      <g class="spin2"><circle cx="115" cy="115" r="98" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="60 40 20 40" opacity=".5"/></g>
+      <circle cx="115" cy="115" r="84" fill="none" stroke="var(--sunk)" stroke-width="12"/>
+      <circle id="ring" cx="115" cy="115" r="84" fill="none" stroke="var(--signal)" stroke-width="12" stroke-linecap="round" transform="rotate(-90 115 115)" stroke-dasharray="527.8" stroke-dashoffset="527.8" style="transition:stroke-dashoffset .5s ease"/>
+    </svg>
+    <div class="pct"><b id="pct">0%</b><span id="pct-label">ready</span></div>
+  </div>
+</header>
+
+<section id="gate" aria-labelledby="gate-h">
+  <div class="eyebrow">Free guide</div>
+  <h2 id="gate-h">Where should I send it?</h2>
+  <p>Put your name and email and the guide opens right here, with every prompt ready to copy.</p>
+  <form id="gate-form" novalidate>
+    <label class="f">First name<input type="text" id="g-name" name="name" autocomplete="given-name" maxlength="120" required></label>
+    <label class="f">Email<input type="email" id="g-email" name="email" autocomplete="email" maxlength="200" inputmode="email" required></label>
+    <input class="hp" type="text" id="g-company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="consent"><input type="checkbox" id="g-consent" required><span>Yes, send me the guide and the occasional email from Adam at Aligned AI. I can unsubscribe at any time.</span></label>
+    <div class="err" id="g-err" role="alert"></div>
+    <button class="btn" type="submit" id="g-btn">Show me the guide</button>
+  </form>
+  <p class="fine">No spam. Your details stay with Adam and are never sold.</p>
+</section>
+
+<section aria-labelledby="need-h">
+  <div class="eyebrow">Before you start</div>
+  <h2 id="need-h">What you need</h2>
+  <div class="needs">
+    <div><b>Google Chrome</b><span>The browser Claude works in. It runs the Claude extension and opens a panel beside your page.</span></div>
+    <div><b>A Claude account</b><span>You need to be signed in to Claude. Check which plan includes the Chrome extension when you sign up.</span></div>
+    <div><b>One boring task</b><span>Something you do online that is repetitive. Start with a task that only reads and collects.</span></div>
+  </div>
+</section>
+
+<section aria-label="Setup">
+  <div class="eyebrow">Set it up · tick as you go</div>
+  <ol class="steps" id="steps"></ol>
+  <div class="tried" id="tried" hidden>
+    <div><h3>Claude did a task in your browser. How did it go?</h3><p>Tell me how you got on, and if you'd like help setting this up for your business, I'll take a look.</p></div>
+    <a class="btn" id="cta-tried" href="browser.html" target="_blank" rel="noopener">Tell me how it went</a>
+  </div>
+</section>
+
+<section aria-labelledby="build-h">
+  <div class="eyebrow">Brief it clearly</div>
+  <h2 id="build-h">Tell Claude exactly what to do</h2>
+  <p class="lede">The clearer the task, the fewer wrong turns it takes. Fill this in and you get the prompt to paste into the Claude panel.</p>
+  <div class="builder">
+    <div class="fields">
+      <label for="f-task">What do you want done?
+        <input type="text" id="f-task" value="find 10 local businesses with great reviews but under 75 reviews and no website"></label>
+      <label for="f-where">Where should it do it?
+        <input type="text" id="f-where" value="Google Maps"></label>
+      <label for="f-output">What should the result look like?
+        <textarea id="f-output">a list with the name, area, rating, number of reviews and a phone number if shown</textarea></label>
+      <label for="f-never">What must it not do?
+        <input type="text" id="f-never" value="contact anyone, log in, or submit anything"></label>
+    </div>
+    <div class="say" id="say">
+      <div class="row"><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="hint">Your prompt for Claude in Chrome</span></div>
+      <div class="bubble" id="bubble" aria-live="polite"></div>
+      <div class="row">
+        <button class="btn" id="copy-say">Copy the prompt</button>
+        <button class="btn ghost" id="read-say">Read it out loud</button>
+      </div>
+      <p class="hint">Paste it into the Claude panel in Chrome. It will tell you its plan first. Say yes, or change the plan, then watch it work.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="asks-h">
+  <div class="eyebrow">Steal these</div>
+  <h2 id="asks-h">Prompts that work</h2>
+  <p class="lede">Short requests you can paste into the Claude panel. Start with the ones that only read.</p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="asks" id="asks" role="tabpanel"></div>
+</section>
+
+<section aria-labelledby="sched-h">
+  <div class="eyebrow">More jobs to hand over</div>
+  <h2 id="sched-h">Tasks that suit a browser helper</h2>
+  <p class="lede">Copy one, change the details, and start with the ones that only read.</p>
+  <div class="sched" id="sched"></div>
+</section>
+
+<section aria-labelledby="lim-h">
+  <div class="eyebrow">Honest limits</div>
+  <h2 id="lim-h">Where to keep a hand on the wheel</h2>
+  <div class="limits">
+    <div class="limit"><h3>It works as you</h3><p>It uses your browser, with the sites you are signed in to. Keep it away from banking, payments and anything you can't undo, and say clearly what it must not do.</p></div>
+    <div class="limit"><h3>Watch it, don't walk away</h3><p>Stay near the screen the first few times. Press Stop if it goes the wrong way, then tell it what you wanted.</p></div>
+    <div class="limit"><h3>Never let it send or buy on its own</h3><p>Collecting and filling in is fine. Sending messages, posting, buying or submitting should always be your own click.</p></div>
+    <div class="limit"><h3>Websites change</h3><p>If it gets stuck on a page, press Stop, say what you can see, and ask it to try a different way. Check the sources it gives you.</p></div>
+  </div>
+</section>
+
+<section class="close" aria-labelledby="close-h">
+  <div class="sig">Adam · Aligned AI</div>
+  <h2 id="close-h">Want this set up for your business?</h2>
+  <p>I'm setting AI up with a handful of local businesses right now. If you'd like my help with yours, answer a few quick questions about how it runs. About four minutes, mostly taps, and it comes straight to me.</p>
+  <div class="row"><a class="btn cta" id="cta-close" href="browser.html" target="_blank" rel="noopener">Answer a few questions</a></div>
+  <p>Not ready for that? Run the first reading-only task this week and just watch it work. That is enough to see what it can do.</p>
+</section>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const STEPS = [{"t": "Get the Claude extension for Chrome", "why": "5 min", "body": ["Open Chrome and find the Claude extension in the Chrome Web Store, or through your Claude account. Add it to Chrome.", "Pin it to the toolbar so you can find it, and make sure you are signed in to your Claude account inside it."]}, {"t": "Open the Claude panel", "why": "2 min", "body": ["Click the extension. A Claude chat opens in a panel beside your page, on the right of your browser. That is where you tell it what to do.", "It works in your own browser, so it can use the sites you are already signed in to. Keep that in mind for step 4."]}, {"t": "Allow the microphone (optional)", "why": "3 min", "body": ["If you'd rather speak than type, allow the microphone in the extension's settings and talk to it. Typing works just as well.", "I speak mine, because it's faster than writing a long task."]}, {"t": "Start with a task that only reads", "why": "5 min", "body": ["Your first task should only look and collect. No sending, no buying, no logging in. Here is the one I used. Change it to fit your business.", "It should tell you its plan first. If it doesn't, ask: what is your plan?"], "ask": "Go on Google Maps and find me ten local businesses that have great reviews but under 75 reviews and no website. They would be good potential customers for my AI automation work. Make a list with the name, area, rating, number of reviews, and a phone number if shown. Do not contact anyone."}, {"t": "Watch it work, and know where Stop is", "why": "5 min", "body": ["Claude opens the page itself and starts clicking and typing. You can watch every step. The Stop button is in the panel, so press it any time you want to take back control.", "The first time, just watch. You'll see how it thinks."]}, {"t": "Check the result yourself", "why": "5 min", "body": ["Open two or three of the results by hand. Websites and listings change, and Claude can misread a page. If something is wrong, tell it what was wrong and ask it to try again.", "Never send or publish anything it collects until you've looked at it."]}, {"t": "Try a task with more steps", "why": "10 min", "body": ["Once the first task works, try one with more steps. Compare three prices, copy the details from five pages into a table, or fill in a form up to the last step.", "Always say where it must stop. For example, fill in the form but do not press submit."], "ask": "Open these three pages and put the name, price and a one-line summary of each into a table. Do not click buy, subscribe or submit on any page."}, {"t": "Build your own task", "why": "10 min", "body": ["Use the builder below to write your own task with clear rules. Save the ones that work. Over time you build a small set of jobs you can hand over in one sentence."]}];
+
+const ASKS = {"Research": ["Find ten local businesses in [town] with great reviews but no website. Give me a table with their name, area and rating. Do not contact anyone.", "Open these three competitor pages and compare their prices in a table. Tell me which page you got each number from.", "Collect the headlines from the last ten posts on this page and tell me which topics repeat."], "Admin": ["Fill in this form with the details I give you, but stop before you press submit and show me what you entered.", "Check whether these links work and give me a list of any that are broken.", "Copy the details from these five pages into one table I can paste into a spreadsheet."], "Stay in control": ["Before you click anything, tell me your plan in plain English and wait for my OK.", "If a page asks for a password or payment details, stop and tell me instead.", "Tell me what you did, step by step, so I can check it."]};
+
+const SCHED = [{"when": "Find customers", "t": "Build a prospect list", "p": "Local businesses that look like a fit, with the evidence.", "ask": "Go on Google Maps and find ten local businesses that look like they could use my help with [your service]. For each, give me the name, area, rating, number of reviews and what made you pick it. Do not contact anyone."}, {"when": "Research", "t": "Compare competitors", "p": "Pricing and offers, side by side, with sources.", "ask": "Open these competitor pages and make a table of what they offer and what they charge. Tell me which page each fact came from. Mark anything you couldn't find."}, {"when": "Admin", "t": "Check your own links", "p": "Spot broken links on your site or bio pages.", "ask": "Open each link on this page and tell me which ones are broken or go to the wrong place. Do not change anything."}, {"when": "Admin", "t": "Collect info into a table", "p": "Pull the same details from many pages.", "ask": "Visit each of these pages and collect the title, price and contact details into one table. Tell me if a page didn't have the detail."}, {"when": "Content", "t": "Gather ideas", "p": "See what people in your field are posting about.", "ask": "Look at the ten most recent posts from these accounts and list the topics they cover, with links. Do not like, follow or comment on anything."}, {"when": "Forms", "t": "Fill in a form up to the last step", "p": "Do the typing, you press submit.", "ask": "Fill in this form with the details I give you. Stop before the final step, show me what you entered, and wait for my OK."}];
+
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+
+// Tracking: same insert-only publishable key + table as every page in Adam-vision-pages.
+// Never blocks or breaks the page if it fails.
+const SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+function track(event, extra){
+  try {
+    const body = Object.assign({ slug: "browser-guide-page", event: String(event).slice(0,40), path: String(location.pathname||"").slice(0,200), referrer: document.referrer ? document.referrer.slice(0,200) : null }, extra || {});
+    fetch(SUPABASE_URL + "/rest/v1/page_events", {
+      method: "POST", keepalive: true,
+      headers: { apikey: SUPABASE_KEY, Authorization: "Bearer " + SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify(body)
+    }).catch(()=>{});
+  } catch(e){}
+}
+track("view", { step: 0 });
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function toast(m){ const t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 1800); }
+async function copy(text){
+  try { await navigator.clipboard.writeText(text); toast("Copied. Now paste it into Claude in Chrome"); track("copy"); }
+  catch(e){ window.prompt("Copy this:", text); }
+}
+
+let done = store.get("bw-done", []);
+function renderSteps(){
+  document.getElementById("steps").innerHTML = STEPS.map((s, i) => `
+    <li><details class="step${done.includes(i) ? " done" : ""}" ${i === 0 && !done.length ? "open" : ""}>
+      <summary>
+        <input type="checkbox" class="tick" id="tick-${i}" data-i="${i}" ${done.includes(i) ? "checked" : ""} aria-label="Mark step ${i+1} done">
+        <h3><span class="num">0${i+1}</span>${esc(s.t)} <span class="why">${esc(s.why)}</span></h3>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="body">${s.body.map(b => `<p>${esc(b)}</p>`).join("")}${s.ask ? `<div class="prompt">${esc(s.ask)}</div><button class="btn ghost" data-ask="${i}" style="align-self:flex-start">Copy the prompt</button>` : ""}</div>
+    </details></li>`).join("");
+  const pct = Math.round(done.length / STEPS.length * 100);
+  document.getElementById("pct").textContent = pct + "%";
+  document.getElementById("pct-label").textContent = pct === 100 ? "all set" : "ready";
+  document.getElementById("ring").style.strokeDashoffset = 527.8 * (1 - pct / 100);
+  document.getElementById("tried").hidden = pct !== 100;
+}
+document.getElementById("steps").addEventListener("click", e => {
+  const a = e.target.closest("[data-ask]");
+  if (a) { e.preventDefault(); copy(STEPS[+a.dataset.ask].ask); return; }
+  const t = e.target.closest(".tick"); if (!t) return;
+  e.stopPropagation();
+  const i = +t.dataset.i;
+  done = t.checked ? [...new Set([...done, i])] : done.filter(x => x !== i);
+  store.set("bw-done", done);
+  const openI = [...document.querySelectorAll(".step")].findIndex(d => d.open);
+  renderSteps();
+  const all = document.querySelectorAll(".step");
+  if (t.checked && all[i + 1]) all[i + 1].open = true; else if (all[openI]) all[openI].open = true;
+  if (t.checked) track("step", { step: i + 1 });
+  if (done.length === STEPS.length) { toast("Claude is working in your browser. Nice."); track("completed", { step: STEPS.length }); }
+});
+
+document.getElementById("cta-tried").addEventListener("click", () => track("cta_click", { label: "tried" }));
+document.getElementById("cta-close").addEventListener("click", () => track("cta_click", { label: "close" }));
+
+// builder
+const F = id => document.getElementById(id);
+const fieldIds = ["f-task", "f-where", "f-output", "f-never"];
+const saved = store.get("bw-builder", null);
+if (saved){ fieldIds.forEach(id => { if (saved[id] !== undefined) F(id).value = saved[id]; }); }
+function sentence(){
+  const v = id => F(id).value.trim();
+  let s = `Hi Claude. Please use my browser to ${v("f-task") || "…"}. Start on ${v("f-where") || "…"}.`;
+  s += `\n\nWhen you are done, give me ${v("f-output") || "a short list"}.`;
+  s += `\n\nBefore you click anything, tell me your plan in plain English and wait for my OK.`;
+  s += `\n\nRules: do not ${v("f-never") || "submit or send anything"}. Do not enter passwords or payment details. If a page asks you to log in, stop and tell me. When you finish, tell me what you did, step by step.`;
+  return s;
+}
+function renderSay(){
+  const s = sentence();
+  F("bubble").innerHTML = esc(s).replace(/(Hi Claude\.|wait for my OK\.)/g, "<mark>$1</mark>");
+  const o = {}; fieldIds.forEach(id => o[id] = F(id).value); store.set("bw-builder", o);
+}
+fieldIds.forEach(id => F(id).addEventListener("input", renderSay));
+F("copy-say").onclick = () => copy(sentence());
+F("read-say").onclick = () => {
+  if (!("speechSynthesis" in window)) { toast("Your browser can't read aloud"); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(sentence().replace(/\n+/g, " "));
+  u.onstart = () => F("say").classList.add("speaking");
+  u.onend = u.onerror = () => F("say").classList.remove("speaking");
+  speechSynthesis.speak(u);
+};
+
+// tabs
+let tab = store.get("bw-tab", "Research");
+if (!ASKS[tab]) tab = "Research";
+function renderAsks(){
+  F("tabs").innerHTML = Object.keys(ASKS).map(k => `<button class="tab" role="tab" aria-selected="${k === tab}" data-k="${esc(k)}">${esc(k)}</button>`).join("");
+  F("asks").innerHTML = ASKS[tab].map((a, i) => `<div class="ask"><p>“${esc(a)}”</p><button class="copy" data-a="${i}">Copy</button></div>`).join("");
+}
+F("tabs").addEventListener("click", e => { const b = e.target.closest("[data-k]"); if (!b) return; tab = b.dataset.k; store.set("bw-tab", tab); renderAsks(); });
+F("asks").addEventListener("click", e => { const b = e.target.closest("[data-a]"); if (b) copy(ASKS[tab][+b.dataset.a]); });
+
+// cards
+F("sched").innerHTML = SCHED.map((s, i) => `<div class="card"><span class="when">${esc(s.when)}</span><h3>${esc(s.t)}</h3><p>${esc(s.p)}</p><button class="copy" style="align-self:flex-start;border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:8px;padding:5px 10px;font-size:13px;font-weight:600;cursor:pointer" data-s="${i}">Copy the prompt</button></div>`).join("");
+F("sched").addEventListener("click", e => { const b = e.target.closest("[data-s]"); if (b) copy(SCHED[+b.dataset.s].ask); });
+
+renderSteps(); renderSay(); renderAsks();
+
+// email gate: name + email first, then the guide opens
+(function(){
+  const form = document.getElementById("gate-form"); if (!form) return;
+  if (document.body.classList.contains("locked")) track("gate_view");
+  function unlock(){ try{localStorage.setItem("bw-unlocked","1");}catch(e){} document.body.classList.remove("locked"); window.scrollTo({top:0,behavior:"smooth"}); }
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const err = document.getElementById("g-err"), btn = document.getElementById("g-btn");
+    const name = document.getElementById("g-name").value.trim(), email = document.getElementById("g-email").value.trim();
+    const consent = document.getElementById("g-consent").checked, trap = document.getElementById("g-company").value;
+    err.textContent = "";
+    if (!name) { err.textContent = "Please add your first name."; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { err.textContent = "That email doesn't look right. Please check it."; return; }
+    if (!consent) { err.textContent = "Please tick the box so I can send you the guide."; return; }
+    if (trap) { unlock(); return; }
+    btn.disabled = true; btn.textContent = "One moment...";
+    let ok = false;
+    try {
+      const r = await fetch(SUPABASE_URL + "/rest/v1/guide_signups", {
+        method: "POST",
+        headers: { apikey: SUPABASE_KEY, Authorization: "Bearer " + SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+        body: JSON.stringify({ slug: "browser-guide", name: name.slice(0,120), email: email.slice(0,200), consent: true, referrer: document.referrer ? document.referrer.slice(0,200) : null })
+      });
+      ok = r.ok;
+    } catch(x){ ok = false; }
+    track(ok ? "signup" : "signup_error");
+    btn.disabled = false; btn.textContent = "Show me the guide";
+    unlock();
+  });
+})();
+</script>
+
+</body>
+</html>
