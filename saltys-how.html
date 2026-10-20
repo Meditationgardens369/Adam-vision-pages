@@ -3,179 +3,491 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>How This Could Help Your Clinic</title>
+<title>Your Clinic, Working While You Treat</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="A short, visual look at what I build, and what it could mean for you and Julie.">
+<meta name="description" content="Seven small things we could build for you and Julie, each one alive on this page. Watch them work.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="How this could help your clinic">
-<meta property="og:description" content="Two minutes to read. What I build, and what it could change for you and Julie.">
+<meta property="og:title" content="Your clinic, working while you treat">
+<meta property="og:description" content="Seven small things we could build for you and Julie. Watch each one work.">
 <meta name="theme-color" content="#ffffff">
 <meta name="color-scheme" content="light only">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-  /* Dr Saltys: a short explainer before the questions. White, navy ink, one calm blue.
-     No numbers about his clinic are claimed here. The only figures are sliders he moves himself. */
+  /* Dr Saltys: the vision page. White and alive. Same idea as Pedro's seven things page,
+     in a light look. Every scene is an example made up to show an idea, and says so.
+     The only figures about his clinic are sliders he moves himself. */
   :root {
     --bg: #ffffff;
-    --card: #f6f8fb;
-    --card-2: #e6ecf3;
+    --soft: #f4f8fd;
+    --card: #ffffff;
     --ink: #14233a;
     --muted: #55627a;
     --faint: #8794a8;
-    --line: #dde4ee;
+    --line: #dde6f1;
     --blue: #2a6aa6;
+    --blue-2: #4e8fcf;
     --blue-soft: #e4eef8;
     --blue-deep: #1b4a78;
+    --green: #2f9e6e;
+    --green-soft: #dff3ea;
+    --gold: #f0ac1b;
     --sand: #b0553a;
     --sand-soft: #f8e9e3;
+    --shadow: 0 10px 30px rgba(20, 50, 90, .09);
     color-scheme: light;
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html { scroll-behavior: smooth; }
-  body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font: 17px/1.6 Figtree, system-ui, "Helvetica Neue", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  button, input { font-family: inherit; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.6 Figtree, system-ui, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  button, input { font-family: inherit; color: inherit; }
   button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
-  .wrap { max-width: 820px; margin: 0 auto; padding: 0 20px; }
-  section { padding: 52px 0; border-top: 1px solid var(--line); }
-  section:first-of-type { border-top: 0; }
-
-  h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 400; letter-spacing: -.01em; text-wrap: balance; margin: 0 0 14px; }
-  h1 { font-size: clamp(34px, 8vw, 52px); line-height: 1.08; }
-  h2 { font-size: clamp(26px, 5.6vw, 36px); line-height: 1.15; }
-  h3 { font-size: 20px; line-height: 1.25; margin-bottom: 6px; }
-  h1 em, h2 em { font-style: italic; color: var(--blue); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+  section { padding: 64px 0; position: relative; }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 400; letter-spacing: -.015em; margin: 0 0 14px; text-wrap: balance; }
+  h1 { font-size: clamp(38px, 8.4vw, 68px); line-height: 1.04; }
+  h2 { font-size: clamp(28px, 5.6vw, 44px); line-height: 1.1; }
+  h3 { font-size: 22px; line-height: 1.2; font-weight: 500; }
+  em { font-style: italic; color: var(--blue); }
   p { margin: 0 0 14px; }
-  .lead { font-size: 19px; color: var(--muted); max-width: 620px; }
-  .eyebrow { font: 600 12px Figtree, sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--blue); margin: 0 0 12px; }
-  .eyebrow.sand { color: var(--sand); }
-  .rule { height: 2px; width: 120px; background: linear-gradient(90deg, var(--blue), transparent); margin: 18px 0 0; }
+  .lede { font-size: 19px; color: var(--muted); max-width: 58ch; }
+  .small { font-size: 15.5px; line-height: 1.5; }
+  .tiny { font-size: 14px; line-height: 1.5; color: var(--faint); }
+  .kicker { font: 700 12px Figtree, sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--blue); margin: 0 0 14px; }
+  .kicker.sand { color: var(--sand); }
 
-  .hero { padding: 40px 0 56px; }
-  .top { display: flex; justify-content: space-between; align-items: center; font: 600 12px Figtree, sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--blue); margin-bottom: 40px; }
-  .top span:last-child { color: var(--faint); letter-spacing: .08em; text-transform: none; font-weight: 500; }
+  .rv { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .rv.in { opacity: 1; transform: none; }
 
-  /* Journey toggle */
-  .toggle { display: inline-flex; background: var(--card-2); border-radius: 999px; padding: 4px; margin: 6px 0 24px; }
-  .toggle button { border: 0; background: transparent; color: var(--muted); font: 600 15px Figtree, sans-serif; padding: 10px 20px; border-radius: 999px; cursor: pointer; }
-  .toggle button[aria-pressed="true"] { background: #fff; color: var(--ink); box-shadow: 0 1px 4px rgba(20, 35, 58, .14); }
-  .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
-  .step { position: relative; display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 0 0 22px; }
-  .step:not(:last-child)::before { content: ""; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: var(--line); }
-  .num { width: 44px; height: 44px; border-radius: 50%; background: var(--card); border: 2px solid var(--line); display: grid; place-items: center; font: 600 16px Figtree, sans-serif; color: var(--muted); transition: all .25s; }
-  .step h3 { font-family: Figtree, sans-serif; font-weight: 600; font-size: 17px; margin: 0 0 2px; }
-  .step p { margin: 0; color: var(--muted); font-size: 16px; }
-  .step .tag { display: inline-block; margin-top: 8px; font: 600 12px Figtree, sans-serif; letter-spacing: .06em; padding: 3px 10px; border-radius: 999px; background: var(--sand-soft); color: var(--sand); }
-  .after .num { background: var(--blue-soft); border-color: var(--blue); color: var(--blue-deep); }
-  .after .tag { background: var(--blue-soft); color: var(--blue-deep); }
-  .note { font-size: 14.5px; color: var(--faint); margin-top: 6px; }
+  /* Hero */
+  .hero { padding: 36px 0 70px; overflow: hidden; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; z-index: 0; animation: drift 14s ease-in-out infinite alternate; }
+  .blob.b1 { width: 420px; height: 420px; background: #cfe3f8; top: -120px; right: -80px; }
+  .blob.b2 { width: 320px; height: 320px; background: #dff3ea; bottom: -60px; left: -100px; animation-delay: -6s; }
+  @keyframes drift { to { transform: translate3d(40px, 30px, 0) scale(1.12); } }
+  .top { display: flex; justify-content: space-between; align-items: center; font: 700 12px Figtree, sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--blue); margin-bottom: 44px; }
+  .top span:last-child { color: var(--faint); letter-spacing: .06em; text-transform: none; font-weight: 500; }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 34px; align-items: center; }
+  @media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } }
+  .hero-top { grid-column: 1 / -1; }
+  .cta { display: inline-block; background: var(--blue); color: #fff; text-decoration: none; font: 700 17px Figtree, sans-serif; padding: 16px 28px; border-radius: 14px; box-shadow: 0 8px 22px rgba(42, 106, 166, .28); transition: transform .2s, background .2s; border: 0; cursor: pointer; }
+  .cta:hover { background: var(--blue-deep); transform: translateY(-2px); }
+  .cta.ghost { background: #fff; color: var(--blue-deep); border: 1.5px solid var(--line); box-shadow: none; }
+  .stack { position: relative; height: 320px; }
+  .fc { position: absolute; background: #fff; border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); padding: 14px 18px; display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 16px; animation: float 6s ease-in-out infinite; }
+  .fc small { display: block; font-weight: 500; font-size: 13px; color: var(--muted); }
+  .fc i { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 18px; flex: none; }
+  .fc.a { top: 10px; left: 0; }
+  .fc.a i { background: var(--green-soft); color: var(--green); }
+  .fc.b { top: 112px; right: 0; animation-delay: -2s; }
+  .fc.b i { background: var(--blue-soft); color: var(--blue); }
+  .fc.c { top: 214px; left: 24px; animation-delay: -4s; }
+  .fc.c i { background: #fdf1d4; color: var(--gold); }
+  @keyframes float { 50% { transform: translateY(-12px); } }
+  @media (max-width: 860px) { .stack { height: 300px; } }
 
-  /* Pieces */
-  .grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 22px; }
-  @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
-  .piece { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
-  .piece .k { font: 600 12px Figtree, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
-  .piece p { color: var(--muted); font-size: 16px; margin: 0; }
+  /* Demo */
+  .demo { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; margin-top: 26px; }
+  @media (max-width: 780px) { .demo { grid-template-columns: 1fr; } }
+  .ctl { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 22px 0 0; }
+  .seg { display: inline-flex; background: var(--blue-soft); border-radius: 999px; padding: 4px; }
+  .seg button { border: 0; background: transparent; color: var(--muted); font: 600 15px Figtree, sans-serif; padding: 10px 18px; border-radius: 999px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: #fff; color: var(--ink); box-shadow: 0 1px 4px rgba(20, 35, 58, .16); }
+  .phone { background: #fff; border: 1px solid var(--line); border-radius: 30px; box-shadow: var(--shadow); padding: 14px; max-width: 380px; width: 100%; margin: 0 auto; }
+  .screen { background: var(--soft); border-radius: 20px; min-height: 420px; padding: 12px; display: flex; flex-direction: column; }
+  .chead { display: flex; align-items: center; gap: 10px; padding: 4px 4px 12px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+  .chead i { width: 36px; height: 36px; border-radius: 50%; background: var(--blue); color: #fff; display: grid; place-items: center; font: 600 16px Fraunces, serif; font-style: normal; }
+  .chead b { display: block; font-size: 15px; line-height: 1.2; }
+  .chead span { font-size: 12.5px; color: var(--faint); }
+  .msgs { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .bub { max-width: 86%; padding: 10px 14px; border-radius: 18px; font-size: 15.5px; line-height: 1.45; opacity: 0; transform: translateY(8px); transition: opacity .45s ease, transform .45s ease; white-space: pre-line; }
+  .bub.on { opacity: 1; transform: none; }
+  .bub.in { align-self: flex-start; background: #fff; border: 1px solid var(--line); border-bottom-left-radius: 6px; }
+  .bub.out { align-self: flex-end; background: var(--blue-soft); color: var(--blue-deep); border-bottom-right-radius: 6px; }
+  .dots { align-self: flex-end; display: none; gap: 4px; padding: 12px 14px; background: var(--blue-soft); border-radius: 18px; }
+  .dots.on { display: flex; }
+  .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); animation: bounce 1s infinite; }
+  .dots i:nth-child(2) { animation-delay: .15s; } .dots i:nth-child(3) { animation-delay: .3s; }
+  @keyframes bounce { 50% { transform: translateY(-4px); opacity: .5; } }
+  .approve { align-self: flex-end; display: none; background: #fff8e5; border: 1px solid #f3dca0; color: #7a5a06; border-radius: 14px; padding: 8px 12px; font-size: 14px; }
+  .approve.on { display: block; }
+  .approve b { background: var(--blue); color: #fff; border-radius: 8px; padding: 2px 10px; margin-left: 6px; font-weight: 600; }
+  .diary { background: #fff; border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 20px; }
+  .diary h3 { font-family: Figtree, sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: baseline; }
+  .diary h3 span { font-weight: 500; font-size: 13.5px; color: var(--faint); }
+  .slot { display: grid; grid-template-columns: 62px 1fr auto; gap: 10px; align-items: center; padding: 12px 12px; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 9px; font-size: 15.5px; transition: background .5s, border-color .5s; }
+  .slot b { color: var(--muted); font-weight: 600; font-size: 14px; }
+  .slot.free { border-style: dashed; color: var(--faint); }
+  .slot.fill { background: var(--green-soft); border: 1px solid #9fd9bf; color: var(--ink); }
+  .slot .chip { font-size: 12.5px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--blue-soft); color: var(--blue-deep); opacity: 0; transition: opacity .5s; }
+  .slot.fill .chip { opacity: 1; background: #fff; color: var(--green); }
+  .formsent { display: flex; align-items: center; gap: 10px; background: var(--blue-soft); color: var(--blue-deep); border-radius: 12px; padding: 12px 14px; font-size: 15px; margin-top: 4px; opacity: 0; transform: translateY(6px); transition: all .5s; }
+  .formsent.on { opacity: 1; transform: none; }
+  .safe { margin-top: 16px; padding: 14px 16px; border-radius: 14px; background: var(--soft); border: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+
+  /* Seven */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 22px; }
+  .fchip { cursor: pointer; border: 1.5px solid var(--line); background: #fff; padding: 9px 16px; border-radius: 99px; font-weight: 600; font-size: 14.5px; color: var(--muted); }
+  .fchip[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 18px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 20px; position: relative; box-shadow: 0 2px 10px rgba(20, 50, 90, .05); transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .card .num { position: absolute; top: 16px; right: 20px; font: 300 44px/1 Fraunces, serif; color: #dbe5f1; }
+  .tag { display: inline-flex; align-items: center; gap: 7px; font: 700 11px Figtree, sans-serif; letter-spacing: .12em; text-transform: uppercase; padding: 5px 11px; border-radius: 99px; margin-bottom: 12px; }
+  .tag.now { background: var(--green-soft); color: var(--green); }
+  .tag.now::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 1.8s infinite; }
+  .tag.next { background: var(--blue-soft); color: var(--blue-deep); }
+  .tag.later { background: var(--sand-soft); color: var(--sand); }
+  @keyframes pulse { 50% { opacity: .3; } }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  .two div { background: var(--soft); border-radius: 12px; padding: 10px 12px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .two b { display: block; color: var(--blue-deep); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 3px; }
+
+  .viz { position: relative; height: 236px; border-radius: 16px; margin: 0 0 16px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(160deg, #f4f9ff, #e9f1fa); padding: 12px; }
+  .viz .xx { opacity: 0; transform: translateY(8px) scale(.98); transition: opacity .55s ease, transform .55s cubic-bezier(.2,.8,.2,1); }
+  .viz .xx.on { opacity: 1; transform: none; }
+  .viz .cap { position: absolute; left: 12px; right: 12px; bottom: 8px; text-align: center; font-size: 12.5px; color: var(--muted); }
+  .viz .col { display: flex; flex-direction: column; gap: 7px; }
+  .viz .bub { font-size: 14px; padding: 8px 12px; max-width: 90%; }
+  .viz .bub.xx { transition: opacity .55s ease, transform .55s ease; }
+
+  /* v1 find */
+  .v1 .sbar { background: #fff; border: 1px solid var(--line); border-radius: 99px; padding: 7px 14px; font-size: 13.5px; color: var(--muted); margin-bottom: 9px; }
+  .v1 .res { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; }
+  .v1 .res b { font-size: 15px; display: block; }
+  .v1 .stars { color: var(--gold); letter-spacing: 2px; font-size: 15px; }
+  .v1 .stars span { color: var(--muted); font-size: 12.5px; letter-spacing: 0; margin-left: 6px; }
+  .v1 .photos { display: flex; gap: 6px; margin: 8px 0; }
+  .v1 .photos i { flex: 1; height: 38px; border-radius: 8px; background: linear-gradient(135deg, #bcd6f0, #dfeaf6); }
+  .v1 .photos i:nth-child(2) { background: linear-gradient(135deg, #cfe9dd, #e6f4ee); }
+  .v1 .photos i:nth-child(3) { background: linear-gradient(135deg, #f5e3c4, #faf0dc); }
+  .v1 .bk { display: inline-block; background: var(--blue); color: #fff; font-weight: 700; font-size: 13px; padding: 6px 14px; border-radius: 99px; }
+  .v1 .bk.on { animation: glow 1.4s ease-in-out infinite; }
+  @keyframes glow { 50% { box-shadow: 0 0 0 6px rgba(42, 106, 166, .22); } }
+
+  /* v3 reminders */
+  .v3 .rowd { display: grid; grid-template-columns: 50px 1fr auto; gap: 8px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 11px; padding: 7px 10px; font-size: 13.5px; transition: background .5s, border-color .5s; }
+  .v3 .rowd b { color: var(--muted); font-size: 12.5px; }
+  .v3 .rowd em { font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--faint); }
+  .v3.s3 .r2 { background: var(--green-soft); border-color: #9fd9bf; }
+  .v3.s3 .r2 em { color: var(--green); }
+  .v3 .r3 { border-style: dashed; }
+  .v3.s4 .r3 { background: var(--blue-soft); border-color: #a9c8e8; border-style: solid; }
+  .v3.s4 .r3 em { color: var(--blue-deep); }
+
+  /* v4 review stars */
+  .v4 .big { align-self: center; font-size: 30px; letter-spacing: 6px; color: #d4dce8; }
+  .v4 .big i { font-style: normal; transition: color .4s, transform .4s; display: inline-block; }
+  .v4 .big.on i { color: var(--gold); transform: scale(1.12); }
+  .v4 .big.on i:nth-child(2) { transition-delay: .12s; } .v4 .big.on i:nth-child(3) { transition-delay: .24s; } .v4 .big.on i:nth-child(4) { transition-delay: .36s; } .v4 .big.on i:nth-child(5) { transition-delay: .48s; }
+
+  /* v5 bring back */
+  .v5 .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin: 8px 0 6px; }
+  .v5 .av { aspect-ratio: 1; border-radius: 50%; background: #d9e2ee; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: transparent; transition: background .5s, color .5s, transform .5s; }
+  .v5.s2 .av { background: #bcd6f0; }
+  .v5.s3 .av.y { background: var(--green); color: #fff; transform: scale(1.12); }
+  .v5 .head { font-size: 13.5px; color: var(--muted); display: flex; justify-content: space-between; }
+  .v5 .head b { color: var(--ink); }
+  .v5 .c3 { display: none; color: var(--green); }
+  .v5.s4 .c0 { display: none; } .v5.s4 .c3 { display: inline; }
+  .v5 .msgline { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 7px 11px; font-size: 13px; margin-top: 4px; }
+
+  /* v6 brief */
+  .v6 .brief { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px; margin: 0 auto; max-width: 300px; }
+  .v6 .ph-h { font: 500 16px Fraunces, serif; margin-bottom: 6px; }
+  .v6 .rowb { display: flex; align-items: center; gap: 9px; padding: 6px 0; border-top: 1px solid var(--line); font-size: 14px; }
+  .v6 .rowb b { margin-left: auto; font: 500 18px Fraunces, serif; color: var(--blue-deep); }
+  .v6 .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .v6 .d1 { background: var(--blue-2); } .v6 .d2 { background: var(--gold); } .v6 .d3 { background: var(--sand); } .v6 .d4 { background: var(--green); }
+
+  /* v7 extra */
+  .v7 .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 4px; }
+  .v7 .tile { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 8px; font-size: 12.5px; line-height: 1.3; color: var(--muted); }
+  .v7 .tile .th { height: 54px; border-radius: 8px; background: linear-gradient(135deg, #bcd6f0, #dfeaf6); margin-bottom: 6px; display: grid; place-items: center; }
+  .v7 .tile:nth-child(2) .th { background: linear-gradient(135deg, #cfe9dd, #e6f4ee); }
+  .v7 .tile:nth-child(3) .th { background: linear-gradient(135deg, #f5e3c4, #faf0dc); }
+  .v7 .tile .th::after { content: ""; border-left: 14px solid #fff; border-top: 9px solid transparent; border-bottom: 9px solid transparent; filter: drop-shadow(0 1px 2px rgba(20, 50, 90, .3)); }
+  .v7 .tile b { display: block; color: var(--ink); font-size: 13px; }
+  .v7 .note { margin-top: 10px; text-align: center; background: #fff; border: 1px solid var(--line); border-radius: 99px; padding: 6px 12px; font-size: 13.5px; color: var(--blue-deep); font-weight: 600; }
+
+  /* Board */
+  .boardwrap { background: var(--soft); border: 1px solid var(--line); border-radius: 26px; padding: 20px; margin-top: 24px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+  .stats div { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 8px 16px; font-size: 14px; color: var(--muted); }
+  .stats b { font: 500 26px Fraunces, serif; color: var(--blue-deep); margin-right: 8px; }
+  .board { display: grid; grid-template-columns: repeat(5, minmax(150px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+  .bcol { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 10px; min-height: 230px; }
+  .bcol h4 { margin: 0 0 10px; font: 700 12px Figtree, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; }
+  .bcol h4 span:last-child { background: var(--blue-soft); color: var(--blue-deep); border-radius: 99px; padding: 0 8px; }
+  .pt { display: block; width: 100%; text-align: left; border: 1px solid var(--line); background: var(--soft); border-radius: 12px; padding: 9px 10px 9px 12px; margin-bottom: 8px; cursor: pointer; position: relative; font-size: 14px; line-height: 1.35; transition: transform .2s, box-shadow .2s; }
+  .pt:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(20, 50, 90, .1); }
+  .pt b { display: block; font-size: 14.5px; }
+  .pt span { color: var(--muted); font-size: 12.5px; }
+  .pt i { position: absolute; top: 8px; right: 8px; width: 22px; height: 22px; border-radius: 50%; background: var(--blue); color: #fff; font: 700 11px Figtree, sans-serif; display: grid; place-items: center; font-style: normal; }
+  .pt i.j { background: var(--green); }
+  .pt.pop { animation: pop .5s ease; }
+  @keyframes pop { 40% { transform: scale(1.06); } }
+  .hint { font-size: 14px; color: var(--muted); margin: 0 0 14px; }
 
   /* Two practitioners */
-  .pair { display: grid; gap: 14px; grid-template-columns: 1fr; margin-top: 22px; }
-  @media (min-width: 640px) { .pair { grid-template-columns: 1fr 1fr; } }
-  .person { border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: #fff; }
-  .person h3 { margin-bottom: 8px; }
-  .person ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 16px; }
-  .person li { margin-bottom: 6px; }
-  .shared { margin-top: 14px; text-align: center; background: var(--blue-soft); color: var(--blue-deep); border-radius: 14px; padding: 14px 18px; font-weight: 500; }
+  .pair { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; margin-top: 22px; }
+  @media (max-width: 640px) { .pair { grid-template-columns: 1fr; } }
+  .person { border: 1px solid var(--line); border-radius: 22px; padding: 22px; background: #fff; box-shadow: 0 2px 10px rgba(20, 50, 90, .05); }
+  .person ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 16.5px; }
+  .person li { margin-bottom: 7px; }
+  .shared { margin-top: 16px; text-align: center; background: var(--blue-soft); color: var(--blue-deep); border-radius: 16px; padding: 16px 20px; font-weight: 600; }
 
-  /* Slider */
-  .calc { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; margin-top: 22px; }
+  /* Calc */
+  .calc { background: var(--soft); border: 1px solid var(--line); border-radius: 24px; padding: 26px; margin-top: 24px; }
   .row { margin-bottom: 22px; }
   .row label { display: flex; justify-content: space-between; gap: 12px; font-weight: 500; margin-bottom: 8px; }
-  .row label b { font: 600 18px Fraunces, Georgia, serif; color: var(--blue-deep); white-space: nowrap; }
-  input[type=range] { width: 100%; accent-color: var(--blue); height: 28px; }
-  .out { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; text-align: center; }
-  .out div b { display: block; font: 400 clamp(30px, 8vw, 40px)/1.1 Fraunces, Georgia, serif; color: var(--blue); }
-  .out div span { font-size: 14px; color: var(--muted); }
-  .fine { font-size: 14.5px; color: var(--faint); margin: 14px 0 0; }
+  .row label b { font: 500 20px Fraunces, serif; color: var(--blue-deep); white-space: nowrap; }
+  input[type=range] { width: 100%; accent-color: var(--blue); height: 30px; }
+  .result { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; text-align: center; }
+  .result div b { display: block; font: 400 clamp(32px, 8vw, 46px)/1.1 Fraunces, serif; color: var(--blue); }
+  .result div span { font-size: 14.5px; color: var(--muted); }
 
   /* Start */
-  .start ul { list-style: none; padding: 0; margin: 18px 0 0; }
-  .start li { display: grid; grid-template-columns: 32px 1fr; gap: 12px; margin-bottom: 14px; color: var(--muted); }
-  .start li i { font-style: normal; width: 32px; height: 32px; border-radius: 50%; background: var(--blue-soft); color: var(--blue-deep); display: grid; place-items: center; font: 600 14px Figtree, sans-serif; }
-  .start li b { color: var(--ink); font-weight: 600; }
-  .cta { display: inline-block; margin-top: 18px; background: var(--blue); color: #fff; text-decoration: none; font: 600 17px Figtree, sans-serif; padding: 16px 28px; border-radius: 12px; }
-  .cta:hover { background: var(--blue-deep); }
-  .sig { font-family: Fraunces, Georgia, serif; font-style: italic; color: var(--blue); margin-top: 28px; }
-  footer { padding: 30px 0 60px; }
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
+  .steps3 { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); margin: 26px 0 8px; }
+  @media (max-width: 720px) { .steps3 { grid-template-columns: 1fr; } }
+  .steps3 > div { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 20px; box-shadow: 0 2px 10px rgba(20, 50, 90, .05); }
+  .steps3 i { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--blue); color: #fff; font: 600 17px Figtree, sans-serif; font-style: normal; margin-bottom: 12px; }
+  .steps3 p { color: var(--muted); font-size: 16px; margin: 0; }
+  .sig { font: italic 400 24px Fraunces, serif; color: var(--blue); margin-top: 26px; }
+  footer { padding: 20px 0 70px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rv { opacity: 1; transform: none; transition: none; }
+    .blob, .fc, .dots i, .tag.now::before, .v1 .bk.on { animation: none; }
+    .viz .xx, .bub { opacity: 1; transform: none; transition: none; }
+  }
 </style>
+<noscript><style>.rv { opacity: 1; transform: none; } .viz .xx, .bub { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
-<div class="wrap">
 
-  <section class="hero">
-    <div class="top"><span>Centro Quiroprático Saltys</span><span>Two minutes to read</span></div>
-    <p class="eyebrow">Hello Dr Saltys</p>
-    <h1>Years of patients. <em>And everything still runs through you and Julie.</em></h1>
-    <p class="lead">I build small systems that take the repetitive admin off a clinic, so the people who are good at the work can spend their time on it. This page shows what that looks like, and what it could mean for the two of you.</p>
-    <p class="lead">You stay in charge of everything. Nothing here talks to a patient in a way you have not approved.</p>
-    <div class="rule"></div>
-  </section>
-
-  <section>
-    <p class="eyebrow">A patient's journey</p>
-    <h2>The same patient, <em>two ways.</em></h2>
-    <p class="lead">Tap between the two. "Today" is how I understand a clinic like yours works, and your answers to the questions will correct anything I have got wrong.</p>
-    <div class="toggle" role="group" aria-label="Choose a view">
-      <button type="button" id="b-now" aria-pressed="true">Today</button>
-      <button type="button" id="b-new" aria-pressed="false">With a system</button>
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap">
+    <div class="top hero-top"><span>Centro Quiroprático Saltys</span><span>Made for you and Julie</span></div>
+    <div>
+      <div class="kicker">Hello Dr Saltys</div>
+      <h1 class="rv">Your clinic, <em>working while you treat.</em></h1>
+      <p class="lede rv">Seven small things we could build for you and Julie. Each one is alive on this page, so you can watch it work instead of reading about it. You approve everything. Nothing talks to a patient on its own unless you say so.</p>
+      <p class="rv"><a class="cta" href="#demo">Watch it work</a></p>
     </div>
-    <ol class="steps" id="steps"></ol>
-    <p class="note">Everything in the second view is adjusted to how you like to work, never the other way round.</p>
-  </section>
+    <div class="stack" aria-hidden="true">
+      <div class="fc a"><i>&#10003;</i><div>Booked, Thursday 10:30<small>No phone call needed</small></div></div>
+      <div class="fc b"><i>&#9993;</i><div>Reminder sent for tomorrow<small>Confirmed in one tap</small></div></div>
+      <div class="fc c"><i>&#9733;</i><div>New five star review<small>From a happy patient</small></div></div>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <p class="eyebrow">What I would build</p>
-    <h2>Four small pieces. <em>Not a big overhaul.</em></h2>
-    <p class="lead">Each one stands alone. We start with whichever matters most to you and leave the rest until you want them.</p>
-    <div class="grid">
-      <div class="piece">
-        <div class="k">Piece one</div>
-        <h3>A front door people can find</h3>
-        <p>A simple website and a Google profile with good photos and your patients' own words. When someone searches for a chiropractor in Lagoa, they see a clinic they trust, and they can book in one tap.</p>
+<section id="demo">
+  <div class="wrap">
+    <div class="kicker">Start here</div>
+    <h2 class="rv">A patient writes at 9 in the evening. <em>Watch what happens.</em></h2>
+    <p class="lede rv">You are at home with your family. The message gets an answer, and the diary fills in. You can switch the language, and you can choose whether you approve each reply first.</p>
+
+    <div class="ctl">
+      <div class="seg" id="lang" role="group" aria-label="Choose a language">
+        <button type="button" data-l="pt" aria-pressed="true">Um paciente em português</button>
+        <button type="button" data-l="en" aria-pressed="false">A patient in English</button>
       </div>
-      <div class="piece">
-        <div class="k">Piece two</div>
-        <h3>An assistant for the messages</h3>
-        <p>It answers the usual questions on WhatsApp and the website, in Portuguese or English, and offers free times from your real diary. Anything unusual comes to you.</p>
-      </div>
-      <div class="piece">
-        <div class="k">Piece three</div>
-        <h3>Reminders that actually go out</h3>
-        <p>A friendly message the day before each appointment, with a way to confirm or move it. Fewer empty slots, and nobody has to remember to send them.</p>
-      </div>
-      <div class="piece">
-        <div class="k">Piece four</div>
-        <h3>A way to bring people back</h3>
-        <p>Someone who has not been in for months gets a warm check-in from you. After all these years, this may be where the most hidden value in the clinic sits.</p>
+      <div class="seg" id="mode" role="group" aria-label="Choose a mode">
+        <button type="button" data-m="approve" aria-pressed="true">You approve first</button>
+        <button type="button" data-m="auto" aria-pressed="false">It replies by itself</button>
       </div>
     </div>
-  </section>
 
-  <section>
-    <p class="eyebrow">For both of you</p>
-    <h2>One diary. <em>Two practitioners.</em></h2>
-    <p class="lead">If Julie works alongside you, the same system works for her treatments too. Patients can choose either of you, or both, and neither of you has to run it.</p>
-    <div class="pair">
+    <div class="demo">
+      <div class="phone">
+        <div class="screen">
+          <div class="chead"><i>S</i><div><b>Centro Quiroprático Saltys</b><span id="chat-time">Tuesday, 21:04</span></div></div>
+          <div class="msgs" id="msgs">
+            <div class="bub in" id="m1"></div>
+            <div class="approve" id="appr">Draft ready on your phone <b>Send</b></div>
+            <div class="dots" id="dots"><i></i><i></i><i></i></div>
+            <div class="bub out" id="m2"></div>
+            <div class="bub in" id="m3"></div>
+            <div class="bub out" id="m4"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="diary">
+          <h3>Thursday <span>Dr Saltys and Julie</span></h3>
+          <div class="slot"><b>09:00</b><span>Ana M., follow-up</span><span class="chip">Booked</span></div>
+          <div class="slot free" id="slot"><b>10:30</b><span id="slot-text">Free</span><span class="chip">New</span></div>
+          <div class="slot"><b>11:30</b><span>Rui P., Julie, sports massage</span><span class="chip">Booked</span></div>
+          <div class="formsent" id="formsent">&#128221; A short health form was sent to the patient to fill in before the visit.</div>
+        </div>
+        <div class="safe">If a message sounds urgent or serious, it goes straight to you and nothing is sent back. The assistant offers times and answers practical questions. It never gives medical advice.</div>
+        <div class="ctl"><button class="cta ghost" id="play" type="button">Play it again</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="seven">
+  <div class="wrap">
+    <div class="kicker">Where this could go</div>
+    <h2 class="rv">Seven things, <em>built the same way.</em></h2>
+    <p class="lede rv">Each one is small, and each one stands alone. We start with the one that helps most, and you choose the order.</p>
+    <div class="filters" role="group" aria-label="Filter">
+      <button class="fchip" data-f="all" aria-pressed="true">All seven</button>
+      <button class="fchip" data-f="now" aria-pressed="false">Start here</button>
+      <button class="fchip" data-f="next" aria-pressed="false">Next</button>
+      <button class="fchip" data-f="later" aria-pressed="false">Later</button>
+    </div>
+
+    <div class="cards" id="cards">
+
+      <div class="card rv" data-s="now">
+        <div class="viz v1" data-t="900,1000,1000,1000,2600">
+          <div class="sbar">chiropractor Lagoa</div>
+          <div class="res xx" data-s="1">
+            <b>Centro Quiroprático Saltys</b>
+            <div class="stars xx" data-s="2">&#9733;&#9733;&#9733;&#9733;&#9733;<span>Patients love it</span></div>
+            <div class="photos xx" data-s="3"><i></i><i></i><i></i></div>
+            <span class="bk xx" data-s="4">Book now</span>
+          </div>
+          <div class="cap xx" data-s="5">Example of how a patient would see you</div>
+        </div>
+        <div class="num">1</div><span class="tag now">Start here</span>
+        <h3>Easy to find, easy to trust</h3>
+        <p class="small" style="color:var(--muted)">A clean website and a Google profile with good photos and your patients' own words. Search for a chiropractor in Lagoa and there you are, with a button to book.</p>
+        <div class="two"><div><b>It does</b>Builds the page and the profile, and keeps them fresh.</div><div><b>You keep</b>Every word and every photo that goes up.</div></div>
+      </div>
+
+      <div class="card rv" data-s="now">
+        <div class="viz v2" data-t="900,1200,1200,1200,2400">
+          <div class="col">
+            <div class="bub in xx" data-s="1">Hi, my back has been sore for a week. Any space this week?</div>
+            <div class="dots xx" data-s="2" data-e="3"><i></i><i></i><i></i></div>
+            <div class="bub out xx" data-s="3">Of course. Thursday 10:30 or Friday 9:00?</div>
+            <div class="bub in xx" data-s="4">Thursday please</div>
+            <div class="bub out xx" data-s="5">Booked for Thursday 10:30. See you then.</div>
+          </div>
+        </div>
+        <div class="num">2</div><span class="tag now">Start here</span>
+        <h3>The booking assistant</h3>
+        <p class="small" style="color:var(--muted)">It answers on WhatsApp and the website, in Portuguese or English, offers free times from your real diary, and sends a short health form before the first visit.</p>
+        <div class="two"><div><b>It does</b>Replies, books and files the form.</div><div><b>You keep</b>The final say, and every urgent message.</div></div>
+      </div>
+
+      <div class="card rv" data-s="now">
+        <div class="viz v3" data-t="900,1000,1000,1100,2600">
+          <div class="col">
+            <div class="bub out xx" data-s="1">Reminder: tomorrow 10:30 with Dr Saltys. Reply 1 to confirm, 2 to move.</div>
+            <div class="bub in xx" data-s="2" style="align-self:flex-start">1</div>
+            <div class="rowd r1"><b>09:00</b><span>Ana M.</span><em>Confirmed</em></div>
+            <div class="rowd r2"><b>10:30</b><span>Marco S.</span><em>Waiting</em></div>
+            <div class="rowd r3"><b>11:30</b><span>Open slot</span><em>Offered to waiting list</em></div>
+          </div>
+        </div>
+        <div class="num">3</div><span class="tag now">Start here</span>
+        <h3>Reminders that really go out</h3>
+        <p class="small" style="color:var(--muted)">A friendly message the day before each visit, with one tap to confirm or move it. If someone cancels, the free slot is offered to your waiting list.</p>
+        <div class="two"><div><b>It does</b>Sends, collects replies and tidies the diary.</div><div><b>You keep</b>Your diary, exactly the way you like it.</div></div>
+      </div>
+
+      <div class="card rv" data-s="next">
+        <div class="viz v4" data-t="900,1000,1100,1100,2600">
+          <div class="col">
+            <div class="bub out xx" data-s="1">How is your back feeling today?</div>
+            <div class="bub in xx" data-s="2">Much better, thank you!</div>
+            <div class="bub out xx" data-s="3">Wonderful. Would you share that in a short review?</div>
+            <div class="big xx" data-s="4"><i>&#9733;</i><i>&#9733;</i><i>&#9733;</i><i>&#9733;</i><i>&#9733;</i></div>
+          </div>
+          <div class="cap xx" data-s="5">Example. Only patients who say they feel better get asked.</div>
+        </div>
+        <div class="num">4</div><span class="tag next">Next</span>
+        <h3>After the visit, a kind check-in</h3>
+        <p class="small" style="color:var(--muted)">A few days later, a short message asks how they are. Happy patients are invited to leave a review, so your Google profile grows on its own.</p>
+        <div class="two"><div><b>It does</b>Checks in, and asks only the happy ones.</div><div><b>You keep</b>Anything a patient replies that needs you.</div></div>
+      </div>
+
+      <div class="card rv" data-s="next">
+        <div class="viz v5" data-t="900,1100,1100,1100,2600">
+          <div class="head"><span>Not seen for 6 months or more</span><b class="c0">0 booked</b><b class="c3">3 booked</b></div>
+          <div class="grid">
+            <i class="av y">&#10003;</i><i class="av"></i><i class="av"></i><i class="av"></i><i class="av y">&#10003;</i><i class="av"></i>
+            <i class="av"></i><i class="av"></i><i class="av y">&#10003;</i><i class="av"></i><i class="av"></i><i class="av"></i>
+          </div>
+          <div class="msgline xx" data-s="2">"Hello Ana, it has been a while. How is the back? I have space next week."</div>
+          <div class="cap xx" data-s="5">Example. Warm, personal and sent by you.</div>
+        </div>
+        <div class="num">5</div><span class="tag next">Next</span>
+        <h3>Bringing past patients back</h3>
+        <p class="small" style="color:var(--muted)">Everyone who has not been in for a while gets a warm, personal check-in from you. After all these years, this is where the most hidden value sits.</p>
+        <div class="two"><div><b>It does</b>Finds who is due and drafts each message.</div><div><b>You keep</b>Who gets contacted, and when.</div></div>
+      </div>
+
+      <div class="card rv" data-s="next">
+        <div class="viz v6" data-t="800,700,700,700,2800">
+          <div class="brief">
+            <div class="ph-h xx" data-s="1">Good morning, Dr Saltys and Julie</div>
+            <div class="rowb xx" data-s="2"><i class="dot d1"></i>Appointments today<b>9</b></div>
+            <div class="rowb xx" data-s="3"><i class="dot d2"></i>New patients, form done<b>2</b></div>
+            <div class="rowb xx" data-s="4"><i class="dot d3"></i>Not yet confirmed<b>1</b></div>
+            <div class="rowb xx" data-s="5"><i class="dot d4"></i>Check-ins due<b>3</b></div>
+          </div>
+        </div>
+        <div class="num">6</div><span class="tag next">Next</span>
+        <h3>A morning brief for both of you</h3>
+        <p class="small" style="color:var(--muted)">Before the day starts, one message to your phone and Julie's: who is coming, who is new, who has not confirmed, who needs a follow-up.</p>
+        <div class="two"><div><b>It does</b>Pulls it all together from the shared diary.</div><div><b>You keep</b>Deciding what matters first.</div></div>
+      </div>
+
+      <div class="card rv" data-s="later">
+        <div class="viz v7" data-t="900,1000,1000,1000,2600">
+          <div class="tiles">
+            <div class="tile xx" data-s="1"><div class="th"></div><b>Neck, 5 minutes</b>Gentle morning routine</div>
+            <div class="tile xx" data-s="2"><div class="th"></div><b>Lower back</b>Stretches at home</div>
+            <div class="tile xx" data-s="3"><div class="th"></div><b>Posture</b>At your desk</div>
+          </div>
+          <div class="note xx" data-s="4">Your patients watch at home, in your voice</div>
+          <div class="cap xx" data-s="5">Only if you want it. Example.</div>
+        </div>
+        <div class="num">7</div><span class="tag later">Later</span>
+        <h3>Something extra, beyond the clinic</h3>
+        <p class="small" style="color:var(--muted)">Short videos of your best advice, for patients to follow at home. It helps your patients between visits, and it could become an extra income, at a pace you choose.</p>
+        <div class="two"><div><b>It does</b>Edits, publishes and shares it with the right patients.</div><div><b>You keep</b>The advice, and the decision to do it at all.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="boardsec">
+  <div class="wrap">
+    <div class="kicker">Everything in one place</div>
+    <h2 class="rv">Your patients, <em>on one screen.</em></h2>
+    <p class="lede rv">This is what your diary and your messages could grow into. Try it: tap a patient to move them along.</p>
+    <div class="boardwrap rv">
+      <div class="stats" id="stats"></div>
+      <p class="hint">All of these patients are made up, to show the idea. Tap any card to move it to the next step.</p>
+      <div class="board" id="board"></div>
+      <div class="ctl"><button class="cta ghost" id="breset" type="button">Put them back</button></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">For both of you</div>
+    <h2 class="rv">One diary. <em>Two practitioners.</em></h2>
+    <p class="lede rv">If Julie works alongside you, the same system works for her treatments too. Patients can choose either of you, or both, and neither of you has to run it.</p>
+    <div class="pair rv">
       <div class="person">
         <h3>For you</h3>
         <ul>
-          <li>Fewer calls to answer while you are with a patient</li>
+          <li>Fewer calls while you are with a patient</li>
           <li>A diary that fills and reminds itself</li>
           <li>Past patients gently invited back</li>
         </ul>
@@ -185,24 +497,26 @@
         <ul>
           <li>Her sports therapy and massage sessions bookable online</li>
           <li>Follow-ups after a treatment or a course of sessions</li>
-          <li>Her own regulars looked after, without her chasing them</li>
+          <li>Her own regulars looked after, without chasing them</li>
         </ul>
       </div>
     </div>
-    <div class="shared">Shared: one list of patients, one diary, and one place where the messages land.</div>
-  </section>
+    <div class="shared rv">Shared: one list of patients, one diary, and one place where the messages land.</div>
+  </div>
+</section>
 
-  <section>
-    <p class="eyebrow sand">Try it with your own numbers</p>
-    <h2>What coming back could be <em>worth.</em></h2>
-    <p class="lead">This is an illustration to play with, not a promise. Set the sliders to what you think is true.</p>
-    <div class="calc">
+<section>
+  <div class="wrap">
+    <div class="kicker sand">Try it with your own numbers</div>
+    <h2 class="rv">What coming back could be <em>worth.</em></h2>
+    <p class="lede rv">An illustration to play with, not a promise. Set the sliders to what you think is true.</p>
+    <div class="calc rv">
       <div class="row">
         <label for="s-past">Past patients you have not seen in the last year <b id="v-past">300</b></label>
         <input type="range" id="s-past" min="50" max="1500" step="10" value="300">
       </div>
       <div class="row">
-        <label for="s-back">Of those, how many might book again after a warm message from you <b id="v-back">5%</b></label>
+        <label for="s-back">Of those, how many might book again after a warm message <b id="v-back">5%</b></label>
         <input type="range" id="s-back" min="1" max="20" step="1" value="5">
       </div>
       <div class="row">
@@ -213,95 +527,171 @@
         <label for="s-fee">What one visit is worth to you <b id="v-fee">&euro;40</b></label>
         <input type="range" id="s-fee" min="20" max="100" step="5" value="40">
       </div>
-      <div class="out" aria-live="polite">
+      <div class="result" aria-live="polite">
         <div><b id="o-people">15</b><span>patients back</span></div>
-        <div><b id="o-money">&euro;1,800</b><span>from one message round</span></div>
+        <div><b id="o-money">&euro;1,800</b><span>from one round of messages</span></div>
       </div>
-      <p class="fine">These are stand-in numbers, not figures about your clinic. Move them down as far as feels honest and it is still worth a conversation.</p>
+      <p class="tiny" style="margin:14px 0 0">These are stand-in numbers, not figures about your clinic. Move them as low as feels honest and it is still worth a conversation.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="start">
-    <p class="eyebrow">How we would start</p>
-    <h2>Small first. <em>Then only what helps.</em></h2>
-    <ul>
-      <li><i>1</i><span><b>You answer a few questions.</b> Five minutes, mostly taps. It tells me what actually takes your time, so I do not guess.</span></li>
-      <li><i>2</i><span><b>We talk it through.</b> I show you which piece would help most, and what it would cost, before anything is built.</span></li>
-      <li><i>3</i><span><b>We start with one thing.</b> A few weeks, tested with a small group of your patients, and you decide whether it continues.</span></li>
-    </ul>
-    <a class="cta" href="saltys.html">Answer the questions</a>
+<section>
+  <div class="wrap">
+    <div class="kicker">How we would start</div>
+    <h2 class="rv">Small first. <em>Then only what helps.</em></h2>
+    <div class="steps3 rv">
+      <div><i>1</i><h3>You answer a few questions</h3><p>Five minutes, mostly taps. It tells me what really takes your time, so I do not guess.</p></div>
+      <div><i>2</i><h3>We talk it through</h3><p>I show you which piece would help most, and what it would cost, before anything is built.</p></div>
+      <div><i>3</i><h3>We start with one thing</h3><p>A few weeks, tried with a small group of your patients. You decide whether it continues.</p></div>
+    </div>
+    <p style="margin-top:26px"><a class="cta" href="saltys.html">Answer the questions</a></p>
     <p class="sig">Adam</p>
-  </section>
-
-  <footer></footer>
-</div>
+  </div>
+</section>
+<footer></footer>
 
 <script>
 (function () {
-  var steps = [
-    { t: "A patient looks for you",
-      now: "They ask a friend, or search and find a Facebook page and a Google listing with a few reviews and photos.",
-      nowTag: "Hard to choose you",
-      neu: "A clear page and a Google profile with good photos and your patients' own words.",
-      neuTag: "Easy to trust you" },
-    { t: "They try to book",
-      now: "They phone or message and wait for a reply, often while you are with someone else.",
-      nowTag: "Waiting for a reply",
-      neu: "They tap a time that suits them, any hour, or ask a question and get an answer straight away.",
-      neuTag: "Booked in a minute" },
-    { t: "The day before",
-      now: "Nobody reminds them, and a missed slot is hard to refill.",
-      nowTag: "Empty slots",
-      neu: "A friendly message goes out by itself, with a way to confirm or move the visit.",
-      neuTag: "Fewer no-shows" },
-    { t: "After the visit",
-      now: "They leave. Whether they come back depends on them remembering.",
-      nowTag: "Left to chance",
-      neu: "A short check-in a few days later, and a polite nudge for a Google review if they are happy.",
-      neuTag: "Reviews build up" },
-    { t: "Months later",
-      now: "Many simply drift away without anyone noticing.",
-      nowTag: "Quietly lost",
-      neu: "A warm message from you invites them back, and you see who said yes.",
-      neuTag: "Patients return" }
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* scroll reveal */
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .1 });
+  document.querySelectorAll('.rv').forEach(function (n) { io.observe(n); });
+
+  /* the chat demo */
+  var S = {
+    pt: {
+      time: 'Terça-feira, 21:04',
+      m1: 'Boa noite, tenho dores nas costas há uma semana. Têm vaga esta semana?',
+      m2: 'Boa noite, e obrigado pela mensagem. Tenho quinta-feira às 10:30 ou sexta-feira às 9:00 com o Dr. Saltys. Qual prefere?',
+      m3: 'Quinta às 10:30, por favor.',
+      m4: 'Marcado: quinta-feira às 10:30. Enviei-lhe um formulário curto para preencher antes da consulta. Até quinta!',
+      free: 'Livre', filled: 'Novo paciente, dor lombar'
+    },
+    en: {
+      time: 'Tuesday, 21:04',
+      m1: 'Good evening, my back has been sore for a week. Do you have any space this week?',
+      m2: 'Good evening, and thank you for your message. I have Thursday at 10:30 or Friday at 9:00 with Dr Saltys. Which would you prefer?',
+      m3: 'Thursday at 10:30, please.',
+      m4: 'Booked: Thursday at 10:30. I have sent you a short form to fill in before the visit. See you Thursday!',
+      free: 'Free', filled: 'New patient, lower back'
+    }
+  };
+  var lang = 'pt', mode = 'approve', run = 0;
+  var ids = ['m1', 'm2', 'm3', 'm4'], msgEls = ids.map($), dots = $('dots'), appr = $('appr'), slot = $('slot'), form = $('formsent');
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, reduce ? 0 : ms); }); }
+  function setText() {
+    var d = S[lang];
+    ids.forEach(function (k, i) { msgEls[i].textContent = d[k]; });
+    $('chat-time').textContent = d.time; $('slot-text').textContent = d.free;
+  }
+  function reset() {
+    msgEls.forEach(function (m) { m.classList.remove('on'); });
+    dots.classList.remove('on'); appr.classList.remove('on'); slot.classList.remove('fill'); form.classList.remove('on');
+    setText();
+  }
+  async function play() {
+    var id = ++run; reset();
+    function dead() { return id !== run; }
+    await sleep(500); if (dead()) return; msgEls[0].classList.add('on');
+    await sleep(900); if (dead()) return;
+    if (mode === 'approve') { appr.classList.add('on'); await sleep(1700); if (dead()) return; appr.classList.remove('on'); }
+    dots.classList.add('on'); await sleep(1200); if (dead()) return; dots.classList.remove('on'); msgEls[1].classList.add('on');
+    await sleep(1800); if (dead()) return; msgEls[2].classList.add('on');
+    await sleep(900); if (dead()) return; dots.classList.add('on'); await sleep(900); if (dead()) return; dots.classList.remove('on');
+    msgEls[3].classList.add('on'); slot.classList.add('fill'); $('slot-text').textContent = S[lang].filled;
+    await sleep(900); if (dead()) return; form.classList.add('on');
+  }
+  $('play').addEventListener('click', play);
+  document.querySelectorAll('#lang button').forEach(function (b) { b.addEventListener('click', function () {
+    lang = b.dataset.l; document.querySelectorAll('#lang button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); play();
+  }); });
+  document.querySelectorAll('#mode button').forEach(function (b) { b.addEventListener('click', function () {
+    mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); play();
+  }); });
+  setText();
+  var dio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { play(); dio.disconnect(); } }, { threshold: .35 });
+  dio.observe($('demo'));
+
+  /* filters */
+  var chips = document.querySelectorAll('.fchip'), cards = document.querySelectorAll('#cards .card');
+  chips.forEach(function (c) { c.addEventListener('click', function () {
+    chips.forEach(function (x) { x.setAttribute('aria-pressed', String(x === c)); });
+    cards.forEach(function (k) { k.hidden = !(c.dataset.f === 'all' || k.dataset.s === c.dataset.f); });
+  }); });
+
+  /* live scenes: each plays its own short loop while it is on screen */
+  var vizs = document.querySelectorAll('.viz');
+  function startViz(v) {
+    if (v._run) return; v._run = true;
+    var t = v.dataset.t.split(',').map(Number), n = 0, max = t.length;
+    var els = [].slice.call(v.querySelectorAll('.xx'));
+    function apply() {
+      for (var k = 1; k <= max; k++) v.classList.toggle('s' + k, k <= n);
+      els.forEach(function (e) { var st = +e.dataset.s, en = e.dataset.e ? +e.dataset.e : 99; e.classList.toggle('on', st <= n && n < en); });
+    }
+    function tick() {
+      if (!v._run) return; n++;
+      if (n > max) { n = 0; apply(); v._to = setTimeout(tick, 1000); return; }
+      apply(); v._to = setTimeout(tick, t[n - 1]);
+    }
+    if (reduce) { n = max; apply(); return; }
+    apply(); v._to = setTimeout(tick, 600);
+  }
+  function stopViz(v) { v._run = false; clearTimeout(v._to); }
+  var vio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? startViz(e.target) : stopViz(e.target); }); }, { threshold: .35 });
+  vizs.forEach(function (v) { vio.observe(v); });
+
+  /* the board: tap a patient to move them along */
+  var cols = ['New enquiry', 'Booked', 'Seen', 'Check-in sent', 'Due to return'];
+  var start = [
+    ['Example patient A', 'Back pain, asked today', 'S', 0], ['Example patient B', 'Neck, sports injury', 'J', 0],
+    ['Example patient C', 'Thursday 10:30', 'S', 1], ['Example patient D', 'Sports massage, Friday', 'J', 1],
+    ['Example patient E', 'Visit finished', 'S', 2], ['Example patient F', 'Visit finished', 'J', 2],
+    ['Example patient G', 'Asked how they feel', 'S', 3],
+    ['Example patient H', 'Last seen 7 months ago', 'S', 4], ['Example patient I', 'Last seen 9 months ago', 'J', 4]
   ];
-  var list = document.getElementById('steps');
-  var bNow = document.getElementById('b-now');
-  var bNew = document.getElementById('b-new');
-  function render(after) {
-    bNow.setAttribute('aria-pressed', String(!after));
-    bNew.setAttribute('aria-pressed', String(after));
-    list.innerHTML = '';
-    steps.forEach(function (s, i) {
-      var li = document.createElement('li');
-      li.className = 'step' + (after ? ' after' : '');
-      li.innerHTML = '<div class="num">' + (i + 1) + '</div><div><h3></h3><p></p><span class="tag"></span></div>';
-      li.querySelector('h3').textContent = s.t;
-      li.querySelector('p').textContent = after ? s.neu : s.now;
-      li.querySelector('.tag').textContent = after ? s.neuTag : s.nowTag;
-      list.appendChild(li);
+  var board = $('board'), state;
+  function drawBoard(pop) {
+    board.innerHTML = '';
+    cols.forEach(function (name, ci) {
+      var col = document.createElement('div'); col.className = 'bcol';
+      var items = state.filter(function (p) { return p[3] === ci; });
+      col.innerHTML = '<h4><span></span><span>' + items.length + '</span></h4>';
+      col.querySelector('span').textContent = name;
+      items.forEach(function (p) {
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'pt' + (p === pop ? ' pop' : '');
+        b.innerHTML = '<i class="' + (p[2] === 'J' ? 'j' : '') + '">' + p[2] + '</i><b></b><span></span>';
+        b.querySelector('b').textContent = p[0]; b.querySelector('span').textContent = p[1];
+        b.setAttribute('aria-label', p[0] + ', ' + name + '. Tap to move along.');
+        b.addEventListener('click', function () { if (p[3] < cols.length - 1) { p[3]++; drawBoard(p); } });
+        col.appendChild(b);
+      });
+      board.appendChild(col);
+    });
+    var st = $('stats'); st.innerHTML = '';
+    [['Booked', 1], ['Seen', 2], ['Due to return', 4]].forEach(function (s) {
+      var n = state.filter(function (p) { return p[3] === s[1]; }).length;
+      var d = document.createElement('div'); d.innerHTML = '<b>' + n + '</b>' + s[0]; st.appendChild(d);
     });
   }
-  bNow.addEventListener('click', function () { render(false); });
-  bNew.addEventListener('click', function () { render(true); });
-  render(false);
+  function resetBoard() { state = start.map(function (p) { return p.slice(); }); drawBoard(null); }
+  $('breset').addEventListener('click', resetBoard);
+  resetBoard();
 
+  /* the slider */
   function fmt(n) { return '€' + Math.round(n).toLocaleString('en-GB'); }
-  var els = {
-    past: document.getElementById('s-past'), back: document.getElementById('s-back'),
-    visits: document.getElementById('s-visits'), fee: document.getElementById('s-fee')
-  };
+  var el = { past: $('s-past'), back: $('s-back'), visits: $('s-visits'), fee: $('s-fee') };
   function calc() {
-    var past = +els.past.value, back = +els.back.value, visits = +els.visits.value, fee = +els.fee.value;
+    var past = +el.past.value, back = +el.back.value, visits = +el.visits.value, fee = +el.fee.value;
     var people = Math.round(past * back / 100);
-    document.getElementById('v-past').textContent = past.toLocaleString('en-GB');
-    document.getElementById('v-back').textContent = back + '%';
-    document.getElementById('v-visits').textContent = visits;
-    document.getElementById('v-fee').textContent = fmt(fee);
-    document.getElementById('o-people').textContent = people;
-    document.getElementById('o-money').textContent = fmt(people * visits * fee);
+    $('v-past').textContent = past.toLocaleString('en-GB'); $('v-back').textContent = back + '%';
+    $('v-visits').textContent = visits; $('v-fee').textContent = fmt(fee);
+    $('o-people').textContent = people; $('o-money').textContent = fmt(people * visits * fee);
   }
-  Object.keys(els).forEach(function (k) { els[k].addEventListener('input', calc); });
+  Object.keys(el).forEach(function (k) { el[k].addEventListener('input', calc); });
   calc();
 })();
 </script>

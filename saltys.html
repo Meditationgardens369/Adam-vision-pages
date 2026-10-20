@@ -29,6 +29,9 @@
    The page is there to answer one thing: where does help matter most. Systems for the
    admin, more new patients, or bringing past patients back. Questions 6 and 16 separate those.
    The future question is gentle on purpose. Do not assume he wants to grow.
+   Questions athome, share, extra and teach (added 20 Oct) test the idea of earning beyond the
+   clinic: home exercise videos, a course, content. "extra" is the one to read first. A "Not for
+   me" there means keep to the systems and do not pitch the online side.
 
    No dashboard rules key on this wording yet. If that changes, add "saltys" to
    check_prospect_rules.js and run it after any wording change. */
@@ -97,6 +100,21 @@ window.INTAKE = {
       q: "Looking ahead a few years, what do you want the clinic to be?",
       hint: "No wrong answer. It helps me suggest the right size of thing.",
       opts: ["About the same, just smoother", "A bit busier", "Gradually less of my time, with more help", "Open to adding new things, like online work"] },
+    { id: "athome", type: "one", short: "Asked for home advice",
+      q: "How often do patients ask you for exercises or advice to do at home?",
+      hint: "This tells me whether there is something worth sharing beyond the treatment room.",
+      opts: ["All the time", "Fairly often", "Occasionally", "Rarely"] },
+    { id: "share", type: "many", short: "Where he shares knowledge",
+      q: "Do you already share what you know outside the clinic?", hint: "Tap all that apply.",
+      opts: ["Talks or workshops", "Posts on Facebook or Instagram", "Videos", "A newsletter or articles", "Not yet, but people have asked me to", "Not yet, and I have not thought about it"] },
+    { id: "extra", type: "one", short: "Interest in extra income",
+      q: "How would you feel about a second way of earning, beyond seeing patients one by one?",
+      hint: "For example home exercise programmes, short videos or a small online course. Honest answer, including no.",
+      opts: ["Very interested", "Curious, it depends on the effort", "Maybe later, not right now", "Not for me"] },
+    { id: "teach", type: "text", short: "What he would teach",
+      q: "If you could teach one thing to people who will never visit the clinic, what would it be?",
+      hint: "A sentence is plenty. Skip it if nothing comes to mind.",
+      placeholder: "How to look after your back at a desk, for example..." },
     { id: "worst", type: "text", short: "Worst part of the week",
       q: "Last one. What is the most tiring part of running the clinic?",
       hint: "A sentence or two is plenty. This is the answer I will read first.",
