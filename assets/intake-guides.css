@@ -1,0 +1,82 @@
+/* Skin for the questionnaires that sit at the end of the public guides
+   (grok.html, second-brain.html, browser.html, claude-edit.html).
+   Loaded after intake.css, so the prospect pages keep their own look.
+   Same fonts, tokens, rings and card shapes as the guides, so the
+   questions page feels like the next screen of the guide, not a new site. */
+
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+
+:root:root:root {
+  --limestone: #F4F3F8;
+  --card: #FFFFFF;
+  --card-2: #EAE7F1;
+  --basalt: #17131F;
+  --ink: #17131F;
+  --muted: #5F596E;
+  --faint: #8C8699;
+  --line: #DCD7E6;
+  --atlantic: #6B3FD4;
+  --atlantic-soft: #ECE5FC;
+  --on-accent: #FFFFFF;
+  --clay: #A8641A;
+  --clay-soft: #FBEEDD;
+  --signal: #0E8FA8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:root:root:not([data-theme="light"]) {
+    --limestone: #0F0C15; --card: #18141F; --card-2: #221D2B; --basalt: #EEEAF6;
+    --ink: #EEEAF6; --muted: #A59FB5; --faint: #7D7790; --line: #332D3F;
+    --atlantic: #A487F2; --atlantic-soft: #2A2240; --on-accent: #130E1C;
+    --clay: #E6A858; --clay-soft: #33250F; --signal: #5AD8F0;
+    color-scheme: dark;
+  }
+}
+:root:root:root[data-theme="dark"] {
+  --limestone: #0F0C15; --card: #18141F; --card-2: #221D2B; --basalt: #EEEAF6;
+  --ink: #EEEAF6; --muted: #A59FB5; --faint: #7D7790; --line: #332D3F;
+  --atlantic: #A487F2; --atlantic-soft: #2A2240; --on-accent: #130E1C;
+  --clay: #E6A858; --clay-soft: #33250F; --signal: #5AD8F0;
+  color-scheme: dark;
+}
+
+body { font-family: "Instrument Sans", "Segoe UI", system-ui, sans-serif; font-size: 17px; }
+.shell { max-width: 600px; }
+
+.brand { font: 500 12px "JetBrains Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--signal); }
+.count { font: 500 12px "JetBrains Mono", ui-monospace, monospace; color: var(--muted); }
+
+/* the guides have no pavement motif: a thin two-tone line instead */
+.calcada { height: 3px; opacity: 1; margin-top: 16px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--atlantic) 0 38%, var(--signal) 38% 52%, var(--card-2) 52% 100%); }
+.track { height: 6px; background: var(--card-2); border-radius: 999px; }
+.track span { background: var(--signal); border-radius: 999px; }
+
+.eyebrow { font: 500 12px "JetBrains Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--signal); }
+h1 { font: 800 clamp(34px, 8.6vw, 54px)/0.98 "Bricolage Grotesque", "Arial Black", system-ui, sans-serif; letter-spacing: -.015em; }
+h1 em { font-style: normal; color: var(--atlantic); }
+h2 { font: 800 clamp(26px, 6.4vw, 34px)/1.1 "Bricolage Grotesque", "Arial Black", system-ui, sans-serif; letter-spacing: -.015em; }
+.sig { font: 500 13px "JetBrains Mono", ui-monospace, monospace; font-style: normal; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.hint { font-size: 15px; }
+
+.opt { border-radius: 14px; padding: 15px 16px; font-size: 16.5px; box-shadow: 0 1px 2px rgba(23,19,31,.04); }
+.opt:hover { border-color: color-mix(in srgb, var(--atlantic) 55%, var(--line)); }
+.opt .mark { border-color: var(--line); background: var(--limestone); border-width: 2px; }
+.opt[aria-pressed="true"] { border-color: var(--atlantic); background: var(--atlantic-soft); }
+.opt[aria-pressed="true"] .mark { border-color: var(--atlantic); }
+.opt[aria-pressed="true"] .mark::after { background: var(--atlantic); }
+
+.field { border-radius: 12px; font-size: 16px; }
+.field:focus { outline: 2px solid var(--atlantic); }
+.stepper button { border-radius: 14px; }
+.stepper input { font: 800 52px/1 "Bricolage Grotesque", system-ui, sans-serif; }
+
+.btn { border-radius: 12px; font-weight: 700; min-height: 48px; }
+.btn.block { border-radius: 14px; min-height: 52px; }
+.btn.quiet { background: var(--card-2); color: var(--ink); }
+.link { color: var(--muted); }
+
+.review { border-top-color: var(--line); }
+.rrow .rl { font: 500 11px "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; color: var(--muted); }
+.quote { border-left: 3px solid var(--atlantic); font: 600 19px/1.4 "Instrument Sans", sans-serif; font-style: normal; background: var(--atlantic-soft); border-radius: 0 14px 14px 0; padding: 14px 16px; }
+.note.bad { color: var(--clay); }

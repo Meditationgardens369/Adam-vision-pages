@@ -1,0 +1,102 @@
+/* Shared depth skin for the four public guides (grok-bots, second-brain, browser,
+   claude-edit). Loaded after each guide's own styles. Same tokens, richer
+   surfaces: cards with shadow and a soft accent gradient, numbered badges,
+   logo tiles, and the same button and gate language as guides.html. */
+
+:root{
+  --shadow:0 1px 2px rgba(23,19,31,.05),0 14px 34px rgba(23,19,31,.08);
+  --shadow-sm:0 1px 2px rgba(23,19,31,.05),0 6px 16px rgba(23,19,31,.06);
+  --glass:linear-gradient(160deg,var(--accent-soft),transparent 55%);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--shadow:0 1px 2px rgba(0,0,0,.5),0 16px 40px rgba(0,0,0,.45);--shadow-sm:0 1px 2px rgba(0,0,0,.5),0 8px 20px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--shadow:0 1px 2px rgba(0,0,0,.5),0 16px 40px rgba(0,0,0,.45);--shadow-sm:0 1px 2px rgba(0,0,0,.5),0 8px 20px rgba(0,0,0,.35)}
+
+body{padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+.wrap{gap:clamp(48px,7vw,84px)}
+h2{font-size:clamp(28px,4.4vw,40px)}
+.btn{border-radius:12px;min-height:48px;padding:12px 18px;font-weight:700;box-shadow:0 6px 16px color-mix(in srgb,var(--accent) 25%,transparent)}
+.btn.ghost{box-shadow:none}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* top line: guide name + back to all guides */
+.gbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:-28px}
+.gbar a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:6px 12px 6px 8px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;box-shadow:var(--shadow-sm)}
+.gbar a i{width:26px;height:26px;border-radius:8px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:800 14px var(--display);font-style:normal}
+.gbar .kw{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--signal)}
+
+/* gate */
+#gate{border-radius:24px;padding:clamp(22px,4vw,32px);box-shadow:var(--shadow);position:relative;overflow:hidden;max-width:600px}
+#gate::before{content:"";position:absolute;inset:0;background:var(--glass);pointer-events:none}
+#gate > *{position:relative}
+#gate input[type=text],#gate input[type=email]{border-radius:12px;min-height:48px}
+#gate .btn{width:100%;min-height:52px;border-radius:14px}
+
+/* what you need: logo cards */
+.needs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border:0}
+@media (max-width:760px){.needs{grid-template-columns:1fr}}
+.needs > div{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 18px 18px;box-shadow:var(--shadow);gap:8px}
+.needs > div::before{content:"";position:absolute;inset:0;background:var(--glass);pointer-events:none}
+.needs > div > *{position:relative}
+.needs > div + div{padding-left:18px;border-left:1px solid var(--line);border-top:1px solid var(--line);padding-top:20px}
+.needs b{font:800 21px/1.15 var(--display);color:var(--ink);order:2}
+.needs span{font-size:15px;color:var(--muted);order:3}
+.needs div.logo{order:1;display:flex;flex-direction:row;justify-content:flex-start;gap:6px;align-items:center;min-height:44px;margin-bottom:4px;padding:0;border:0;background:none;box-shadow:none;border-radius:0}
+.needs div.logo::before{display:none}
+.needs .logo > span,.needs .logo > i{height:44px;width:44px;border-radius:12px;background:#fff;border:1px solid color-mix(in srgb,var(--line) 70%,transparent);display:grid;place-items:center;padding:6px;font-style:normal}
+.needs .logo > span.wide{width:auto;padding:8px 10px}
+.needs .logo img{max-height:100%;max-width:100%;object-fit:contain}
+.needs .logo > span.wide img{height:22px;width:auto}
+.needs .logo > i{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+.needs .logo > i svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+/* how it works (second brain) */
+.how div{border-radius:20px;box-shadow:var(--shadow);position:relative;overflow:hidden;padding:20px}
+.how div::before{content:"";position:absolute;inset:0;background:var(--glass);pointer-events:none}
+.how div > *{position:relative}
+.how .n{font-weight:500;color:var(--signal)}
+.how h3{font-size:21px}
+
+/* steps as cards with a numbered badge */
+.steps{gap:12px}
+.step{border-radius:20px;box-shadow:var(--shadow-sm);transition:box-shadow .2s,transform .2s,border-color .2s}
+.step[open]{box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.step summary{padding:18px 18px;gap:14px}
+.step .num{width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:inline-grid;place-items:center;font:800 13px var(--display);flex:none}
+.step.done .num{background:var(--signal);color:var(--ground)}
+.step h3{font-size:19px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center}
+.step .why{grid-column:2;justify-self:start}
+.step .why{background:var(--sunk);padding:4px 9px;border-radius:999px;font-size:11.5px}
+.step .body{padding-left:84px;padding-bottom:22px}
+@media (max-width:560px){.step .body{padding-left:18px}}
+.step .body p{font-size:16px}
+.tick{width:32px;height:32px}
+.tried{border-radius:20px;box-shadow:var(--shadow);background:linear-gradient(135deg,var(--accent-soft),var(--signal-soft));padding:22px}
+
+/* prompt builder */
+.builder{border-radius:24px;padding:clamp(20px,3.6vw,30px);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.builder::before{content:"";position:absolute;inset:0;background:var(--glass);pointer-events:none}
+.builder > *{position:relative}
+.builder input[type=text],.builder textarea,.builder select{border-radius:12px;min-height:46px;background:var(--surface)}
+.bubble{border-radius:20px 20px 4px 20px;box-shadow:var(--shadow-sm);font-size:18px}
+
+/* notes that work, more to ask for */
+.tab{min-height:42px}
+.ask,.card{border-radius:18px;box-shadow:var(--shadow-sm);transition:transform .18s,box-shadow .18s}
+.ask:hover,.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.ask .copy,.card .copy,.copy{border-radius:999px;min-height:36px;padding:6px 12px}
+.when{color:var(--accent)}
+
+/* honest limits */
+.limit{border-radius:18px;padding:20px;border:1px solid color-mix(in srgb,var(--warn) 25%,transparent);box-shadow:var(--shadow-sm);position:relative;padding-left:52px}
+.limit::before{content:"";position:absolute;left:18px;top:22px;width:22px;height:22px;border-radius:50%;border:2px solid var(--warn);background:radial-gradient(circle at 50% 42%,var(--warn) 0 2px,transparent 2.5px),linear-gradient(var(--warn),var(--warn)) 50% 68%/2px 6px no-repeat}
+.limit h3{font-size:18px}
+
+/* closing block */
+.close{border-radius:28px;box-shadow:var(--shadow);position:relative;overflow:hidden;background:linear-gradient(135deg,var(--ink),color-mix(in srgb,var(--ink) 82%,var(--accent)))}
+.close::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-160px;top:-200px;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 45%,transparent),transparent 65%);pointer-events:none}
+.close > *{position:relative}
+.close .cta{border-radius:14px;min-height:52px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+
+/* footer line under the close */
+.gfoot{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;font-size:13.5px;color:var(--muted);margin-top:-36px}
+.gfoot a{color:var(--muted)}

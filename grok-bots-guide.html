@@ -145,7 +145,7 @@ textarea{resize:vertical;min-height:64px}
 /* email gate */
 #gate{display:none;flex-direction:column;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;max-width:560px}
 body.locked #gate{display:flex}
-body.locked .wrap > :not(header):not(#gate){display:none}
+body.locked .wrap > :not(header):not(#gate):not(.scene):not(.gbar){display:none}
 #gate h2{font-size:clamp(24px,3.4vw,32px)}
 #gate form{display:flex;flex-direction:column;gap:12px}
 #gate label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
@@ -156,10 +156,56 @@ body.locked .wrap > :not(header):not(#gate){display:none}
 #gate .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
 #gate .err{color:var(--warn);font-size:14px;min-height:1.2em}
 #gate .fine{font-size:13px;color:var(--muted)}
+
+/* ===== watch what happens (shared scene styles) ===== */
+.scene{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:clamp(18px,3.4vw,30px);display:grid;grid-template-columns:1fr;gap:18px;box-shadow:0 1px 2px rgba(23,19,31,.05),0 14px 34px rgba(23,19,31,.08);position:relative;overflow:hidden}
+.scene::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,var(--accent-soft),transparent 55%);pointer-events:none}
+.scene > *{position:relative}
+@media (min-width:820px){.scene{grid-template-columns:minmax(0,320px) 1fr;gap:26px;align-items:start}.scene.wide{grid-template-columns:1.25fr 1fr}}
+.scene .ctl{grid-column:1/-1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.scene .ctl .hint{font-size:14px;color:var(--muted)}
+.scene .play{border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:12px;padding:10px 16px;font-weight:700;cursor:pointer;min-height:44px}
+.scene h2 em{font-style:normal;color:var(--accent)}
+.phone{max-width:320px;margin:0 auto;width:100%;background:#17131F;border-radius:34px;padding:10px;box-shadow:0 18px 40px rgba(23,19,31,.25)}
+.phone .screen{background:var(--ground);border-radius:26px;overflow:hidden;min-height:440px;display:flex;flex-direction:column;padding-bottom:14px}
+.phone .phead{display:flex;align-items:center;gap:10px;padding:12px 16px 10px;border-bottom:1px solid var(--line);font-size:14px;font-weight:700}
+.phone .phead img{width:24px;height:24px;object-fit:contain;border-radius:6px;background:#fff}
+.phone .phead small{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-left:auto;font-weight:500}
+.said{margin:12px 14px 0;display:flex;flex-direction:column;gap:8px}
+.bub{max-width:92%;background:var(--surface);border:1px solid var(--line);border-radius:16px 16px 16px 4px;padding:10px 13px;font-size:14.5px;line-height:1.4}
+.bub.me{align-self:flex-end;background:var(--accent-soft);border-color:transparent;border-radius:16px 16px 4px 16px}
+.bub.ai{border-color:color-mix(in srgb,var(--signal) 45%,var(--line));background:var(--signal-soft)}
+.bub .who{display:block;font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.bub:not(.on){display:none}
+@media (prefers-reduced-motion:no-preference){.bub.on{animation:bubin .35s ease both}}
+@keyframes bubin{from{opacity:0;transform:translateY(6px)}}
+.dots{align-self:flex-start;background:var(--signal-soft);border-radius:14px;padding:10px 13px;display:none;gap:4px}
+.dots.on{display:inline-flex}
+.dots i{width:6px;height:6px;border-radius:50%;background:var(--signal)}
+@media (prefers-reduced-motion:no-preference){.dots i{animation:dblink 1.1s infinite}.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}}
+@keyframes dblink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.panel{background:var(--ground);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.panel .ph{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);font-weight:700;font-size:15px}
+.panel .ph img{width:22px;height:22px;object-fit:contain}
+.panel .ph span{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-left:auto}
+.rowitem{display:flex;align-items:center;gap:12px;padding:12px 14px;border-top:1px solid var(--line);font-size:14.5px;transition:background .4s}
+.rowitem:first-of-type{border-top:0}
+.rowitem .av{width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+.rowitem b{display:block;font-size:14.5px}
+.rowitem small{display:block;font-size:12.5px;color:var(--muted)}
+.rowitem .st{margin-left:auto;font:500 11px var(--mono);letter-spacing:.06em;padding:5px 10px;border-radius:999px;background:var(--sunk);color:var(--muted);white-space:nowrap;transition:all .4s}
+.rowitem.busy .st{background:var(--signal-soft);color:var(--signal)}
+.rowitem.ok .st{background:var(--accent-soft);color:var(--accent)}
+.rowitem.hold .st{background:var(--warn-soft);color:var(--warn)}
+
+.team .rowitem .av{background:var(--signal-soft);color:var(--signal)}
+.rule{margin-top:12px;background:var(--warn-soft);border-radius:14px;padding:12px 14px;font-size:14px;color:var(--ink)}
+.rule b{color:var(--warn)}
 </style>
+<link rel="stylesheet" href="assets/guide-skin.css">
 
 </head>
-<body>
+<body data-guide="GROK">
 <script>try{if(localStorage.getItem("gb-unlocked")!=="1")document.body.classList.add("locked")}catch(e){document.body.classList.add("locked")}</script>
 <div class="wrap">
 
@@ -179,6 +225,37 @@ body.locked .wrap > :not(header):not(#gate){display:none}
     <div class="pct"><b id="pct">0%</b><span id="pct-label">built</span></div>
   </div>
 </header>
+
+<section class="scene" id="scene" aria-label="Watch what happens">
+  <div>
+    <div class="phone" aria-hidden="true">
+      <div class="screen">
+        <div class="phead"><img src="assets/hub/grokbot.png" alt="" style="width:auto;height:18px;padding:0 4px">Leo · YouTube<small>bot</small></div>
+        <div class="said" id="sc-said">
+          <div class="bub me" data-sc="1"><span class="who">You</span>Leo, three title ideas for Thursday's video on voice notes. Link anything you base them on.</div>
+          <div class="dots" id="sc-dots"><i></i><i></i><i></i></div>
+          <div class="bub ai" data-sc="2"><span class="who">Leo</span>Three options, based on the comments under your last two videos (links below):<br>1. Talk to your phone, never lose an idea again<br>2. My notes file themselves now<br>3. The one habit that replaced my to-do list</div>
+          <div class="bub me" data-sc="3"><span class="who">You</span>Number one. Draft the description. Do not post anything.</div>
+          <div class="dots" id="sc-dots2"><i></i><i></i><i></i></div>
+          <div class="bub ai" data-sc="4"><span class="who">Leo</span>Draft ready in your approvals. I will not post, send or change anything until you say so.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="eyebrow">Watch what happens</div>
+    <h2 style="margin-top:8px">One bot, one job. <em>You stay the boss.</em></h2>
+    <p class="lede" style="margin:10px 0 16px;font-size:17px">This is the whole guide in twenty seconds. A chat with one bot on the left, your small team on the right.</p>
+    <div class="panel team" aria-live="polite">
+      <div class="ph"><img src="assets/hub/grokbot.png" alt="" style="width:auto;height:16px">Your team<span id="sc-count">3 bots</span></div>
+      <div class="rowitem" data-bot="leo"><span class="av">L</span><div><b>Leo · YouTube</b><small>Titles, descriptions, comment replies</small></div><span class="st">idle</span></div>
+      <div class="rowitem" data-bot="mia"><span class="av">M</span><div><b>Mia · Instagram</b><small>Captions and a weekly plan</small></div><span class="st">idle</span></div>
+      <div class="rowitem" data-bot="sam"><span class="av">S</span><div><b>Sam · Scout</b><small>Finds businesses worth talking to</small></div><span class="st">idle</span></div>
+    </div>
+    <div class="rule"><b>The rule in every brief:</b> research and draft, never post, send or spend without your OK.</div>
+  </div>
+  <div class="ctl"><button class="play" id="sc-play" type="button">Play it again</button><span class="hint">Invented bots, invented titles. The shape is what matters: one job each, you approve.</span></div>
+</section>
 
 <section id="gate" aria-labelledby="gate-h">
   <div class="eyebrow">Free guide</div>
@@ -427,7 +504,35 @@ renderSteps(); renderSay(); renderAsks();
     unlock();
   });
 })();
+
+(function(){
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const sleep = ms => new Promise(r => setTimeout(r, reduce ? 0 : ms));
+  const $ = id => document.getElementById(id);
+  const bubs = [...document.querySelectorAll("#sc-said [data-sc]")];
+  const bot = id => document.querySelector('[data-bot="' + id + '"]');
+  const setSt = (id, cls, txt) => { const b = bot(id); b.className = "rowitem " + cls; b.querySelector(".st").textContent = txt; };
+  let run = 0;
+  async function play(){
+    const me = ++run; const dead = () => me !== run;
+    bubs.forEach(b => b.classList.remove("on")); $("sc-dots").classList.remove("on"); $("sc-dots2").classList.remove("on");
+    setSt("leo","","idle"); setSt("mia","","idle"); setSt("sam","","idle");
+    await sleep(500); if (dead()) return; bubs[0].classList.add("on"); setSt("leo","busy","reading your comments");
+    await sleep(900); if (dead()) return; $("sc-dots").classList.add("on");
+    await sleep(1500); if (dead()) return; $("sc-dots").classList.remove("on"); bubs[1].classList.add("on"); setSt("leo","busy","3 titles, with links");
+    await sleep(1200); if (dead()) return; setSt("sam","busy","checking 5 listings");
+    await sleep(1400); if (dead()) return; bubs[2].classList.add("on");
+    await sleep(800); if (dead()) return; $("sc-dots2").classList.add("on"); setSt("sam","hold","2 had no link, rejected");
+    await sleep(1300); if (dead()) return; $("sc-dots2").classList.remove("on"); bubs[3].classList.add("on"); setSt("leo","ok","waiting for your OK");
+    await sleep(900); if (dead()) return; setSt("mia","ok","weekly plan, draft");
+  }
+  let started = false; function start(){ if (started) return; started = true; play(); }
+  $("sc-play").addEventListener("click", () => { play(); track("scene_play"); });
+  if ("IntersectionObserver" in window){ const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)){ start(); io.disconnect(); } }, { threshold: .25 }); io.observe($("scene")); } else start();
+  ["scroll","touchstart","pointerdown"].forEach(ev => window.addEventListener(ev, () => { const r = $("scene").getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) start(); }, { passive: true }));
+})();
 </script>
 
+<script src="assets/guide-skin.js"></script>
 </body>
 </html>

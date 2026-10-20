@@ -97,3 +97,20 @@ git commit -m "Roll back the guides hub" && git push
 ```
 
 Pages rebuilds in about a minute.
+
+## The guides' shared look (added 20 Oct 2026)
+
+Every public guide loads two shared files after its own styles:
+
+- `assets/guide-skin.css`: the depth skin (cards with shadow and a soft accent gradient, numbered
+  step badges, logo tiles on "What you need", the gradient closing block).
+- `assets/guide-skin.js`: adds the top bar with the link back to the hub, the logo tiles (matched on
+  each card's title) and the footer line. `<body data-guide="GROK">` sets the keyword in the bar.
+
+Each guide also has a "Watch what happens" scene right under the hero, visible before the email
+gate. It is plain HTML, CSS and a small script at the end of the page; it plays once when scrolled
+into view and again on the button, and logs `scene_play` to `page_events`. Nothing in a scene is a
+real person or a real number.
+
+The four question pages load `assets/intake-guides.css` after `assets/intake.css`, which gives them
+the same fonts and tokens as the guides. The prospect pages do not load it and are unchanged.
