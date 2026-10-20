@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free AI guides from Adam</title>
+<meta name="description" content="Four free step-by-step guides for small business owners: a team of Grok Bots, a Second Brain with Obsidian and Claude Code, Claude in your browser, and Claude editing your videos. Prompts included.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aligned AI">
+<meta property="og:title" content="Free AI guides from Adam, Aligned AI">
+<meta property="og:description" content="Pick the guide that matches your biggest time sink. Step by step, prompts ready to copy, honest about the limits.">
+<meta property="og:url" content="https://meditationgardens369.github.io/Adam-vision-pages/guides.html">
+<meta property="og:image" content="https://meditationgardens369.github.io/Adam-vision-pages/assets/hub/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Free AI guides from Adam: Grok Bots, Second Brain, Claude in your browser, Claude edits your videos">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free AI guides from Adam, Aligned AI">
+<meta name="twitter:description" content="Pick the guide that matches your biggest time sink. Step by step, prompts ready to copy.">
+<meta name="twitter:image" content="https://meditationgardens369.github.io/Adam-vision-pages/assets/hub/og.png">
+<meta name="theme-color" content="#6B3FD4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F0C15" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%236B3FD4'/><text x='50' y='68' font-size='52' text-anchor='middle' font-family='Arial Black,Arial' font-weight='900' fill='white'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ground:#F4F3F8; --surface:#FFFFFF; --sunk:#EAE7F1; --ink:#17131F; --muted:#5F596E; --line:#DCD7E6;
+  --accent:#6B3FD4; --accent-ink:#FFFFFF; --accent-soft:#ECE5FC; --signal:#0E8FA8; --signal-soft:#DDF3F7; --warn:#A8641A; --warn-soft:#FBEEDD;
+  --shadow:0 1px 2px rgba(23,19,31,.05),0 14px 34px rgba(23,19,31,.08);
+  --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F0C15; --surface:#18141F; --sunk:#221D2B; --ink:#EEEAF6; --muted:#A59FB5; --line:#332D3F;
+    --accent:#A487F2; --accent-ink:#130E1C; --accent-soft:#2A2240; --signal:#5AD8F0; --signal-soft:#12303A; --warn:#E6A858; --warn-soft:#33250F;
+    --shadow:0 1px 2px rgba(0,0,0,.5),0 16px 40px rgba(0,0,0,.45);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F0C15; --surface:#18141F; --sunk:#221D2B; --ink:#EEEAF6; --muted:#A59FB5; --line:#332D3F;
+  --accent:#A487F2; --accent-ink:#130E1C; --accent-soft:#2A2240; --signal:#5AD8F0; --signal-soft:#12303A; --warn:#E6A858; --warn-soft:#33250F;
+  --shadow:0 1px 2px rgba(0,0,0,.5),0 16px 40px rgba(0,0,0,.45);
+  color-scheme:dark;
+}
+/* one confident accent per guide: --g (light) / --gd (dark), plus a soft tint */
+:root{
+  --grok:#0B7D93; --grok-soft:#DDF3F7;
+  --brain:#6B3FD4; --brain-soft:#ECE5FC;
+  --browser:#2457C5; --browser-soft:#E1E9FB;
+  --edit:#BF4A24; --edit-soft:#FBE6DE;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --grok:#5AD8F0; --grok-soft:#12303A; --brain:#A487F2; --brain-soft:#2A2240; --browser:#8AB0FF; --browser-soft:#16233F; --edit:#F09A78; --edit-soft:#3A1E14; }
+}
+:root[data-theme="dark"]{ --grok:#5AD8F0; --grok-soft:#12303A; --brain:#A487F2; --brain-soft:#2A2240; --browser:#8AB0FF; --browser-soft:#16233F; --edit:#F09A78; --edit-soft:#3A1E14; }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ground);color:var(--ink);font:17px/1.55 var(--body);-webkit-font-smoothing:antialiased;
+  padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(34px,8.6vw,72px);line-height:.98;font-weight:800}
+h2{font-size:clamp(26px,4.4vw,40px);line-height:1.05;font-weight:800}
+h3{font-size:clamp(22px,2.6vw,27px);line-height:1.1;font-weight:800}
+p{margin:0;max-width:62ch}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+.lede{font-size:clamp(16.5px,2vw,21px);color:var(--muted)}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(36px,8vw,96px)}
+section{display:flex;flex-direction:column;gap:18px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0 0}
+.brand{display:flex;align-items:center;gap:10px;min-height:44px;font:800 15px var(--display);letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.brand i{width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-style:normal;font-size:16px}
+.brand small{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-left:2px}
+.theme{border:1px solid var(--line);background:var(--surface);border-radius:999px;width:44px;height:44px;display:grid;place-items:center;cursor:pointer}
+.theme svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.theme .sun{display:none}
+:root[data-theme="dark"] .theme .sun{display:block}
+:root[data-theme="dark"] .theme .moon{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .theme .sun{display:block}:root:not([data-theme="light"]) .theme .moon{display:none}}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:14px;padding-top:2px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.jump{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
+@media (min-width:600px){.jump{display:flex;flex-wrap:wrap}}
+.jump a{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:8px 12px 8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;font-weight:600;font-size:14.5px;box-shadow:0 1px 2px rgba(23,19,31,.04)}
+.jump a img{height:22px;width:22px;object-fit:contain;border-radius:6px}
+.jump a .dot{width:10px;height:10px;border-radius:50%;background:var(--g)}
+.jump a:hover{border-color:var(--g)}
+
+/* cards */
+.cards{display:grid;grid-template-columns:1fr;gap:18px}
+@media (min-width:720px){.cards{grid-template-columns:1fr 1fr;gap:22px}}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 20px 20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow);scroll-margin-top:16px;transition:transform .18s ease,border-color .18s ease}
+.card::before{content:"";position:absolute;inset:0;border-radius:24px;background:linear-gradient(160deg,var(--g-soft),transparent 52%);pointer-events:none}
+.card > *{position:relative}
+.card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--g) 55%,var(--line))}
+.card:focus-within{border-color:var(--g)}
+.card.picked{border-color:var(--g);box-shadow:0 0 0 4px color-mix(in srgb,var(--g) 22%,transparent),var(--shadow)}
+.card .ribbon{position:absolute;top:14px;right:14px;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--g);color:#fff;padding:7px 10px;border-radius:999px;display:none}
+.card.picked .ribbon{display:block}
+.card.new .ribbon-new{display:block;background:var(--ink);color:var(--ground)}
+.card .head{display:flex;align-items:center;gap:12px;min-height:44px}
+.logos{display:flex;align-items:center;gap:6px}
+.logo{height:40px;width:40px;border-radius:11px;background:#fff;display:grid;place-items:center;padding:5px;border:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
+.logo img{max-height:100%;max-width:100%;object-fit:contain}
+.logo.wide{width:auto;padding:7px 10px}
+.logo.wide img{height:24px;width:auto}
+.kw{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
+.card h3{font-size:clamp(24px,3vw,30px)}
+.card .learn{font-size:16.5px;color:var(--ink)}
+.card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.card li{display:grid;grid-template-columns:14px 1fr;gap:8px;align-items:start;font-size:15px;color:var(--muted)}
+.card li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--g);margin:6px 2px 0}
+.card .time{font:500 12.5px var(--mono);color:var(--muted);letter-spacing:.02em}
+.card .time b{color:var(--ink);font-weight:500}
+.preview{height:118px;border-radius:16px;background:var(--sunk);border:1px solid var(--line);overflow:hidden;position:relative}
+.preview svg{width:100%;height:100%;display:block}
+.card .go{margin-top:4px;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 18px;border-radius:14px;background:var(--g);color:#fff;font-weight:700;font-size:16.5px;text-decoration:none;border:0;cursor:pointer;width:100%;text-align:center}
+.card .go::after{content:"";width:9px;height:9px;border-right:2.5px solid currentColor;border-top:2.5px solid currentColor;transform:rotate(45deg);flex:none}
+/* the whole card is tappable: the button's ::before covers it, text links stay above */
+.card .go{position:static}
+.card .go::before{content:"";position:absolute;inset:0;border-radius:24px}
+.card .go:focus-visible{outline-offset:-4px}
+.card.grok{--g:var(--grok);--g-soft:var(--grok-soft)}
+.card.brain{--g:var(--brain);--g-soft:var(--brain-soft)}
+.card.browser{--g:var(--browser);--g-soft:var(--browser-soft)}
+.card.edit{--g:var(--edit);--g-soft:var(--edit-soft)}
+.card .go{color:var(--g-ink,#fff)}
+:root[data-theme="dark"] .card .go,:root[data-theme="dark"] .ribbon{color:#130E1C}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .card .go,:root:not([data-theme="light"]) .ribbon{color:#130E1C}}
+
+/* previews */
+.pv-text{font:500 10.5px var(--mono);fill:var(--ink)}
+.pv-muted{fill:var(--muted)}
+.pv-box{fill:var(--surface);stroke:var(--line)}
+.pv-g{fill:var(--g)}
+.pv-gs{fill:var(--g-soft)}
+.pv-stroke{stroke:var(--g);fill:none;stroke-width:2;stroke-linecap:round}
+.pv-bar,.pv-fill,.pv-file,.pv-head,.pv-cursor,.pv-ring{transform-box:fill-box}
+@media (prefers-reduced-motion:no-preference){
+  .pv-typing i,.pv-typing circle{animation:blink 1.2s ease-in-out infinite}
+  .pv-typing circle:nth-child(2){animation-delay:.2s}.pv-typing circle:nth-child(3){animation-delay:.4s}
+  .pv-bar{animation:bar 1.6s ease-in-out infinite;transform-origin:center bottom}
+  .pv-bar:nth-child(2){animation-delay:.15s}.pv-bar:nth-child(3){animation-delay:.3s}.pv-bar:nth-child(4){animation-delay:.45s}.pv-bar:nth-child(5){animation-delay:.6s}
+  .pv-file{animation:filein 4.5s ease-in-out infinite;opacity:0}
+  .pv-file:nth-child(2){animation-delay:1.2s}.pv-file:nth-child(3){animation-delay:2.4s}
+  .pv-cursor{animation:cursor 5s ease-in-out infinite}
+  .pv-fill{animation:fill 5s ease-in-out infinite;transform-origin:left center}
+  .pv-fill.b{animation-delay:1.6s}.pv-fill.c{animation-delay:3.2s}
+  .pv-head{animation:head 6s linear infinite}
+  .pv-cap{animation:cap 6s steps(1) infinite}
+  .pv-cap.b{animation-delay:2s}.pv-cap.c{animation-delay:4s}
+  .pv-ring{animation:ring 5s ease-in-out infinite}
+  .pv-typed{animation:typed 4s steps(26) infinite}
+}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes bar{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+@keyframes filein{0%{opacity:0;transform:translateY(8px)}18%,80%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes cursor{0%{transform:translate(0,0)}30%{transform:translate(74px,16px)}50%{transform:translate(74px,16px)}70%{transform:translate(150px,38px)}100%{transform:translate(150px,38px)}}
+@keyframes fill{0%,25%{transform:scaleX(0)}45%,100%{transform:scaleX(1)}}
+@keyframes head{0%{transform:translateX(0)}100%{transform:translateX(250px)}}
+@keyframes cap{0%,32%{opacity:0}33%,65%{opacity:1}66%,100%{opacity:0}}
+@keyframes ring{0%{stroke-dashoffset:220}60%,100%{stroke-dashoffset:40}}
+@keyframes typed{0%{width:0}70%,100%{width:170px}}
+
+/* picker */
+.picker{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,3.6vw,34px);display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:48px;padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--ground);color:var(--ink);font-weight:600;font-size:15.5px;cursor:pointer;text-align:left}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.answer{display:none;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 18px;border-radius:16px;background:var(--g-soft);border:1px solid color-mix(in srgb,var(--g) 40%,transparent)}
+.answer.show{display:flex}
+.answer p{flex:1 1 240px;font-size:16px}
+.answer p b{color:var(--g)}
+.answer a{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;border-radius:12px;background:var(--g);color:#fff;font-weight:700;text-decoration:none}
+:root[data-theme="dark"] .answer a{color:#130E1C}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .answer a{color:#130E1C}}
+
+/* walk-through */
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{min-height:44px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:15px;display:inline-flex;align-items:center;gap:8px}
+.tab .dot{width:10px;height:10px;border-radius:50%;background:var(--g)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.path{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,3.6vw,34px);display:grid;grid-template-columns:1fr;gap:22px;box-shadow:var(--shadow)}
+@media (min-width:860px){.path{grid-template-columns:1.4fr 1fr;align-items:start}}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;position:relative}
+.steps li{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:10px 0 18px;position:relative}
+.steps li::before{content:"";position:absolute;left:19px;top:46px;bottom:-4px;width:2px;background:color-mix(in srgb,var(--g) 35%,var(--line))}
+.steps li:last-child::before{display:none}
+.steps .n{width:40px;height:40px;border-radius:50%;background:var(--g-soft);border:2px solid var(--g);color:var(--g);font:800 15px var(--display);display:grid;place-items:center}
+.steps .t{font-weight:700;font-size:17px;line-height:1.3;padding-top:7px}
+.steps .t small{display:block;font:500 12px var(--mono);color:var(--muted);letter-spacing:.04em;margin-top:3px;font-weight:500}
+.steps li.result .n{background:var(--g);color:#fff}
+:root[data-theme="dark"] .steps li.result .n{color:#130E1C}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .steps li.result .n{color:#130E1C}}
+.steps li.result .t{color:var(--g)}
+.side{display:flex;flex-direction:column;gap:14px}
+.limit{background:var(--warn-soft);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.limit h4{margin:0;color:var(--warn);font:800 16px var(--display)}
+.limit p{font-size:15px}
+.need{background:var(--ground);border:1px solid var(--line);border-radius:16px;padding:16px 18px;font-size:15px;color:var(--muted)}
+.need b{color:var(--ink);display:block;margin-bottom:4px}
+.side .go{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 18px;border-radius:14px;background:var(--g);color:#fff;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:16.5px}
+:root[data-theme="dark"] .side .go{color:#130E1C}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .side .go{color:#130E1C}}
+
+/* about + footer */
+.about{display:grid;grid-template-columns:1fr;gap:18px;background:var(--ink);color:var(--ground);border-radius:24px;padding:clamp(24px,5vw,48px)}
+@media (min-width:760px){.about{grid-template-columns:1.3fr 1fr;align-items:center}}
+.about h2{color:var(--ground)}
+.about p{color:color-mix(in srgb,var(--ground) 80%,var(--ink))}
+.about .sig{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--ground) 60%,var(--ink))}
+.about .links{display:flex;flex-wrap:wrap;gap:10px}
+.about .links a{display:inline-flex;align-items:center;min-height:46px;padding:10px 16px;border-radius:12px;background:var(--ground);color:var(--ink);font-weight:700;text-decoration:none}
+.about .links a.ghost{background:transparent;color:var(--ground);border:1px solid color-mix(in srgb,var(--ground) 40%,transparent)}
+.qr{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.qr summary{cursor:pointer;min-height:44px;display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--ground);list-style:none}
+.qr summary::-webkit-details-marker{display:none}
+.qr summary::before{content:"+";font:800 18px var(--display);width:26px;height:26px;border-radius:8px;background:color-mix(in srgb,var(--ground) 18%,transparent);display:grid;place-items:center}
+.qr[open] summary::before{content:"\2013"}
+.qr img{width:min(220px,60vw);background:#fff;padding:12px;border-radius:14px}
+.qr small{font-size:13px;color:color-mix(in srgb,var(--ground) 70%,var(--ink));max-width:36ch}
+footer{display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--muted);padding-bottom:8px}
+footer a{color:var(--muted)}
+
+/* email sheet */
+.veil{position:fixed;inset:0;background:rgba(10,7,16,.55);backdrop-filter:blur(2px);display:none;z-index:20}
+.veil.show{display:block}
+.sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,0);width:min(560px,100%);background:var(--surface);color:var(--ink);border-radius:24px 24px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px));display:none;flex-direction:column;gap:14px;z-index:21;box-shadow:0 -10px 40px rgba(0,0,0,.25);max-height:92vh;overflow:auto}
+.sheet.show{display:flex}
+@media (min-width:640px){.sheet{bottom:auto;top:50%;transform:translate(-50%,-50%);border-radius:24px;padding:28px}}
+@media (prefers-reduced-motion:no-preference){.sheet.show{animation:up .22s ease-out}}
+@keyframes up{from{transform:translate(-50%,24px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+@media (min-width:640px){@keyframes up{from{transform:translate(-50%,calc(-50% + 16px));opacity:0}to{transform:translate(-50%,-50%);opacity:1}}}
+.sheet .x{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:0;background:var(--sunk);cursor:pointer;font-size:20px;line-height:1}
+.sheet h2{font-size:clamp(24px,4vw,30px);padding-right:44px}
+.sheet form{display:flex;flex-direction:column;gap:12px}
+.sheet label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+.sheet input[type=text],.sheet input[type=email]{font:inherit;font-size:16px;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:var(--ground);color:var(--ink);min-height:48px}
+.sheet input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.sheet .consent{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.45;color:var(--muted);font-weight:400}
+.sheet .consent input{margin-top:3px;flex:none;width:20px;height:20px;accent-color:var(--accent)}
+.sheet .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+.sheet .err{color:var(--warn);font-size:14px;min-height:1.2em}
+.sheet .fine{font-size:13px;color:var(--muted)}
+.sheet .btn{min-height:52px;border:0;border-radius:14px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:16.5px;cursor:pointer;padding:12px 18px}
+.sheet .btn[disabled]{opacity:.7}
+.sheet .unlocks{display:flex;gap:6px;flex-wrap:wrap}
+.sheet .unlocks span{font:500 11.5px var(--mono);letter-spacing:.06em;padding:6px 10px;border-radius:999px;background:var(--sunk);color:var(--muted)}
+.sheet .unlocks span.on{background:var(--accent-soft);color:var(--accent)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:30;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<script>
+/* theme: ?theme=dark|light for testing, otherwise what the person chose last time, otherwise the system */
+(function(){try{var q=new URLSearchParams(location.search).get("theme");var t=q||localStorage.getItem("hub-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
+<div class="wrap">
+
+<div class="top">
+  <a class="brand" href="guides.html" aria-label="Free guides from Adam, Aligned AI"><i aria-hidden="true">A</i>Adam <small>Aligned AI</small></a>
+  <button class="theme" id="theme" type="button" aria-label="Switch between light and dark">
+    <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+  </button>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Free guides · step by step · prompts included</div>
+  <h1>Put AI to work in your business, <em>one guide at a time.</em></h1>
+  <p class="lede">For small business owners, healers and practitioners with no spare week to learn AI. Pick the one that matches where your time goes.</p>
+  <nav class="jump" id="jump" aria-label="Jump to a guide"></nav>
+</header>
+
+<section aria-labelledby="guides-h">
+  <div class="eyebrow">The guides</div>
+  <h2 id="guides-h">Four things you can set up this week</h2>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section aria-labelledby="pick-h">
+  <div class="picker">
+    <div class="eyebrow">Which one is for me?</div>
+    <h2 id="pick-h">What eats most of your week?</h2>
+    <p class="lede">Tap one. I point you at the guide that fits.</p>
+    <div class="chips" id="chips" role="group" aria-label="Your biggest time sink"></div>
+    <div class="answer" id="answer" aria-live="polite"></div>
+  </div>
+</section>
+
+<section aria-labelledby="walk-h">
+  <div class="eyebrow">What you will learn</div>
+  <h2 id="walk-h">The path inside each guide</h2>
+  <p class="lede">Every guide is a list of steps you tick off, with the exact prompts to copy. Here is the shape of each one.</p>
+  <div class="tabs" id="tabs" role="tablist" aria-label="Pick a guide"></div>
+  <div class="path" id="path" role="tabpanel"></div>
+</section>
+
+<section class="about" aria-labelledby="about-h">
+  <div>
+    <div class="sig">Adam · Aligned AI</div>
+    <h2 id="about-h">Who is behind this?</h2>
+    <p style="margin-top:12px">I'm Adam. I set AI up for small businesses and I film what I learn as I go. These guides are the same steps I use myself, written so you can follow them without a tech background. Every guide tells you where to keep a hand on the wheel.</p>
+    <div class="links" id="links" style="margin-top:18px"></div>
+  </div>
+  <details class="qr" id="qr">
+    <summary>Show the QR code for this page</summary>
+    <img src="assets/hub/qr.svg" alt="QR code that opens this page" width="220" height="220" loading="lazy">
+    <small>Point your phone camera at it to open this page on your phone.</small>
+  </details>
+</section>
+
+<footer>
+  <div><b>Adam Cholodowski · Aligned AI</b></div>
+  <div>Your email stays with Adam. It is never sold or shared, and you can unsubscribe at any time.</div>
+  <div id="foot-links"></div>
+</footer>
+
+</div>
+
+<div class="veil" id="veil"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-h" aria-hidden="true">
+  <button class="x" type="button" id="sheet-x" aria-label="Close">&times;</button>
+  <div class="eyebrow">Free guide</div>
+  <h2 id="sheet-h">Where should I send it?</h2>
+  <p id="sheet-p">Put your name and email once and all four guides open for you, with every prompt ready to copy.</p>
+  <div class="unlocks" id="unlocks" aria-hidden="true"></div>
+  <form id="gate-form" novalidate>
+    <label class="f">First name<input type="text" id="g-name" name="name" autocomplete="given-name" maxlength="120" required></label>
+    <label class="f">Email<input type="email" id="g-email" name="email" autocomplete="email" maxlength="200" inputmode="email" required></label>
+    <input class="hp" type="text" id="g-company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="consent"><input type="checkbox" id="g-consent" required><span>Yes, send me the guides and the occasional email from Adam at Aligned AI. I can unsubscribe at any time.</span></label>
+    <div class="err" id="g-err" role="alert"></div>
+    <button class="btn" type="submit" id="g-btn">Open the guide</button>
+  </form>
+  <p class="fine">No spam. Your details stay with Adam and are never sold.</p>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ============================================================
+   DATA. Adding a guide = adding one object here (and its logo
+   file in assets/hub/). Everything else on the page is built
+   from this array: jump chips, cards, picker, walk-through,
+   the unlock keys and the tracking labels.
+   ============================================================ */
+const LINKS = {
+  youtube:  "",   /* Adam's channel URL, fill in before publishing */
+  substack: ""    /* Adam's Substack URL, fill in before publishing */
+};
+
+const GUIDES = [
+  {
+    id:"grok", keyword:"GROK", name:"Grok Bots",
+    href:"grok-bots-guide.html", storage:"gb-unlocked", isNew:false,
+    title:"Build your own team of bots",
+    learn:"One bot for each job you don't want to do by hand: social posts, YouTube, finding customers, a coordinator.",
+    bullets:["An AI interviews you and writes each bot's brief","Start with one bot, add the next after a week","Prompts to check its work before you trust it"],
+    time:"First bot running: about 45 min, by the guide's own step timings",
+    logos:[["grokbot","Grok Bots",true],["claude","Claude"],["chatgpt","ChatGPT"]],
+    need:{b:"Grok Bots, plus Claude or ChatGPT",p:"The Grok Bots app and an account. Check the price on the sign-up screen before you pay for anything."},
+    steps:[["Pick three jobs, not ten","10 min"],["Let an AI interview you","10 min"],["Create your first bot and paste its brief","10 min"],["Give it one small first task, then check its work","20 min"]],
+    result:"A bot with a clear job, drafting for you, that you check once a week",
+    limit:{h:"Check every claim",p:"Bots can sound sure and be wrong. Open the links, and ask for evidence every time. Drafts only until you've seen several good results."}
+  },
+  {
+    id:"brain", keyword:"BRAIN", name:"Second Brain",
+    href:"second-brain-guide.html", storage:"sb-unlocked", isNew:false,
+    title:"Record your voice. It files itself.",
+    learn:"Talk into your phone, Claude Code files it into Obsidian, and you can ask your whole life questions.",
+    bullets:["Two tools: Obsidian and Claude Code","Folders that sort themselves as you talk","Optional dashboard of everything on one screen"],
+    time:"First note filed: about 30 min, by the guide's own step timings",
+    logos:[["obsidian","Obsidian"],["claude-code","Claude Code"]],
+    need:{b:"Obsidian and Claude Code",p:"Obsidian is a free notes app for Windows or Mac. Claude Code comes with the paid Claude plan. Check the current price."},
+    steps:[["Download Obsidian and make a vault","5 min"],["Make your starting folders","3 min"],["Tell Claude Code to connect to Obsidian","3 min"],["Record your first voice note and check what it filed","8 min"]],
+    result:"A place where nothing you think of disappears, and you can ask it questions",
+    limit:{h:"It only works if you use it",p:"Check how it files the first few notes and correct it in plain words. Keep client and health details out of it until you are sure where your notes live."}
+  },
+  {
+    id:"browser", keyword:"BROWSER", name:"Claude in your browser",
+    href:"browser-guide.html", storage:"bw-unlocked", isNew:false,
+    title:"Let Claude do the boring clicking",
+    learn:"Claude opens pages, clicks and fills in forms in your own Chrome while you watch.",
+    bullets:["Start with a task that only reads","Know where the Stop button is","Build your own task with clear rules"],
+    time:"First task done: about 25 min, by the guide's own step timings",
+    logos:[["claude","Claude"]],
+    need:{b:"Google Chrome and a Claude account",p:"The Claude extension runs in Chrome and opens a panel beside your page."},
+    steps:[["Get the Claude extension for Chrome","5 min"],["Open the Claude panel","2 min"],["Start with a task that only reads","5 min"],["Watch it work, then check the result yourself","10 min"]],
+    result:"A small set of jobs you can hand over in one sentence",
+    limit:{h:"Never let it send or buy on its own",p:"It works as you, with the sites you are signed in to. Collecting and filling in is fine. Sending, posting, buying or submitting should always be your own click."}
+  },
+  {
+    id:"edit", keyword:"EDIT", name:"Claude edits your videos",
+    href:"claude-edit-guide.html", storage:"ce-unlocked", isNew:false,
+    title:"Let Claude edit your videos",
+    learn:"No editing software. Tell Claude Code what you need and it cuts the repeats, adds captions and motion graphics.",
+    bullets:["A prompt builder that briefs it like a human editor","Notes that work, one at a time","Turn the long video into reels"],
+    time:"First edited clip: about 40 min, by the guide's own step timings",
+    logos:[["claude-code","Claude Code"]],
+    need:{b:"Claude Code and your footage",p:"Claude Code comes with the paid Claude plan. Start with a two-minute test clip on your computer."},
+    steps:[["Put your videos in tidy folders","5 min"],["Tell Claude to install what it needs","3 min"],["Drop your footage in and brief it","5 min"],["Let it plan first, then watch and give notes","20 min"]],
+    result:"A finished video, captions and reels, without opening an editor",
+    limit:{h:"Watch every cut",p:"Claude can cut a word in half or keep a false start you wanted gone. Watch the whole video once, and check the screen for private details before you publish."}
+  }
+];
+
+/* picker: what eats your week -> which guide */
+const PICKS = [
+  {id:"social", label:"Posting on social media", to:"grok", why:"a bot can draft your posts and you approve them"},
+  {id:"customers", label:"Finding new customers", to:"browser", why:"the first task in this guide is finding local businesses to talk to"},
+  {id:"admin", label:"Admin, forms and copying things around", to:"browser", why:"Claude can do the clicking and filling in while you watch"},
+  {id:"content", label:"Making and editing videos", to:"edit", why:"Claude Code does the cutting, captions and graphics"},
+  {id:"ideas", label:"Ideas everywhere, no system", to:"brain", why:"you talk, it files, and you can ask it what you said"}
+];
+
+/* ============================================================ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const byId = id => GUIDES.find(g => g.id === id);
+const params = new URLSearchParams(location.search);
+const SRC = (params.get("s") || "").replace(/[^a-z0-9_-]/gi,"").slice(0,12);
+
+/* tracking: same insert-only table and publishable key as every guide page.
+   The ?s= source stays in `path` (pathname + query) so it rides along with every event. */
+const SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+const SLUG = "guides-hub-page";
+function track(event, extra){
+  try {
+    const body = Object.assign({
+      slug: SLUG, event: String(event).slice(0,40),
+      path: String((location.pathname||"") + (location.search||"")).slice(0,200),
+      referrer: document.referrer ? document.referrer.slice(0,200) : null
+    }, extra || {});
+    if (body.label) body.label = String(body.label).slice(0,200);
+    fetch(SUPABASE_URL + "/rest/v1/page_events", {
+      method:"POST", keepalive:true,
+      headers:{ apikey:SUPABASE_KEY, Authorization:"Bearer " + SUPABASE_KEY, "Content-Type":"application/json", Prefer:"return=minimal" },
+      body: JSON.stringify(body)
+    }).catch(()=>{});
+  } catch(e){}
+}
+track("view", { step: 0 });
+
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+};
+function toast(m){ const t = $("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 2200); }
+function unlocked(g){ return store.get(g.storage) === "1" || store.get("hub-unlocked") === "1"; }
+function logoHtml(l){ return `<span class="logo${l[2] ? " wide" : ""}"><img src="assets/hub/${l[0]}.png" alt="${esc(l[1])}" loading="lazy" decoding="async"></span>`; }
+
+/* previews: small inline SVG scenes, pure CSS motion, respect reduced motion */
+const PREVIEWS = {
+  grok: `<svg viewBox="0 0 320 118" aria-hidden="true">
+    <rect x="12" y="12" width="128" height="94" rx="12" class="pv-box"/>
+    <g font-family="JetBrains Mono,monospace">
+      <circle cx="30" cy="32" r="8" class="pv-g"/><text x="44" y="36" class="pv-text">Leo · YouTube</text>
+      <circle cx="30" cy="56" r="8" class="pv-gs" stroke="var(--g)"/><text x="44" y="60" class="pv-text">Mia · Instagram</text>
+      <circle cx="30" cy="80" r="8" class="pv-gs" stroke="var(--g)"/><text x="44" y="84" class="pv-text">Sam · Scout</text>
+    </g>
+    <rect x="156" y="12" width="152" height="94" rx="12" class="pv-box"/>
+    <rect x="168" y="26" width="96" height="16" rx="8" class="pv-gs"/>
+    <text x="176" y="37" class="pv-text">Find 5 examples</text>
+    <rect x="196" y="52" width="104" height="16" rx="8" fill="var(--sunk)"/>
+    <text x="204" y="63" class="pv-text pv-muted">5 found, with links</text>
+    <g class="pv-typing"><circle cx="180" cy="86" r="3.5" class="pv-g"/><circle cx="192" cy="86" r="3.5" class="pv-g"/><circle cx="204" cy="86" r="3.5" class="pv-g"/></g>
+  </svg>`,
+  brain: `<svg viewBox="0 0 320 118" aria-hidden="true">
+    <circle cx="52" cy="59" r="30" class="pv-gs"/>
+    <g transform="translate(38,45)">
+      <rect class="pv-bar pv-g" x="0" y="0" width="4" height="28" rx="2"/><rect class="pv-bar pv-g" x="7" y="0" width="4" height="28" rx="2"/><rect class="pv-bar pv-g" x="14" y="0" width="4" height="28" rx="2"/><rect class="pv-bar pv-g" x="21" y="0" width="4" height="28" rx="2"/><rect class="pv-bar pv-g" x="28" y="0" width="4" height="28" rx="2"/>
+    </g>
+    <path d="M96 59 H130" class="pv-stroke" stroke-dasharray="4 5"/>
+    <g font-family="JetBrains Mono,monospace">
+      <g class="pv-file"><rect x="140" y="18" width="166" height="24" rx="7" class="pv-box"/><rect x="148" y="26" width="8" height="8" rx="2" class="pv-g"/><text x="164" y="34" class="pv-text">Clients / follow-up</text></g>
+      <g class="pv-file"><rect x="140" y="47" width="166" height="24" rx="7" class="pv-box"/><rect x="148" y="55" width="8" height="8" rx="2" class="pv-g"/><text x="164" y="63" class="pv-text">Ideas / workshop</text></g>
+      <g class="pv-file"><rect x="140" y="76" width="166" height="24" rx="7" class="pv-box"/><rect x="148" y="84" width="8" height="8" rx="2" class="pv-g"/><text x="164" y="92" class="pv-text">Tasks / printer</text></g>
+    </g>
+  </svg>`,
+  browser: `<svg viewBox="0 0 320 118" aria-hidden="true">
+    <rect x="12" y="12" width="296" height="94" rx="12" class="pv-box"/>
+    <rect x="12" y="12" width="296" height="18" rx="12" fill="var(--sunk)"/><rect x="12" y="22" width="296" height="8" fill="var(--sunk)"/>
+    <circle cx="26" cy="21" r="3" fill="var(--line)"/><circle cx="36" cy="21" r="3" fill="var(--line)"/><circle cx="46" cy="21" r="3" fill="var(--line)"/>
+    <g font-family="JetBrains Mono,monospace">
+      <text x="26" y="50" class="pv-text pv-muted">Name</text><rect x="86" y="40" width="120" height="14" rx="4" fill="var(--sunk)"/><rect class="pv-fill a pv-gs" x="86" y="40" width="120" height="14" rx="4"/>
+      <text x="26" y="72" class="pv-text pv-muted">Email</text><rect x="86" y="62" width="150" height="14" rx="4" fill="var(--sunk)"/><rect class="pv-fill b pv-gs" x="86" y="62" width="150" height="14" rx="4"/>
+      <text x="26" y="94" class="pv-text pv-muted">Phone</text><rect x="86" y="84" width="90" height="14" rx="4" fill="var(--sunk)"/><rect class="pv-fill c pv-gs" x="86" y="84" width="90" height="14" rx="4"/>
+      <rect x="236" y="78" width="60" height="20" rx="6" fill="var(--sunk)"/><text x="246" y="92" class="pv-text pv-muted">submit</text>
+    </g>
+    <g class="pv-cursor"><path d="M70 36 l0 16 l4 -4 l3 7 l3 -1 l-3 -7 l6 0 z" fill="var(--ink)" stroke="var(--surface)" stroke-width="1.2"/></g>
+  </svg>`,
+  edit: `<svg viewBox="0 0 320 118" aria-hidden="true">
+    <rect x="12" y="14" width="296" height="40" rx="8" class="pv-box"/>
+    <rect x="12" y="14" width="296" height="40" rx="8" fill="var(--g-soft)" opacity=".4"/>
+    <g font-family="JetBrains Mono,monospace">
+      <text class="pv-cap pv-text" x="24" y="38" style="font-size:12px;font-weight:600">cut every repeat</text>
+      <text class="pv-cap b pv-text" x="24" y="38" style="font-size:12px;font-weight:600">one caption at a time</text>
+      <text class="pv-cap c pv-text" x="24" y="38" style="font-size:12px;font-weight:600">motion graphics land on the word</text>
+    </g>
+    <rect x="12" y="66" width="296" height="38" rx="8" fill="var(--sunk)"/>
+    <rect x="12" y="66" width="48" height="38" rx="8" class="pv-g" opacity=".85"/>
+    <rect x="66" y="66" width="22" height="38" fill="var(--line)"/>
+    <rect x="94" y="66" width="70" height="38" class="pv-g" opacity=".85"/>
+    <rect x="170" y="66" width="16" height="38" fill="var(--line)"/>
+    <rect x="192" y="66" width="116" height="38" rx="8" class="pv-g" opacity=".85"/>
+    <g class="pv-head"><rect x="30" y="60" width="2" height="50" fill="var(--ink)"/><rect x="26" y="58" width="10" height="7" rx="2" fill="var(--ink)"/></g>
+  </svg>`
+};
+
+/* build: jump chips */
+$("jump").innerHTML = GUIDES.map(g => `<a href="#card-${g.id}" class="${g.id}" style="--g:var(--${g.id})" data-jump="${g.id}"><span class="dot" aria-hidden="true"></span>${esc(g.name)}</a>`).join("");
+
+/* build: cards */
+$("cards").innerHTML = GUIDES.map(g => `
+  <article class="card ${g.id}${g.isNew ? " new" : ""}" id="card-${g.id}" data-id="${g.id}">
+    <span class="ribbon">This one</span>
+    ${g.isNew ? `<span class="ribbon ribbon-new">New</span>` : ""}
+    <div class="head"><div class="logos">${g.logos.map(logoHtml).join("")}</div><span class="kw">${esc(g.keyword)}</span></div>
+    <h3>${esc(g.title)}</h3>
+    <p class="learn">${esc(g.learn)}</p>
+    <ul>${g.bullets.map(b => `<li>${esc(b)}</li>`).join("")}</ul>
+    <div class="preview">${PREVIEWS[g.id] || ""}</div>
+    <div class="time">${esc(g.time)}</div>
+    <a class="go" href="${esc(g.href)}" data-open="${g.id}">Open the ${esc(g.name)} guide</a>
+  </article>`).join("");
+
+/* build: picker */
+$("chips").innerHTML = PICKS.map(p => `<button class="chip" type="button" aria-pressed="false" data-pick="${p.id}">${esc(p.label)}</button>`).join("");
+
+/* build: walk-through */
+let tab = GUIDES[0].id;
+function renderTabs(){
+  $("tabs").innerHTML = GUIDES.map(g => `<button class="tab" role="tab" type="button" aria-selected="${g.id === tab}" data-tab="${g.id}" style="--g:var(--${g.id})"><span class="dot" aria-hidden="true"></span>${esc(g.name)}</button>`).join("");
+  const g = byId(tab);
+  $("path").style.cssText = `--g:var(--${g.id});--g-soft:var(--${g.id}-soft)`;
+  $("path").innerHTML = `
+    <div>
+      <div class="eyebrow" style="color:var(--g)">${esc(g.keyword)} · ${esc(g.title)}</div>
+      <ol class="steps" style="margin-top:14px">
+        ${g.steps.map((s, i) => `<li><span class="n">${i+1}</span><span class="t">${esc(s[0])}<small>${esc(s[1])}</small></span></li>`).join("")}
+        <li class="result"><span class="n" aria-hidden="true">&#10003;</span><span class="t">${esc(g.result)}<small>the result</small></span></li>
+      </ol>
+    </div>
+    <div class="side">
+      <div class="need"><b>${esc(g.need.b)}</b>${esc(g.need.p)}</div>
+      <div class="limit"><h4>${esc(g.limit.h)}</h4><p>${esc(g.limit.p)}</p></div>
+      <a class="go" href="${esc(g.href)}" data-open="${g.id}" data-from="path">Open the ${esc(g.name)} guide</a>
+    </div>`;
+}
+renderTabs();
+$("tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (!b) return; tab = b.dataset.tab; renderTabs(); track("tab", { label: tab }); });
+
+/* build: links (only the ones that are filled in) */
+(function(){
+  const out = [];
+  if (LINKS.youtube) out.push(`<a href="${esc(LINKS.youtube)}" target="_blank" rel="noopener" data-link="youtube">Watch on YouTube</a>`);
+  if (LINKS.substack) out.push(`<a class="ghost" href="${esc(LINKS.substack)}" target="_blank" rel="noopener" data-link="substack">Read the newsletter</a>`);
+  $("links").innerHTML = out.join("");
+  const f = [];
+  if (LINKS.youtube) f.push(`<a href="${esc(LINKS.youtube)}" target="_blank" rel="noopener" data-link="youtube">YouTube</a>`);
+  if (LINKS.substack) f.push(`<a href="${esc(LINKS.substack)}" target="_blank" rel="noopener" data-link="substack">Substack</a>`);
+  $("foot-links").innerHTML = f.join(" · ");
+})();
+document.addEventListener("click", e => { const a = e.target.closest("[data-link]"); if (a) track("cta_click", { label: a.dataset.link }); });
+$("qr").addEventListener("toggle", () => { if ($("qr").open) track("qr_open"); });
+
+/* card_view: once per card, when it scrolls into view */
+(function(){
+  if (!("IntersectionObserver" in window)) return;
+  const seen = new Set();
+  const io = new IntersectionObserver(es => es.forEach(x => {
+    if (x.isIntersecting && !seen.has(x.target.dataset.id)) { seen.add(x.target.dataset.id); track("card_view", { label: x.target.dataset.id }); io.unobserve(x.target); }
+  }), { threshold: .5 });
+  document.querySelectorAll(".card").forEach(c => io.observe(c));
+})();
+
+/* picker */
+$("chips").addEventListener("click", e => {
+  const b = e.target.closest("[data-pick]"); if (!b) return;
+  const p = PICKS.find(x => x.id === b.dataset.pick); const g = byId(p.to);
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b ? "true" : "false"));
+  document.querySelectorAll(".card").forEach(c => c.classList.toggle("picked", c.dataset.id === g.id));
+  const a = $("answer");
+  a.style.cssText = `--g:var(--${g.id});--g-soft:var(--${g.id}-soft)`;
+  a.innerHTML = `<p>Start with <b>${esc(g.name)}</b>: ${esc(p.why)}.</p><a href="${esc(g.href)}" data-open="${g.id}" data-from="picker">Open the ${esc(g.name)} guide</a>`;
+  a.classList.add("show");
+  tab = g.id; renderTabs();
+  track("picker_answer", { label: p.id + ">" + g.id });
+});
+
+/* opening a guide: one email unlocks all four, then straight through next time */
+let pending = null;
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-open]"); if (!a) return;
+  const g = byId(a.dataset.open);
+  track("card_click", { label: g.id + (a.dataset.from ? ":" + a.dataset.from : "") });
+  if (unlocked(g)) return;            /* already signed up: let the link work normally */
+  e.preventDefault();
+  pending = g;
+  openSheet(g);
+});
+function openSheet(g){
+  $("g-btn").textContent = "Open the " + g.name + " guide";
+  $("unlocks").innerHTML = GUIDES.map(x => `<span class="${x.id === g.id ? "on" : ""}">${esc(x.keyword)}</span>`).join("");
+  $("veil").classList.add("show"); $("sheet").classList.add("show"); $("sheet").setAttribute("aria-hidden","false");
+  document.body.style.overflow = "hidden";
+  setTimeout(() => $("g-name").focus(), 50);
+  track("gate_view", { label: g.id });
+}
+function closeSheet(){
+  $("veil").classList.remove("show"); $("sheet").classList.remove("show"); $("sheet").setAttribute("aria-hidden","true");
+  document.body.style.overflow = ""; pending = null;
+}
+$("veil").addEventListener("click", closeSheet);
+$("sheet-x").addEventListener("click", closeSheet);
+document.addEventListener("keydown", e => { if (e.key === "Escape" && $("sheet").classList.contains("show")) closeSheet(); });
+function unlockAll(){ GUIDES.forEach(g => store.set(g.storage, "1")); store.set("hub-unlocked", "1"); }
+
+$("gate-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const err = $("g-err"), btn = $("g-btn");
+  const name = $("g-name").value.trim(), email = $("g-email").value.trim();
+  const consent = $("g-consent").checked, trap = $("g-company").value;
+  err.textContent = "";
+  if (!name) { err.textContent = "Please add your first name."; $("g-name").focus(); return; }
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { err.textContent = "That email doesn't look right. Please check it."; $("g-email").focus(); return; }
+  if (!consent) { err.textContent = "Please tick the box so I can send you the guides."; return; }
+  const g = pending; if (!g) { closeSheet(); return; }
+  if (trap) { unlockAll(); location.href = g.href; return; }
+  btn.disabled = true; btn.textContent = "One moment...";
+  let ok = false;
+  try {
+    const r = await fetch(SUPABASE_URL + "/rest/v1/guide_signups", {
+      method:"POST",
+      headers:{ apikey:SUPABASE_KEY, Authorization:"Bearer " + SUPABASE_KEY, "Content-Type":"application/json", Prefer:"return=minimal" },
+      body: JSON.stringify({ slug:"guides-hub", name:name.slice(0,120), email:email.slice(0,200), consent:true, referrer: document.referrer ? document.referrer.slice(0,200) : null })
+    });
+    ok = r.ok;
+  } catch(x){ ok = false; }
+  track(ok ? "signup" : "signup_error", { label: g.id });
+  unlockAll();                        /* same rule as the guides: never trap someone because the network failed */
+  btn.disabled = false;
+  location.href = g.href;
+});
+
+/* theme toggle */
+$("theme").addEventListener("click", () => {
+  const root = document.documentElement;
+  const sysDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const cur = root.getAttribute("data-theme") || (sysDark ? "dark" : "light");
+  const next = cur === "dark" ? "light" : "dark";
+  root.setAttribute("data-theme", next); store.set("hub-theme", next);
+});
+
+/* if the person arrives with #card-x from a jump chip, mark it */
+document.addEventListener("click", e => { const j = e.target.closest("[data-jump]"); if (j) track("jump", { label: j.dataset.jump }); });
+</script>
+</body>
+</html>
