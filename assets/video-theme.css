@@ -1,0 +1,102 @@
+/* Video theme: the look of the vertical-screen videos (08_Vertical-Slides deck), applied to
+   guides.html, the four guides and tools.html. Loaded last, so it wins over each page's own
+   tokens. Always dark. Anton for headlines, Inter for body, #FFD600 accent, OK / GOOD / BEST
+   colours, white pills, glowing kicker dots, letter-spaced brand line. */
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap");
+
+:root:root:root, :root:root:root[data-theme="light"], :root:root:root[data-theme="dark"]{
+  --ground:#07050F; --surface:#110D1D; --sunk:#1A1429; --ink:#FFFFFF; --muted:rgba(255,255,255,.68); --line:rgba(255,255,255,.14);
+  --accent:#FFD600; --accent-ink:#0C0817; --accent-soft:rgba(255,214,0,.14);
+  --signal:#34D399; --signal-soft:rgba(52,211,153,.14);
+  --warn:#FF5C7A; --warn-soft:rgba(255,92,122,.14);
+  --grok:#34D399; --grok-soft:rgba(52,211,153,.16); --brain:#B39DFF; --brain-soft:rgba(179,157,255,.16);
+  --browser:#5AD8F0; --browser-soft:rgba(90,216,240,.16); --edit:#FF8A5B; --edit-soft:rgba(255,138,91,.16);
+  --tools:#FFD600; --tools-soft:rgba(255,214,0,.16);
+  --ok:#FF5C7A; --good:#FFD600; --best:#34D399;
+  --display:"Anton",Impact,"Arial Black",sans-serif; --body:"Inter","Segoe UI",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  --shadow:0 2px 4px rgba(0,0,0,.5),0 26px 70px rgba(0,0,0,.5); --shadow-sm:0 2px 4px rgba(0,0,0,.5),0 12px 30px rgba(0,0,0,.4);
+  --glass:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015) 60%);
+  color-scheme:dark;
+}
+html{background:var(--ground)}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);
+  background-image:radial-gradient(60% 40% at 50% 0%,rgba(16,48,120,.55),transparent 70%),radial-gradient(40% 30% at 85% 90%,rgba(255,214,0,.08),transparent 70%);background-attachment:fixed}
+h1,h2,h3,.card h3,.step h3,.needs b,.how h3{font-family:var(--display);font-weight:400;letter-spacing:.012em;text-transform:uppercase}
+h1{text-shadow:0 14px 70px rgba(0,0,0,.5);line-height:1.02}
+h1 em,h2 em,.hero h1 em,.scene h2 em{font-style:normal;color:var(--accent)!important}
+.card h3,.step h3,.needs b{letter-spacing:.02em;font-weight:400}
+.step h3{font-size:24px}
+.needs b{font-size:26px}
+.lede,.card .learn,p{font-weight:500}
+.lede{color:var(--muted)}
+
+/* kicker pills, like the "SAVE THIS" / "JOB 1" tags on the screen */
+.eyebrow,.gbar .kw,.kw{display:inline-flex;align-self:flex-start;width:fit-content;max-width:100%;align-items:center;gap:9px;padding:7px 14px;border-radius:999px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.04);font:700 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.eyebrow::before,.gbar .kw::before,.kw::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent);flex:none}
+.card .kw{padding:6px 11px;font-size:11px}
+.card .kw::before{background:var(--g);box-shadow:0 0 12px var(--g)}
+
+/* surfaces */
+.card,.picker,.path,.scene,.step,.needs > div,.how div,#gate,.builder,.ask,.card,.limit,.tried,.sheet,.vault,.panel,.chrome,.edit,.scene .claude{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow)}
+.card::before,.needs > div::before,.how div::before,#gate::before,.builder::before,.scene::before{background:var(--glass)}
+.card.picked{box-shadow:0 0 0 2px var(--g),0 0 110px color-mix(in srgb,var(--g) 28%,transparent)}
+.limit{border:1.5px solid color-mix(in srgb,var(--warn) 45%,transparent);background:linear-gradient(160deg,rgba(255,92,122,.12),rgba(255,255,255,.02))}
+.limit h3,.limit h4{color:var(--warn)}
+.limit::before{border-color:var(--warn);background:radial-gradient(circle at 50% 42%,var(--warn) 0 2px,transparent 2.5px),linear-gradient(var(--warn),var(--warn)) 50% 68%/2px 6px no-repeat}
+.tried{background:linear-gradient(160deg,rgba(52,211,153,.16),rgba(255,255,255,.02))}
+.steps .n,.step .num{background:var(--ground);border:3px solid var(--accent);color:var(--accent);font-family:var(--display);font-weight:400}
+.step.done .num,.steps li.result .n{background:var(--best);border-color:var(--best);color:#0C0817}
+.steps li.result .t{color:var(--best)}
+.tick{border-color:rgba(255,255,255,.3);background:var(--ground)}
+.tick:checked{background:var(--best);border-color:var(--best)}
+.preview,.rec,.said .bub,.bub,.vault .vh,.rowitem{background:var(--sunk);border-color:var(--line)}
+.bub.me{background:var(--accent-soft);border-color:transparent}
+.bub.ai,.bub.claude{background:var(--signal-soft);border-color:color-mix(in srgb,var(--signal) 45%,transparent)}
+.phone{background:#000;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+.phone .screen{background:var(--ground)}
+.logo,.needs .logo > span,.jump a img,.card .logo{background:#fff;border-color:transparent}
+.needs .logo > i{background:var(--accent-soft);color:var(--accent)}
+.jump a,.chip,.tab,.theme,.gbar a{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);color:#fff}
+.chip[aria-pressed="true"],.tab[aria-selected="true"]{background:#fff;color:#0C0817;border-color:#fff}
+.gbar a i,.brand i{background:var(--accent);color:#0C0817}
+.theme{display:none}
+
+/* buttons: yellow pills with dark text, like the CTA slide */
+.btn,.card .go,.side .go,.answer a,.sheet .btn,.about .links a,.close .cta,.scene .play{background:var(--accent)!important;color:#0C0817!important;border:0;border-radius:999px;font-weight:800;box-shadow:0 10px 30px rgba(255,214,0,.25)}
+.btn.ghost,.scene .play,.about .links a.ghost{background:transparent!important;color:#fff!important;border:1.5px solid rgba(255,255,255,.3);box-shadow:none}
+.card .go{font-family:var(--display);font-weight:400;letter-spacing:.03em;text-transform:uppercase;font-size:18px}
+.card .go::after{border-color:#0C0817}
+.card .go,.card .go::before{color:#0C0817}
+.ribbon{background:var(--accent)!important;color:#0C0817!important}
+
+/* closing block and about block */
+.close,.about{background:linear-gradient(160deg,#141026,#07050F);color:#fff;border:1.5px solid var(--line)}
+.close h2,.about h2{color:#fff}
+.close p,.about p{color:var(--muted)}
+.close::after{background:radial-gradient(circle,rgba(255,214,0,.25),transparent 65%)}
+.about .links a{background:var(--accent);color:#0C0817}
+.qr summary::before{background:rgba(255,255,255,.14)}
+.qr img{background:#fff}
+
+/* brand line, letter-spaced like the screen's footer */
+.gfoot,footer{font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:rgba(255,255,255,.38);justify-content:center;text-align:center}
+.gfoot a,footer a{color:rgba(255,255,255,.6)}
+footer div:nth-child(2){letter-spacing:0;text-transform:none;font-weight:500;font-size:13px}
+
+/* inputs */
+input[type=text],input[type=email],textarea,select,#gate input[type=text],#gate input[type=email],.sheet input[type=text],.sheet input[type=email],.builder input[type=text],.builder textarea{background:var(--sunk)!important;color:#fff!important;border-color:var(--line)!important}
+.sheet .unlocks span{background:var(--sunk);color:var(--muted)}
+.sheet .unlocks span.on{background:var(--accent-soft);color:var(--accent)}
+.toast{background:#fff;color:#0C0817}
+:focus-visible{outline-color:var(--accent)}
+
+/* OK / GOOD / BEST tier rows (tools.html, also usable anywhere) */
+.tier{display:flex;align-items:center;gap:16px;padding:14px 18px;border-radius:22px;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1)}
+.tier .tl{flex:none;width:72px;font-family:var(--display);text-transform:uppercase;font-size:28px;line-height:1;color:var(--tc)}
+.tier .tlogo{flex:none;width:64px;height:64px;border-radius:18px;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.tier .tlogo img{width:80%;height:80%;object-fit:contain}
+.tier .tlogo.wide{width:120px}
+.tier .tlogo.wide img{width:88%;height:auto}
+.tier .tname{font-weight:800;font-size:20px}
+.tier.best{border-color:color-mix(in srgb,var(--tc) 60%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--tc) 16%,transparent),rgba(255,255,255,.03));box-shadow:0 0 70px color-mix(in srgb,var(--tc) 25%,transparent)}
+.task-pill{display:inline-block;padding:10px 26px;border-radius:18px;background:#fff;color:#0C0817;font-weight:800;font-size:26px;line-height:1.05;box-shadow:0 20px 60px rgba(0,0,0,.45)}

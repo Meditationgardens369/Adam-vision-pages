@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The best AI for each job</title>
+<meta name="description" content="Five jobs, three tools each, ranked OK, good, best. The list from Adam's video, with the logos, so you stop paying for the wrong one.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The best AI for each job">
+<meta property="og:description" content="Writing, images, building apps, automations, computer use. OK, good, best. From Adam, Aligned AI.">
+<meta property="og:url" content="https://meditationgardens369.github.io/Adam-vision-pages/tools.html">
+<meta property="og:image" content="https://meditationgardens369.github.io/Adam-vision-pages/assets/hub/og-tools.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07050F">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23FFD600'/><text x='50' y='68' font-size='52' text-anchor='middle' font-family='Arial Black,Arial' font-weight='900' fill='%230C0817'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/video-theme.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.55 var(--body);padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:14px 0 0}
+.gbar a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:6px 12px 6px 8px;border-radius:999px;border:1.5px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#fff;text-decoration:none;font-weight:700;font-size:14px}
+.gbar a i{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-style:normal;font:400 15px var(--display)}
+.hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:10px;position:relative}
+.ghost{position:absolute;left:50%;top:50%;transform:translate(-50%,-58%);font-family:var(--display);font-size:min(60vw,320px);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.08);pointer-events:none;z-index:-1}
+h1{font-size:clamp(46px,12vw,92px);margin:0;max-width:12ch}
+.sub{font-size:clamp(18px,2.6vw,22px);color:var(--muted);max-width:30ch;margin:0}
+.rule{height:4px;width:120px;background:var(--accent);border-radius:2px;box-shadow:0 0 20px var(--accent)}
+.job{display:flex;flex-direction:column;align-items:center;gap:14px;position:relative}
+.job .tiers{display:flex;flex-direction:column;gap:10px;width:100%;max-width:560px;transition:filter .7s,opacity .7s}
+.locked .job.hid .tiers{filter:blur(18px);opacity:.35;pointer-events:none;user-select:none}
+.job .kicker{align-self:center}
+.gate{display:none;position:relative;z-index:2;background:var(--surface);border:1.5px solid var(--line);border-radius:26px;padding:clamp(22px,4vw,34px);box-shadow:var(--shadow);text-align:center;margin-top:-20px}
+.locked .gate{display:block}
+.gate h2{font-size:clamp(30px,6vw,44px);margin:0 0 8px}
+.gate p{color:var(--muted);margin:0 auto 16px;max-width:40ch}
+.gate form{display:flex;flex-direction:column;gap:12px;max-width:420px;margin:0 auto;text-align:left}
+.gate label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700}
+.gate input[type=text],.gate input[type=email]{font:inherit;font-size:16px;padding:13px 14px;border-radius:14px;border:1.5px solid var(--line);min-height:48px}
+.gate .consent{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.45;color:var(--muted);font-weight:500}
+.gate .consent input{margin-top:3px;flex:none;width:20px;height:20px;accent-color:var(--accent)}
+.gate .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+.gate .err{color:var(--warn);font-size:14px;min-height:1.2em}
+.gate .btn{min-height:54px;border:0;font-size:18px;font-family:var(--display);font-weight:400;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;padding:12px 20px}
+.gate .fine{font-size:13px;color:var(--muted);margin-top:10px}
+.big{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;padding:30px 0 10px}
+.big h2{font-size:clamp(34px,8vw,64px);margin:0;max-width:14ch;line-height:1.04}
+.next{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%}
+@media (max-width:520px){.next{grid-template-columns:1fr}}
+.next a{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);color:#fff;text-decoration:none;font-weight:800;min-height:64px}
+.next a span.l{width:44px;height:44px;border-radius:12px;background:#fff;display:grid;place-items:center;padding:6px;flex:none}
+.next a img{max-width:100%;max-height:100%;object-fit:contain}
+.next a small{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
+.cta{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+.cta a.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:14px 28px;border-radius:999px;text-decoration:none;font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:.03em;text-transform:uppercase}
+footer{padding:20px 0 0}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:30}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<script>try{if(localStorage.getItem("tl-unlocked")!=="1"&&localStorage.getItem("hub-unlocked")!=="1")document.body.classList.add("locked")}catch(e){document.body.classList.add("locked")}</script>
+<div class="wrap">
+  <div class="top gbar"><a href="guides.html?s=tools"><i aria-hidden="true">A</i>All free guides</a><span class="kw">TOOLS</span></div>
+
+  <header class="hero">
+    <div class="ghost" aria-hidden="true">AI</div>
+    <span class="eyebrow">Save this</span>
+    <h1>The <em>best AI</em> for each job.</h1>
+    <div class="rule"></div>
+    <p class="sub">So you stop paying for the wrong one. Five jobs, three tools each. My opinion, from using them every day.</p>
+  </header>
+
+  <div id="jobs"></div>
+
+  <section class="gate" id="gate" aria-labelledby="gate-h">
+    <span class="eyebrow">Jobs 3, 4 and 5</span>
+    <h2 id="gate-h" style="margin-top:12px">Where should I send the <em>full list</em>?</h2>
+    <p>Put your name and email once. The rest of the ranking opens here, and so do all four of my free step-by-step guides.</p>
+    <form id="gate-form" novalidate>
+      <label class="f">First name<input type="text" id="g-name" name="name" autocomplete="given-name" maxlength="120" required></label>
+      <label class="f">Email<input type="email" id="g-email" name="email" autocomplete="email" maxlength="200" inputmode="email" required></label>
+      <input class="hp" type="text" id="g-company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="consent"><input type="checkbox" id="g-consent" required><span>Yes, send me the list and the occasional email from Adam at Aligned AI. I can unsubscribe at any time.</span></label>
+      <div class="err" id="g-err" role="alert"></div>
+      <button class="btn" type="submit" id="g-btn">Show me the full list</button>
+    </form>
+    <p class="fine">No spam. Your details stay with Adam and are never sold.</p>
+  </section>
+
+  <section class="big">
+    <span class="eyebrow">The rule</span>
+    <h2>Best for <em>you</em> = best for the job.</h2>
+    <p class="sub">Start with the task, not the tool. Tools change every month. The job you need done does not.</p>
+  </section>
+
+  <section class="cta">
+    <span class="eyebrow">Go deeper</span>
+    <h2 style="font-size:clamp(28px,6vw,44px);margin:0">Free step-by-step guides for the tools I use</h2>
+    <div class="next">
+      <a href="grok-bots-guide.html" data-go="grok"><span class="l"><img src="assets/hub/grokbot.png" alt=""></span><span>Grok Bots<small>A team of bots, one per job</small></span></a>
+      <a href="second-brain-guide.html" data-go="brain"><span class="l"><img src="assets/hub/obsidian.png" alt=""></span><span>Second Brain<small>Talk, it files itself</small></span></a>
+      <a href="browser-guide.html" data-go="browser"><span class="l"><img src="assets/hub/claude.png" alt=""></span><span>Claude in your browser<small>It does the clicking</small></span></a>
+      <a href="claude-edit-guide.html" data-go="edit"><span class="l"><img src="assets/hub/claude-code.png" alt=""></span><span>Claude edits your videos<small>No editing software</small></span></a>
+    </div>
+    <a class="btn" href="guides.html?s=tools" data-go="hub">All free guides</a>
+  </section>
+
+  <footer>Adam | Aligned AI</footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* The ranking. Same data as the video deck (08_Vertical-Slides/decks/best-tool.js). */
+const JOBS = [
+  {n:1, task:"Writing",       items:[["OK","ChatGPT","chatgpt"],["Good","Gemini","gemini"],["Best","Claude","claude"]]},
+  {n:2, task:"Images",        items:[["OK","Midjourney","midjourney",true],["Good","Gemini","gemini"],["Best","ChatGPT","chatgpt"]]},
+  {n:3, task:"Building apps", items:[["OK","Gemini","gemini"],["Good","Claude Code","claude-code"],["Best","Codex","codex"]], hid:true},
+  {n:4, task:"Automations",   items:[["OK","Make","make",true],["Good","n8n","n8n",true],["Best","Grok Bot","grokbot",true]], hid:true},
+  {n:5, task:"Computer use",  items:[["OK","Gemini","gemini"],["Good","Claude Code","claude-code"],["Best","Codex","codex"]], hid:true}
+];
+const TC = {OK:"var(--ok)", Good:"var(--good)", Best:"var(--best)"};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.getElementById("jobs").innerHTML = JOBS.map(j => `
+  <section class="job${j.hid ? " hid" : ""}" style="margin-bottom:40px" aria-label="Job ${j.n}: ${esc(j.task)}">
+    <span class="eyebrow kicker">Job ${j.n}</span>
+    <span class="task-pill">${esc(j.task)}</span>
+    <div class="tiers">${j.items.map(it => `<div class="tier${it[0] === "Best" ? " best" : ""}" style="--tc:${TC[it[0]]}"><span class="tl">${esc(it[0])}</span><span class="tlogo${it[3] ? " wide" : ""}"><img src="assets/hub/${it[2]}.png" alt="${esc(it[1])}" loading="lazy" decoding="async"></span><span class="tname">${esc(it[1])}</span></div>`).join("")}</div>
+  </section>`).join("");
+/* the gate sits between job 2 and job 3, where the blur starts */
+(function(){ const jobs = [...document.querySelectorAll("#jobs .job")]; const gate = document.getElementById("gate"); if (jobs[2]) document.getElementById("jobs").insertBefore(gate, jobs[2]); })();
+
+/* tracking, same table and key as every page here */
+const SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+function track(event, extra){
+  try {
+    const body = Object.assign({ slug:"tools-page", event:String(event).slice(0,40), path:String((location.pathname||"") + (location.search||"")).slice(0,200), referrer: document.referrer ? document.referrer.slice(0,200) : null }, extra || {});
+    fetch(SUPABASE_URL + "/rest/v1/page_events", { method:"POST", keepalive:true, headers:{ apikey:SUPABASE_KEY, Authorization:"Bearer " + SUPABASE_KEY, "Content-Type":"application/json", Prefer:"return=minimal" }, body: JSON.stringify(body) }).catch(()=>{});
+  } catch(e){}
+}
+track("view", { step: 0 });
+document.addEventListener("click", e => { const a = e.target.closest("[data-go]"); if (a) track("cta_click", { label: a.dataset.go }); });
+function toast(m){ const t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 2200); }
+
+/* gate: one email opens the rest of the list and all four guides */
+(function(){
+  const form = document.getElementById("gate-form");
+  if (document.body.classList.contains("locked")) track("gate_view");
+  function unlock(){ try{ ["tl-unlocked","gb-unlocked","sb-unlocked","bw-unlocked","ce-unlocked","hub-unlocked"].forEach(k => localStorage.setItem(k, "1")); }catch(e){} document.body.classList.remove("locked"); toast("The full list is open. The guides are too."); }
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const err = document.getElementById("g-err"), btn = document.getElementById("g-btn");
+    const name = document.getElementById("g-name").value.trim(), email = document.getElementById("g-email").value.trim();
+    const consent = document.getElementById("g-consent").checked, trap = document.getElementById("g-company").value;
+    err.textContent = "";
+    if (!name) { err.textContent = "Please add your first name."; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { err.textContent = "That email doesn't look right. Please check it."; return; }
+    if (!consent) { err.textContent = "Please tick the box so I can send you the list."; return; }
+    if (trap) { unlock(); return; }
+    btn.disabled = true; btn.textContent = "One moment...";
+    let ok = false;
+    try {
+      const r = await fetch(SUPABASE_URL + "/rest/v1/guide_signups", { method:"POST", headers:{ apikey:SUPABASE_KEY, Authorization:"Bearer " + SUPABASE_KEY, "Content-Type":"application/json", Prefer:"return=minimal" }, body: JSON.stringify({ slug:"tools-list", name:name.slice(0,120), email:email.slice(0,200), consent:true, referrer: document.referrer ? document.referrer.slice(0,200) : null }) });
+      ok = r.ok;
+    } catch(x){ ok = false; }
+    track(ok ? "signup" : "signup_error");
+    btn.disabled = false; btn.textContent = "Show me the full list";
+    unlock();
+  });
+})();
+</script>
+</body>
+</html>

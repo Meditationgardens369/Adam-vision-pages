@@ -18,9 +18,8 @@
 <meta name="twitter:title" content="Hand the boring work to AI. Keep your evenings.">
 <meta name="twitter:description" content="Four free guides from Adam, Aligned AI. Step by step, prompts included.">
 <meta name="twitter:image" content="https://meditationgardens369.github.io/Adam-vision-pages/assets/hub/og.png">
-<meta name="theme-color" content="#6B3FD4" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0F0C15" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%236B3FD4'/><text x='50' y='68' font-size='52' text-anchor='middle' font-family='Arial Black,Arial' font-weight='900' fill='white'>A</text></svg>">
+<meta name="theme-color" content="#07050F">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23FFD600'/><text x='50' y='68' font-size='52' text-anchor='middle' font-family='Arial Black,Arial' font-weight='900' fill='%230C0817'>A</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
@@ -267,6 +266,7 @@ footer a{color:var(--muted)}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:30;max-width:calc(100% - 32px);text-align:center}
 .toast.show{opacity:1}
 </style>
+<link rel="stylesheet" href="assets/video-theme.css">
 </head>
 <body>
 <script>
@@ -284,15 +284,15 @@ footer a{color:var(--muted)}
 </div>
 
 <header class="hero">
-  <div class="eyebrow">Free guides · step by step · prompts included</div>
+  <div class="eyebrow">Free guides · prompts included</div>
   <h1>Hand the boring work to AI. <em>Keep your evenings.</em></h1>
-  <p class="lede">Four free guides for healers, therapists and small business owners. Posts drafted. Admin done. Videos edited without an editor. Nothing forgotten. Pick the one that matches where your week goes.</p>
+  <p class="lede">Four free guides and my best-AI-for-each-job list, for healers, therapists and small business owners. Posts drafted. Admin done. Videos edited without an editor. Nothing forgotten. Pick the one that matches where your week goes.</p>
   <nav class="jump" id="jump" aria-label="Jump to a guide"></nav>
 </header>
 
 <section aria-labelledby="guides-h">
   <div class="eyebrow">The guides</div>
-  <h2 id="guides-h">Four things you can set up this week</h2>
+  <h2 id="guides-h">Five things, one link</h2>
   <div class="cards" id="cards"></div>
 </section>
 
@@ -369,6 +369,19 @@ const LINKS = {
 
 const GUIDES = [
   {
+    id:"tools", keyword:"TOOLS", name:"The best AI for each job",
+    href:"tools.html", storage:"tl-unlocked", isNew:true,
+    title:"The best AI for each job",
+    learn:"Five jobs, three tools each, ranked OK, good, best. The list from the video, with the logos, so you stop paying for the wrong one.",
+    bullets:["Writing, images, building apps, automations, computer use","My opinion, from using them every day","Two minutes to read, then pick a guide"],
+    time:"Two minutes to read",
+    logos:[["claude","Claude"],["chatgpt","ChatGPT"],["gemini","Gemini"]],
+    need:{b:"Nothing to install",p:"It is a list. Read it, then start with the guide for the tool that fits your job."},
+    steps:[["Find your job in the list","1 min"],["See the three tools, OK to best","1 min"],["Start with the best one for that job","today"],["Open the guide for that tool","next"]],
+    result:"You stop paying for tools that are only OK at the job you need",
+    limit:{h:"My opinion, not a benchmark",p:"Tools change every month. This is what works for me today. Try the best one for your job for a week before you pay for anything."}
+  },
+  {
     id:"grok", keyword:"GROK", name:"Grok Bots",
     href:"grok-bots-guide.html", storage:"gb-unlocked", isNew:false,
     title:"Build your own team of bots",
@@ -424,6 +437,7 @@ const GUIDES = [
 
 /* picker: what eats your week -> which guide */
 const PICKS = [
+  {id:"tool", label:"Not sure which AI tool to use", to:"tools", why:"the list shows the best tool for each job in two minutes"},
   {id:"social", label:"Posting on social media", to:"grok", why:"a bot can draft your posts and you approve them"},
   {id:"customers", label:"Finding new customers", to:"browser", why:"the first task in this guide is finding local businesses to talk to"},
   {id:"admin", label:"Admin, forms and copying things around", to:"browser", why:"Claude can do the clicking and filling in while you watch"},
