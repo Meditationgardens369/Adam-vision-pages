@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before We Meet</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Before we meet, Matthias">
+<meta property="og:description" content="A few questions so I understand how Regenbogenkreis really runs before I suggest anything. About six minutes, mostly taps.">
+<meta name="theme-color" content="#faf8ff">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='36' fill='none' stroke='%236b46c1' stroke-width='14'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+<link rel="stylesheet" href="assets/regenbogenkreis.css">
+</head>
+<body>
+<script>
+/* Matthias Langwasser, Regenbogenkreis. Met 22 Oct 2026, his daughter Ayana is Anya's
+   best friend. German YouTube channel (149K subs, two guest interviews a week) feeding a
+   Shopify supplement shop that moved from Shopware this month. Team of roughly 20 with one
+   manager who oversees the departments; the manager gets matthias-team.html.
+
+   This page is about direction and what he wants, not operations. Research (see the
+   Regenbogenkreis folder) says: human service is a brand promise, he is publicly wary of AI,
+   and there is a live consumer-protection case over product wording. So "ai" is asked
+   openly and gently, "never" and "handover" set the boundary he wants, and nothing here
+   mentions the lawsuit. "Fewer worries about wording and rules" in "want" lets him raise it.
+   "runs" is the answer Adam needs most: who actually operates the shop day to day.
+   Read "worst" first, then "want", then "ai".
+
+   No dashboard rules key on this wording yet. */
+window.INTAKE = {
+  slug: "matthias",
+  name: "Matthias",
+  business: "Regenbogenkreis and the YouTube channel",
+  headline: "worst",
+  brand: "Before we meet · Regenbogenkreis",
+  greeting: "Hello Matthias",
+  introTitle: "A few questions, so I understand <em>how Regenbogenkreis really runs.</em>",
+  introNote: "There are no right answers. I would rather see how things actually work than guess. Nothing here asks for a password or anything private, and you can answer the typed ones in German if that is easier. Your manager has a separate, more practical page.",
+  questions: [
+    { id: "time", type: "one", short: "Where his week goes", section: "The business today",
+      q: "What takes most of your own time in a normal week?",
+      opts: ["Recording and preparing the interviews", "Running the shop and the team", "Answering customers myself", "Writing posts, newsletters and Telegram", "Thinking about what comes next"] },
+    { id: "team", type: "one", short: "Team size",
+      q: "How many people work on Regenbogenkreis, including freelancers?",
+      opts: ["Under 10", "10 to 20", "20 to 35", "More than 35"] },
+    { id: "runs", type: "text", short: "Who runs what",
+      q: "Who runs the shop day to day, and who looks after the newsletter and the videos?",
+      hint: "First names and roles are enough. This tells me who I would be working with.",
+      placeholder: "Anna runs the shop and customer service, Jonas edits and publishes..." },
+    { id: "migration", type: "one", short: "The shop move",
+      q: "You moved to a new shop system recently. How did it go?",
+      opts: ["Smoothly, everything works", "Mostly fine, a few things still broken", "Harder than expected, still in the middle of it", "I was not close to it, my team handled it"] },
+
+    { id: "prep", type: "one", short: "Work per video", section: "The content",
+      q: "After an interview is recorded, how much work is it before it is published?",
+      hint: "Title, summary, description, upload, podcast, Shorts, Telegram. Everyone together.",
+      opts: ["Under an hour", "One to two hours", "Half a day", "A full day or more", "I do not know, someone else does it"] },
+    { id: "touch", type: "many", short: "Who touches a video",
+      q: "Who touches each video before it goes out?", hint: "Tap all that apply.",
+      opts: ["Me", "An editor", "Someone who writes titles and descriptions", "Someone who posts on Telegram and socials", "One person does all of it"] },
+    { id: "comments", type: "one", short: "Why comments are off",
+      q: "Comments are switched off on YouTube. What was the reason?",
+      hint: "No judgement. It tells me where the conversation with your audience really happens.",
+      opts: ["Too much to moderate", "Trolls and attacks", "Platform risk", "Never saw the value in it", "Another reason"],
+      follow: { when: "Another reason", key: "commentsWhy", placeholder: "What was it? (optional)" } },
+    { id: "convo", type: "one", short: "Where the audience talks",
+      q: "Where does the real conversation with your audience happen?",
+      opts: ["Telegram", "Replies to the newsletter", "Phone calls and emails to the shop", "Events and congresses", "Nowhere really, it is mostly one way"] },
+
+    { id: "asked", type: "text", short: "What customers ask", section: "The customers",
+      q: "What do customers ask again and again, by phone or email?",
+      hint: "The questions your team could answer in their sleep.",
+      placeholder: "How to take the tincture, whether two Kuren can be combined, where the parcel is..." },
+    { id: "service", type: "one", short: "Human service",
+      q: "The shop promises human service seven days a week. How important is that to you?",
+      opts: ["It is the heart of the brand", "Important, but it costs a lot", "Nice, but I would trade some of it for faster answers", "Honestly, it is getting hard to keep up"] },
+    { id: "repeat", type: "one", short: "How customers reorder",
+      q: "How do customers come back for a second order?",
+      opts: ["On their own, when they run out", "A newsletter reminds them", "A discount brings them back", "I do not know how many come back"] },
+
+    { id: "want", type: "one", short: "What would help most", section: "What you want",
+      q: "If one thing got easier this year, which would you pick?",
+      hint: "Pick the one you would really notice.",
+      opts: ["My team spends less time on repeat questions", "Publishing a video takes a fraction of the time", "Customers reorder without being chased", "Fewer worries about wording and rules", "Knowing which video actually sells"] },
+    { id: "handover", type: "many", short: "Happy to hand over",
+      q: "Which of these would you let a system prepare, as long as a person reads it first?",
+      hint: "Tap the ones you would be comfortable with.",
+      opts: ["Titles and descriptions for videos", "Answers to order and delivery questions", "Reminders to customers when a Kur runs out", "Telegram and newsletter drafts", "Replies to reviews", "None of these"] },
+    { id: "never", type: "text", short: "Never automate",
+      q: "What should never be done by a system, whatever happens?",
+      placeholder: "Anything about someone's health, my own voice in the interviews..." },
+    { id: "ai", type: "one", short: "Feeling about AI",
+      q: "Be honest: how do you feel about using these tools in your business?",
+      hint: "I have listened to your episodes on this. There is no wrong answer, and it decides how I would work with you.",
+      opts: ["Useful tools, as long as people stay in charge", "Curious but wary", "We use some already, quietly", "I would rather keep the business as human as possible"] },
+    { id: "future", type: "one", short: "The next few years",
+      q: "Looking a few years ahead, what do you want Regenbogenkreis to be?",
+      opts: ["About the same, just lighter for me and the team", "Bigger, more customers", "Less dependent on me personally", "Something new alongside it, like courses or a community"] },
+    { id: "worst", type: "text", short: "Most tiring part",
+      q: "Last one. What is the most tiring part of running all of this?",
+      hint: "A sentence or two is plenty. This is the answer I will read first.",
+      placeholder: "Keeping the team on top of everything while I am recording, for example..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>

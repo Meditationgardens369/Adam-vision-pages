@@ -15,6 +15,8 @@ or just ask Claude.
 | `lara.html` | Lara, massage and Bowen therapy plus Zigzag kids' parties and festivals | 15, two typed |
 | `saltys-how.html` | Dr Saltys, chiropractor in Lagoa. Vision page to send first, in the style of Pedro's seven things page: live chat demo (PT or EN), seven looping scenes, a tap-to-move patient board, one diary for him and Julie, a slider he moves himself. Ends with a button to the questions. | |
 | `saltys.html` | Dr Saltys, the questions page, white look (`assets/saltys.css`), includes four questions on earning beyond the clinic | 20, three typed |
+| `matthias.html` | Matthias Langwasser, Regenbogenkreis supplement shop and 149K YouTube channel. Direction, content, what he wants, how he feels about AI. Violet look (`assets/regenbogenkreis.css`). | 17, four typed |
+| `matthias-team.html` | His manager, name unknown, so the first question asks. Tools, volumes, what broke since the Shopify move, publishing steps, what to hand over. Slug `matthias-team`. | 19, three typed, one number |
 | `vision.html` | Ola's twelve month vision, for screen-sharing on the Zoom call | |
 | `second-brain-guide.html` | Public free guide: build a Second Brain with Obsidian and Claude Code. Logs views, steps, copies and clicks to `page_events` (slug `second-brain-guide-page`). | |
 | `second-brain.html` | Questionnaire at the end of that guide, for people who want help. Slug `second-brain-guide`. | 11, three typed |

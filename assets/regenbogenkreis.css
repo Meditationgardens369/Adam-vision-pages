@@ -1,0 +1,54 @@
+/* Light violet look for the two Regenbogenkreis pages (matthias.html, matthias-team.html).
+   Loaded after intake.css, so every other prospect page is untouched. Pale lilac paper,
+   deep plum ink, one violet accent, a thin rainbow hairline for the brand. */
+
+:root:root:root {
+  --limestone: #faf8ff;
+  --card: #ffffff;
+  --card-2: #ece6fb;
+  --basalt: #1d1430;
+  --ink: #1d1430;
+  --muted: #5e5478;
+  --faint: #8d84a6;
+  --line: #ddd5f2;
+  --atlantic: #6b46c1;
+  --atlantic-soft: #efe9ff;
+  --on-accent: #ffffff;
+  --clay: #b0553a;
+  --clay-soft: #f8e9e3;
+  color-scheme: light;
+}
+
+body {
+  font-family: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  background: #faf8ff;
+  background-image: radial-gradient(60% 40% at 100% 0%, rgba(201,167,255,.22), transparent 70%);
+  background-attachment: fixed;
+}
+
+.brand { font: 700 11.5px Manrope, sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--atlantic); }
+.count { color: var(--faint); }
+
+.calcada {
+  height: 3px; opacity: 1; margin-top: 16px; border-radius: 2px;
+  background: linear-gradient(90deg,#d6453d,#e08a2a,#d9b62c,#4f9a5e,#2a6fb0,#6a4ea8,#b24a8a);
+  max-width: 180px;
+}
+.track { background: var(--card-2); height: 4px; }
+
+.eyebrow { font: 700 12px Manrope, sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--atlantic); }
+
+h1 { font: 500 clamp(32px, 8.5vw, 46px)/1.1 "Cormorant Garamond", Georgia, serif; letter-spacing: -.01em; }
+h1 em { font-style: italic; color: var(--atlantic); }
+h2 { font: 500 clamp(23px, 6vw, 29px)/1.25 "Cormorant Garamond", Georgia, serif; }
+
+.muted:empty { display: none; }
+
+.opt { background: #ffffff; border-color: var(--line); border-radius: 12px; }
+.opt[aria-pressed="true"] { border-color: var(--atlantic); background: var(--atlantic-soft); }
+.opt[aria-pressed="true"] .mark { border-color: var(--atlantic); }
+.opt[aria-pressed="true"] .mark::after { background: var(--atlantic); }
+
+.btn { border-radius: 12px; background: var(--atlantic); color: var(--on-accent); }
+.sig { color: var(--atlantic); }
+.quote { border-left-color: var(--atlantic); }

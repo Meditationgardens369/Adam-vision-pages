@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before We Build</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Before we build, from your side">
+<meta property="og:description" content="Matthias asked me to look at what could be made easier at Regenbogenkreis. I would rather hear how it runs from you first. About seven minutes.">
+<meta name="theme-color" content="#faf8ff">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='36' fill='none' stroke='%236b46c1' stroke-width='14'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+<link rel="stylesheet" href="assets/regenbogenkreis.css">
+</head>
+<body>
+<script>
+/* The manager at Regenbogenkreis, the person who oversees the departments under
+   Matthias. Name unknown on 22 Oct 2026, so the first question asks. One slug for the
+   page; if more than one team member answers, "whoyou" tells them apart.
+
+   This is the practical page: tools, volumes, who does what, what is broken since the
+   Shopify move. Research says Klaviyo, Judge.me and UpPromote are installed, there is no
+   helpdesk, chat or subscription, and the publishing work is done by hand twice a week.
+   The questions check that without leading. "migration" and "flows" are the two Adam
+   needs for the free first look. "eats" is the headline. "handover" and "nope" set the
+   line the team wants drawn.
+
+   No dashboard rules key on this wording yet. */
+window.INTAKE = {
+  slug: "matthias-team",
+  name: "there",
+  nameFrom: "whoyou",
+  business: "Regenbogenkreis, the team side",
+  headline: "eats",
+  brand: "Before we build · Regenbogenkreis",
+  introTitle: "Matthias asked me to look at what could be made easier. <em>I would rather hear how it runs from you first.</em>",
+  introNote: "I am Adam. I build small systems that take the repetitive part of the work off people, with a person always reading before anything goes out. Nothing here changes how you do your job, and there is no right answer. Seven minutes, mostly tapping. Typed answers in German are fine.",
+  questions: [
+    { id: "whoyou", type: "text", short: "Who is answering",
+      q: "First, who am I talking to?",
+      hint: "Your first name and what you look after, so I know whose answers these are.",
+      placeholder: "Anna, shop and customer service" },
+
+    { id: "team", type: "one", short: "Team size", section: "The team",
+      q: "How many people work on Regenbogenkreis, including freelancers?",
+      opts: ["Under 10", "10 to 20", "20 to 35", "More than 35"] },
+    { id: "areas", type: "many", short: "Areas with an owner",
+      q: "Which of these has one named person responsible for it?", hint: "Tap all that apply.",
+      opts: ["Customer service", "Shop and products", "Newsletter and email", "Video and podcast publishing", "Telegram and social media", "Warehouse and shipping partner", "B2B and affiliates", "Bookkeeping"] },
+
+    { id: "tools", type: "many", short: "Daily tools", section: "The tools",
+      q: "Which tools does the team use every day?", hint: "Tap all that apply.",
+      opts: ["Shopify", "Klaviyo", "Judge.me", "UpPromote", "Google Analytics", "Excel or Google Sheets", "Slack or Teams", "Notion, Trello or similar", "WhatsApp between us", "Something else"],
+      follow: { when: "Something else", key: "toolsOther", placeholder: "Which ones? (optional)" } },
+    { id: "inbox", type: "one", short: "Where emails land",
+      q: "Where do customer emails land?",
+      opts: ["A shared mailbox everyone opens", "One person's inbox", "A helpdesk tool", "Shopify Inbox", "Not sure"],
+      follow: { when: "A helpdesk tool", key: "inboxName", placeholder: "Which one? (optional)" } },
+    { id: "migration", type: "many", short: "Checked since the move",
+      q: "Since the move to Shopify, which of these have you checked are working?",
+      hint: "Tap only the ones someone has actually tested. This is the list I would check for you first.",
+      opts: ["Welcome email for new subscribers", "Abandoned cart email", "Google Analytics and Meta pixel", "Old links from the blog and the videos", "Discount codes from the videos", "Reviews showing on product pages", "None yet, there has been no time"] },
+
+    { id: "volume", type: "number", short: "Messages a day", section: "The customers",
+      q: "Roughly how many customer messages arrive on a normal day, email and phone together?",
+      hint: "A rough guess is fine.",
+      unit: "a day", min: 0, max: 500, def: 50, label: "messages" },
+    { id: "top", type: "many", short: "Why people contact you",
+      q: "What are the most common reasons people contact you?", hint: "Tap the top three or four.",
+      opts: ["Where is my order", "How to take a product", "Which product is right for me", "Returns and refunds", "Combining two products or Kuren", "Pregnancy, children or medication", "B2B or reseller requests", "Something else"] },
+    { id: "reply", type: "one", short: "Email wait time",
+      q: "How long does a customer usually wait for an email answer?",
+      opts: ["Same day", "Next day", "Two to three days", "Longer in busy weeks"] },
+    { id: "reviews", type: "one", short: "Who answers reviews",
+      q: "Who answers reviews on Trustpilot and in the shop?",
+      opts: ["One person, regularly", "Whoever has time", "Nobody at the moment", "Not sure"] },
+    { id: "newsletter", type: "one", short: "Newsletter rhythm",
+      q: "How often does a newsletter go out?",
+      opts: ["More than once a week", "Weekly", "A few times a month", "Mostly for promotions"] },
+    { id: "flows", type: "many", short: "Automatic emails today",
+      q: "Which automatic emails exist today?", hint: "Tap all that apply. Not sure is a fine answer.",
+      opts: ["Welcome series for new subscribers", "Abandoned cart", "After a purchase, how to use the product", "Reminder when a product is about to run out", "Win-back for customers who went quiet", "None, only campaigns", "Not sure"] },
+
+    { id: "publish", type: "one", short: "Time to publish", section: "The publishing",
+      q: "After an interview is recorded, how long until it is live on YouTube and the podcast?",
+      opts: ["Same day", "One to two days", "Three to five days", "It varies a lot"] },
+    { id: "steps", type: "many", short: "Done by hand per video",
+      q: "Which of these steps are done by hand for every video?", hint: "Tap each one.",
+      opts: ["Editing the video", "Writing the title", "Writing the summary", "Choosing the product and building the link", "Uploading to YouTube", "Uploading the podcast", "Cutting Shorts", "Telegram posts", "Instagram, TikTok and Facebook"] },
+    { id: "hours", type: "one", short: "Hours per video",
+      q: "How many hours go into publishing one interview, everyone together?",
+      hint: "Not the recording. Everything after it.",
+      opts: ["Under 2 hours", "2 to 5 hours", "5 to 10 hours", "More than 10 hours"] },
+
+    { id: "b2b", type: "one", short: "B2B onboarding", section: "The hard parts",
+      q: "How do therapists and resellers get set up as B2B customers?",
+      opts: ["They email a trade licence and we set them up by hand", "Through a form on the site", "Through the affiliate programme", "Not sure"] },
+    { id: "eats", type: "text", short: "What eats the time",
+      q: "What part of the week do you wish nobody had to do by hand?",
+      hint: "A sentence is plenty. This is the answer I will read first.",
+      placeholder: "Answering the same product questions, rebuilding the video description every time..." },
+    { id: "handover", type: "many", short: "Happy to hand over",
+      q: "If a system drafted these for you to check, which would you accept?",
+      hint: "A person always reads before anything goes out. Tap the ones you would be comfortable with.",
+      opts: ["Answers to order and delivery questions", "Titles, summaries and descriptions", "Telegram posts", "Replies to reviews", "Reminders when a Kur runs out", "A daily list of what still needs an answer", "None of these"] },
+    { id: "nope", type: "text", short: "Never automate",
+      q: "Last one. What should never be handled by a system, whatever happens?",
+      placeholder: "Anything about someone's health, complaints, anything a customer is upset about..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>
