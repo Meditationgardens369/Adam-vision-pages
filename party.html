@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Curious What AI Could Do For You?</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Curious what AI could do for your business?">
+<meta property="og:description" content="Four quick questions. I read every answer myself and send you one concrete idea for your business, no pitch.">
+<meta name="theme-color" content="#0F5C58">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎈</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* Public page behind the QR code at Anya's birthday party, 24 Oct 2026. Parents who get
+   curious scan it instead of Adam pitching at a party. Deliberately short: name, business,
+   the one thing that eats their time, how to reach them. Adam reads answers in Supabase
+   under slug "anya-party" and replies with one idea each, by hand. No dashboard rules. */
+window.INTAKE = {
+  slug: "anya-party",
+  name: "there",
+  nameFrom: "whoyou",
+  brand: "Adam · AI for small businesses",
+  business: "Parents and friends from Anya's party",
+  headline: "eats",
+  introTitle: "Curious what AI could actually do <em>for your business?</em>",
+  introNote: "I am Adam, Anya's dad. I build small AI systems for local businesses: dentists, estate agents, holiday rentals, therapists. Answer four quick questions and I will send you one concrete idea for yours, written by me, no pitch and no newsletter. Two minutes.",
+  questions: [
+    { id: "whoyou", type: "text", short: "Who you are",
+      q: "Who am I talking to?",
+      hint: "First name is enough.",
+      placeholder: "Sofia" },
+    { id: "biz", type: "text", short: "The business",
+      q: "What do you do, and roughly how big is it?",
+      hint: "One line. Solo, a small team, a bigger company, all fine.",
+      placeholder: "I run a physiotherapy clinic with two colleagues in Lagos..." },
+    { id: "eats", type: "text", short: "What eats the time",
+      q: "What part of your week do you wish you did not have to do by hand?",
+      hint: "This is the answer I will read first.",
+      placeholder: "Answering the same questions on WhatsApp, chasing invoices, posting on Instagram..." },
+    { id: "stage", type: "one", short: "Where they are with AI",
+      q: "Where are you with AI today?",
+      opts: ["I use ChatGPT now and then", "I have tried a few things, nothing stuck", "Nothing yet, curious", "Honestly a bit sceptical"] },
+    { id: "reach", type: "text", short: "How to reach them",
+      q: "Where should I send the idea?",
+      hint: "Email or WhatsApp number. I will not add you to anything.",
+      placeholder: "sofia@... or +351 9..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>
