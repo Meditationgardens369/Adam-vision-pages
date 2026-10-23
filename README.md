@@ -17,6 +17,8 @@ or just ask Claude.
 | `saltys.html` | Dr Saltys, the questions page, white look (`assets/saltys.css`), includes four questions on earning beyond the clinic | 20, three typed |
 | `matthias.html` | Matthias Langwasser, Regenbogenkreis supplement shop and 149K YouTube channel. Direction, content, what he wants, how he feels about AI. Violet look (`assets/regenbogenkreis.css`). | 17, four typed |
 | `matthias-team.html` | His manager, name unknown, so the first question asks. Tools, volumes, what broke since the Shopify move, publishing steps, what to hand over. Slug `matthias-team`. | 19, three typed, one number |
+| `party.html` | Public page behind the QR code at Anya's birthday party, 24 Oct 2026. Curious parents answer five quick questions. Slug `anya-party`. | 5, four typed |
+| `lara-thanks.html` / `pocpoc-thanks.html` | Testimonial capture at Anya's party for Lara (Zigzag) and Poc Poc catering, neither of whom has a website or Google page yet. Words, one-word verdict, publish and photo permission, contact for the later review link. Slugs `lara-thanks`, `pocpoc-thanks`. | 6 each, three typed |
 | `vision.html` | Ola's twelve month vision, for screen-sharing on the Zoom call | |
 | `second-brain-guide.html` | Public free guide: build a Second Brain with Obsidian and Claude Code. Logs views, steps, copies and clicks to `page_events` (slug `second-brain-guide-page`). | |
 | `second-brain.html` | Questionnaire at the end of that guide, for people who want help. Slug `second-brain-guide`. | 11, three typed |

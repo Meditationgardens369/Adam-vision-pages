@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Few Words For Lara</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A few words for Lara">
+<meta property="og:description" content="Loved the face painting and balloons? Thirty seconds, and your words help Lara get the website and Google page she has never had.">
+<meta name="theme-color" content="#0F5C58">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* Testimonial capture for Lara (Zigzag children's entertainment) at Anya's party, 24 Oct 2026.
+   Lara has no website and no Google Business Profile. Adam and Bridget are building both, so
+   these words become the first testimonials on the site, and the contact details let Adam send
+   the Google review link once the profile exists. Slug "lara-thanks". */
+window.INTAKE = {
+  slug: "lara-thanks",
+  name: "there",
+  nameFrom: "whoyou",
+  brand: "A few words for Lara",
+  business: "Parents at Anya's party, for Lara's new site",
+  headline: "loved",
+  introTitle: "Loved what Lara did today? <em>Tell her in thirty seconds.</em>",
+  introNote: "Lara has painted faces and twisted balloons at hundreds of parties and has never had a website or a Google page. We are building both for her. Your words go on it, with your first name only, if you say so below.",
+  questions: [
+    { id: "whoyou", type: "text", short: "Your name",
+      q: "Your first name?",
+      placeholder: "Sofia" },
+    { id: "loved", type: "text", short: "What they loved",
+      q: "What did your child, or you, love most?",
+      hint: "A sentence or two, in your own words. This is the bit that goes on the site.",
+      placeholder: "My son would not take the tiger face off for two days..." },
+    { id: "word", type: "one", short: "One word",
+      q: "If you had to pick one word for Lara?",
+      opts: ["Magical", "Patient", "Professional", "Fun", "Kind", "Talented"] },
+    { id: "publish", type: "one", short: "Permission to publish",
+      q: "May we put your words on Lara's website and Google page?",
+      opts: ["Yes, with my first name", "Yes, without my name", "No, just for Lara to read"] },
+    { id: "photos", type: "one", short: "Photo permission",
+      q: "If Adam took a photo of your child's face paint today, may Lara use it?",
+      hint: "Only the painted face or from behind, never a name.",
+      opts: ["Yes", "Only if the face is not recognisable", "No"] },
+    { id: "reach", type: "text", short: "How to reach them",
+      q: "Email or WhatsApp, so we can send you the link to leave Lara a Google review once her page exists?",
+      hint: "Optional. Nothing else will be sent.",
+      placeholder: "sofia@... or +351 9..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>
