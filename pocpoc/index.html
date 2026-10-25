@@ -149,6 +149,18 @@
   .menu .price span { font-size: 13.5px; color: var(--muted); }
   .menu.feature .price span { color: rgba(255,255,255,.85); }
   .menu .muted { font-size: 14px; color: var(--muted); }
+  .sizes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 4px 0 6px; }
+  .sizes span { background: var(--blush); border: 1.5px solid var(--line); border-radius: 12px; padding: 8px 6px; text-align: center; font-size: 12px; color: var(--muted); display: grid; }
+  .sizes span b { font: 700 20px/1 Fredoka, Nunito, sans-serif; color: var(--ink); }
+  .sizes span i { font: 700 14px Nunito, sans-serif; font-style: normal; color: var(--pink); margin-top: 2px; }
+  .menu.feature .sizes span { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.35); color: rgba(255,255,255,.85); }
+  .menu.feature .sizes span b, .menu.feature .sizes span i { color: #fff; }
+  .anim { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  @media (max-width: 620px) { .anim { grid-template-columns: 1fr; } }
+  .anim div { display: flex; align-items: center; gap: 12px; background: var(--paper); border: 1.5px solid var(--line); border-radius: 16px; padding: 12px 14px; }
+  .anim .ic { font-size: 24px; line-height: 1; flex: none; width: 34px; }
+  .anim b { flex: 1; font-weight: 700; font-size: 14.5px; }
+  .anim i { font: 700 16px Fredoka, Nunito, sans-serif; font-style: normal; color: var(--pink); white-space: nowrap; }
   .packs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
   @media (max-width: 720px) { .packs { grid-template-columns: 1fr; } }
   .pack { background: var(--plum-soft); border-radius: 20px; padding: 18px 20px; border: 1.5px solid #E2D4F6; }
@@ -201,6 +213,7 @@
     <a class="logo" href="#"><img src="photos/logo-from-instagram.png" alt=""><span><b>PocPoc</b><small>Momentos doces</small></span></a>
     <nav>
       <a class="navlink" href="#menus"><span class="pt">Mesas e pacotes</span><span class="en">Tables and packages</span></a>
+      <a class="navlink" href="monta.html"><span class="pt">Monta a tua festa</span><span class="en">Build your party</span></a>
       <a class="navlink" href="#words"><span class="pt">O que dizem</span><span class="en">What people say</span></a>
       <div class="lang" role="group" aria-label="Language">
         <button type="button" data-set="pt">PT</button>
@@ -213,7 +226,7 @@
 
 <section class="hero">
   <div class="wrap">
-    <div class="build-note"><b>Concept.</b> <span class="pt">Os preços dos pacotes são os que a Marina deu a 25 de outubro. Os pratos nas três mesas são exemplos, marcados "sample", até ela os confirmar. O logótipo é um recorte do Instagram, pedir-lhe o ficheiro. O português ainda não foi revisto por um falante nativo.</span><span class="en">Package prices are the ones Marina gave on 25 October. The dishes in the three tables are samples, tagged "sample", until she confirms them. The logo is a crop from Instagram, ask her for the file. The Portuguese has not yet been checked by a native speaker.</span></div>
+    <div class="build-note"><b>Concept.</b> <span class="pt">Todos os preços vêm dos flyers da Marina. A mesa saudável ainda não tem preço. O logótipo é um recorte do Instagram, pedir-lhe o ficheiro. O português ainda não foi revisto por um falante nativo.</span><span class="en">Every price comes from Marina's flyers. The healthy table has no price yet. The logo is a crop from Instagram, ask her for the file. The Portuguese has not yet been checked by a native speaker.</span></div>
     <div class="hero-grid">
       <div class="hero-copy">
         <span class="eyebrow pink"><span class="pt">Festas de crianças · Aniversários · Casamentos · Eventos · Algarve</span><span class="en">Children's parties · Birthdays · Weddings · Events · Algarve</span></span>
@@ -257,7 +270,7 @@
     <div class="promises">
       <div class="promise"><div class="ic">🌿</div><div><b><span class="pt">Feito nessa manhã</span><span class="en">Made that morning</span></b><span><span class="pt">Fresco, à mão, em pequenas quantidades. Nada de congelador.</span><span class="en">Fresh, by hand, in small batches. Nothing from a freezer.</span></span></div></div>
       <div class="promise"><div class="ic">🥕</div><div><b><span class="pt">Tão saudável quanto quiser</span><span class="en">As healthy as you want it</span></b><span><span class="pt">Comida de festa portuguesa, ou húmus, wraps integrais, ovos e fruta. As crianças comem mesmo.</span><span class="en">Portuguese party food, or hummus, wholegrain wraps, eggs and fruit. The children actually eat it.</span></span></div></div>
-      <div class="promise"><div class="ic">👩‍🍳</div><div><b><span class="pt">Fala com quem faz</span><span class="en">You talk to the person who does it</span></b><span><span class="pt">Sem escritório, sem intermediários. A Marina cozinha, monta e está lá no dia.</span><span class="en">No office, no middle. Marina cooks, sets up and is there on the day.</span></span></div></div>
+      <div class="promise"><div class="ic">👩‍🍳</div><div><b><span class="pt">Fala com quem faz</span><span class="en">You talk to the person who does it</span></b><span><span class="pt">Sem escritório, sem intermediários. A Marina e o Fábio cozinham, montam e ficam na festa.</span><span class="en">No office, no middle. Marina and Fábio cook, set up and stay for the party.</span></span></div></div>
     </div>
     <div class="strip">
       <figure><img src="photos/detail-1.jpg" alt="" data-slot="detail-1"></figure>
@@ -281,56 +294,109 @@
 
 <section id="menus" style="background:#fff;padding-top:48px">
   <div class="wrap">
-    <span class="eyebrow"><span class="pt">Três mesas para começar</span><span class="en">Three tables to start from</span></span>
-    <h2><span class="pt">Mesas de exemplo. <em>A sua é feita à volta do seu dia.</em></span><span class="en">Sample tables. <em>Yours gets built around your day.</em></span></h2>
-    <p class="lede"><span class="pt">Três mesas para ver o que é possível, e três pacotes, pequeno, médio e grande, para começar a conversa. Cada festa leva o seu orçamento.</span><span class="en">Three tables to show what is possible, and three packages, small, medium and big, to start the conversation. Every party gets its own quote.</span></p>
+    <span class="eyebrow"><span class="pt">Catering · Decoração · Animação</span><span class="en">Catering · Decoration · Entertainment</span></span>
+    <h2><span class="pt">Os preços da Marina, <em>sem surpresas.</em></span><span class="en">Marina's prices, <em>no surprises.</em></span></h2>
+    <p class="lede"><span class="pt">Tudo o que está aqui é a tabela da PocPoc. Escolhe a mesa pelo número de pessoas, a decoração pelo tamanho, e junta a animação que quiseres.</span><span class="en">Everything here is PocPoc's own price list. Pick the table by number of people, the decoration by size, and add whatever entertainment you like.</span></p>
+
+    <h3 style="margin-top:28px"><span class="pt">🥗 Catering</span><span class="en">🥗 Catering</span> <small style="font:600 13px Nunito,sans-serif;color:var(--muted)"><span class="pt">· inclui sempre 2 monitores · sem bebidas alcoólicas</span><span class="en">· always includes 2 animators · no alcoholic drinks</span></small></h3>
     <div class="menus">
+      <div class="menu">
+        <div class="tag"><span class="pt">Menu Clássico</span><span class="en">Classic menu</span></div>
+        <h3><span class="pt">Para festas de crianças</span><span class="en">For children's parties</span></h3>
+        <div class="sizes"><span><b>20</b> <span class="pt">pessoas</span><span class="en">people</span><i>250€</i></span><span><b>40</b> <span class="pt">pessoas</span><span class="en">people</span><i>350€</i></span><span><b>60</b> <span class="pt">pessoas</span><span class="en">people</span><i>450€</i></span></div>
+        <ul>
+          <li><span class="pt">Croissants mistos e salgados</span><span class="en">Assorted croissants and savoury snacks</span></li>
+          <li><span class="pt">Pão recheado, mini pizzas e tábua de queijos a partir de 40 pessoas</span><span class="en">Stuffed bread, mini pizzas and a cheese board from 40 people</span></li>
+          <li><span class="pt">Gelatinas, mousses, donuts e cupcakes do tema</span><span class="en">Jellies, mousses, donuts and themed cupcakes</span></li>
+          <li><span class="pt">Batatas, gomas, fruta, água e um sumo à escolha</span><span class="en">Chips, gummies, fruit, water and a juice of your choice</span></li>
+        </ul>
+        <div class="price"><b><span class="pt">desde 250€</span><span class="en">from €250</span></b><span><span class="pt">20 pessoas</span><span class="en">20 people</span></span></div>
+      </div>
       <div class="menu feature">
-        <div class="tag"><span class="pt">A novidade</span><span class="en">The one nobody else does</span> <span class="sample">sample</span></div>
-        <h3><span class="pt">A mesa saudável</span><span class="en">The healthy table</span></h3>
-        <p class="muted"><span class="pt">O que a Anya e dezanove amigos comeram em outubro. Pedida por uma mãe, feita no dia.</span><span class="en">What Anya and nineteen friends ate in October. Asked for by a mum, made on the day.</span></p>
+        <div class="tag"><span class="pt">Menu Premium</span><span class="en">Premium menu</span></div>
+        <h3><span class="pt">Substitui a refeição da festa</span><span class="en">Replaces the party meal</span></h3>
+        <div class="sizes"><span><b>20</b> <span class="pt">pessoas</span><span class="en">people</span><i>350€</i></span><span><b>30</b> <span class="pt">pessoas</span><span class="en">people</span><i>450€</i></span><span><b>40</b> <span class="pt">pessoas</span><span class="en">people</span><i>550€</i></span></div>
+        <ul>
+          <li><span class="pt">Mini hambúrgueres e mini cachorros</span><span class="en">Mini burgers and mini hot dogs</span></li>
+          <li><span class="pt">Salgados, pão recheado e tábua de enchidos</span><span class="en">Savoury snacks, stuffed bread and a charcuterie board</span></li>
+          <li><span class="pt">Espetadas de fruta, mousse de chocolate, gelatina</span><span class="en">Fruit skewers, chocolate mousse, jelly</span></li>
+          <li><span class="pt">Cupcakes do tema e waffles com Nutella</span><span class="en">Themed cupcakes and waffles with Nutella</span></li>
+          <li><span class="pt">Batatas, gomas, sumo e água</span><span class="en">Chips, gummies, juice and water</span></li>
+        </ul>
+        <div class="price"><b><span class="pt">desde 350€</span><span class="en">from €350</span></b><span><span class="pt">20 pessoas</span><span class="en">20 people</span></span></div>
+      </div>
+      <div class="menu">
+        <div class="tag"><span class="pt">Novo · a mesa saudável</span><span class="en">New · the healthy table</span></div>
+        <h3><span class="pt">Pedida por uma mãe, feita no dia</span><span class="en">Asked for by a mum, made on the day</span></h3>
+        <p class="muted"><span class="pt">O que a Anya e dezanove amigos comeram em outubro. As crianças comeram mesmo.</span><span class="en">What Anya and nineteen friends ate in October. The children actually ate it.</span></p>
         <ul>
           <li><span class="pt">Wraps integrais com alface e recheios</span><span class="en">Wholegrain wraps with lettuce and fillings</span></li>
           <li><span class="pt">Palitos de cenoura e pepino com húmus</span><span class="en">Carrot and cucumber sticks with hummus</span></li>
-          <li><span class="pt">Saladas de lentilhas e grão</span><span class="en">Lentil and chickpea salads</span></li>
-          <li><span class="pt">Ovos cozidos com molhos</span><span class="en">Boiled eggs with sauces</span></li>
-          <li><span class="pt">Espetadas de fruta e de tomate com queijo</span><span class="en">Fruit skewers, and tomato and cheese skewers</span></li>
-          <li><span class="pt">Broa de milho em cubos</span><span class="en">Cornbread cubes</span></li>
+          <li><span class="pt">Saladas de lentilhas e grão, ovos cozidos com molhos</span><span class="en">Lentil and chickpea salads, boiled eggs with sauces</span></li>
+          <li><span class="pt">Espetadas de fruta e de tomate com queijo, broa de milho</span><span class="en">Fruit and tomato-and-cheese skewers, cornbread</span></li>
         </ul>
-        <div class="price"><b><span class="pt">desde 200€</span><span class="en">from €200</span></b><span><span class="pt">comida e decoração, por festa</span><span class="en">food and decoration, per party</span></span></div>
+        <div class="price"><b><span class="pt">sob orçamento</span><span class="en">quoted per party</span></b><span><span class="pt">diz-me quantos são</span><span class="en">tell me how many</span></span></div>
+      </div>
+    </div>
+    <p class="tiny" style="margin-top:12px"><span class="pt">Extras por pessoa: mini cachorros +2,50€, mini hambúrgueres +3,50€, cupcakes do tema +4,50€.</span><span class="en">Extras per person: mini hot dogs +€2.50, mini burgers +€3.50, themed cupcakes +€4.50.</span></p>
+
+    <h3 style="margin-top:40px"><span class="pt">🎈 Decoração</span><span class="en">🎈 Decoration</span></h3>
+    <div class="menus">
+      <div class="menu">
+        <div class="tag"><span class="pt">Simples</span><span class="en">Simple</span></div>
+        <ul>
+          <li><span class="pt">Um painel</span><span class="en">One panel</span></li>
+          <li><span class="pt">Grinalda de balões</span><span class="en">Balloon garland</span></li>
+          <li><span class="pt">Nome personalizado</span><span class="en">Personalised name</span></li>
+          <li><span class="pt">Pódio para o bolo</span><span class="en">Cake podium</span></li>
+        </ul>
+        <div class="price"><b>200€</b></div>
       </div>
       <div class="menu">
-        <div class="tag"><span class="pt">A clássica</span><span class="en">The classic</span> <span class="sample">sample</span></div>
-        <h3><span class="pt">A mesa portuguesa</span><span class="en">The Portuguese table</span></h3>
-        <p class="muted"><span class="pt">A mesa de festa que toda a gente conhece, feita em casa.</span><span class="en">The party table everyone grew up with, made at home.</span></p>
+        <div class="tag"><span class="pt">Média</span><span class="en">Medium</span></div>
         <ul>
-          <li><span class="pt">Sandes e pão</span><span class="en">Sandwiches and bread</span></li>
-          <li><span class="pt">Carnes e queijos</span><span class="en">Meats and cheeses</span></li>
-          <li><span class="pt">Coxinhas, rissóis e salgados</span><span class="en">Coxinhas, rissóis and savoury pastries</span></li>
-          <li><span class="pt">Waffles com caramelo salgado e morango</span><span class="en">Waffles with salted caramel and strawberry sauce</span></li>
-          <li><span class="pt">Bolo de anos</span><span class="en">Birthday cake</span></li>
+          <li><span class="pt">Dois painéis e grinalda de balões</span><span class="en">Two panels and a balloon garland</span></li>
+          <li><span class="pt">Nome personalizado e três pódios</span><span class="en">Personalised name and three podiums</span></li>
+          <li><span class="pt">Displays do tema</span><span class="en">Theme displays</span></li>
+          <li><span class="pt">Número em LED</span><span class="en">LED number</span></li>
         </ul>
-        <div class="price"><b><span class="pt">desde 200€</span><span class="en">from €200</span></b><span><span class="pt">comida e decoração, por festa</span><span class="en">food and decoration, per party</span></span></div>
+        <div class="price"><b>250€</b></div>
       </div>
-      <div class="menu">
-        <div class="tag"><span class="pt">Para os adultos</span><span class="en">For the grown ups</span> <span class="sample">sample</span></div>
-        <h3><span class="pt">A mesa dos pais</span><span class="en">The parents' table</span></h3>
-        <p class="muted"><span class="pt">Porque os adultos também vão à festa, e também têm fome.</span><span class="en">Because the adults come to the party too, and they are hungry too.</span></p>
+      <div class="menu feature">
+        <div class="tag"><span class="pt">Completa</span><span class="en">Complete</span></div>
         <ul>
-          <li><span class="pt">Travessas de queijos e enchidos</span><span class="en">Cheese and charcuterie platters</span></li>
-          <li><span class="pt">Saladas com molho a sério</span><span class="en">Salads with proper dressing</span></li>
-          <li><span class="pt">Um prato quente, um vegetariano</span><span class="en">One hot dish, one vegetarian</span></li>
-          <li><span class="pt">Pão caseiro e molhos</span><span class="en">Homemade bread and dips</span></li>
-          <li><span class="pt">Um doce para acabar</span><span class="en">Something sweet to finish</span></li>
+          <li><span class="pt">Três painéis e grinalda de balões</span><span class="en">Three panels and a balloon garland</span></li>
+          <li><span class="pt">Nome personalizado e três pódios</span><span class="en">Personalised name and three podiums</span></li>
+          <li><span class="pt">Balcão e displays do tema</span><span class="en">Counter and theme displays</span></li>
+          <li><span class="pt">Número em tamanho grande</span><span class="en">Large number</span></li>
         </ul>
-        <div class="price"><b><span class="pt">sob orçamento</span><span class="en">quoted per party</span></b><span><span class="pt">junta-se à mesa das crianças</span><span class="en">added to the children's table</span></span></div>
+        <div class="price"><b>350€</b></div>
       </div>
     </div>
 
+    <h3 style="margin-top:40px"><span class="pt">🏰 Animação</span><span class="en">🏰 Entertainment</span></h3>
+    <div class="anim">
+      <div><span class="ic">🌴</span><b><span class="pt">Insuflável Selva, 4 x 4 m</span><span class="en">Jungle bouncy castle, 4 x 4 m</span></b><i>85€</i></div>
+      <div><span class="ic">🏰</span><b><span class="pt">Insuflável Castelo, 6 x 4 m</span><span class="en">Castle bouncy castle, 6 x 4 m</span></b><i>110€</i></div>
+      <div><span class="ic">🎨</span><b><span class="pt">Pinturas faciais, 2 h</span><span class="en">Face painting, 2 h</span></b><i>80€</i></div>
+      <div><span class="ic">🍿</span><b><span class="pt">Máquina de pipocas</span><span class="en">Popcorn machine</span></b><i>100€</i></div>
+      <div><span class="ic">🍭</span><b><span class="pt">Máquina de algodão doce</span><span class="en">Candy floss machine</span></b><i>100€</i></div>
+      <div><span class="ic">🍿🍭</span><b><span class="pt">As duas máquinas</span><span class="en">Both machines</span></b><i>150€</i></div>
+      <div><span class="ic">🪢</span><b><span class="pt">Jogos tradicionais, 2 h</span><span class="en">Traditional games, 2 h</span></b><i>75€</i></div>
+      <div><span class="ic">🦁</span><b><span class="pt">Mascote, carrinho de gelados</span><span class="en">Mascot, ice cream cart</span></b><i><span class="pt">sob orçamento</span><span class="en">quoted</span></i></div>
+    </div>
+    <p class="tiny" style="margin-top:10px"><span class="pt">As máquinas vêm sempre com uma pessoa e todo o material. Duas horas, mais uma de oferta.</span><span class="en">The machines always come with a person and all the material. Two hours, plus one on the house.</span></p>
+
+    <h3 style="margin-top:40px"><span class="pt">🎁 Três pacotes para começar</span><span class="en">🎁 Three packages to start from</span></h3>
+    <p class="lede" style="font-size:15px"><span class="pt">Somas da tabela acima, nada mais. Cada festa leva o seu orçamento.</span><span class="en">Sums of the list above, nothing else. Every party gets its own quote.</span></p>
     <div class="packs">
-      <div class="pack"><b><span class="pt">Pequena</span><span class="en">Small</span></b><span><span class="pt">A mesa e a decoração, montadas no dia. Para 15 a 30 crianças. Desde 200€.</span><span class="en">The table and the decoration, set up on the day. For 15 to 30 children. From €200.</span></span></div>
-      <div class="pack"><b><span class="pt">Média</span><span class="en">Medium</span></b><span><span class="pt">A mesa, a decoração e um insuflável. A festa mais pedida. Desde 295€.</span><span class="en">The table, the decoration and a bouncy castle. The one most people ask for. From €295.</span></span></div>
-      <div class="pack" style="background:var(--pink-soft);border-color:#F5BFD6"><b><span class="pt">Grande</span><span class="en">Big</span></b><span><span class="pt">Muita comida, à sua medida, com a decoração, insufláveis, pipocas e algodão doce, e animação extra: mascote, pinturas faciais, carrinho de gelados. Desde 445€, orçamento à medida.</span><span class="en">Lots of food, built around you, with the decoration, bouncy castles, popcorn and candy floss, and extra entertainment: mascot, face painting, ice cream cart. From €445, quoted to fit.</span></span></div>
+      <div class="pack"><b><span class="pt">Pequena</span><span class="en">Small</span></b><span><span class="pt">Menu Clássico para 20 e Decoração Simples. <b>450€</b></span><span class="en">Classic menu for 20 and Simple decoration. <b>€450</b></span></span></div>
+      <div class="pack"><b><span class="pt">Média</span><span class="en">Medium</span></b><span><span class="pt">Menu Clássico para 40, Decoração Média e o castelo insuflável. <b>710€</b></span><span class="en">Classic menu for 40, Medium decoration and the castle. <b>€710</b></span></span></div>
+      <div class="pack" style="background:var(--pink-soft);border-color:#F5BFD6"><b><span class="pt">Grande</span><span class="en">Big</span></b><span><span class="pt">Menu Premium para 40, Decoração Completa, castelo, pipocas e algodão doce, pinturas faciais. <b>1.240€</b></span><span class="en">Premium menu for 40, Complete decoration, castle, popcorn and candy floss, face painting. <b>€1,240</b></span></span></div>
+    </div>
+    <div class="center" style="text-align:center;margin-top:26px">
+      <a class="btn primary" href="monta.html"><span class="pt">Monta a tua festa e vê o preço exato</span><span class="en">Build your party and see the exact price</span></a>
+      <p class="tiny" style="margin-top:10px"><span class="pt">Pessoas, menu, decoração, animação. O preço cresce enquanto escolhes.</span><span class="en">People, menu, decoration, entertainment. The price grows as you choose.</span></p>
     </div>
   </div>
 </section>

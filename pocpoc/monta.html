@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Monta a tua festa · PocPoc</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Build your party with PocPoc: people, menu, decoration, bouncy castles and extras. Watch the exact price as you go, then send it and get your quote by email.">
+<meta name="theme-color" content="#E94B9A">
+<meta name="color-scheme" content="light only">
+<link rel="icon" href="photos/logo-from-instagram.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+  /* PocPoc party builder. A parent builds the party, the scene fills up, the exact price
+     counts up, and the request goes to Supabase with a quote code for the automation.
+     Every number in PRICES comes from Marina's three flyers (docs/price-list.md), 25 Oct 2026.
+     Her brand colours, Portuguese first with an EN switch. */
+  :root {
+    --blush: #FFF3F7; --paper: #FFFFFF; --rose: #FBDCE7; --ink: #4A2C1F; --muted: #7A5F55; --faint: #A8948C;
+    --line: #F1D3DE; --pink: #E94B9A; --pink-soft: #FCE4EF; --pink-deep: #C2367D;
+    --plum: #7B46C4; --plum-soft: #EEE6FA; --lion: #D9893A; --lion-soft: #FBE9D3; --sky: #CDEBF7; --grass: #CFEAC2;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--blush); color: var(--ink); font: 16px/1.55 Nunito, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    background-image: radial-gradient(circle at 8% 0%, rgba(177,97,254,.14), transparent 36%), radial-gradient(circle at 100% 100%, rgba(233,75,154,.12), transparent 40%); background-attachment: fixed; }
+  html[data-lang="pt"] .en, html[data-lang="en"] .pt { display: none !important; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: Fredoka, Nunito, sans-serif; font-weight: 600; letter-spacing: -.01em; margin: 0 0 10px; text-wrap: balance; }
+  h1 { font-size: clamp(30px, 6vw, 48px); line-height: 1.05; }
+  h2 { font-size: 20px; }
+  h1 em { font-style: normal; color: var(--pink); }
+  p { margin: 0 0 12px; }
+  .lede { font-size: 17px; color: var(--muted); max-width: 56ch; }
+  .top { position: sticky; top: 0; z-index: 20; background: rgba(255,243,247,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 64px; }
+  .logo { text-decoration: none; display: flex; align-items: center; gap: 10px; white-space: nowrap; color: var(--pink); }
+  .logo img { width: 40px; height: 40px; border-radius: 50%; }
+  .logo b { font: 700 22px Fredoka, Nunito, sans-serif; display: block; line-height: 1; }
+  .logo small { font: 600 10.5px Nunito, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--lion); display: block; margin-top: 3px; }
+  .lang { display: inline-flex; border: 1.5px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--paper); }
+  .lang button { font: 800 12px Nunito, sans-serif; letter-spacing: .08em; padding: 6px 10px; border: 0; background: transparent; color: var(--faint); cursor: pointer; }
+  html[data-lang="pt"] .lang button[data-set="pt"], html[data-lang="en"] .lang button[data-set="en"] { background: var(--pink); color: #fff; }
+  .back { font: 700 13.5px Nunito, sans-serif; color: var(--muted); text-decoration: none; }
+  @media (max-width: 520px) { .logo small { display: none; } .back { display: none; } }
+
+  .grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; padding: 26px 0 60px; }
+  @media (max-width: 880px) { .grid { grid-template-columns: 1fr; } }
+
+  /* The scene */
+  .scene-wrap { position: sticky; top: 80px; }
+  @media (max-width: 880px) { .scene-wrap { position: static; } }
+  .scene { position: relative; height: 340px; border-radius: 28px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 24px 50px rgba(74,44,31,.16);
+    background: linear-gradient(180deg, var(--sky) 0%, #EAF6FB 55%, var(--grass) 55.5%, #B9DEA9 100%); perspective: 900px; }
+  .scene .sun { position: absolute; top: 18px; right: 26px; width: 54px; height: 54px; border-radius: 50%; background: #FFD66B; box-shadow: 0 0 0 12px rgba(255,214,107,.28); }
+  .scene .arch { position: absolute; left: 50%; top: 22px; transform: translateX(-50%); display: flex; gap: 2px; }
+  .scene .arch i { display: block; width: 26px; height: 32px; border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%; animation: bob 3.2s ease-in-out infinite; }
+  .scene .arch i:nth-child(odd) { animation-delay: -1.3s; }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  .stage { position: absolute; left: 0; right: 0; bottom: 26px; display: flex; align-items: flex-end; justify-content: center; gap: 26px; flex-wrap: wrap; padding: 0 16px; transform-style: preserve-3d; }
+  .item { font-size: 50px; line-height: 1; filter: drop-shadow(0 8px 10px rgba(74,44,31,.22)); animation: pop .55s cubic-bezier(.2,1.4,.4,1) both; position: relative; }
+  .item.big { font-size: 68px; }
+  .item .lbl { position: absolute; left: 50%; bottom: -22px; transform: translateX(-50%); font: 800 9.5px/1.1 Nunito, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); white-space: normal; width: 86px; text-align: center; }
+  @keyframes pop { from { transform: translateY(30px) scale(.4) rotateX(40deg); opacity: 0; } to { transform: none; opacity: 1; } }
+  .kids { position: absolute; left: 14px; right: 14px; top: 92px; display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; font-size: 20px; line-height: 1; }
+  .kids span { animation: pop .4s cubic-bezier(.2,1.4,.4,1) both; }
+  .kids .more { font: 800 12px Nunito, sans-serif; color: var(--muted); align-self: center; }
+
+  /* Price */
+  .price { margin-top: 14px; background: var(--paper); border: 1.5px solid var(--line); border-radius: 22px; padding: 18px 20px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+  .price .lbl { font: 700 12px Nunito, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--plum); }
+  .price .n { font: 700 40px/1 Fredoka, Nunito, sans-serif; color: var(--pink); font-variant-numeric: tabular-nums; }
+  .price .n small { font: 700 14px Nunito, sans-serif; color: var(--muted); margin-left: 6px; }
+  .price .note { grid-column: 1 / -1; font-size: 13px; color: var(--muted); }
+  .lines { grid-column: 1 / -1; display: grid; gap: 4px; font-size: 13.5px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; }
+  .lines div { display: flex; justify-content: space-between; gap: 10px; }
+  .lines b { color: var(--ink); font-weight: 700; }
+
+  /* Controls */
+  .card { background: var(--paper); border: 1.5px solid var(--line); border-radius: 22px; padding: 20px; margin-bottom: 14px; }
+  .card h2 { display: flex; align-items: center; gap: 10px; }
+  .card h2 .n { width: 28px; height: 28px; border-radius: 50%; background: var(--lion); color: #fff; display: grid; place-items: center; font: 600 15px Fredoka, Nunito, sans-serif; flex: none; }
+  .hint { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
+  .opts { display: grid; gap: 8px; }
+  .opt { display: flex; align-items: center; gap: 12px; cursor: pointer; background: var(--blush); border: 1.5px solid var(--line); border-radius: 16px; padding: 12px 14px; transition: border-color .15s, background .15s; }
+  .opt input { accent-color: var(--pink); width: 18px; height: 18px; margin: 0; flex: none; }
+  .opt .ic { font-size: 26px; line-height: 1; flex: none; }
+  .opt .t { flex: 1; }
+  .opt .t b { display: block; font-weight: 800; font-size: 15px; }
+  .opt .t span { display: block; font-size: 13px; color: var(--muted); }
+  .opt .p { font: 700 15px Fredoka, Nunito, sans-serif; color: var(--pink); white-space: nowrap; }
+  .opt .p.q { font: 700 11px Nunito, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--plum); background: var(--plum-soft); padding: 4px 8px; border-radius: 999px; }
+  .opt:has(input:checked) { border-color: var(--pink); background: var(--pink-soft); }
+  .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .seg label { cursor: pointer; text-align: center; background: var(--blush); border: 1.5px solid var(--line); border-radius: 14px; padding: 10px 6px; display: grid; gap: 2px; }
+  .seg label input { position: absolute; opacity: 0; pointer-events: none; }
+  .seg label b { font: 700 22px/1 Fredoka, Nunito, sans-serif; }
+  .seg label span { font-size: 12px; color: var(--muted); }
+  .seg label i { font: 700 14px Nunito, sans-serif; font-style: normal; color: var(--pink); }
+  .seg label:has(input:checked) { border-color: var(--pink); background: var(--pink-soft); }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
+  label.f { display: grid; gap: 4px; font: 700 12.5px Nunito, sans-serif; color: var(--muted); }
+  label.f input, label.f textarea { width: 100%; font: 400 15px Nunito, sans-serif; color: var(--ink); background: var(--blush); border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+  label.f input:focus, label.f textarea:focus { outline: 2px solid var(--pink); outline-offset: 0; border-color: transparent; }
+  textarea { min-height: 70px; resize: vertical; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; border: 0; font: 800 16px Nunito, sans-serif; padding: 15px 24px; border-radius: 999px; background: var(--pink); color: #fff; box-shadow: 0 10px 24px rgba(233,75,154,.26); width: 100%; text-decoration: none; }
+  .btn.quiet { background: var(--plum-soft); color: var(--plum); box-shadow: none; }
+  .btn[disabled] { opacity: .5; cursor: default; }
+  .tiny { font-size: 12.5px; color: var(--faint); line-height: 1.5; }
+  .bad { color: var(--pink-deep); }
+  .done { display: none; background: var(--plum-soft); border: 1.5px solid #E2D4F6; border-radius: 22px; padding: 22px; text-align: center; }
+  .done.show { display: block; animation: pop .5s cubic-bezier(.2,1.4,.4,1) both; }
+  .done .code { font: 700 34px/1 Fredoka, Nunito, sans-serif; color: var(--plum); letter-spacing: .06em; margin: 8px 0 6px; }
+  .done p { font-size: 14.5px; color: var(--muted); margin: 0 0 10px; }
+  .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 50; }
+  .confetti i { position: absolute; top: -12px; width: 10px; height: 14px; border-radius: 3px; animation: fall 2.4s ease-in both; }
+  @keyframes fall { to { transform: translateY(110vh) rotate(540deg); opacity: .2; } }
+  @media (prefers-reduced-motion: reduce) { .item, .kids span, .scene .arch i, .done.show, .confetti i { animation: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="photos/logo-from-instagram.png" alt=""><span><b>PocPoc</b><small>Momentos doces</small></span></a>
+    <div style="display:flex;align-items:center;gap:12px">
+      <a class="back" href="index.html"><span class="pt">Voltar ao site</span><span class="en">Back to the site</span></a>
+      <div class="lang" role="group" aria-label="Language"><button type="button" data-set="pt">PT</button><button type="button" data-set="en">EN</button></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div style="padding-top:26px">
+    <h1><span class="pt">Monta a tua festa, <em>vê o preço a crescer.</em></span><span class="en">Build your party, <em>watch the price grow.</em></span></h1>
+    <p class="lede"><span class="pt">Escolhe o menu, a decoração e a animação. A cena enche-se, o preço é o da tabela da Marina, sem surpresas. No fim envia, recebes um código e o orçamento chega por email no mesmo dia.</span><span class="en">Pick the menu, the decoration and the entertainment. The scene fills up and the price is Marina's own list, no surprises. Send it at the end, get a code, and the quote lands in your inbox the same day.</span></p>
+  </div>
+
+  <div class="grid">
+    <div class="scene-wrap">
+      <div class="scene" id="scene">
+        <div class="sun"></div>
+        <div class="arch" id="arch"></div>
+        <div class="kids" id="kids"></div>
+        <div class="stage" id="stage"></div>
+      </div>
+      <div class="price">
+        <div><div class="lbl"><span class="pt">Total</span><span class="en">Total</span></div><div class="n"><span id="total">0</span>€<small id="totalnote"></small></div></div>
+        <div style="text-align:right;font-size:13px;color:var(--muted)" id="peoplenote"></div>
+        <div class="lines" id="lines"></div>
+        <div class="note"><span class="pt">Preços da tabela PocPoc. O que está "sob orçamento" chega com o valor certo no email. Fora do Algarve soma-se a deslocação.</span><span class="en">PocPoc's list prices. Anything "quoted" comes with its price in the email. Outside the Algarve, travel is added.</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2><span class="n">1</span><span class="pt">O menu</span><span class="en">The menu</span></h2>
+        <p class="hint"><span class="pt">Todos os menus incluem dois monitores na festa.</span><span class="en">Every menu includes two animators at the party.</span></p>
+        <div class="opts" id="menus">
+          <label class="opt"><input type="radio" name="menu" value="classic" checked><span class="ic">🥐</span><span class="t"><b><span class="pt">Menu Clássico</span><span class="en">Classic menu</span></b><span><span class="pt">Croissants, salgados, mini pizzas, doces, fruta, sumo.</span><span class="en">Croissants, savoury snacks, mini pizzas, sweets, fruit, juice.</span></span></span><span class="p"><span class="pt">desde</span><span class="en">from</span> 250€</span></label>
+          <label class="opt"><input type="radio" name="menu" value="premium"><span class="ic">🍔</span><span class="t"><b><span class="pt">Menu Premium</span><span class="en">Premium menu</span></b><span><span class="pt">Mini hambúrgueres e cachorros, salgados, fruta, waffles. Substitui a refeição.</span><span class="en">Mini burgers and hot dogs, savoury snacks, fruit, waffles. Replaces the meal.</span></span></span><span class="p"><span class="pt">desde</span><span class="en">from</span> 350€</span></label>
+          <label class="opt"><input type="radio" name="menu" value="healthy"><span class="ic">🥗</span><span class="t"><b><span class="pt">Mesa saudável</span><span class="en">Healthy table</span></b><span><span class="pt">Wraps integrais, húmus, saladas, ovos, fruta. Novo.</span><span class="en">Wholegrain wraps, hummus, salads, eggs, fruit. New.</span></span></span><span class="p q"><span class="pt">orçamento</span><span class="en">quoted</span></span></label>
+          <label class="opt"><input type="radio" name="menu" value="none"><span class="ic">🙅</span><span class="t"><b><span class="pt">Sem comida</span><span class="en">No food</span></b><span><span class="pt">Só decoração e animação.</span><span class="en">Decoration and entertainment only.</span></span></span><span class="p">0€</span></label>
+        </div>
+        <p class="hint" style="margin:14px 0 8px"><span class="pt">Para quantas pessoas?</span><span class="en">For how many people?</span></p>
+        <div class="seg" id="sizes"></div>
+        <div class="opts" style="margin-top:12px" id="foodextras">
+          <label class="opt"><input type="checkbox" name="fx" value="hotdogs"><span class="ic">🌭</span><span class="t"><b><span class="pt">Mais mini cachorros</span><span class="en">Extra mini hot dogs</span></b><span><span class="pt">Um por pessoa</span><span class="en">One per person</span></span></span><span class="p">+2,50€<small style="font:700 11px Nunito,sans-serif;color:var(--muted)">/<span class="pt">pessoa</span><span class="en">person</span></small></span></label>
+          <label class="opt"><input type="checkbox" name="fx" value="burgers"><span class="ic">🍔</span><span class="t"><b><span class="pt">Mais mini hambúrgueres</span><span class="en">Extra mini burgers</span></b><span><span class="pt">Um por pessoa</span><span class="en">One per person</span></span></span><span class="p">+3,50€<small style="font:700 11px Nunito,sans-serif;color:var(--muted)">/<span class="pt">pessoa</span><span class="en">person</span></small></span></label>
+          <label class="opt"><input type="checkbox" name="fx" value="cupcakes"><span class="ic">🧁</span><span class="t"><b><span class="pt">Mais cupcakes do tema</span><span class="en">Extra themed cupcakes</span></b><span><span class="pt">Um por pessoa</span><span class="en">One per person</span></span></span><span class="p">+4,50€<small style="font:700 11px Nunito,sans-serif;color:var(--muted)">/<span class="pt">pessoa</span><span class="en">person</span></small></span></label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="n">2</span><span class="pt">A decoração</span><span class="en">The decoration</span></h2>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="deco" value="none"><span class="ic">🙅</span><span class="t"><b><span class="pt">Sem decoração</span><span class="en">No decoration</span></b></span><span class="p">0€</span></label>
+          <label class="opt"><input type="radio" name="deco" value="simple" checked><span class="ic">🎈</span><span class="t"><b><span class="pt">Simples</span><span class="en">Simple</span></b><span><span class="pt">Um painel, grinalda de balões, nome, pódio para o bolo.</span><span class="en">One panel, balloon garland, name, cake podium.</span></span></span><span class="p">200€</span></label>
+          <label class="opt"><input type="radio" name="deco" value="medium"><span class="ic">🎈🎈</span><span class="t"><b><span class="pt">Média</span><span class="en">Medium</span></b><span><span class="pt">Dois painéis, três pódios, displays do tema, número em LED.</span><span class="en">Two panels, three podiums, theme displays, LED number.</span></span></span><span class="p">250€</span></label>
+          <label class="opt"><input type="radio" name="deco" value="full"><span class="ic">✨</span><span class="t"><b><span class="pt">Completa</span><span class="en">Complete</span></b><span><span class="pt">Três painéis, três pódios, balcão, displays, número grande.</span><span class="en">Three panels, three podiums, counter, displays, large number.</span></span></span><span class="p">350€</span></label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="n">3</span><span class="pt">A animação</span><span class="en">The entertainment</span></h2>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="x" value="jungle"><span class="ic">🌴</span><span class="t"><b><span class="pt">Insuflável Selva</span><span class="en">Jungle bouncy castle</span></b><span>4 x 4 m</span></span><span class="p">85€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="castle"><span class="ic">🏰</span><span class="t"><b><span class="pt">Insuflável Castelo</span><span class="en">Castle bouncy castle</span></b><span>6 x 4 m</span></span><span class="p">110€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="faces"><span class="ic">🎨</span><span class="t"><b><span class="pt">Pinturas faciais</span><span class="en">Face painting</span></b><span><span class="pt">2 horas</span><span class="en">2 hours</span></span></span><span class="p">80€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="popcorn"><span class="ic">🍿</span><span class="t"><b><span class="pt">Máquina de pipocas</span><span class="en">Popcorn machine</span></b><span><span class="pt">Com uma pessoa, 2 h + 1 de oferta</span><span class="en">With a person, 2 h + 1 on the house</span></span></span><span class="p">100€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="candy"><span class="ic">🍭</span><span class="t"><b><span class="pt">Máquina de algodão doce</span><span class="en">Candy floss machine</span></b><span><span class="pt">As duas máquinas juntas: 150€</span><span class="en">Both machines together: €150</span></span></span><span class="p">100€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="games"><span class="ic">🪢</span><span class="t"><b><span class="pt">Jogos tradicionais</span><span class="en">Traditional games</span></b><span><span class="pt">2 horas</span><span class="en">2 hours</span></span></span><span class="p">75€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="mascot"><span class="ic">🦁</span><span class="t"><b><span class="pt">Mascote</span><span class="en">Mascot</span></b><span><span class="pt">Uma personagem à escolha</span><span class="en">A character of your choice</span></span></span><span class="p q"><span class="pt">orçamento</span><span class="en">quoted</span></span></label>
+          <label class="opt"><input type="checkbox" name="x" value="icecream"><span class="ic">🍦</span><span class="t"><b><span class="pt">Carrinho de gelados</span><span class="en">Ice cream cart</span></b><span><span class="pt">Gelados à vontade</span><span class="en">Ice cream for all</span></span></span><span class="p q"><span class="pt">orçamento</span><span class="en">quoted</span></span></label>
+        </div>
+      </div>
+
+      <div class="card" id="sendcard">
+        <h2><span class="n">4</span><span class="pt">Envia e recebe o código</span><span class="en">Send it and get your code</span></h2>
+        <p class="hint"><span class="pt">O orçamento chega por email no mesmo dia. O código serve para falar da tua festa sem repetir nada.</span><span class="en">The quote arrives by email the same day. The code lets you talk about your party without repeating anything.</span></p>
+        <form id="form" class="opts" autocomplete="on">
+          <div class="row2">
+            <label class="f"><span class="pt">O teu nome</span><span class="en">Your name</span><input name="name" type="text" required data-ph-pt="Sofia" data-ph-en="Sofia"></label>
+            <label class="f"><span class="pt">O teu email</span><span class="en">Your email</span><input name="email" type="email" inputmode="email" autocomplete="email" required data-ph-pt="sofia@exemplo.pt" data-ph-en="sofia@example.com"></label>
+          </div>
+          <div class="row2">
+            <label class="f"><span class="pt">Data da festa</span><span class="en">Date of the party</span><input name="date" type="date"></label>
+            <label class="f"><span class="pt">Onde</span><span class="en">Where</span><input name="where" type="text" data-ph-pt="Portimão, Lagos, Albufeira..." data-ph-en="Portimão, Lagos, Albufeira..."></label>
+          </div>
+          <label class="f"><span class="pt">Mais alguma coisa</span><span class="en">Anything else</span><textarea name="notes" data-ph-pt="Um tema, alergias, um bolo, quantas crianças e quantos adultos..." data-ph-en="A theme, allergies, a cake, how many children and how many adults..."></textarea></label>
+          <button class="btn" type="submit" id="sendbtn"><span class="pt">Pedir este orçamento</span><span class="en">Request this quote</span></button>
+          <button class="btn quiet" type="button" id="copybtn"><span class="pt">Copiar o resumo</span><span class="en">Copy the summary</span></button>
+          <p class="tiny" id="note"></p>
+        </form>
+        <div class="done" id="done">
+          <div style="font-size:40px">🎉</div>
+          <b style="font:600 20px Fredoka,Nunito,sans-serif"><span class="pt">Recebido, obrigada!</span><span class="en">Got it, thank you!</span></b>
+          <div class="code" id="code"></div>
+          <p><span class="pt">Guarda o código. O orçamento chega ao teu email no mesmo dia, com um link para reservar a data.</span><span class="en">Keep the code. Your quote lands in your inbox the same day, with a link to hold the date.</span></p>
+          <button class="btn quiet" type="button" id="copybtn2"><span class="pt">Copiar o resumo com o código</span><span class="en">Copy the summary with the code</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="confetti" id="confetti"></div>
+
+<script>
+(function () {
+  "use strict";
+  var CONCEPT = false;   // true: never writes to Supabase, shows what it would send
+  var SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+  var QUOTE_SLUG = "pocpoc-quote";
+
+  /* ---------- PRICES. Marina's flyers, 25 Oct 2026. docs/price-list.md ---------- */
+  var MENUS = {
+    classic: { sizes: [[20, 250], [40, 350], [60, 450]] },
+    premium: { sizes: [[20, 350], [30, 450], [40, 550]] },
+    healthy: { sizes: [[20, null], [30, null], [40, null]] },
+    none:    { sizes: [] }
+  };
+  var FOOD_EXTRAS = { hotdogs: 2.5, burgers: 3.5, cupcakes: 4.5 };
+  var DECO = { none: 0, simple: 200, medium: 250, full: 350 };
+  var ANIM = { jungle: 85, castle: 110, faces: 80, popcorn: 100, candy: 100, games: 75 };
+  var BOTH_MACHINES = 150;
+  var QUOTED = { mascot: true, icecream: true };
+
+  var html = document.documentElement;
+  var $ = function (id) { return document.getElementById(id); };
+  var state = { menu: 'classic', sizeIdx: 0, fx: [], deco: 'simple', x: [] };
+  var T = {
+    classic: { pt: 'Menu Clássico', en: 'Classic menu' }, premium: { pt: 'Menu Premium', en: 'Premium menu' }, healthy: { pt: 'Mesa saudável', en: 'Healthy table' }, none: { pt: 'Sem comida', en: 'No food' },
+    hotdogs: { pt: 'Mini cachorros extra', en: 'Extra mini hot dogs' }, burgers: { pt: 'Mini hambúrgueres extra', en: 'Extra mini burgers' }, cupcakes: { pt: 'Cupcakes extra', en: 'Extra cupcakes' },
+    deco_none: { pt: 'Sem decoração', en: 'No decoration' }, deco_simple: { pt: 'Decoração Simples', en: 'Simple decoration' }, deco_medium: { pt: 'Decoração Média', en: 'Medium decoration' }, deco_full: { pt: 'Decoração Completa', en: 'Complete decoration' },
+    jungle: { pt: 'Insuflável Selva', en: 'Jungle castle' }, castle: { pt: 'Insuflável Castelo', en: 'Castle' }, faces: { pt: 'Pinturas faciais', en: 'Face painting' }, popcorn: { pt: 'Pipocas', en: 'Popcorn' }, candy: { pt: 'Algodão doce', en: 'Candy floss' }, both: { pt: 'Pipocas e algodão doce', en: 'Popcorn and candy floss' }, games: { pt: 'Jogos tradicionais', en: 'Traditional games' }, mascot: { pt: 'Mascote', en: 'Mascot' }, icecream: { pt: 'Carrinho de gelados', en: 'Ice cream cart' },
+    quoted: { pt: 'sob orçamento', en: 'quoted' }, people: { pt: 'pessoas', en: 'people' }, plus: { pt: '+ itens sob orçamento', en: '+ items to be quoted' }, person: { pt: 'pessoa', en: 'person' }
+  };
+  function t(k) { return (T[k] || {})[html.getAttribute('data-lang')] || k; }
+  function eur(n) { return (Math.round(n * 100) / 100).toLocaleString('pt-PT', { minimumFractionDigits: 0, maximumFractionDigits: 2 }); }
+  function people() { var m = MENUS[state.menu]; return m.sizes.length ? m.sizes[state.sizeIdx][0] : 0; }
+
+  function calc() {
+    var lines = [], total = 0, quoted = [];
+    var m = MENUS[state.menu];
+    if (m.sizes.length) {
+      var sz = m.sizes[state.sizeIdx];
+      if (sz[1] === null) { quoted.push(state.menu); lines.push([t(state.menu) + ' · ' + sz[0] + ' ' + t('people'), t('quoted')]); }
+      else { total += sz[1]; lines.push([t(state.menu) + ' · ' + sz[0] + ' ' + t('people'), eur(sz[1]) + '€']); }
+      state.fx.forEach(function (k) { var v = FOOD_EXTRAS[k] * sz[0]; total += v; lines.push([t(k) + ' · ' + sz[0] + ' × ' + eur(FOOD_EXTRAS[k]) + '€', eur(v) + '€']); });
+    }
+    if (DECO[state.deco]) { total += DECO[state.deco]; lines.push([t('deco_' + state.deco), eur(DECO[state.deco]) + '€']); }
+    var x = state.x.slice();
+    if (x.indexOf('popcorn') !== -1 && x.indexOf('candy') !== -1) { total += BOTH_MACHINES; lines.push([t('both'), eur(BOTH_MACHINES) + '€']); x = x.filter(function (k) { return k !== 'popcorn' && k !== 'candy'; }); }
+    x.forEach(function (k) {
+      if (ANIM[k]) { total += ANIM[k]; lines.push([t(k), eur(ANIM[k]) + '€']); }
+      else if (QUOTED[k]) { quoted.push(k); lines.push([t(k), t('quoted')]); }
+    });
+    return { total: total, lines: lines, quoted: quoted };
+  }
+
+  /* ---------- Sizes segment ---------- */
+  function renderSizes() {
+    var box = $('sizes'); box.innerHTML = '';
+    var m = MENUS[state.menu];
+    if (!m.sizes.length) { box.innerHTML = '<span class="hint">' + (html.getAttribute('data-lang') === 'pt' ? 'Sem menu, sem pessoas a contar.' : 'No menu, nothing to count.') + '</span>'; return; }
+    if (state.sizeIdx >= m.sizes.length) { state.sizeIdx = 0; }
+    m.sizes.forEach(function (sz, i) {
+      var l = document.createElement('label');
+      l.innerHTML = '<input type="radio" name="size" value="' + i + '"' + (i === state.sizeIdx ? ' checked' : '') + '><b>' + sz[0] + '</b><span>' + t('people') + '</span><i>' + (sz[1] === null ? t('quoted') : eur(sz[1]) + '€') + '</i>';
+      l.querySelector('input').addEventListener('change', function () { state.sizeIdx = i; render(); });
+      box.appendChild(l);
+    });
+  }
+
+  /* ---------- Scene ---------- */
+  var ICON = { classic: '🥐', premium: '🍔', healthy: '🥗', simple: '🎈', medium: '🎈', full: '✨', jungle: '🌴', castle: '🏰', faces: '🎨', popcorn: '🍿', candy: '🍭', games: '🪢', mascot: '🦁', icecream: '🍦' };
+  var shown = {};
+  function renderScene() {
+    var stage = $('stage'); var want = [];
+    if (state.menu !== 'none') { want.push({ key: 'menu', ic: ICON[state.menu], big: true, lbl: t(state.menu) }); }
+    if (state.deco !== 'none') { want.push({ key: 'deco', ic: ICON[state.deco], big: true, lbl: t('deco_' + state.deco) }); }
+    state.x.forEach(function (k) { want.push({ key: k, ic: ICON[k], lbl: t(k) }); });
+    stage.innerHTML = '';
+    want.forEach(function (w) {
+      var d = document.createElement('div'); d.className = 'item' + (w.big ? ' big' : ''); d.textContent = w.ic;
+      if (shown[w.key] === w.ic) { d.style.animation = 'none'; }
+      shown[w.key] = w.ic;
+      var l = document.createElement('span'); l.className = 'lbl'; l.textContent = w.lbl; d.appendChild(l);
+      stage.appendChild(d);
+    });
+    Object.keys(shown).forEach(function (k) { if (!want.some(function (w) { return w.key === k; })) { delete shown[k]; } });
+    var kids = $('kids'); var n = Math.min(people(), 24); var cur = kids.children.length;
+    if (cur !== n || kids.getAttribute('data-n') !== String(people())) {
+      kids.innerHTML = ''; kids.setAttribute('data-n', String(people()));
+      var faces = ['🧒', '👧', '👦'];
+      for (var j = 0; j < n; j++) { var s = document.createElement('span'); s.textContent = faces[j % 3]; s.style.animationDelay = (j * 25) + 'ms'; kids.appendChild(s); }
+      if (people() > 24) { var m = document.createElement('span'); m.className = 'more'; m.textContent = '+' + (people() - 24); kids.appendChild(m); }
+    }
+  }
+  (function arch() {
+    var cols = ['#F7B6D2', '#E94B9A', '#B161FE', '#FFFFFF', '#F7B6D2', '#D9893A', '#E94B9A', '#B161FE', '#FFFFFF', '#F7B6D2', '#E94B9A'];
+    cols.forEach(function (c, i) { var b = document.createElement('i'); b.style.background = c; b.style.transform = 'translateY(' + Math.abs(i - 5) * 6 + 'px)'; $('arch').appendChild(b); });
+  })();
+
+  /* ---------- Price with a counting animation ---------- */
+  var shownTotal = 0, raf = null;
+  function renderPrice() {
+    var c = calc();
+    var target = c.total, from = shownTotal, start = performance.now();
+    if (raf) { cancelAnimationFrame(raf); }
+    (function tick(now) {
+      var p = Math.min(1, (now - start) / 450); var v = from + (target - from) * (1 - Math.pow(1 - p, 3));
+      $('total').textContent = eur(p < 1 ? Math.round(v) : target); shownTotal = v;
+      if (p < 1) { raf = requestAnimationFrame(tick); } else { shownTotal = target; }
+    })(start);
+    $('totalnote').textContent = c.quoted.length ? t('plus') : '';
+    $('peoplenote').textContent = people() ? people() + ' ' + t('people') : '';
+    $('lines').innerHTML = c.lines.map(function (l) { return '<div><span>' + l[0] + '</span><b>' + l[1] + '</b></div>'; }).join('');
+  }
+  function render() { renderSizes(); renderScene(); renderPrice(); }
+
+  /* ---------- Controls ---------- */
+  document.querySelectorAll('input[name=menu]').forEach(function (r) { r.addEventListener('change', function () { state.menu = this.value; render(); }); });
+  document.querySelectorAll('input[name=fx]').forEach(function (c) { c.addEventListener('change', function () { state.fx = Array.prototype.map.call(document.querySelectorAll('input[name=fx]:checked'), function (e) { return e.value; }); render(); }); });
+  document.querySelectorAll('input[name=deco]').forEach(function (r) { r.addEventListener('change', function () { state.deco = this.value; render(); }); });
+  document.querySelectorAll('input[name=x]').forEach(function (c) { c.addEventListener('change', function () { state.x = Array.prototype.map.call(document.querySelectorAll('input[name=x]:checked'), function (e) { return e.value; }); render(); }); });
+
+  /* ---------- Language ---------- */
+  function setLang(l) {
+    l = l === 'en' ? 'en' : 'pt';
+    html.setAttribute('data-lang', l); html.setAttribute('lang', l === 'pt' ? 'pt-PT' : 'en');
+    document.title = l === 'pt' ? 'Monta a tua festa · PocPoc' : 'Build your party · PocPoc';
+    document.querySelectorAll('[data-ph-en]').forEach(function (el) { el.placeholder = el.getAttribute('data-ph-' + l) || ''; });
+    try { localStorage.setItem('pocpoc-lang', l); } catch (e) {}
+    shown = {}; render();
+  }
+  var saved = null; try { saved = localStorage.getItem('pocpoc-lang'); } catch (e) {}
+  var guess = (navigator.language || '').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
+  setLang(saved || guess);
+  document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-set')); }); });
+
+  /* ---------- Summary, code, send ---------- */
+  function makeCode() { var a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s = 'POC-'; for (var i = 0; i < 4; i++) { s += a[Math.floor(Math.random() * a.length)]; } return s; }
+  var code = null;
+  function summary(withCode) {
+    var c = calc(), pt = html.getAttribute('data-lang') === 'pt', f = new FormData($('form'));
+    var out = [pt ? 'A minha festa PocPoc' : 'My PocPoc party'];
+    if (withCode && code) { out.push((pt ? 'Código: ' : 'Code: ') + code); }
+    out.push('');
+    c.lines.forEach(function (l) { out.push(l[0] + ': ' + l[1]); });
+    out.push((pt ? 'Total: ' : 'Total: ') + eur(c.total) + '€' + (c.quoted.length ? ' ' + t('plus') : ''));
+    if (f.get('date')) { out.push((pt ? 'Data: ' : 'Date: ') + f.get('date')); }
+    if (f.get('where')) { out.push((pt ? 'Onde: ' : 'Where: ') + f.get('where')); }
+    if ((f.get('notes') || '').trim()) { out.push('', f.get('notes').trim()); }
+    return out.join('\n');
+  }
+  function copy(text) {
+    var pt = html.getAttribute('data-lang') === 'pt';
+    var ok = function () { $('note').textContent = pt ? 'Copiado.' : 'Copied.'; };
+    if (navigator.clipboard) { navigator.clipboard.writeText(text).then(ok, function () { prompt('', text); }); } else { prompt('', text); }
+  }
+  $('copybtn').addEventListener('click', function () { copy(summary(false)); });
+  $('copybtn2').addEventListener('click', function () { copy(summary(true)); });
+
+  function payload() {
+    var c = calc(), f = new FormData($('form')), pt = html.getAttribute('data-lang') === 'pt';
+    var answers = {
+      code:    { n: 0, question: 'Code', answer: code, type: 'text' },
+      name:    { n: 1, question: 'Name', answer: (f.get('name') || '').trim(), type: 'text' },
+      email:   { n: 2, question: 'Email', answer: (f.get('email') || '').trim(), type: 'text' },
+      date:    { n: 4, question: 'Date', answer: f.get('date') || '', type: 'text' },
+      menu:    { n: 5, question: 'Menu', answer: state.menu, type: 'one' },
+      people:  { n: 6, question: 'People', answer: people(), type: 'number' },
+      fx:      { n: 7, question: 'Food extras', answer: state.fx, type: 'many' },
+      deco:    { n: 8, question: 'Decoration', answer: state.deco, type: 'one' },
+      anim:    { n: 9, question: 'Entertainment', answer: state.x, type: 'many' },
+      where:   { n: 10, question: 'Where', answer: (f.get('where') || '').trim(), type: 'text' },
+      notes:   { n: 11, question: 'Notes', answer: (f.get('notes') || '').trim(), type: 'text' },
+      total:   { n: 12, question: 'List total', answer: c.total, type: 'number', unit: 'EUR' },
+      quoted:  { n: 13, question: 'Items to be quoted', answer: c.quoted, type: 'many' },
+      lang:    { n: 14, question: 'Language', answer: pt ? 'pt' : 'en', type: 'one' },
+      builder: { n: 15, question: 'Source page', answer: 'monta', type: 'one' }
+    };
+    return { prospect_slug: QUOTE_SLUG, prospect_name: answers.name.answer.slice(0, 60), business: 'PocPoc quote request · ' + code, properties_target: null, answers: answers, worst_hour: summary(true).slice(0, 2000), source: 'web' };
+  }
+  function confetti() {
+    var box = $('confetti'), cols = ['#E94B9A', '#B161FE', '#D9893A', '#F7B6D2', '#7B46C4'];
+    for (var i = 0; i < 70; i++) { var p = document.createElement('i'); p.style.left = Math.random() * 100 + 'vw'; p.style.background = cols[i % cols.length]; p.style.animationDelay = (Math.random() * .6) + 's'; p.style.animationDuration = (1.8 + Math.random() * 1.2) + 's'; box.appendChild(p); }
+    setTimeout(function () { box.innerHTML = ''; }, 3600);
+  }
+  $('form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var pt = html.getAttribute('data-lang') === 'pt';
+    code = makeCode();
+    var p = payload();
+    $('note').classList.remove('bad');
+    function finish() { $('form').hidden = true; $('code').textContent = code; $('done').classList.add('show'); confetti(); }
+    if (CONCEPT) { $('note').textContent = 'Concept: ' + JSON.stringify(p.answers); finish(); return; }
+    $('sendbtn').disabled = true; $('note').textContent = pt ? 'Um momento.' : 'One moment.';
+    fetch(SUPABASE_URL + '/rest/v1/intake_responses', { method: 'POST', headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' }, body: JSON.stringify(p) })
+      .then(function (r) { if (!r.ok) { throw new Error('status ' + r.status); } $('note').textContent = ''; finish(); })
+      .catch(function () { $('sendbtn').disabled = false; $('note').classList.add('bad'); $('note').textContent = pt ? 'Não foi. Tenta outra vez, ou copia o resumo e envia para pocpocalgarve23@gmail.com.' : 'That did not go through. Try again, or copy the summary and email pocpocalgarve23@gmail.com.'; });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
