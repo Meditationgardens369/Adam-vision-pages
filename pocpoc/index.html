@@ -61,6 +61,57 @@
   html.concept .build-note { display: block; }
   html.concept .build-note b { color: #F7B6D2; }
 
+
+  /* Depth: drifting balloons behind the hero, layered photo cards */
+  .floaters { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+  .floaters i { position: absolute; bottom: -80px; width: 46px; height: 56px; border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%; opacity: .55; animation: drift 14s linear infinite; filter: blur(.3px); }
+  .floaters i::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 40px; background: rgba(74,44,31,.18); }
+  @keyframes drift { 0% { transform: translateY(0) rotate(-4deg); opacity: 0; } 10% { opacity: .55; } 100% { transform: translateY(-120vh) rotate(6deg); opacity: 0; } }
+  .trust { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 22px; font-size: 13.5px; color: var(--muted); }
+  .trust span { display: inline-flex; align-items: center; gap: 7px; }
+  .trust b { color: var(--ink); font-weight: 800; }
+  .trust .star { color: var(--lion); letter-spacing: -1px; }
+
+  .occ { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  @media (max-width: 960px) { .occ { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 600px) { .occ { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+  .occ a { position: relative; display: block; aspect-ratio: 3 / 4; border-radius: 22px; overflow: hidden; text-decoration: none; color: #fff;
+    box-shadow: 0 18px 36px rgba(74,44,31,.16), 0 2px 6px rgba(74,44,31,.08); transform: translateZ(0); transition: transform .25s ease, box-shadow .25s ease; border: 4px solid #fff; }
+  .occ a:hover { transform: translateY(-6px) rotate(-.6deg); box-shadow: 0 30px 50px rgba(74,44,31,.22); }
+  .occ a:nth-child(even):hover { transform: translateY(-6px) rotate(.6deg); }
+  .occ img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+  .occ a:hover img { transform: scale(1.06); }
+  .occ .sh { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(74,44,31,0) 35%, rgba(74,44,31,.78) 100%); }
+  .occ .t { position: absolute; left: 14px; right: 14px; bottom: 14px; }
+  .occ .t b { display: block; font: 600 clamp(17px, 2vw, 22px)/1.1 Fredoka, Nunito, sans-serif; text-shadow: 0 2px 8px rgba(0,0,0,.35); }
+  .occ .t span { display: block; font-size: 12.5px; opacity: .92; margin-top: 4px; }
+  .occ .go { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.92); color: var(--pink); display: grid; place-items: center; font: 800 18px Nunito, sans-serif; box-shadow: 0 4px 12px rgba(74,44,31,.2); }
+
+  .svc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 860px) { .svc { grid-template-columns: repeat(2, 1fr); } }
+  .svc article { background: var(--paper); border-radius: 24px; overflow: hidden; border: 1.5px solid var(--line); box-shadow: 0 14px 30px rgba(74,44,31,.10); display: flex; flex-direction: column; }
+  .svc figure { margin: 0; aspect-ratio: 4 / 3; overflow: hidden; position: relative; }
+  .svc figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .svc figure b { position: absolute; left: 12px; bottom: 10px; background: rgba(255,255,255,.94); color: var(--pink-deep); font: 700 12px Fredoka, Nunito, sans-serif; letter-spacing: .1em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; }
+  .svc .body { padding: 16px 18px 18px; }
+  .svc h3 { font-size: 19px; margin: 0 0 6px; }
+  .svc p { font-size: 14px; color: var(--muted); margin: 0 0 8px; }
+  .svc .from { font: 700 14px Nunito, sans-serif; color: var(--pink); }
+
+  .reviews { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 16px; }
+  @media (max-width: 860px) { .reviews { grid-template-columns: 1fr; } }
+  .rv { background: var(--paper); border: 1.5px solid var(--line); border-radius: 22px; padding: 22px; position: relative; box-shadow: 0 12px 26px rgba(74,44,31,.08); }
+  .rv .stars { color: var(--lion); font-size: 18px; letter-spacing: 1px; }
+  .rv p { font: 500 16px/1.5 Nunito, sans-serif; margin: 10px 0 12px; }
+  .rv .who { font-size: 13px; color: var(--muted); }
+  .rv .ex { position: absolute; top: 12px; right: 12px; font: 800 10px Nunito, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #8A5215; background: var(--lion-soft); border: 1px dashed var(--lion); padding: 3px 8px; border-radius: 6px; }
+  .video { position: relative; border-radius: 22px; overflow: hidden; min-height: 260px; background: var(--ink); color: #fff; display: grid; place-items: center; text-align: center; box-shadow: 0 18px 36px rgba(74,44,31,.18); }
+  .video img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+  .video .play { position: relative; width: 70px; height: 70px; border-radius: 50%; background: var(--pink); display: grid; place-items: center; box-shadow: 0 10px 30px rgba(233,75,154,.5); margin: 0 auto 12px; }
+  .video .play::after { content: ""; border-left: 22px solid #fff; border-top: 13px solid transparent; border-bottom: 13px solid transparent; margin-left: 5px; }
+  .video .cap { position: relative; padding: 0 20px; font: 600 15px Nunito, sans-serif; }
+  .video .cap small { display: block; font-weight: 400; opacity: .85; margin-top: 4px; font-size: 13px; }
+
   /* Top bar */
   .top { position: sticky; top: 0; z-index: 20; background: rgba(255,243,247,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 68px; }
@@ -213,7 +264,8 @@
   <div class="wrap">
     <a class="logo" href="#"><img src="photos/logo-from-instagram.png" alt=""><span><b>PocPoc</b><small>Momentos doces</small></span></a>
     <nav>
-      <a class="navlink" href="#menus"><span class="pt">Mesas e pacotes</span><span class="en">Tables and packages</span></a>
+      <a class="navlink" href="#occ"><span class="pt">A tua festa</span><span class="en">Your party</span></a>
+      <a class="navlink" href="#menus"><span class="pt">Preços</span><span class="en">Prices</span></a>
       <a class="navlink" href="monta.html"><span class="pt">Monta a tua festa</span><span class="en">Build your party</span></a>
       <a class="navlink" href="#words"><span class="pt">O que dizem</span><span class="en">What people say</span></a>
       <div class="lang" role="group" aria-label="Language">
@@ -226,6 +278,7 @@
 </header>
 
 <section class="hero">
+  <div class="floaters" aria-hidden="true"><i style="left:6%;background:#F7B6D2;animation-delay:-2s"></i><i style="left:18%;background:#B161FE;animation-delay:-9s;width:34px;height:42px"></i><i style="left:31%;background:#FFD66B;animation-delay:-5s"></i><i style="left:62%;background:#E94B9A;animation-delay:-12s;width:38px;height:46px"></i><i style="left:78%;background:#CDEBF7;animation-delay:-7s"></i><i style="left:91%;background:#B161FE;animation-delay:-3s;width:30px;height:38px"></i></div>
   <div class="wrap">
     <div class="build-note"><b>Concept.</b> <span class="pt">Todos os preços vêm dos flyers da Marina. A mesa saudável ainda não tem preço. O logótipo é um recorte do Instagram, pedir-lhe o ficheiro. O português ainda não foi revisto por um falante nativo.</span><span class="en">Every price comes from Marina's flyers. The healthy table has no price yet. The logo is a crop from Instagram, ask her for the file. The Portuguese has not yet been checked by a native speaker.</span></div>
     <div class="hero-grid">
@@ -240,8 +293,14 @@
           <span class="en">Marina brings the food, the decoration, the bouncy castle, the face painting and the popcorn to your garden, anywhere in the Algarve. Homemade, fresh that morning, and as healthy as you want it. Children's parties, birthdays, picnics, weddings and events. Send a date and a number of guests, and you have a quote in your inbox the same day.</span>
         </p>
         <div class="btns">
-          <a class="btn primary" href="#quote"><span class="pt">Pedir orçamento</span><span class="en">Get a quote</span></a>
-          <a class="btn ghost" href="#menus"><span class="pt">Ver mesas e pacotes</span><span class="en">See tables and packages</span></a>
+          <a class="btn primary" href="#occ"><span class="pt">Escolhe a tua festa</span><span class="en">Choose your party</span></a>
+          <a class="btn ghost" href="monta.html"><span class="pt">Monta e vê o preço</span><span class="en">Build it and see the price</span></a>
+        </div>
+        <div class="trust">
+          <span><span class="star">★★★★★</span> <span class="pt">avaliações Google <b>em breve</b></span><span class="en">Google reviews <b>coming soon</b></span></span>
+          <span>📸 <b>726</b> <span class="pt">festas no Instagram</span><span class="en">parties on Instagram</span></span>
+          <span>👥 <b>2</b> <span class="pt">monitores em todas as festas</span><span class="en">animators at every party</span></span>
+          <span>🗺️ <span class="pt">todo o Algarve</span><span class="en">all of the Algarve</span></span>
         </div>
       </div>
       <div class="hero-photo">
@@ -251,23 +310,53 @@
     </div>
   </div>
 
-  <div class="brings">
-    <div class="wrap">
-      <div class="bring"><div class="ic">🥗</div><b><span class="pt">Catering</span><span class="en">Catering</span></b></div>
-      <div class="bring"><div class="ic">🎈</div><b><span class="pt">Decoração</span><span class="en">Decoration</span></b></div>
-      <div class="bring"><div class="ic">🏰</div><b><span class="pt">Insufláveis</span><span class="en">Bouncy castles</span></b></div>
-      <div class="bring"><div class="ic">🎨</div><b><span class="pt">Pinturas faciais</span><span class="en">Face painting</span></b></div>
-      <div class="bring"><div class="ic">🦁</div><b><span class="pt">Mascotes</span><span class="en">Mascots</span></b></div>
-      <div class="bring"><div class="ic">🍿</div><b><span class="pt">Pipocas e algodão doce</span><span class="en">Popcorn and candy floss</span></b></div>
-      <div class="bring"><div class="ic">🍦</div><b><span class="pt">Carrinho de gelados</span><span class="en">Ice cream cart</span></b></div>
-      <div class="bring"><div class="ic">🧺</div><b><span class="pt">Piqueniques</span><span class="en">Picnics</span></b></div>
-      <div class="bring"><div class="ic">💍</div><b><span class="pt">Casamentos e eventos</span><span class="en">Weddings and events</span></b></div>
+</section>
+
+<section id="occ" style="padding-top:56px">
+  <div class="wrap">
+    <span class="eyebrow pink"><span class="pt">Começa aqui</span><span class="en">Start here</span></span>
+    <h2><span class="pt">O que estás a <em>organizar?</em></span><span class="en">What are you <em>planning?</em></span></h2>
+    <p class="lede"><span class="pt">Toca na tua festa. Levamos-te direto ao que costuma ser pedido, com os preços da Marina já à vista.</span><span class="en">Tap your party. We take you straight to what is usually asked for, with Marina's prices already in view.</span></p>
+    <div class="occ">
+      <a href="monta.html?f=kids"><img src="photos/t-castle.jpg" alt="" loading="lazy"><span class="sh"></span><span class="go">→</span><span class="t"><b><span class="pt">Festa de crianças</span><span class="en">Children's party</span></b><span><span class="pt">Menu, decoração, castelo. Desde 450€.</span><span class="en">Menu, decoration, castle. From €450.</span></span></span></a>
+      <a href="monta.html?f=baby"><img src="photos/t-batizado.jpg" alt="" loading="lazy"><span class="sh"></span><span class="go">→</span><span class="t"><b><span class="pt">Batizado e chá de bebé</span><span class="en">Christening and baby shower</span></b><span><span class="pt">Decoração desde 200€, mesa à parte.</span><span class="en">Decoration from €200, table separate.</span></span></span></a>
+      <a href="monta.html?f=adult"><img src="photos/t-hello40.jpg" alt="" loading="lazy"><span class="sh"></span><span class="go">→</span><span class="t"><b><span class="pt">Aniversário de adultos</span><span class="en">Adult birthday</span></b><span><span class="pt">Decoração desde 200€, Menu Premium desde 350€.</span><span class="en">Decoration from €200, Premium menu from €350.</span></span></span></a>
+      <a href="monta.html?f=wedding"><img src="photos/t-wedding.jpg" alt="" loading="lazy"><span class="sh"></span><span class="go">→</span><span class="t"><b><span class="pt">Casamento</span><span class="en">Wedding</span></b><span><span class="pt">Mesas, flores, doces. Sob orçamento.</span><span class="en">Tables, flowers, sweets. Quoted.</span></span></span></a>
+      <a href="monta.html?f=event"><img src="photos/t-burgers.jpg" alt="" loading="lazy"><span class="sh"></span><span class="go">→</span><span class="t"><b><span class="pt">Escola ou empresa</span><span class="en">School or company</span></b><span><span class="pt">Menu Clássico desde 250€, até 60 pessoas.</span><span class="en">Classic menu from €250, up to 60 people.</span></span></span></a>
     </div>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+    <span class="eyebrow"><span class="pt">O que a PocPoc leva</span><span class="en">What PocPoc brings</span></span>
+    <h2><span class="pt">Quatro coisas, <em>feitas pelas mesmas duas pessoas.</em></span><span class="en">Four things, <em>done by the same two people.</em></span></h2>
+    <div class="svc">
+      <article><figure><img src="photos/t-minnie.jpg" alt="" loading="lazy"><b>Catering</b></figure><div class="body"><h3><span class="pt">A mesa de que as crianças falam</span><span class="en">The table the children talk about</span></h3><p><span class="pt">Mini pizzas, salgados, waffles, fruta, tudo feito nessa manhã e posto à altura deles. Ou a mesa saudável, se a casa for assim.</span><span class="en">Mini pizzas, savoury bites, waffles, fruit, all made that morning and set at their height. Or the healthy table, if that is how your house eats.</span></p><div class="from"><span class="pt">desde 250€ para 20 pessoas</span><span class="en">from €250 for 20 people</span></div></div></article>
+      <article><figure><img src="photos/t-kpop.jpg" alt="" loading="lazy"><b><span class="pt">Decoração</span><span class="en">Decoration</span></b></figure><div class="body"><h3><span class="pt">O cenário onde se tiram as fotos</span><span class="en">The backdrop the photos get taken at</span></h3><p><span class="pt">Painéis, grinalda de balões, o nome em grande, pódios para o bolo. No tema que a criança escolheu, do Bluey ao K-Pop.</span><span class="en">Panels, a balloon garland, the name in big letters, podiums for the cake. In the theme the child chose, from Bluey to K-Pop.</span></p><div class="from"><span class="pt">desde 200€</span><span class="en">from €200</span></div></div></article>
+      <article><figure><img src="photos/t-castle.jpg" alt="" loading="lazy"><b><span class="pt">Animação</span><span class="en">Entertainment</span></b></figure><div class="body"><h3><span class="pt">Duas horas em que ninguém se chateia</span><span class="en">Two hours where nobody gets bored</span></h3><p><span class="pt">Castelo ou selva insuflável, pinturas faciais, jogos tradicionais, uma mascote. Sempre com alguém a tomar conta.</span><span class="en">Castle or jungle bouncy castle, face painting, traditional games, a mascot. Always with someone watching over it.</span></p><div class="from"><span class="pt">desde 75€</span><span class="en">from €75</span></div></div></article>
+      <article><figure><img src="photos/t-candyfloss.jpg" alt="" loading="lazy"><b><span class="pt">Doces</span><span class="en">Sweets</span></b></figure><div class="body"><h3><span class="pt">O momento do algodão doce</span><span class="en">The candy floss moment</span></h3><p><span class="pt">Pipocas e algodão doce feitos à frente deles, com a Marina na máquina. Carrinho de gelados no verão.</span><span class="en">Popcorn and candy floss made in front of them, Marina at the machine. Ice cream cart in summer.</span></p><div class="from"><span class="pt">100€ por máquina, 150€ as duas</span><span class="en">€100 a machine, €150 for both</span></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="words">
+  <div class="wrap">
+    <span class="eyebrow lion"><span class="pt">A prova</span><span class="en">The proof</span></span>
+    <h2><span class="pt">As famílias <em>voltam.</em></span><span class="en">Families <em>come back.</em></span></h2>
+    <p class="lede"><span class="pt">As avaliações Google chegam em novembro, quando a página abrir. Até lá, as palavras dos convidados da última festa, e um vídeo de uma mãe.</span><span class="en">Google reviews arrive in November, when the profile opens. Until then, the words of guests from the last party, and a video from a mum.</span></p>
+    <div class="reviews">
+      <div class="video"><img src="photos/t-anya.jpg" alt=""><div><div class="play"></div><div class="cap"><span class="pt">Vídeo da mãe da Anya</span><span class="en">Video from Anya's mum</span><small><span class="pt">30 segundos, em breve</span><span class="en">30 seconds, coming soon</span></small></div></div></div>
+      <div class="rv"><span class="ex"><span class="pt">exemplo</span><span class="en">example</span></span><div class="stars">★★★★★</div><p><span class="pt">"As crianças comeram tudo, e eu não entrei na cozinha o dia inteiro. A Marina e o Fábio trataram de tudo."</span><span class="en">"The children ate everything, and I did not set foot in the kitchen all day. Marina and Fábio handled it all."</span></p><div class="who"><span class="pt">Uma mãe, festa de 6 anos, Lagos</span><span class="en">A mum, 6th birthday, Lagos</span></div></div>
+      <div class="rv"><span class="ex"><span class="pt">exemplo</span><span class="en">example</span></span><div class="stars">★★★★★</div><p><span class="pt">"O cenário ficou melhor do que a foto que lhe mandei. Toda a gente tirou fotos lá."</span><span class="en">"The backdrop came out better than the photo I sent her. Everyone took their pictures there."</span></p><div class="who"><span class="pt">Um pai, batizado, Portimão</span><span class="en">A dad, christening, Portimão</span></div></div>
+    </div>
+    <div class="quotes" id="quotes" style="margin-top:16px"></div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
+    <span class="eyebrow"><span class="pt">Como trabalhamos</span><span class="en">How we work</span></span>
     <div class="promises">
       <div class="promise"><div class="ic">🌿</div><div><b><span class="pt">Feito nessa manhã</span><span class="en">Made that morning</span></b><span><span class="pt">Fresco, à mão, em pequenas quantidades. Nada de congelador.</span><span class="en">Fresh, by hand, in small batches. Nothing from a freezer.</span></span></div></div>
       <div class="promise"><div class="ic">🥕</div><div><b><span class="pt">Tão saudável quanto quiser</span><span class="en">As healthy as you want it</span></b><span><span class="pt">Comida de festa portuguesa, ou húmus, wraps integrais, ovos e fruta. As crianças comem mesmo.</span><span class="en">Portuguese party food, or hummus, wholegrain wraps, eggs and fruit. The children actually eat it.</span></span></div></div>
@@ -291,14 +380,7 @@
   </div>
 </section>
 
-<section id="words">
-  <div class="wrap">
-    <span class="eyebrow lion"><span class="pt">Dos convidados</span><span class="en">From the guests</span></span>
-    <h2><span class="pt">O que disseram, <em>de boca cheia.</em></span><span class="en">What people said, <em>with their mouths full.</em></span></h2>
-    <p class="lede"><span class="pt">Palavras deixadas por convidados numa festa de anos no Algarve, outubro de 2026. Só o primeiro nome, com autorização.</span><span class="en">Words left by guests at a birthday party in the Algarve, October 2026. First names only, with their permission.</span></p>
-    <div class="quotes" id="quotes"></div>
-  </div>
-</section>
+
 
 <svg class="wave" viewBox="0 0 1200 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 13 Q 50 0 100 13 T 200 13 T 300 13 T 400 13 T 500 13 T 600 13 T 700 13 T 800 13 T 900 13 T 1000 13 T 1100 13 T 1200 13 V26 H0 Z" fill="#FFFFFF"/></svg>
 
@@ -555,7 +637,7 @@
     if (!TESTIMONIALS.length) {
       for (var i = 0; i < 3; i++) {
         var e = document.createElement('div'); e.className = 'q empty';
-        e.innerHTML = '<p>' + (pt ? 'As palavras de um convidado da festa da Anya ficam aqui, assim que chegarem.' : 'A guest’s words from Anya’s party go here, as soon as they land.') + '</p>';
+        e.innerHTML = '<p>' + (pt ? 'Palavras de um convidado da festa da Anya, assim que chegarem.' : 'A guest’s words from Anya’s party go here, as soon as they land.') + '</p>';
         box.appendChild(e);
       }
       return;

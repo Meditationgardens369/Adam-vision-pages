@@ -252,6 +252,23 @@
   var html = document.documentElement;
   var $ = function (id) { return document.getElementById(id); };
   var state = { menu: 'classic', sizeIdx: 0, fx: [], deco: 'simple', x: [] };
+  /* Presets from the occasion cards on the site: monta.html?f=kids|baby|adult|wedding|event */
+  var PRESET = {
+    kids:    { menu: 'classic', sizeIdx: 0, deco: 'simple', x: ['castle'] },
+    baby:    { menu: 'classic', sizeIdx: 0, deco: 'medium', x: [] },
+    adult:   { menu: 'premium', sizeIdx: 0, deco: 'simple', x: [] },
+    wedding: { menu: 'premium', sizeIdx: 2, deco: 'full', x: [] },
+    event:   { menu: 'classic', sizeIdx: 1, deco: 'none', x: [] }
+  };
+  try {
+    var f = new URLSearchParams(location.search).get('f');
+    if (f && PRESET[f]) {
+      var pr = PRESET[f]; state.menu = pr.menu; state.sizeIdx = pr.sizeIdx; state.deco = pr.deco; state.x = pr.x.slice();
+      var mi = document.querySelector('input[name=menu][value="' + pr.menu + '"]'); if (mi) { mi.checked = true; }
+      var di = document.querySelector('input[name=deco][value="' + pr.deco + '"]'); if (di) { di.checked = true; }
+      pr.x.forEach(function (k) { var xi = document.querySelector('input[name=x][value="' + k + '"]'); if (xi) { xi.checked = true; } });
+    }
+  } catch (e) {}
   var T = {
     classic: { pt: 'Menu Clássico', en: 'Classic menu' }, premium: { pt: 'Menu Premium', en: 'Premium menu' }, healthy: { pt: 'Mesa saudável', en: 'Healthy table' }, none: { pt: 'Sem comida', en: 'No food' },
     hotdogs: { pt: 'Mini cachorros extra', en: 'Extra mini hot dogs' }, burgers: { pt: 'Mini hambúrgueres extra', en: 'Extra mini burgers' }, cupcakes: { pt: 'Cupcakes extra', en: 'Extra cupcakes' },
