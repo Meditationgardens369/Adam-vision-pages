@@ -334,15 +334,23 @@
     for (var i = 0; i < 80; i++) { var p = document.createElement('i'); p.style.left = Math.random() * 100 + 'vw'; p.style.background = cols[i % cols.length]; p.style.animationDelay = (Math.random() * .6) + 's'; p.style.animationDuration = (1.8 + Math.random() * 1.2) + 's'; box.appendChild(p); }
     setTimeout(function () { box.innerHTML = ''; }, 3600);
   }
+  /* The bucket accepts plain video types only, so the codec tag the recorder adds
+     (video/webm;codecs=vp9,opus) is stripped. If the upload still fails, the words are sent
+     anyway and the thank-you says the video did not make it. */
+  var videoFailed = false;
   function uploadVideo(code) {
+    videoFailed = false;
     if (!state.video) { return Promise.resolve(null); }
-    var ext = (state.videoType || '').indexOf('mp4') !== -1 ? 'mp4' : 'webm';
+    var base = (state.video.type || state.videoType || 'video/webm').split(';')[0].trim() || 'video/webm';
+    var ext = base.indexOf('mp4') !== -1 ? 'mp4' : (base.indexOf('quicktime') !== -1 ? 'mov' : 'webm');
     var path = 'pocpoc/' + code + '.' + ext;
+    var plain = new Blob([state.video], { type: base });
     return fetch(SUPABASE_URL + '/storage/v1/object/' + BUCKET + '/' + path, {
       method: 'POST',
-      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': state.video.type || 'video/webm', 'x-upsert': 'false' },
-      body: state.video
-    }).then(function (r) { if (!r.ok) { throw new Error('upload ' + r.status); } return path; });
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': base, 'x-upsert': 'false' },
+      body: plain
+    }).then(function (r) { if (!r.ok) { throw new Error('upload ' + r.status); } return path; })
+      .catch(function () { videoFailed = true; return ''; });
   }
   $('form').addEventListener('submit', function (ev) {
     ev.preventDefault();
@@ -365,6 +373,7 @@
         reviewlink: { n: 9, question: 'Send the Google review link', answer: !!f.get('reviewlink'), type: 'one' },
         video:      { n: 10, question: 'Video path in bucket ' + BUCKET, answer: path || '', type: 'text' },
         videoSeconds: { n: 11, question: 'Video length', answer: state.video ? state.seconds : 0, type: 'number', unit: 's' },
+        videoFailed: { n: 13, question: 'Video upload failed', answer: !!(state.video && videoFailed), type: 'one' },
         lang:       { n: 12, question: 'Language', answer: pt() ? 'pt' : 'en', type: 'one' }
       };
       return fetch(SUPABASE_URL + '/rest/v1/intake_responses', {
@@ -373,7 +382,9 @@
       }).then(function (r) { if (!r.ok) { throw new Error('status ' + r.status); } });
     }).then(function () {
       $('doname').textContent = name; $('doname2').textContent = name;
-      $('donemsg').textContent = state.video ? (pt() ? 'O teu vídeo e as tuas palavras chegaram à Marina.' : 'Your video and your words have reached Marina.') : (pt() ? 'As tuas palavras chegaram à Marina.' : 'Your words have reached Marina.');
+      $('donemsg').textContent = state.video && !videoFailed ? (pt() ? 'O teu vídeo e as tuas palavras chegaram à Marina.' : 'Your video and your words have reached Marina.')
+        : state.video && videoFailed ? (pt() ? 'As tuas palavras chegaram à Marina. O vídeo não conseguiu subir, se puderes manda-o para pocpocalgarve23@gmail.com.' : 'Your words have reached Marina. The video did not make it up, if you can, send it to pocpocalgarve23@gmail.com.')
+        : (pt() ? 'As tuas palavras chegaram à Marina.' : 'Your words have reached Marina.');
       if (GOOGLE_REVIEWS) { $('gbtn').href = GOOGLE_REVIEWS; $('gbtn').hidden = false; }
       go(5); confetti();
     }).catch(function () {
