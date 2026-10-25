@@ -1,0 +1,75 @@
+/* PocPoc's own look for her questions page, in her brand colours: the blush pink of her
+   logo circle, the lion's brown and mane, the purple of her balloons. Loaded after
+   intake.css, so every other prospect page is untouched. Light only. */
+
+:root:root:root {
+  --limestone: #FFF3F7;
+  --card: #FFFFFF;
+  --card-2: #FBDCE7;
+  --basalt: #4A2C1F;
+  --ink: #4A2C1F;
+  --muted: #7A5F55;
+  --faint: #A8948C;
+  --line: #F1D3DE;
+  --atlantic: #E94B9A;
+  --atlantic-soft: #FCE4EF;
+  --on-accent: #FFFFFF;
+  --clay: #7B46C4;
+  --clay-soft: #EEE6FA;
+  --lion: #D9893A;
+  color-scheme: light;
+}
+
+body {
+  font-family: "Nunito", "Helvetica Neue", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(177,97,254,.14), transparent 38%),
+    radial-gradient(circle at 100% 100%, rgba(233,75,154,.12), transparent 42%),
+    var(--limestone);
+  background-attachment: fixed;
+}
+
+.brand { font: 700 12px Fredoka, Nunito, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--atlantic); }
+.count { font: 700 12px Nunito, sans-serif; color: var(--faint); }
+
+/* A string of balloons instead of the pavement motif. */
+.calcada {
+  height: 10px; opacity: 1; margin-top: 16px; border-radius: 5px;
+  background:
+    radial-gradient(circle at 5px 5px, var(--atlantic) 0 3px, transparent 3.5px) 0 0 / 22px 10px repeat-x,
+    radial-gradient(circle at 16px 5px, var(--clay) 0 3px, transparent 3.5px) 0 0 / 22px 10px repeat-x;
+}
+.track { background: var(--card-2); height: 6px; border-radius: 3px; }
+.track span { background: linear-gradient(90deg, var(--atlantic), var(--clay)); border-radius: 3px; }
+
+.eyebrow { font: 700 12px Fredoka, Nunito, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); }
+
+h1 { font: 600 clamp(31px, 8.5vw, 44px)/1.1 Fredoka, Nunito, sans-serif; letter-spacing: -.01em; }
+h1 em { font-style: normal; color: var(--atlantic); }
+h2 { font: 600 clamp(23px, 6vw, 28px)/1.22 Fredoka, Nunito, sans-serif; }
+
+.muted:empty { display: none; }
+.hint { color: var(--muted); }
+
+.opt { background: #fff; border: 1.5px solid var(--line); border-radius: 18px; font-family: Nunito, sans-serif; font-weight: 600; }
+.opt:hover { border-color: var(--clay); }
+.opt[aria-pressed="true"] { border-color: var(--atlantic); background: var(--atlantic-soft); }
+.opt[aria-pressed="true"] .mark { border-color: var(--atlantic); }
+.opt[aria-pressed="true"] .mark::after { background: var(--atlantic); }
+
+.field { border-radius: 18px; border-width: 1.5px; font-family: Nunito, sans-serif; }
+.stepper button { border-radius: 50%; border-width: 1.5px; }
+.stepper input { font-family: Fredoka, Nunito, sans-serif; font-weight: 600; }
+
+.btn { border-radius: 999px; background: var(--atlantic); color: var(--on-accent); font-family: Nunito, sans-serif; font-weight: 800;
+  box-shadow: 0 8px 20px rgba(233,75,154,.26); }
+.btn.quiet { background: var(--clay-soft); color: var(--clay); box-shadow: none; }
+.link { font-family: Nunito, sans-serif; font-weight: 700; }
+.sig { color: var(--atlantic); font-family: Fredoka, Nunito, sans-serif; font-style: normal; font-weight: 600; }
+.quote { border-left: 3px solid var(--lion); font-family: Nunito, sans-serif; font-style: italic; }
+.rrow .rl { font: 700 10.5px Nunito, sans-serif; letter-spacing: .14em; color: var(--clay); }
+
+/* The PT / EN switch in the top bar of her questions page. */
+.qlang { display: inline-flex; border: 1.5px solid var(--line); border-radius: 999px; overflow: hidden; background: #fff; margin-left: auto; margin-right: 12px; }
+.qlang button { font: 800 11.5px Nunito, sans-serif; letter-spacing: .08em; padding: 5px 10px; border: 0; background: transparent; color: var(--faint); cursor: pointer; }
+.qlang button[aria-pressed="true"] { background: var(--atlantic); color: #fff; }

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Antes de falarmos, Marina</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Antes de falarmos, Marina">
+<meta property="og:description" content="Umas perguntas rápidas, quase tudo toques, para que o site e a página Google que vamos construir para a PocPoc soem a si. Em português ou inglês.">
+<meta name="theme-color" content="#E94B9A">
+<meta name="color-scheme" content="light only">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦁</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+<link rel="stylesheet" href="assets/pocpoc.css">
+</head>
+<body>
+<script>
+/* Before-we-meet questions for Marina, PocPoc, parties and events in the Algarve. She speaks
+   Portuguese best, so the page opens in Portuguese and a PT/EN switch at the top reloads it in
+   English. The shared engine runs one language at a time, which is why the switch reloads.
+   Both sets have the same ids and the same order, so the answers land under the same keys
+   whichever language she uses. Option labels are stored in the language she tapped them in.
+   Known already (not asked again): her name, her number 961 236 622, her Gmail, her Facebook,
+   Instagram and TikTok, that her husband works the parties with her, that she sells packages
+   with bouncy castles, mascots and face painting, that she adapted the menu to vegetarian
+   without fuss. Fifteen questions, three typed, two counters. Slug "pocpoc".
+   Her brand colours live in assets/pocpoc.css, loaded after the shared intake.css. */
+(function () {
+  var LANG = 'pt';
+  try {
+    var fromUrl = new URLSearchParams(location.search).get('lang');
+    var fromStore = localStorage.getItem('pocpoc-qlang');
+    LANG = (fromUrl || fromStore || 'pt') === 'en' ? 'en' : 'pt';
+    localStorage.setItem('pocpoc-qlang', LANG);
+  } catch (e) { /* private mode, Portuguese it is */ }
+  document.documentElement.lang = LANG === 'en' ? 'en' : 'pt-PT';
+  if (LANG === 'en') { document.title = 'Before we meet, Marina'; }
+
+  var PT = {
+    slug: "pocpoc",
+    name: "Marina",
+    brand: "Antes de falarmos · PocPoc",
+    business: "PocPoc, festas e eventos, Algarve",
+    headline: "admin",
+    greeting: "Olá Marina, e obrigado por sábado",
+    introTitle: "Umas perguntas rápidas, para que o site e a página Google que vamos construir <em>soem a si.</em>",
+    ui: {
+      of: "{a} de {b}",
+      howLong: "São quinze. Quase tudo toques, mais três respostas curtas para escrever. Cerca de cinco minutos.",
+      resume: "Pode parar a meio e voltar mais tarde no mesmo telemóvel. Ele lembra-se de onde ficou.",
+      private: "Nada disto é partilhado com mais ninguém. Vem diretamente para mim.",
+      continue: "Continuar onde fiquei",
+      restart: "Começar do início",
+      start: "Começar",
+      toSummary: "Voltar ao resumo",
+      done: "Terminar", next: "Seguinte", back: "Voltar", previous: "Anterior", skip: "Saltar",
+      answered: "{a} de {b} respondidas",
+      reviewTitle: "É tudo. Dê uma olhadela e envie.",
+      reviewHint: "Toque em Alterar no que quiser refazer.",
+      change: "Alterar",
+      sendNote: "Vai diretamente para o Adam, mais ninguém.",
+      send: "Enviar ao Adam",
+      whatsapp: "Ou enviar por WhatsApp",
+      sending: "A enviar...", retry: "Tentar outra vez",
+      sentEyebrow: "Enviado",
+      sentTitle: "Obrigado, {name}. <em>É tudo o que preciso.</em>",
+      sentBody: "Vou ler tudo com atenção antes de falarmos, para saltarmos as perguntas aborrecidas e irmos direitos à parte interessante.",
+      sentFirst: "Vamos começar por esta:",
+      waOpener: "Olá Adam, aqui estão as minhas respostas."
+    },
+    questions: [
+      { id: "spelling", type: "one", short: "O nome", section: "O nome",
+        q: "Como deve o nome ser escrito no site e no Google?",
+        opts: ["Poc Poc", "PocPoc", "Poc Poc Algarve", "PocPoc Algarve"] },
+      { id: "team", type: "one", short: "Quem ajuda",
+        q: "Na festa da Anya eram a Marina e o seu marido. Quem mais ajuda, às vezes?",
+        opts: ["Ninguém, somos só nós os dois", "Família ou amigos quando é preciso", "Ajudantes pagos nos pacotes grandes", "Uma pequena equipa habitual"] },
+      { id: "where", type: "one", short: "Até onde vai",
+        q: "O seu Facebook diz Algarve, Alentejo, Lisboa e Espanha. Para uma festa normal, até onde vai mesmo?",
+        opts: ["À volta de Portimão e Lagos", "Todo o Algarve", "Algarve e Alentejo", "Qualquer sítio, com custo de deslocação"] },
+      { id: "sells", type: "many", short: "O que mais vende", section: "As festas",
+        q: "Quais dos seus serviços são mais pedidos? Toque em todos os que se aplicam.",
+        opts: ["A comida", "Decoração", "Insufláveis", "Pinturas faciais", "Mascotes", "Pipocas e algodão doce", "O carrinho de gelados", "O pacote completo, tudo"] },
+      { id: "packages", type: "text", short: "Os pacotes",
+        q: "O que inclui cada pacote, e mais ou menos quanto custa cada um?",
+        hint: "Nas suas palavras, como diria a uma mãe no WhatsApp. Isto é o coração do site.",
+        placeholder: "Básico: comida para 20 crianças, €... Médio: mais um insuflável, €... Completo: ..." },
+      { id: "size", type: "one", short: "Tamanho da festa",
+        q: "Qual é o tamanho de uma festa típica para si?",
+        opts: ["Menos de 15 crianças", "15 a 30 crianças", "30 a 60 crianças", "Mais de 60"] },
+      { id: "summer", type: "number", short: "Mês cheio",
+        q: "Quantas festas num mês cheio?",
+        hint: "Mais ou menos. Um palpite chega.",
+        unit: "festas", min: 0, max: 60, def: 4 },
+      { id: "winter", type: "number", short: "Mês calmo",
+        q: "E num mês calmo?",
+        unit: "festas", min: 0, max: 60, def: 1 },
+      { id: "notice", type: "one", short: "Antecedência",
+        q: "Com quanta antecedência precisa de ser avisada?",
+        opts: ["Dois ou três dias", "Cerca de uma semana", "Duas semanas", "Depende do pacote"] },
+      { id: "proud", type: "text", short: "Prato de que se orgulha", section: "A comida",
+        q: "O prato de que mais se orgulha?",
+        hint: "Aquele que as pessoas voltam a pedir. Vai para o topo do menu.",
+        placeholder: "Aquilo que toda a gente pergunta..." },
+      { id: "healthy", type: "one", short: "Festas saudáveis",
+        q: "Na festa da Anya mudou para húmus, lentilhas, wraps integrais e fruta sem hesitar. Oferecia isso como um menu com nome, uma festa de crianças saudável?",
+        hint: "Muitos pais estrangeiros aqui procuram exatamente isso e ninguém o vende.",
+        opts: ["Sim, com todo o gosto", "Sim, se pedirem", "Prefiro manter o meu menu habitual", "Vamos falar disso"] },
+      { id: "diet", type: "many", short: "Restrições",
+        q: "Quais destes consegue servir?",
+        opts: ["Vegetariano", "Vegan", "Sem glúten", "Alergia a frutos secos", "Halal ou kosher", "Prefiro não assumir alergias graves"] },
+      { id: "quote", type: "one", short: "Como faz orçamentos", section: "Hoje",
+        q: "Quando alguém pede um preço, como o calcula?",
+        opts: ["De cabeça, de cada vez", "Tenho uma lista de preços", "Uma folha de cálculo ou notas", "Depende do dia"] },
+      { id: "admin", type: "text", short: "O que come o tempo",
+        q: "O que lhe ocupa mais tempo que não seja a festa em si?",
+        hint: "Resposta sincera. É a primeira coisa que eu tentaria tirar-lhe das mãos.",
+        placeholder: "Responder a mensagens à noite, calcular preços, compras, carregar a carrinha..." },
+      { id: "first", type: "one", short: "Primeira coisa", section: "O que quer",
+        q: "Se uma coisa pudesse estar pronta até ao próximo mês, qual?",
+        opts: ["Um site com as minhas fotos", "Uma página Google onde deixem avaliações", "Orçamentos em minutos em vez de serões", "Mais pedidos de famílias estrangeiras", "Ajuda com o Instagram e o Facebook"] }
+    ]
+  };
+
+  var EN = {
+    slug: "pocpoc",
+    name: "Marina",
+    brand: "Before we meet · PocPoc",
+    business: "PocPoc, parties and events, Algarve",
+    headline: "admin",
+    greeting: "Hi Marina, and thank you for Saturday",
+    introTitle: "A few quick questions, so the website and the Google page we build <em>sound like you.</em>",
+    questions: [
+      { id: "spelling", type: "one", short: "The name", section: "The name",
+        q: "How should the name be written on the site and on Google?",
+        opts: ["Poc Poc", "PocPoc", "Poc Poc Algarve", "PocPoc Algarve"] },
+      { id: "team", type: "one", short: "Who helps",
+        q: "At Anya's party it was you and your husband. Who else helps, sometimes?",
+        opts: ["Nobody, it is just the two of us", "Family or friends when needed", "Paid helpers on the big packages", "A regular small team"] },
+      { id: "where", type: "one", short: "How far you go",
+        q: "Your Facebook says Algarve, Alentejo, Lisbon and Spain. For a normal party, how far do you really go?",
+        opts: ["Around Portimão and Lagos", "The whole Algarve", "Algarve and Alentejo", "Anywhere, with a travel charge"] },
+      { id: "sells", type: "many", short: "What sells most", section: "The parties",
+        q: "Which of your services do people ask for most? Tap all that apply.",
+        opts: ["The food", "Decoration", "Bouncy castles", "Face painting", "Mascots", "Popcorn and candy floss", "The ice cream cart", "The full package, everything"] },
+      { id: "packages", type: "text", short: "The packages",
+        q: "What is in your packages, and roughly what does each one cost?",
+        hint: "In your own words, as you would say it to a parent on WhatsApp. This is the heart of the site.",
+        placeholder: "Basic: food for 20 kids, €... Medium: plus one castle, €... Full: ..." },
+      { id: "size", type: "one", short: "Event size",
+        q: "How big is a typical party for you?",
+        opts: ["Under 15 children", "15 to 30 children", "30 to 60 children", "More than 60"] },
+      { id: "summer", type: "number", short: "Busy month",
+        q: "How many parties in a busy month?",
+        hint: "Roughly. A guess is fine.",
+        unit: "parties", min: 0, max: 60, def: 4 },
+      { id: "winter", type: "number", short: "Quiet month",
+        q: "And in a quiet month?",
+        unit: "parties", min: 0, max: 60, def: 1 },
+      { id: "notice", type: "one", short: "Notice needed",
+        q: "How much notice do you need?",
+        opts: ["A couple of days", "About a week", "Two weeks", "It depends on the package"] },
+      { id: "proud", type: "text", short: "Proudest dish", section: "The food",
+        q: "The dish you are proudest of?",
+        hint: "The one people ask for again. It goes at the top of the menu.",
+        placeholder: "The thing everybody asks about..." },
+      { id: "healthy", type: "one", short: "Healthy parties",
+        q: "At Anya's party you switched to hummus, lentils, wholegrain wraps and fruit without blinking. Would you offer that as a named menu, a healthy children's party?",
+        hint: "Many foreign parents here look for exactly that and nobody sells it.",
+        opts: ["Yes, happily", "Yes, if people ask", "I would rather keep my usual menu", "Let's talk about it"] },
+      { id: "diet", type: "many", short: "Dietary",
+        q: "Which of these can you cater for?",
+        opts: ["Vegetarian", "Vegan", "Gluten free", "Nut allergies", "Halal or kosher", "I would rather not take on serious allergies"] },
+      { id: "quote", type: "one", short: "How you quote", section: "Today",
+        q: "When someone asks for a price, how do you work it out?",
+        opts: ["In my head, each time", "I have a price list", "A spreadsheet or notes", "It depends on the day"] },
+      { id: "admin", type: "text", short: "What eats the time",
+        q: "What takes the most of your time that is not the party itself?",
+        hint: "Honest answer. This is the thing I would try to take off your plate first.",
+        placeholder: "Replying to messages at night, working out prices, shopping, loading the van..." },
+      { id: "first", type: "one", short: "First thing", section: "What you want",
+        q: "If one thing could be done by next month, which?",
+        opts: ["A website with my photos on it", "A Google page people can leave reviews on", "Quotes that take minutes instead of evenings", "More enquiries from foreign families", "Help with my Instagram and Facebook"] }
+    ]
+  };
+
+  window.INTAKE = LANG === 'en' ? EN : PT;
+  window.INTAKE_LANG = LANG;
+})();
+</script>
+<script src="assets/intake.js"></script>
+<script>
+/* The PT / EN switch, added to the top bar after the engine has drawn it. Switching reloads
+   the page in the other language. Answers already given are kept on the device. */
+(function () {
+  var top = document.querySelector('.top'); if (!top) { return; }
+  var cur = window.INTAKE_LANG || 'pt';
+  var box = document.createElement('div'); box.className = 'qlang'; box.setAttribute('role', 'group'); box.setAttribute('aria-label', 'Língua / Language');
+  [['pt', 'PT'], ['en', 'EN']].forEach(function (p) {
+    var b = document.createElement('button'); b.type = 'button'; b.textContent = p[1];
+    if (p[0] === cur) { b.setAttribute('aria-pressed', 'true'); }
+    b.addEventListener('click', function () {
+      if (p[0] === cur) { return; }
+      try { localStorage.setItem('pocpoc-qlang', p[0]); } catch (e) {}
+      location.search = '?lang=' + p[0];
+    });
+    box.appendChild(b);
+  });
+  top.insertBefore(box, top.lastElementChild);
+})();
+</script>
+</body>
+</html>

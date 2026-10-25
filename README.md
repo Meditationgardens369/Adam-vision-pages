@@ -19,6 +19,7 @@ or just ask Claude.
 | `matthias-team.html` | His manager, name unknown, so the first question asks. Tools, volumes, what broke since the Shopify move, publishing steps, what to hand over. Slug `matthias-team`. | 19, three typed, one number |
 | `party.html` | Public page behind the QR code at Anya's birthday party, 24 Oct 2026. Curious parents answer five quick questions. Slug `anya-party`. | 5, four typed |
 | `lara-thanks.html` / `pocpoc-thanks.html` | Testimonial capture at Anya's party for Lara (Zigzag) and Poc Poc catering, neither of whom has a website or Google page yet. Words, one-word verdict, publish and photo permission, contact for the later review link. Slugs `lara-thanks`, `pocpoc-thanks`. | 6 each, three typed |
+| `pocpoc.html` | Marina, Poc Poc, children's parties and party food in the Algarve, catered Anya's party. Her "Before we meet" page, Portuguese by default with a PT/EN switch that reloads the page, her own brand colours (`assets/pocpoc.css`). Working copy in `../../PocPoc - Catering AI/client/`. Slug `pocpoc`. | 15, three typed, two counters |
 | `vision.html` | Ola's twelve month vision, for screen-sharing on the Zoom call | |
 | `second-brain-guide.html` | Public free guide: build a Second Brain with Obsidian and Claude Code. Logs views, steps, copies and clicks to `page_events` (slug `second-brain-guide-page`). | |
 | `second-brain.html` | Questionnaire at the end of that guide, for people who want help. Slug `second-brain-guide`. | 11, three typed |
