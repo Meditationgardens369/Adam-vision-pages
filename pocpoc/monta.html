@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Monta a tua festa · PocPoc</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Build your party with PocPoc: people, menu, decoration, bouncy castles and extras. Watch the exact price as you go, then send it and get your quote by email.">
+<meta name="description" content="Build your party with PocPoc, one step at a time. Watch the scene fill up and the exact price grow, then get your quote by email.">
 <meta name="theme-color" content="#E94B9A">
 <meta name="color-scheme" content="light only">
 <link rel="icon" href="photos/logo-from-instagram.png">
@@ -13,10 +13,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
 <style>
-  /* PocPoc party builder. A parent builds the party, the scene fills up, the exact price
-     counts up, and the request goes to Supabase with a quote code for the automation.
-     Every number in PRICES comes from Marina's three flyers (docs/price-list.md), 25 Oct 2026.
-     Her brand colours, Portuguese first with an EN switch. */
+  /* PocPoc booking flow. One question per screen, big tap targets, the party scene fills up
+     and the exact price grows as the parent goes. Name and email only at the end. Every
+     number in PRICES comes from Marina's three flyers (docs/price-list.md), 25 Oct 2026.
+     Sends to Supabase slug pocpoc-quote with a POC code for the automation. */
   :root {
     --blush: #FFF3F7; --paper: #FFFFFF; --rose: #FBDCE7; --ink: #4A2C1F; --muted: #7A5F55; --faint: #A8948C;
     --line: #F1D3DE; --pink: #E94B9A; --pink-soft: #FCE4EF; --pink-deep: #C2367D;
@@ -24,108 +24,142 @@
     color-scheme: light;
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--blush); color: var(--ink); font: 16px/1.55 Nunito, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  body { margin: 0; background: var(--blush); color: var(--ink); font: 16px/1.5 Nunito, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden;
     background-image: radial-gradient(circle at 8% 0%, rgba(177,97,254,.14), transparent 36%), radial-gradient(circle at 100% 100%, rgba(233,75,154,.12), transparent 40%); background-attachment: fixed; }
   html[data-lang="pt"] .en, html[data-lang="en"] .pt { display: none !important; }
+  [hidden] { display: none !important; }
   .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
   h1, h2, h3 { font-family: Fredoka, Nunito, sans-serif; font-weight: 600; letter-spacing: -.01em; margin: 0 0 10px; text-wrap: balance; }
-  h1 { font-size: clamp(30px, 6vw, 48px); line-height: 1.05; }
-  h2 { font-size: 20px; }
-  h1 em { font-style: normal; color: var(--pink); }
+  h1 { font-size: clamp(26px, 5vw, 40px); line-height: 1.08; }
+  h2 { font-size: clamp(22px, 4vw, 30px); line-height: 1.15; }
+  h1 em, h2 em { font-style: normal; color: var(--pink); }
   p { margin: 0 0 12px; }
-  .lede { font-size: 17px; color: var(--muted); max-width: 56ch; }
-  .top { position: sticky; top: 0; z-index: 20; background: rgba(255,243,247,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 64px; }
+  .top { position: sticky; top: 0; z-index: 20; background: rgba(255,243,247,.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 60px; }
   .logo { text-decoration: none; display: flex; align-items: center; gap: 10px; white-space: nowrap; color: var(--pink); }
-  .logo img { width: 40px; height: 40px; border-radius: 50%; }
-  .logo b { font: 700 22px Fredoka, Nunito, sans-serif; display: block; line-height: 1; }
-  .logo small { font: 600 10.5px Nunito, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--lion); display: block; margin-top: 3px; }
+  .logo img { width: 38px; height: 38px; border-radius: 50%; }
+  .logo b { font: 700 21px Fredoka, Nunito, sans-serif; display: block; line-height: 1; }
   .lang { display: inline-flex; border: 1.5px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--paper); }
   .lang button { font: 800 12px Nunito, sans-serif; letter-spacing: .08em; padding: 6px 10px; border: 0; background: transparent; color: var(--faint); cursor: pointer; }
   html[data-lang="pt"] .lang button[data-set="pt"], html[data-lang="en"] .lang button[data-set="en"] { background: var(--pink); color: #fff; }
   .back { font: 700 13.5px Nunito, sans-serif; color: var(--muted); text-decoration: none; }
-  @media (max-width: 520px) { .logo small { display: none; } .back { display: none; } }
+  @media (max-width: 520px) { .back { display: none; } }
 
-  .grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; padding: 26px 0 60px; }
-  @media (max-width: 880px) { .grid { grid-template-columns: 1fr; } }
+  /* Progress: balloons along a string */
+  .prog { display: flex; align-items: center; gap: 0; margin: 18px 0 6px; position: relative; }
+  .prog::before { content: ""; position: absolute; left: 14px; right: 14px; top: 50%; height: 2px; background: var(--line); }
+  .prog i { position: relative; width: 28px; height: 32px; border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%; background: #fff; border: 2px solid var(--line); display: grid; place-items: center; font: 700 12px Fredoka, Nunito, sans-serif; color: var(--faint); transition: all .3s; }
+  .prog i.on { background: var(--pink); border-color: var(--pink); color: #fff; transform: scale(1.15); box-shadow: 0 6px 14px rgba(233,75,154,.35); }
+  .prog i.done { background: var(--plum); border-color: var(--plum); color: #fff; }
+  .prog span { flex: 1; }
+  .prog-lbl { font: 700 12px Nunito, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--plum); }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; padding: 10px 0 60px; }
+  @media (max-width: 880px) { .grid { grid-template-columns: 1fr; gap: 14px; } }
 
   /* The scene */
-  .scene-wrap { position: sticky; top: 80px; }
+  .scene-wrap { position: sticky; top: 76px; }
   @media (max-width: 880px) { .scene-wrap { position: static; } }
-  .scene { position: relative; height: 340px; border-radius: 28px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 24px 50px rgba(74,44,31,.16);
+  .scene { position: relative; height: 300px; border-radius: 26px; overflow: hidden; border: 5px solid #fff; box-shadow: 0 24px 50px rgba(74,44,31,.16);
     background: linear-gradient(180deg, var(--sky) 0%, #EAF6FB 55%, var(--grass) 55.5%, #B9DEA9 100%); perspective: 900px; }
-  .scene .sun { position: absolute; top: 18px; right: 26px; width: 54px; height: 54px; border-radius: 50%; background: #FFD66B; box-shadow: 0 0 0 12px rgba(255,214,107,.28); }
-  .scene .arch { position: absolute; left: 50%; top: 22px; transform: translateX(-50%); display: flex; gap: 2px; }
-  .scene .arch i { display: block; width: 26px; height: 32px; border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%; animation: bob 3.2s ease-in-out infinite; }
+  @media (max-width: 880px) { .scene { height: 190px; } }
+  .scene .sun { position: absolute; top: 16px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: #FFD66B; box-shadow: 0 0 0 10px rgba(255,214,107,.28); }
+  .scene .arch { position: absolute; left: 50%; top: 18px; transform: translateX(-50%); display: flex; gap: 2px; }
+  .scene .arch i { display: block; width: 24px; height: 30px; border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%; animation: bob 3.2s ease-in-out infinite; }
   .scene .arch i:nth-child(odd) { animation-delay: -1.3s; }
   @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-  .stage { position: absolute; left: 0; right: 0; bottom: 26px; display: flex; align-items: flex-end; justify-content: center; gap: 26px; flex-wrap: wrap; padding: 0 16px; transform-style: preserve-3d; }
-  .item { font-size: 50px; line-height: 1; filter: drop-shadow(0 8px 10px rgba(74,44,31,.22)); animation: pop .55s cubic-bezier(.2,1.4,.4,1) both; position: relative; }
-  .item.big { font-size: 68px; }
-  .item .lbl { position: absolute; left: 50%; bottom: -22px; transform: translateX(-50%); font: 800 9.5px/1.1 Nunito, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); white-space: normal; width: 86px; text-align: center; }
+  .stage { position: absolute; left: 0; right: 0; bottom: 24px; display: flex; align-items: flex-end; justify-content: center; gap: 24px; flex-wrap: wrap; padding: 0 16px; }
+  .item { font-size: 44px; line-height: 1; filter: drop-shadow(0 8px 10px rgba(74,44,31,.22)); animation: pop .55s cubic-bezier(.2,1.4,.4,1) both; position: relative; }
+  .item.big { font-size: 60px; }
+  @media (max-width: 880px) { .item { font-size: 34px; } .item.big { font-size: 46px; } }
+  .item .lbl { position: absolute; left: 50%; bottom: -20px; transform: translateX(-50%); font: 800 9px/1.1 Nunito, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); width: 84px; text-align: center; }
+  @media (max-width: 880px) { .item .lbl { display: none; } }
   @keyframes pop { from { transform: translateY(30px) scale(.4) rotateX(40deg); opacity: 0; } to { transform: none; opacity: 1; } }
-  .kids { position: absolute; left: 14px; right: 14px; top: 92px; display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; font-size: 20px; line-height: 1; }
+  .kids { position: absolute; left: 14px; right: 14px; top: 78px; display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; font-size: 18px; line-height: 1; }
+  @media (max-width: 880px) { .kids { top: 62px; font-size: 14px; } }
   .kids span { animation: pop .4s cubic-bezier(.2,1.4,.4,1) both; }
   .kids .more { font: 800 12px Nunito, sans-serif; color: var(--muted); align-self: center; }
+  .scene .hello { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 20px; color: var(--muted); font: 600 15px Nunito, sans-serif; }
 
   /* Price */
-  .price { margin-top: 14px; background: var(--paper); border: 1.5px solid var(--line); border-radius: 22px; padding: 18px 20px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
-  .price .lbl { font: 700 12px Nunito, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--plum); }
-  .price .n { font: 700 40px/1 Fredoka, Nunito, sans-serif; color: var(--pink); font-variant-numeric: tabular-nums; }
-  .price .n small { font: 700 14px Nunito, sans-serif; color: var(--muted); margin-left: 6px; }
-  .price .note { grid-column: 1 / -1; font-size: 13px; color: var(--muted); }
-  .lines { grid-column: 1 / -1; display: grid; gap: 4px; font-size: 13.5px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; }
+  .price { margin-top: 12px; background: var(--paper); border: 1.5px solid var(--line); border-radius: 20px; padding: 14px 18px; display: grid; grid-template-columns: 1fr auto; gap: 6px 10px; align-items: center; }
+  .price .lbl { font: 700 11px Nunito, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--plum); }
+  .price .n { font: 700 34px/1 Fredoka, Nunito, sans-serif; color: var(--pink); font-variant-numeric: tabular-nums; }
+  .price .n small { font: 700 12px Nunito, sans-serif; color: var(--muted); margin-left: 6px; }
+  .lines { grid-column: 1 / -1; display: grid; gap: 3px; font-size: 13px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; }
   .lines div { display: flex; justify-content: space-between; gap: 10px; }
   .lines b { color: var(--ink); font-weight: 700; }
+  @media (max-width: 880px) { .lines { display: none; } .price { padding: 10px 16px; } .price .n { font-size: 28px; } }
 
-  /* Controls */
-  .card { background: var(--paper); border: 1.5px solid var(--line); border-radius: 22px; padding: 20px; margin-bottom: 14px; }
-  .card h2 { display: flex; align-items: center; gap: 10px; }
-  .card h2 .n { width: 28px; height: 28px; border-radius: 50%; background: var(--lion); color: #fff; display: grid; place-items: center; font: 600 15px Fredoka, Nunito, sans-serif; flex: none; }
-  .hint { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
+  /* Steps */
+  .steps { position: relative; min-height: 420px; }
+  .step { display: none; background: var(--paper); border: 1.5px solid var(--line); border-radius: 26px; padding: 24px; box-shadow: 0 18px 40px rgba(74,44,31,.10); }
+  .step.active { display: block; animation: rise .35s cubic-bezier(.2,1,.3,1) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px) scale(.985); } to { opacity: 1; transform: none; } }
+  .step .q { font: 600 clamp(22px, 3.4vw, 28px)/1.15 Fredoka, Nunito, sans-serif; margin: 0 0 6px; }
+  .step .hint { font-size: 14px; color: var(--muted); margin: 0 0 16px; }
+
+  .occ { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  @media (max-width: 520px) { .occ { grid-template-columns: repeat(2, 1fr); } }
+  .occ button { position: relative; aspect-ratio: 1; border-radius: 18px; overflow: hidden; border: 3px solid #fff; padding: 0; cursor: pointer; background: var(--rose); color: #fff; text-align: left;
+    box-shadow: 0 10px 22px rgba(74,44,31,.14); transition: transform .2s; }
+  .occ button:hover { transform: translateY(-4px); }
+  .occ img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .occ .sh { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(74,44,31,0) 40%, rgba(74,44,31,.8) 100%); }
+  .occ b { position: absolute; left: 10px; right: 10px; bottom: 10px; font: 600 15px/1.1 Fredoka, Nunito, sans-serif; text-shadow: 0 2px 6px rgba(0,0,0,.4); }
+
   .opts { display: grid; gap: 8px; }
-  .opt { display: flex; align-items: center; gap: 12px; cursor: pointer; background: var(--blush); border: 1.5px solid var(--line); border-radius: 16px; padding: 12px 14px; transition: border-color .15s, background .15s; }
-  .opt input { accent-color: var(--pink); width: 18px; height: 18px; margin: 0; flex: none; }
-  .opt .ic { font-size: 26px; line-height: 1; flex: none; }
+  .opt { display: flex; align-items: center; gap: 12px; cursor: pointer; background: var(--blush); border: 1.5px solid var(--line); border-radius: 16px; padding: 13px 14px; transition: border-color .15s, background .15s, transform .15s; }
+  .opt:active { transform: scale(.985); }
+  .opt input { accent-color: var(--pink); width: 20px; height: 20px; margin: 0; flex: none; }
+  .opt .ic { font-size: 28px; line-height: 1; flex: none; width: 36px; text-align: center; }
   .opt .t { flex: 1; }
-  .opt .t b { display: block; font-weight: 800; font-size: 15px; }
+  .opt .t b { display: block; font-weight: 800; font-size: 15.5px; }
   .opt .t span { display: block; font-size: 13px; color: var(--muted); }
-  .opt .p { font: 700 15px Fredoka, Nunito, sans-serif; color: var(--pink); white-space: nowrap; }
+  .opt .p { font: 700 16px Fredoka, Nunito, sans-serif; color: var(--pink); white-space: nowrap; }
   .opt .p.q { font: 700 11px Nunito, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--plum); background: var(--plum-soft); padding: 4px 8px; border-radius: 999px; }
   .opt:has(input:checked) { border-color: var(--pink); background: var(--pink-soft); }
-  .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-  .seg label { cursor: pointer; text-align: center; background: var(--blush); border: 1.5px solid var(--line); border-radius: 14px; padding: 10px 6px; display: grid; gap: 2px; }
+  .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 14px 0 4px; }
+  .seg label { cursor: pointer; text-align: center; background: var(--blush); border: 1.5px solid var(--line); border-radius: 16px; padding: 12px 6px; display: grid; gap: 2px; position: relative; }
   .seg label input { position: absolute; opacity: 0; pointer-events: none; }
-  .seg label b { font: 700 22px/1 Fredoka, Nunito, sans-serif; }
+  .seg label b { font: 700 26px/1 Fredoka, Nunito, sans-serif; }
   .seg label span { font-size: 12px; color: var(--muted); }
-  .seg label i { font: 700 14px Nunito, sans-serif; font-style: normal; color: var(--pink); }
+  .seg label i { font: 700 15px Nunito, sans-serif; font-style: normal; color: var(--pink); }
   .seg label:has(input:checked) { border-color: var(--pink); background: var(--pink-soft); }
-  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
-  label.f { display: grid; gap: 4px; font: 700 12.5px Nunito, sans-serif; color: var(--muted); }
-  label.f input, label.f textarea { width: 100%; font: 400 15px Nunito, sans-serif; color: var(--ink); background: var(--blush); border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; }
-  label.f input:focus, label.f textarea:focus { outline: 2px solid var(--pink); outline-offset: 0; border-color: transparent; }
-  textarea { min-height: 70px; resize: vertical; }
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; border: 0; font: 800 16px Nunito, sans-serif; padding: 15px 24px; border-radius: 999px; background: var(--pink); color: #fff; box-shadow: 0 10px 24px rgba(233,75,154,.26); width: 100%; text-decoration: none; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font: 700 14px Nunito, sans-serif; color: var(--ink); background: var(--blush); border: 1.5px solid var(--line); border-radius: 999px; padding: 10px 14px; }
+  .chip input { width: 16px; height: 16px; margin: 0; accent-color: var(--pink); }
+  .chip:has(input:checked) { background: var(--pink-soft); border-color: var(--pink); }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 20px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; border: 0; font: 800 16px Nunito, sans-serif; padding: 14px 24px; border-radius: 999px; background: var(--pink); color: #fff; box-shadow: 0 10px 24px rgba(233,75,154,.26); text-decoration: none; }
   .btn.quiet { background: var(--plum-soft); color: var(--plum); box-shadow: none; }
+  .btn.ghost { background: transparent; color: var(--muted); box-shadow: none; padding-left: 6px; }
   .btn[disabled] { opacity: .5; cursor: default; }
+  .btn.block { width: 100%; }
+
+  label.f { display: grid; gap: 5px; font: 700 13px Nunito, sans-serif; color: var(--muted); margin-bottom: 10px; }
+  label.f input, label.f textarea { width: 100%; font: 500 18px Nunito, sans-serif; color: var(--ink); background: var(--blush); border: 1.5px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+  label.f input:focus, label.f textarea:focus { outline: 2px solid var(--pink); outline-offset: 0; border-color: transparent; }
+  textarea { min-height: 80px; resize: vertical; }
+  .summary { background: var(--plum-soft); border-radius: 18px; padding: 14px 16px; font-size: 14.5px; margin-bottom: 14px; }
+  .summary b { color: var(--plum); }
   .tiny { font-size: 12.5px; color: var(--faint); line-height: 1.5; }
   .bad { color: var(--pink-deep); }
-  .done { display: none; background: var(--plum-soft); border: 1.5px solid #E2D4F6; border-radius: 22px; padding: 22px; text-align: center; }
-  .done.show { display: block; animation: pop .5s cubic-bezier(.2,1.4,.4,1) both; }
-  .done .code { font: 700 34px/1 Fredoka, Nunito, sans-serif; color: var(--plum); letter-spacing: .06em; margin: 8px 0 6px; }
-  .done p { font-size: 14.5px; color: var(--muted); margin: 0 0 10px; }
+  .done { text-align: center; }
+  .done .code { font: 700 38px/1 Fredoka, Nunito, sans-serif; color: var(--plum); letter-spacing: .06em; margin: 10px 0 8px; }
+  .done p { font-size: 15px; color: var(--muted); margin: 0 0 12px; }
   .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 50; }
   .confetti i { position: absolute; top: -12px; width: 10px; height: 14px; border-radius: 3px; animation: fall 2.4s ease-in both; }
   @keyframes fall { to { transform: translateY(110vh) rotate(540deg); opacity: .2; } }
-  @media (prefers-reduced-motion: reduce) { .item, .kids span, .scene .arch i, .done.show, .confetti i { animation: none !important; } }
+  @media (prefers-reduced-motion: reduce) { .item, .kids span, .scene .arch i, .step.active, .confetti i { animation: none !important; } }
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="index.html"><img src="photos/logo-from-instagram.png" alt=""><span><b>PocPoc</b><small>Momentos doces</small></span></a>
+    <a class="logo" href="index.html"><img src="photos/logo-from-instagram.png" alt=""><span><b>PocPoc</b></span></a>
     <div style="display:flex;align-items:center;gap:12px">
       <a class="back" href="index.html"><span class="pt">Voltar ao site</span><span class="en">Back to the site</span></a>
       <div class="lang" role="group" aria-label="Language"><button type="button" data-set="pt">PT</button><button type="button" data-set="en">EN</button></div>
@@ -134,10 +168,8 @@
 </header>
 
 <div class="wrap">
-  <div style="padding-top:26px">
-    <h1><span class="pt">Monta a tua festa, <em>vê o preço a crescer.</em></span><span class="en">Build your party, <em>watch the price grow.</em></span></h1>
-    <p class="lede"><span class="pt">Escolhe o menu, a decoração e a animação. A cena enche-se, o preço é o da tabela da Marina, sem surpresas. No fim envia, recebes um código e o orçamento chega por email no mesmo dia.</span><span class="en">Pick the menu, the decoration and the entertainment. The scene fills up and the price is Marina's own list, no surprises. Send it at the end, get a code, and the quote lands in your inbox the same day.</span></p>
-  </div>
+  <div class="prog-lbl" id="proglbl" style="margin-top:18px"></div>
+  <div class="prog" id="prog"></div>
 
   <div class="grid">
     <div class="scene-wrap">
@@ -146,83 +178,117 @@
         <div class="arch" id="arch"></div>
         <div class="kids" id="kids"></div>
         <div class="stage" id="stage"></div>
+        <div class="hello" id="hello"><span class="pt">A tua festa vai aparecer aqui.</span><span class="en">Your party will appear here.</span></div>
       </div>
       <div class="price">
-        <div><div class="lbl"><span class="pt">Total</span><span class="en">Total</span></div><div class="n"><span id="total">0</span>€<small id="totalnote"></small></div></div>
+        <div><div class="lbl"><span class="pt">Total até agora</span><span class="en">Total so far</span></div><div class="n"><span id="total">0</span>€<small id="totalnote"></small></div></div>
         <div style="text-align:right;font-size:13px;color:var(--muted)" id="peoplenote"></div>
         <div class="lines" id="lines"></div>
-        <div class="note"><span class="pt">Preços da tabela PocPoc. O que está "sob orçamento" chega com o valor certo no email. Fora do Algarve soma-se a deslocação.</span><span class="en">PocPoc's list prices. Anything "quoted" comes with its price in the email. Outside the Algarve, travel is added.</span></div>
       </div>
     </div>
 
-    <div>
-      <div class="card">
-        <h2><span class="n">1</span><span class="pt">O menu</span><span class="en">The menu</span></h2>
+    <div class="steps" id="steps">
+
+      <section class="step" data-step="0">
+        <h2 class="q"><span class="pt">O que vamos <em>celebrar?</em></span><span class="en">What are we <em>celebrating?</em></span></h2>
+        <p class="hint"><span class="pt">Toca numa. Preparamos a festa que costuma ser pedida, e tu mudas o que quiseres.</span><span class="en">Tap one. We set up the party that is usually asked for, and you change whatever you like.</span></p>
+        <div class="occ">
+          <button type="button" data-f="kids"><img src="photos/t-castle.jpg" alt=""><span class="sh"></span><b><span class="pt">Festa de crianças</span><span class="en">Children's party</span></b></button>
+          <button type="button" data-f="baby"><img src="photos/t-batizado.jpg" alt=""><span class="sh"></span><b><span class="pt">Batizado, chá de bebé</span><span class="en">Christening, baby shower</span></b></button>
+          <button type="button" data-f="adult"><img src="photos/t-hello40.jpg" alt=""><span class="sh"></span><b><span class="pt">Aniversário de adultos</span><span class="en">Adult birthday</span></b></button>
+          <button type="button" data-f="wedding"><img src="photos/t-wedding.jpg" alt=""><span class="sh"></span><b><span class="pt">Casamento</span><span class="en">Wedding</span></b></button>
+          <button type="button" data-f="event"><img src="photos/t-burgers.jpg" alt=""><span class="sh"></span><b><span class="pt">Escola ou empresa</span><span class="en">School or company</span></b></button>
+          <button type="button" data-f="other"><img src="photos/t-minnie.jpg" alt=""><span class="sh"></span><b><span class="pt">Outra coisa</span><span class="en">Something else</span></b></button>
+        </div>
+      </section>
+
+      <section class="step" data-step="1">
+        <h2 class="q"><span class="pt">O que vão <em>comer?</em></span><span class="en">What will they <em>eat?</em></span></h2>
         <p class="hint"><span class="pt">Todos os menus incluem dois monitores na festa.</span><span class="en">Every menu includes two animators at the party.</span></p>
-        <div class="opts" id="menus">
+        <div class="opts">
           <label class="opt"><input type="radio" name="menu" value="classic" checked><span class="ic">🥐</span><span class="t"><b><span class="pt">Menu Clássico</span><span class="en">Classic menu</span></b><span><span class="pt">Croissants, salgados, mini pizzas, doces, fruta, sumo.</span><span class="en">Croissants, savoury snacks, mini pizzas, sweets, fruit, juice.</span></span></span><span class="p"><span class="pt">desde</span><span class="en">from</span> 250€</span></label>
           <label class="opt"><input type="radio" name="menu" value="premium"><span class="ic">🍔</span><span class="t"><b><span class="pt">Menu Premium</span><span class="en">Premium menu</span></b><span><span class="pt">Mini hambúrgueres e cachorros, salgados, fruta, waffles. Substitui a refeição.</span><span class="en">Mini burgers and hot dogs, savoury snacks, fruit, waffles. Replaces the meal.</span></span></span><span class="p"><span class="pt">desde</span><span class="en">from</span> 350€</span></label>
           <label class="opt"><input type="radio" name="menu" value="healthy"><span class="ic">🥗</span><span class="t"><b><span class="pt">Mesa saudável</span><span class="en">Healthy table</span></b><span><span class="pt">Wraps integrais, húmus, saladas, ovos, fruta. Novo.</span><span class="en">Wholegrain wraps, hummus, salads, eggs, fruit. New.</span></span></span><span class="p q"><span class="pt">orçamento</span><span class="en">quoted</span></span></label>
           <label class="opt"><input type="radio" name="menu" value="none"><span class="ic">🙅</span><span class="t"><b><span class="pt">Sem comida</span><span class="en">No food</span></b><span><span class="pt">Só decoração e animação.</span><span class="en">Decoration and entertainment only.</span></span></span><span class="p">0€</span></label>
         </div>
-        <p class="hint" style="margin:14px 0 8px"><span class="pt">Para quantas pessoas?</span><span class="en">For how many people?</span></p>
+        <p class="hint" style="margin:16px 0 0"><span class="pt">Para quantas pessoas?</span><span class="en">For how many people?</span></p>
         <div class="seg" id="sizes"></div>
-        <div class="opts" style="margin-top:12px" id="foodextras">
-          <label class="opt"><input type="checkbox" name="fx" value="hotdogs"><span class="ic">🌭</span><span class="t"><b><span class="pt">Mais mini cachorros</span><span class="en">Extra mini hot dogs</span></b><span><span class="pt">Um por pessoa</span><span class="en">One per person</span></span></span><span class="p">+2,50€<small style="font:700 11px Nunito,sans-serif;color:var(--muted)">/<span class="pt">pessoa</span><span class="en">person</span></small></span></label>
-          <label class="opt"><input type="checkbox" name="fx" value="burgers"><span class="ic">🍔</span><span class="t"><b><span class="pt">Mais mini hambúrgueres</span><span class="en">Extra mini burgers</span></b><span><span class="pt">Um por pessoa</span><span class="en">One per person</span></span></span><span class="p">+3,50€<small style="font:700 11px Nunito,sans-serif;color:var(--muted)">/<span class="pt">pessoa</span><span class="en">person</span></small></span></label>
-          <label class="opt"><input type="checkbox" name="fx" value="cupcakes"><span class="ic">🧁</span><span class="t"><b><span class="pt">Mais cupcakes do tema</span><span class="en">Extra themed cupcakes</span></b><span><span class="pt">Um por pessoa</span><span class="en">One per person</span></span></span><span class="p">+4,50€<small style="font:700 11px Nunito,sans-serif;color:var(--muted)">/<span class="pt">pessoa</span><span class="en">person</span></small></span></label>
+        <div class="chips" style="margin-top:12px" id="foodextras">
+          <label class="chip"><input type="checkbox" name="fx" value="hotdogs">🌭 <span class="pt">+ cachorros 2,50€/pessoa</span><span class="en">+ hot dogs €2.50/person</span></label>
+          <label class="chip"><input type="checkbox" name="fx" value="burgers">🍔 <span class="pt">+ hambúrgueres 3,50€/pessoa</span><span class="en">+ burgers €3.50/person</span></label>
+          <label class="chip"><input type="checkbox" name="fx" value="cupcakes">🧁 <span class="pt">+ cupcakes 4,50€/pessoa</span><span class="en">+ cupcakes €4.50/person</span></label>
         </div>
-      </div>
+        <div class="nav"><button class="btn ghost" type="button" data-prev><span class="pt">← Voltar</span><span class="en">← Back</span></button><button class="btn" type="button" data-next><span class="pt">Seguinte</span><span class="en">Next</span></button></div>
+      </section>
 
-      <div class="card">
-        <h2><span class="n">2</span><span class="pt">A decoração</span><span class="en">The decoration</span></h2>
+      <section class="step" data-step="2">
+        <h2 class="q"><span class="pt">E o <em>cenário?</em></span><span class="en">And the <em>backdrop?</em></span></h2>
+        <p class="hint"><span class="pt">Onde se tiram as fotos. No tema que quiseres.</span><span class="en">Where the photos get taken. In any theme you like.</span></p>
         <div class="opts">
           <label class="opt"><input type="radio" name="deco" value="none"><span class="ic">🙅</span><span class="t"><b><span class="pt">Sem decoração</span><span class="en">No decoration</span></b></span><span class="p">0€</span></label>
           <label class="opt"><input type="radio" name="deco" value="simple" checked><span class="ic">🎈</span><span class="t"><b><span class="pt">Simples</span><span class="en">Simple</span></b><span><span class="pt">Um painel, grinalda de balões, nome, pódio para o bolo.</span><span class="en">One panel, balloon garland, name, cake podium.</span></span></span><span class="p">200€</span></label>
           <label class="opt"><input type="radio" name="deco" value="medium"><span class="ic">🎈🎈</span><span class="t"><b><span class="pt">Média</span><span class="en">Medium</span></b><span><span class="pt">Dois painéis, três pódios, displays do tema, número em LED.</span><span class="en">Two panels, three podiums, theme displays, LED number.</span></span></span><span class="p">250€</span></label>
           <label class="opt"><input type="radio" name="deco" value="full"><span class="ic">✨</span><span class="t"><b><span class="pt">Completa</span><span class="en">Complete</span></b><span><span class="pt">Três painéis, três pódios, balcão, displays, número grande.</span><span class="en">Three panels, three podiums, counter, displays, large number.</span></span></span><span class="p">350€</span></label>
         </div>
-      </div>
+        <div class="nav"><button class="btn ghost" type="button" data-prev><span class="pt">← Voltar</span><span class="en">← Back</span></button><button class="btn" type="button" data-next><span class="pt">Seguinte</span><span class="en">Next</span></button></div>
+      </section>
 
-      <div class="card">
-        <h2><span class="n">3</span><span class="pt">A animação</span><span class="en">The entertainment</span></h2>
+      <section class="step" data-step="3">
+        <h2 class="q"><span class="pt">E a <em>diversão?</em></span><span class="en">And the <em>fun?</em></span></h2>
+        <p class="hint"><span class="pt">Escolhe o que quiseres, ou nada. As máquinas vêm sempre com uma pessoa.</span><span class="en">Pick whatever you like, or nothing. The machines always come with a person.</span></p>
         <div class="opts">
           <label class="opt"><input type="checkbox" name="x" value="jungle"><span class="ic">🌴</span><span class="t"><b><span class="pt">Insuflável Selva</span><span class="en">Jungle bouncy castle</span></b><span>4 x 4 m</span></span><span class="p">85€</span></label>
           <label class="opt"><input type="checkbox" name="x" value="castle"><span class="ic">🏰</span><span class="t"><b><span class="pt">Insuflável Castelo</span><span class="en">Castle bouncy castle</span></b><span>6 x 4 m</span></span><span class="p">110€</span></label>
           <label class="opt"><input type="checkbox" name="x" value="faces"><span class="ic">🎨</span><span class="t"><b><span class="pt">Pinturas faciais</span><span class="en">Face painting</span></b><span><span class="pt">2 horas</span><span class="en">2 hours</span></span></span><span class="p">80€</span></label>
-          <label class="opt"><input type="checkbox" name="x" value="popcorn"><span class="ic">🍿</span><span class="t"><b><span class="pt">Máquina de pipocas</span><span class="en">Popcorn machine</span></b><span><span class="pt">Com uma pessoa, 2 h + 1 de oferta</span><span class="en">With a person, 2 h + 1 on the house</span></span></span><span class="p">100€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="popcorn"><span class="ic">🍿</span><span class="t"><b><span class="pt">Máquina de pipocas</span><span class="en">Popcorn machine</span></b><span><span class="pt">2 h + 1 de oferta</span><span class="en">2 h + 1 on the house</span></span></span><span class="p">100€</span></label>
           <label class="opt"><input type="checkbox" name="x" value="candy"><span class="ic">🍭</span><span class="t"><b><span class="pt">Máquina de algodão doce</span><span class="en">Candy floss machine</span></b><span><span class="pt">As duas máquinas juntas: 150€</span><span class="en">Both machines together: €150</span></span></span><span class="p">100€</span></label>
           <label class="opt"><input type="checkbox" name="x" value="games"><span class="ic">🪢</span><span class="t"><b><span class="pt">Jogos tradicionais</span><span class="en">Traditional games</span></b><span><span class="pt">2 horas</span><span class="en">2 hours</span></span></span><span class="p">75€</span></label>
           <label class="opt"><input type="checkbox" name="x" value="mascot"><span class="ic">🦁</span><span class="t"><b><span class="pt">Mascote</span><span class="en">Mascot</span></b><span><span class="pt">Uma personagem à escolha</span><span class="en">A character of your choice</span></span></span><span class="p q"><span class="pt">orçamento</span><span class="en">quoted</span></span></label>
           <label class="opt"><input type="checkbox" name="x" value="icecream"><span class="ic">🍦</span><span class="t"><b><span class="pt">Carrinho de gelados</span><span class="en">Ice cream cart</span></b><span><span class="pt">Gelados à vontade</span><span class="en">Ice cream for all</span></span></span><span class="p q"><span class="pt">orçamento</span><span class="en">quoted</span></span></label>
         </div>
-      </div>
+        <div class="nav"><button class="btn ghost" type="button" data-prev><span class="pt">← Voltar</span><span class="en">← Back</span></button><button class="btn" type="button" data-next><span class="pt">Seguinte</span><span class="en">Next</span></button></div>
+      </section>
 
-      <div class="card" id="sendcard">
-        <h2><span class="n">4</span><span class="pt">Envia e recebe o código</span><span class="en">Send it and get your code</span></h2>
-        <p class="hint"><span class="pt">O orçamento chega por email no mesmo dia. O código serve para falar da tua festa sem repetir nada.</span><span class="en">The quote arrives by email the same day. The code lets you talk about your party without repeating anything.</span></p>
-        <form id="form" class="opts" autocomplete="on">
-          <div class="row2">
-            <label class="f"><span class="pt">O teu nome</span><span class="en">Your name</span><input name="name" type="text" required data-ph-pt="Sofia" data-ph-en="Sofia"></label>
-            <label class="f"><span class="pt">O teu email</span><span class="en">Your email</span><input name="email" type="email" inputmode="email" autocomplete="email" required data-ph-pt="sofia@exemplo.pt" data-ph-en="sofia@example.com"></label>
-          </div>
-          <div class="row2">
-            <label class="f"><span class="pt">Data da festa</span><span class="en">Date of the party</span><input name="date" type="date"></label>
-            <label class="f"><span class="pt">Onde</span><span class="en">Where</span><input name="where" type="text" data-ph-pt="Portimão, Lagos, Albufeira..." data-ph-en="Portimão, Lagos, Albufeira..."></label>
-          </div>
-          <label class="f"><span class="pt">Mais alguma coisa</span><span class="en">Anything else</span><textarea name="notes" data-ph-pt="Um tema, alergias, um bolo, quantas crianças e quantos adultos..." data-ph-en="A theme, allergies, a cake, how many children and how many adults..."></textarea></label>
-          <button class="btn" type="submit" id="sendbtn"><span class="pt">Pedir este orçamento</span><span class="en">Request this quote</span></button>
-          <button class="btn quiet" type="button" id="copybtn"><span class="pt">Copiar o resumo</span><span class="en">Copy the summary</span></button>
-          <p class="tiny" id="note"></p>
-        </form>
-        <div class="done" id="done">
-          <div style="font-size:40px">🎉</div>
-          <b style="font:600 20px Fredoka,Nunito,sans-serif"><span class="pt">Recebido, obrigada!</span><span class="en">Got it, thank you!</span></b>
-          <div class="code" id="code"></div>
-          <p><span class="pt">Guarda o código. O orçamento chega ao teu email no mesmo dia, com um link para reservar a data.</span><span class="en">Keep the code. Your quote lands in your inbox the same day, with a link to hold the date.</span></p>
-          <button class="btn quiet" type="button" id="copybtn2"><span class="pt">Copiar o resumo com o código</span><span class="en">Copy the summary with the code</span></button>
+      <section class="step" data-step="4">
+        <h2 class="q"><span class="pt">Quando, <em>e onde?</em></span><span class="en">When, <em>and where?</em></span></h2>
+        <p class="hint"><span class="pt">Se ainda não tens a data, deixa em branco. Falamos disso.</span><span class="en">No date yet? Leave it blank. We will talk about it.</span></p>
+        <label class="f"><span class="pt">Data da festa</span><span class="en">Date of the party</span><input name="date" id="date" type="date"></label>
+        <p class="hint" style="margin:6px 0 8px"><span class="pt">Onde é a festa?</span><span class="en">Where is the party?</span></p>
+        <div class="chips" id="towns">
+          <label class="chip"><input type="radio" name="town" value="Portimão">Portimão</label>
+          <label class="chip"><input type="radio" name="town" value="Lagos">Lagos</label>
+          <label class="chip"><input type="radio" name="town" value="Lagoa">Lagoa</label>
+          <label class="chip"><input type="radio" name="town" value="Silves">Silves</label>
+          <label class="chip"><input type="radio" name="town" value="Albufeira">Albufeira</label>
+          <label class="chip"><input type="radio" name="town" value="Aljezur">Aljezur</label>
+          <label class="chip"><input type="radio" name="town" value="other"><span class="pt">Outro sítio</span><span class="en">Somewhere else</span></label>
         </div>
-      </div>
+        <label class="f" id="townother" style="margin-top:10px" hidden><span class="pt">Onde?</span><span class="en">Where?</span><input name="where" id="where" type="text" data-ph-pt="Vila, rua, ou o nome do espaço" data-ph-en="Town, street, or the name of the venue"></label>
+        <div class="nav"><button class="btn ghost" type="button" data-prev><span class="pt">← Voltar</span><span class="en">← Back</span></button><button class="btn" type="button" data-next><span class="pt">Quase lá</span><span class="en">Nearly there</span></button></div>
+      </section>
+
+      <section class="step" data-step="5">
+        <h2 class="q"><span class="pt">Para quem envio <em>o orçamento?</em></span><span class="en">Who do I send <em>the quote to?</em></span></h2>
+        <div class="summary" id="summary"></div>
+        <form id="form" autocomplete="on">
+          <label class="f"><span class="pt">O teu nome</span><span class="en">Your name</span><input name="name" type="text" required data-ph-pt="Sofia" data-ph-en="Sofia"></label>
+          <label class="f"><span class="pt">O teu email</span><span class="en">Your email</span><input name="email" type="email" inputmode="email" autocomplete="email" required data-ph-pt="sofia@exemplo.pt" data-ph-en="sofia@example.com"></label>
+          <label class="f"><span class="pt">Alguma coisa que eu deva saber?</span><span class="en">Anything I should know?</span><textarea name="notes" data-ph-pt="Um tema, alergias, um bolo, quantas crianças e quantos adultos..." data-ph-en="A theme, allergies, a cake, how many children and how many adults..."></textarea></label>
+          <button class="btn block" type="submit" id="sendbtn"><span class="pt">Pedir o meu orçamento</span><span class="en">Request my quote</span></button>
+          <p class="tiny" id="note" style="margin-top:10px"><span class="pt">Chega ao teu email no mesmo dia, com um link para reservar a data. Sem listas, sem spam.</span><span class="en">It lands in your inbox the same day, with a link to hold the date. No lists, no spam.</span></p>
+        </form>
+        <div class="nav" style="margin-top:6px"><button class="btn ghost" type="button" data-prev><span class="pt">← Voltar</span><span class="en">← Back</span></button><span></span></div>
+      </section>
+
+      <section class="step done" data-step="6">
+        <div style="font-size:48px">🎉</div>
+        <h2><span class="pt">Recebido, obrigada!</span><span class="en">Got it, thank you!</span></h2>
+        <div class="code" id="code"></div>
+        <p><span class="pt">Guarda o código. O orçamento chega ao teu email no mesmo dia, com um link para reservar a data.</span><span class="en">Keep the code. Your quote lands in your inbox the same day, with a link to hold the date.</span></p>
+        <button class="btn quiet" type="button" id="copybtn2"><span class="pt">Copiar o resumo com o código</span><span class="en">Copy the summary with the code</span></button>
+        <p class="tiny" id="copynote" style="margin-top:10px"></p>
+      </section>
+
     </div>
   </div>
 </div>
@@ -248,33 +314,27 @@
   var ANIM = { jungle: 85, castle: 110, faces: 80, popcorn: 100, candy: 100, games: 75 };
   var BOTH_MACHINES = 150;
   var QUOTED = { mascot: true, icecream: true };
-
-  var html = document.documentElement;
-  var $ = function (id) { return document.getElementById(id); };
-  var state = { menu: 'classic', sizeIdx: 0, fx: [], deco: 'simple', x: [] };
-  /* Presets from the occasion cards on the site: monta.html?f=kids|baby|adult|wedding|event */
   var PRESET = {
     kids:    { menu: 'classic', sizeIdx: 0, deco: 'simple', x: ['castle'] },
     baby:    { menu: 'classic', sizeIdx: 0, deco: 'medium', x: [] },
     adult:   { menu: 'premium', sizeIdx: 0, deco: 'simple', x: [] },
     wedding: { menu: 'premium', sizeIdx: 2, deco: 'full', x: [] },
-    event:   { menu: 'classic', sizeIdx: 1, deco: 'none', x: [] }
+    event:   { menu: 'classic', sizeIdx: 1, deco: 'none', x: [] },
+    other:   { menu: 'classic', sizeIdx: 0, deco: 'simple', x: [] }
   };
-  try {
-    var f = new URLSearchParams(location.search).get('f');
-    if (f && PRESET[f]) {
-      var pr = PRESET[f]; state.menu = pr.menu; state.sizeIdx = pr.sizeIdx; state.deco = pr.deco; state.x = pr.x.slice();
-      var mi = document.querySelector('input[name=menu][value="' + pr.menu + '"]'); if (mi) { mi.checked = true; }
-      var di = document.querySelector('input[name=deco][value="' + pr.deco + '"]'); if (di) { di.checked = true; }
-      pr.x.forEach(function (k) { var xi = document.querySelector('input[name=x][value="' + k + '"]'); if (xi) { xi.checked = true; } });
-    }
-  } catch (e) {}
+
+  var html = document.documentElement;
+  var $ = function (id) { return document.getElementById(id); };
+  var state = { occasion: null, menu: 'classic', sizeIdx: 0, fx: [], deco: 'simple', x: [], town: '', step: 0 };
   var T = {
+    kids: { pt: 'Festa de crianças', en: 'Children\'s party' }, baby: { pt: 'Batizado ou chá de bebé', en: 'Christening or baby shower' }, adult: { pt: 'Aniversário de adultos', en: 'Adult birthday' }, wedding: { pt: 'Casamento', en: 'Wedding' }, event: { pt: 'Escola ou empresa', en: 'School or company' }, other: { pt: 'Outra festa', en: 'Another party' },
     classic: { pt: 'Menu Clássico', en: 'Classic menu' }, premium: { pt: 'Menu Premium', en: 'Premium menu' }, healthy: { pt: 'Mesa saudável', en: 'Healthy table' }, none: { pt: 'Sem comida', en: 'No food' },
     hotdogs: { pt: 'Mini cachorros extra', en: 'Extra mini hot dogs' }, burgers: { pt: 'Mini hambúrgueres extra', en: 'Extra mini burgers' }, cupcakes: { pt: 'Cupcakes extra', en: 'Extra cupcakes' },
     deco_none: { pt: 'Sem decoração', en: 'No decoration' }, deco_simple: { pt: 'Decoração Simples', en: 'Simple decoration' }, deco_medium: { pt: 'Decoração Média', en: 'Medium decoration' }, deco_full: { pt: 'Decoração Completa', en: 'Complete decoration' },
     jungle: { pt: 'Insuflável Selva', en: 'Jungle castle' }, castle: { pt: 'Insuflável Castelo', en: 'Castle' }, faces: { pt: 'Pinturas faciais', en: 'Face painting' }, popcorn: { pt: 'Pipocas', en: 'Popcorn' }, candy: { pt: 'Algodão doce', en: 'Candy floss' }, both: { pt: 'Pipocas e algodão doce', en: 'Popcorn and candy floss' }, games: { pt: 'Jogos tradicionais', en: 'Traditional games' }, mascot: { pt: 'Mascote', en: 'Mascot' }, icecream: { pt: 'Carrinho de gelados', en: 'Ice cream cart' },
-    quoted: { pt: 'sob orçamento', en: 'quoted' }, people: { pt: 'pessoas', en: 'people' }, plus: { pt: '+ itens sob orçamento', en: '+ items to be quoted' }, person: { pt: 'pessoa', en: 'person' }
+    quoted: { pt: 'sob orçamento', en: 'quoted' }, people: { pt: 'pessoas', en: 'people' }, plus: { pt: '+ itens sob orçamento', en: '+ items to be quoted' },
+    steps: { pt: ['A festa', 'A comida', 'O cenário', 'A diversão', 'Quando e onde', 'Para quem', 'Pronto'], en: ['The party', 'The food', 'The backdrop', 'The fun', 'When and where', 'Who', 'Done'] },
+    stepOf: { pt: 'Passo {a} de {b}', en: 'Step {a} of {b}' }
   };
   function t(k) { return (T[k] || {})[html.getAttribute('data-lang')] || k; }
   function eur(n) { return (Math.round(n * 100) / 100).toLocaleString('pt-PT', { minimumFractionDigits: 0, maximumFractionDigits: 2 }); }
@@ -299,7 +359,40 @@
     return { total: total, lines: lines, quoted: quoted };
   }
 
-  /* ---------- Sizes segment ---------- */
+  /* ---------- Steps ---------- */
+  var STEPS = 7;
+  function renderProg() {
+    var p = $('prog'); p.innerHTML = '';
+    for (var i = 0; i < STEPS - 1; i++) {
+      var b = document.createElement('i'); b.textContent = i + 1;
+      if (i < state.step) { b.className = 'done'; } else if (i === state.step) { b.className = 'on'; }
+      p.appendChild(b);
+      if (i < STEPS - 2) { p.appendChild(document.createElement('span')); }
+    }
+    var names = t('steps');
+    $('proglbl').textContent = state.step >= STEPS - 1 ? names[STEPS - 1] : t('stepOf').replace('{a}', state.step + 1).replace('{b}', STEPS - 1) + ' · ' + names[state.step];
+  }
+  function go(n) {
+    state.step = Math.max(0, Math.min(STEPS - 1, n));
+    document.querySelectorAll('.step').forEach(function (s) { s.classList.toggle('active', parseInt(s.getAttribute('data-step'), 10) === state.step); });
+    renderProg();
+    if (state.step === 5) { renderSummary(); }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  document.querySelectorAll('[data-next]').forEach(function (b) { b.addEventListener('click', function () { go(state.step + 1); }); });
+  document.querySelectorAll('[data-prev]').forEach(function (b) { b.addEventListener('click', function () { go(state.step - 1); }); });
+  function applyPreset(f) {
+    var pr = PRESET[f] || PRESET.other; state.occasion = f;
+    state.menu = pr.menu; state.sizeIdx = pr.sizeIdx; state.deco = pr.deco; state.x = pr.x.slice(); state.fx = [];
+    var mi = document.querySelector('input[name=menu][value="' + pr.menu + '"]'); if (mi) { mi.checked = true; }
+    var di = document.querySelector('input[name=deco][value="' + pr.deco + '"]'); if (di) { di.checked = true; }
+    document.querySelectorAll('input[name=x]').forEach(function (xi) { xi.checked = pr.x.indexOf(xi.value) !== -1; });
+    document.querySelectorAll('input[name=fx]').forEach(function (xi) { xi.checked = false; });
+    render();
+  }
+  document.querySelectorAll('.occ button').forEach(function (b) { b.addEventListener('click', function () { applyPreset(b.getAttribute('data-f')); go(1); }); });
+
+  /* ---------- Sizes ---------- */
   function renderSizes() {
     var box = $('sizes'); box.innerHTML = '';
     var m = MENUS[state.menu];
@@ -330,41 +423,43 @@
       stage.appendChild(d);
     });
     Object.keys(shown).forEach(function (k) { if (!want.some(function (w) { return w.key === k; })) { delete shown[k]; } });
-    var kids = $('kids'); var n = Math.min(people(), 24); var cur = kids.children.length;
-    if (cur !== n || kids.getAttribute('data-n') !== String(people())) {
+    var kids = $('kids'); var n = Math.min(people(), 24);
+    if (kids.getAttribute('data-n') !== String(people())) {
       kids.innerHTML = ''; kids.setAttribute('data-n', String(people()));
       var faces = ['🧒', '👧', '👦'];
       for (var j = 0; j < n; j++) { var s = document.createElement('span'); s.textContent = faces[j % 3]; s.style.animationDelay = (j * 25) + 'ms'; kids.appendChild(s); }
       if (people() > 24) { var m = document.createElement('span'); m.className = 'more'; m.textContent = '+' + (people() - 24); kids.appendChild(m); }
     }
+    $('hello').hidden = state.occasion !== null;
   }
   (function arch() {
     var cols = ['#F7B6D2', '#E94B9A', '#B161FE', '#FFFFFF', '#F7B6D2', '#D9893A', '#E94B9A', '#B161FE', '#FFFFFF', '#F7B6D2', '#E94B9A'];
     cols.forEach(function (c, i) { var b = document.createElement('i'); b.style.background = c; b.style.transform = 'translateY(' + Math.abs(i - 5) * 6 + 'px)'; $('arch').appendChild(b); });
   })();
 
-  /* ---------- Price with a counting animation ---------- */
+  /* ---------- Price ---------- */
   var shownTotal = 0, raf = null;
   function renderPrice() {
     var c = calc();
-    var target = c.total, from = shownTotal, start = performance.now();
+    var target = state.occasion === null ? 0 : c.total, from = shownTotal, start = performance.now();
     if (raf) { cancelAnimationFrame(raf); }
     (function tick(now) {
       var p = Math.min(1, (now - start) / 450); var v = from + (target - from) * (1 - Math.pow(1 - p, 3));
       $('total').textContent = eur(p < 1 ? Math.round(v) : target); shownTotal = v;
       if (p < 1) { raf = requestAnimationFrame(tick); } else { shownTotal = target; }
     })(start);
-    $('totalnote').textContent = c.quoted.length ? t('plus') : '';
-    $('peoplenote').textContent = people() ? people() + ' ' + t('people') : '';
-    $('lines').innerHTML = c.lines.map(function (l) { return '<div><span>' + l[0] + '</span><b>' + l[1] + '</b></div>'; }).join('');
+    $('totalnote').textContent = c.quoted.length && state.occasion !== null ? t('plus') : '';
+    $('peoplenote').textContent = people() && state.occasion !== null ? people() + ' ' + t('people') : '';
+    $('lines').innerHTML = state.occasion === null ? '' : c.lines.map(function (l) { return '<div><span>' + l[0] + '</span><b>' + l[1] + '</b></div>'; }).join('');
   }
-  function render() { renderSizes(); renderScene(); renderPrice(); }
+  function render() { renderSizes(); renderScene(); renderPrice(); renderProg(); }
 
   /* ---------- Controls ---------- */
   document.querySelectorAll('input[name=menu]').forEach(function (r) { r.addEventListener('change', function () { state.menu = this.value; render(); }); });
   document.querySelectorAll('input[name=fx]').forEach(function (c) { c.addEventListener('change', function () { state.fx = Array.prototype.map.call(document.querySelectorAll('input[name=fx]:checked'), function (e) { return e.value; }); render(); }); });
   document.querySelectorAll('input[name=deco]').forEach(function (r) { r.addEventListener('change', function () { state.deco = this.value; render(); }); });
   document.querySelectorAll('input[name=x]').forEach(function (c) { c.addEventListener('change', function () { state.x = Array.prototype.map.call(document.querySelectorAll('input[name=x]:checked'), function (e) { return e.value; }); render(); }); });
+  document.querySelectorAll('input[name=town]').forEach(function (r) { r.addEventListener('change', function () { state.town = this.value; $('townother').hidden = this.value !== 'other'; if (this.value === 'other') { $('where').focus(); } }); });
 
   /* ---------- Language ---------- */
   function setLang(l) {
@@ -373,7 +468,7 @@
     document.title = l === 'pt' ? 'Monta a tua festa · PocPoc' : 'Build your party · PocPoc';
     document.querySelectorAll('[data-ph-en]').forEach(function (el) { el.placeholder = el.getAttribute('data-ph-' + l) || ''; });
     try { localStorage.setItem('pocpoc-lang', l); } catch (e) {}
-    shown = {}; render();
+    shown = {}; render(); if (state.step === 5) { renderSummary(); }
   }
   var saved = null; try { saved = localStorage.getItem('pocpoc-lang'); } catch (e) {}
   var guess = (navigator.language || '').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
@@ -381,52 +476,61 @@
   document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-set')); }); });
 
   /* ---------- Summary, code, send ---------- */
+  function where() { return state.town === 'other' ? ($('where').value || '').trim() : state.town; }
+  function renderSummary() {
+    var c = calc(), pt = html.getAttribute('data-lang') === 'pt';
+    var parts = [];
+    if (state.occasion) { parts.push('<b>' + t(state.occasion) + '</b>'); }
+    c.lines.forEach(function (l) { parts.push(l[0] + ' (' + l[1] + ')'); });
+    if ($('date').value) { parts.push((pt ? 'dia ' : 'on ') + $('date').value); }
+    if (where()) { parts.push((pt ? 'em ' : 'in ') + where()); }
+    $('summary').innerHTML = (pt ? 'A tua festa: ' : 'Your party: ') + parts.join(' · ') + '. <b>' + (pt ? 'Total ' : 'Total ') + eur(c.total) + '€</b>' + (c.quoted.length ? ' ' + t('plus') : '') + '.';
+  }
   function makeCode() { var a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s = 'POC-'; for (var i = 0; i < 4; i++) { s += a[Math.floor(Math.random() * a.length)]; } return s; }
   var code = null;
   function summary(withCode) {
     var c = calc(), pt = html.getAttribute('data-lang') === 'pt', f = new FormData($('form'));
     var out = [pt ? 'A minha festa PocPoc' : 'My PocPoc party'];
     if (withCode && code) { out.push((pt ? 'Código: ' : 'Code: ') + code); }
+    if (state.occasion) { out.push(t(state.occasion)); }
     out.push('');
     c.lines.forEach(function (l) { out.push(l[0] + ': ' + l[1]); });
-    out.push((pt ? 'Total: ' : 'Total: ') + eur(c.total) + '€' + (c.quoted.length ? ' ' + t('plus') : ''));
-    if (f.get('date')) { out.push((pt ? 'Data: ' : 'Date: ') + f.get('date')); }
-    if (f.get('where')) { out.push((pt ? 'Onde: ' : 'Where: ') + f.get('where')); }
+    out.push('Total: ' + eur(c.total) + '€' + (c.quoted.length ? ' ' + t('plus') : ''));
+    if ($('date').value) { out.push((pt ? 'Data: ' : 'Date: ') + $('date').value); }
+    if (where()) { out.push((pt ? 'Onde: ' : 'Where: ') + where()); }
     if ((f.get('notes') || '').trim()) { out.push('', f.get('notes').trim()); }
     return out.join('\n');
   }
-  function copy(text) {
-    var pt = html.getAttribute('data-lang') === 'pt';
-    var ok = function () { $('note').textContent = pt ? 'Copiado.' : 'Copied.'; };
+  $('copybtn2').addEventListener('click', function () {
+    var text = summary(true), pt = html.getAttribute('data-lang') === 'pt';
+    var ok = function () { $('copynote').textContent = pt ? 'Copiado.' : 'Copied.'; };
     if (navigator.clipboard) { navigator.clipboard.writeText(text).then(ok, function () { prompt('', text); }); } else { prompt('', text); }
-  }
-  $('copybtn').addEventListener('click', function () { copy(summary(false)); });
-  $('copybtn2').addEventListener('click', function () { copy(summary(true)); });
-
+  });
   function payload() {
     var c = calc(), f = new FormData($('form')), pt = html.getAttribute('data-lang') === 'pt';
     var answers = {
-      code:    { n: 0, question: 'Code', answer: code, type: 'text' },
-      name:    { n: 1, question: 'Name', answer: (f.get('name') || '').trim(), type: 'text' },
-      email:   { n: 2, question: 'Email', answer: (f.get('email') || '').trim(), type: 'text' },
-      date:    { n: 4, question: 'Date', answer: f.get('date') || '', type: 'text' },
-      menu:    { n: 5, question: 'Menu', answer: state.menu, type: 'one' },
-      people:  { n: 6, question: 'People', answer: people(), type: 'number' },
-      fx:      { n: 7, question: 'Food extras', answer: state.fx, type: 'many' },
-      deco:    { n: 8, question: 'Decoration', answer: state.deco, type: 'one' },
-      anim:    { n: 9, question: 'Entertainment', answer: state.x, type: 'many' },
-      where:   { n: 10, question: 'Where', answer: (f.get('where') || '').trim(), type: 'text' },
-      notes:   { n: 11, question: 'Notes', answer: (f.get('notes') || '').trim(), type: 'text' },
-      total:   { n: 12, question: 'List total', answer: c.total, type: 'number', unit: 'EUR' },
-      quoted:  { n: 13, question: 'Items to be quoted', answer: c.quoted, type: 'many' },
-      lang:    { n: 14, question: 'Language', answer: pt ? 'pt' : 'en', type: 'one' },
-      builder: { n: 15, question: 'Source page', answer: 'monta', type: 'one' }
+      code:     { n: 0, question: 'Code', answer: code, type: 'text' },
+      name:     { n: 1, question: 'Name', answer: (f.get('name') || '').trim(), type: 'text' },
+      email:    { n: 2, question: 'Email', answer: (f.get('email') || '').trim(), type: 'text' },
+      occasion: { n: 3, question: 'Occasion', answer: state.occasion || '', type: 'one' },
+      date:     { n: 4, question: 'Date', answer: $('date').value || '', type: 'text' },
+      menu:     { n: 5, question: 'Menu', answer: state.menu, type: 'one' },
+      people:   { n: 6, question: 'People', answer: people(), type: 'number' },
+      fx:       { n: 7, question: 'Food extras', answer: state.fx, type: 'many' },
+      deco:     { n: 8, question: 'Decoration', answer: state.deco, type: 'one' },
+      anim:     { n: 9, question: 'Entertainment', answer: state.x, type: 'many' },
+      where:    { n: 10, question: 'Where', answer: where(), type: 'text' },
+      notes:    { n: 11, question: 'Notes', answer: (f.get('notes') || '').trim(), type: 'text' },
+      total:    { n: 12, question: 'List total', answer: c.total, type: 'number', unit: 'EUR' },
+      quoted:   { n: 13, question: 'Items to be quoted', answer: c.quoted, type: 'many' },
+      lang:     { n: 14, question: 'Language', answer: pt ? 'pt' : 'en', type: 'one' },
+      builder:  { n: 15, question: 'Source page', answer: 'monta', type: 'one' }
     };
     return { prospect_slug: QUOTE_SLUG, prospect_name: answers.name.answer.slice(0, 60), business: 'PocPoc quote request · ' + code, properties_target: null, answers: answers, worst_hour: summary(true).slice(0, 2000), source: 'web' };
   }
   function confetti() {
     var box = $('confetti'), cols = ['#E94B9A', '#B161FE', '#D9893A', '#F7B6D2', '#7B46C4'];
-    for (var i = 0; i < 70; i++) { var p = document.createElement('i'); p.style.left = Math.random() * 100 + 'vw'; p.style.background = cols[i % cols.length]; p.style.animationDelay = (Math.random() * .6) + 's'; p.style.animationDuration = (1.8 + Math.random() * 1.2) + 's'; box.appendChild(p); }
+    for (var i = 0; i < 80; i++) { var p = document.createElement('i'); p.style.left = Math.random() * 100 + 'vw'; p.style.background = cols[i % cols.length]; p.style.animationDelay = (Math.random() * .6) + 's'; p.style.animationDuration = (1.8 + Math.random() * 1.2) + 's'; box.appendChild(p); }
     setTimeout(function () { box.innerHTML = ''; }, 3600);
   }
   $('form').addEventListener('submit', function (ev) {
@@ -435,15 +539,17 @@
     code = makeCode();
     var p = payload();
     $('note').classList.remove('bad');
-    function finish() { $('form').hidden = true; $('code').textContent = code; $('done').classList.add('show'); confetti(); }
+    function finish() { $('code').textContent = code; go(6); confetti(); }
     if (CONCEPT) { $('note').textContent = 'Concept: ' + JSON.stringify(p.answers); finish(); return; }
     $('sendbtn').disabled = true; $('note').textContent = pt ? 'Um momento.' : 'One moment.';
     fetch(SUPABASE_URL + '/rest/v1/intake_responses', { method: 'POST', headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' }, body: JSON.stringify(p) })
-      .then(function (r) { if (!r.ok) { throw new Error('status ' + r.status); } $('note').textContent = ''; finish(); })
-      .catch(function () { $('sendbtn').disabled = false; $('note').classList.add('bad'); $('note').textContent = pt ? 'Não foi. Tenta outra vez, ou copia o resumo e envia para pocpocalgarve23@gmail.com.' : 'That did not go through. Try again, or copy the summary and email pocpocalgarve23@gmail.com.'; });
+      .then(function (r) { if (!r.ok) { throw new Error('status ' + r.status); } finish(); })
+      .catch(function () { $('sendbtn').disabled = false; $('note').classList.add('bad'); $('note').textContent = pt ? 'Não foi. Tenta outra vez, ou escreve para pocpocalgarve23@gmail.com.' : 'That did not go through. Try again, or email pocpocalgarve23@gmail.com.'; });
   });
 
-  render();
+  /* ---------- Start: preset from the site, or the occasion screen ---------- */
+  var f0 = null; try { f0 = new URLSearchParams(location.search).get('f'); } catch (e) {}
+  if (f0 && PRESET[f0]) { applyPreset(f0); go(1); } else { render(); go(0); }
 })();
 </script>
 </body>

@@ -272,7 +272,7 @@
         <button type="button" data-set="pt">PT</button>
         <button type="button" data-set="en">EN</button>
       </div>
-      <a class="btn primary" href="#quote" style="padding:10px 16px;font-size:14px"><span class="pt">Pedir orçamento</span><span class="en">Get a quote</span></a>
+      <a class="btn primary" href="monta.html" style="padding:10px 16px;font-size:14px"><span class="pt">Pedir orçamento</span><span class="en">Get a quote</span></a>
     </nav>
   </div>
 </header>
@@ -507,58 +507,15 @@
 
 <section id="quote" style="padding-top:20px">
   <div class="wrap">
-    <div class="quote-wrap">
+    <div class="quote-wrap" style="grid-template-columns:1fr 1fr;align-items:center">
       <div>
         <span class="eyebrow pink"><span class="pt">Pedir orçamento</span><span class="en">Get a quote</span></span>
-        <h2><span class="pt">Fale-me do <em>seu dia.</em></span><span class="en">Tell me about <em>your day.</em></span></h2>
-        <p class="lede"><span class="pt">Preencha o que souber. Recebe o orçamento por email no mesmo dia, com um link para reservar a data.</span><span class="en">Fill in what you know. You get a quote by email the same day, with a link to hold the date.</span></p>
-        <p class="tiny"><span class="pt">Os seus dados servem só para este orçamento. Sem listas, sem spam.</span><span class="en">Your details are used for this quote and nothing else. No lists, no spam.</span></p>
+        <h2><span class="pt">Dois minutos, <em>e a tua festa está montada.</em></span><span class="en">Two minutes, <em>and your party is built.</em></span></h2>
+        <p class="lede"><span class="pt">Sem formulários. Toca na festa, escolhe a comida, o cenário e a diversão, vê o preço a crescer, e no fim diz-me só para quem envio. O orçamento chega por email no mesmo dia, com um link para reservar a data.</span><span class="en">No forms. Tap your party, pick the food, the backdrop and the fun, watch the price grow, and at the end just tell me who to send it to. The quote lands in your inbox the same day, with a link to hold the date.</span></p>
+        <a class="btn primary" href="monta.html"><span class="pt">Monta a tua festa</span><span class="en">Build your party</span></a>
+        <p class="tiny" style="margin-top:12px"><span class="pt">Ou escreve-nos: pocpocalgarve23@gmail.com</span><span class="en">Or write to us: pocpocalgarve23@gmail.com</span></p>
       </div>
-      <form class="form" id="form" autocomplete="on">
-        <div class="row2">
-          <label><span class="pt">O seu nome</span><span class="en">Your name</span><input name="name" type="text" data-ph-pt="Sofia" data-ph-en="Sofia" required></label>
-          <label><span class="pt">Data da festa</span><span class="en">Date of the party</span><input name="date" type="date"></label>
-        </div>
-        <div class="row2">
-          <label><span class="pt">O seu email</span><span class="en">Your email</span><input name="email" type="email" inputmode="email" autocomplete="email" data-ph-pt="sofia@exemplo.pt" data-ph-en="sofia@example.com" required></label>
-          <label><span class="pt">Telemóvel (opcional)</span><span class="en">Phone (optional)</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" data-ph-pt="+351 9..." data-ph-en="+351 9..."></label>
-        </div>
-        <div class="row2">
-          <label><span class="pt">Quantas crianças</span><span class="en">How many children</span><input name="kids" type="number" min="0" max="300" inputmode="numeric" data-ph-pt="20" data-ph-en="20"></label>
-          <label><span class="pt">Quantos adultos</span><span class="en">How many adults</span><input name="adults" type="number" min="0" max="500" inputmode="numeric" data-ph-pt="25" data-ph-en="25"></label>
-        </div>
-        <div class="row2">
-          <label><span class="pt">Tipo de festa</span><span class="en">Kind of party</span>
-            <select name="type">
-              <option value="" data-pt="Escolha um" data-en="Choose one"></option>
-              <option value="kids" data-pt="Festa de anos de criança" data-en="Child's birthday"></option>
-              <option value="family" data-pt="Festa de família" data-en="Family party"></option>
-              <option value="picnic" data-pt="Piquenique" data-en="Picnic"></option>
-              <option value="wedding" data-pt="Casamento" data-en="Wedding"></option>
-              <option value="school" data-pt="Escola ou creche" data-en="School or nursery"></option>
-              <option value="work" data-pt="Empresa ou evento" data-en="Company or event"></option>
-              <option value="other" data-pt="Outra coisa" data-en="Something else"></option>
-            </select>
-          </label>
-          <label><span class="pt">Onde</span><span class="en">Where</span><input name="where" type="text" data-ph-pt="Portimão, Lagos, Albufeira..." data-ph-en="Portimão, Lagos, Albufeira..."></label>
-        </div>
-        <label><span class="pt">O que gostaria</span><span class="en">What you would like</span>
-          <div class="chips">
-            <label class="chip"><input type="checkbox" name="x" value="food"><span class="pt">Comida</span><span class="en">Food</span></label>
-            <label class="chip"><input type="checkbox" name="x" value="healthy"><span class="pt">Mesa saudável</span><span class="en">Healthy table</span></label>
-            <label class="chip"><input type="checkbox" name="x" value="deco"><span class="pt">Decoração</span><span class="en">Decoration</span></label>
-            <label class="chip"><input type="checkbox" name="x" value="castle"><span class="pt">Insuflável</span><span class="en">Bouncy castle</span></label>
-            <label class="chip"><input type="checkbox" name="x" value="faces"><span class="pt">Pinturas faciais</span><span class="en">Face painting</span></label>
-            <label class="chip"><input type="checkbox" name="x" value="mascot"><span class="pt">Mascote</span><span class="en">Mascot</span></label>
-            <label class="chip"><input type="checkbox" name="x" value="popcorn"><span class="pt">Pipocas e algodão doce</span><span class="en">Popcorn and candy floss</span></label>
-            <label class="chip"><input type="checkbox" name="x" value="icecream"><span class="pt">Carrinho de gelados</span><span class="en">Ice cream cart</span></label>
-          </div>
-        </label>
-        <label><span class="pt">Mais alguma coisa</span><span class="en">Anything else</span><textarea name="notes" data-ph-pt="Vegetarianos, alergias, um tema, um bolo, um orçamento aproximado..." data-ph-en="Vegetarians, allergies, a theme, a cake, a rough budget..."></textarea></label>
-        <button class="btn primary" type="submit" style="justify-content:center" id="sendbtn"><span class="pt">Pedir orçamento</span><span class="en">Request my quote</span></button>
-        <p class="tiny" id="formnote"></p>
-        <div class="sent" id="sentbox" hidden><b><span class="pt">Recebido, obrigada.</span><span class="en">Got it, thank you.</span></b><p><span class="pt">O orçamento chega ao seu email no mesmo dia, com um link para reservar a data.</span><span class="en">Your quote lands in your inbox the same day, with a link to hold the date.</span></p></div>
-      </form>
+      <div class="hero-photo" style="transform:none;aspect-ratio:4/3"><img src="photos/t-marina.jpg" alt="" loading="lazy"><div class="sticker" style="left:auto;right:-6px;transform:rotate(3deg)"><b><span class="pt">Respondo eu</span><span class="en">I reply myself</span></b><span class="pt">Marina, no mesmo dia.</span><span class="en">Marina, the same day.</span></div></div>
     </div>
   </div>
 </section>
@@ -576,15 +533,8 @@
 
   /* ---------- Adam fills these in. Everything else runs off them. ---------- */
   var CONCEPT = false;                                  // true shows the build notes to Adam and stops the form sending; false for the demo she sees
-  /* Where a quote request goes. Not WhatsApp: Adam's decision, 25 Oct 2026. The form writes a
-     row to Supabase (insert-only publishable key, same one the question pages use), and a
-     Supabase database webhook hands that row to n8n, which drafts the quote and asks Marina
-     on Telegram. QUOTE_WEBHOOK is an optional direct n8n webhook URL; when set, the form
-     posts there as well. */
-  var SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
-  var SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
-  var QUOTE_SLUG = "pocpoc-quote";
-  var QUOTE_WEBHOOK = "";
+  /* Quote requests go through monta.html, the guided flow, which writes to Supabase slug
+     pocpoc-quote. Not WhatsApp: Adam's decision, 25 Oct 2026. */
   var INSTAGRAM = "https://www.instagram.com/_poc_poc_/";
   var FACEBOOK = "https://www.facebook.com/p/Poc-Poc-100064322580087/";
   var TIKTOK = "https://www.tiktok.com/@poc.poc4";
@@ -657,77 +607,6 @@
   show('tklink', TIKTOK, 'tksep');
   show('gblink', GOOGLE_REVIEWS, null);
 
-  /* ---------- The quote form: a row for the automation, a thank-you for the parent ---------- */
-  var XL = { food: ['comida', 'food'], healthy: ['mesa saudável', 'healthy table'], deco: ['decoração', 'decoration'], castle: ['insuflável', 'bouncy castle'],
-             faces: ['pinturas faciais', 'face painting'], mascot: ['mascote', 'mascot'], popcorn: ['pipocas e algodão doce', 'popcorn and candy floss'], icecream: ['carrinho de gelados', 'ice cream cart'] };
-  var form = document.getElementById('form');
-  var note = document.getElementById('formnote');
-  var sendbtn = document.getElementById('sendbtn');
-  var sentbox = document.getElementById('sentbox');
-  function payload() {
-    var f = new FormData(form);
-    var pt = html.getAttribute('data-lang') === 'pt';
-    var typeSel = form.querySelector('select[name=type]');
-    var extras = f.getAll('x');
-    var answers = {
-      name:   { n: 1, question: 'Name',     answer: (f.get('name') || '').trim(), type: 'text' },
-      email:  { n: 2, question: 'Email',    answer: (f.get('email') || '').trim(), type: 'text' },
-      phone:  { n: 3, question: 'Phone',    answer: (f.get('phone') || '').trim(), type: 'text' },
-      date:   { n: 4, question: 'Date',     answer: f.get('date') || '', type: 'text' },
-      kids:   { n: 5, question: 'Children', answer: f.get('kids') || '', type: 'number' },
-      adults: { n: 6, question: 'Adults',   answer: f.get('adults') || '', type: 'number' },
-      type:   { n: 7, question: 'Type',     answer: typeSel.value || '', type: 'one' },
-      where:  { n: 8, question: 'Where',    answer: (f.get('where') || '').trim(), type: 'text' },
-      extras: { n: 9, question: 'Extras',   answer: extras, type: 'many' },
-      notes:  { n: 10, question: 'Notes',   answer: (f.get('notes') || '').trim(), type: 'text' },
-      lang:   { n: 11, question: 'Language', answer: pt ? 'pt' : 'en', type: 'one' }
-    };
-    return {
-      prospect_slug: QUOTE_SLUG,
-      prospect_name: answers.name.answer.slice(0, 60),
-      business: 'PocPoc quote request',
-      properties_target: null,
-      answers: answers,
-      worst_hour: answers.notes.answer || null,
-      source: 'web'
-    };
-  }
-  function summary(p) {
-    var a = p.answers, pt = a.lang.answer === 'pt';
-    var extras = a.extras.answer.map(function (k) { return XL[k] ? XL[k][pt ? 0 : 1] : k; }).join(', ');
-    return [a.name.answer, a.email.answer, a.phone.answer, a.date.answer, (pt ? 'crianças ' : 'children ') + a.kids.answer, (pt ? 'adultos ' : 'adults ') + a.adults.answer, a.type.answer, a.where.answer, extras, a.notes.answer].filter(Boolean).join(' / ');
-  }
-  function send(p) {
-    var calls = [fetch(SUPABASE_URL + '/rest/v1/intake_responses', {
-      method: 'POST',
-      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
-      body: JSON.stringify(p)
-    }).then(function (r) { if (!r.ok) { throw new Error('supabase ' + r.status); } })];
-    if (QUOTE_WEBHOOK) {
-      calls.push(fetch(QUOTE_WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(p) }).catch(function () {}));
-    }
-    return Promise.all(calls);
-  }
-  form.addEventListener('submit', function (ev) {
-    ev.preventDefault();
-    var p = payload();
-    var pt = p.answers.lang.answer === 'pt';
-    note.classList.remove('bad');
-    if (CONCEPT) {
-      note.textContent = (pt ? 'Concept: isto seria enviado para a automação: ' : 'Concept: this would go to the automation: ') + summary(p);
-      form.hidden = true; sentbox.hidden = false; form.insertAdjacentElement('afterend', note);
-      return;
-    }
-    sendbtn.disabled = true;
-    note.textContent = pt ? 'Um momento.' : 'One moment.';
-    send(p).then(function () {
-      form.hidden = true; sentbox.hidden = false; note.textContent = '';
-    }).catch(function () {
-      sendbtn.disabled = false;
-      note.classList.add('bad');
-      note.textContent = pt ? 'Não foi. Tente outra vez, ou escreva para pocpocalgarve23@gmail.com.' : 'That did not go through. Try again, or email pocpocalgarve23@gmail.com.';
-    });
-  });
 })();
 </script>
 </body>
