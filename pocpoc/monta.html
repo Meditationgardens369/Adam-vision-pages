@@ -61,24 +61,23 @@
   .scene-wrap { position: sticky; top: 76px; }
   @media (max-width: 880px) { .scene-wrap { position: static; } }
   .scene { position: relative; height: 300px; border-radius: 26px; overflow: hidden; border: 5px solid #fff; box-shadow: 0 24px 50px rgba(74,44,31,.16);
-    background: linear-gradient(180deg, var(--sky) 0%, #EAF6FB 55%, var(--grass) 55.5%, #B9DEA9 100%); perspective: 900px; }
-  @media (max-width: 880px) { .scene { height: 190px; } }
+    background: linear-gradient(180deg, #FDE7F0 0%, #F7E6FA 60%, #EEE6FA 100%); }
+  @media (max-width: 880px) { .scene { height: 230px; } }
   .scene .sun { position: absolute; top: 16px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: #FFD66B; box-shadow: 0 0 0 10px rgba(255,214,107,.28); }
   .scene .arch { position: absolute; left: 50%; top: 18px; transform: translateX(-50%); display: flex; gap: 2px; }
   .scene .arch i { display: block; width: 24px; height: 30px; border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%; animation: bob 3.2s ease-in-out infinite; }
   .scene .arch i:nth-child(odd) { animation-delay: -1.3s; }
   @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-  .stage { position: absolute; left: 0; right: 0; bottom: 24px; display: flex; align-items: flex-end; justify-content: center; gap: 24px; flex-wrap: wrap; padding: 0 16px; }
-  .item { font-size: 44px; line-height: 1; filter: drop-shadow(0 8px 10px rgba(74,44,31,.22)); animation: pop .55s cubic-bezier(.2,1.4,.4,1) both; position: relative; }
-  .item.big { font-size: 60px; }
-  @media (max-width: 880px) { .item { font-size: 34px; } .item.big { font-size: 46px; } }
-  .item .lbl { position: absolute; left: 50%; bottom: -20px; transform: translateX(-50%); font: 800 9px/1.1 Nunito, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); width: 84px; text-align: center; }
-  @media (max-width: 880px) { .item .lbl { display: none; } }
+  .stage { position: absolute; inset: 0; }
+  .card { position: absolute; width: 38%; aspect-ratio: 1; border-radius: 16px; overflow: hidden; border: 4px solid #fff; box-shadow: 0 16px 30px rgba(74,44,31,.28); animation: drop .6s cubic-bezier(.2,1.3,.4,1) both; background: var(--rose); }
+  .card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card b { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 8px 6px; font: 800 10px Nunito, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: linear-gradient(180deg, transparent, rgba(74,44,31,.75)); text-align: center; }
+  @keyframes drop { from { transform: translateY(-40px) scale(.6) rotate(var(--r, 0deg)); opacity: 0; } to { transform: rotate(var(--r, 0deg)); opacity: 1; } }
+  .card.still { animation: none; transform: rotate(var(--r, 0deg)); }
+  .badge { position: absolute; top: 14px; left: 14px; background: #fff; color: var(--ink); border-radius: 999px; padding: 8px 14px; font: 800 13px Nunito, sans-serif; box-shadow: 0 8px 20px rgba(74,44,31,.2); display: flex; align-items: center; gap: 8px; z-index: 2; }
+  .badge b { font: 700 20px/1 Fredoka, Nunito, sans-serif; color: var(--pink); }
+  .badge.occ-badge { top: auto; bottom: 14px; left: 14px; background: var(--plum); color: #fff; }
   @keyframes pop { from { transform: translateY(30px) scale(.4) rotateX(40deg); opacity: 0; } to { transform: none; opacity: 1; } }
-  .kids { position: absolute; left: 14px; right: 14px; top: 78px; display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; font-size: 18px; line-height: 1; }
-  @media (max-width: 880px) { .kids { top: 62px; font-size: 14px; } }
-  .kids span { animation: pop .4s cubic-bezier(.2,1.4,.4,1) both; }
-  .kids .more { font: 800 12px Nunito, sans-serif; color: var(--muted); align-self: center; }
   .scene .hello { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 20px; color: var(--muted); font: 600 15px Nunito, sans-serif; }
 
   /* Price */
@@ -112,7 +111,8 @@
   .opt { display: flex; align-items: center; gap: 12px; cursor: pointer; background: var(--blush); border: 1.5px solid var(--line); border-radius: 16px; padding: 13px 14px; transition: border-color .15s, background .15s, transform .15s; }
   .opt:active { transform: scale(.985); }
   .opt input { accent-color: var(--pink); width: 20px; height: 20px; margin: 0; flex: none; }
-  .opt .ic { font-size: 28px; line-height: 1; flex: none; width: 36px; text-align: center; }
+  .opt .ic { flex: none; width: 56px; height: 56px; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 10px rgba(74,44,31,.18); background: var(--rose); display: grid; place-items: center; font-size: 26px; }
+  .opt .ic img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .opt .t { flex: 1; }
   .opt .t b { display: block; font-weight: 800; font-size: 15.5px; }
   .opt .t span { display: block; font-size: 13px; color: var(--muted); }
@@ -176,8 +176,9 @@
       <div class="scene" id="scene">
         <div class="sun"></div>
         <div class="arch" id="arch"></div>
-        <div class="kids" id="kids"></div>
         <div class="stage" id="stage"></div>
+        <div class="badge" id="peoplebadge" hidden><b id="peoplen">20</b> <span class="pt">pessoas</span><span class="en">people</span></div>
+        <div class="badge occ-badge" id="occbadge" hidden></div>
         <div class="hello" id="hello"><span class="pt">A tua festa vai aparecer aqui.</span><span class="en">Your party will appear here.</span></div>
       </div>
       <div class="price">
@@ -206,10 +207,10 @@
         <h2 class="q"><span class="pt">O que vão <em>comer?</em></span><span class="en">What will they <em>eat?</em></span></h2>
         <p class="hint"><span class="pt">Todos os menus incluem dois monitores na festa.</span><span class="en">Every menu includes two animators at the party.</span></p>
         <div class="opts">
-          <label class="opt"><input type="radio" name="menu" value="classic" checked><span class="ic">🥐</span><span class="t"><b><span class="pt">Menu Clássico</span><span class="en">Classic menu</span></b><span><span class="pt">Croissants, salgados, mini pizzas, doces, fruta, sumo.</span><span class="en">Croissants, savoury snacks, mini pizzas, sweets, fruit, juice.</span></span></span><span class="p"><span class="pt">desde</span><span class="en">from</span> 250€</span></label>
-          <label class="opt"><input type="radio" name="menu" value="premium"><span class="ic">🍔</span><span class="t"><b><span class="pt">Menu Premium</span><span class="en">Premium menu</span></b><span><span class="pt">Mini hambúrgueres e cachorros, salgados, fruta, waffles. Substitui a refeição.</span><span class="en">Mini burgers and hot dogs, savoury snacks, fruit, waffles. Replaces the meal.</span></span></span><span class="p"><span class="pt">desde</span><span class="en">from</span> 350€</span></label>
-          <label class="opt"><input type="radio" name="menu" value="healthy"><span class="ic">🥗</span><span class="t"><b><span class="pt">Mesa saudável</span><span class="en">Healthy table</span></b><span><span class="pt">Wraps integrais, húmus, saladas, ovos, fruta. Novo.</span><span class="en">Wholegrain wraps, hummus, salads, eggs, fruit. New.</span></span></span><span class="p q"><span class="pt">orçamento</span><span class="en">quoted</span></span></label>
-          <label class="opt"><input type="radio" name="menu" value="none"><span class="ic">🙅</span><span class="t"><b><span class="pt">Sem comida</span><span class="en">No food</span></b><span><span class="pt">Só decoração e animação.</span><span class="en">Decoration and entertainment only.</span></span></span><span class="p">0€</span></label>
+          <label class="opt"><input type="radio" name="menu" value="classic" checked><span class="ic"><img src="photos/th-classic.jpg" alt=""></span><span class="t"><b><span class="pt">Menu Clássico</span><span class="en">Classic menu</span></b><span><span class="pt">Croissants, salgados, mini pizzas, doces, fruta, sumo.</span><span class="en">Croissants, savoury snacks, mini pizzas, sweets, fruit, juice.</span></span></span><span class="p"><span class="pt">desde</span><span class="en">from</span> 250€</span></label>
+          <label class="opt"><input type="radio" name="menu" value="premium"><span class="ic"><img src="photos/th-premium.jpg" alt=""></span><span class="t"><b><span class="pt">Menu Premium</span><span class="en">Premium menu</span></b><span><span class="pt">Mini hambúrgueres e cachorros, salgados, fruta, waffles. Substitui a refeição.</span><span class="en">Mini burgers and hot dogs, savoury snacks, fruit, waffles. Replaces the meal.</span></span></span><span class="p"><span class="pt">desde</span><span class="en">from</span> 350€</span></label>
+          <label class="opt"><input type="radio" name="menu" value="healthy"><span class="ic"><img src="photos/th-healthy.jpg" alt=""></span><span class="t"><b><span class="pt">Mesa saudável</span><span class="en">Healthy table</span></b><span><span class="pt">Wraps integrais, húmus, saladas, ovos, fruta. Novo.</span><span class="en">Wholegrain wraps, hummus, salads, eggs, fruit. New.</span></span></span><span class="p q"><span class="pt">orçamento</span><span class="en">quoted</span></span></label>
+          <label class="opt"><input type="radio" name="menu" value="none"><span class="ic" style="font:700 28px Fredoka,Nunito,sans-serif;color:var(--faint)">×</span><span class="t"><b><span class="pt">Sem comida</span><span class="en">No food</span></b><span><span class="pt">Só decoração e animação.</span><span class="en">Decoration and entertainment only.</span></span></span><span class="p">0€</span></label>
         </div>
         <p class="hint" style="margin:16px 0 0"><span class="pt">Para quantas pessoas?</span><span class="en">For how many people?</span></p>
         <div class="seg" id="sizes"></div>
@@ -225,10 +226,10 @@
         <h2 class="q"><span class="pt">E o <em>cenário?</em></span><span class="en">And the <em>backdrop?</em></span></h2>
         <p class="hint"><span class="pt">Onde se tiram as fotos. No tema que quiseres.</span><span class="en">Where the photos get taken. In any theme you like.</span></p>
         <div class="opts">
-          <label class="opt"><input type="radio" name="deco" value="none"><span class="ic">🙅</span><span class="t"><b><span class="pt">Sem decoração</span><span class="en">No decoration</span></b></span><span class="p">0€</span></label>
-          <label class="opt"><input type="radio" name="deco" value="simple" checked><span class="ic">🎈</span><span class="t"><b><span class="pt">Simples</span><span class="en">Simple</span></b><span><span class="pt">Um painel, grinalda de balões, nome, pódio para o bolo.</span><span class="en">One panel, balloon garland, name, cake podium.</span></span></span><span class="p">200€</span></label>
-          <label class="opt"><input type="radio" name="deco" value="medium"><span class="ic">🎈🎈</span><span class="t"><b><span class="pt">Média</span><span class="en">Medium</span></b><span><span class="pt">Dois painéis, três pódios, displays do tema, número em LED.</span><span class="en">Two panels, three podiums, theme displays, LED number.</span></span></span><span class="p">250€</span></label>
-          <label class="opt"><input type="radio" name="deco" value="full"><span class="ic">✨</span><span class="t"><b><span class="pt">Completa</span><span class="en">Complete</span></b><span><span class="pt">Três painéis, três pódios, balcão, displays, número grande.</span><span class="en">Three panels, three podiums, counter, displays, large number.</span></span></span><span class="p">350€</span></label>
+          <label class="opt"><input type="radio" name="deco" value="none"><span class="ic" style="font:700 28px Fredoka,Nunito,sans-serif;color:var(--faint)">×</span><span class="t"><b><span class="pt">Sem decoração</span><span class="en">No decoration</span></b></span><span class="p">0€</span></label>
+          <label class="opt"><input type="radio" name="deco" value="simple" checked><span class="ic"><img src="photos/th-deco1.jpg" alt=""></span><span class="t"><b><span class="pt">Simples</span><span class="en">Simple</span></b><span><span class="pt">Um painel, grinalda de balões, nome, pódio para o bolo.</span><span class="en">One panel, balloon garland, name, cake podium.</span></span></span><span class="p">200€</span></label>
+          <label class="opt"><input type="radio" name="deco" value="medium"><span class="ic"><img src="photos/th-deco2.jpg" alt=""></span><span class="t"><b><span class="pt">Média</span><span class="en">Medium</span></b><span><span class="pt">Dois painéis, três pódios, displays do tema, número em LED.</span><span class="en">Two panels, three podiums, theme displays, LED number.</span></span></span><span class="p">250€</span></label>
+          <label class="opt"><input type="radio" name="deco" value="full"><span class="ic"><img src="photos/th-deco3.jpg" alt=""></span><span class="t"><b><span class="pt">Completa</span><span class="en">Complete</span></b><span><span class="pt">Três painéis, três pódios, balcão, displays, número grande.</span><span class="en">Three panels, three podiums, counter, displays, large number.</span></span></span><span class="p">350€</span></label>
         </div>
         <div class="nav"><button class="btn ghost" type="button" data-prev><span class="pt">← Voltar</span><span class="en">← Back</span></button><button class="btn" type="button" data-next><span class="pt">Seguinte</span><span class="en">Next</span></button></div>
       </section>
@@ -237,14 +238,14 @@
         <h2 class="q"><span class="pt">E a <em>diversão?</em></span><span class="en">And the <em>fun?</em></span></h2>
         <p class="hint"><span class="pt">Escolhe o que quiseres, ou nada. As máquinas vêm sempre com uma pessoa.</span><span class="en">Pick whatever you like, or nothing. The machines always come with a person.</span></p>
         <div class="opts">
-          <label class="opt"><input type="checkbox" name="x" value="jungle"><span class="ic">🌴</span><span class="t"><b><span class="pt">Insuflável Selva</span><span class="en">Jungle bouncy castle</span></b><span>4 x 4 m</span></span><span class="p">85€</span></label>
-          <label class="opt"><input type="checkbox" name="x" value="castle"><span class="ic">🏰</span><span class="t"><b><span class="pt">Insuflável Castelo</span><span class="en">Castle bouncy castle</span></b><span>6 x 4 m</span></span><span class="p">110€</span></label>
-          <label class="opt"><input type="checkbox" name="x" value="faces"><span class="ic">🎨</span><span class="t"><b><span class="pt">Pinturas faciais</span><span class="en">Face painting</span></b><span><span class="pt">2 horas</span><span class="en">2 hours</span></span></span><span class="p">80€</span></label>
-          <label class="opt"><input type="checkbox" name="x" value="popcorn"><span class="ic">🍿</span><span class="t"><b><span class="pt">Máquina de pipocas</span><span class="en">Popcorn machine</span></b><span><span class="pt">2 h + 1 de oferta</span><span class="en">2 h + 1 on the house</span></span></span><span class="p">100€</span></label>
-          <label class="opt"><input type="checkbox" name="x" value="candy"><span class="ic">🍭</span><span class="t"><b><span class="pt">Máquina de algodão doce</span><span class="en">Candy floss machine</span></b><span><span class="pt">As duas máquinas juntas: 150€</span><span class="en">Both machines together: €150</span></span></span><span class="p">100€</span></label>
-          <label class="opt"><input type="checkbox" name="x" value="games"><span class="ic">🪢</span><span class="t"><b><span class="pt">Jogos tradicionais</span><span class="en">Traditional games</span></b><span><span class="pt">2 horas</span><span class="en">2 hours</span></span></span><span class="p">75€</span></label>
-          <label class="opt"><input type="checkbox" name="x" value="mascot"><span class="ic">🦁</span><span class="t"><b><span class="pt">Mascote</span><span class="en">Mascot</span></b><span><span class="pt">Uma personagem à escolha</span><span class="en">A character of your choice</span></span></span><span class="p q"><span class="pt">orçamento</span><span class="en">quoted</span></span></label>
-          <label class="opt"><input type="checkbox" name="x" value="icecream"><span class="ic">🍦</span><span class="t"><b><span class="pt">Carrinho de gelados</span><span class="en">Ice cream cart</span></b><span><span class="pt">Gelados à vontade</span><span class="en">Ice cream for all</span></span></span><span class="p q"><span class="pt">orçamento</span><span class="en">quoted</span></span></label>
+          <label class="opt"><input type="checkbox" name="x" value="jungle"><span class="ic"><img src="photos/th-jungle.jpg" alt=""></span><span class="t"><b><span class="pt">Insuflável Selva</span><span class="en">Jungle bouncy castle</span></b><span>4 x 4 m</span></span><span class="p">85€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="castle"><span class="ic"><img src="photos/th-castle.jpg" alt=""></span><span class="t"><b><span class="pt">Insuflável Castelo</span><span class="en">Castle bouncy castle</span></b><span>6 x 4 m</span></span><span class="p">110€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="faces"><span class="ic"><img src="photos/th-faces.jpg" alt=""></span><span class="t"><b><span class="pt">Pinturas faciais</span><span class="en">Face painting</span></b><span><span class="pt">2 horas</span><span class="en">2 hours</span></span></span><span class="p">80€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="popcorn"><span class="ic"><img src="photos/th-popcorn.jpg" alt=""></span><span class="t"><b><span class="pt">Máquina de pipocas</span><span class="en">Popcorn machine</span></b><span><span class="pt">2 h + 1 de oferta</span><span class="en">2 h + 1 on the house</span></span></span><span class="p">100€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="candy"><span class="ic"><img src="photos/th-candy.jpg" alt=""></span><span class="t"><b><span class="pt">Máquina de algodão doce</span><span class="en">Candy floss machine</span></b><span><span class="pt">As duas máquinas juntas: 150€</span><span class="en">Both machines together: €150</span></span></span><span class="p">100€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="games"><span class="ic"><img src="photos/th-games.jpg" alt=""></span><span class="t"><b><span class="pt">Jogos tradicionais</span><span class="en">Traditional games</span></b><span><span class="pt">2 horas</span><span class="en">2 hours</span></span></span><span class="p">75€</span></label>
+          <label class="opt"><input type="checkbox" name="x" value="mascot"><span class="ic"><img src="photos/logo-from-instagram.png" alt=""></span><span class="t"><b><span class="pt">Mascote</span><span class="en">Mascot</span></b><span><span class="pt">Uma personagem à escolha</span><span class="en">A character of your choice</span></span></span><span class="p q"><span class="pt">orçamento</span><span class="en">quoted</span></span></label>
+          <label class="opt"><input type="checkbox" name="x" value="icecream"><span class="ic"><img src="photos/th-icecream.jpg" alt=""></span><span class="t"><b><span class="pt">Carrinho de gelados</span><span class="en">Ice cream cart</span></b><span><span class="pt">Gelados à vontade</span><span class="en">Ice cream for all</span></span></span><span class="p q"><span class="pt">orçamento</span><span class="en">quoted</span></span></label>
         </div>
         <div class="nav"><button class="btn ghost" type="button" data-prev><span class="pt">← Voltar</span><span class="en">← Back</span></button><button class="btn" type="button" data-next><span class="pt">Seguinte</span><span class="en">Next</span></button></div>
       </section>
@@ -406,30 +407,29 @@
     });
   }
 
-  /* ---------- Scene ---------- */
-  var ICON = { classic: '🥐', premium: '🍔', healthy: '🥗', simple: '🎈', medium: '🎈', full: '✨', jungle: '🌴', castle: '🏰', faces: '🎨', popcorn: '🍿', candy: '🍭', games: '🪢', mascot: '🦁', icecream: '🍦' };
+  /* ---------- Scene: a photo collage that fills as the parent chooses ---------- */
+  var PHOTO = { classic: 'th-classic.jpg', premium: 'th-premium.jpg', healthy: 'th-healthy.jpg', simple: 'th-deco1.jpg', medium: 'th-deco2.jpg', full: 'th-deco3.jpg',
+                jungle: 'th-jungle.jpg', castle: 'th-castle.jpg', faces: 'th-faces.jpg', popcorn: 'th-popcorn.jpg', candy: 'th-candy.jpg', games: 'th-games.jpg', mascot: 'logo-from-instagram.png', icecream: 'th-icecream.jpg' };
+  var SPOTS = [[6, 22, -6], [34, 12, 4], [60, 24, -3], [14, 52, 5], [42, 46, -4], [66, 54, 6], [26, 30, -2], [52, 36, 3]];
   var shown = {};
   function renderScene() {
     var stage = $('stage'); var want = [];
-    if (state.menu !== 'none') { want.push({ key: 'menu', ic: ICON[state.menu], big: true, lbl: t(state.menu) }); }
-    if (state.deco !== 'none') { want.push({ key: 'deco', ic: ICON[state.deco], big: true, lbl: t('deco_' + state.deco) }); }
-    state.x.forEach(function (k) { want.push({ key: k, ic: ICON[k], lbl: t(k) }); });
+    if (state.menu !== 'none') { want.push({ key: 'menu', ph: PHOTO[state.menu], lbl: t(state.menu) }); }
+    if (state.deco !== 'none') { want.push({ key: 'deco', ph: PHOTO[state.deco], lbl: t('deco_' + state.deco) }); }
+    state.x.forEach(function (k) { want.push({ key: k, ph: PHOTO[k], lbl: t(k) }); });
     stage.innerHTML = '';
-    want.forEach(function (w) {
-      var d = document.createElement('div'); d.className = 'item' + (w.big ? ' big' : ''); d.textContent = w.ic;
-      if (shown[w.key] === w.ic) { d.style.animation = 'none'; }
-      shown[w.key] = w.ic;
-      var l = document.createElement('span'); l.className = 'lbl'; l.textContent = w.lbl; d.appendChild(l);
+    want.slice(0, SPOTS.length).forEach(function (w, i) {
+      var sp = SPOTS[i];
+      var d = document.createElement('div'); d.className = 'card' + (shown[w.key] === w.ph ? ' still' : '');
+      d.style.left = sp[0] + '%'; d.style.top = sp[1] + '%'; d.style.setProperty('--r', sp[2] + 'deg'); d.style.zIndex = String(i + 1);
+      d.innerHTML = '<img src="photos/' + w.ph + '" alt=""><b>' + w.lbl + '</b>';
+      shown[w.key] = w.ph;
       stage.appendChild(d);
     });
     Object.keys(shown).forEach(function (k) { if (!want.some(function (w) { return w.key === k; })) { delete shown[k]; } });
-    var kids = $('kids'); var n = Math.min(people(), 24);
-    if (kids.getAttribute('data-n') !== String(people())) {
-      kids.innerHTML = ''; kids.setAttribute('data-n', String(people()));
-      var faces = ['🧒', '👧', '👦'];
-      for (var j = 0; j < n; j++) { var s = document.createElement('span'); s.textContent = faces[j % 3]; s.style.animationDelay = (j * 25) + 'ms'; kids.appendChild(s); }
-      if (people() > 24) { var m = document.createElement('span'); m.className = 'more'; m.textContent = '+' + (people() - 24); kids.appendChild(m); }
-    }
+    var n = people();
+    $('peoplebadge').hidden = !(n && state.occasion !== null); $('peoplen').textContent = n;
+    $('occbadge').hidden = state.occasion === null; $('occbadge').textContent = state.occasion ? t(state.occasion) : '';
     $('hello').hidden = state.occasion !== null;
   }
   (function arch() {

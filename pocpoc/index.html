@@ -112,6 +112,33 @@
   .video .cap { position: relative; padding: 0 20px; font: 600 15px Nunito, sans-serif; }
   .video .cap small { display: block; font-weight: 400; opacity: .85; margin-top: 4px; font-size: 13px; }
 
+
+  /* Social icons, flyer-led pricing, lightbox */
+  .social { display: flex; gap: 10px; align-items: center; }
+  .social a { width: 42px; height: 42px; border-radius: 50%; background: var(--paper); border: 1.5px solid var(--line); display: grid; place-items: center; color: var(--pink); box-shadow: 0 6px 14px rgba(74,44,31,.10); transition: transform .15s; }
+  .social a:hover { transform: translateY(-2px); background: var(--pink); color: #fff; }
+  .social svg { width: 20px; height: 20px; fill: currentColor; }
+  .flyers { display: grid; gap: 28px; }
+  .flyer { display: grid; grid-template-columns: .9fr 1.1fr; gap: 26px; align-items: center; background: var(--paper); border: 1.5px solid var(--line); border-radius: 28px; padding: 22px; box-shadow: 0 18px 40px rgba(74,44,31,.10); }
+  .flyer:nth-child(even) { grid-template-columns: 1.1fr .9fr; }
+  .flyer:nth-child(even) .fimg { order: 2; }
+  @media (max-width: 860px) { .flyer, .flyer:nth-child(even) { grid-template-columns: 1fr; } .flyer:nth-child(even) .fimg { order: 0; } }
+  .fimg { position: relative; display: block; border-radius: 18px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 24px 50px rgba(74,44,31,.22); transform: rotate(-1.2deg); transition: transform .3s; cursor: zoom-in; }
+  .flyer:nth-child(even) .fimg { transform: rotate(1.2deg); }
+  .fimg:hover { transform: rotate(0) scale(1.02); }
+  .fimg img { width: 100%; display: block; }
+  .fimg span { position: absolute; right: 12px; bottom: 12px; background: rgba(255,255,255,.94); color: var(--pink-deep); font: 800 12px Nunito, sans-serif; padding: 7px 11px; border-radius: 999px; box-shadow: 0 4px 12px rgba(74,44,31,.2); }
+  .fsum h3 { font-size: 26px; margin-bottom: 4px; }
+  .fsum .lead { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+  .rows { display: grid; gap: 6px; }
+  .rows div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 14px; background: var(--blush); border-radius: 14px; font-size: 15px; }
+  .rows div b { font: 700 18px Fredoka, Nunito, sans-serif; color: var(--pink); white-space: nowrap; }
+  .rows div span small { display: block; color: var(--muted); font-size: 12.5px; }
+  .rows div.q b { font: 700 11px Nunito, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--plum); background: var(--plum-soft); padding: 4px 8px; border-radius: 999px; }
+  .lb { position: fixed; inset: 0; background: rgba(74,44,31,.82); display: none; place-items: center; z-index: 60; padding: 20px; cursor: zoom-out; }
+  .lb.on { display: grid; }
+  .lb img { max-width: min(96vw, 820px); max-height: 94vh; border-radius: 14px; box-shadow: 0 30px 80px rgba(0,0,0,.5); background: #fff; }
+
   /* Top bar */
   .top { position: sticky; top: 0; z-index: 20; background: rgba(255,243,247,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 68px; }
@@ -159,7 +186,8 @@
   .promises { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   @media (max-width: 720px) { .promises { grid-template-columns: 1fr; gap: 12px; } }
   .promise { display: flex; gap: 14px; align-items: flex-start; }
-  .promise .ic { width: 44px; height: 44px; flex: none; border-radius: 14px; background: var(--pink-soft); display: grid; place-items: center; font-size: 22px; }
+  .promise .ic { width: 64px; height: 64px; flex: none; border-radius: 50%; overflow: hidden; border: 3px solid #fff; box-shadow: 0 8px 18px rgba(74,44,31,.18); }
+  .promise .ic img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .promise b { display: block; font: 600 17px Fredoka, Nunito, sans-serif; }
   .promise span { font-size: 14px; color: var(--muted); }
 
@@ -298,9 +326,9 @@
         </div>
         <div class="trust">
           <span><span class="star">★★★★★</span> <span class="pt">avaliações Google <b>em breve</b></span><span class="en">Google reviews <b>coming soon</b></span></span>
-          <span>📸 <b>726</b> <span class="pt">festas no Instagram</span><span class="en">parties on Instagram</span></span>
-          <span>👥 <b>2</b> <span class="pt">monitores em todas as festas</span><span class="en">animators at every party</span></span>
-          <span>🗺️ <span class="pt">todo o Algarve</span><span class="en">all of the Algarve</span></span>
+          <span><b>726</b> <span class="pt">festas no Instagram</span><span class="en">parties on Instagram</span></span>
+          <span><b>2</b> <span class="pt">monitores em todas as festas</span><span class="en">animators at every party</span></span>
+          <span><span class="pt">todo o Algarve</span><span class="en">all of the Algarve</span></span>
         </div>
       </div>
       <div class="hero-photo">
@@ -358,9 +386,9 @@
   <div class="wrap">
     <span class="eyebrow"><span class="pt">Como trabalhamos</span><span class="en">How we work</span></span>
     <div class="promises">
-      <div class="promise"><div class="ic">🌿</div><div><b><span class="pt">Feito nessa manhã</span><span class="en">Made that morning</span></b><span><span class="pt">Fresco, à mão, em pequenas quantidades. Nada de congelador.</span><span class="en">Fresh, by hand, in small batches. Nothing from a freezer.</span></span></div></div>
-      <div class="promise"><div class="ic">🥕</div><div><b><span class="pt">Tão saudável quanto quiser</span><span class="en">As healthy as you want it</span></b><span><span class="pt">Comida de festa portuguesa, ou húmus, wraps integrais, ovos e fruta. As crianças comem mesmo.</span><span class="en">Portuguese party food, or hummus, wholegrain wraps, eggs and fruit. The children actually eat it.</span></span></div></div>
-      <div class="promise"><div class="ic">👩‍🍳</div><div><b><span class="pt">Fala com quem faz</span><span class="en">You talk to the person who does it</span></b><span><span class="pt">Sem escritório, sem intermediários. A Marina e o Fábio cozinham, montam e ficam na festa.</span><span class="en">No office, no middle. Marina and Fábio cook, set up and stay for the party.</span></span></div></div>
+      <div class="promise"><div class="ic"><img src="photos/th-classic.jpg" alt="" loading="lazy"></div><div><b><span class="pt">Feito nessa manhã</span><span class="en">Made that morning</span></b><span><span class="pt">Fresco, à mão, em pequenas quantidades. Nada de congelador.</span><span class="en">Fresh, by hand, in small batches. Nothing from a freezer.</span></span></div></div>
+      <div class="promise"><div class="ic"><img src="photos/th-healthy.jpg" alt="" loading="lazy"></div><div><b><span class="pt">Tão saudável quanto quiser</span><span class="en">As healthy as you want it</span></b><span><span class="pt">Comida de festa portuguesa, ou húmus, wraps integrais, ovos e fruta. As crianças comem mesmo.</span><span class="en">Portuguese party food, or hummus, wholegrain wraps, eggs and fruit. The children actually eat it.</span></span></div></div>
+      <div class="promise"><div class="ic"><img src="photos/marina-fabio.jpg" alt="" loading="lazy"></div><div><b><span class="pt">Fala com quem faz</span><span class="en">You talk to the person who does it</span></b><span><span class="pt">Sem escritório, sem intermediários. A Marina e o Fábio cozinham, montam e ficam na festa.</span><span class="en">No office, no middle. Marina and Fábio cook, set up and stay for the party.</span></span></div></div>
     </div>
     <h2 style="margin-top:44px"><span class="pt">Festas que já fizemos, <em>de todos os tamanhos.</em></span><span class="en">Parties we have done, <em>of every size.</em></span></h2>
     <div class="strip">
@@ -386,100 +414,59 @@
 
 <section id="menus" style="background:#fff;padding-top:48px">
   <div class="wrap">
-    <span class="eyebrow"><span class="pt">Catering · Decoração · Animação</span><span class="en">Catering · Decoration · Entertainment</span></span>
-    <h2><span class="pt">Os preços da Marina, <em>sem surpresas.</em></span><span class="en">Marina's prices, <em>no surprises.</em></span></h2>
-    <p class="lede"><span class="pt">Tudo o que está aqui é a tabela da PocPoc. Escolhe a mesa pelo número de pessoas, a decoração pelo tamanho, e junta a animação que quiseres.</span><span class="en">Everything here is PocPoc's own price list. Pick the table by number of people, the decoration by size, and add whatever entertainment you like.</span></p>
+    <span class="eyebrow"><span class="pt">Os preços</span><span class="en">The prices</span></span>
+    <h2><span class="pt">A tabela da Marina, <em>sem surpresas.</em></span><span class="en">Marina's own price list, <em>no surprises.</em></span></h2>
+    <p class="lede"><span class="pt">Estes são os cartões que ela própria envia. Toca num para o ver em grande.</span><span class="en">These are the cards she sends herself. Tap one to see it full size.</span></p>
+    <div class="flyers">
 
-    <h3 style="margin-top:28px"><span class="pt">🥗 Catering</span><span class="en">🥗 Catering</span> <small style="font:600 13px Nunito,sans-serif;color:var(--muted)"><span class="pt">· inclui sempre 2 monitores · sem bebidas alcoólicas</span><span class="en">· always includes 2 animators · no alcoholic drinks</span></small></h3>
-    <div class="menus">
-      <div class="menu">
-        <div class="tag"><span class="pt">Menu Clássico</span><span class="en">Classic menu</span></div>
-        <h3><span class="pt">Para festas de crianças</span><span class="en">For children's parties</span></h3>
-        <div class="sizes"><span><b>20</b> <span class="pt">pessoas</span><span class="en">people</span><i>250€</i></span><span><b>40</b> <span class="pt">pessoas</span><span class="en">people</span><i>350€</i></span><span><b>60</b> <span class="pt">pessoas</span><span class="en">people</span><i>450€</i></span></div>
-        <ul>
-          <li><span class="pt">Croissants mistos e salgados</span><span class="en">Assorted croissants and savoury snacks</span></li>
-          <li><span class="pt">Pão recheado, mini pizzas e tábua de queijos a partir de 40 pessoas</span><span class="en">Stuffed bread, mini pizzas and a cheese board from 40 people</span></li>
-          <li><span class="pt">Gelatinas, mousses, donuts e cupcakes do tema</span><span class="en">Jellies, mousses, donuts and themed cupcakes</span></li>
-          <li><span class="pt">Batatas, gomas, fruta, água e um sumo à escolha</span><span class="en">Chips, gummies, fruit, water and a juice of your choice</span></li>
-        </ul>
-        <div class="price"><b><span class="pt">desde 250€</span><span class="en">from €250</span></b><span><span class="pt">20 pessoas</span><span class="en">20 people</span></span></div>
+      <div class="flyer">
+        <a class="fimg" href="photos/flyer-catering.jpg" data-lb><img src="photos/flyer-catering.jpg" alt="" loading="lazy"><span><span class="pt">ver em grande</span><span class="en">see full size</span></span></a>
+        <div class="fsum">
+          <div class="tag" style="font:700 11px Fredoka,Nunito,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);margin-bottom:8px">Catering</div>
+          <h3><span class="pt">Dois menus, por número de pessoas</span><span class="en">Two menus, by number of people</span></h3>
+          <p class="lead"><span class="pt">Inclui sempre dois monitores na festa. Sem bebidas alcoólicas. Apresentação ao tema.</span><span class="en">Always includes two animators at the party. No alcoholic drinks. Presentation to the theme.</span></p>
+          <div class="rows">
+            <div><span><span class="pt">Menu Clássico</span><span class="en">Classic menu</span><small><span class="pt">20 · 40 · 60 pessoas</span><span class="en">20 · 40 · 60 people</span></small></span><b>250 · 350 · 450€</b></div>
+            <div><span><span class="pt">Menu Premium</span><span class="en">Premium menu</span><small><span class="pt">20 · 30 · 40 pessoas, substitui a refeição</span><span class="en">20 · 30 · 40 people, replaces the meal</span></small></span><b>350 · 450 · 550€</b></div>
+            <div><span><span class="pt">Extras por pessoa</span><span class="en">Extras per person</span><small><span class="pt">cachorros, hambúrgueres, cupcakes</span><span class="en">hot dogs, burgers, cupcakes</span></small></span><b>2,50 · 3,50 · 4,50€</b></div>
+            <div class="q"><span><span class="pt">Mesa saudável, novo</span><span class="en">Healthy table, new</span><small><span class="pt">wraps integrais, húmus, fruta, ovos</span><span class="en">wholegrain wraps, hummus, fruit, eggs</span></small></span><b><span class="pt">orçamento</span><span class="en">quoted</span></b></div>
+          </div>
+        </div>
       </div>
-      <div class="menu feature">
-        <div class="tag"><span class="pt">Menu Premium</span><span class="en">Premium menu</span></div>
-        <h3><span class="pt">Substitui a refeição da festa</span><span class="en">Replaces the party meal</span></h3>
-        <div class="sizes"><span><b>20</b> <span class="pt">pessoas</span><span class="en">people</span><i>350€</i></span><span><b>30</b> <span class="pt">pessoas</span><span class="en">people</span><i>450€</i></span><span><b>40</b> <span class="pt">pessoas</span><span class="en">people</span><i>550€</i></span></div>
-        <ul>
-          <li><span class="pt">Mini hambúrgueres e mini cachorros</span><span class="en">Mini burgers and mini hot dogs</span></li>
-          <li><span class="pt">Salgados, pão recheado e tábua de enchidos</span><span class="en">Savoury snacks, stuffed bread and a charcuterie board</span></li>
-          <li><span class="pt">Espetadas de fruta, mousse de chocolate, gelatina</span><span class="en">Fruit skewers, chocolate mousse, jelly</span></li>
-          <li><span class="pt">Cupcakes do tema e waffles com Nutella</span><span class="en">Themed cupcakes and waffles with Nutella</span></li>
-          <li><span class="pt">Batatas, gomas, sumo e água</span><span class="en">Chips, gummies, juice and water</span></li>
-        </ul>
-        <div class="price"><b><span class="pt">desde 350€</span><span class="en">from €350</span></b><span><span class="pt">20 pessoas</span><span class="en">20 people</span></span></div>
-      </div>
-      <div class="menu">
-        <div class="tag"><span class="pt">Novo · a mesa saudável</span><span class="en">New · the healthy table</span></div>
-        <h3><span class="pt">Pedida por uma mãe, feita no dia</span><span class="en">Asked for by a mum, made on the day</span></h3>
-        <p class="muted"><span class="pt">O que a Anya e dezanove amigos comeram em outubro. As crianças comeram mesmo.</span><span class="en">What Anya and nineteen friends ate in October. The children actually ate it.</span></p>
-        <ul>
-          <li><span class="pt">Wraps integrais com alface e recheios</span><span class="en">Wholegrain wraps with lettuce and fillings</span></li>
-          <li><span class="pt">Palitos de cenoura e pepino com húmus</span><span class="en">Carrot and cucumber sticks with hummus</span></li>
-          <li><span class="pt">Saladas de lentilhas e grão, ovos cozidos com molhos</span><span class="en">Lentil and chickpea salads, boiled eggs with sauces</span></li>
-          <li><span class="pt">Espetadas de fruta e de tomate com queijo, broa de milho</span><span class="en">Fruit and tomato-and-cheese skewers, cornbread</span></li>
-        </ul>
-        <div class="price"><b><span class="pt">sob orçamento</span><span class="en">quoted per party</span></b><span><span class="pt">diz-me quantos são</span><span class="en">tell me how many</span></span></div>
-      </div>
-    </div>
-    <p class="tiny" style="margin-top:12px"><span class="pt">Extras por pessoa: mini cachorros +2,50€, mini hambúrgueres +3,50€, cupcakes do tema +4,50€.</span><span class="en">Extras per person: mini hot dogs +€2.50, mini burgers +€3.50, themed cupcakes +€4.50.</span></p>
 
-    <h3 style="margin-top:40px"><span class="pt">🎈 Decoração</span><span class="en">🎈 Decoration</span></h3>
-    <div class="menus">
-      <div class="menu">
-        <div class="tag"><span class="pt">Simples</span><span class="en">Simple</span></div>
-        <ul>
-          <li><span class="pt">Um painel</span><span class="en">One panel</span></li>
-          <li><span class="pt">Grinalda de balões</span><span class="en">Balloon garland</span></li>
-          <li><span class="pt">Nome personalizado</span><span class="en">Personalised name</span></li>
-          <li><span class="pt">Pódio para o bolo</span><span class="en">Cake podium</span></li>
-        </ul>
-        <div class="price"><b>200€</b></div>
+      <div class="flyer">
+        <a class="fimg" href="photos/flyer-deco.jpg" data-lb><img src="photos/flyer-deco.jpg" alt="" loading="lazy"><span><span class="pt">ver em grande</span><span class="en">see full size</span></span></a>
+        <div class="fsum">
+          <div class="tag" style="font:700 11px Fredoka,Nunito,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);margin-bottom:8px"><span class="pt">Decoração</span><span class="en">Decoration</span></div>
+          <h3><span class="pt">Três tamanhos de cenário</span><span class="en">Three sizes of backdrop</span></h3>
+          <p class="lead"><span class="pt">Da ideia à realidade, no tema que a criança escolheu. Painéis, grinalda de balões, nome, pódios.</span><span class="en">From the idea to the real thing, in the theme the child chose. Panels, balloon garland, name, podiums.</span></p>
+          <div class="rows">
+            <div><span><span class="pt">Simples</span><span class="en">Simple</span><small><span class="pt">um painel, grinalda, nome, pódio para o bolo</span><span class="en">one panel, garland, name, cake podium</span></small></span><b>200€</b></div>
+            <div><span><span class="pt">Média</span><span class="en">Medium</span><small><span class="pt">dois painéis, três pódios, displays, número LED</span><span class="en">two panels, three podiums, displays, LED number</span></small></span><b>250€</b></div>
+            <div><span><span class="pt">Completa</span><span class="en">Complete</span><small><span class="pt">três painéis, balcão, displays, número grande</span><span class="en">three panels, counter, displays, large number</span></small></span><b>350€</b></div>
+          </div>
+        </div>
       </div>
-      <div class="menu">
-        <div class="tag"><span class="pt">Média</span><span class="en">Medium</span></div>
-        <ul>
-          <li><span class="pt">Dois painéis e grinalda de balões</span><span class="en">Two panels and a balloon garland</span></li>
-          <li><span class="pt">Nome personalizado e três pódios</span><span class="en">Personalised name and three podiums</span></li>
-          <li><span class="pt">Displays do tema</span><span class="en">Theme displays</span></li>
-          <li><span class="pt">Número em LED</span><span class="en">LED number</span></li>
-        </ul>
-        <div class="price"><b>250€</b></div>
+
+      <div class="flyer">
+        <a class="fimg" href="photos/flyer-anim.jpg" data-lb><img src="photos/flyer-anim.jpg" alt="" loading="lazy"><span><span class="pt">ver em grande</span><span class="en">see full size</span></span></a>
+        <div class="fsum">
+          <div class="tag" style="font:700 11px Fredoka,Nunito,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);margin-bottom:8px"><span class="pt">Animação</span><span class="en">Entertainment</span></div>
+          <h3><span class="pt">Castelos, pinturas, pipocas</span><span class="en">Castles, painting, popcorn</span></h3>
+          <p class="lead"><span class="pt">As máquinas vêm sempre com uma pessoa e todo o material. Duas horas, mais uma de oferta.</span><span class="en">The machines always come with a person and all the material. Two hours, plus one on the house.</span></p>
+          <div class="rows">
+            <div><span><span class="pt">Insufláveis</span><span class="en">Bouncy castles</span><small><span class="pt">Selva 4 x 4 m · Castelo 6 x 4 m</span><span class="en">Jungle 4 x 4 m · Castle 6 x 4 m</span></small></span><b>85 · 110€</b></div>
+            <div><span><span class="pt">Pinturas faciais, 2 h</span><span class="en">Face painting, 2 h</span></span><b>80€</b></div>
+            <div><span><span class="pt">Pipocas, algodão doce</span><span class="en">Popcorn, candy floss</span><small><span class="pt">100€ cada máquina, as duas 150€</span><span class="en">€100 a machine, both €150</span></small></span><b>100 · 150€</b></div>
+            <div><span><span class="pt">Jogos tradicionais, 2 h</span><span class="en">Traditional games, 2 h</span></span><b>75€</b></div>
+            <div class="q"><span><span class="pt">Mascote, carrinho de gelados</span><span class="en">Mascot, ice cream cart</span></span><b><span class="pt">orçamento</span><span class="en">quoted</span></b></div>
+          </div>
+        </div>
       </div>
-      <div class="menu feature">
-        <div class="tag"><span class="pt">Completa</span><span class="en">Complete</span></div>
-        <ul>
-          <li><span class="pt">Três painéis e grinalda de balões</span><span class="en">Three panels and a balloon garland</span></li>
-          <li><span class="pt">Nome personalizado e três pódios</span><span class="en">Personalised name and three podiums</span></li>
-          <li><span class="pt">Balcão e displays do tema</span><span class="en">Counter and theme displays</span></li>
-          <li><span class="pt">Número em tamanho grande</span><span class="en">Large number</span></li>
-        </ul>
-        <div class="price"><b>350€</b></div>
-      </div>
+
     </div>
 
-    <h3 style="margin-top:40px"><span class="pt">🏰 Animação</span><span class="en">🏰 Entertainment</span></h3>
-    <div class="anim">
-      <div><span class="ic">🌴</span><b><span class="pt">Insuflável Selva, 4 x 4 m</span><span class="en">Jungle bouncy castle, 4 x 4 m</span></b><i>85€</i></div>
-      <div><span class="ic">🏰</span><b><span class="pt">Insuflável Castelo, 6 x 4 m</span><span class="en">Castle bouncy castle, 6 x 4 m</span></b><i>110€</i></div>
-      <div><span class="ic">🎨</span><b><span class="pt">Pinturas faciais, 2 h</span><span class="en">Face painting, 2 h</span></b><i>80€</i></div>
-      <div><span class="ic">🍿</span><b><span class="pt">Máquina de pipocas</span><span class="en">Popcorn machine</span></b><i>100€</i></div>
-      <div><span class="ic">🍭</span><b><span class="pt">Máquina de algodão doce</span><span class="en">Candy floss machine</span></b><i>100€</i></div>
-      <div><span class="ic">🍿🍭</span><b><span class="pt">As duas máquinas</span><span class="en">Both machines</span></b><i>150€</i></div>
-      <div><span class="ic">🪢</span><b><span class="pt">Jogos tradicionais, 2 h</span><span class="en">Traditional games, 2 h</span></b><i>75€</i></div>
-      <div><span class="ic">🦁</span><b><span class="pt">Mascote, carrinho de gelados</span><span class="en">Mascot, ice cream cart</span></b><i><span class="pt">sob orçamento</span><span class="en">quoted</span></i></div>
-    </div>
-    <p class="tiny" style="margin-top:10px"><span class="pt">As máquinas vêm sempre com uma pessoa e todo o material. Duas horas, mais uma de oferta.</span><span class="en">The machines always come with a person and all the material. Two hours, plus one on the house.</span></p>
-
-    <h3 style="margin-top:40px"><span class="pt">🎁 Três pacotes para começar</span><span class="en">🎁 Three packages to start from</span></h3>
+    <h3 style="margin-top:40px"><span class="pt">Três pacotes para começar</span><span class="en">Three packages to start from</span></h3>
     <p class="lede" style="font-size:15px"><span class="pt">Somas da tabela acima, nada mais. Cada festa leva o seu orçamento.</span><span class="en">Sums of the list above, nothing else. Every party gets its own quote.</span></p>
     <div class="packs">
       <div class="pack"><b><span class="pt">Pequena</span><span class="en">Small</span></b><span><span class="pt">Menu Clássico para 20 e Decoração Simples. <b>450€</b></span><span class="en">Classic menu for 20 and Simple decoration. <b>€450</b></span></span></div>
@@ -488,10 +475,10 @@
     </div>
     <div class="center" style="text-align:center;margin-top:26px">
       <a class="btn primary" href="monta.html"><span class="pt">Monta a tua festa e vê o preço exato</span><span class="en">Build your party and see the exact price</span></a>
-      <p class="tiny" style="margin-top:10px"><span class="pt">Pessoas, menu, decoração, animação. O preço cresce enquanto escolhes.</span><span class="en">People, menu, decoration, entertainment. The price grows as you choose.</span></p>
     </div>
   </div>
 </section>
+<div class="lb" id="lb"><img src="" alt=""></div>
 
 <section>
   <div class="wrap">
@@ -523,7 +510,13 @@
 <footer>
   <div class="wrap">
     <div><b style="font:700 20px Fredoka,Nunito,sans-serif;color:var(--pink)">PocPoc</b> <span style="color:var(--lion);font-weight:700">· Momentos doces</span><br><span class="pt">Festas, decoração e catering, Algarve.</span><span class="en">Parties, decoration and catering, Algarve.</span></div>
-    <div><a id="iglink" href="#" hidden>Instagram</a><span id="igsep" hidden> · </span><a id="fblink" href="#" hidden>Facebook</a><span id="fbsep" hidden> · </span><a id="tklink" href="#" hidden>TikTok</a><span id="tksep" hidden> · </span><a id="gblink" href="#" hidden><span class="pt">Avaliações Google</span><span class="en">Google reviews</span></a></div>
+    <div class="social">
+      <a id="iglink" href="#" hidden aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1 0-1.6.2-2 .4-.5.2-.8.4-1.1.7-.3.3-.6.7-.7 1.1-.2.4-.3 1-.4 2C4 9.5 4 9.9 4 12s0 3.5.1 4.7c0 1.1.2 1.6.4 2 .2.5.4.8.7 1.1.3.3.7.6 1.1.7.4.2 1 .3 2 .4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1 0 1.6-.2 2-.4.5-.2.8-.4 1.1-.7.3-.3.6-.7.7-1.1.2-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c0-1.1-.2-1.6-.4-2-.2-.5-.4-.8-.7-1.1-.3-.3-.7-.6-1.1-.7-.4-.2-1-.3-2-.4C15.5 4 15.1 4 12 4zm0 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm5.2-2.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></a>
+      <a id="fblink" href="#" hidden aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8h3.3z"/></svg></a>
+      <a id="tklink" href="#" hidden aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3.2v13.2a2.8 2.8 0 1 1-2.8-2.8c.3 0 .6 0 .9.1V9.2a6 6 0 1 0 5.1 5.9V8.5a7.3 7.3 0 0 0 4.3 1.4V6.7a4.3 4.3 0 0 1-4.3-4.3V2z"/></svg></a>
+      <a id="maillink" href="mailto:pocpocalgarve23@gmail.com" aria-label="Email" title="pocpocalgarve23@gmail.com"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.4V17h16V7.4l-8 5.3-8-5.3zM4.9 7l7.1 4.7L19.1 7H4.9z"/></svg></a>
+      <a id="gblink" href="#" hidden aria-label="Google" title="Google reviews"><svg viewBox="0 0 24 24"><path d="M21.6 12.2c0-.7-.1-1.3-.2-1.9H12v3.7h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1a10 10 0 0 0 0 9.2L6.4 14z"/><path d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4.1 5.6-4.1z"/></svg></a>
+    </div>
   </div>
 </footer>
 
@@ -601,11 +594,16 @@
   renderQuotes();
 
   /* ---------- Links ---------- */
-  function show(id, url, sep) { if (!url) { return; } var a = document.getElementById(id); a.href = url; a.hidden = false; a.target = '_blank'; a.rel = 'noopener'; if (sep) { document.getElementById(sep).hidden = false; } }
-  show('iglink', INSTAGRAM, 'igsep');
-  show('fblink', FACEBOOK, 'fbsep');
-  show('tklink', TIKTOK, 'tksep');
-  show('gblink', GOOGLE_REVIEWS, null);
+  function show(id, url) { if (!url) { return; } var a = document.getElementById(id); a.href = url; a.hidden = false; a.target = '_blank'; a.rel = 'noopener'; }
+  show('iglink', INSTAGRAM);
+  show('fblink', FACEBOOK);
+  show('tklink', TIKTOK);
+  show('gblink', GOOGLE_REVIEWS);
+  /* flyer lightbox */
+  var lb = document.getElementById('lb');
+  document.querySelectorAll('[data-lb]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); lb.querySelector('img').src = a.getAttribute('href'); lb.classList.add('on'); }); });
+  lb.addEventListener('click', function () { lb.classList.remove('on'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { lb.classList.remove('on'); } });
 
 })();
 </script>
