@@ -27,7 +27,7 @@
    Known already (not asked again): her name, her number 961 236 622, her Gmail, her Facebook,
    Instagram and TikTok, that her husband works the parties with her, that she sells packages
    with bouncy castles, mascots and face painting, that she adapted the menu to vegetarian
-   without fuss. Fifteen questions, three typed, two counters. Slug "pocpoc".
+   without fuss. Sixteen questions, three typed, three counters. Slug "pocpoc".
    Her brand colours live in assets/pocpoc.css, loaded after the shared intake.css. */
 (function () {
   var LANG = 'pt';
@@ -50,7 +50,7 @@
     introTitle: "Umas perguntas rápidas, para que o site e a página Google que vamos construir <em>soem a si.</em>",
     ui: {
       of: "{a} de {b}",
-      howLong: "São quinze. Quase tudo toques, mais três respostas curtas para escrever. Cerca de cinco minutos.",
+      howLong: "São dezasseis. Quase tudo toques, mais três respostas curtas para escrever. Cerca de cinco minutos.",
       resume: "Pode parar a meio e voltar mais tarde no mesmo telemóvel. Ele lembra-se de onde ficou.",
       private: "Nada disto é partilhado com mais ninguém. Vem diretamente para mim.",
       continue: "Continuar onde fiquei",
@@ -99,6 +99,10 @@
       { id: "winter", type: "number", short: "Mês calmo",
         q: "E num mês calmo?",
         unit: "festas", min: 0, max: 60, def: 1 },
+      { id: "capacity", type: "number", short: "Quantas conseguiria",
+        q: "Se os pedidos chegassem, quantas festas por mês conseguiriam fazer, a Marina e o seu marido?",
+        hint: "Não o que faz hoje, o máximo que aguentariam bem, sem perder a qualidade.",
+        unit: "festas por mês", min: 0, max: 60, def: 8 },
       { id: "notice", type: "one", short: "Antecedência",
         q: "Com quanta antecedência precisa de ser avisada?",
         opts: ["Dois ou três dias", "Cerca de uma semana", "Duas semanas", "Depende do pacote"] },
@@ -161,6 +165,10 @@
       { id: "winter", type: "number", short: "Quiet month",
         q: "And in a quiet month?",
         unit: "parties", min: 0, max: 60, def: 1 },
+      { id: "capacity", type: "number", short: "How many you could",
+        q: "If the enquiries came, how many parties a month could you and your husband handle?",
+        hint: "Not what you do today, the most you could do well, without losing the quality.",
+        unit: "parties a month", min: 0, max: 60, def: 8 },
       { id: "notice", type: "one", short: "Notice needed",
         q: "How much notice do you need?",
         opts: ["A couple of days", "About a week", "Two weeks", "It depends on the package"] },
