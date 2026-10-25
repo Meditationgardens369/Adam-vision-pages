@@ -81,10 +81,10 @@
   .hero { padding: 36px 0 0; position: relative; }
   .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: -1;
     background: radial-gradient(circle at 8% 10%, rgba(177,97,254,.16), transparent 34%), radial-gradient(circle at 95% 60%, rgba(233,75,154,.14), transparent 36%); }
-  .hero-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 36px; align-items: center; }
+  .hero-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 36px; align-items: center; }
   @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; gap: 24px; } }
   .hero-copy .btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-  .hero-photo { position: relative; aspect-ratio: 9 / 7; border-radius: 28px; overflow: hidden; background: var(--rose);
+  .hero-photo { position: relative; aspect-ratio: 16 / 10; border-radius: 28px; overflow: hidden; background: var(--rose);
     box-shadow: 0 30px 60px rgba(74,44,31,.16); transform: rotate(1.5deg); border: 6px solid #fff; }
   @media (max-width: 860px) { .hero-photo { aspect-ratio: 4 / 3; transform: none; } }
   .hero-photo img, .hero-photo video { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -116,7 +116,8 @@
   .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 36px; }
   @media (max-width: 720px) { .strip { grid-template-columns: repeat(2, 1fr); } }
   .strip figure { margin: 0; position: relative; aspect-ratio: 1; border-radius: 20px; overflow: hidden; background: var(--rose); border: 5px solid #fff; box-shadow: 0 8px 20px rgba(74,44,31,.08); }
-  .strip figure:nth-child(2), .strip figure:nth-child(4) { transform: translateY(14px); }
+  .strip figure:nth-child(even) { transform: translateY(14px); }
+  .strip figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 10px 8px; font: 700 12px Nunito, sans-serif; color: #fff; background: linear-gradient(180deg, transparent, rgba(74,44,31,.65)); }
   .strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   /* Words */
@@ -245,7 +246,7 @@
       </div>
       <div class="hero-photo">
         <img src="photos/hero.jpg" alt="" data-slot="hero">
-        <div class="sticker"><b><span class="pt">A festa da Anya</span><span class="en">Anya's party</span></b><span class="pt">Outubro de 2026. A banca montada antes dos convidados: balões, mesa saudável, tudo feito nessa manhã.</span><span class="en">October 2026. The stall before the guests arrived: balloons, a healthy table, everything made that morning.</span></div>
+        <div class="sticker"><b><span class="pt">Marina e Fábio</span><span class="en">Marina and Fábio</span></b><span class="pt">A PocPoc são os dois. Cozinham, montam, animam e ficam até ao fim.</span><span class="en">PocPoc is the two of them. They cook, set up, entertain and stay to the end.</span></div>
       </div>
     </div>
   </div>
@@ -272,11 +273,20 @@
       <div class="promise"><div class="ic">🥕</div><div><b><span class="pt">Tão saudável quanto quiser</span><span class="en">As healthy as you want it</span></b><span><span class="pt">Comida de festa portuguesa, ou húmus, wraps integrais, ovos e fruta. As crianças comem mesmo.</span><span class="en">Portuguese party food, or hummus, wholegrain wraps, eggs and fruit. The children actually eat it.</span></span></div></div>
       <div class="promise"><div class="ic">👩‍🍳</div><div><b><span class="pt">Fala com quem faz</span><span class="en">You talk to the person who does it</span></b><span><span class="pt">Sem escritório, sem intermediários. A Marina e o Fábio cozinham, montam e ficam na festa.</span><span class="en">No office, no middle. Marina and Fábio cook, set up and stay for the party.</span></span></div></div>
     </div>
+    <h2 style="margin-top:44px"><span class="pt">Festas que já fizemos, <em>de todos os tamanhos.</em></span><span class="en">Parties we have done, <em>of every size.</em></span></h2>
     <div class="strip">
-      <figure><img src="photos/detail-1.jpg" alt="" data-slot="detail-1"></figure>
-      <figure><img src="photos/detail-2.jpg" alt="" data-slot="detail-2"></figure>
-      <figure><img src="photos/deco-1.jpg" alt="" data-slot="deco-1"></figure>
-      <figure><img src="photos/deco-2.jpg" alt="" data-slot="deco-2"></figure>
+      <figure><img src="photos/t-minnie.jpg" alt="" data-slot="t-minnie" loading="lazy"><figcaption><span class="pt">Mesa Minnie, Menu Clássico</span><span class="en">Minnie table, Classic menu</span></figcaption></figure>
+      <figure><img src="photos/t-burgers.jpg" alt="" data-slot="t-burgers" loading="lazy"><figcaption><span class="pt">Mini hambúrgueres, Menu Premium</span><span class="en">Mini burgers, Premium menu</span></figcaption></figure>
+      <figure><img src="photos/t-marina.jpg" alt="" data-slot="t-marina" loading="lazy"><figcaption><span class="pt">A Marina no algodão doce</span><span class="en">Marina at the candy floss</span></figcaption></figure>
+      <figure><img src="photos/t-castle.jpg" alt="" data-slot="t-castle" loading="lazy"><figcaption><span class="pt">Insuflável Castelo</span><span class="en">The castle</span></figcaption></figure>
+      <figure><img src="photos/t-batizado.jpg" alt="" data-slot="t-batizado" loading="lazy"><figcaption><span class="pt">Batizado</span><span class="en">Christening</span></figcaption></figure>
+      <figure><img src="photos/t-bossbaby.jpg" alt="" data-slot="t-bossbaby" loading="lazy"><figcaption><span class="pt">Decoração Completa, Boss Baby</span><span class="en">Complete decoration, Boss Baby</span></figcaption></figure>
+      <figure><img src="photos/t-wedding.jpg" alt="" data-slot="t-wedding" loading="lazy"><figcaption><span class="pt">Casamento</span><span class="en">Wedding</span></figcaption></figure>
+      <figure><img src="photos/t-hello40.jpg" alt="" data-slot="t-hello40" loading="lazy"><figcaption><span class="pt">Festa de adultos</span><span class="en">Adult birthday</span></figcaption></figure>
+      <figure><img src="photos/t-babyshower.jpg" alt="" data-slot="t-babyshower" loading="lazy"><figcaption><span class="pt">Chá de bebé</span><span class="en">Baby shower</span></figcaption></figure>
+      <figure><img src="photos/t-candyfloss.jpg" alt="" data-slot="t-candyfloss" loading="lazy"><figcaption><span class="pt">Algodão doce na festa</span><span class="en">Candy floss at the party</span></figcaption></figure>
+      <figure><img src="photos/t-kpop.jpg" alt="" data-slot="t-kpop" loading="lazy"><figcaption><span class="pt">Decoração Completa, K-Pop</span><span class="en">Complete decoration, K-Pop</span></figcaption></figure>
+      <figure><img src="photos/t-anya.jpg" alt="" data-slot="t-anya" loading="lazy"><figcaption><span class="pt">A festa da Anya, mesa saudável</span><span class="en">Anya's party, the healthy table</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -522,11 +532,7 @@
 
   /* ---------- Build notes and photo slots ---------- */
   if (CONCEPT) { html.classList.add('concept'); }
-  var SLOT = { hero: ['hero.jpg', 'A mesa completa, antes dos convidados. Horizontal.', 'The full spread, before guests. Landscape.'],
-               'detail-1': ['detail-1.jpg', 'A mesa portuguesa', 'The Portuguese table'],
-               'detail-2': ['detail-2.jpg', 'Outra mesa, outra festa', 'Another table, another party'],
-               'deco-1': ['deco-1.jpg', 'Uma decoração, balões e cenário', 'A decoration, balloons and backdrop'],
-               'deco-2': ['deco-2.jpg', 'Outra decoração, outro tema', 'Another decoration, another theme'] };
+  var SLOT = { hero: ['hero.jpg', 'A Marina e o Fábio', 'Marina and Fábio'] };
   document.querySelectorAll('img[data-slot]').forEach(function (img) {
     function slot() {
       if (!img.parentNode) { return; }
