@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Matthias, what stays and what we could add</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Seven things we could build around Regenbogenkreis. People stay in the loop in every one of them.">
+<meta name="theme-color" content="#120b1f">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='36' fill='none' stroke='%23c9a7ff' stroke-width='14'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Matthias's page, version 2. Deep violet like the glass his products ship in. A slow rainbow
+   ring, a drifting particle field, cards that tilt under the pointer, and seven scenes that
+   play on a loop. Every scene is an example. Nothing here promises a number. */
+:root{
+  --bg:#120b1f;--bg2:#1b1030;--ink:#f3eefb;--mut:#b9acd2;--faint:#7f7398;
+  --line:rgba(255,255,255,.12);--glass:rgba(255,255,255,.055);--glass2:rgba(255,255,255,.1);
+  --lilac:#c9a7ff;--gold:#f0c870;--leaf:#8fe3b0;--rose:#ff8aa3;--sky:#8ccfff;
+  --r:22px;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font-family:inherit;color:inherit}
+button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px;position:relative;z-index:2}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance}
+h1{font-size:clamp(42px,8.6vw,88px);line-height:.98}
+h2{font-size:clamp(32px,5.8vw,56px);line-height:1.04}
+h3{font-size:24px;line-height:1.15;font-weight:600}
+em{font-style:italic;color:var(--lilac)}
+p{margin:0 0 14px}
+.lede{font-size:18px;color:var(--mut);max-width:58ch}
+.small{font-size:14px;line-height:1.5}
+.tiny{font-size:12.5px;line-height:1.5;color:var(--faint)}
+.kicker{display:inline-flex;gap:8px;align-items:center;font:600 11.5px Manrope;letter-spacing:.16em;text-transform:uppercase;color:var(--lilac);margin-bottom:16px}
+.kicker::before{content:"";width:22px;height:1px;background:currentColor}
+section{padding:90px 0;position:relative}
+
+/* background layers */
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.9}
+.ring{position:fixed;z-index:0;pointer-events:none;width:min(92vw,780px);height:min(92vw,780px);top:-26vh;right:-18vw;border-radius:50%;
+  background:conic-gradient(from 0deg,#ff6b6b,#ffb347,#ffe36b,#8fe3b0,#6fc3ff,#b48cff,#ff7fc0,#ff6b6b);
+  -webkit-mask:radial-gradient(circle,transparent 58%,#000 60%,#000 70%,transparent 72%);mask:radial-gradient(circle,transparent 58%,#000 60%,#000 70%,transparent 72%);
+  filter:blur(18px) saturate(1.1);opacity:.55;animation:spin 70s linear infinite;will-change:transform}
+.ring2{width:min(60vw,420px);height:min(60vw,420px);top:auto;bottom:-18vh;right:auto;left:-14vw;opacity:.22;animation-duration:110s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.glow{position:fixed;z-index:0;pointer-events:none;border-radius:50%;filter:blur(90px);opacity:.45;animation:drift 28s ease-in-out infinite alternate}
+.g1{width:460px;height:460px;background:#4a2b8a;bottom:-160px;left:-160px}
+.g2{width:320px;height:320px;background:#1f5d4a;top:48%;left:52%;opacity:.3;animation-duration:36s}
+@keyframes drift{to{transform:translate3d(50px,30px,0) scale(1.12)}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.08;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* hero */
+.hero{padding:96px 0 50px;min-height:84vh;display:flex;align-items:center}
+.hero .lede{font-size:19px}
+.hero h1 span{display:inline-block;opacity:0;transform:translateY(22px) rotate(2deg);animation:word .8s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes word{to{opacity:1;transform:none}}
+.facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.fact{border:1px solid var(--line);background:var(--glass);border-radius:999px;padding:8px 14px;font-size:14px;color:var(--mut);backdrop-filter:blur(8px)}
+.fact b{color:var(--ink);font-weight:600}
+.scroll{margin-top:40px;color:var(--faint);font-size:13px;display:inline-flex;gap:10px;align-items:center}
+.scroll i{width:1px;height:34px;background:linear-gradient(var(--lilac),transparent);display:inline-block;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.3}}
+
+/* demo */
+.demo{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch}
+@media(max-width:860px){.demo{grid-template-columns:1fr}}
+.stage{border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02));padding:18px;min-height:380px;position:relative;overflow:hidden;box-shadow:0 30px 80px -40px rgba(0,0,0,.9)}
+.stage::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 80% 0%,rgba(201,167,255,.14),transparent 70%);pointer-events:none}
+.mailhead{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--faint);margin-bottom:10px}
+.mail-in{background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:14px;min-height:78px}
+.mail-in b{display:block;font-size:12px;color:var(--mut);margin-bottom:4px;font-weight:600}
+.caret{display:inline-block;width:2px;height:1em;background:var(--lilac);vertical-align:-2px;margin-left:1px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.sorted{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}
+.pill{font:700 10.5px Manrope;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1px solid var(--line);color:var(--faint);transition:.35s}
+.pill.on{color:#1a0f2e;background:var(--leaf);border-color:var(--leaf);transform:scale(1.04)}
+.pill.on.hum{background:var(--rose);border-color:var(--rose)}
+.draft{background:rgba(201,167,255,.08);border:1px solid rgba(201,167,255,.35);border-radius:14px;padding:12px 14px;font-size:14px;min-height:96px;position:relative}
+.draft b{display:block;font-size:12px;color:var(--lilac);margin-bottom:4px;font-weight:600}
+.sig{position:absolute;right:12px;bottom:10px;font:700 10.5px Manrope;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf);border:1.5px solid var(--leaf);padding:4px 8px;border-radius:6px;transform:rotate(-4deg)}
+.ctl{display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap}
+.play{border:1px solid var(--lilac);background:var(--lilac);color:#1a0f2e;border-radius:999px;padding:10px 18px;font-weight:700;cursor:pointer}
+.play.alt{background:transparent;color:var(--lilac)}
+.side{display:grid;gap:12px}
+.step{border:1px solid var(--line);background:var(--glass);border-radius:16px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;transition:.35s;opacity:.45}
+.step.on{opacity:1;border-color:rgba(201,167,255,.45);background:rgba(201,167,255,.08);transform:translateX(6px)}
+.step i{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--lilac);display:grid;place-items:center;font:700 12px Manrope;color:var(--lilac)}
+.step b{display:block;font-size:14px}
+.step span{font-size:13px;color:var(--mut)}
+
+/* principles */
+.princ{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:10px}
+.pr{border:1px solid var(--line);background:var(--glass);border-radius:var(--r);padding:20px;position:relative;overflow:hidden}
+.pr::after{content:"";position:absolute;inset:auto -30% -60% auto;width:160px;height:160px;border-radius:50%;background:var(--lilac);opacity:.08;filter:blur(30px)}
+.pr:nth-child(2)::after{background:var(--leaf)}.pr:nth-child(3)::after{background:var(--gold)}.pr:nth-child(4)::after{background:var(--sky)}
+.pr b{display:block;font-family:"Cormorant Garamond",serif;font-size:25px;font-weight:600;margin-bottom:6px;line-height:1.1}
+.pr span{color:var(--mut);font-size:14.5px}
+.pr svg{width:30px;height:30px;margin-bottom:12px;color:var(--lilac)}
+.pr:nth-child(2) svg{color:var(--leaf)}.pr:nth-child(3) svg{color:var(--gold)}.pr:nth-child(4) svg{color:var(--sky)}
+
+/* compare */
+.cmp{position:relative;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:rgba(0,0,0,.25);margin-top:10px}
+.cmp .pane{padding:22px 24px;min-height:330px}
+.cmp .after{position:absolute;inset:0;background:linear-gradient(160deg,rgba(143,227,176,.14),rgba(201,167,255,.1)),#171029;clip-path:inset(0 0 0 var(--cut,50%))}
+.cmp .before{background:#120b1f}
+.cmp .pane h3{display:flex;align-items:center;gap:10px}
+.cmp .pane h3 i{font:700 10.5px Manrope;letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border-radius:999px;border:1px solid var(--line);color:var(--faint);font-style:normal}
+.after h3 i{color:var(--leaf);border-color:var(--leaf)}
+.tasks{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:7px}
+.tasks li{display:flex;justify-content:space-between;gap:10px;font-size:14px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:10px;padding:8px 11px}
+.tasks li span{color:var(--faint);font-size:12.5px;white-space:nowrap}
+.after .tasks li{background:rgba(143,227,176,.08)}
+.after .tasks li span{color:var(--leaf)}
+.handle{position:absolute;top:0;bottom:0;left:var(--cut,50%);width:2px;background:var(--ink);pointer-events:none}
+.handle::after{content:"◂ ▸";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--ink);color:#1a0f2e;font:700 12px Manrope;padding:8px 10px;border-radius:999px;white-space:nowrap}
+.cmp input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.cmp-cap{display:flex;justify-content:space-between;font-size:12.5px;color:var(--faint);margin-top:8px}
+
+/* filters */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 26px}
+.chip{border:1px solid var(--line);background:var(--glass);border-radius:999px;padding:9px 15px;font-size:13.5px;font-weight:600;cursor:pointer;transition:.2s}
+.chip[aria-pressed="true"]{background:var(--lilac);color:#1a0f2e;border-color:var(--lilac)}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px;perspective:1400px}
+.card{background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.025));border:1px solid var(--line);border-radius:var(--r);padding:20px;position:relative;display:flex;flex-direction:column;gap:10px;transition:transform .25s ease-out,border-color .3s,box-shadow .3s;transform-style:preserve-3d;box-shadow:0 20px 60px -40px rgba(0,0,0,.9)}
+.card:hover{border-color:rgba(255,255,255,.25);box-shadow:0 30px 70px -36px rgba(0,0,0,1)}
+.card.hide{display:none}
+.card .viz{transform:translateZ(24px)}
+.num{position:absolute;top:14px;right:18px;font-family:"Cormorant Garamond",serif;font-size:42px;line-height:1;color:rgba(255,255,255,.14);font-weight:600}
+.tag{display:inline-block;align-self:flex-start;font:700 11px Manrope;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1px solid}
+.tag.start{color:var(--leaf);border-color:rgba(143,227,176,.5)}
+.tag.next{color:var(--gold);border-color:rgba(240,200,112,.5)}
+.tag.later{color:var(--sky);border-color:rgba(140,207,255,.5)}
+.card h3{margin:2px 0 0}
+.card .d{color:var(--mut);font-size:14.5px;margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;font-size:13.5px;color:var(--mut)}
+.two b{display:block;color:var(--ink);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+.two div{border-top:1px solid var(--line);padding-top:8px}
+
+/* scenes */
+.viz{height:290px;border-radius:16px;background:rgba(0,0,0,.3);border:1px solid var(--line);padding:14px;position:relative;overflow:hidden;font-size:13px}
+.viz::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 40% at 50% 0%,rgba(255,255,255,.06),transparent 70%);pointer-events:none}
+.viz .cap{position:absolute;left:14px;right:14px;bottom:10px;font-size:11.5px;color:var(--faint)}
+.viz .cap b{color:var(--ink);font-weight:700}
+.x{opacity:0;transform:translateY(10px) scale(.98);transition:opacity .45s,transform .45s}
+.x.on{opacity:1;transform:none}
+.bar{position:absolute;left:0;right:0;top:0;height:2px;background:var(--lilac);transform-origin:left;transform:scaleX(0);opacity:.7}
+.viz.playing .bar{animation:bar var(--dur,8s) linear forwards}
+@keyframes bar{to{transform:scaleX(1)}}
+
+/* 1 timeline */
+.tl{display:grid;gap:6px}
+.msg{background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:12px;padding:6px 10px;display:flex;gap:10px;align-items:flex-start}
+.msg i{flex:none;width:46px;height:30px;border-radius:8px;display:grid;place-items:center;font:700 9.5px/1 Manrope;letter-spacing:.02em;white-space:nowrap;color:#1a0f2e;background:var(--leaf);font-style:normal}
+.msg.m2 i{background:var(--gold)}.msg.m3 i{background:var(--lilac)}.msg.m4 i{background:var(--sky)}
+.msg b{display:block;font-size:12.5px}
+.msg span{color:var(--mut);font-size:11.5px}
+.calls{position:absolute;right:14px;bottom:30px;text-align:right;font-size:11px;color:var(--faint);max-width:110px;line-height:1.2}
+.calls b{display:block;font-family:"Cormorant Garamond",serif;font-size:30px;line-height:1;color:var(--ink);font-weight:600}
+
+/* 2 check */
+.chk{display:grid;gap:5px}
+.row{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:6px 11px}
+.row .st{font:700 10.5px Manrope;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.st.ok{background:rgba(143,227,176,.18);color:var(--leaf)}
+.st.miss{background:rgba(255,138,163,.18);color:var(--rose)}
+.st.q{background:rgba(240,200,112,.18);color:var(--gold)}
+.scan{position:absolute;left:0;right:0;height:40px;top:-40px;background:linear-gradient(transparent,rgba(201,167,255,.14),transparent);pointer-events:none}
+.viz.playing .scan{animation:scan 6s linear infinite}
+@keyframes scan{to{top:110%}}
+
+/* 3 wording */
+.txt{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:12px;font-family:"Cormorant Garamond",serif;font-size:18px;line-height:1.35;min-height:118px}
+.txt .bad{background:rgba(255,138,163,.25);color:#ffd2db;border-radius:4px;padding:0 3px;text-decoration:line-through}
+.txt .good{background:rgba(143,227,176,.2);color:#d9ffe7;border-radius:4px;padding:0 3px}
+.flag{position:absolute;left:14px;bottom:40px;display:flex;gap:6px;flex-wrap:wrap}
+.flag span{font:700 10px Manrope;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:rgba(255,138,163,.18);color:var(--rose)}
+.stamp{position:absolute;right:16px;bottom:92px;transform:rotate(-6deg);border:2px solid var(--leaf);color:var(--leaf);font:700 11px Manrope;letter-spacing:.14em;text-transform:uppercase;padding:5px 9px;border-radius:6px;background:rgba(0,0,0,.3)}
+
+/* 4 pipeline */
+.pipe{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:start}
+.rec{background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:12px;padding:10px 8px;text-align:center;font-size:11.5px;color:var(--mut)}
+.rec b{display:block;font-size:22px;color:var(--ink);font-family:"Cormorant Garamond",serif;font-weight:600}
+.wave{display:flex;gap:2px;align-items:center;justify-content:center;height:22px;margin:6px 0}
+.wave i{width:3px;height:6px;background:var(--lilac);border-radius:2px}
+.viz.playing .wave i{animation:wv .9s ease-in-out infinite alternate}
+.wave i:nth-child(2n){animation-delay:.15s}.wave i:nth-child(3n){animation-delay:.3s}.wave i:nth-child(4n){animation-delay:.45s}
+@keyframes wv{to{height:20px}}
+.outs{display:grid;gap:5px}
+.out{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:9px;padding:6px 10px;font-size:12.5px}
+.out em{font-style:normal;color:var(--lilac);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.out em.ok{color:var(--leaf)}
+
+/* 5 finder */
+.q{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:600;margin-bottom:8px}
+.opts{display:flex;gap:6px;flex-wrap:wrap}
+.opt{border:1px solid var(--line);border-radius:999px;padding:6px 11px;font-size:12.5px;color:var(--mut);background:rgba(255,255,255,.05);transition:.3s}
+.opt.sel{background:var(--lilac);color:#1a0f2e;border-color:var(--lilac);font-weight:700}
+.sugg{margin-top:7px;background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:12px;padding:7px 12px;display:flex;gap:10px;align-items:center}
+.sugg b,.sugg span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sugg>div{min-width:0}
+.bottle{flex:none;width:26px;height:40px;border-radius:6px 6px 8px 8px;background:linear-gradient(180deg,#8d6bd6,#4a2b8a);position:relative}
+.bottle::before{content:"";position:absolute;top:-5px;left:7px;width:12px;height:6px;background:#2a1850;border-radius:2px}
+.sugg b{display:block;font-size:13px}
+.sugg span{font-size:11.5px;color:var(--mut)}
+
+/* 6 inbox */
+.inb{display:grid;gap:6px}
+.mail{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:6px 11px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
+.mail>div{min-width:0}
+.mail b{display:block;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.35}
+.mail span{font-size:11.5px;color:var(--mut);line-height:1.3}
+.mail .st{font:700 10px Manrope;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.st.s-draft{background:rgba(201,167,255,.2);color:var(--lilac)}
+.st.human{background:rgba(255,138,163,.18);color:var(--rose)}
+.st.page{background:rgba(140,207,255,.18);color:var(--sky)}
+.clock{position:absolute;right:14px;bottom:30px;font-size:11px;color:var(--faint);text-align:right}
+.clock b{display:block;font-family:"Cormorant Garamond",serif;font-size:26px;line-height:1;color:var(--ink);font-weight:600}
+
+/* 7 abo */
+.abo{background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:12px;padding:11px 12px}
+.abo b{display:block;font-size:13.5px}
+.abo span{font-size:12px;color:var(--mut)}
+.sw{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;color:var(--mut)}
+.sw i{width:34px;height:20px;border-radius:999px;background:rgba(255,255,255,.15);position:relative;transition:.3s}
+.sw i::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:.3s}
+.sw.on i{background:var(--leaf)}.sw.on i::after{left:17px}
+.pts{display:flex;gap:7px;margin-top:9px}
+.pt{flex:1;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:8px 6px;text-align:center}
+.pt b{display:block;font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:600;line-height:1}
+.pt span{font-size:10.5px;color:var(--mut)}
+.spark{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:0}
+.viz.playing .spark{animation:spark 2.4s ease-out infinite}
+.spark:nth-child(2){animation-delay:.3s;background:var(--leaf)}.spark:nth-child(3){animation-delay:.6s;background:var(--lilac)}.spark:nth-child(4){animation-delay:.9s;background:var(--rose)}
+@keyframes spark{0%{opacity:0;transform:translate(0,0) scale(.5)}20%{opacity:1}100%{opacity:0;transform:translate(var(--dx,20px),-70px) scale(1.2)}}
+
+/* day strip */
+.day{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px}
+.hr{border:1px solid var(--line);background:var(--glass);border-radius:16px;padding:14px;position:relative;overflow:hidden}
+.hr .t{font:700 11px Manrope;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac)}
+.hr b{display:block;font-family:"Cormorant Garamond",serif;font-size:21px;font-weight:600;margin:6px 0 4px;line-height:1.1}
+.hr span{font-size:13px;color:var(--mut)}
+.hr::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--leaf);transition:width 1.2s ease-out}
+.hr.in::after{width:100%}
+
+/* timeline section */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border-left:1px solid var(--line);margin-top:10px}
+.stp{padding:16px 18px;border-top:1px solid var(--line);position:relative}
+.stp::before{content:"";position:absolute;left:-5px;top:-5px;width:9px;height:9px;border-radius:50%;background:var(--lilac);box-shadow:0 0 0 0 rgba(201,167,255,.5);animation:ping 3s ease-out infinite}
+.stp:nth-child(2)::before{animation-delay:.7s}.stp:nth-child(3)::before{animation-delay:1.4s}.stp:nth-child(4)::before{animation-delay:2.1s}
+@keyframes ping{to{box-shadow:0 0 0 14px rgba(201,167,255,0)}}
+.stp .w{font:700 11px Manrope;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac)}
+.stp b{display:block;font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:600;margin:6px 0 4px}
+.stp span{font-size:14px;color:var(--mut)}
+
+/* asks */
+.asks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.ask{border:1px solid var(--line);background:var(--glass);border-radius:var(--r);padding:20px}
+.ask b{display:block;font-family:"Cormorant Garamond",serif;font-size:40px;line-height:1;color:var(--gold);font-weight:600;margin-bottom:8px}
+.ask span{color:var(--mut);font-size:14.5px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+.cards .rv:nth-child(2){transition-delay:.08s}.cards .rv:nth-child(3){transition-delay:.16s}.cards .rv:nth-child(4){transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){.ring,.glow,.scroll i,.stp::before,.viz.playing .wave i,.viz.playing .scan,.viz.playing .spark{animation:none}.rv,.x{opacity:1;transform:none}#stars{display:none}}
+footer{padding:40px 0 60px;color:var(--faint);font-size:13px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="ring" aria-hidden="true"></div><div class="ring ring2" aria-hidden="true"></div>
+<div class="glow g1" aria-hidden="true"></div><div class="glow g2" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">Regenbogenkreis · a first look</div>
+    <h1 id="h1"><span>Nothing</span> <span>you</span> <span>built</span> <span>changes.</span><br><em><span>Seven</span> <span>things</span> <span>could</span> <span>sit</span> <span>beside</span> <span>it.</span></em></h1>
+    <p class="lede rv in">Two interviews a week for two years without a miss. Forty-five thousand reviews. A phone line with real people seven days a week. That stays. What follows is seven small pieces that give your team hours back, with a person in the loop in every one of them.</p>
+    <div class="facts rv in">
+      <span class="fact"><b>2</b> interviews a week, Wed and Sat</span>
+      <span class="fact"><b>44,931</b> reviews at 4.87</span>
+      <span class="fact"><b>7 days</b> human phone service</span>
+      <span class="fact"><b>260,000</b> customers</span>
+      <span class="fact"><b>New</b> Shopify shop, this month</span>
+    </div>
+    <div class="scroll"><i></i>Scroll, or press play below</div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="kicker">Watch one piece work</div>
+    <h2 class="rv">A customer writes. <em>Your team only presses send.</em></h2>
+    <p class="lede rv">This is piece 6, the inbox. Press play and watch a real kind of question arrive, get sorted, and come back as a draft for a person to read.</p>
+    <div class="demo rv">
+      <div class="stage" id="stage">
+        <div class="mailhead"><span>Inbox · customer service</span><span id="dclock">09:41</span></div>
+        <div class="mail-in"><b>From: Sabine K.</b><span id="dtext"></span><span class="caret" id="dcaret"></span></div>
+        <div class="sorted">
+          <span class="pill" id="p1">Order status</span><span class="pill" id="p2">How to take it</span><span class="pill hum" id="p3">Health question, to a person</span>
+        </div>
+        <div class="draft"><b>Draft for Anna to read</b><span id="ddraft"></span><span class="sig x" id="dsig">Sent by Anna</span></div>
+        <div class="ctl">
+          <button class="play" id="play">Play</button>
+          <button class="play alt" id="next">Another example</button>
+          <span class="tiny" id="dnote">Example. Names and orders are invented.</span>
+        </div>
+      </div>
+      <div class="side">
+        <div class="step" id="s1"><i>1</i><div><b>It arrives</b><span>Email, contact form or a voicemail turned into text.</span></div></div>
+        <div class="step" id="s2"><i>2</i><div><b>It gets sorted</b><span>Order, product use, returns, or health. Health goes straight to a person, no draft.</span></div></div>
+        <div class="step" id="s3"><i>3</i><div><b>A draft appears</b><span>Built from the order, the product label and your own answers. Wording-checked.</span></div></div>
+        <div class="step" id="s4"><i>4</i><div><b>A person sends it</b><span>Anna reads, edits if she wants, presses send. Seconds, not a queue.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap">
+    <div class="kicker">Four rules, before anything else</div>
+    <h2 class="rv">What stays <em>yours</em> in every piece.</h2>
+    <div class="princ">
+      <div class="pr rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><b>A person stays in the loop</b><span>Drafts, never auto-sends. Your team reads, edits, and presses send. The machine prepares, people decide.</span></div>
+      <div class="pr rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M4 12h10M4 18h7"/><path d="m15 17 2 2 4-4"/></svg><b>Every word passes a check</b><span>Anything that mentions a product goes through the wording rules for supplements before it is published. Built into the plumbing, not bolted on later.</span></div>
+      <div class="pr rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><path d="M12 8v6M9 11h6"/></svg><b>Health questions go to a human</b><span>Medication, pregnancy, children, symptoms: always a person, never a system. The system only sorts and hands over.</span></div>
+      <div class="pr rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><b>Your data stays with you</b><span>Everything runs inside the tools you already pay for. No new platform owns your customer list.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="compare">
+  <div class="wrap">
+    <div class="kicker">Drag to compare</div>
+    <h2 class="rv">A Saturday evening, <em>with and without.</em></h2>
+    <p class="lede rv">Your interview goes live at 18:00. Here is what happens around it today, and what the same evening looks like with pieces 3, 4 and 6 in place. Drag the line.</p>
+    <div class="cmp rv" id="cmp" style="--cut:50%">
+      <div class="pane before">
+        <h3><i>Today</i> Saturday, 18:00</h3>
+        <ul class="tasks">
+          <li>Write the title, three attempts<span>25 min</span></li>
+          <li>Write the 200-word summary<span>30 min</span></li>
+          <li>Pick the product, build the tracking link<span>10 min</span></li>
+          <li>Paste the description into the podcast<span>10 min</span></li>
+          <li>Draft tomorrow's three Telegram posts<span>35 min</span></li>
+          <li>Reply to 14 customer emails from today<span>70 min</span></li>
+          <li>Check wording on the product line<span>never</span></li>
+        </ul>
+      </div>
+      <div class="pane after">
+        <h3><i>With pieces 3, 4, 6</i> Saturday, 18:00</h3>
+        <ul class="tasks">
+          <li>Choose one of three titles<span>2 min</span></li>
+          <li>Edit the summary<span>5 min</span></li>
+          <li>Product and link already in, approve<span>1 min</span></li>
+          <li>Podcast description already there<span>0 min</span></li>
+          <li>Pick three Telegram drafts<span>5 min</span></li>
+          <li>Read 11 drafts, send; 3 health questions to Anna<span>20 min</span></li>
+          <li>Wording checked on every line<span>done</span></li>
+        </ul>
+      </div>
+      <div class="handle"></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Compare today with the pieces in place" id="cut">
+    </div>
+    <div class="cmp-cap"><span>Example times, to show the shape of it</span><span>The person does the choosing in both</span></div>
+  </div>
+</section>
+
+<section id="seven">
+  <div class="wrap">
+    <div class="kicker">Where this could go</div>
+    <h2 class="rv">Seven things, <em>built the same way.</em></h2>
+    <p class="lede">Each one is small. Each scene is an example of how it would look, not a promise of a number. You choose the order.</p>
+    <div class="filters" role="group" aria-label="Filter">
+      <button class="chip" data-f="all" aria-pressed="true">All seven</button><button class="chip" data-f="start" aria-pressed="false">Start here</button><button class="chip" data-f="next" aria-pressed="false">Next</button><button class="chip" data-f="later" aria-pressed="false">Later</button>
+    </div>
+    <div class="cards" id="cards">
+
+      <div class="card rv" data-s="start">
+        <div class="viz" data-t="900,1400,1400,1400,1400,2600" style="--dur:9s"><div class="bar"></div>
+          <div class="tl">
+            <div class="msg x" data-s="1"><i>DAY 3</i><div><b>How to take your tincture</b><span>Morning, empty stomach, 20 drops in water.</span></div></div>
+            <div class="msg m2 x" data-s="2"><i>DAY 14</i><div><b>What is happening now</b><span>Tiredness in the first days is normal. Here is why.</span></div></div>
+            <div class="msg m3 x" data-s="3"><i>DAY 80</i><div><b>Your cleanse is nearly done</b><span>Carry on? Your reorder is one tap away.</span></div></div>
+          </div>
+          <div class="cap x" data-s="4">Example. "How do I take it" calls this week: <b id="cnt1">38</b></div>
+        </div>
+        <div class="num">1</div><span class="tag start">Start here</span>
+        <h3>Your cleanse, day by day</h3>
+        <p class="d">The most common question in six years of reviews is "how do I take this". A short series answers it before anyone has to call, and reminds them before the set runs out.</p>
+        <div class="two"><div><b>It does</b>Sends the guidance on the right day, inside Klaviyo, which you already have.</div><div><b>You keep</b>Every sentence. Written once by your team, checked for wording.</div></div>
+      </div>
+
+      <div class="card rv" data-s="start">
+        <div class="viz" data-t="700,900,900,900,900,900,2600" style="--dur:8s"><div class="bar"></div><div class="scan"></div>
+          <div class="chk">
+            <div class="row x" data-s="1"><span>Welcome series</span><span class="st ok">Wired</span></div>
+            <div class="row x" data-s="2"><span>Abandoned cart</span><span class="st miss">Not firing</span></div>
+            <div class="row x" data-s="3"><span>Meta pixel after consent</span><span class="st q">Unclear</span></div>
+            <div class="row x" data-s="4"><span>Tracking links from videos</span><span class="st ok">Arriving</span></div>
+            <div class="row x" data-s="5"><span>Old shop links in the blog</span><span class="st miss">12 found</span></div>
+            <div class="row x" data-s="6"><span>Reviews on product pages</span><span class="st ok">Showing</span></div>
+          </div>
+          <div class="cap x" data-s="6">Example result. The real list comes from one hour inside your tools.</div>
+        </div>
+        <div class="num">2</div><span class="tag start">Start here</span>
+        <h3>Did everything survive the move?</h3>
+        <p class="d">You moved to Shopify this month. Flows, pixels and links that were wired to the old shop either came across, need re-mapping, or never existed. One look settles it.</p>
+        <div class="two"><div><b>It does</b>Produces a plain list: working, broken, missing.</div><div><b>You keep</b>The decision on what to fix first. This first look costs nothing.</div></div>
+      </div>
+
+      <div class="card rv" data-s="start">
+        <div class="viz" data-t="1000,1400,1400,1400,2800" style="--dur:8s"><div class="bar"></div>
+          <div class="txt">The tincture <span class="bad x on" data-s="1">detoxes your body and frees you from parasites</span> <span class="good x" data-s="3">contains wormwood, clove and black walnut. Recommended daily dose: 20 drops. Not a substitute for a varied diet.</span></div>
+          <div class="flag x" data-s="2"><span>"detox"</span><span>"frees you from"</span><span>disease wording</span></div>
+          <div class="stamp x" data-s="4">Approved · Lena</div>
+          <div class="cap x" data-s="4">Example. Flagged words, a suggested rewrite, a person signs off.</div>
+        </div>
+        <div class="num">3</div><span class="tag start">Start here</span>
+        <h3>Every text passes a wording check</h3>
+        <p class="d">Supplement advertising in Germany has a short list of allowed phrasings and a long list of forbidden ones. Every description, email and post goes through the list before it goes out. A person approves.</p>
+        <div class="two"><div><b>It does</b>Flags risky words, offers a compliant version, keeps a record.</div><div><b>You keep</b>The final say, and a paper trail that protects you.</div></div>
+      </div>
+
+      <div class="card rv" data-s="next">
+        <div class="viz" data-t="1200,700,700,700,700,700,2600" style="--dur:8s"><div class="bar"></div>
+          <div class="pipe">
+            <div class="rec x on"><b>58:12</b>Recording<br>Sat 18:00<div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="outs">
+              <div class="out x" data-s="1"><span>3 title options</span><em>choose</em></div>
+              <div class="out x" data-s="2"><span>Summary, 180 words</span><em>edit</em></div>
+              <div class="out x" data-s="3"><span>Description with product link</span><em class="ok">checked</em></div>
+              <div class="out x" data-s="4"><span>Chapters and show notes</span><em>edit</em></div>
+              <div class="out x" data-s="5"><span>3 Telegram posts, 1 quote card</span><em>choose</em></div>
+              <div class="out x" data-s="6"><span>Podcast upload, same text</span><em class="ok">ready</em></div>
+            </div>
+          </div>
+          <div class="cap x" data-s="6">Example. The recording goes in once. Nothing publishes itself.</div>
+        </div>
+        <div class="num">4</div><span class="tag next">Next</span>
+        <h3>One recording, every text drafted</h3>
+        <p class="d">Twice a week someone writes the title, the summary, the description, picks the product and builds the link. The recording can do most of that work. Your team chooses and edits.</p>
+        <div class="two"><div><b>It does</b>Drafts titles, summary, description, chapters, show notes and Telegram posts from the transcript.</div><div><b>You keep</b>Your voice. You pick the title. Every product line is wording-checked.</div></div>
+      </div>
+
+      <div class="card rv" data-s="next">
+        <div class="viz" data-t="900,900,900,1200,1200,2600" style="--dur:8s"><div class="bar"></div>
+          <div class="q">What would you like for yourself?</div>
+          <div class="opts">
+            <span class="opt x on" data-s="1" data-sel="2">More energy</span><span class="opt x on" data-s="1">Better sleep</span><span class="opt x on" data-s="1" data-sel="3">Gut in balance</span><span class="opt x on" data-s="1">For my children</span>
+          </div>
+          <div class="sugg x" data-s="4"><div class="bottle"></div><div><b>Our suggestion: Gut Balance Set</b><span>Matches "more energy" and "gut in balance".</span></div></div>
+          <div class="sugg x" data-s="5" style="border-color:rgba(201,167,255,.5)"><div><b>Rather talk to a person?</b><span>Book a free 15-minute call.</span></div></div>
+          <div class="cap x" data-s="5">Example. Asks about goals, never about symptoms.</div>
+        </div>
+        <div class="num">5</div><span class="tag next">Next</span>
+        <h3>Three questions, one suggestion</h3>
+        <p class="d">Your "Anwendung" page already sorts products by eleven needs. A short finder asks three questions, suggests a set, and always offers the human consultation next to it.</p>
+        <div class="two"><div><b>It does</b>Guides new visitors to a starting point and remembers their goal for later emails.</div><div><b>You keep</b>The consultation as the real conversation. The finder is the doorway.</div></div>
+      </div>
+
+      <div class="card rv" data-s="next">
+        <div class="viz" data-t="900,1000,1000,1000,1000,2600" style="--dur:8s"><div class="bar"></div>
+          <div class="inb">
+            <div class="mail x" data-s="1"><div><b>Where is my order?</b><span>Sabine K. · 4 min ago</span></div><span class="st s-draft">Draft ready</span></div>
+            <div class="mail x" data-s="2"><div><b>Can I take this with blood pressure medication?</b><span>Jürgen M. · 9 min ago</span></div><span class="st human">To a person</span></div>
+            <div class="mail x" data-s="3"><div><b>Can I combine two cleanses?</b><span>Mara L. · 15 min ago</span></div><span class="st s-draft">Draft ready</span></div>
+            <div class="mail x" data-s="4"><div><b>2-star review: taste changed</b><span>Trustpilot · today</span></div><span class="st s-draft">Reply drafted</span></div>
+          </div>
+          <div class="cap x" data-s="1">Example. <b id="cnt6">0</b> drafts ready, answered by people.</div>
+        </div>
+        <div class="num">6</div><span class="tag next">Next</span>
+        <h3>Human service, faster</h3>
+        <p class="d">Order status and returns get a drafted answer in seconds. Anything about health, medication or children goes straight to a person. Reviews get a reply in two days instead of a month.</p>
+        <div class="two"><div><b>It does</b>Sorts incoming mail, drafts the routine answers, routes the rest.</div><div><b>You keep</b>The phone line, the people, and every health conversation.</div></div>
+      </div>
+
+      <div class="card rv" data-s="later">
+        <div class="viz" data-t="900,1200,1200,1200,2800" style="--dur:8s"><div class="bar"></div>
+          <div class="abo x" data-s="1"><b>Amazon Gut Cleanse</b><span>64.99 € · every 3 months</span>
+            <div class="sw x" data-s="2" data-sw="3"><i></i>Save 15 % with a subscription, pause any time</div>
+          </div>
+          <div class="pts">
+            <div class="pt x" data-s="3"><b data-count="65">0</b><span>points for this order</span></div>
+            <div class="pt x" data-s="3"><b data-count="30">0</b><span>for your review</span></div>
+            <div class="pt x" data-s="4"><b>10 €</b><span>for you and a friend</span></div>
+          </div>
+          <span class="spark" style="left:30%;bottom:60px;--dx:-14px"></span><span class="spark" style="left:50%;bottom:60px;--dx:8px"></span><span class="spark" style="left:62%;bottom:60px;--dx:22px"></span><span class="spark" style="left:42%;bottom:60px;--dx:-26px"></span>
+          <div class="cap x" data-s="4">Example. The cleanse sets already repeat every 3 and 6 months.</div>
+        </div>
+        <div class="num">7</div><span class="tag later">Later</span>
+        <h3>Customers who stay</h3>
+        <p class="d">Your cleanse sets are built for repeat use, but every reorder is a new decision. A subscription, points for reviews, and a thank-you for bringing a friend turn 260,000 customers into a community that comes back on its own.</p>
+        <div class="two"><div><b>It does</b>Adds subscription, points and referral to the shop you have.</div><div><b>You keep</b>The pricing, the rules, and the decision whether to do it at all.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="day">
+  <div class="wrap">
+    <div class="kicker">A normal Tuesday, with all seven</div>
+    <h2 class="rv">What a day looks like <em>once the pieces are in.</em></h2>
+    <div class="day">
+      <div class="hr rv"><div class="t">07:30</div><b>Anna opens the inbox</b><span>Overnight mail is sorted. 9 drafts wait, 2 health questions are flagged for her first.</span></div>
+      <div class="hr rv"><div class="t">09:00</div><b>Day-3 and day-80 mails go out</b><span>To the people who bought a cleanse set on the right dates. Nobody typed them today.</span></div>
+      <div class="hr rv"><div class="t">11:00</div><b>Two reviews answered</b><span>Drafted overnight, read and sent by Anna. Yesterday's, not last month's.</span></div>
+      <div class="hr rv"><div class="t">14:00</div><b>Wednesday's interview uploaded</b><span>Title chosen from three. Product line already checked. Telegram drafts picked.</span></div>
+      <div class="hr rv"><div class="t">16:30</div><b>A B2B therapist signs up</b><span>Through the form, licence attached. Approved with one click.</span></div>
+      <div class="hr rv"><div class="t">18:00</div><b>Matthias records</b><span>Nothing on this list needed him.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="kicker">How it would go</div>
+    <h2 class="rv">Small steps. <em>Each one visible.</em></h2>
+    <div class="steps">
+      <div class="stp rv"><div class="w">Week 1</div><b>The free look</b><span>One hour inside Klaviyo and the new shop. A plain list of what works, what broke, what never existed.</span></div>
+      <div class="stp rv"><div class="w">Weeks 2 to 4</div><b>Pieces 1 and 3</b><span>The cleanse series and the wording check. Your team writes, I build. You see results in your own inbox.</span></div>
+      <div class="stp rv"><div class="w">Month 2</div><b>Pieces 4 to 6</b><span>Whichever you choose. Each one lands separately, so you can stop at any point.</span></div>
+      <div class="stp rv"><div class="w">Month 3</div><b>Piece 7, if you want it</b><span>Subscription, points and referral are commercial decisions. Only when you are convinced.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="asks">
+  <div class="wrap">
+    <div class="kicker">What I would need</div>
+    <h2 class="rv">Four things I would ask of <em>you</em>.</h2>
+    <div class="asks">
+      <div class="ask rv"><b>1</b><span>An hour with whoever runs the shop and the newsletter day to day.</span></div>
+      <div class="ask rv"><b>2</b><span>Read access to Klaviyo and Shopify for the free look. Nothing is changed.</span></div>
+      <div class="ask rv"><b>3</b><span>One week of real customer emails, so the cleanse series answers the questions people actually ask.</span></div>
+      <div class="ask rv"><b>4</b><span>Your honest "no" on any piece. Each one stands alone.</span></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Every scene on this page is an example to show an idea. Names, orders and times are invented. Nothing here promises a number. Prepared by Adam, October 2026.</div></footer>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* hero words */
+  document.querySelectorAll('#h1 span').forEach(function(s,i){s.style.animationDelay=(0.08*i)+'s'});
+
+  /* particle field with scroll parallax */
+  var cv=document.getElementById('stars'),ctx=cv.getContext('2d'),P=[],W,H;
+  function size(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+  size();addEventListener('resize',size);
+  for(var i=0;i<90;i++)P.push({x:Math.random(),y:Math.random(),z:Math.random()*0.8+0.2,r:Math.random()*1.6+.4,s:Math.random()*0.00012+0.00004,c:['201,167,255','143,227,176','240,200,112','140,207,255'][i%4]});
+  function draw(t){
+    ctx.clearRect(0,0,W,H);var sc=scrollY;
+    P.forEach(function(p){
+      var y=((p.y+t*p.s)%1);var py=(y*H - sc*p.z*0.25)%H;if(py<0)py+=H;
+      var px=p.x*W+Math.sin(t*0.0004+p.x*9)*14*p.z;
+      ctx.beginPath();ctx.arc(px,py,p.r*p.z*1.6,0,6.283);ctx.fillStyle='rgba('+p.c+','+(0.25*p.z+0.08)+')';ctx.fill();
+    });
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  if(!reduce)requestAnimationFrame(draw);else draw(0);
+
+  /* reveal */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv,.hr').forEach(function(el){io.observe(el)});
+  function sweep(){var h=innerHeight;document.querySelectorAll('.rv:not(.in),.hr:not(.in)').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<h*0.92&&r.bottom>0)el.classList.add('in')})}
+  addEventListener('scroll',sweep,{passive:true});setInterval(sweep,400);sweep();
+
+  /* card tilt */
+  if(matchMedia('(pointer:fine)').matches&&!reduce){
+    document.querySelectorAll('.card').forEach(function(c){
+      c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='rotateX('+(-y*7)+'deg) rotateY('+(x*9)+'deg) translateY(-4px)'});
+      c.addEventListener('mouseleave',function(){c.style.transform=''});
+    });
+  }
+
+  /* count-up helper */
+  function countTo(el,target,ms){var t0=performance.now();function f(t){var k=Math.min(1,(t-t0)/ms);el.textContent=Math.round(target*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+
+  /* scene player */
+  document.querySelectorAll('.viz').forEach(function(v){
+    var t=v.dataset.t.split(',').map(Number),els=v.querySelectorAll('[data-s]'),step=0,timer=null;
+    function apply(){
+      els.forEach(function(el){var s=+el.dataset.s,e=el.dataset.e?+el.dataset.e:99;el.classList.toggle('on',step>=s&&step<e);
+        if(el.dataset.sel)el.classList.toggle('sel',step>=+el.dataset.sel);
+        if(el.dataset.sw)el.classList.toggle('on',step>=+el.dataset.s);
+      });
+      v.querySelectorAll('[data-sw]').forEach(function(sw){var on=step>=+sw.dataset.sw;if(on!==sw.classList.contains('on')&&step>=+sw.dataset.s)sw.classList.toggle('on',on)});
+      v.querySelectorAll('[data-count]').forEach(function(b){var p=b.closest('[data-s]');if(p&&step===+p.dataset.s&&b.textContent==='0')countTo(b,+b.dataset.count,900);if(step===0)b.textContent='0'});
+      var c1=v.querySelector('#cnt1');if(c1){if(step===4)c1.textContent='38';if(step===5)countTo(c1,9,1200);if(step===0)c1.textContent='38'}
+      var c6=v.querySelector('#cnt6');if(c6){var n=[0,1,1,2,3,3][Math.min(step,5)];c6.textContent=n}
+    }
+    function tick(){
+      apply();var d=t[Math.min(step,t.length-1)];step++;
+      if(step>t.length){step=0;v.classList.remove('playing');void v.offsetWidth;v.classList.add('playing')}
+      timer=setTimeout(tick,d);
+    }
+    var vis=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!timer){step=0;v.classList.add('playing');tick()}}else{clearTimeout(timer);timer=null;v.classList.remove('playing')}})},{threshold:.3});
+    vis.observe(v);
+  });
+
+  /* compare slider */
+  var cmp=document.getElementById('cmp'),cut=document.getElementById('cut');
+  cut.addEventListener('input',function(){cmp.style.setProperty('--cut',cut.value+'%')});
+  var auto=0,dir=1;if(!reduce){var ai=setInterval(function(){if(cmp.matches(':hover'))return;auto+=dir*0.5;if(auto>18||auto<-18)dir*=-1;cut.value=50+auto;cmp.style.setProperty('--cut',cut.value+'%')},40);cut.addEventListener('pointerdown',function(){clearInterval(ai)})}
+
+  /* filters */
+  var chips=document.querySelectorAll('.chip'),cards=document.querySelectorAll('#cards .card');
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    chips.forEach(function(x){x.setAttribute('aria-pressed','false')});c.setAttribute('aria-pressed','true');
+    var f=c.dataset.f;cards.forEach(function(k){k.classList.toggle('hide',f!=='all'&&k.dataset.s!==f);if(!k.classList.contains('hide'))k.classList.add('in')});
+  })});
+
+  /* inbox demo with typing */
+  var EX=[
+    {from:'Sabine K.',q:'Hello, I ordered the Gut Cleanse on Monday and have not had a shipping email yet. Is it on its way?',pill:'p1',draft:'Hello Sabine, your parcel left our warehouse this morning and DHL has it. Tracking: 00340434... You should have it by Thursday. If not, reply here and I will chase it personally. Warm regards, Anna',sig:true},
+    {from:'Mara L.',q:'Can I take the Amazon Gut Cleanse and the tincture at the same time, or one after the other?',pill:'p2',draft:'Hello Mara, the two are designed to follow each other: the cleanse first, then the tincture from week three. The exact days are on the leaflet in your box and in the day-by-day emails. Recommended dose: 20 drops in water, mornings. Warm regards, Anna',sig:true},
+    {from:'Jürgen M.',q:'I take blood pressure medication. Is the tincture safe for me?',pill:'p3',draft:'No draft. This is a health question. It went straight to Anna with Jürgen\'s order history attached, and she will call him back before 11:00.',sig:false}
+  ];
+  var ix=0,running=false,dt=document.getElementById('dtext'),dd=document.getElementById('ddraft'),ds=document.getElementById('dsig'),dc=document.getElementById('dcaret');
+  function type(el,text,ms){return new Promise(function(res){el.textContent='';if(!ms){el.textContent=text;return res()}var t0=performance.now();(function f(){var n=Math.min(text.length,Math.floor((performance.now()-t0)/ms)+1);el.textContent=text.slice(0,n);if(n<text.length)setTimeout(f,ms);else res()})()})}
+  function setStep(n){for(var i=1;i<=4;i++)document.getElementById('s'+i).classList.toggle('on',i===n)}
+  function runDemo(){
+    if(running)return;running=true;var ex=EX[ix];
+    ['p1','p2','p3'].forEach(function(id){document.getElementById(id).classList.remove('on')});
+    dd.textContent='';ds.classList.remove('on');dc.style.display='inline-block';
+    document.querySelector('.mail-in b').textContent='From: '+ex.from;
+    setStep(1);
+    type(dt,ex.q,reduce?0:22).then(function(){return new Promise(function(r){setTimeout(r,500)})})
+    .then(function(){setStep(2);document.getElementById(ex.pill).classList.add('on');dc.style.display='none';return new Promise(function(r){setTimeout(r,900)})})
+    .then(function(){setStep(3);return type(dd,ex.draft,reduce?0:14)})
+    .then(function(){return new Promise(function(r){setTimeout(r,500)})})
+    .then(function(){setStep(4);if(ex.sig)ds.classList.add('on');running=false});
+  }
+  document.getElementById('play').addEventListener('click',runDemo);
+  document.getElementById('next').addEventListener('click',function(){if(running)return;ix=(ix+1)%EX.length;runDemo()});
+  var demoIo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){runDemo();demoIo.disconnect()}})},{threshold:.4});
+  demoIo.observe(document.getElementById('stage'));
+  setInterval(function(){var d=new Date();document.getElementById('dclock').textContent=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)},1000);
+})();
+</script>
+</body>
+</html>
