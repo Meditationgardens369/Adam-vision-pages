@@ -695,5 +695,39 @@
   calc();
 })();
 </script>
+<script>
+/* Open and scroll tracking. Insert-only publishable key, same as the questions page. */
+(function () {
+  var URL_ = "https://mfyykvrwukchowlxywnz.supabase.co/rest/v1/page_events";
+  var KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+  function track(event, step, label) {
+    try {
+      fetch(URL_, { method: "POST", keepalive: true,
+        headers: { "apikey": KEY, "Authorization": "Bearer " + KEY, "Content-Type": "application/json", "Prefer": "return=minimal" },
+        body: JSON.stringify({ slug: "saltys", event: event, step: step, label: label || null,
+          path: String(location.pathname || "").slice(0, 200),
+          referrer: (document.referrer || "").slice(0, 200) || null })
+      }).catch(function () {});
+    } catch (e) {}
+  }
+  track("how_view", 0);
+  var done = {}, marks = [25, 50, 75, 100];
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if (h <= 0) return;
+    var pct = Math.round(window.scrollY / h * 100);
+    marks.forEach(function (m) { if (pct >= m - (m === 100 ? 3 : 0) && !done[m]) { done[m] = 1; track("how_scroll", m); } });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a.cta");
+    if (a) track("how_click_questions", 0, "cta");
+  });
+  var t0 = Date.now();
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden" && !done.left) { done.left = 1; track("how_left", Math.round((Date.now() - t0) / 1000)); }
+  });
+})();
+</script>
 </body>
 </html>
