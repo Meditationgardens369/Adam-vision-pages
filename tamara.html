@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Building Together</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tamara, before we talk">
+<meta property="og:description" content="So we can see everything you are brilliant at before the call. Mostly tapping.">
+<meta name="theme-color" content="#f6f2ea">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='36' fill='none' stroke='%231f5f7a' stroke-width='14'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* Tamara, Brigitte's cousin, South Africa. Not a prospect: a future partner. Adam,
+   Brigitte, Tamara and Matthew want to build something together that earns in a strong
+   currency. Project folder: Claude/Cowork Team Tamara and Matthew.
+
+   16 years as communication director at the American International School. Video,
+   design, logos, banners, works with every department and with the tech team on the
+   website rebuild. This page maps the real skills and what she would enjoy doing.
+   Soul-level gifts are Brigitte's side (Soul Realignment), so nothing here asks for them.
+
+   "proud" is the headline. "schools" tests the international schools idea without
+   naming it. "paid" shows which skills she thinks people would pay for today. */
+window.INTAKE = {
+  slug: "tamara",
+  name: "Tamara",
+  business: "Tamara, building together",
+  headline: "proud",
+  brand: "Building together · Tamara",
+  introTitle: "We loved having you here. <em>Now let's see everything you're brilliant at.</em>",
+  introNote: "Brigitte and I want to build something with you and Matthew, and we want it built around what you two are already great at. Your answers help us come to the call with real ideas instead of guesses. It is mostly tapping. Short answers are perfect, and there is no wrong one.",
+  questions: [
+    { id: "role", type: "many", short: "What lands on her desk", section: "Your work",
+      q: "Let's start with your week. Which of these land on your desk at the school?",
+      hint: "Tap everything you do or look after, even the small things.",
+      opts: ["Parent newsletters and weekly bulletins", "Emails and messages to families", "Social media posts", "Photos and videos of school life", "Website updates", "Admissions, open days and tours", "Events like graduation, concerts and sports days", "Urgent or sensitive messages", "Staff and internal communication", "Alumni communication", "Yearbook, brochures and printed material", "Press and local media", "Brand guidelines and approving designs", "Fundraising and donor campaigns", "Design work for other departments", "Projects with the tech team", "Something else"],
+      follow: { when: "Something else", key: "roleOther", placeholder: "What else? (optional)" } },
+    { id: "roleBig", type: "text", short: "Biggest share of the week",
+      q: "Which of those take up most of your week? Anything the list missed?",
+      hint: "A line or two is plenty. Skip it if the list says it all.",
+      placeholder: "Admissions season takes over everything, and I'm the one every department asks for a poster..." },
+    { id: "status", type: "one", short: "Job right now",
+      q: "Where are you with the school at the moment?",
+      opts: ["Still there and happy", "Still there, but open to change", "Planning to leave in the next year", "Already moved on", "Rather tell you on the call"] },
+    { id: "skills", type: "many", short: "What she does",
+      q: "Which of these have you done for real, more than a few times?",
+      hint: "Tap all that apply.",
+      opts: ["Filming video", "Editing video", "Graphic design, banners and posters", "Logos and brand identity", "Writing newsletters and emails", "Running social media accounts", "Planning and running a website rebuild", "Photography", "Event planning", "Crisis or sensitive communication", "Press and media", "Admissions and marketing campaigns", "Training other staff", "Something else"],
+      follow: { when: "Something else", key: "skillsOther", placeholder: "What else? (optional)" } },
+    { id: "paid", type: "many", short: "Would be paid for",
+      q: "Which of those could you do for a paying client tomorrow, without learning anything new?",
+      hint: "Be generous with yourself.",
+      opts: ["Filming and editing video", "Logos and brand identity", "Graphic design, posters and banners", "Social media content", "Running social media accounts", "Newsletters and email campaigns", "Copywriting for websites and brochures", "Planning a website project", "Building simple websites", "Photography", "Planning and running events", "Communication strategy", "Crisis and sensitive communication", "Marketing and admissions campaigns", "Press releases and media", "Training staff or teams", "Coaching leaders on how to communicate", "Project managing across departments", "Something else"],
+      follow: { when: "Something else", key: "paidOther", placeholder: "What else could you do for a client? Add as many as you like." } },
+    { id: "tools", type: "many", short: "Tools she knows",
+      q: "Which tools do you use with confidence?",
+      hint: "Tap all that apply.",
+      opts: ["Canva", "Photoshop or Illustrator", "Premiere Pro or Final Cut", "CapCut", "Figma", "WordPress, Wix or Squarespace", "Mailchimp or another email tool", "Google Workspace", "Meta Business Suite", "ChatGPT or other AI tools", "Something else"],
+      follow: { when: "Something else", key: "toolsOther", placeholder: "Which ones? (optional)" } },
+    { id: "ai", type: "one", short: "AI today",
+      q: "How much do you use AI in your work today?",
+      opts: ["Not at all yet", "Now and then, for writing", "Most weeks, for a few things", "Every day", "I'm the one who shows others"] },
+    { id: "proud", type: "text", short: "Proudest work",
+      q: "What is the piece of work you are proudest of from your 16 years?",
+      hint: "What you made, and what changed because of it. This is the answer I will read first.",
+      placeholder: "The admissions video that..." },
+    { id: "website", type: "text", short: "Website rebuild role",
+      q: "On the website rebuild with the tech team, what is your part?",
+      placeholder: "I decide the structure and write the pages, they build it..." },
+
+    { id: "energy", type: "text", short: "Gives energy", section: "What you enjoy",
+      q: "Which part of your work gives you energy, the kind you would happily do all day?",
+      placeholder: "Making a video from nothing, sitting with a parent who is upset..." },
+    { id: "drain", type: "text", short: "Drains her",
+      q: "And which part drains you?",
+      placeholder: "Chasing approvals, the same email every term..." },
+    { id: "camera", type: "one", short: "On camera",
+      q: "How do you feel about being on camera yourself?",
+      opts: ["Love it", "Fine with it", "Prefer behind the camera", "Rather not at all"] },
+    { id: "roles", type: "many", short: "Roles she would take",
+      q: "If the four of us built a business, which roles would you enjoy?",
+      hint: "Tap all that sound good.",
+      opts: ["Making the content and videos", "Design and brand", "Talking to clients", "Selling and finding clients", "Managing projects and deadlines", "Teaching and training", "Writing", "Being the face of it"] },
+
+    { id: "schools", type: "text", short: "What schools struggle with", section: "Ideas",
+      q: "What do schools like yours struggle with, that you have already solved?",
+      hint: "Communication, marketing, admissions, anything. A sentence or two.",
+      placeholder: "Parents miss half the emails, nobody has time to film, every school builds the same thing from scratch..." },
+    { id: "network", type: "many", short: "People she knows",
+      q: "Who do you know well enough to call?",
+      hint: "Tap all that apply.",
+      opts: ["People at other international schools", "Heads of school or directors", "Parents who own businesses", "Local business owners", "Designers, photographers and creatives", "People in the US or Europe", "Marketing or agency people"] },
+    { id: "ideas", type: "text", short: "Her ideas",
+      q: "Have you or Matthew already talked about business ideas? Tell me any, even half ones.",
+      placeholder: "We always said there should be a..." },
+
+    { id: "hours", type: "one", short: "Hours a week", section: "The practical side",
+      q: "How many hours a week could you give this to start with?",
+      opts: ["Under 5", "5 to 10", "10 to 20", "More than 20", "Full time if it works"] },
+    { id: "income", type: "one", short: "Income that matters",
+      q: "What monthly amount, in euros, would make a real difference for you two?",
+      hint: "So we aim at the right number from the start.",
+      opts: ["Around €500", "€1,000 to €2,000", "€2,000 to €5,000", "More than €5,000"] },
+    { id: "nope", type: "text", short: "Would not do",
+      q: "Is there anything you would not want to do in a business, whatever it pays?",
+      placeholder: "Cold calling, anything that takes the weekends..." },
+    { id: "else", type: "text", short: "Anything else",
+      q: "Last one. Anything else you want us to know before the call?",
+      placeholder: "Anything at all" }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>

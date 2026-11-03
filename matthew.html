@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Building Together</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Matthew, before we talk">
+<meta property="og:description" content="Your skills and your ideas, so the call starts where it matters.">
+<meta name="theme-color" content="#f6f2ea">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='36' fill='none' stroke='%231f5f7a' stroke-width='14'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+</head>
+<body>
+<script>
+/* Matthew, Tamara's husband, South Africa. Not a prospect: a future partner. Adam,
+   Brigitte, Tamara and Matthew want to build something together that earns in a strong
+   currency. Project folder: Claude/Cowork Team Tamara and Matthew.
+
+   IT and data analysis, said to be exceptional at it, a natural communicator. His company
+   is laying people off. He already has business ideas, so the middle section is all about
+   them: what they are, who pays, why he believes they work, and what proof exists.
+   "ideas" is the headline. "validation" and "first3" separate a hunch from a business.
+   "job" is sensitive: keep it out of anything public. */
+window.INTAKE = {
+  slug: "matthew",
+  name: "Matthew",
+  business: "Matthew, building together",
+  headline: "ideas",
+  brand: "Building together · Matthew",
+  introTitle: "Tamara told us you have ideas. <em>Let's hear them, and everything you're great at.</em>",
+  introNote: "Brigitte and I want to build something with you and Tamara, built on what you are already brilliant at. Your answers mean we come to the call ready, so we spend it deciding instead of explaining. The skills part is mostly tapping, the ideas part is where I want your words. Notes and bullet points are perfect.",
+  questions: [
+    { id: "role", type: "text", short: "The job in his words", section: "Your work",
+      q: "What is your job, and what do you actually do on a normal day?",
+      hint: "The version you would tell a friend.",
+      placeholder: "I pull data from five systems, clean it and build the reports the directors use..." },
+    { id: "years", type: "one", short: "Years in IT and data",
+      q: "How long have you worked in IT and data?",
+      opts: ["Under 3 years", "3 to 7 years", "8 to 15 years", "More than 15 years"] },
+    { id: "stack", type: "many", short: "Tech he knows",
+      q: "Which of these do you work with confidently?",
+      hint: "Tap all that apply.",
+      opts: ["SQL", "Python", "Excel, properly", "Power BI", "Tableau or Looker", "Data pipelines and ETL", "APIs and connecting systems", "Azure, AWS or Google Cloud", "Machine learning or AI models", "CRM systems like Salesforce or HubSpot", "n8n, Zapier or Make", "Building web apps", "Something else"],
+      follow: { when: "Something else", key: "stackOther", placeholder: "Which ones? (optional)" } },
+    { id: "love", type: "many", short: "Work he is best at",
+      q: "Which kinds of work are you best at?",
+      hint: "Tap the ones people come to you for.",
+      opts: ["Finding the story in messy data", "Building dashboards people actually use", "Automating reports and repeat work", "Connecting systems that do not talk", "Explaining data to non-technical people", "Leading a team or a project", "Presenting and winning people over", "Training others"] },
+    { id: "industries", type: "many", short: "Industries",
+      q: "Which industries have you worked in or know well?",
+      opts: ["Banking and finance", "Insurance", "Retail", "Mining", "Telecoms", "Health", "Education", "Logistics", "Government", "Something else"],
+      follow: { when: "Something else", key: "industriesOther", placeholder: "Which? (optional)" } },
+    { id: "proud", type: "text", short: "Proudest build",
+      q: "What is the best thing you have built or solved at work, and what did it save or earn?",
+      hint: "Numbers help if you have them.",
+      placeholder: "Automated the monthly report, took it from three days to ten minutes..." },
+    { id: "ai", type: "one", short: "AI today",
+      q: "How much do you use AI in your work today?",
+      opts: ["Hardly at all", "For writing and quick questions", "For code and analysis most days", "I build things with AI models"] },
+
+    { id: "ideas", type: "text", short: "His ideas", section: "Your ideas",
+      q: "Tell me every business idea you have, even the half-finished ones.",
+      hint: "One line each is fine. This is the answer I will read first.",
+      placeholder: "1. A dashboard for small shops that...\n2. ..." },
+    { id: "pick", type: "text", short: "The one he would pick",
+      q: "If you could only start one, which would it be, and what does it do for whom?",
+      placeholder: "It helps small accounting firms do X, so they save Y..." },
+    { id: "who", type: "text", short: "Who pays",
+      q: "Who exactly would pay for it?",
+      hint: "As specific as you can: the kind of business, its size, the person who signs off.",
+      placeholder: "Owners of logistics companies with 20 to 100 staff..." },
+    { id: "why", type: "text", short: "Why it would work",
+      q: "Why do you believe it would work? What have you seen that makes you sure?",
+      placeholder: "Every company I've worked with pays a consultant for this every quarter..." },
+    { id: "validation", type: "many", short: "Proof so far",
+      q: "What proof do you have so far?",
+      hint: "Tap all that are true. A hunch is a fine place to start.",
+      opts: ["I have had this problem myself", "Colleagues or clients complain about it", "Someone asked me to build it", "Someone offered to pay for it", "I have seen companies spend money on this", "Others sell something like it", "I have built a first version", "Nothing yet, it is a hunch"] },
+    { id: "rivals", type: "text", short: "Who else does it",
+      q: "Who else does something like this, and what would we do better?",
+      placeholder: "Big consultancies do it but charge a fortune and take months..." },
+    { id: "price", type: "text", short: "Price guess",
+      q: "What do you think a customer would pay, and how often?",
+      placeholder: "€300 a month, or €2,000 to set up..." },
+    { id: "first3", type: "text", short: "First three to ask",
+      q: "Could you name three people or companies you could ask about it this month?",
+      hint: "No names needed, just who they are.",
+      placeholder: "My old manager at..., a friend who runs..." },
+    { id: "where", type: "one", short: "Which market",
+      q: "Where would the first customers be?",
+      opts: ["South Africa", "Europe or the UK", "The US", "Anywhere online", "Not sure yet"] },
+
+    { id: "job", type: "one", short: "Job situation", section: "The practical side",
+      q: "How settled does your current job feel?",
+      hint: "This stays between the four of us.",
+      opts: ["Secure", "Uncertain with what is happening", "Likely to change soon", "Already changed", "Rather talk about it on the call"] },
+    { id: "hours", type: "one", short: "Hours a week",
+      q: "How many hours a week could you give this to start with?",
+      opts: ["Under 5", "5 to 10", "10 to 20", "More than 20", "Full time if it works"] },
+    { id: "abroad", type: "one", short: "Clients abroad",
+      q: "Have you worked with clients or companies outside South Africa?",
+      opts: ["Yes, often", "A few times", "Not yet, but I would like to"] },
+    { id: "camera", type: "one", short: "On camera",
+      q: "How do you feel about being on camera yourself, in videos or live sessions?",
+      opts: ["Love it", "Fine with it", "Prefer behind the camera", "Rather not at all"] },
+    { id: "roles", type: "many", short: "Roles he would take",
+      q: "In a business the four of us build, which roles would you enjoy?",
+      hint: "Tap all that sound good.",
+      opts: ["Building the technical side", "Talking to clients", "Selling and finding clients", "Managing projects", "Teaching or making content", "Being on camera", "Running the numbers"] },
+    { id: "income", type: "one", short: "Income that matters",
+      q: "What monthly amount, in euros, would make a real difference for you two?",
+      opts: ["Around €500", "€1,000 to €2,000", "€2,000 to €5,000", "More than €5,000"] },
+    { id: "nope", type: "text", short: "Would not do",
+      q: "Last one. Anything you would not want to do, whatever it pays?",
+      placeholder: "Anything that clashes with my contract, weekend support..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>
