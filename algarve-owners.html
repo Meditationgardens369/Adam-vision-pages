@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What AI could take off your plate</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="For business owners in the Algarve. Pick your kind of business and see the jobs AI could take off your plate, with you still approving everything.">
+<meta name="theme-color" content="#06100E">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+  /* Owner page for the Lagos street shoot. Same look as the Pedro Vision page.
+     No client names. No promised savings: every "before/after" card is an example. */
+  :root {
+    --bg: #06100E; --bg2: #0B1B18; --glass: rgba(255,255,255,.055); --glass2: rgba(255,255,255,.09);
+    --line: rgba(255,255,255,.12); --ink: #EAF3F0; --muted: #9DB5AE; --faint: #6F8780;
+    --mint: #43D9BE; --gold: #F3C25A; --clay: #FF8E5E; --r: 20px; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 "Plus Jakarta Sans", system-ui, Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  button { font-family: inherit; color: inherit; cursor: pointer; }
+  button:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 300; letter-spacing: -.02em; margin: 0 0 14px; text-wrap: balance; }
+  h1 { font-size: clamp(38px, 8.4vw, 70px); line-height: 1.03; }
+  h2 { font-size: clamp(28px, 5.6vw, 44px); line-height: 1.08; }
+  h3 { font-size: 20px; line-height: 1.25; font-weight: 500; }
+  em { font-style: italic; color: var(--mint); }
+  p { margin: 0 0 14px; }
+  .lede { font-size: 18px; color: var(--muted); max-width: 56ch; }
+  .tiny { font-size: 12.5px; line-height: 1.5; color: var(--faint); }
+  .kicker { display: inline-flex; gap: 8px; align-items: center; font: 600 11.5px "Plus Jakarta Sans"; letter-spacing: .16em; text-transform: uppercase; color: var(--mint); margin-bottom: 16px; }
+  .kicker::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+  section { padding: 72px 0; position: relative; }
+
+  .orb { position: fixed; border-radius: 50%; filter: blur(80px); opacity: .5; z-index: 0; pointer-events: none; animation: drift 24s ease-in-out infinite alternate; }
+  .o1 { width: 420px; height: 420px; background: #0F6F63; top: -120px; left: -120px; }
+  .o2 { width: 360px; height: 360px; background: #7A4A12; bottom: -100px; right: -100px; opacity: .35; animation-duration: 30s; }
+  .o3 { width: 260px; height: 260px; background: #134C73; top: 45%; left: 55%; opacity: .3; animation-duration: 36s; }
+  @keyframes drift { to { transform: translate3d(60px, 40px, 0) scale(1.15); } }
+  .grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 56px 56px; opacity: .12; mask-image: radial-gradient(ellipse at 50% 20%, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 20%, #000 20%, transparent 75%); }
+
+  .top { position: sticky; top: 0; z-index: 40; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: rgba(6,16,14,.6); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; justify-content: space-between; align-items: center; height: 54px; }
+  .brand { font: 600 12.5px "Plus Jakarta Sans"; letter-spacing: .16em; text-transform: uppercase; display: flex; gap: 10px; align-items: center; }
+  .brand i { width: 10px; height: 10px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 14px var(--mint); animation: pulse 2.4s infinite; }
+  @keyframes pulse { 50% { opacity: .35; } }
+  @media (max-width: 420px) { .brand { font-size: 11px; letter-spacing: .12em; } }
+  .toplink { white-space: nowrap; flex-shrink: 0; font-size: 13px; color: var(--mint); text-decoration: none; border: 1px solid rgba(67,217,190,.4); padding: 6px 12px; border-radius: 99px; }
+
+  .rv { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .rv.in { opacity: 1; transform: none; }
+
+  /* hero: a message travelling through the flow */
+  .hero { padding-top: 48px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 28px; align-items: center; }
+  @media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } }
+  .flow { position: relative; display: grid; gap: 14px; max-width: 380px; margin: 0 auto; width: 100%; }
+  .bubble { border-radius: 18px; padding: 14px 16px; background: linear-gradient(160deg, rgba(255,255,255,.13), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.2); box-shadow: 0 24px 50px -24px rgba(0,0,0,.8); font-size: 14px; opacity: 0; transform: translateY(14px) scale(.98); animation: pop 9s infinite; }
+  .bubble b { display: block; font: 600 10.5px "Plus Jakarta Sans"; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 6px; }
+  .b1 b { color: var(--clay); } .b2 b { color: var(--gold); } .b3 b { color: var(--mint); }
+  .b2 { animation-delay: 1.2s; margin-left: 24px; } .b3 { animation-delay: 2.4s; margin-left: 48px; }
+  .approve { display: inline-block; margin-top: 10px; padding: 6px 14px; border-radius: 99px; background: var(--mint); color: #06100E; font-weight: 700; font-size: 13px; animation: press 9s infinite; animation-delay: 2.4s; }
+  @keyframes pop { 0% { opacity: 0; transform: translateY(14px) scale(.98); } 8%, 82% { opacity: 1; transform: none; } 92%, 100% { opacity: 0; transform: translateY(-8px); } }
+  @keyframes press { 0%, 30% { transform: scale(1); box-shadow: none; } 34% { transform: scale(.92); box-shadow: 0 0 0 8px rgba(67,217,190,.25); } 40%, 100% { transform: scale(1); box-shadow: none; } }
+  .typing::after { content: "|"; animation: blink 1s steps(1) infinite; color: var(--mint); }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* picker */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 28px; }
+  .chip { border: 1px solid var(--line); background: var(--glass); border-radius: 99px; padding: 10px 16px; font-size: 14.5px; font-weight: 600; transition: background .25s, border-color .25s, transform .2s; }
+  .chip:hover { transform: translateY(-2px); }
+  .chip[aria-pressed="true"] { background: rgba(67,217,190,.16); border-color: var(--mint); color: var(--mint); }
+  .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
+  .card { position: relative; border: 1px solid var(--line); background: var(--glass); border-radius: var(--r); padding: 20px; overflow: hidden; animation: cardin .6s cubic-bezier(.2,.7,.2,1) both; }
+  .card:nth-child(2) { animation-delay: .07s; } .card:nth-child(3) { animation-delay: .14s; } .card:nth-child(4) { animation-delay: .21s; }
+  @keyframes cardin { from { opacity: 0; transform: translateY(18px); } }
+  .card .tag { font: 600 10.5px "Plus Jakarta Sans"; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+  .ba { display: grid; grid-template-columns: 1fr; margin-top: 12px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); }
+  .ba div { padding: 12px 14px; font-size: 14px; }
+  .ba .before { background: rgba(255,142,94,.07); color: #F2CDBE; }
+  .ba .after { background: rgba(67,217,190,.08); color: #CFF5EC; }
+  .ba span { display: block; font: 600 10px "Plus Jakarta Sans"; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 4px; opacity: .8; }
+  .card .tools { margin-top: 12px; font-size: 12.5px; color: var(--faint); }
+
+  /* steps */
+  .steps { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; counter-reset: s; }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+  .step { border: 1px solid var(--line); border-radius: var(--r); padding: 18px; background: var(--glass); counter-increment: s; }
+  .step::before { content: counter(s); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: rgba(67,217,190,.15); color: var(--mint); font-weight: 700; margin-bottom: 10px; }
+  .step p { color: var(--muted); font-size: 14.5px; margin: 0; }
+
+  .promise { border: 1px solid rgba(243,194,90,.35); background: rgba(243,194,90,.06); border-radius: var(--r); padding: 22px; }
+  .promise ul { margin: 0; padding-left: 20px; color: var(--muted); }
+  .promise li { margin-bottom: 8px; }
+
+  .cta { text-align: center; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; border-radius: 99px; background: var(--mint); color: #06100E; font-weight: 700; font-size: 16px; text-decoration: none; border: 0; box-shadow: 0 16px 40px -14px rgba(67,217,190,.7); transition: transform .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.ghost { background: transparent; color: var(--mint); border: 1px solid rgba(67,217,190,.45); box-shadow: none; }
+  .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+  footer { padding: 30px 0 50px; text-align: center; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .bubble { opacity: 1; transform: none; } .rv { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="grid"></div>
+
+<header class="top"><div class="wrap">
+  <div class="brand"><i></i> Adam · AI for Algarve owners</div>
+  <a class="toplink" href="#talk" data-track="top_cta">Talk to us</a>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div class="rv">
+    <div class="kicker">Lagos · Algarve</div>
+    <h1>The jobs that eat your day, <em>handled while you work</em></h1>
+    <p class="lede">You're the owner, and also the receptionist, the social media person, the one answering the same question for the tenth time today. Pick your kind of business below and see what AI could take off your plate, with you still saying yes to everything.</p>
+    <a class="btn" href="#pick" data-track="hero_cta">Show me for my business</a>
+  </div>
+  <div class="flow rv" aria-label="Example: a customer message, a drafted reply, and the owner approving it">
+    <div class="bubble b1"><b>11:42 pm · customer</b>Hi! Can I book a table for 6 on Saturday at 8?</div>
+    <div class="bubble b2"><b>AI draft, ready for you</b>Hi! Saturday at 8 for 6 sounds lovely. Can I take a name for the booking? We'll confirm first thing tomorrow.</div>
+    <div class="bubble b3"><b>Your phone</b>One tap and it's sent.<br><span class="approve">Approve</span></div>
+  </div>
+</div></section>
+
+<section id="pick"><div class="wrap">
+  <div class="rv">
+    <div class="kicker">Pick yours</div>
+    <h2>What kind of business do you run?</h2>
+    <p class="lede">Every card is an example of something we can set up. We pick the one that hurts most and start there.</p>
+  </div>
+  <div class="chips" role="group" aria-label="Business type" id="chips"></div>
+  <div class="cards" id="cards" aria-live="polite"></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="rv">
+    <div class="kicker">How it works</div>
+    <h2>Small, one job at a time</h2>
+  </div>
+  <div class="steps rv">
+    <div class="step"><h3>A 20-minute chat</h3><p>You tell us where your day goes. Messages, bookings, reviews, posts, quotes, whatever it is.</p></div>
+    <div class="step"><h3>We pick one job</h3><p>The one that costs you the most time. Not ten things at once.</p></div>
+    <div class="step"><h3>We build it on your tools</h3><p>WhatsApp, Gmail, Instagram, Google Sheets, whatever you already use. You don't learn new software.</p></div>
+    <div class="step"><h3>You check it for a week</h3><p>We time it together. If it doesn't save you time, we change it or switch it off.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="promise rv">
+    <div class="kicker">Straight with you</div>
+    <h3>What we promise, and what we don't</h3>
+    <ul>
+      <li>Nothing goes to a customer without your OK, unless you decide later that it should.</li>
+      <li>We won't promise you a number of hours saved. We'll measure it with you, on your own work.</li>
+      <li>Your customers' details stay in your own accounts.</li>
+      <li>If it's not useful, you tell us, and that's fine.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="talk" class="cta"><div class="wrap rv">
+  <div class="kicker">Next step</div>
+  <h2>Want this for <em>your</em> business?</h2>
+  <p class="lede" style="margin:0 auto 6px">Tell us what eats your week. We'll show you what we'd build first.</p>
+  <div class="ctas">
+    <a class="btn" id="ctaMain" href="#" data-track="cta_main">Message Adam on WhatsApp</a>
+    <a class="btn ghost" href="https://meditationgardens369.github.io/Adam-vision-pages/guides.html?s=lagos-owner" data-track="cta_guides">Free guides first</a>
+  </div>
+  <p class="tiny" style="margin-top:14px">Met us on the street in Lagos? Mention what we showed you.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap tiny">Examples on this page show the kind of thing we build. They're not results from a real business.</div></footer>
+
+<script>
+/* WhatsApp, same number as the client pages. The message is prefilled with the business type they picked. */
+const WHATSAPP = "351922102740";
+let picked = "cafe";
+function waLink() {
+  const msg = "Hi Adam, we met in Lagos. I run " + TYPES[picked].wa + " and I'd like to hear what you'd build first.";
+  return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+}
+
+const TYPES = {
+  cafe: { label: "Café or restaurant", wa: "a café or restaurant", cards: [
+    { tag: "Bookings", t: "Late-night booking messages", b: "Messages pile up on WhatsApp and Instagram while you're serving, and you reply at midnight.", a: "Each one gets a drafted reply in your tone. You tap approve between tables.", tools: "WhatsApp or Instagram, Telegram ping" },
+    { tag: "Reviews", t: "Google review replies", b: "Reviews sit unanswered because there's never a quiet moment.", a: "A warm reply in your voice is waiting for each new review. You read it and post it.", tools: "Google reviews" },
+    { tag: "Posts", t: "A week of posts from one photo", b: "You know you should post, the special of the day never makes it online.", a: "One photo of the dish turns into a week of captions for you to pick from.", tools: "Instagram, Facebook" },
+    { tag: "Tourists", t: "Same questions, every language", b: "Opening hours, vegan options, kids, dogs, parking. In English, German, French.", a: "Answers drafted in the language they wrote in, from your own info.", tools: "WhatsApp, email" },
+  ]},
+  rental: { label: "Holiday rental", wa: "holiday rentals", cards: [
+    { tag: "Guests", t: "Welcome messages in their language", b: "Copy-pasting check-in details, wifi, parking and rules for every guest.", a: "Each booking gets a welcome pack in the guest's language, ready for you to send.", tools: "Airbnb, Booking, email" },
+    { tag: "Questions", t: "\"Where's the key?\" at 1am", b: "The same questions arrive at all hours.", a: "Answers drafted from your house guide, you approve with one tap.", tools: "WhatsApp, Telegram ping" },
+    { tag: "Cleaning", t: "Changeover schedule", b: "Texting the cleaner every time a booking moves.", a: "New and changed bookings land in one sheet, and the cleaner message is drafted for you.", tools: "Calendar, Google Sheets" },
+    { tag: "Reviews", t: "Review replies and requests", b: "Forgetting to ask for reviews, or to answer them.", a: "A friendly review request after checkout, and a reply draft for every review.", tools: "Airbnb, Google" },
+  ]},
+  tours: { label: "Tours, boats or surf", wa: "a tour, boat or surf business", cards: [
+    { tag: "Bookings", t: "Enquiries while you're on the water", b: "You can't answer your phone on a boat or in the waves, and the enquiry books somewhere else.", a: "Every enquiry gets a drafted reply with times and prices from your sheet. You approve it from the beach.", tools: "WhatsApp, Instagram, Google Sheets" },
+    { tag: "Weather", t: "Cancelled for weather", b: "Messaging every group one by one when the sea is too rough.", a: "One message drafted for each group, in their language, with a rebooking option.", tools: "Bookings list, WhatsApp, email" },
+    { tag: "Content", t: "Today's trip, posted", b: "Great footage from every trip, posted almost never.", a: "Send your clips and get captions and a short post plan back.", tools: "Instagram, TikTok" },
+    { tag: "Reviews", t: "Ask while they're still smiling", b: "Happy customers leave and never write the review.", a: "A short thank-you with your review link goes out after each trip, once you approve the wording.", tools: "Email or WhatsApp" },
+  ]},
+  wellness: { label: "Yoga, healing or wellness", wa: "a yoga, healing or wellness practice", cards: [
+    { tag: "Clients", t: "Session notes into follow-ups", b: "After a session you mean to send notes and next steps, and the day gets away.", a: "Talk for one minute after the session, and a clean follow-up email is waiting for you to send.", tools: "Voice note, Gmail" },
+    { tag: "Schedule", t: "Class and booking questions", b: "\"Is there class tomorrow? How much? Do I need a mat?\" all day.", a: "Answers drafted from your schedule and prices, you approve them.", tools: "WhatsApp, Instagram" },
+    { tag: "Content", t: "Your words, into posts", b: "You have so much to share and no time to write it.", a: "One voice note becomes posts in your own words, never generic AI language.", tools: "Instagram, newsletter" },
+    { tag: "Admin", t: "Bookings and reminders", b: "No-shows, reminders and payments chased by hand.", a: "Reminders drafted the day before, and one list of who's paid.", tools: "Calendar, Google Sheets" },
+  ]},
+  shop: { label: "Shop, salon or barber", wa: "a shop, salon or barber", cards: [
+    { tag: "Messages", t: "\"Are you open Sunday?\"", b: "The same questions all day while you're with a customer.", a: "Drafted answers from your hours and prices, approved with a tap.", tools: "WhatsApp, Instagram" },
+    { tag: "No-shows", t: "Reminders and rebooking", b: "Empty chairs from people who forgot.", a: "A reminder drafted the day before, and a rebooking message if they miss it.", tools: "Calendar, WhatsApp" },
+    { tag: "Products", t: "Product photos into posts", b: "New stock arrives and nobody online knows.", a: "Photos turn into captions and a post plan for the week.", tools: "Instagram, Facebook" },
+    { tag: "Quotes", t: "Prices and quotes", b: "Writing out the same price list and packages again and again.", a: "A quote drafted from your price sheet, ready to send.", tools: "Google Sheets, email" },
+  ]},
+};
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+/* tracking: same insert-only page_events table and publishable key as the guide pages */
+const SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+const SLUG = "algarve-owners-page";
+function track(event, extra) {
+  try {
+    if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) || location.protocol === "file:") return; /* no test rows */
+    const body = Object.assign({
+      slug: SLUG, event: String(event).slice(0, 40),
+      path: String((location.pathname || "") + (location.search || "")).slice(0, 200),
+      referrer: document.referrer ? document.referrer.slice(0, 200) : null
+    }, extra || {});
+    if (body.label) body.label = String(body.label).slice(0, 200);
+    fetch(SUPABASE_URL + "/rest/v1/page_events", {
+      method: "POST", keepalive: true,
+      headers: { apikey: SUPABASE_KEY, Authorization: "Bearer " + SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify(body)
+    }).catch(() => {});
+  } catch (e) {}
+}
+track("view", { step: 0 });
+
+function render(key, fromClick) {
+  const type = TYPES[key];
+  picked = key;
+  $("ctaMain").href = waLink();
+  document.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", c.dataset.k === key ? "true" : "false"));
+  $("cards").innerHTML = type.cards.map((c) => `
+    <article class="card">
+      <div class="tag">${esc(c.tag)} · example</div>
+      <h3>${esc(c.t)}</h3>
+      <div class="ba">
+        <div class="before"><span>Now</span>${esc(c.b)}</div>
+        <div class="after"><span>With AI</span>${esc(c.a)}</div>
+      </div>
+      <div class="tools">Works with: ${esc(c.tools)}</div>
+    </article>`).join("");
+  if (fromClick) track("pick_type", { label: key, step: 1 });
+}
+
+$("chips").innerHTML = Object.entries(TYPES).map(([k, v]) =>
+  `<button class="chip" type="button" data-k="${k}" aria-pressed="false">${esc(v.label)}</button>`).join("");
+$("chips").addEventListener("click", (e) => { const b = e.target.closest(".chip"); if (b) render(b.dataset.k, true); });
+const start = new URLSearchParams(location.search).get("t");
+render(TYPES[start] ? start : "cafe", false);
+
+const cta = $("ctaMain");
+cta.target = "_blank"; cta.rel = "noopener";
+
+document.addEventListener("click", (e) => { const a = e.target.closest("[data-track]"); if (a) track("click", { label: a.dataset.track, step: 2 }); });
+
+/* reveal on scroll, plus how far people get */
+const seen = new Set();
+const io = new IntersectionObserver((es) => es.forEach((en) => {
+  if (!en.isIntersecting) return;
+  en.target.classList.add("in");
+  const sec = en.target.closest("section"); const i = [...document.querySelectorAll("section")].indexOf(sec);
+  if (i >= 0 && !seen.has(i)) { seen.add(i); track("scroll", { step: i + 1 }); }
+}), { threshold: .15 });
+document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+</script>
+</body>
+</html>
