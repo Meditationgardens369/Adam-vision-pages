@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>What AI could take off your plate</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="For business owners in the Algarve. Pick your kind of business and see the jobs AI could take off your plate, with you still approving everything.">
+<meta name="description" content="For business owners in the Algarve. Pick your kind of business and watch what AI could take off your plate, with you still approving everything.">
 <meta name="theme-color" content="#06100E">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
@@ -13,20 +13,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
-  /* Owner page for the Lagos street shoot. Same look as the Pedro Vision page.
-     No client names. No promised savings: every "before/after" card is an example. */
+  /* Owner page for the Lagos street shoot. Same look and scene engine as the Pedro Vision page.
+     No client names. No promised savings: every scene is an example, and says so. */
   :root {
-    --bg: #06100E; --bg2: #0B1B18; --glass: rgba(255,255,255,.055); --glass2: rgba(255,255,255,.09);
+    --bg: #06100E; --glass: rgba(255,255,255,.055); --glass2: rgba(255,255,255,.09);
     --line: rgba(255,255,255,.12); --ink: #EAF3F0; --muted: #9DB5AE; --faint: #6F8780;
-    --mint: #43D9BE; --gold: #F3C25A; --clay: #FF8E5E; --r: 20px; color-scheme: dark;
+    --mint: #43D9BE; --gold: #F3C25A; --clay: #FF8E5E; --rose: #FF6F7D; --sky: #6FB7FF; --r: 20px; color-scheme: dark;
   }
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
   html { scroll-behavior: smooth; }
   body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 "Plus Jakarta Sans", system-ui, Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  button { font-family: inherit; color: inherit; cursor: pointer; }
-  button:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+  button, input { font-family: inherit; color: inherit; }
+  button { cursor: pointer; }
+  button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
   h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 300; letter-spacing: -.02em; margin: 0 0 14px; text-wrap: balance; }
   h1 { font-size: clamp(38px, 8.4vw, 70px); line-height: 1.03; }
   h2 { font-size: clamp(28px, 5.6vw, 44px); line-height: 1.08; }
@@ -34,6 +35,7 @@
   em { font-style: italic; color: var(--mint); }
   p { margin: 0 0 14px; }
   .lede { font-size: 18px; color: var(--muted); max-width: 56ch; }
+  .small { font-size: 14px; line-height: 1.5; }
   .tiny { font-size: 12.5px; line-height: 1.5; color: var(--faint); }
   .kicker { display: inline-flex; gap: 8px; align-items: center; font: 600 11.5px "Plus Jakarta Sans"; letter-spacing: .16em; text-transform: uppercase; color: var(--mint); margin-bottom: 16px; }
   .kicker::before { content: ""; width: 22px; height: 1px; background: currentColor; }
@@ -47,21 +49,21 @@
   .grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 56px 56px; opacity: .12; mask-image: radial-gradient(ellipse at 50% 20%, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 20%, #000 20%, transparent 75%); }
 
   .top { position: sticky; top: 0; z-index: 40; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: rgba(6,16,14,.6); border-bottom: 1px solid var(--line); }
-  .top .wrap { display: flex; justify-content: space-between; align-items: center; height: 54px; }
+  .top .wrap { display: flex; justify-content: space-between; align-items: center; height: 54px; gap: 10px; }
   .brand { font: 600 12.5px "Plus Jakarta Sans"; letter-spacing: .16em; text-transform: uppercase; display: flex; gap: 10px; align-items: center; }
+  @media (max-width: 420px) { .brand { font-size: 11px; letter-spacing: .12em; } }
   .brand i { width: 10px; height: 10px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 14px var(--mint); animation: pulse 2.4s infinite; }
   @keyframes pulse { 50% { opacity: .35; } }
-  @media (max-width: 420px) { .brand { font-size: 11px; letter-spacing: .12em; } }
   .toplink { white-space: nowrap; flex-shrink: 0; font-size: 13px; color: var(--mint); text-decoration: none; border: 1px solid rgba(67,217,190,.4); padding: 6px 12px; border-radius: 99px; }
 
   .rv { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
   .rv.in { opacity: 1; transform: none; }
 
-  /* hero: a message travelling through the flow */
+  /* hero */
   .hero { padding-top: 48px; }
   .hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 28px; align-items: center; }
   @media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } }
-  .flow { position: relative; display: grid; gap: 14px; max-width: 380px; margin: 0 auto; width: 100%; }
+  .flow { position: relative; display: grid; gap: 14px; max-width: 380px; margin: 0 auto; width: 100%; perspective: 1000px; }
   .bubble { border-radius: 18px; padding: 14px 16px; background: linear-gradient(160deg, rgba(255,255,255,.13), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.2); box-shadow: 0 24px 50px -24px rgba(0,0,0,.8); font-size: 14px; opacity: 0; transform: translateY(14px) scale(.98); animation: pop 9s infinite; }
   .bubble b { display: block; font: 600 10.5px "Plus Jakarta Sans"; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 6px; }
   .b1 b { color: var(--clay); } .b2 b { color: var(--gold); } .b3 b { color: var(--mint); }
@@ -69,49 +71,178 @@
   .approve { display: inline-block; margin-top: 10px; padding: 6px 14px; border-radius: 99px; background: var(--mint); color: #06100E; font-weight: 700; font-size: 13px; animation: press 9s infinite; animation-delay: 2.4s; }
   @keyframes pop { 0% { opacity: 0; transform: translateY(14px) scale(.98); } 8%, 82% { opacity: 1; transform: none; } 92%, 100% { opacity: 0; transform: translateY(-8px); } }
   @keyframes press { 0%, 30% { transform: scale(1); box-shadow: none; } 34% { transform: scale(.92); box-shadow: 0 0 0 8px rgba(67,217,190,.25); } 40%, 100% { transform: scale(1); box-shadow: none; } }
-  .typing::after { content: "|"; animation: blink 1s steps(1) infinite; color: var(--mint); }
-  @keyframes blink { 50% { opacity: 0; } }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 24px; border-radius: 99px; background: var(--mint); color: #06100E; font-weight: 700; font-size: 16px; text-decoration: none; border: 0; box-shadow: 0 16px 40px -14px rgba(67,217,190,.7); transition: transform .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.ghost { background: transparent; color: var(--mint); border: 1px solid rgba(67,217,190,.45); box-shadow: none; }
 
   /* picker */
-  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 28px; }
-  .chip { border: 1px solid var(--line); background: var(--glass); border-radius: 99px; padding: 10px 16px; font-size: 14.5px; font-weight: 600; transition: background .25s, border-color .25s, transform .2s; }
-  .chip:hover { transform: translateY(-2px); }
-  .chip[aria-pressed="true"] { background: rgba(67,217,190,.16); border-color: var(--mint); color: var(--mint); }
-  .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-  @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
-  .card { position: relative; border: 1px solid var(--line); background: var(--glass); border-radius: var(--r); padding: 20px; overflow: hidden; animation: cardin .6s cubic-bezier(.2,.7,.2,1) both; }
-  .card:nth-child(2) { animation-delay: .07s; } .card:nth-child(3) { animation-delay: .14s; } .card:nth-child(4) { animation-delay: .21s; }
-  @keyframes cardin { from { opacity: 0; transform: translateY(18px); } }
-  .card .tag { font: 600 10.5px "Plus Jakarta Sans"; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
-  .ba { display: grid; grid-template-columns: 1fr; margin-top: 12px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); }
-  .ba div { padding: 12px 14px; font-size: 14px; }
-  .ba .before { background: rgba(255,142,94,.07); color: #F2CDBE; }
-  .ba .after { background: rgba(67,217,190,.08); color: #CFF5EC; }
-  .ba span { display: block; font: 600 10px "Plus Jakarta Sans"; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 4px; opacity: .8; }
-  .card .tools { margin-top: 12px; font-size: 12.5px; color: var(--faint); }
+  .types { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin: 22px 0 10px; }
+  @media (max-width: 720px) { .types { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  .type { position: relative; text-align: left; border: 1px solid var(--line); background: var(--glass); border-radius: 18px; padding: 14px 14px 12px; transition: transform .25s, background .25s, border-color .25s, box-shadow .25s; overflow: hidden; }
+  .type:hover { transform: translateY(-3px); }
+  .type .ic { font-size: 26px; line-height: 1; display: block; margin-bottom: 8px; transition: transform .4s cubic-bezier(.3,1.6,.4,1); }
+  .type b { display: block; font-size: 14.5px; line-height: 1.3; }
+  .type small { display: block; color: var(--faint); font-size: 12px; margin-top: 2px; }
+  .type[aria-pressed="true"] { background: rgba(67,217,190,.14); border-color: var(--mint); box-shadow: 0 0 34px -12px rgba(67,217,190,.7); }
+  .type[aria-pressed="true"] .ic { transform: scale(1.25) rotate(-8deg); }
+  .type[aria-pressed="true"]::after { content: "✓"; position: absolute; top: 10px; right: 12px; width: 22px; height: 22px; border-radius: 50%; background: var(--mint); color: #06100E; font-weight: 800; font-size: 12px; display: grid; place-items: center; }
+  .other { margin: 6px 0 0; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; animation: cardin .5s both; }
+  .other input { flex: 1 1 240px; min-width: 0; background: rgba(0,0,0,.3); border: 1px solid rgba(67,217,190,.45); border-radius: 14px; padding: 13px 14px; font-size: 16px; }
+  .other input::placeholder { color: var(--faint); }
 
-  /* steps */
-  .steps { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; counter-reset: s; }
-  @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
-  .step { border: 1px solid var(--line); border-radius: var(--r); padding: 18px; background: var(--glass); counter-increment: s; }
-  .step::before { content: counter(s); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: rgba(67,217,190,.15); color: var(--mint); font-weight: 700; margin-bottom: 10px; }
-  .step p { color: var(--muted); font-size: 14.5px; margin: 0; }
+  /* demo */
+  .panel { background: var(--glass); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 40px 80px -40px rgba(0,0,0,.8); }
+  .controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 18px 0 16px; }
+  .seg { display: inline-flex; background: var(--glass); border: 1px solid var(--line); border-radius: 99px; padding: 4px; }
+  .seg button { border: 0; background: transparent; padding: 8px 14px; border-radius: 99px; font-weight: 600; font-size: 13px; color: var(--muted); }
+  .seg button[aria-pressed="true"] { background: var(--mint); color: #04201A; }
+  .play { border: 0; background: linear-gradient(135deg, var(--gold), var(--clay)); color: #2A1500; font-weight: 700; padding: 11px 22px; border-radius: 99px; box-shadow: 0 10px 30px -8px rgba(243,194,90,.6); }
+  .play:active { transform: scale(.97); }
+  .bars { display: flex; gap: 8px; margin-bottom: 16px; }
+  .bars i { flex: 1; height: 4px; border-radius: 4px; background: var(--line); transition: background .4s, box-shadow .4s; }
+  .bars i.on { background: var(--mint); box-shadow: 0 0 12px var(--mint); }
+  .demo { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 14px; }
+  @media (max-width: 900px) { .demo { grid-template-columns: 1fr; } }
+  .box { background: rgba(0,0,0,.28); border: 1px solid var(--line); border-radius: 16px; padding: 14px; min-height: 170px; opacity: .35; transform: scale(.97); transition: all .6s cubic-bezier(.2,.7,.2,1); }
+  .box.on { opacity: 1; transform: none; border-color: rgba(67,217,190,.45); box-shadow: 0 0 40px -10px rgba(67,217,190,.35); }
+  .box h4 { margin: 0 0 10px; font: 600 11px "Plus Jakarta Sans"; letter-spacing: .15em; text-transform: uppercase; color: var(--mint); }
+  .msgin { background: rgba(255,255,255,.1); border-radius: 14px 14px 14px 4px; padding: 10px 12px; font-size: 14px; }
+  .msgmeta { font-size: 11.5px; color: var(--faint); margin-top: 8px; }
+  .row { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 13px; margin: 0; }
+  .row dt { color: var(--faint); } .row dd { margin: 0; }
+  .typed { font: 400 16px/1.55 Fraunces, Georgia, serif; white-space: pre-wrap; min-height: 120px; }
+  .caret::after { content: ""; display: inline-block; width: 2px; height: 1em; background: var(--mint); margin-left: 2px; vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .decide { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; opacity: 0; transition: opacity .6s; }
+  .decide.on { opacity: 1; }
+  .decide button { border: 1px solid var(--line); background: var(--glass2); padding: 8px 14px; border-radius: 99px; font-size: 13px; font-weight: 600; }
+  .decide .send { background: var(--mint); color: #04201A; border-color: transparent; animation: glow 1.6s ease-in-out infinite; }
+  .decide .sent { animation: none; background: rgba(67,217,190,.2); color: var(--mint); }
+  .notes { margin-top: 14px; padding: 12px 14px; border-radius: 14px; background: rgba(243,194,90,.1); border: 1px solid rgba(243,194,90,.3); font-size: 13.5px; opacity: 0; transition: opacity .6s; }
+  .notes.on { opacity: 1; }
+  .notes b { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
 
+  /* cards with live scenes */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; perspective: 1200px; }
+  .card { background: linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,.025)); border: 1px solid var(--line); border-radius: 22px; padding: 18px; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s; transform-style: preserve-3d; animation: cardin .6s cubic-bezier(.2,.7,.2,1) both; }
+  .card:nth-child(2) { animation-delay: .08s; } .card:nth-child(3) { animation-delay: .16s; } .card:nth-child(4) { animation-delay: .24s; } .card:nth-child(5) { animation-delay: .32s; }
+  @keyframes cardin { from { opacity: 0; transform: translateY(22px) scale(.98); } }
+  .card:hover { box-shadow: 0 30px 60px -24px rgba(0,0,0,.8), 0 0 40px -14px rgba(67,217,190,.4); border-color: rgba(67,217,190,.4); }
+  .num { font: 300 48px/1 Fraunces, serif; color: rgba(255,255,255,.14); float: right; margin: -4px 0 0 8px; }
+  .tag { display: inline-flex; align-items: center; gap: 7px; font: 700 10.5px "Plus Jakarta Sans"; letter-spacing: .12em; text-transform: uppercase; padding: 5px 10px; border-radius: 99px; margin-bottom: 10px; background: rgba(243,194,90,.14); color: var(--gold); }
+  .two { display: grid; gap: 8px; margin-top: 12px; font-size: 13.5px; }
+  .two div { background: rgba(0,0,0,.25); border-radius: 12px; padding: 9px 12px; }
+  .two b { display: block; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-bottom: 1px; }
+  .two .w b { color: var(--mint); }
+  .tools { margin-top: 10px; font-size: 12px; color: var(--faint); }
+
+  .viz { position: relative; height: 224px; border-radius: 16px; margin: -2px 0 16px; overflow: hidden; border: 1px solid var(--line); background: radial-gradient(120% 90% at 20% 0%, rgba(67,217,190,.16), transparent 60%), rgba(0,0,0,.4); padding: 12px; font-size: 12.5px; }
+  .viz .xx { opacity: 0; transform: translateY(8px) scale(.98); transition: opacity .55s ease, transform .55s cubic-bezier(.2,.8,.2,1); }
+  .viz .xx.on { opacity: 1; transform: none; }
+  .viz .cap { position: absolute; left: 12px; right: 12px; bottom: 8px; text-align: center; font-size: 11.5px; color: var(--muted); }
+  .viz .cap.xx.on { opacity: 1; }
+
+  .chat { display: grid; gap: 6px; }
+  .bub { max-width: 92%; padding: 7px 10px; border-radius: 14px; line-height: 1.3; }
+  .bub.in { background: rgba(255,255,255,.12); border-bottom-left-radius: 4px; }
+  .bub.out { background: rgba(67,217,190,.2); border: 1px solid rgba(67,217,190,.4); border-bottom-right-radius: 4px; justify-self: end; font-family: Fraunces, Georgia, serif; }
+  .bub .who { display: block; font: 600 9.5px "Plus Jakarta Sans"; letter-spacing: .14em; text-transform: uppercase; opacity: .6; margin-bottom: 2px; }
+  .dots { display: flex; gap: 4px; justify-self: end; padding: 8px 12px; background: rgba(67,217,190,.15); border-radius: 14px; }
+  .dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); animation: bounce 1s infinite; }
+  .dots i:nth-child(2) { animation-delay: .15s; } .dots i:nth-child(3) { animation-delay: .3s; }
+  @keyframes bounce { 50% { transform: translateY(-4px); opacity: .5; } }
+  .acts { display: flex; gap: 8px; justify-self: end; }
+  .acts span { padding: 4px 12px; border-radius: 99px; background: rgba(255,255,255,.14); font-size: 11.5px; font-weight: 600; }
+  .acts .go { background: var(--mint); color: #04201A; animation: glow 1.6s ease-in-out infinite; }
+  @keyframes glow { 50% { box-shadow: 0 0 18px 2px rgba(67,217,190,.7); } }
+  .stars { color: var(--gold); letter-spacing: 2px; font-size: 13px; }
+  .stars i { font-style: normal; display: inline-block; opacity: .2; transition: opacity .3s, transform .3s; }
+  .on > .stars i, .stars.on i { opacity: 1; transform: scale(1.1); }
+
+  .phone { width: 82%; margin: 0 auto; background: rgba(255,255,255,.07); border: 1px solid var(--line); border-radius: 18px; padding: 10px 12px; box-shadow: 0 16px 40px -16px rgba(0,0,0,.8); }
+  .ph-h { font: 500 15px Fraunces, serif; margin-bottom: 6px; color: var(--gold); }
+  .rowb { display: flex; align-items: center; gap: 9px; padding: 5px 0; border-top: 1px solid var(--line); }
+  .rowb b { margin-left: auto; font: 400 15px Fraunces, serif; color: var(--mint); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; } .c1 { background: var(--mint); } .c2 { background: var(--rose); } .c3 { background: var(--gold); } .c4 { background: var(--clay); }
+  .rowb.on .dot { animation: pulse 1.8s infinite; }
+
+  .photo { position: absolute; left: 12px; top: 14px; width: 38%; aspect-ratio: 4/5; border-radius: 14px; display: grid; place-items: center; font-size: 46px; background: linear-gradient(160deg, rgba(243,194,90,.35), rgba(255,142,94,.15)); border: 1px solid rgba(243,194,90,.4); overflow: hidden; }
+  .photo::after { content: ""; position: absolute; left: 0; right: 0; height: 30%; top: -30%; background: linear-gradient(transparent, rgba(67,217,190,.5), transparent); }
+  .photo.scan::after { animation: scan 1.4s ease-in-out infinite; }
+  @keyframes scan { to { top: 100%; } }
+  .capts { position: absolute; right: 12px; top: 14px; width: 52%; display: grid; gap: 7px; }
+  .capt { background: rgba(255,255,255,.08); border: 1px solid var(--line); border-radius: 10px; padding: 6px 9px; font-size: 11.5px; line-height: 1.3; }
+  .capt small { display: block; color: var(--mint); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+
+  .facts { position: absolute; left: 12px; top: 14px; width: 36%; display: grid; gap: 3px; font-size: 11.5px; color: var(--muted); }
+  .facts b { color: var(--gold); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 3px; }
+  .langs { position: absolute; right: 12px; top: 12px; width: 56%; display: grid; gap: 6px; }
+  .lg { display: grid; grid-template-columns: 26px 1fr; gap: 2px 8px; align-items: center; background: rgba(255,255,255,.07); border: 1px solid var(--line); border-radius: 10px; padding: 6px 9px; font-size: 11px; line-height: 1.25; }
+  .lg b { font-size: 11px; color: var(--mint); }
+  .badge { position: absolute; left: 12px; bottom: 30px; font-size: 11.5px; padding: 4px 10px; border-radius: 99px; background: rgba(243,194,90,.18); color: var(--gold); }
+  .badge.ok { background: rgba(67,217,190,.18); color: var(--mint); }
+
+  .wave { position: absolute; left: 50%; top: 56px; transform: translateX(-50%); display: flex; gap: 5px; align-items: center; height: 60px; }
+  .wave i { width: 5px; height: 12px; border-radius: 3px; background: var(--mint); }
+  .wave.on i { animation: bar .9s ease-in-out infinite; }
+  .wave i:nth-child(2n) { animation-delay: .12s !important; } .wave i:nth-child(3n) { animation-delay: .27s !important; } .wave i:nth-child(5n) { animation-delay: .4s !important; }
+  @keyframes bar { 50% { height: 54px; } }
+  .vtx { position: absolute; left: 14px; right: 14px; top: 14px; font: italic 300 14px/1.35 Fraunces, serif; color: var(--muted); }
+  .rec { position: absolute; left: 14px; right: 14px; top: 70px; background: rgba(255,255,255,.08); border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px; display: grid; gap: 3px; }
+  .rec div { display: flex; justify-content: space-between; gap: 10px; color: var(--faint); }
+  .rec b { color: var(--ink); font-weight: 600; text-align: right; }
+
+  .tl { position: absolute; left: 12px; right: 12px; top: 12px; display: grid; gap: 8px; }
+  .mail { display: flex; gap: 9px; align-items: flex-start; background: rgba(255,255,255,.08); border: 1px solid var(--line); border-radius: 12px; padding: 7px 10px; }
+  .mail .ico { width: 24px; height: 24px; border-radius: 7px; background: rgba(67,217,190,.2); display: grid; place-items: center; font-size: 13px; flex-shrink: 0; }
+  .mail small { display: block; color: var(--faint); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+  .clock { display: flex; align-items: center; gap: 10px; padding: 0 10px; color: var(--gold); font-size: 12px; font-weight: 600; }
+  .clock .face { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--gold); position: relative; flex-shrink: 0; }
+  .clock .face::after { content: ""; position: absolute; left: 50%; top: 3px; width: 2px; height: 9px; margin-left: -1px; background: var(--gold); transform-origin: 50% 100%; }
+  .clock.on .face::after { animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .reply { justify-self: end; max-width: 80%; background: rgba(255,255,255,.12); border-radius: 12px 12px 4px 12px; padding: 6px 10px; font-size: 12px; }
+
+  .gauge { position: absolute; left: 12px; top: 12px; width: 46%; }
+  .gauge .lbl { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+  .meter { height: 12px; border-radius: 99px; background: linear-gradient(90deg, var(--mint), var(--gold) 55%, var(--rose)); position: relative; opacity: .8; }
+  .needle { position: absolute; top: -5px; width: 4px; height: 22px; margin-left: -2px; border-radius: 2px; background: #fff; box-shadow: 0 0 10px #fff; left: 8%; transition: left 1.2s cubic-bezier(.3,.9,.3,1); }
+  .s1 .needle { left: 55%; } .s2 .needle { left: 86%; }
+  .gauge .big { font: 300 26px/1.1 Fraunces, serif; margin-top: 8px; color: var(--rose); }
+  .flag { display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 99px; background: rgba(255,111,125,.2); color: var(--rose); }
+  .groups { position: absolute; right: 12px; top: 12px; width: 46%; display: grid; gap: 6px; }
+  .grp { background: rgba(255,255,255,.08); border: 1px solid var(--line); border-radius: 10px; padding: 6px 9px; font-size: 11px; line-height: 1.3; }
+  .grp b { color: var(--mint); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; display: block; }
+
+  .sheet { position: absolute; left: 12px; right: 12px; top: 12px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .sheet .r { display: flex; justify-content: space-between; padding: 7px 12px; border-top: 1px solid var(--line); font-size: 12px; }
+  .sheet .r:first-child { border-top: 0; background: rgba(255,255,255,.06); color: var(--faint); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; }
+  .sheet .r.on { background: rgba(67,217,190,.08); }
+  .sheet .tot { font: 400 17px Fraunces, serif; color: var(--mint); background: rgba(67,217,190,.12); }
+  .toast { position: absolute; right: 12px; bottom: 30px; background: var(--mint); color: #04201A; font-weight: 700; font-size: 11.5px; padding: 6px 11px; border-radius: 99px; box-shadow: 0 8px 24px -6px rgba(67,217,190,.7); }
+
+  .cal { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-bottom: 10px; }
+  .cal div { height: 34px; border-radius: 8px; background: rgba(255,255,255,.06); border: 1px solid var(--line); font-size: 10px; color: var(--faint); padding: 3px 5px; }
+  .cal .hot { border-color: var(--gold); color: var(--gold); }
+  .on.cal .hot, .cal.on .hot { animation: pulse 1.6s infinite; background: rgba(243,194,90,.15); }
+
+  /* steps + promise + cta */
+  .how { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; counter-reset: s; }
+  @media (max-width: 860px) { .how { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .how { grid-template-columns: 1fr; } }
+  .how > div { border: 1px solid var(--line); border-radius: var(--r); padding: 18px; background: var(--glass); counter-increment: s; }
+  .how > div::before { content: counter(s); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: rgba(67,217,190,.15); color: var(--mint); font-weight: 700; margin-bottom: 10px; }
+  .how p { color: var(--muted); font-size: 14.5px; margin: 0; }
   .promise { border: 1px solid rgba(243,194,90,.35); background: rgba(243,194,90,.06); border-radius: var(--r); padding: 22px; }
   .promise ul { margin: 0; padding-left: 20px; color: var(--muted); }
   .promise li { margin-bottom: 8px; }
-
   .cta { text-align: center; }
-  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; border-radius: 99px; background: var(--mint); color: #06100E; font-weight: 700; font-size: 16px; text-decoration: none; border: 0; box-shadow: 0 16px 40px -14px rgba(67,217,190,.7); transition: transform .2s; }
-  .btn:hover { transform: translateY(-2px); }
-  .btn.ghost { background: transparent; color: var(--mint); border: 1px solid rgba(67,217,190,.45); box-shadow: none; }
   .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
   footer { padding: 30px 0 50px; text-align: center; }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
-    .bubble { opacity: 1; transform: none; } .rv { opacity: 1; transform: none; }
+    .bubble, .rv, .viz .xx { opacity: 1; transform: none; }
   }
 </style>
 </head>
@@ -128,7 +259,7 @@
   <div class="rv">
     <div class="kicker">Lagos · Algarve</div>
     <h1>The jobs that eat your day, <em>handled while you work</em></h1>
-    <p class="lede">You're the owner, and also the receptionist, the social media person, the one answering the same question for the tenth time today. Pick your kind of business below and see what AI could take off your plate, with you still saying yes to everything.</p>
+    <p class="lede">You're the owner, and also the receptionist, the social media person, the one answering the same question for the tenth time today. Pick your kind of business and watch what AI could take off your plate, with you still saying yes to everything.</p>
     <a class="btn" href="#pick" data-track="hero_cta">Show me for my business</a>
   </div>
   <div class="flow rv" aria-label="Example: a customer message, a drafted reply, and the owner approving it">
@@ -142,9 +273,41 @@
   <div class="rv">
     <div class="kicker">Pick yours</div>
     <h2>What kind of business do you run?</h2>
-    <p class="lede">Every card is an example of something we can set up. We pick the one that hurts most and start there.</p>
+    <p class="lede">Tap one. Everything below changes to match it.</p>
   </div>
-  <div class="chips" role="group" aria-label="Business type" id="chips"></div>
+  <div class="types" role="group" aria-label="Business type" id="types"></div>
+  <div class="other" id="otherBox" hidden>
+    <input id="otherIn" type="text" maxlength="60" autocomplete="off" placeholder="What do you do? e.g. physio, catering, yoga retreats" aria-label="What kind of business do you run?">
+  </div>
+</div></section>
+
+<section id="demo" style="padding-top:20px"><div class="wrap">
+  <div class="kicker">Watch it work</div>
+  <h2 class="rv">A customer writes. <em id="demoWho">You approve.</em></h2>
+  <p class="lede rv">Press play and switch the language. This is the kind of thing we set up first.</p>
+  <div class="controls">
+    <div class="seg" id="lang" role="group" aria-label="Language">
+      <button data-l="en" aria-pressed="true">English</button><button data-l="pt" aria-pressed="false">Português</button><button data-l="de" aria-pressed="false">Deutsch</button>
+    </div>
+    <button class="play" id="play" type="button">▶ Play</button>
+  </div>
+  <div class="panel rv">
+    <div class="bars" id="bars"><i></i><i></i><i></i><i></i></div>
+    <div class="demo">
+      <div class="box" id="b1"><h4>1 · Message arrives</h4><div class="msgin" id="dMsg"></div><div class="msgmeta" id="dMeta"></div></div>
+      <div class="box" id="b2"><h4>2 · Your own info</h4><dl class="row" id="dInfo"></dl></div>
+      <div class="box" id="b3"><h4>3 · Draft for you</h4><div class="typed" id="typed"></div>
+        <div class="decide" id="decide"><button class="send" type="button" id="sendBtn">Approve and send</button><button type="button">Edit first</button></div></div>
+    </div>
+    <div class="notes" id="notes"><b>What it noticed for you</b><span id="dNote"></span></div>
+  </div>
+  <p class="tiny" style="margin-top:12px">Example only. With your business, it would use your real info and your tone, and we'd check every language with you first.</p>
+</div></section>
+
+<section id="ideas" style="padding-top:30px"><div class="wrap">
+  <div class="kicker">More we could build</div>
+  <h2 class="rv">Things that run <em>in the background</em></h2>
+  <p class="lede rv">Each one is small, and each one plays on its own. We start with the one that hurts most.</p>
   <div class="cards" id="cards" aria-live="polite"></div>
 </div></section>
 
@@ -153,11 +316,11 @@
     <div class="kicker">How it works</div>
     <h2>Small, one job at a time</h2>
   </div>
-  <div class="steps rv">
-    <div class="step"><h3>A 20-minute chat</h3><p>You tell us where your day goes. Messages, bookings, reviews, posts, quotes, whatever it is.</p></div>
-    <div class="step"><h3>We pick one job</h3><p>The one that costs you the most time. Not ten things at once.</p></div>
-    <div class="step"><h3>We build it on your tools</h3><p>WhatsApp, Gmail, Instagram, Google Sheets, whatever you already use. You don't learn new software.</p></div>
-    <div class="step"><h3>You check it for a week</h3><p>We time it together. If it doesn't save you time, we change it or switch it off.</p></div>
+  <div class="how rv">
+    <div><h3>A 20-minute chat</h3><p>You tell us where your day goes. Messages, bookings, reviews, posts, quotes, whatever it is.</p></div>
+    <div><h3>We pick one job</h3><p>The one that costs you the most time. Not ten things at once.</p></div>
+    <div><h3>We build it on your tools</h3><p>WhatsApp, Gmail, Instagram, Google Sheets, whatever you already use. You don't learn new software.</p></div>
+    <div><h3>You check it for a week</h3><p>We time it together. If it doesn't save you time, we change it or switch it off.</p></div>
   </div>
 </div></section>
 
@@ -179,7 +342,7 @@
   <h2>Want this for <em>your</em> business?</h2>
   <p class="lede" style="margin:0 auto 6px">Tell us what eats your week. We'll show you what we'd build first.</p>
   <div class="ctas">
-    <a class="btn" id="ctaMain" href="#" data-track="cta_main">Message Adam on WhatsApp</a>
+    <a class="btn" id="ctaMain" href="#" target="_blank" rel="noopener" data-track="cta_main">Message Adam on WhatsApp</a>
     <a class="btn ghost" href="https://meditationgardens369.github.io/Adam-vision-pages/guides.html?s=lagos-owner" data-track="cta_guides">Free guides first</a>
   </div>
   <p class="tiny" style="margin-top:14px">Met us on the street in Lagos? Mention what we showed you.</p>
@@ -189,51 +352,127 @@
 <footer><div class="wrap tiny">Examples on this page show the kind of thing we build. They're not results from a real business.</div></footer>
 
 <script>
-/* WhatsApp, same number as the client pages. The message is prefilled with the business type they picked. */
-const WHATSAPP = "351922102740";
-let picked = "cafe";
-function waLink() {
-  const msg = "Hi Adam, we met in Lagos. I run " + TYPES[picked].wa + " and I'd like to hear what you'd build first.";
-  return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
-}
-
-const TYPES = {
-  cafe: { label: "Café or restaurant", wa: "a café or restaurant", cards: [
-    { tag: "Bookings", t: "Late-night booking messages", b: "Messages pile up on WhatsApp and Instagram while you're serving, and you reply at midnight.", a: "Each one gets a drafted reply in your tone. You tap approve between tables.", tools: "WhatsApp or Instagram, Telegram ping" },
-    { tag: "Reviews", t: "Google review replies", b: "Reviews sit unanswered because there's never a quiet moment.", a: "A warm reply in your voice is waiting for each new review. You read it and post it.", tools: "Google reviews" },
-    { tag: "Posts", t: "A week of posts from one photo", b: "You know you should post, the special of the day never makes it online.", a: "One photo of the dish turns into a week of captions for you to pick from.", tools: "Instagram, Facebook" },
-    { tag: "Tourists", t: "Same questions, every language", b: "Opening hours, vegan options, kids, dogs, parking. In English, German, French.", a: "Answers drafted in the language they wrote in, from your own info.", tools: "WhatsApp, email" },
-  ]},
-  rental: { label: "Holiday rental", wa: "holiday rentals", cards: [
-    { tag: "Guests", t: "Welcome messages in their language", b: "Copy-pasting check-in details, wifi, parking and rules for every guest.", a: "Each booking gets a welcome pack in the guest's language, ready for you to send.", tools: "Airbnb, Booking, email" },
-    { tag: "Questions", t: "\"Where's the key?\" at 1am", b: "The same questions arrive at all hours.", a: "Answers drafted from your house guide, you approve with one tap.", tools: "WhatsApp, Telegram ping" },
-    { tag: "Cleaning", t: "Changeover schedule", b: "Texting the cleaner every time a booking moves.", a: "New and changed bookings land in one sheet, and the cleaner message is drafted for you.", tools: "Calendar, Google Sheets" },
-    { tag: "Reviews", t: "Review replies and requests", b: "Forgetting to ask for reviews, or to answer them.", a: "A friendly review request after checkout, and a reply draft for every review.", tools: "Airbnb, Google" },
-  ]},
-  tours: { label: "Tours, boats or surf", wa: "a tour, boat or surf business", cards: [
-    { tag: "Bookings", t: "Enquiries while you're on the water", b: "You can't answer your phone on a boat or in the waves, and the enquiry books somewhere else.", a: "Every enquiry gets a drafted reply with times and prices from your sheet. You approve it from the beach.", tools: "WhatsApp, Instagram, Google Sheets" },
-    { tag: "Weather", t: "Cancelled for weather", b: "Messaging every group one by one when the sea is too rough.", a: "One message drafted for each group, in their language, with a rebooking option.", tools: "Bookings list, WhatsApp, email" },
-    { tag: "Content", t: "Today's trip, posted", b: "Great footage from every trip, posted almost never.", a: "Send your clips and get captions and a short post plan back.", tools: "Instagram, TikTok" },
-    { tag: "Reviews", t: "Ask while they're still smiling", b: "Happy customers leave and never write the review.", a: "A short thank-you with your review link goes out after each trip, once you approve the wording.", tools: "Email or WhatsApp" },
-  ]},
-  wellness: { label: "Yoga, healing or wellness", wa: "a yoga, healing or wellness practice", cards: [
-    { tag: "Clients", t: "Session notes into follow-ups", b: "After a session you mean to send notes and next steps, and the day gets away.", a: "Talk for one minute after the session, and a clean follow-up email is waiting for you to send.", tools: "Voice note, Gmail" },
-    { tag: "Schedule", t: "Class and booking questions", b: "\"Is there class tomorrow? How much? Do I need a mat?\" all day.", a: "Answers drafted from your schedule and prices, you approve them.", tools: "WhatsApp, Instagram" },
-    { tag: "Content", t: "Your words, into posts", b: "You have so much to share and no time to write it.", a: "One voice note becomes posts in your own words, never generic AI language.", tools: "Instagram, newsletter" },
-    { tag: "Admin", t: "Bookings and reminders", b: "No-shows, reminders and payments chased by hand.", a: "Reminders drafted the day before, and one list of who's paid.", tools: "Calendar, Google Sheets" },
-  ]},
-  shop: { label: "Shop, salon or barber", wa: "a shop, salon or barber", cards: [
-    { tag: "Messages", t: "\"Are you open Sunday?\"", b: "The same questions all day while you're with a customer.", a: "Drafted answers from your hours and prices, approved with a tap.", tools: "WhatsApp, Instagram" },
-    { tag: "No-shows", t: "Reminders and rebooking", b: "Empty chairs from people who forgot.", a: "A reminder drafted the day before, and a rebooking message if they miss it.", tools: "Calendar, WhatsApp" },
-    { tag: "Products", t: "Product photos into posts", b: "New stock arrives and nobody online knows.", a: "Photos turn into captions and a post plan for the week.", tools: "Instagram, Facebook" },
-    { tag: "Quotes", t: "Prices and quotes", b: "Writing out the same price list and packages again and again.", a: "A quote drafted from your price sheet, ready to send.", tools: "Google Sheets, email" },
-  ]},
-};
-
+(function () {
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const WHATSAPP = "351922102740";
 
-/* tracking: same insert-only page_events table and publishable key as the guide pages */
+/* ---------- content ---------- */
+const TYPES = {
+  cafe: { ic: "🍽️", label: "Café or restaurant", sub: "bookings, reviews, posts", wa: "a café or restaurant", biz: "Café Lagos",
+    demo: {
+      meta: "Instagram DM · 11:42 pm",
+      info: [["Saturday 8pm", "2 tables free"], ["Vegan", "3 dishes on the menu"], ["Bookings", "Name and phone"]],
+      en: ["Hi! Can we book a table for 6 this Saturday at 8? One of us is vegan.", "Hi! Saturday at 8 for 6 works, and we have a few vegan dishes your friend will like. Can I take a name for the booking? We'll confirm by message.\n\nCafé Lagos"],
+      pt: ["Olá! Dá para reservar mesa para 6 no sábado às 20h? Um de nós é vegano.", "Olá! Sábado às 20h para 6 pessoas é possível, e temos alguns pratos veganos de que vão gostar. Em que nome fica a reserva? Confirmamos por mensagem.\n\nCafé Lagos"],
+      de: ["Hallo! Können wir am Samstag um 20 Uhr einen Tisch für 6 reservieren? Einer von uns ist vegan.", "Hallo! Samstag um 20 Uhr für 6 Personen klappt, und wir haben ein paar vegane Gerichte. Auf welchen Namen dürfen wir reservieren? Wir bestätigen per Nachricht.\n\nCafé Lagos"],
+      note: "They mentioned vegan, so the reply does too. It asks for a name before confirming. Nothing has been sent." },
+    cards: [
+      { k: "review", tag: "Reviews", t: "Google review replies", now: "Reviews sit there because there's never a quiet moment.", w: "A warm reply in your voice waits for every new review. You read it and post it.", tools: "Google reviews",
+        d: { stars: 4, in: "Lovely food, service a bit slow on Sunday.", out: "Thank you! Sorry about Sunday, it was a full house. Come back soon, the grilled fish is on us to taste.", cap: "Ready before you've finished reading it." } },
+      { k: "photo", tag: "Posts", t: "A week of posts from one photo", now: "Today's special never makes it online.", w: "One photo of the dish becomes captions for the week. You pick and post.", tools: "Instagram, Facebook",
+        d: { emoji: "🍤", caps: [["Monday", "Grilled prawns, the way Lagos does them"], ["Wednesday", "Sunset table for two? We saved one"], ["Friday", "Today's catch is on the board"]], cap: "Example captions. You choose." } },
+      { k: "langs", tag: "Tourists", t: "Same questions, every language", now: "Opening hours, vegan, dogs, kids. In English, German, French.", w: "Answers drafted in the language they wrote in, from your own info.", tools: "WhatsApp, Instagram, email",
+        d: { facts: ["Open 12 to 23", "Vegan options", "Dogs welcome"], langs: [["EN", "Yes, dogs are welcome on the terrace!"], ["DE", "Ja, Hunde sind auf der Terrasse willkommen!"], ["FR", "Oui, les chiens sont les bienvenus en terrasse !"]], badge: "Same answer, their language" } },
+      { k: "brief", tag: "Mornings", t: "Your day on one screen", now: "Checking three apps before opening the doors.", w: "At 9am your phone shows bookings, messages waiting and reviews to answer.", tools: "Telegram or WhatsApp",
+        d: { title: "Good morning", rows: [["Bookings tonight", "7", "c1"], ["Messages waiting", "4", "c3"], ["New reviews", "2", "c4"], ["Big group (8+)", "1", "c2"]], cap: "Example morning brief" } },
+    ] },
+  rental: { ic: "🏡", label: "Holiday rental", sub: "guests, keys, cleaners", wa: "holiday rentals", biz: "Casa Lagos",
+    demo: {
+      meta: "Airbnb message · 9:15 pm",
+      info: [["Check-in", "Key box, code sent the day before"], ["Parking", "Free, on the street"], ["Late arrival", "No problem"]],
+      en: ["Hi, we land at 11pm on Friday. How do we get the keys, and is there parking?", "Hi! A late arrival is no problem. The keys are in a key box by the door, and we'll send you the code the day before. There's free parking on the street right outside. Safe travels!\n\nCasa Lagos"],
+      pt: ["Olá, chegamos às 23h na sexta. Como recebemos as chaves, e há estacionamento?", "Olá! Chegar tarde não é problema. As chaves estão numa caixa junto à porta e enviamos o código na véspera. Há estacionamento gratuito na rua, mesmo em frente. Boa viagem!\n\nCasa Lagos"],
+      de: ["Hallo, wir landen Freitag um 23 Uhr. Wie bekommen wir die Schlüssel, und gibt es Parkplätze?", "Hallo! Eine späte Ankunft ist kein Problem. Die Schlüssel liegen in einer Schlüsselbox an der Tür, den Code schicken wir am Vortag. Kostenlose Parkplätze gibt es direkt vor dem Haus. Gute Reise!\n\nCasa Lagos"],
+      note: "Two questions in one message, both answered from your house guide. The code itself stays out until the day before." },
+    cards: [
+      { k: "langs", tag: "Guests", t: "Welcome pack in their language", now: "Copy-pasting wifi, parking and house rules for every guest.", w: "Each booking gets a welcome message in the guest's language, ready to send.", tools: "Airbnb, Booking, email",
+        d: { facts: ["Key box by the door", "Beach: 5 min walk", "Bins: Tuesday"], langs: [["EN", "Welcome! Here's everything for your stay..."], ["DE", "Willkommen! Hier ist alles für Ihren Aufenthalt..."], ["NL", "Welkom! Hier is alles voor je verblijf..."]], badge: "Welcome pack ready" } },
+      { k: "chat", tag: "1am questions", t: "\"Where's the key?\"", now: "The same questions arrive at all hours.", w: "Answers drafted from your house guide. You approve with one tap, or let the easy ones go.", tools: "WhatsApp, Telegram ping",
+        d: { in: "We're outside, where is the key box? 😅", out: "Hi! It's on the left of the front door, behind the plant. The code is in your welcome message. Welcome!", cap: "Answered from your house guide." } },
+      { k: "brief", tag: "Cleaning", t: "Changeovers in one place", now: "Texting the cleaner every time a booking moves.", w: "Changeovers land in one list, and the cleaner message is drafted for you.", tools: "Calendar, Google Sheets",
+        d: { title: "This week", rows: [["Fri · Casa Azul", "11:00", "c1"], ["Sat · Casa Mar", "10:00", "c3"], ["Sun · Casa Azul", "12:00", "c1"], ["Cleaner message", "Drafted", "c4"]], cap: "Example changeover list" } },
+      { k: "follow", tag: "Reviews", t: "Ask for the review, at the right time", now: "Forgetting to ask, or asking too late.", w: "A thank-you the day they leave, and a review nudge after, in your words.", tools: "Email or WhatsApp",
+        d: { a: ["Today", "Thanks for staying, Mark!"], wait: "1 day later", b: ["Tomorrow", "Would you leave us a quick review?"], reply: "Done, we loved it!", cap: "Sent on time, every time. Example." } },
+    ] },
+  tours: { ic: "⛵", label: "Tours, boats or surf", sub: "enquiries, weather, content", wa: "a tour, boat or surf business", biz: "Lagos Boat Tours",
+    demo: {
+      meta: "WhatsApp · 7:58 am, you're on the water",
+      info: [["Tomorrow 10:00", "8 places left"], ["Kids", "Lifejackets on board"], ["To hold places", "Name and phone"]],
+      en: ["Hi! Is there space on the Ponta da Piedade boat trip tomorrow morning for 2 adults and a 6-year-old?", "Hi! Tomorrow at 10 there's still space for the three of you, and we have kids' lifejackets on board. Can I take a name and a phone number to hold the places?\n\nLagos Boat Tours"],
+      pt: ["Olá! Há lugar no passeio de barco à Ponta da Piedade amanhã de manhã para 2 adultos e uma criança de 6 anos?", "Olá! Amanhã às 10h ainda há lugar para os três, e temos coletes para crianças a bordo. Pode deixar-me um nome e um contacto para guardar os lugares?\n\nLagos Boat Tours"],
+      de: ["Hallo! Gibt es morgen Vormittag noch Platz auf der Bootstour zur Ponta da Piedade für 2 Erwachsene und ein 6-jähriges Kind?", "Hallo! Morgen um 10 Uhr ist noch Platz für Sie drei, und Schwimmwesten für Kinder haben wir an Bord. Können Sie mir einen Namen und eine Telefonnummer geben, damit wir die Plätze reservieren?\n\nLagos Boat Tours"],
+      note: "A child is coming, so it mentions lifejackets. It holds places, it doesn't take payment. You approve from the boat." },
+    cards: [
+      { k: "weather", tag: "Weather", t: "Too rough? Messages ready", now: "Calling every group one by one when the sea turns.", w: "It checks tomorrow's forecast. If it's too rough, each group's message is already drafted, in their language.", tools: "Free sea forecast, WhatsApp",
+        d: { lbl: "Wind and swell, tomorrow 10:00", big: "Too rough", groups: [["Group · EN", "Sorry, the sea's too rough tomorrow. Thursday?"], ["Gruppe · DE", "Leider zu viel Wellengang morgen. Donnerstag?"], ["Grupo · PT", "Amanhã o mar está agitado. Quinta-feira?"]], cap: "You decide. Example." } },
+      { k: "photo", tag: "Content", t: "Today's trip, posted", now: "Great footage from every trip, posted almost never.", w: "Send your clips and get captions and a post plan back.", tools: "Instagram, TikTok",
+        d: { emoji: "🌊", caps: [["Reel", "Into the caves at Ponta da Piedade"], ["Story", "Today's crew, all smiles"], ["Post", "Two places left tomorrow at 10"]], cap: "Example captions. You choose." } },
+      { k: "follow", tag: "Reviews", t: "Ask while they're still smiling", now: "Happy customers leave and never write the review.", w: "A thank-you with your review link after each trip, in your words.", tools: "Email or WhatsApp",
+        d: { a: ["After the trip", "Thanks for coming out with us, Lena!"], wait: "2 hours later", b: ["This evening", "If you enjoyed it, a review helps us a lot"], reply: "Best trip of our holiday ⭐", cap: "Example timing. You set it." } },
+      { k: "quote", tag: "Groups", t: "Private trip quotes", now: "Working out prices for groups by hand.", w: "A quote drafted from your price sheet, ready to send.", tools: "Google Sheets, email",
+        d: { head: ["Private trip · 12 people", ""], rows: [["Boat, 2 hours", "€360"], ["Snorkel gear x12", "€60"], ["Drinks on board", "€48"]], tot: "€468", toast: "Quote ready to send", cap: "Example prices." } },
+    ] },
+  wellness: { ic: "🧘", label: "Yoga, healing or wellness", sub: "clients, follow-ups, classes", wa: "a yoga, healing or wellness practice", biz: "Lagos Massage Studio",
+    demo: {
+      meta: "WhatsApp · 6:20 pm, you're with a client",
+      info: [["Free slots", "Wed 17:00, Fri 10:00"], ["Session", "60 min deep tissue"], ["Always ask", "Any injuries?"]],
+      en: ["Hi, do you have a massage free this week? My lower back is sore from surfing.", "Hi! Sorry to hear about your back, surfing will do that. I have Wednesday at 5pm or Friday at 10am for a 60 minute session. Which suits you better?\n\nLagos Massage Studio"],
+      pt: ["Olá, tem alguma massagem livre esta semana? Estou com dores na lombar do surf.", "Olá! Lamento as dores, o surf faz isso. Tenho quarta às 17h ou sexta às 10h para uma sessão de 60 minutos. Qual lhe dá mais jeito?\n\nLagos Massage Studio"],
+      de: ["Hallo, haben Sie diese Woche einen Massagetermin frei? Mein unterer Rücken tut vom Surfen weh.", "Hallo! Das mit dem Rücken tut mir leid, Surfen kann das machen. Ich habe Mittwoch um 17 Uhr oder Freitag um 10 Uhr für 60 Minuten frei. Was passt Ihnen besser?\n\nLagos Massage Studio"],
+      note: "It offers your two real free slots. It doesn't give medical advice. You can add the injury question before sending." },
+    cards: [
+      { k: "voice", tag: "After a session", t: "Talk for a minute, notes done", now: "You mean to write notes and next steps, and the day gets away.", w: "Speak for a minute after the session. Notes are saved and a follow-up email is drafted.", tools: "Voice note, Gmail",
+        d: { q: "\"Sofia, deep tissue, lower back, much better than last time, come back in two weeks.\"", rec: [["Client", "Sofia"], ["Focus", "Lower back"], ["Next", "In 2 weeks"]], ok: "Follow-up email drafted", cap: "No new app. Example." } },
+      { k: "follow", tag: "Follow-ups", t: "Checking in, three days later", now: "Clients drift away because nobody checked in.", w: "A thank-you today and a \"how are you feeling?\" in three days, in your words.", tools: "Gmail, Telegram ping",
+        d: { a: ["Today", "Thank you for coming in, Sofia"], wait: "3 days later", b: ["Friday", "How's the back feeling after the surf?"], reply: "Much better! Can I book again?", cap: "Example. You choose the timing." } },
+      { k: "chat", tag: "Classes", t: "\"Is there class tomorrow?\"", now: "Class, price and \"do I need a mat\" questions all day.", w: "Answers drafted from your schedule and prices. You approve them.", tools: "WhatsApp, Instagram",
+        d: { in: "Is there yoga tomorrow morning? Do I need a mat?", out: "Hi! Yes, 9am on the beach. Mats are there for you, just bring water.", cap: "From your own schedule." } },
+      { k: "remind", tag: "No-shows", t: "Reminders that get a reply", now: "Empty slots from people who forgot.", w: "A friendly reminder the day before, and you see who confirmed.", tools: "Calendar, WhatsApp",
+        d: { days: ["Mon", "Tue", "Wed", "Thu", "Fri"], hot: 2, slot: "Wed 10:00 · Ana", out: "Hi Ana, see you tomorrow at 10!", in: "See you then 🙏", toast: "Ana confirmed", cap: "Example reminder." } },
+    ] },
+  shop: { ic: "✂️", label: "Shop, salon or barber", sub: "questions, no-shows, stock", wa: "a shop, salon or barber", biz: "Lagos Barbers",
+    demo: {
+      meta: "Instagram DM · Saturday, 4:10 pm",
+      info: [["Sunday", "10:00 to 14:00"], ["Walk-ins", "Yes, short wait at weekends"], ["Booking", "Any time by message"]],
+      en: ["Hi, are you open on Sunday? And can I get a haircut without booking?", "Hi! Yes, we're open Sunday from 10 until 2. Walk-ins are welcome, there can be a short wait at the weekend, or I can book you a time now if you like.\n\nLagos Barbers"],
+      pt: ["Olá, estão abertos ao domingo? E dá para cortar o cabelo sem marcação?", "Olá! Sim, ao domingo abrimos das 10h às 14h. Pode vir sem marcação, ao fim de semana às vezes há uma pequena espera, ou posso marcar-lhe já uma hora.\n\nLagos Barbers"],
+      de: ["Hallo, haben Sie am Sonntag geöffnet? Und kann ich ohne Termin zum Haareschneiden kommen?", "Hallo! Ja, sonntags haben wir von 10 bis 14 Uhr geöffnet. Sie können ohne Termin kommen, am Wochenende gibt es manchmal eine kurze Wartezeit, oder ich trage Sie gleich für eine Uhrzeit ein.\n\nLagos Barbers"],
+      note: "Both questions answered, and it offers a booking so they don't go elsewhere. Nothing sent yet." },
+    cards: [
+      { k: "remind", tag: "No-shows", t: "Reminders and rebooking", now: "Empty chairs from people who forgot.", w: "A reminder the day before, and a rebooking message if they miss it.", tools: "Calendar, WhatsApp",
+        d: { days: ["Thu", "Fri", "Sat", "Sun", "Mon"], hot: 2, slot: "Sat 11:30 · João", out: "Hi João, see you tomorrow at 11:30!", in: "👍 I'll be there", toast: "João confirmed", cap: "Example reminder." } },
+      { k: "photo", tag: "New stock", t: "Product photos into posts", now: "New stock arrives and nobody online knows.", w: "Photos turn into captions and a post plan for the week.", tools: "Instagram, Facebook",
+        d: { emoji: "🧴", caps: [["Post", "New in: the beard oil everyone asks about"], ["Story", "Fresh fade Friday, walk-ins welcome"], ["Reel", "60 seconds in the chair"]], cap: "Example captions. You choose." } },
+      { k: "quote", tag: "Events", t: "Wedding and group quotes", now: "Writing out the same packages again and again.", w: "A quote drafted from your price sheet, ready to send.", tools: "Google Sheets, email",
+        d: { head: ["Wedding party · Saturday", ""], rows: [["Groom cut + beard", "€35"], ["4 groomsmen cuts", "€100"], ["Hot towel shave x5", "€75"]], tot: "€210", toast: "Quote ready to send", cap: "Example prices." } },
+      { k: "review", tag: "Reviews", t: "Google review replies", now: "Reviews pile up unanswered.", w: "A reply in your voice for every review, ready to post.", tools: "Google reviews",
+        d: { stars: 5, in: "Best fade I've had in Portugal. Friendly guys.", out: "Thanks so much! Glad you found us, see you in a few weeks.", cap: "Ready in your voice." } },
+    ] },
+  other: { ic: "✨", label: "Something else", sub: "tell us what you do", wa: null, biz: "Your business",
+    demo: {
+      meta: "Email · 10:30 pm",
+      info: [["Your prices", "From your price list"], ["Your diary", "Next free dates"], ["Your answers", "The ones you always give"]],
+      en: ["Hi, how much would it cost, and when could you start?", "Hi! Thanks for getting in touch. It depends a little on what you need, so could you tell me a bit more? Then I'll send you a price and the first date I'm free.\n\n{biz}"],
+      pt: ["Olá, quanto custaria e quando poderia começar?", "Olá! Obrigado pelo contacto. Depende um pouco do que precisa, por isso pode contar-me um pouco mais? Depois envio-lhe um preço e a primeira data livre.\n\n{biz}"],
+      de: ["Hallo, was würde das kosten, und wann könnten Sie anfangen?", "Hallo! Danke für Ihre Nachricht. Es hängt ein wenig davon ab, was Sie brauchen. Können Sie mir etwas mehr erzählen? Dann schicke ich Ihnen einen Preis und meinen ersten freien Termin.\n\n{biz}"],
+      note: "It asks the one question that's missing before quoting a price. Nothing is promised and nothing is sent without you." },
+    cards: [
+      { k: "chat", tag: "Enquiries", t: "Every enquiry answered fast", now: "Enquiries wait until the evening, and some go elsewhere.", w: "A first reply drafted in minutes, from your own info. You approve it.", tools: "WhatsApp, email, Instagram",
+        d: { in: "Hi, are you free next week? How much?", out: "Hi! Yes, I have Tuesday or Thursday. Can you tell me a bit about what you need? Then I'll send a price.", cap: "Your info, your tone." } },
+      { k: "follow", tag: "Follow-ups", t: "The follow-up you never have time for", now: "Customers go quiet because nobody checked in.", w: "A thank-you now and a check-in a few days later, in your words.", tools: "Gmail, Telegram ping",
+        d: { a: ["Today", "Thanks for choosing us, Maria"], wait: "3 days later", b: ["Friday", "How's everything going? Any questions?"], reply: "All great, thank you!", cap: "Example. You choose the timing." } },
+      { k: "voice", tag: "Admin", t: "A voice note becomes your to-do list", now: "Tasks live in your head and on scraps of paper.", w: "Talk for 30 seconds. Tasks land in a list with reminders.", tools: "Telegram, Google Sheets",
+        d: { q: "\"Call the supplier, send Maria the invoice, post the new photos before Friday.\"", rec: [["Tasks", "3"], ["Today", "Call supplier"], ["Reminder", "Fri, photos"]], ok: "Saved to your list", cap: "No new app. Example." } },
+      { k: "quote", tag: "Quotes", t: "Quotes from your price list", now: "Working out the same prices by hand.", w: "A quote drafted from your price sheet, ready to send.", tools: "Google Sheets, email",
+        d: { head: ["Quote · new customer", ""], rows: [["Main service", "€180"], ["Extra hours x2", "€80"], ["Travel", "€20"]], tot: "€280", toast: "Quote ready to send", cap: "Example prices." } },
+      { k: "brief", tag: "Mornings", t: "Your day on one screen", now: "Checking five apps before you start.", w: "Every morning your phone shows what came in and what needs you.", tools: "Telegram or WhatsApp",
+        d: { title: "Good morning", rows: [["New messages", "5", "c1"], ["Waiting for you", "2", "c3"], ["Today's bookings", "3", "c4"], ["Overdue invoice", "1", "c2"]], cap: "Example morning brief" } },
+    ] },
+};
+
+/* ---------- tracking: same insert-only page_events table and publishable key as the guide pages ---------- */
 const SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
 const SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
 const SLUG = "algarve-owners-page";
@@ -255,44 +494,149 @@ function track(event, extra) {
 }
 track("view", { step: 0 });
 
-function render(key, fromClick) {
-  const type = TYPES[key];
-  picked = key;
-  $("ctaMain").href = waLink();
-  document.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", c.dataset.k === key ? "true" : "false"));
-  $("cards").innerHTML = type.cards.map((c) => `
-    <article class="card">
-      <div class="tag">${esc(c.tag)} · example</div>
-      <h3>${esc(c.t)}</h3>
-      <div class="ba">
-        <div class="before"><span>Now</span>${esc(c.b)}</div>
-        <div class="after"><span>With AI</span>${esc(c.a)}</div>
-      </div>
-      <div class="tools">Works with: ${esc(c.tools)}</div>
-    </article>`).join("");
-  if (fromClick) track("pick_type", { label: key, step: 1 });
+/* ---------- scenes: each returns [html, timings]; .xx elements show from data-s until data-e ---------- */
+const X = (s, e) => `class="xx" data-s="${s}"${e ? ` data-e="${e}"` : ""}`;
+const XC = (cls, s, e) => `class="${cls} xx" data-s="${s}"${e ? ` data-e="${e}"` : ""}`;
+const SCENES = {
+  chat: (d) => [`<div class="chat"><div ${XC("bub in", 1)}><span class="who">Customer</span>${esc(d.in)}</div><div ${XC("dots", 2, 3)}><i></i><i></i><i></i></div><div ${XC("bub out", 3)}><span class="who">Draft for you</span>${esc(d.out)}</div><div ${XC("acts", 4)}><span>Edit</span><span class="go">Send</span></div></div><div ${XC("cap", 5)}>${esc(d.cap)}</div>`, "900,1300,1500,1200,2600"],
+  review: (d) => [`<div class="chat"><div ${XC("bub in", 1)}><div class="stars">${"<i>★</i>".repeat(d.stars)}${"<i style='opacity:.15'>★</i>".repeat(5 - d.stars)}</div>${esc(d.in)}</div><div ${XC("dots", 2, 3)}><i></i><i></i><i></i></div><div ${XC("bub out", 3)}><span class="who">Your reply, drafted</span>${esc(d.out)}</div><div ${XC("acts", 4)}><span>Edit</span><span class="go">Post</span></div></div><div ${XC("cap", 5)}>${esc(d.cap)}</div>`, "1000,1300,1500,1200,2600"],
+  brief: (d) => [`<div class="phone"><div ${XC("ph-h", 1)}>${esc(d.title)}</div>${d.rows.map((r, i) => `<div ${XC("rowb", i + 2)}><i class="dot ${r[2]}"></i>${esc(r[0])}<b>${esc(r[1])}</b></div>`).join("")}</div><div class="cap">${esc(d.cap)}</div>`, "800,700,700,700,2800"],
+  photo: (d) => [`<div ${XC("photo", 1)} data-scan="2">${d.emoji}</div><div class="capts">${d.caps.map((c, i) => `<div ${XC("capt", i + 3)}><small>${esc(c[0])}</small>${esc(c[1])}</div>`).join("")}</div><div ${XC("cap", 5)}>${esc(d.cap)}</div>`, "900,1300,900,900,2600"],
+  langs: (d) => [`<div ${XC("facts", 1)}><b>Your info</b>${d.facts.map((f) => `<span>${esc(f)}</span>`).join("")}</div><div class="langs">${d.langs.map((l, i) => `<div ${XC("lg", i + 2)}><b>${esc(l[0])}</b><span>${esc(l[1])}</span></div>`).join("")}</div><div ${XC("badge ok", 5)}>${esc(d.badge)}</div>`, "1000,1100,1100,1100,2800"],
+  voice: (d) => [`<div ${XC("wave", 1, 3)}>${"<i></i>".repeat(9)}</div><div ${XC("vtx", 2, 4)}>${esc(d.q)}</div><div ${XC("rec", 3)}>${d.rec.map((r) => `<div>${esc(r[0])}<b>${esc(r[1])}</b></div>`).join("")}</div><div ${XC("badge ok", 4)}>${esc(d.ok)}</div><div ${XC("cap", 5)}>${esc(d.cap)}</div>`, "1600,1500,1300,1400,2400"],
+  follow: (d) => [`<div class="tl"><div ${XC("mail", 1)}><span class="ico">✉️</span><div><small>${esc(d.a[0])}</small>${esc(d.a[1])}</div></div><div ${XC("clock", 2)}><span class="face"></span>${esc(d.wait)}</div><div ${XC("mail", 3)}><span class="ico">✉️</span><div><small>${esc(d.b[0])}</small>${esc(d.b[1])}</div></div><div ${XC("reply", 4)}>${esc(d.reply)}</div></div><div ${XC("cap", 5)}>${esc(d.cap)}</div>`, "1000,1400,1200,1300,2600"],
+  weather: (d) => [`<div class="gauge"><div class="lbl">${esc(d.lbl)}</div><div class="meter"><i class="needle"></i></div><div ${XC("big", 2)}>${esc(d.big)}</div><span ${XC("flag", 2)}>Trip at risk</span></div><div class="groups">${d.groups.map((g, i) => `<div ${XC("grp", i + 3)}><b>${esc(g[0])}</b>${esc(g[1])}</div>`).join("")}</div><div ${XC("cap", 5)}>${esc(d.cap)}</div>`, "1200,1300,900,900,2800"],
+  quote: (d) => [`<div class="sheet"><div class="r"><span>${esc(d.head[0])}</span><span>${esc(d.head[1])}</span></div>${d.rows.map((r, i) => `<div ${XC("r", i + 1)}><span>${esc(r[0])}</span><span>${esc(r[1])}</span></div>`).join("")}<div ${XC("r tot", 4)}><span>Total</span><span>${esc(d.tot)}</span></div></div><div ${XC("toast", 5)}>${esc(d.toast)}</div><div ${XC("cap", 5)}>${esc(d.cap)}</div>`, "800,800,800,1000,2800"],
+  remind: (d) => [`<div ${XC("cal", 1)}>${d.days.map((x, i) => `<div${i === d.hot ? ' class="hot"' : ""}>${esc(x)}${i === d.hot ? "<br>" + esc(d.slot.split(" · ")[0].split(" ")[1] || "") : ""}</div>`).join("")}</div><div class="chat"><div ${XC("bub out", 2)}><span class="who">Reminder, the day before</span>${esc(d.out)}</div><div ${XC("bub in", 3)}>${esc(d.in)}</div></div><div ${XC("toast", 4)}>✓ ${esc(d.toast)}</div><div ${XC("cap", 5)}>${esc(d.cap)}</div>`, "1000,1300,1200,1200,2600"],
+};
+
+/* scene player, same engine as the Pedro page: plays while on screen */
+function startViz(v) {
+  if (v._run) return; v._run = true;
+  const t = v.dataset.t.split(",").map(Number), max = t.length;
+  const els = [...v.querySelectorAll(".xx")];
+  let n = 0;
+  const apply = () => {
+    for (let k = 1; k <= max; k++) v.classList.toggle("s" + k, k <= n);
+    els.forEach((e) => { const st = +e.dataset.s, en = e.dataset.e ? +e.dataset.e : 99; e.classList.toggle("on", st <= n && n < en); });
+    const ph = v.querySelector("[data-scan]"); if (ph) ph.classList.toggle("scan", n >= +ph.dataset.scan && n < 5);
+  };
+  const tick = () => {
+    if (!v._run) return; n++;
+    if (n > max) { n = 0; apply(); v._to = setTimeout(tick, 1000); return; }
+    apply(); v._to = setTimeout(tick, t[n - 1]);
+  };
+  if (reduce) { n = max; apply(); return; }
+  apply(); v._to = setTimeout(tick, 600);
+}
+function stopViz(v) { v._run = false; clearTimeout(v._to); }
+const vio = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting ? startViz(e.target) : stopViz(e.target)), { threshold: .35 });
+
+/* ---------- picker ---------- */
+let picked = "cafe", otherText = "";
+const bizName = () => (picked === "other" ? "Your business" : TYPES[picked].biz);
+function waLink() {
+  const msg = picked === "other"
+    ? "Hi Adam, we met in Lagos. " + (otherText ? "My business: " + otherText + ". " : "") + "I'd like to hear what you'd build first."
+    : "Hi Adam, we met in Lagos. I run " + TYPES[picked].wa + " and I'd like to hear what you'd build first.";
+  return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+}
+$("types").innerHTML = Object.entries(TYPES).map(([k, v]) =>
+  `<button class="type" type="button" data-k="${k}" aria-pressed="false"><span class="ic" aria-hidden="true">${v.ic}</span><b>${esc(v.label)}</b><small>${esc(v.sub)}</small></button>`).join("");
+
+function renderCards() {
+  vio.disconnect();
+  $("cards").innerHTML = TYPES[picked].cards.map((c, i) => {
+    const [html, t] = SCENES[c.k](c.d);
+    return `<article class="card"><div class="viz" data-t="${t}">${html}</div><div class="num">${i + 1}</div><span class="tag">${esc(c.tag)}</span><h3>${esc(c.t)}</h3>
+      <div class="two"><div><b>Now</b>${esc(c.now)}</div><div class="w"><b>With AI</b>${esc(c.w)}</div></div><div class="tools">Works with: ${esc(c.tools)}</div></article>`;
+  }).join("");
+  document.querySelectorAll("#cards .viz").forEach((v) => vio.observe(v));
+  tilt();
 }
 
-$("chips").innerHTML = Object.entries(TYPES).map(([k, v]) =>
-  `<button class="chip" type="button" data-k="${k}" aria-pressed="false">${esc(v.label)}</button>`).join("");
-$("chips").addEventListener("click", (e) => { const b = e.target.closest(".chip"); if (b) render(b.dataset.k, true); });
-const start = new URLSearchParams(location.search).get("t");
-render(TYPES[start] ? start : "cafe", false);
+function pick(key, fromClick) {
+  picked = key;
+  document.querySelectorAll(".type").forEach((b) => b.setAttribute("aria-pressed", b.dataset.k === key ? "true" : "false"));
+  $("otherBox").hidden = key !== "other";
+  $("ctaMain").href = waLink();
+  renderCards();
+  play();
+  if (fromClick) {
+    track("pick_type", { label: key, step: 1 });
+    if (key === "other") setTimeout(() => $("otherIn").focus(), 50);
+  }
+}
+$("types").addEventListener("click", (e) => { const b = e.target.closest(".type"); if (b) pick(b.dataset.k, true); });
+let otherTimer;
+$("otherIn").addEventListener("input", (e) => {
+  otherText = e.target.value.trim(); $("ctaMain").href = waLink();
+  clearTimeout(otherTimer); otherTimer = setTimeout(() => { if (otherText) track("other_text", { label: otherText, step: 1 }); }, 1500);
+});
 
-const cta = $("ctaMain");
-cta.target = "_blank"; cta.rel = "noopener";
+/* ---------- demo ---------- */
+let lang = "en", run = 0;
+const boxes = [$("b1"), $("b2"), $("b3")], bars = $("bars").children;
+const sleep = (ms) => new Promise((r) => setTimeout(r, reduce ? 0 : ms));
+function fill() {
+  const d = TYPES[picked].demo;
+  $("dMsg").textContent = d[lang][0];
+  $("dMeta").textContent = d.meta;
+  $("dInfo").innerHTML = d.info.map((r) => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join("");
+  $("dNote").textContent = d.note;
+}
+function reset() {
+  boxes.forEach((b) => b.classList.remove("on")); [...bars].forEach((b) => b.classList.remove("on"));
+  $("typed").textContent = ""; $("typed").classList.remove("caret"); $("decide").classList.remove("on"); $("notes").classList.remove("on");
+  $("sendBtn").textContent = "Approve and send"; $("sendBtn").classList.remove("sent");
+}
+async function play() {
+  const id = ++run; reset(); fill();
+  const dead = () => id !== run;
+  await sleep(300); if (dead()) return; boxes[0].classList.add("on"); bars[0].classList.add("on");
+  await sleep(1300); if (dead()) return; boxes[1].classList.add("on"); bars[1].classList.add("on");
+  await sleep(1300); if (dead()) return; boxes[2].classList.add("on"); bars[2].classList.add("on"); $("typed").classList.add("caret");
+  const text = TYPES[picked].demo[lang][1].replace("{biz}", bizName());
+  for (let i = 0; i < text.length; i++) { if (dead()) return; $("typed").textContent = text.slice(0, i + 1); if (!reduce) await sleep(11); }
+  if (dead()) return; $("typed").classList.remove("caret");
+  await sleep(400); if (dead()) return; $("decide").classList.add("on"); $("notes").classList.add("on"); bars[3].classList.add("on");
+}
+$("play").addEventListener("click", () => { play(); track("play", { label: picked + ":" + lang, step: 2 }); });
+document.querySelectorAll("#lang button").forEach((b) => b.addEventListener("click", () => {
+  lang = b.dataset.l; document.querySelectorAll("#lang button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  play(); track("lang", { label: lang, step: 2 });
+}));
+$("sendBtn").addEventListener("click", () => { $("sendBtn").textContent = "✓ Sent (demo)"; $("sendBtn").classList.add("sent"); track("demo_send", { label: picked, step: 2 }); });
 
-document.addEventListener("click", (e) => { const a = e.target.closest("[data-track]"); if (a) track("click", { label: a.dataset.track, step: 2 }); });
+/* ---------- misc ---------- */
+function tilt() {
+  if (!window.matchMedia("(hover: hover)").matches || reduce) return;
+  document.querySelectorAll("#cards .card").forEach((c) => {
+    c.addEventListener("pointermove", (e) => {
+      const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      c.style.transform = `translateY(-6px) perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+    });
+    c.addEventListener("pointerleave", () => { c.style.transform = ""; });
+  });
+}
+document.addEventListener("click", (e) => { const a = e.target.closest("[data-track]"); if (a) track("click", { label: a.dataset.track, step: 3 }); });
 
-/* reveal on scroll, plus how far people get */
-const seen = new Set();
+const seen = new Set(), secs = [...document.querySelectorAll("section")];
 const io = new IntersectionObserver((es) => es.forEach((en) => {
   if (!en.isIntersecting) return;
   en.target.classList.add("in");
-  const sec = en.target.closest("section"); const i = [...document.querySelectorAll("section")].indexOf(sec);
+  const i = secs.indexOf(en.target.closest("section"));
   if (i >= 0 && !seen.has(i)) { seen.add(i); track("scroll", { step: i + 1 }); }
 }), { threshold: .15 });
 document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+
+const start = new URLSearchParams(location.search).get("t");
+picked = TYPES[start] ? start : "cafe";
+document.querySelectorAll(".type").forEach((b) => b.setAttribute("aria-pressed", b.dataset.k === picked ? "true" : "false"));
+$("ctaMain").href = waLink(); renderCards(); fill();
+const dio = new IntersectionObserver((es) => { if (es[0].isIntersecting) { pick(picked, false); dio.disconnect(); } }, { threshold: .3 });
+dio.observe($("demo"));
+})();
 </script>
 </body>
 </html>
