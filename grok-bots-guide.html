@@ -145,6 +145,8 @@ textarea{resize:vertical;min-height:64px}
 /* email gate */
 #gate{display:none;flex-direction:column;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;max-width:560px}
 body.locked #gate{display:flex}
+@media (max-width:700px){body.locked .hero .orb{display:none}}
+
 body.locked .wrap > :not(header):not(#gate):not(.scene):not(.gbar){display:none}
 #gate h2{font-size:clamp(24px,3.4vw,32px)}
 #gate form{display:flex;flex-direction:column;gap:12px}
@@ -227,6 +229,21 @@ body.locked .wrap > :not(header):not(#gate):not(.scene):not(.gbar){display:none}
   </div>
 </header>
 
+<section id="gate" aria-labelledby="gate-h">
+  <div class="eyebrow">Free guide</div>
+  <h2 id="gate-h">Where should I send it?</h2>
+  <p>Put your name and email and the guide opens right here, with every prompt ready to copy.</p>
+  <form id="gate-form" novalidate>
+    <label class="f">First name<input type="text" id="g-name" name="name" autocomplete="given-name" maxlength="120" required></label>
+    <label class="f">Email<input type="email" id="g-email" name="email" autocomplete="email" maxlength="200" inputmode="email" required></label>
+    <input class="hp" type="text" id="g-company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="consent"><input type="checkbox" id="g-consent" required><span>Yes, send me the guide and the occasional email from Adam at Aligned AI. I can unsubscribe at any time.</span></label>
+    <div class="err" id="g-err" role="alert"></div>
+    <button class="btn" type="submit" id="g-btn">Show me the guide</button>
+  </form>
+  <p class="fine">No spam. Your details stay with Adam and are never sold.</p>
+</section>
+
 <section class="scene" id="scene" aria-label="Watch what happens">
   <div>
     <div class="phone" aria-hidden="true">
@@ -258,20 +275,6 @@ body.locked .wrap > :not(header):not(#gate):not(.scene):not(.gbar){display:none}
   <div class="ctl"><button class="play" id="sc-play" type="button">Play it again</button><span class="hint">Invented bots, invented titles. The shape is what matters: one job each, you approve.</span></div>
 </section>
 
-<section id="gate" aria-labelledby="gate-h">
-  <div class="eyebrow">Free guide</div>
-  <h2 id="gate-h">Where should I send it?</h2>
-  <p>Put your name and email and the guide opens right here, with every prompt ready to copy.</p>
-  <form id="gate-form" novalidate>
-    <label class="f">First name<input type="text" id="g-name" name="name" autocomplete="given-name" maxlength="120" required></label>
-    <label class="f">Email<input type="email" id="g-email" name="email" autocomplete="email" maxlength="200" inputmode="email" required></label>
-    <input class="hp" type="text" id="g-company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <label class="consent"><input type="checkbox" id="g-consent" required><span>Yes, send me the guide and the occasional email from Adam at Aligned AI. I can unsubscribe at any time.</span></label>
-    <div class="err" id="g-err" role="alert"></div>
-    <button class="btn" type="submit" id="g-btn">Show me the guide</button>
-  </form>
-  <p class="fine">No spam. Your details stay with Adam and are never sold.</p>
-</section>
 
 <section aria-labelledby="need-h">
   <div class="eyebrow">Before you start</div>
