@@ -1,0 +1,48 @@
+/* Dori's questions page: moss, oat and clay, matching her parents' page. Light only.
+   Loaded after intake.css. Also carries the right-to-left fixes for the Hebrew page. */
+
+:root:root:root {
+  --limestone: #F4F0E6;
+  --card: #FFFDF8;
+  --card-2: #EAE3D3;
+  --basalt: #2D2A24;
+  --ink: #2D2A24;
+  --muted: #5F5B50;
+  --faint: #8C8677;
+  --line: #DCD3C0;
+  --atlantic: #3E5C46;
+  --atlantic-soft: #E1EADF;
+  --on-accent: #FFFDF8;
+  --clay: #B5683F;
+  --clay-soft: #F4E2D6;
+  color-scheme: light;
+}
+
+body { font-family: Rubik, "Helvetica Neue", Arial, sans-serif; background: var(--limestone); }
+.brand { font: 500 17px Newsreader, Georgia, serif; color: #2D4534; }
+.calcada { height: 3px; opacity: 1; margin-top: 16px; border-radius: 3px; background: linear-gradient(90deg, var(--atlantic) 0%, #8FAA8E 45%, var(--clay) 100%); }
+.track { background: var(--card-2); height: 4px; }
+.eyebrow { color: var(--clay); }
+h1 { font: 400 clamp(31px, 8.4vw, 44px)/1.12 Newsreader, Georgia, serif; letter-spacing: -.01em; }
+h1 em { font-style: italic; color: var(--atlantic); }
+h2 { font: 400 clamp(23px, 6vw, 29px)/1.25 Newsreader, Georgia, serif; }
+.muted:empty { display: none; }
+.opt { background: var(--card); border-radius: 14px; }
+.opt[aria-pressed="true"] { border-color: var(--atlantic); background: var(--atlantic-soft); }
+.btn { border-radius: 999px; }
+.sig { color: var(--atlantic); }
+
+/* Language links in the top bar */
+.dlang { display: inline-flex; gap: 4px; margin-inline-start: auto; }
+.dlang a { font: 600 13px Rubik, sans-serif; color: var(--muted); text-decoration: none; padding: 6px 10px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--card); }
+.dlang a[aria-current="page"] { background: var(--atlantic); border-color: var(--atlantic); color: var(--on-accent); }
+.top { flex-wrap: wrap; }
+
+/* Hebrew: right to left */
+html[dir="rtl"] body { font-family: Rubik, Arial, sans-serif; }
+html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] .sig { font-family: "Frank Ruhl Libre", Georgia, serif; letter-spacing: 0; }
+html[dir="rtl"] .opt { text-align: right; }
+html[dir="rtl"] .quote { border-left: 0; border-right: 2px solid var(--atlantic); padding: 4px 16px 4px 0; }
+html[dir="rtl"] .brand, html[dir="rtl"] .eyebrow { letter-spacing: 0; text-transform: none; font-family: "Frank Ruhl Libre", Georgia, serif; }
+html[dir="rtl"] h1 em { font-style: normal; }
+html[dir="rtl"] .count { direction: rtl; unicode-bidi: isolate; font-family: Rubik, Arial, sans-serif; }
