@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your forest, on every phone</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Dori, your content plan">
+<meta property="og:description" content="Film one hour a week. We turn it into everything else.">
+<meta name="description" content="A content plan for Dori: one forest video a week, cut into shorts, carousels and three languages.">
+<meta name="theme-color" content="#F3F4EC">
+<meta name="color-scheme" content="light only">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Hallmark · v2.0.0 · theme: custom (leaf paper, moss, clay; Dori's brand colours in a lighter, greener key than her vision page) · genre: editorial · posture: restrained · shape: stage hero, mechanism, reveal row, thumbnail wall, week strip, trust row, care list, close · hero: stage · nav: wordmark and one action · footer: one line with photo credits · signature: one forest video that fans out in 3D into shorts, a carousel and a quote card, then into three languages · deal: manual */
+/* critique: the page shows the plan as the things she will actually make (thumbnails, phones, a week), not as a description; library forest photos stand in until Dori is filmed; no invented numbers, the 9 and 27 are simply the plan's own pieces. */
+/* waive 24b: spacing follows the 14 to 18px rhythm of Dori's other pages so they read as one family. */
+/* waive 26b: the page has no control that can be disabled. */
+:root {
+  --paper: #F3F4EC; --card: #FFFEF9; --mist: #E6EADD; --line: #D5DACB;
+  --ink: #232821; --muted: #596055;
+  --moss: #3E5C46; --moss-deep: #2B4232; --sage: #8FAA8E; --on-moss: #FFFEF9;
+  --clay: #B5683F; --clay-soft: #F4E2D6; --clay-ink: #8E4E2D; --apricot: #E9C6A1;
+  --scrim: linear-gradient(180deg, rgba(20, 30, 22, 0) 30%, rgba(20, 30, 22, .72) 100%);
+  --thumb-text: #FFFEF9;
+  --thumb-shadow: 0 2px 14px rgba(0, 0, 0, .45);
+  --shadow: 0 22px 50px rgba(43, 66, 50, .18);
+  --shadow-soft: 0 10px 26px rgba(43, 66, 50, .12);
+  --btn-shadow: 0 10px 24px rgba(62, 92, 70, .25);
+  --f-head: Literata, Georgia, "Times New Roman", serif;
+  --f-body: Figtree, "Helvetica Neue", Arial, sans-serif;
+  --wrap: 1120px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { font-family: var(--f-head); font-weight: 400; color: var(--ink); margin: 0; overflow-wrap: break-word; min-width: 0; text-wrap: balance; letter-spacing: -.015em; }
+h1 { font-size: clamp(40px, 6.6vw, 72px); line-height: 1.04; }
+h2 { font-size: clamp(30px, 4.4vw, 48px); line-height: 1.1; }
+h3 { font-size: 22px; line-height: 1.25; }
+p { margin: 0; }
+a { color: var(--moss); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; transition: none; }
+section { padding: 76px 0; }
+.lede { font-size: 19px; color: var(--muted); max-width: 34ch; }
+.head { max-width: 640px; margin-bottom: 36px; }
+.head .lede { margin-top: 14px; }
+
+/* Nav */
+.nav { display: flex; align-items: center; justify-content: space-between; min-height: 72px; }
+.word { font: 600 22px var(--f-head); color: var(--moss-deep); text-decoration: none; }
+.navlink { font: 500 15px var(--f-body); color: var(--moss-deep); text-decoration: none; padding: 10px 16px; border: 1.5px solid var(--line); border-radius: 999px; background: var(--card); }
+.navlink:hover { border-color: var(--moss); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 14px 30px; border-radius: 999px; background: var(--moss); color: var(--on-moss); font: 600 17px var(--f-body); text-decoration: none; border: 0; cursor: pointer; box-shadow: var(--btn-shadow); transition: background-color .15s, transform .15s; }
+.btn:hover { background: var(--moss-deep); }
+.btn:active { transform: translateY(1px); }
+.quiet { font: 500 16px var(--f-body); color: var(--moss-deep); text-underline-offset: 4px; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
+
+/* Thumbnail (shared) */
+.thumb { position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: var(--moss-deep); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.thumb::after { content: ""; position: absolute; inset: 0; background: var(--scrim); }
+.thumb .words { position: absolute; left: 6%; bottom: 9%; right: 38%; z-index: 1; font: 600 clamp(20px, 3.4vw, 34px)/1.05 var(--f-head); color: var(--thumb-text); text-shadow: var(--thumb-shadow); }
+.thumb .you { position: absolute; right: 5%; bottom: 0; z-index: 1; width: 30%; aspect-ratio: 3 / 4; border-radius: 50% 50% 0 0; border: 2px dashed var(--apricot); border-bottom: 0; display: grid; place-items: center; font: 500 13px var(--f-body); color: var(--thumb-text); text-align: center; padding: 0 6px; }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; align-items: center; padding: 12px 0 56px; }
+.hero .lede { margin: 18px 0 28px; }
+@media (min-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); min-height: calc(100svh - 72px); max-height: 760px; padding: 0 0 24px; }
+}
+.stage { position: relative; perspective: 1200px; padding: 6% 4% 12%; }
+.deck { position: relative; transform-style: preserve-3d; transform: rotateY(-16deg) rotateX(7deg); transition: transform .6s ease-out; }
+.deck .thumb { box-shadow: var(--shadow); transform: translateZ(40px); }
+.phone { position: absolute; width: 24%; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; border: 3px solid var(--card); box-shadow: var(--shadow-soft); background: var(--moss); transform-origin: 50% 100%; transition: transform .8s cubic-bezier(.2, .8, .2, 1); }
+.phone img { width: 100%; height: 100%; object-fit: cover; }
+.phone span { position: absolute; left: 8%; right: 8%; bottom: 10%; font: 600 13px/1.15 var(--f-body); color: var(--thumb-text); text-shadow: var(--thumb-shadow); }
+.p1 { left: -6%; bottom: -14%; transform: translateZ(-30px) rotate(-10deg); }
+.p2 { left: 20%; bottom: -18%; transform: translateZ(70px) rotate(-3deg); }
+.p3 { right: 18%; bottom: -16%; transform: translateZ(90px) rotate(4deg); }
+.p4 { right: -6%; bottom: -12%; transform: translateZ(-20px) rotate(11deg); }
+.js .deck.closed .phone { transform: translateZ(0) translate(0, -40%) rotate(0deg); }
+.js .deck.closed .p1 { left: 38%; } .js .deck.closed .p2 { left: 38%; } .js .deck.closed .p3 { right: 38%; } .js .deck.closed .p4 { right: 38%; }
+
+/* Mechanism */
+.grow { background: var(--card); border-block: 1px solid var(--line); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+.chip { font: 500 16px var(--f-body); color: var(--moss-deep); background: var(--paper); border: 1.5px solid var(--line); border-radius: 999px; padding: 10px 18px; min-height: 44px; cursor: pointer; transition: background-color .15s, border-color .15s, color .15s; }
+.chip:hover { border-color: var(--moss); }
+.chip[aria-pressed="true"] { background: var(--moss); border-color: var(--moss); color: var(--on-moss); }
+.count { font: 400 clamp(26px, 3.4vw, 36px)/1.2 var(--f-head); color: var(--clay-ink); margin-bottom: 22px; }
+.pieces { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (min-width: 720px) { .pieces { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.piece { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px; min-height: 148px; transition: opacity .5s ease, transform .5s ease; }
+.piece.big { grid-column: 1 / -1; background: var(--mist); }
+@media (min-width: 720px) { .piece.big { grid-column: span 2; grid-row: span 2; } }
+.piece b { font: 600 15px var(--f-body); color: var(--moss-deep); }
+.piece p { font: 400 19px/1.3 var(--f-head); color: var(--ink); }
+.piece.big p { font-size: clamp(24px, 3vw, 32px); }
+.piece small { font-size: 14px; color: var(--muted); margin-top: auto; }
+.piece [dir="rtl"] { text-align: right; }
+.js .pieces.hidden .piece:not(.big) { opacity: 0; transform: translateY(14px); }
+
+/* Reveal row */
+.reveal { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+@media (min-width: 760px) { .reveal { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tap { text-align: left; width: 100%; background: var(--card); border: 1.5px solid var(--line); border-radius: 18px; padding: 22px 24px; cursor: pointer; font: inherit; color: inherit; transition: border-color .15s, background-color .15s; }
+.tap:hover { border-color: var(--moss); }
+.tap[aria-expanded="true"] { border-color: var(--moss); background: var(--mist); }
+.tap .tt { display: flex; font: 400 22px/1.25 var(--f-head); justify-content: space-between; gap: 12px; }
+.tap .tt span { font: 500 15px var(--f-body); color: var(--clay-ink); }
+.tap .tr { display: block; margin-top: 10px; color: var(--muted); }
+.js .tap .tr { display: none; }
+.js .tap[aria-expanded="true"] .tr { display: block; }
+
+/* Thumbnail wall */
+.wall { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px 22px; }
+@media (min-width: 760px) { .wall { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.wall figure { margin: 0; }
+.wall figcaption { margin-top: 12px; font: 400 20px/1.3 var(--f-head); }
+.more { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; border-top: 1px solid var(--line); }
+@media (min-width: 760px) { .more { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; } }
+.more li { list-style: none; padding: 14px 0; border-bottom: 1px solid var(--line); font: 400 19px/1.35 var(--f-head); }
+.more { padding: 0; }
+.note { margin-top: 18px; font-size: 15px; color: var(--muted); }
+
+/* Week strip */
+.week { background: var(--moss-deep); color: var(--on-moss); }
+.week h2 { color: var(--on-moss); }
+.week .lede { color: var(--mist); }
+.days { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 8px; }
+@media (min-width: 820px) { .days { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.day { border-radius: 16px; padding: 20px; background: var(--moss); }
+.day.you { background: var(--clay-soft); color: var(--ink); }
+.day b { display: block; font: 600 15px var(--f-body); margin-bottom: 6px; }
+.day p { font: 400 20px/1.3 var(--f-head); }
+
+/* Trust row */
+.trust { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
+@media (min-width: 820px) { .trust { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.trust h3 { margin-bottom: 8px; }
+.trust p { color: var(--muted); }
+.punch { margin-top: 40px; font: 400 clamp(26px, 3.6vw, 38px)/1.2 var(--f-head); color: var(--moss-deep); max-width: 24ch; }
+
+/* Care list */
+.care { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+@media (min-width: 820px) { .care { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.care div { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+.care p { margin-top: 8px; color: var(--muted); }
+
+/* Close */
+.close { text-align: center; padding: 96px 0 72px; }
+.close .lede { margin: 16px auto 30px; }
+.close .actions { justify-content: center; }
+footer { border-top: 1px solid var(--line); padding: 24px 0 40px; font-size: 14px; color: var(--muted); }
+footer p + p { margin-top: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .deck, .phone, .piece, .btn, .chip, .tap { transition: none; }
+  .js .deck.closed .phone { transform: none; }
+  .js .deck.closed .p1 { left: -6%; } .js .deck.closed .p2 { left: 20%; } .js .deck.closed .p3 { right: 18%; } .js .deck.closed .p4 { right: -6%; }
+  .js .pieces.hidden .piece:not(.big) { opacity: 1; transform: none; }
+}
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="word" href="dori-vision.html">Dori</a>
+    <a class="navlink" href="dori.html">Your questions</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1>Your forest, on every parent's phone.</h1>
+      <p class="lede">Film one hour a week. We turn it into everything else.</p>
+      <div class="actions">
+        <a class="btn" href="dori.html">Answer your questions</a>
+        <a class="quiet" href="#grow">See how one video grows</a>
+      </div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="deck closed" id="deck">
+        <span class="phone p1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Child_playing_with_a_kite.jpg/960px-Child_playing_with_a_kite.jpg" alt="" style="object-position: 40% 55%"><span>The 3 words that end meltdowns</span></span>
+        <span class="phone p4"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg/960px-Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg" alt="" style="object-position: 45% 60%"><span>תפסיקו להגיד ״תירגע״</span></span>
+        <div class="thumb">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/D%C3%BClmen%2C_G%C3%B6versheide_--_2015_--_7718-22.jpg/1280px-D%C3%BClmen%2C_G%C3%B6versheide_--_2015_--_7718-22.jpg" alt="" style="object-position: 55% 40%">
+          <span class="words">Not "calm down"</span>
+          <span class="you">You, here</span>
+        </div>
+        <span class="phone p2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/D%C3%BClmen%2C_G%C3%B6versheide_--_2015_--_7718-22.jpg/960px-D%C3%BClmen%2C_G%C3%B6versheide_--_2015_--_7718-22.jpg" alt="" style="object-position: 55% 30%"><span>Bedtime screaming?</span></span>
+        <span class="phone p3"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Child_playing_with_a_kite.jpg/960px-Child_playing_with_a_kite.jpg" alt="" style="object-position: 70% 50%"><span>Deixe de dizer «acalma-te»</span></span>
+      </div>
+    </div>
+  </header>
+</div>
+
+<section class="grow" id="grow">
+  <div class="wrap">
+    <div class="head">
+      <h2>One video becomes a month.</h2>
+      <p class="lede">Pick a language and watch one forest video split into pieces.</p>
+    </div>
+    <div class="chips" role="group" aria-label="Language">
+      <button class="chip" type="button" data-lang="en" aria-pressed="true">English</button>
+      <button class="chip" type="button" data-lang="pt" aria-pressed="false">Português</button>
+      <button class="chip" type="button" data-lang="he" aria-pressed="false">עברית</button>
+      <button class="chip" type="button" data-lang="all" aria-pressed="false">All three</button>
+    </div>
+    <p class="count" id="count" aria-live="polite">9 pieces from one hour of you.</p>
+    <div class="pieces hidden" id="pieces">
+      <div class="piece big"><b>The main video, 10 minutes</b><p data-t="main">Stop saying "calm down". Say this instead.</p><small>YouTube</small></div>
+      <div class="piece"><b>Short 1</b><p data-t="s1">The 3 words that end most meltdowns</p><small>Reels, TikTok, Shorts</small></div>
+      <div class="piece"><b>Short 2</b><p data-t="s2">Why your child falls apart after school</p><small>Reels, TikTok, Shorts</small></div>
+      <div class="piece"><b>Short 3</b><p data-t="s3">What I say instead of "stop crying"</p><small>Reels, TikTok, Shorts</small></div>
+      <div class="piece"><b>Short 4</b><p data-t="s4">A story from twenty years ago</p><small>Reels, TikTok, Shorts</small></div>
+      <div class="piece"><b>Shorts 5 and 6</b><p data-t="s5">Two parent questions, answered</p><small>Reels, TikTok, Shorts</small></div>
+      <div class="piece"><b>Carousel</b><p data-t="c">Five sentences to say in a meltdown</p><small>Instagram</small></div>
+      <div class="piece"><b>Quote card</b><p data-t="q">"Behind every big behaviour is a big feeling."</p><small>Instagram, WhatsApp</small></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section>
+    <div class="head">
+      <h2>Why parents will stop scrolling.</h2>
+      <p class="lede">Tap each one.</p>
+    </div>
+    <div class="reveal">
+      <button class="tap" type="button" aria-expanded="false"><span class="tt">The forest  <span>Open</span></span><span class="tr">Everyone else films on a sofa. You film among trees and tree houses, and nobody else's videos look like that.</span></button>
+      <button class="tap" type="button" aria-expanded="false"><span class="tt">Three languages  <span>Open</span></span><span class="tr">English is crowded. Hebrew and Portuguese parenting videos are much rarer, so the same video can lead in two smaller markets.</span></button>
+      <button class="tap" type="button" aria-expanded="false"><span class="tt">Parents' voices  <span>Open</span></span><span class="tr">The videos parents are sending you are proof that most parenting channels never have.</span></button>
+      <button class="tap" type="button" aria-expanded="false"><span class="tt">Twenty years of stories  <span>Open</span></span><span class="tr">A story stays with people longer than a tip. Names and details always changed.</span></button>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <h2>Your first ten videos.</h2>
+      <p class="lede">Your face, the trees behind you, four words at most.</p>
+    </div>
+    <div class="wall">
+      <figure>
+        <div class="thumb"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/D%C3%BClmen%2C_G%C3%B6versheide_--_2015_--_7718-22.jpg/960px-D%C3%BClmen%2C_G%C3%B6versheide_--_2015_--_7718-22.jpg" alt="Sunlight through a forest onto ferns" loading="lazy" style="object-position: 55% 45%"><span class="words">Bedtime screaming?</span><span class="you">You, here</span></div>
+        <figcaption>My Child Screams at Bedtime. What 20 Years Taught Me</figcaption>
+      </figure>
+      <figure>
+        <div class="thumb"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg/960px-Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg" alt="Wooden steps through a misty forest" loading="lazy" style="object-position: 45% 60%"><span class="words">Not "calm down"</span><span class="you">You, here</span></div>
+        <figcaption>Stop Saying "Calm Down". Say This Instead</figcaption>
+      </figure>
+      <figure>
+        <div class="thumb"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Child_playing_with_a_kite.jpg/960px-Child_playing_with_a_kite.jpg" alt="A boy seen from behind holding a kite" loading="lazy" style="object-position: 40% 55%"><span class="words">Into the forest</span></div>
+        <figcaption>I Took a Struggling Child Into the Forest. Here's What Changed</figcaption>
+      </figure>
+      <figure>
+        <div class="thumb"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/D%C3%BClmen%2C_G%C3%B6versheide_--_2015_--_7718-22.jpg/960px-D%C3%BClmen%2C_G%C3%B6versheide_--_2015_--_7718-22.jpg" alt="Sunlight through a forest onto ferns" loading="lazy" style="object-position: 30% 70%"><span class="words">Worse with Mum?</span><span class="you">You, here</span></div>
+        <figcaption>Why Kids Behave Worse With Mum (It's a Good Sign)</figcaption>
+      </figure>
+    </div>
+    <ul class="more">
+      <li>What I Wish Every Parent Knew About ADHD</li>
+      <li>The 3 Words That End Most Meltdowns</li>
+      <li>A Child Therapist Watches Real Parenting Moments</li>
+      <li>What Children Learn in a Tree House</li>
+      <li>Parents Tell Their Story: "We Didn't Know What Else to Do"</li>
+      <li>Is It ADHD or Just a Big Feeling?</li>
+    </ul>
+    <p class="note">The photos are stand-ins until we film you. Your answers will change the order.</p>
+  </section>
+</div>
+
+<section class="week">
+  <div class="wrap">
+    <div class="head">
+      <h2>Your week.</h2>
+      <p class="lede">One hour is yours. The rest is ours.</p>
+    </div>
+    <div class="days">
+      <div class="day you"><b>Monday, you</b><p>One hour among the trees, answering one parent question.</p></div>
+      <div class="day"><b>Tuesday</b><p>We edit the main video and the captions.</p></div>
+      <div class="day"><b>Wednesday to Sunday</b><p>One short a day, in all three languages.</p></div>
+      <div class="day"><b>Friday</b><p>The carousel and quote card go out.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section>
+    <div class="head">
+      <h2>The ones parents already trust.</h2>
+    </div>
+    <div class="trust">
+      <div><h3>Dr Becky Kennedy</h3><p>Had never posted a video before 2020. One frustration per video, and the exact words to say.</p></div>
+      <div><h3>Big Little Feelings</h3><p>Short, real scenes from family life, all leading to one course.</p></div>
+      <div><h3>Supernanny</h3><p>Real families, a clear before and after.</p></div>
+    </div>
+    <p class="punch">None of them has a forest.</p>
+  </section>
+
+  <section>
+    <div class="head">
+      <h2>Before we press record.</h2>
+    </div>
+    <div class="care">
+      <div><h3>Parents agree first</h3><p>Written consent from any family whose child appears.</p></div>
+      <div><h3>Your way on camera</h3><p>We start with the format you feel easiest in.</p></div>
+      <div><h3>Honest beats glossy</h3><p>Ten real videos do more than one perfect one.</p></div>
+    </div>
+  </section>
+
+  <section class="close">
+    <h2>It starts with your answers.</h2>
+    <p class="lede">They tell us which questions parents need answered first.</p>
+    <div class="actions">
+      <a class="btn" href="dori.html">Answer your questions</a>
+      <a class="quiet" href="dori-pt.html" lang="pt">Em português</a>
+      <a class="quiet" href="dori-he.html" lang="he" dir="rtl">בעברית</a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>Made for you by Adam and Brigitte, November 2026.</p>
+    <p>Stand-in photographs: <a href="https://commons.wikimedia.org/wiki/File:D%C3%BClmen,_G%C3%B6versheide_--_2015_--_7718-22.jpg">Dietmar Rabich</a> (CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg">Basile Morin</a> (CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Child_playing_with_a_kite.jpg">Wilfredor</a> (CC0), Wikimedia Commons.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var deck = document.getElementById('deck');
+  setTimeout(function () { deck.classList.remove('closed'); }, reduce ? 0 : 500);
+  var stage = deck.parentElement;
+  if (!reduce && window.matchMedia('(pointer: fine)').matches) {
+    stage.addEventListener('pointermove', function (e) {
+      var r = stage.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      deck.style.transform = 'rotateY(' + (-16 + x * 14) + 'deg) rotateX(' + (7 - y * 10) + 'deg)';
+    });
+    stage.addEventListener('pointerleave', function () { deck.style.transform = ''; });
+  }
+
+  var T = {
+    en: { main: 'Stop saying "calm down". Say this instead.', s1: 'The 3 words that end most meltdowns', s2: 'Why your child falls apart after school', s3: 'What I say instead of "stop crying"', s4: 'A story from twenty years ago', s5: 'Two parent questions, answered', c: 'Five sentences to say in a meltdown', q: '"Behind every big behaviour is a big feeling."' },
+    pt: { main: 'Deixe de dizer «acalma-te». Diga antes isto.', s1: 'As 3 palavras que acabam com as birras', s2: 'Porque é que o seu filho desaba depois da escola', s3: 'O que digo em vez de «pára de chorar»', s4: 'Uma história de há vinte anos', s5: 'Duas perguntas de pais, respondidas', c: 'Cinco frases para dizer numa birra', q: '«Por trás de cada grande comportamento há um grande sentimento.»' },
+    he: { main: 'תפסיקו להגיד ״תירגע״. תגידו את זה במקום.', s1: '3 המילים שעוצרות את רוב ההתפרצויות', s2: 'למה הילד שלכם מתפרק אחרי בית הספר', s3: 'מה אני אומרת במקום ״תפסיק לבכות״', s4: 'סיפור מלפני עשרים שנה', s5: 'שתי שאלות של הורים, עם תשובות', c: 'חמישה משפטים להגיד בזמן התפרצות', q: '״מאחורי כל התנהגות גדולה יש רגש גדול.״' }
+  };
+  var count = document.getElementById('count');
+  var pieces = document.getElementById('pieces');
+  var langs = ['en', 'pt', 'he'], cycle = null, ci = 0;
+  function paint(l) {
+    pieces.querySelectorAll('[data-t]').forEach(function (p) {
+      p.textContent = T[l][p.getAttribute('data-t')];
+      p.setAttribute('lang', l);
+      if (l === 'he') p.setAttribute('dir', 'rtl'); else p.removeAttribute('dir');
+    });
+  }
+  document.querySelectorAll('.chip').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.chip').forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+      var l = b.getAttribute('data-lang');
+      if (cycle) { clearInterval(cycle); cycle = null; }
+      if (l === 'all') {
+        count.textContent = '27 pieces from the same one hour.';
+        ci = 0; paint(langs[ci]);
+        if (!reduce) cycle = setInterval(function () { ci = (ci + 1) % 3; paint(langs[ci]); }, 2200);
+      } else {
+        count.textContent = '9 pieces from one hour of you.';
+        paint(l);
+      }
+    });
+  });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { pieces.classList.remove('hidden'); io.disconnect(); } });
+    }, { threshold: .2 });
+    io.observe(pieces);
+  } else { pieces.classList.remove('hidden'); }
+  pieces.querySelectorAll('.piece:not(.big)').forEach(function (p, i) { p.style.transitionDelay = (reduce ? 0 : i * 70) + 'ms'; });
+
+  document.querySelectorAll('.tap').forEach(function (t) {
+    t.addEventListener('click', function () {
+      var open = t.getAttribute('aria-expanded') !== 'true';
+      t.setAttribute('aria-expanded', String(open));
+      t.querySelector('.tt span').textContent = open ? 'Close' : 'Open';
+    });
+  });
+})();
+</script>
+</body>
+</html>
