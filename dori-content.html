@@ -24,6 +24,7 @@
   --moss: #3E5C46; --moss-deep: #2B4232; --sage: #8FAA8E; --on-moss: #FFFEF9;
   --clay: #B5683F; --clay-soft: #F4E2D6; --clay-ink: #8E4E2D; --apricot: #E9C6A1;
   --scrim: linear-gradient(180deg, rgba(20, 30, 22, 0) 30%, rgba(20, 30, 22, .72) 100%);
+  --scrim-top: linear-gradient(0deg, rgba(20, 30, 22, 0) 35%, rgba(20, 30, 22, .7) 100%);
   --thumb-text: #FFFEF9;
   --thumb-shadow: 0 2px 14px rgba(0, 0, 0, .45);
   --shadow: 0 22px 50px rgba(43, 66, 50, .18);
@@ -77,16 +78,19 @@ section { padding: 76px 0; }
 @media (min-width: 900px) {
   .hero { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); min-height: calc(100svh - 72px); max-height: 760px; padding: 0 0 24px; }
 }
-.stage { position: relative; perspective: 1200px; padding: 6% 4% 12%; }
+.stage { position: relative; perspective: 1200px; padding: 4% 4% 30%; }
 .deck { position: relative; transform-style: preserve-3d; transform: rotateY(-16deg) rotateX(7deg); transition: transform .6s ease-out; }
 .deck .thumb { box-shadow: var(--shadow); transform: translateZ(40px); }
+.deck .thumb::after { background: var(--scrim-top); }
+.deck .thumb .words { top: 9%; bottom: auto; right: 30%; }
+.deck .thumb .you { display: none; }
 .phone { position: absolute; width: 24%; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; border: 3px solid var(--card); box-shadow: var(--shadow-soft); background: var(--moss); transform-origin: 50% 100%; transition: transform .8s cubic-bezier(.2, .8, .2, 1); }
 .phone img { width: 100%; height: 100%; object-fit: cover; }
-.phone span { position: absolute; left: 8%; right: 8%; bottom: 10%; font: 600 13px/1.15 var(--f-body); color: var(--thumb-text); text-shadow: var(--thumb-shadow); }
-.p1 { left: -6%; bottom: -14%; transform: translateZ(-30px) rotate(-10deg); }
-.p2 { left: 20%; bottom: -18%; transform: translateZ(70px) rotate(-3deg); }
-.p3 { right: 18%; bottom: -16%; transform: translateZ(90px) rotate(4deg); }
-.p4 { right: -6%; bottom: -12%; transform: translateZ(-20px) rotate(11deg); }
+.phone span { position: absolute; left: 8%; right: 8%; bottom: 10%; font: 600 clamp(10px, 1.5vw, 13px)/1.15 var(--f-body); color: var(--thumb-text); text-shadow: var(--thumb-shadow); }
+.p1 { left: -6%; bottom: -30%; transform: translateZ(-30px) rotate(-10deg); }
+.p2 { left: 20%; bottom: -38%; transform: translateZ(70px) rotate(-3deg); }
+.p3 { right: 18%; bottom: -36%; transform: translateZ(90px) rotate(4deg); }
+.p4 { right: -6%; bottom: -28%; transform: translateZ(-20px) rotate(11deg); }
 .js .deck.closed .phone { transform: translateZ(0) translate(0, -40%) rotate(0deg); }
 .js .deck.closed .p1 { left: 38%; } .js .deck.closed .p2 { left: 38%; } .js .deck.closed .p3 { right: 38%; } .js .deck.closed .p4 { right: 38%; }
 
