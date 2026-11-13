@@ -1,0 +1,40 @@
+/* Petra's questions page: warm sand, plum and marigold. Light only.
+   Loaded after intake.css. */
+
+:root:root:root {
+  --limestone: #FBF4EC;
+  --card: #FFFCF8;
+  --card-2: #F1E4D6;
+  --basalt: #2E1F2B;
+  --ink: #2E1F2B;
+  --muted: #6A5764;
+  --faint: #9A8791;
+  --line: #E8D8C8;
+  --atlantic: #7A2E5C;
+  --atlantic-soft: #F5E3EC;
+  --on-accent: #FFFCF8;
+  --clay: #D98A1F;
+  --clay-soft: #FBEBD2;
+  color-scheme: light;
+}
+
+body {
+  font-family: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  background:
+    radial-gradient(900px 420px at 100% -10%, #FBE6CF 0%, transparent 60%),
+    radial-gradient(700px 380px at -10% 0%, #F7E1EA 0%, transparent 55%),
+    var(--limestone);
+  background-attachment: fixed;
+}
+.brand { font: 500 18px "Cormorant Garamond", Georgia, serif; letter-spacing: .04em; color: var(--atlantic); }
+.calcada { height: 3px; opacity: 1; margin-top: 16px; border-radius: 3px; background: linear-gradient(90deg, var(--atlantic) 0%, #C4577F 50%, var(--clay) 100%); }
+.track { background: var(--card-2); height: 4px; }
+.eyebrow { color: var(--clay); }
+h1 { font: 500 clamp(34px, 9vw, 48px)/1.08 "Cormorant Garamond", Georgia, serif; letter-spacing: -.005em; }
+h1 em { font-style: italic; color: var(--atlantic); }
+h2 { font: 500 clamp(25px, 6.4vw, 32px)/1.2 "Cormorant Garamond", Georgia, serif; }
+.muted:empty { display: none; }
+.opt { background: var(--card); border-radius: 18px; }
+.opt[aria-pressed="true"] { border-color: var(--atlantic); background: var(--atlantic-soft); }
+.btn { border-radius: 999px; }
+.sig { color: var(--atlantic); }

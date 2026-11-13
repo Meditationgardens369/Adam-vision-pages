@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before We Meet</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Before we meet, Petra">
+<meta property="og:description" content="A few quick questions so I understand your work before I suggest anything. About five minutes, mostly taps.">
+<meta name="theme-color" content="#FBF4EC">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💫</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+<link rel="stylesheet" href="assets/petra.css">
+</head>
+<body>
+<script>
+/* Petra van der Woning: LEAP facilitator (Lifeforce Energy Awakening Process), dance
+   teacher for 20+ years (Amsterdam, Curacao, Spain, Miami, New York), light language,
+   voice-over. Dutch, lives in the Lagos area with her family. Met by Adam, Nov 2026.
+
+   What is public (13 Nov 2026):
+   - Two Instagram accounts: @petravanderwoning (551 followers) and @leapportugal (513),
+     posting the same kind of thing on both. Likes in single figures to the teens.
+   - Eventbrite organiser "Petra": 37 events in 2 years, 84 attendees in total, 8 followers.
+     Weekly "Fun dance workout", Tuesdays 10:30, Urban dance studio Lagos, 7.50 euros.
+   - LEAP sessions with early bird tickets, link in bio. No website.
+   - Writing a women's programme (dance, cacao, womb work, a few LEAPs). Announced June 2026.
+   - Designing an intuition card deck with her channelled light language. First samples
+     printed end of October 2026.
+
+   The page is there to find out which of these she wants to grow, and whether the gap is
+   filling the room, keeping in touch with people after a session, or launching the new
+   things. "after" and "list" test the follow-up idea. "heart" and "want" say where to point.
+   Read "worst" first.
+
+   No dashboard rules key on this wording yet. If that changes, add "petra" to
+   check_prospect_rules.js and run it after any wording change. */
+window.INTAKE = {
+  slug: "petra",
+  name: "Petra",
+  business: "LEAP with Petra, Lagos",
+  headline: "worst",
+  brand: "LEAP with Petra",
+  greeting: "Hello Petra",
+  introTitle: "A few questions, so I understand <em>your work.</em>",
+  introNote: "I had a look at your Instagram and your Eventbrite page, so I already know a little. This fills in the rest. There are no right answers. I would rather see how things really are than guess. Nothing here asks for a password or anything private.",
+  questions: [
+    { id: "alive", type: "many", short: "What is running",
+      q: "Which parts of your work are alive right now?",
+      hint: "Tap all that apply.",
+      opts: ["LEAP sessions", "The dance workout class", "Dance coaching", "Light language", "The card deck", "The programme for women", "Retreats or gatherings", "Voice-over work"] },
+    { id: "heart", type: "one", short: "Closest to her heart",
+      q: "If you could pour yourself into only one of them this year, which would it be?",
+      hint: "Money aside. This tells me where to point everything.",
+      opts: ["LEAP sessions", "The programme for women", "The card deck and light language", "Dance", "Retreats or gatherings", "I am not ready to choose"] },
+    { id: "earner", type: "one", short: "Biggest earner",
+      q: "And which one brings in the most money at the moment?",
+      opts: ["LEAP sessions", "Dance classes and coaching", "Voice-over work", "Something else", "None of them really, yet"] },
+    { id: "leapfreq", type: "one", short: "How often LEAP runs",
+      q: "How often do you hold a LEAP session?",
+      opts: ["Every week", "Two or three times a month", "About once a month", "When it feels right"] },
+    { id: "leapsize", type: "one", short: "People per session",
+      q: "How many people usually come to one?",
+      opts: ["1 to 4", "5 to 8", "9 to 15", "More than 15"] },
+    { id: "room", type: "one", short: "How full the room is",
+      q: "How full is the room, compared with how full you would like it?",
+      hint: "This tells me whether the first job is more people or something else.",
+      opts: ["Full, and people ask for more dates", "Nearly full most times", "About half full", "It goes up and down a lot"] },
+    { id: "source", type: "many", short: "How people find her",
+      q: "How do new people usually find you?", hint: "Tap all that apply.",
+      opts: ["A friend told them", "Instagram", "Eventbrite", "WhatsApp or Telegram groups", "Facebook groups", "They know me from the dance class", "Flyers or posters"] },
+    { id: "booking", type: "many", short: "How people book and pay",
+      q: "How do people book and pay?", hint: "Tap all that apply.",
+      opts: ["Through Eventbrite", "They message me and pay on the day", "MB Way or bank transfer", "Cash at the door"] },
+    { id: "after", type: "one", short: "After a session",
+      q: "After someone has been to a session, do they hear from you again?",
+      hint: "Honest answer. For most people it is no, and it is the most interesting question here.",
+      opts: ["Yes, I always follow up", "Only if they message me first", "They see my posts, if they follow me", "Not really, and I know I could"] },
+    { id: "list", type: "one", short: "List of past guests",
+      q: "Is there one place with the names of everyone who has ever come to you?",
+      opts: ["Yes, I keep a list", "Only what Eventbrite has", "A WhatsApp group or two", "They are scattered around my phone", "No"] },
+    { id: "languages", type: "many", short: "Languages",
+      q: "Which languages do the people who come to you speak?", hint: "Tap all that apply.",
+      opts: ["English", "Dutch", "Portuguese", "German", "Other"] },
+    { id: "posting", type: "one", short: "How posting feels",
+      q: "How does posting on Instagram feel to you?",
+      opts: ["I enjoy it", "Fine, when I have something to share", "I do it because I think I should", "It drains me"] },
+    { id: "accounts", type: "one", short: "Two Instagram accounts",
+      q: "You have two Instagram accounts. How is that working for you?",
+      opts: ["Well, they are for different things", "I would rather have just one", "It is double the work", "I have never really thought about it"] },
+    { id: "programme", type: "one", short: "Women's programme stage",
+      q: "The programme for women you have been writing. Where is it now?",
+      opts: ["Written and ready to share", "About half written", "Mostly still in my head", "Resting for now"] },
+    { id: "shape", type: "one", short: "Shape of the programme",
+      q: "How do you see it happening?",
+      opts: ["A group meeting in person in the Algarve", "A retreat over a few days", "Online, so women anywhere can join", "A mix of in person and online", "I have not decided yet"] },
+    { id: "deck", type: "one", short: "How the deck will sell",
+      q: "When the card deck is ready, how do you picture people getting one?",
+      opts: ["From me in person, at sessions", "Ordering online", "Signing up first, before I print", "I have not thought about it yet"] },
+    { id: "hours", type: "one", short: "Time on organising",
+      q: "In a normal week, how much time goes on messages, tickets, posting and arranging things?",
+      hint: "Not the sessions. The organising around them.",
+      opts: ["Under 2 hours", "2 to 5 hours", "5 to 10 hours", "More than 10 hours"] },
+    { id: "want", type: "one", short: "A year from now",
+      q: "Twelve months from now, which would make you happiest?",
+      hint: "Pick the one you would really notice.",
+      opts: ["Full LEAP sessions without chasing", "The women's programme running with its first group", "The card deck out in the world", "My own retreat", "The same work, with more free time"] },
+    { id: "tech", type: "one", short: "Feeling about websites and tech",
+      q: "How do you feel about websites, email lists and that side of things?",
+      hint: "No wrong answer. It tells me how simple to keep it.",
+      opts: ["I quite like it", "I can do it, but I would rather not", "I avoid it", "I would love someone to just handle it"] },
+    { id: "worst", type: "text", short: "What drains her",
+      q: "Last one. Which part of running all this takes the most energy from you?",
+      hint: "A sentence or two is plenty. This is the answer I will read first.",
+      placeholder: "Filling the last few places before a session, for example..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>
