@@ -199,7 +199,7 @@
   <!-- 5 Video -->
   <section class="step" data-step="5">
     <h2><span class="en">Say it on video, if you are comfortable.</span><span class="nl">Vertel het op video, als je dat prettig vindt.</span><span class="de">Sag es im Video, wenn du dich damit wohlfühlst.</span></h2>
-    <p class="hint"><span class="en">Up to ninety seconds on your phone, as if telling a friend. You can skip this.</span><span class="nl">Maximaal negentig seconden op je telefoon, alsof je het aan een vriend(in) vertelt. Je mag dit overslaan.</span><span class="de">Bis zu neunzig Sekunden mit dem Handy, als würdest du es einer Freundin erzählen. Du kannst das überspringen.</span></p>
+    <p class="hint"><span class="en">About a minute is perfect, and you have up to three, as if telling a friend. You can skip this.</span><span class="nl">Ongeveer een minuut is perfect, en je hebt er maximaal drie, alsof je het aan een vriend(in) vertelt. Je mag dit overslaan.</span><span class="de">Etwa eine Minute ist perfekt, und du hast bis zu drei, als würdest du es einer Freundin erzählen. Du kannst das überspringen.</span></p>
     <p class="why"><span class="en">LEAP is hard to explain in words. Hearing you say it is what helps someone decide to come.</span><span class="nl">LEAP is moeilijk uit te leggen in woorden. Jou horen vertellen helpt iemand om te besluiten te komen.</span><span class="de">LEAP lässt sich schwer in Worte fassen. Dich erzählen zu hören hilft jemandem, sich zu entscheiden.</span></p>
     <div class="prompts"><span class="en">Not sure what to say? Why you came, what happened on the mat, and what has been different since.</span><span class="nl">Weet je niet wat je moet zeggen? Waarom je kwam, wat er op de mat gebeurde en wat er sindsdien anders is.</span><span class="de">Du weißt nicht, was du sagen sollst? Warum du gekommen bist, was auf der Matte passiert ist und was seitdem anders ist.</span></div>
     <div class="cam" id="cam">
@@ -258,7 +258,8 @@
   var SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
   var SLUG = "petra-voices";
   var BUCKET = "petra-testimonials";
-  var MAX_SECONDS = 90;
+  var MAX_SECONDS = 180;            // 3 minutes (raised from 90 on 14 Nov 2026, Adam's call)
+  var VIDEO_BITS = 2000000;         // caps a 3 minute recording near 50 MB, under the upload limit
   var MAX_UPLOAD_MB = 100;          // matches the petra-testimonials bucket limit (104857600 bytes)
 
   var html = document.documentElement;
@@ -333,7 +334,9 @@
   }
   function startRec() {
     chunks = []; state.videoType = mime();
-    rec = new MediaRecorder(stream, state.videoType ? { mimeType: state.videoType } : undefined);
+    var recOpts = { videoBitsPerSecond: VIDEO_BITS, audioBitsPerSecond: 128000 };
+    if (state.videoType) { recOpts.mimeType = state.videoType; }
+    rec = new MediaRecorder(stream, recOpts);
     rec.ondataavailable = function (e) { if (e.data && e.data.size) { chunks.push(e.data); } };
     rec.onstop = function () {
       var blob = new Blob(chunks, { type: state.videoType || 'video/webm' });
