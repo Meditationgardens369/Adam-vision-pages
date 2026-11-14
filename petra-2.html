@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Story</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Your story, Petra">
+<meta property="og:description" content="A second round of questions, about you this time. About ten minutes, and a few of them need typing.">
+<meta name="theme-color" content="#FBF4EC">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💫</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/intake.css">
+<link rel="stylesheet" href="assets/petra.css">
+</head>
+<body>
+<script>
+/* Petra, round two (14 Nov 2026). Round one told us what she wants: full LEAP sessions
+   without chasing. Adam's read: this is brand work before it is automation, so we need
+   her story and the subjects she can talk about with confidence, which is what gets
+   people to discover her.
+
+   This page collects raw material for content:
+   - her own story with LEAP ("story", "firstleap") and what she tells people ("explain")
+   - what stops people booking ("fear"), so the content can answer it
+   - subjects beyond LEAP she can speak on without notes ("topics", "dance", "light")
+   - how much she will do on camera and how much time she has ("camera", "film", "time")
+   - how many past guests can get the testimonial page ("past")
+   Read "story" and "explain" first. "never" keeps us honest: no promises about healing.
+
+   No dashboard rules key on this wording. */
+window.INTAKE = {
+  slug: "petra-2",
+  name: "Petra",
+  business: "LEAP with Petra, Lagos",
+  headline: "story",
+  brand: "LEAP with Petra",
+  greeting: "Hello again Petra",
+  introTitle: "This time it is <em>about you.</em>",
+  introNote: "Thank you for the first answers. They told me what you want. People come because they met you, so the more of you they can find before they meet you, the fuller the room. A few of these need typing. Write the way you talk, spelling does not matter, and Dutch is fine too.",
+  questions: [
+    { id: "story", type: "text", short: "How LEAP found her",
+      q: "What was happening in your life when LEAP found you?",
+      hint: "This is the answer I will read first. A few honest sentences are plenty.",
+      placeholder: "I was teaching dance in Amsterdam, and..." },
+    { id: "firstleap", type: "text", short: "Her own first session",
+      q: "Your own first session. What happened on the mat?",
+      placeholder: "I did not expect anything, and then..." },
+    { id: "changed", type: "many", short: "What LEAP changed for her",
+      q: "What has it changed for you since?", hint: "Tap all that apply.",
+      opts: ["How I feel in my body", "My relationships", "My work", "Where and how I live", "My creativity", "My trust in myself", "It opened the light language"] },
+    { id: "trained", type: "text", short: "Training",
+      q: "When did you train as a facilitator, and with whom?",
+      hint: "One line is fine.",
+      placeholder: "In 2023, with..." },
+    { id: "guided", type: "one", short: "People guided so far",
+      q: "Roughly how many people have you guided through a session so far?",
+      hint: "A rough guess is fine. It is a number worth saying out loud.",
+      opts: ["Under 50", "50 to 150", "150 to 400", "More than 400"] },
+    { id: "who", type: "many", short: "Who comes",
+      q: "Who comes to your sessions?", hint: "Tap all that apply.",
+      opts: ["Mostly women", "Men too", "Couples", "People who live here", "Travellers passing through", "People who already do yoga or breathwork", "Complete beginners"] },
+    { id: "moment", type: "text", short: "A session she will never forget",
+      q: "Tell me about one session you will never forget.",
+      hint: "No names. What happened for that person, and what did they say afterwards?",
+      placeholder: "A woman came who had never done anything like this..." },
+    { id: "fear", type: "many", short: "Why people hesitate",
+      q: "What makes people hesitate before their first session?", hint: "Tap all that apply.",
+      opts: ["They do not understand what it is", "Fear of losing control", "Fear of what might come up", "They worry nothing will happen", "It sounds too spiritual", "The price", "Coming alone"] },
+    { id: "explain", type: "text", short: "Her two sentence explanation",
+      q: "Someone stops at your market stand and asks what LEAP is. What do you say?",
+      hint: "The words you really use. Two or three sentences.",
+      placeholder: "You lie down, you close your eyes, and..." },
+    { id: "series", type: "one", short: "How many sessions she suggests",
+      q: "How many sessions do you suggest to someone new?",
+      opts: ["One is enough to feel it", "Three to five, close together", "Regularly, about once a month", "Whatever they feel called to"] },
+    { id: "topics", type: "many", short: "Subjects she can speak on",
+      q: "Which of these could you talk about for ten minutes with no notes?", hint: "Tap all that apply.",
+      opts: ["Life force and awakening", "Dance and what the body knows", "Light language and channelling", "The womb and the female cycle", "Leaving the Netherlands for a freer life", "Raising a family differently", "Intuition, and the card deck", "Plant based living", "Places of power, like the pyramids in Bosnia"] },
+    { id: "dance", type: "text", short: "What dance taught her",
+      q: "Twenty years of teaching dance. What did it teach you about people?",
+      placeholder: "Everybody can move, but..." },
+    { id: "light", type: "text", short: "How light language began",
+      q: "Three years ago light language began to flow through you. How did that start?",
+      hint: "Skip it if you would rather keep it for yourself.",
+      placeholder: "One morning I..." },
+    { id: "camera", type: "one", short: "Comfort on camera",
+      q: "How do you feel about talking to a camera?",
+      opts: ["I love it", "Fine, once I get going", "I would rather use only my voice", "I would rather not"] },
+    { id: "film", type: "one", short: "Filming a session",
+      q: "Could someone film during a session, with your guests' permission?",
+      opts: ["Yes", "Only me, not the guests", "Only before and after", "No, the room stays private"] },
+    { id: "time", type: "one", short: "Time for sharing each week",
+      q: "How much time a week could you give to sharing your work?",
+      hint: "Honest answer. I will plan around it.",
+      opts: ["15 minutes", "About an hour", "Two or three hours", "None right now"] },
+    { id: "past", type: "one", short: "Past guests she can reach",
+      q: "How many past guests could you send a link to today?",
+      hint: "The people in your WhatsApp groups and your phone, added together.",
+      opts: ["Under 20", "20 to 50", "50 to 100", "More than 100"] },
+    { id: "never", type: "text", short: "What never to say about LEAP",
+      q: "Last one. What should nobody ever say or promise about LEAP?",
+      hint: "So that everything we put out sounds like you and stays true.",
+      placeholder: "That it fixes everything in one evening, for example..." }
+  ]
+};
+</script>
+<script src="assets/intake.js"></script>
+</body>
+</html>

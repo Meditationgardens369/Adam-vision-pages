@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A small favour · LEAP with Petra</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="A small favour from Petra">
+<meta property="og:description" content="A few short questions about your LEAP session, and a short video if you are comfortable.">
+<meta name="description" content="A few short questions about your LEAP session, and a short video if you are comfortable.">
+<meta name="theme-color" content="#FBF4EC">
+<meta name="color-scheme" content="light only">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💫</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=DM+Sans:wght@400;500;600&display=swap">
+<style>
+  /* Petra: LEAP facilitator, Lagos. Theme: sand, plum, marigold. Light only.
+     Guests answer a few taps about their session, can record a short video, and choose what may be shared.
+     Built from Dori's parent page. English, Dutch and German, because that is who comes to her.
+     Answers land in intake_responses under slug "petra-voices"; videos go to the private bucket
+     "petra-testimonials". Only publish = name or anon may ever go public.
+     The email is optional and has its own tick box for hearing about the next dates. */
+  :root {
+    --sand: #FBF4EC; --paper: #FFFCF8; --sand-2: #F1E4D6; --line: #E8D8C8;
+    --ink: #2E1F2B; --muted: #6A5764;
+    --plum: #7A2E5C; --plum-deep: #5C1F44; --plum-soft: #F5E3EC; --on-plum: #FFFCF8;
+    --gold: #D98A1F; --gold-deep: #9A5C0C; --gold-soft: #FBEBD2;
+    --shadow: 0 14px 34px rgba(92, 31, 68, .10);
+    --shadow-btn: 0 8px 20px rgba(122, 46, 92, .24);
+    --font-head: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --font-body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html, body { overflow-x: clip; }
+  body { margin: 0; color: var(--ink); font: 17px/1.6 var(--font-body); -webkit-font-smoothing: antialiased;
+    background: radial-gradient(900px 420px at 100% -10%, #FBE6CF 0%, transparent 60%), radial-gradient(700px 380px at -10% 0%, #F7E1EA 0%, transparent 55%), var(--sand); background-attachment: fixed; }
+  html[data-lang="en"] .nl, html[data-lang="en"] .de,
+  html[data-lang="nl"] .en, html[data-lang="nl"] .de,
+  html[data-lang="de"] .en, html[data-lang="de"] .nl { display: none !important; }
+  [hidden] { display: none !important; }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 0 16px 56px; }
+  h1, h2 { font-family: var(--font-head); font-weight: 500; margin: 0 0 10px; text-wrap: balance; overflow-wrap: break-word; color: var(--ink); }
+  h1 { font-size: clamp(34px, 9vw, 46px); line-height: 1.08; }
+  h2 { font-size: clamp(28px, 7vw, 35px); line-height: 1.15; }
+  p { margin: 0 0 12px; }
+  .hint { color: var(--muted); font-size: 16px; margin: 0 0 20px; }
+  .tiny { font-size: 14px; color: var(--muted); line-height: 1.5; }
+  .bad { color: var(--gold-deep); }
+
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; flex-wrap: wrap; padding: 8px 0; }
+  .brand { font: 500 18px var(--font-head); letter-spacing: .06em; text-transform: uppercase; color: var(--plum); }
+  .lang { display: inline-flex; border: 1.5px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--paper); }
+  .lang button { font: 600 14px var(--font-body); padding: 8px 13px; min-height: 40px; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+  html[data-lang="en"] .lang [data-set="en"], html[data-lang="nl"] .lang [data-set="nl"], html[data-lang="de"] .lang [data-set="de"] { background: var(--plum); color: var(--on-plum); }
+
+  .prog { display: flex; gap: 6px; margin: 4px 0 18px; }
+  .prog i { flex: 1; height: 4px; border-radius: 4px; background: var(--line); }
+  .prog i.done { background: var(--gold); }
+  .prog i.on { background: var(--plum); }
+
+  .step { display: none; background: var(--paper); border: 1px solid var(--line); border-radius: 26px; padding: 26px 22px; box-shadow: var(--shadow); }
+  .step.active { display: block; animation: rise .35s ease-out both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  .step[data-step="0"] { border-top: 6px solid transparent; border-image: linear-gradient(90deg, var(--plum), #C4577F, var(--gold)) 1; border-radius: 0 0 26px 26px; padding-top: 34px; }
+  .eyebrow { font: 600 13px var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-deep); margin: 0 0 14px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { position: relative; display: inline-flex; align-items: center; cursor: pointer; font: 500 16px var(--font-body); color: var(--ink); background: var(--sand); border: 1.5px solid var(--line); border-radius: 999px; padding: 12px 18px; min-height: 48px; transition: background-color .15s, border-color .15s; }
+  .chip input { position: absolute; opacity: 0; pointer-events: none; }
+  .chip:has(input:checked) { background: var(--plum); border-color: var(--plum); color: var(--on-plum); }
+  .chip:has(input:focus-visible), .btn:focus-visible, .lang button:focus-visible, .rec:focus-visible, .linkbtn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .chip.big { font-size: 18px; padding: 14px 26px; }
+  .chip.box { border-radius: 16px; align-items: flex-start; line-height: 1.4; }
+
+  label.f { display: grid; gap: 6px; font: 600 15px var(--font-body); color: var(--muted); margin-bottom: 14px; }
+  label.f input, label.f textarea { width: 100%; font: 400 17px var(--font-body); color: var(--ink); background: var(--sand); border: 1.5px solid var(--line); border-radius: 14px; padding: 13px 15px; }
+  label.f input:focus-visible, label.f textarea:focus-visible { outline: 3px solid var(--gold); outline-offset: 1px; }
+  textarea { min-height: 84px; resize: vertical; }
+  .sub { font: 500 23px var(--font-head); margin: 24px 0 10px; color: var(--ink); }
+
+  .why { font-size: 15px; color: var(--muted); margin: -8px 0 14px; }
+  .prompts { background: var(--plum-soft); border-radius: 14px; padding: 12px 14px; font-size: 15px; margin-bottom: 14px; color: var(--plum-deep); }
+  .cam { position: relative; border-radius: 20px; overflow: hidden; background: var(--plum-deep); aspect-ratio: 4 / 5; max-height: 440px; margin: 0 auto 14px; }
+  .cam video { width: 100%; height: 100%; object-fit: cover; display: block; transform: scaleX(-1); }
+  .cam video.play { transform: none; }
+  .cam .timer { position: absolute; top: 12px; left: 12px; background: var(--gold-deep); color: var(--on-plum); font: 600 14px var(--font-body); padding: 6px 12px; border-radius: 999px; }
+  .cam .idle { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; font-size: 16px; background: var(--sand-2); color: var(--ink); }
+  .cam .idle b { display: block; font: 500 24px var(--font-head); margin-bottom: 6px; }
+  .camrow { display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap; }
+  .rec { width: 72px; height: 72px; border-radius: 50%; border: 5px solid var(--paper); outline: 2px solid var(--plum); background: var(--plum); cursor: pointer; position: relative; }
+  .rec.on { background: var(--paper); }
+  .rec.on::after { content: ""; position: absolute; inset: 18px; background: var(--plum); border-radius: 5px; }
+  .linkbtn { display: inline-block; cursor: pointer; font: 600 16px var(--font-body); color: var(--plum); text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; padding: 10px 6px; }
+  .picked { text-align: center; font-size: 15px; color: var(--plum-deep); margin: 8px 0 0; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 26px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; cursor: pointer; border: 0; font: 600 17px var(--font-body); padding: 14px 28px; min-height: 52px; border-radius: 999px; background: var(--plum); color: var(--on-plum); box-shadow: var(--shadow-btn); text-decoration: none; transition: background-color .15s; }
+  .btn:hover { background: var(--plum-deep); }
+  .btn:active { transform: translateY(1px); }
+  .btn.quiet { background: var(--plum-soft); color: var(--plum-deep); box-shadow: none; }
+  .btn.ghost { background: transparent; color: var(--muted); box-shadow: none; padding-left: 8px; padding-right: 8px; }
+  .btn[disabled] { opacity: .45; cursor: default; box-shadow: none; }
+  .btn.block { width: 100%; }
+  .thanks { text-align: center; padding-top: 40px; padding-bottom: 40px; }
+  .thanks .rule { width: 56px; height: 3px; background: var(--gold); border-radius: 3px; margin: 0 auto 22px; }
+  @media (prefers-reduced-motion: reduce) { .step.active { animation: none !important; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <span class="brand">LEAP with Petra</span>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set="en">EN</button><button type="button" data-set="nl">NL</button><button type="button" data-set="de">DE</button></div>
+  </div>
+  <div class="prog" id="prog" aria-hidden="true"></div>
+
+  <!-- 0 Welcome -->
+  <section class="step" data-step="0">
+    <p class="eyebrow"><span class="en">For everyone who has been on the mat</span><span class="nl">Voor iedereen die op de mat heeft gelegen</span><span class="de">Für alle, die auf der Matte lagen</span></p>
+    <h1><span class="en">Thank you for taking a LEAP with me.</span><span class="nl">Dank je dat je een LEAP met mij hebt genomen.</span><span class="de">Danke, dass du einen LEAP mit mir gemacht hast.</span></h1>
+    <p class="hint"><span class="en">Hi, it is Petra. Would you tell me what your session was like, in your own words? It helps the next person who is curious and a little unsure. A few quick questions, about three minutes.</span><span class="nl">Hoi, met Petra. Wil je me in je eigen woorden vertellen hoe jouw sessie was? Het helpt de volgende die nieuwsgierig is en nog een beetje twijfelt. Een paar korte vragen, ongeveer drie minuten.</span><span class="de">Hallo, hier ist Petra. Magst du mir in deinen eigenen Worten erzählen, wie deine Session war? Es hilft dem nächsten Menschen, der neugierig ist und noch ein wenig zögert. Ein paar kurze Fragen, etwa drei Minuten.</span></p>
+    <p class="tiny"><span class="en">You choose at the end what I may share. No pressure at all.</span><span class="nl">Aan het eind kies jij wat ik mag delen. Helemaal geen druk.</span><span class="de">Am Ende entscheidest du, was ich teilen darf. Ganz ohne Druck.</span></p>
+    <div class="nav"><span></span><button class="btn" type="button" data-next><span class="en">Start</span><span class="nl">Beginnen</span><span class="de">Los geht's</span></button></div>
+  </section>
+
+  <!-- 1 What brought you -->
+  <section class="step" data-step="1">
+    <h2><span class="en">What brought you to LEAP?</span><span class="nl">Wat bracht je naar LEAP?</span><span class="de">Was hat dich zu LEAP geführt?</span></h2>
+    <p class="hint"><span class="en">Tap what applies.</span><span class="nl">Tik aan wat past.</span><span class="de">Tippe an, was passt.</span></p>
+    <div class="chips">
+      <label class="chip"><input type="checkbox" name="why" value="Curiosity"><span class="en">Curiosity</span><span class="nl">Nieuwsgierigheid</span><span class="de">Neugier</span></label>
+      <label class="chip"><input type="checkbox" name="why" value="A friend told me"><span class="en">A friend told me</span><span class="nl">Een vriend(in) vertelde erover</span><span class="de">Jemand hat mir davon erzählt</span></label>
+      <label class="chip"><input type="checkbox" name="why" value="I met Petra"><span class="en">I met Petra</span><span class="nl">Ik ontmoette Petra</span><span class="de">Ich habe Petra getroffen</span></label>
+      <label class="chip"><input type="checkbox" name="why" value="I felt stuck"><span class="en">I felt stuck</span><span class="nl">Ik zat vast</span><span class="de">Ich steckte fest</span></label>
+      <label class="chip"><input type="checkbox" name="why" value="A busy head"><span class="en">A busy head</span><span class="nl">Een druk hoofd</span><span class="de">Ein voller Kopf</span></label>
+      <label class="chip"><input type="checkbox" name="why" value="A big change in my life"><span class="en">A big change in my life</span><span class="nl">Een grote verandering in mijn leven</span><span class="de">Eine große Veränderung in meinem Leben</span></label>
+      <label class="chip"><input type="checkbox" name="why" value="I wanted to feel more"><span class="en">I wanted to feel more</span><span class="nl">Ik wilde meer voelen</span><span class="de">Ich wollte mehr fühlen</span></label>
+      <label class="chip"><input type="checkbox" name="why" value="Something else"><span class="en">Something else</span><span class="nl">Iets anders</span><span class="de">Etwas anderes</span></label>
+    </div>
+    <label class="f" style="margin-top:20px"><span class="en">In a line or two (optional)</span><span class="nl">In een of twee zinnen (mag, hoeft niet)</span><span class="de">In ein, zwei Sätzen (freiwillig)</span><textarea id="why_text" data-ph-en="Before I came, I was..." data-ph-nl="Voordat ik kwam, was ik..." data-ph-de="Bevor ich kam, war ich..."></textarea></label>
+    <div class="nav"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="nl">Terug</span><span class="de">Zurück</span></button><button class="btn" type="button" data-next><span class="en">Next</span><span class="nl">Verder</span><span class="de">Weiter</span></button></div>
+  </section>
+
+  <!-- 2 On the mat -->
+  <section class="step" data-step="2">
+    <h2><span class="en">What happened on the mat?</span><span class="nl">Wat gebeurde er op de mat?</span><span class="de">Was ist auf der Matte passiert?</span></h2>
+    <p class="hint"><span class="en">Tap what applies. Everyone is different, so there is no right answer.</span><span class="nl">Tik aan wat past. Iedereen is anders, dus er is geen goed antwoord.</span><span class="de">Tippe an, was passt. Jeder Mensch ist anders, es gibt keine richtige Antwort.</span></p>
+    <div class="chips">
+      <label class="chip"><input type="checkbox" name="mat" value="Deep calm"><span class="en">Deep calm</span><span class="nl">Diepe rust</span><span class="de">Tiefe Ruhe</span></label>
+      <label class="chip"><input type="checkbox" name="mat" value="My body moved by itself"><span class="en">My body moved by itself</span><span class="nl">Mijn lichaam bewoog vanzelf</span><span class="de">Mein Körper bewegte sich von selbst</span></label>
+      <label class="chip"><input type="checkbox" name="mat" value="Emotions came up"><span class="en">Emotions came up</span><span class="nl">Er kwamen emoties omhoog</span><span class="de">Gefühle kamen hoch</span></label>
+      <label class="chip"><input type="checkbox" name="mat" value="Tears"><span class="en">Tears</span><span class="nl">Tranen</span><span class="de">Tränen</span></label>
+      <label class="chip"><input type="checkbox" name="mat" value="Joy or laughter"><span class="en">Joy or laughter</span><span class="nl">Vreugde of lachen</span><span class="de">Freude oder Lachen</span></label>
+      <label class="chip"><input type="checkbox" name="mat" value="Warmth or tingling"><span class="en">Warmth or tingling</span><span class="nl">Warmte of tintelingen</span><span class="de">Wärme oder Kribbeln</span></label>
+      <label class="chip"><input type="checkbox" name="mat" value="Images or colours"><span class="en">Images or colours</span><span class="nl">Beelden of kleuren</span><span class="de">Bilder oder Farben</span></label>
+      <label class="chip"><input type="checkbox" name="mat" value="Not much the first time"><span class="en">Not much, the first time</span><span class="nl">Niet veel, de eerste keer</span><span class="de">Nicht viel, beim ersten Mal</span></label>
+    </div>
+    <label class="f" style="margin-top:20px"><span class="en">One moment you remember (optional)</span><span class="nl">Een moment dat je is bijgebleven (mag, hoeft niet)</span><span class="de">Ein Moment, an den du dich erinnerst (freiwillig)</span><textarea id="mat_text" data-ph-en="About halfway through, I felt..." data-ph-nl="Ongeveer halverwege voelde ik..." data-ph-de="Etwa in der Mitte spürte ich..."></textarea></label>
+    <div class="nav"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="nl">Terug</span><span class="de">Zurück</span></button><button class="btn" type="button" data-next><span class="en">Next</span><span class="nl">Verder</span><span class="de">Weiter</span></button></div>
+  </section>
+
+  <!-- 3 Since -->
+  <section class="step" data-step="3">
+    <h2><span class="en">What has been different since?</span><span class="nl">Wat is er sindsdien anders?</span><span class="de">Was ist seitdem anders?</span></h2>
+    <p class="hint"><span class="en">Tap what applies. Honest answers help most.</span><span class="nl">Tik aan wat past. Eerlijke antwoorden helpen het meest.</span><span class="de">Tippe an, was passt. Ehrliche Antworten helfen am meisten.</span></p>
+    <div class="chips">
+      <label class="chip"><input type="checkbox" name="since" value="Calmer"><span class="en">Calmer</span><span class="nl">Rustiger</span><span class="de">Ruhiger</span></label>
+      <label class="chip"><input type="checkbox" name="since" value="More energy"><span class="en">More energy</span><span class="nl">Meer energie</span><span class="de">Mehr Energie</span></label>
+      <label class="chip"><input type="checkbox" name="since" value="Clearer about what I want"><span class="en">Clearer about what I want</span><span class="nl">Helderder over wat ik wil</span><span class="de">Klarer, was ich will</span></label>
+      <label class="chip"><input type="checkbox" name="since" value="Lighter"><span class="en">Lighter</span><span class="nl">Lichter</span><span class="de">Leichter</span></label>
+      <label class="chip"><input type="checkbox" name="since" value="More trust in myself"><span class="en">More trust in myself</span><span class="nl">Meer vertrouwen in mezelf</span><span class="de">Mehr Vertrauen in mich</span></label>
+      <label class="chip"><input type="checkbox" name="since" value="More open to people"><span class="en">More open to people</span><span class="nl">Opener naar mensen</span><span class="de">Offener für Menschen</span></label>
+      <label class="chip"><input type="checkbox" name="since" value="I made a change in my life"><span class="en">I made a change in my life</span><span class="nl">Ik heb iets veranderd in mijn leven</span><span class="de">Ich habe etwas in meinem Leben verändert</span></label>
+      <label class="chip"><input type="checkbox" name="since" value="Still early days"><span class="en">Still early days</span><span class="nl">Nog te vroeg om te zeggen</span><span class="de">Noch zu früh, um es zu sagen</span></label>
+    </div>
+    <label class="f" style="margin-top:20px"><span class="en">One thing you noticed in daily life (optional)</span><span class="nl">Iets wat je in het dagelijks leven opviel (mag, hoeft niet)</span><span class="de">Etwas, das dir im Alltag aufgefallen ist (freiwillig)</span><textarea id="since_text" data-ph-en="A few days later I noticed..." data-ph-nl="Een paar dagen later merkte ik..." data-ph-de="Ein paar Tage später merkte ich..."></textarea></label>
+    <div class="nav"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="nl">Terug</span><span class="de">Zurück</span></button><button class="btn" type="button" data-next><span class="en">Next</span><span class="nl">Verder</span><span class="de">Weiter</span></button></div>
+  </section>
+
+  <!-- 4 How many, recommend -->
+  <section class="step" data-step="4">
+    <h2><span class="en">How many sessions have you had with me?</span><span class="nl">Hoeveel sessies heb je bij mij gehad?</span><span class="de">Wie viele Sessions hattest du bei mir?</span></h2>
+    <div class="chips" style="margin-top:14px">
+      <label class="chip big"><input type="radio" name="count" value="1"><span>1</span></label>
+      <label class="chip big"><input type="radio" name="count" value="2 to 3"><span class="en">2 to 3</span><span class="nl">2 tot 3</span><span class="de">2 bis 3</span></label>
+      <label class="chip big"><input type="radio" name="count" value="4 or more"><span class="en">4 or more</span><span class="nl">4 of meer</span><span class="de">4 oder mehr</span></label>
+    </div>
+    <p class="sub"><span class="en">Would you tell a friend to come?</span><span class="nl">Zou je een vriend(in) aanraden om te komen?</span><span class="de">Würdest du es einer Freundin oder einem Freund empfehlen?</span></p>
+    <div class="chips">
+      <label class="chip big"><input type="radio" name="rec" value="yes"><span class="en">Yes</span><span class="nl">Ja</span><span class="de">Ja</span></label>
+      <label class="chip big"><input type="radio" name="rec" value="not yet"><span class="en">Not yet</span><span class="nl">Nog niet</span><span class="de">Noch nicht</span></label>
+    </div>
+    <label class="f" style="margin-top:22px"><span class="en">What would you say to someone who is curious but unsure?</span><span class="nl">Wat zou je zeggen tegen iemand die nieuwsgierig is maar twijfelt?</span><span class="de">Was würdest du jemandem sagen, der neugierig ist, aber zögert?</span><textarea id="rec_text" data-ph-en="Just go, because..." data-ph-nl="Ga gewoon, want..." data-ph-de="Geh einfach hin, denn..."></textarea></label>
+    <div class="nav"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="nl">Terug</span><span class="de">Zurück</span></button><button class="btn" type="button" data-next><span class="en">Next</span><span class="nl">Verder</span><span class="de">Weiter</span></button></div>
+  </section>
+
+  <!-- 5 Video -->
+  <section class="step" data-step="5">
+    <h2><span class="en">Say it on video, if you are comfortable.</span><span class="nl">Vertel het op video, als je dat prettig vindt.</span><span class="de">Sag es im Video, wenn du dich damit wohlfühlst.</span></h2>
+    <p class="hint"><span class="en">Up to ninety seconds on your phone, as if telling a friend. You can skip this.</span><span class="nl">Maximaal negentig seconden op je telefoon, alsof je het aan een vriend(in) vertelt. Je mag dit overslaan.</span><span class="de">Bis zu neunzig Sekunden mit dem Handy, als würdest du es einer Freundin erzählen. Du kannst das überspringen.</span></p>
+    <p class="why"><span class="en">LEAP is hard to explain in words. Hearing you say it is what helps someone decide to come.</span><span class="nl">LEAP is moeilijk uit te leggen in woorden. Jou horen vertellen helpt iemand om te besluiten te komen.</span><span class="de">LEAP lässt sich schwer in Worte fassen. Dich erzählen zu hören hilft jemandem, sich zu entscheiden.</span></p>
+    <div class="prompts"><span class="en">Not sure what to say? Why you came, what happened on the mat, and what has been different since.</span><span class="nl">Weet je niet wat je moet zeggen? Waarom je kwam, wat er op de mat gebeurde en wat er sindsdien anders is.</span><span class="de">Du weißt nicht, was du sagen sollst? Warum du gekommen bist, was auf der Matte passiert ist und was seitdem anders ist.</span></div>
+    <div class="cam" id="cam">
+      <video id="preview" autoplay muted playsinline></video>
+      <div class="timer" id="timer" hidden>0:00</div>
+      <div class="idle" id="idle"><div><b><span class="en">Tap the button to turn on the camera</span><span class="nl">Tik op de knop om de camera aan te zetten</span><span class="de">Tippe auf den Knopf, um die Kamera einzuschalten</span></b><span class="en">It stays with Petra unless you say otherwise.</span><span class="nl">Het blijft bij Petra, tenzij jij iets anders zegt.</span><span class="de">Es bleibt bei Petra, außer du sagst etwas anderes.</span></div></div>
+    </div>
+    <div class="camrow"><button class="rec" id="recbtn" type="button" aria-label="Record"></button></div>
+    <p class="tiny" id="camnote" style="text-align:center;margin-top:10px"></p>
+    <div class="camrow" id="afterrec" hidden>
+      <button class="btn quiet" type="button" id="redo"><span class="en">Record again</span><span class="nl">Opnieuw opnemen</span><span class="de">Noch einmal aufnehmen</span></button>
+      <button class="btn" type="button" data-next><span class="en">Keep this one</span><span class="nl">Deze houden</span><span class="de">Dieses behalten</span></button>
+    </div>
+    <div class="camrow" id="uploadrow" style="margin-top:6px">
+      <label class="linkbtn" for="file"><span class="en">Or choose a video from your phone</span><span class="nl">Of kies een video van je telefoon</span><span class="de">Oder wähle ein Video von deinem Handy</span></label>
+      <input id="file" type="file" accept="video/*" style="position:absolute;opacity:0;width:1px;height:1px;pointer-events:none">
+    </div>
+    <p class="picked" id="picked" hidden></p>
+    <div class="nav"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="nl">Terug</span><span class="de">Zurück</span></button><button class="btn" type="button" data-next id="skipvid"><span class="en">Skip the video</span><span class="nl">Video overslaan</span><span class="de">Video überspringen</span></button></div>
+  </section>
+
+  <!-- 6 Permission, name, send -->
+  <section class="step" data-step="6">
+    <h2><span class="en">May I share your words?</span><span class="nl">Mag ik je woorden delen?</span><span class="de">Darf ich deine Worte teilen?</span></h2>
+    <p class="hint"><span class="en">Only if you say yes. Sharing means on my page and my social media, so more people can find LEAP. Otherwise they stay with me.</span><span class="nl">Alleen als jij ja zegt. Delen betekent op mijn pagina en mijn social media, zodat meer mensen LEAP kunnen vinden. Anders blijven ze bij mij.</span><span class="de">Nur wenn du ja sagst. Teilen heißt auf meiner Seite und in meinen sozialen Medien, damit mehr Menschen LEAP finden. Sonst bleiben sie bei mir.</span></p>
+    <form id="form" autocomplete="on" novalidate>
+      <div class="chips" style="flex-direction:column;align-items:stretch">
+        <label class="chip"><input type="radio" name="publish" value="name"><span class="en">Yes, with my first name</span><span class="nl">Ja, met mijn voornaam</span><span class="de">Ja, mit meinem Vornamen</span></label>
+        <label class="chip"><input type="radio" name="publish" value="anon"><span class="en">Yes, without my name</span><span class="nl">Ja, zonder mijn naam</span><span class="de">Ja, ohne meinen Namen</span></label>
+        <label class="chip"><input type="radio" name="publish" value="private"><span class="en">No, just for Petra to read</span><span class="nl">Nee, alleen voor Petra</span><span class="de">Nein, nur für Petra</span></label>
+      </div>
+      <p class="sub"><span class="en">And you are?</span><span class="nl">En jij bent?</span><span class="de">Und du bist?</span></p>
+      <label class="f"><span class="en">Your first name</span><span class="nl">Je voornaam</span><span class="de">Dein Vorname</span><input name="name" id="name" type="text" autocomplete="given-name" required></label>
+      <label class="f"><span class="en">Email (optional)</span><span class="nl">E-mail (mag, hoeft niet)</span><span class="de">E-Mail (freiwillig)</span><input name="email" id="email" type="email" inputmode="email" autocomplete="email" data-ph-en="you@example.com" data-ph-nl="jij@voorbeeld.nl" data-ph-de="du@beispiel.de"></label>
+      <div class="chips" style="margin-bottom:18px">
+        <label class="chip box"><input type="checkbox" name="dates" value="yes"><span class="en">Yes, send me the next LEAP dates by email</span><span class="nl">Ja, stuur me de volgende LEAP data per e-mail</span><span class="de">Ja, schick mir die nächsten LEAP Termine per E-Mail</span></label>
+      </div>
+      <button class="btn block" type="submit" id="sendbtn" disabled><span class="en">Send to Petra</span><span class="nl">Naar Petra sturen</span><span class="de">An Petra senden</span></button>
+      <p class="tiny" id="note" style="margin-top:12px"><span class="en">Pick one of the three choices and add your first name to send.</span><span class="nl">Kies een van de drie opties en vul je voornaam in om te versturen.</span><span class="de">Wähle eine der drei Möglichkeiten und trage deinen Vornamen ein, um zu senden.</span></p>
+    </form>
+    <div class="nav" style="margin-top:6px"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="nl">Terug</span><span class="de">Zurück</span></button><span></span></div>
+  </section>
+
+  <!-- 7 Done -->
+  <section class="step thanks" data-step="7">
+    <div class="rule"></div>
+    <h2><span class="en">Thank you, </span><span class="nl">Dank je, </span><span class="de">Danke, </span><span id="doname"></span>.</h2>
+    <p class="hint" id="donemsg"></p>
+  </section>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+  var SLUG = "petra-voices";
+  var BUCKET = "petra-testimonials";
+  var MAX_SECONDS = 90;
+  var MAX_UPLOAD_MB = 100;          // matches the petra-testimonials bucket limit (104857600 bytes)
+
+  var html = document.documentElement;
+  var $ = function (id) { return document.getElementById(id); };
+  var state = { step: 0, video: null, videoType: '', seconds: 0, videoSource: '' };
+  var STEPS = 8;
+  var LANGS = ['en', 'nl', 'de'];
+
+  function lang() { return html.getAttribute('data-lang'); }
+  function t(en, nl, de) { var l = lang(); return l === 'nl' ? nl : (l === 'de' ? de : en); }
+
+  function renderProg() {
+    var p = $('prog'); p.innerHTML = '';
+    for (var i = 0; i < STEPS - 1; i++) {
+      var b = document.createElement('i');
+      if (i < state.step) { b.className = 'done'; } else if (i === state.step) { b.className = 'on'; }
+      p.appendChild(b);
+    }
+    p.hidden = state.step >= STEPS - 1;
+  }
+  function go(n) {
+    state.step = Math.max(0, Math.min(STEPS - 1, n));
+    document.querySelectorAll('.step').forEach(function (s) { s.classList.toggle('active', parseInt(s.getAttribute('data-step'), 10) === state.step); });
+    renderProg();
+    if (state.step !== 5) { stopCamera(); }
+    window.scrollTo(0, 0);
+  }
+  document.querySelectorAll('[data-next]').forEach(function (b) { b.addEventListener('click', function () { go(state.step + 1); }); });
+  document.querySelectorAll('[data-prev]').forEach(function (b) { b.addEventListener('click', function () { go(state.step - 1); }); });
+
+  /* ---------- Language: EN, NL, DE. The phone's own language picks the first view. ---------- */
+  function setLang(l) {
+    l = LANGS.indexOf(l) !== -1 ? l : 'en';
+    html.setAttribute('data-lang', l); html.setAttribute('lang', l);
+    document.title = t('A small favour', 'Een kleine gunst', 'Eine kleine Bitte') + ' · LEAP with Petra';
+    document.querySelectorAll('[data-ph-en]').forEach(function (el) { el.placeholder = el.getAttribute('data-ph-' + l) || ''; });
+    try { localStorage.setItem('petra-voices-lang', l); } catch (e) {}
+  }
+  var saved = null; try { saved = localStorage.getItem('petra-voices-lang'); } catch (e) {}
+  var q = /[?&]lang=(en|nl|de)/.exec(location.search);
+  var nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+  setLang(q ? q[1] : (saved || nav));
+  document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-set')); }); });
+
+  /* ---------- Camera and recording ---------- */
+  var stream = null, rec = null, chunks = [], timerId = null;
+  var preview = $('preview');
+  function fmt(s) { return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+  function mime() {
+    var cands = ['video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm'];
+    for (var i = 0; i < cands.length; i++) { if (window.MediaRecorder && MediaRecorder.isTypeSupported(cands[i])) { return cands[i]; } }
+    return '';
+  }
+  function canRecord() { return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder); }
+  if (!canRecord()) {
+    $('cam').hidden = true; $('recbtn').parentNode.hidden = true;
+    $('camnote').textContent = t('This browser cannot record here. Choose a video from your phone, or skip this step.', 'Deze browser kan hier niet opnemen. Kies een video van je telefoon of sla deze stap over.', 'Dieser Browser kann hier nicht aufnehmen. Wähle ein Video von deinem Handy oder überspringe diesen Schritt.');
+  }
+  function startCamera() {
+    return navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 720 }, height: { ideal: 960 } }, audio: true }).then(function (s) {
+      stream = s; preview.srcObject = s; preview.muted = true; preview.classList.remove('play'); preview.controls = false; preview.play(); $('idle').hidden = true;
+    }).catch(function () { $('camnote').textContent = t('No camera access. You can choose a video from your phone instead, or skip.', 'Geen toegang tot de camera. Je kunt een video van je telefoon kiezen of overslaan.', 'Kein Zugriff auf die Kamera. Du kannst ein Video von deinem Handy wählen oder überspringen.'); throw new Error('nocam'); });
+  }
+  function stopCamera() {
+    if (rec && rec.state === 'recording') { rec.stop(); }
+    if (stream) { stream.getTracks().forEach(function (tr) { tr.stop(); }); stream = null; }
+    if (timerId) { clearInterval(timerId); timerId = null; }
+  }
+  function showKept(label) {
+    $('afterrec').hidden = false; $('skipvid').hidden = true; $('uploadrow').hidden = true; $('picked').hidden = true;
+    $('camnote').textContent = label;
+  }
+  function startRec() {
+    chunks = []; state.videoType = mime();
+    rec = new MediaRecorder(stream, state.videoType ? { mimeType: state.videoType } : undefined);
+    rec.ondataavailable = function (e) { if (e.data && e.data.size) { chunks.push(e.data); } };
+    rec.onstop = function () {
+      var blob = new Blob(chunks, { type: state.videoType || 'video/webm' });
+      state.video = blob; state.videoSource = 'recorded';
+      if (stream) { stream.getTracks().forEach(function (tr) { tr.stop(); }); stream = null; }
+      preview.srcObject = null; preview.src = URL.createObjectURL(blob); preview.muted = false; preview.controls = true; preview.classList.add('play'); preview.play();
+      $('recbtn').parentNode.hidden = true; $('timer').hidden = true;
+      showKept(t('Have a look. If you like it, keep this one.', 'Kijk even. Als je het goed vindt, houd je deze.', 'Schau es dir an. Wenn es dir gefällt, behalte dieses.'));
+    };
+    rec.start(250);
+    state.seconds = 0; $('timer').hidden = false; $('timer').textContent = fmt(0);
+    $('recbtn').classList.add('on');
+    timerId = setInterval(function () { state.seconds++; $('timer').textContent = fmt(state.seconds) + ' / ' + fmt(MAX_SECONDS); if (state.seconds >= MAX_SECONDS) { stopRec(); } }, 1000);
+    $('camnote').textContent = t('Recording. Tap again to stop.', 'Aan het opnemen. Tik nog een keer om te stoppen.', 'Aufnahme läuft. Tippe noch einmal, um zu stoppen.');
+  }
+  function stopRec() { if (timerId) { clearInterval(timerId); timerId = null; } $('recbtn').classList.remove('on'); if (rec && rec.state === 'recording') { rec.stop(); } }
+  $('recbtn').addEventListener('click', function () {
+    if (rec && rec.state === 'recording') { stopRec(); return; }
+    if (!stream) { startCamera().then(function () { $('camnote').textContent = t('Camera on. Tap to start recording.', 'Camera aan. Tik om de opname te starten.', 'Kamera an. Tippe, um die Aufnahme zu starten.'); }).catch(function () {}); return; }
+    startRec();
+  });
+  $('redo').addEventListener('click', function () {
+    state.video = null; state.videoSource = ''; preview.controls = false; preview.src = ''; preview.classList.remove('play');
+    $('recbtn').parentNode.hidden = !canRecord(); $('afterrec').hidden = true; $('skipvid').hidden = false; $('uploadrow').hidden = false;
+    $('idle').hidden = false; $('cam').hidden = !canRecord(); $('camnote').textContent = ''; $('picked').hidden = true; $('file').value = '';
+  });
+  /* Upload from the camera roll: the fallback for any browser that will not record. */
+  $('file').addEventListener('change', function () {
+    var f = this.files && this.files[0];
+    if (!f) { return; }
+    if (f.size > MAX_UPLOAD_MB * 1024 * 1024) {
+      $('picked').hidden = false; $('picked').classList.add('bad');
+      $('picked').textContent = t('That file is over ' + MAX_UPLOAD_MB + ' MB. Try a shorter clip.', 'Dat bestand is groter dan ' + MAX_UPLOAD_MB + ' MB. Probeer een kortere video.', 'Die Datei ist größer als ' + MAX_UPLOAD_MB + ' MB. Versuche ein kürzeres Video.');
+      this.value = ''; return;
+    }
+    stopCamera();
+    state.video = f; state.videoType = f.type || ''; state.seconds = 0; state.videoSource = 'uploaded';
+    preview.srcObject = null; preview.src = URL.createObjectURL(f); preview.muted = false; preview.controls = true; preview.classList.add('play'); $('idle').hidden = true;
+    $('cam').hidden = false; $('recbtn').parentNode.hidden = true;
+    $('picked').classList.remove('bad');
+    showKept(t('Video chosen: ', 'Video gekozen: ', 'Video gewählt: ') + f.name);
+  });
+
+  /* ---------- Send ---------- */
+  function val(name) { var e = document.querySelector('input[name=' + name + ']:checked'); return e ? e.value : ''; }
+  function vals(name) { return Array.prototype.map.call(document.querySelectorAll('input[name=' + name + ']:checked'), function (e) { return e.value; }); }
+  function makeCode() { var a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s = 'PET-'; for (var i = 0; i < 4; i++) { s += a[Math.floor(Math.random() * a.length)]; } return s; }
+
+  /* Send stays off until a consent choice is made and a first name is given. */
+  function updateSend() { $('sendbtn').disabled = !(val('publish') && $('name').value.trim().length > 0); }
+  document.querySelectorAll('input[name=publish]').forEach(function (e) { e.addEventListener('change', updateSend); });
+  $('name').addEventListener('input', updateSend);
+  updateSend();
+
+  /* The bucket takes plain video types only, so any codec tag is stripped. If the upload still
+     fails, the words are sent anyway and the thank-you says the video did not make it. */
+  var videoFailed = false;
+  function uploadVideo(code) {
+    videoFailed = false;
+    if (!state.video) { return Promise.resolve(null); }
+    var base = (state.video.type || state.videoType || 'video/webm').split(';')[0].trim() || 'video/webm';
+    if (['video/webm', 'video/mp4', 'video/quicktime', 'video/x-m4v', 'video/3gpp'].indexOf(base) === -1) { base = 'video/mp4'; }
+    var ext = base === 'video/webm' ? 'webm' : (base === 'video/quicktime' ? 'mov' : (base === 'video/3gpp' ? '3gp' : 'mp4'));
+    var path = 'guests/' + code + '.' + ext;
+    var plain = new Blob([state.video], { type: base });
+    return fetch(SUPABASE_URL + '/storage/v1/object/' + BUCKET + '/' + path, {
+      method: 'POST',
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': base, 'x-upsert': 'false' },
+      body: plain
+    }).then(function (r) { if (!r.ok) { throw new Error('upload ' + r.status); } return path; })
+      .catch(function () { videoFailed = true; return ''; });
+  }
+  $('form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if ($('sendbtn').disabled) { return; }
+    var f = new FormData($('form'));
+    var code = makeCode();
+    var name = (f.get('name') || '').trim();
+    var email = (f.get('email') || '').trim();
+    var whyText = ($('why_text').value || '').trim(), matText = ($('mat_text').value || '').trim();
+    var sinceText = ($('since_text').value || '').trim(), recText = ($('rec_text').value || '').trim();
+    $('sendbtn').disabled = true; $('note').classList.remove('bad');
+    $('note').textContent = state.video ? t('Sending the video. It may take a moment.', 'De video wordt verstuurd. Dit kan even duren.', 'Das Video wird gesendet. Das kann einen Moment dauern.') : t('One moment.', 'Een moment.', 'Einen Moment.');
+    uploadVideo(code).then(function (path) {
+      var answers = {
+        code:         { n: 0, question: 'Code', answer: code, type: 'text' },
+        name:         { n: 1, question: 'First name', answer: name, type: 'text' },
+        email:        { n: 2, question: 'Email (optional)', answer: email, type: 'text' },
+        dates:        { n: 3, question: 'Send me the next LEAP dates by email', answer: !!(email && val('dates')), type: 'one' },
+        why:          { n: 4, question: 'What brought you to LEAP?', answer: vals('why'), type: 'many' },
+        whyText:      { n: 5, question: 'Before, in a line or two', answer: whyText, type: 'text' },
+        mat:          { n: 6, question: 'What happened on the mat?', answer: vals('mat'), type: 'many' },
+        matText:      { n: 7, question: 'One moment you remember', answer: matText, type: 'text' },
+        since:        { n: 8, question: 'What has been different since?', answer: vals('since'), type: 'many' },
+        sinceText:    { n: 9, question: 'One thing you noticed in daily life', answer: sinceText, type: 'text' },
+        count:        { n: 10, question: 'How many sessions with Petra', answer: val('count'), type: 'one' },
+        recommend:    { n: 11, question: 'Would you tell a friend to come?', answer: val('rec'), type: 'one' },
+        recommendText:{ n: 12, question: 'What would you say to someone who is curious but unsure?', answer: recText, type: 'text' },
+        publish:      { n: 13, question: 'Permission to publish', answer: val('publish'), type: 'one' },
+        video:        { n: 14, question: 'Video path in bucket ' + BUCKET, answer: path || '', type: 'text' },
+        videoSeconds: { n: 15, question: 'Video length', answer: (state.video && state.videoSource === 'recorded') ? state.seconds : 0, type: 'number', unit: 's' },
+        videoSource:  { n: 16, question: 'Video source', answer: state.videoSource || '', type: 'one' },
+        videoFailed:  { n: 17, question: 'Video upload failed', answer: !!(state.video && videoFailed), type: 'one' },
+        lang:         { n: 18, question: 'Language', answer: lang(), type: 'one' }
+      };
+      var headline = recText || sinceText || matText || whyText;
+      return fetch(SUPABASE_URL + '/rest/v1/intake_responses', {
+        method: 'POST', headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ prospect_slug: SLUG, prospect_name: name.slice(0, 60), business: 'LEAP with Petra guest · ' + code, properties_target: null, answers: answers, worst_hour: headline || null, source: 'web' })
+      }).then(function (r) { if (!r.ok) { throw new Error('status ' + r.status); } });
+    }).then(function () {
+      $('doname').textContent = name;
+      $('donemsg').textContent = state.video && !videoFailed ? t('Your video and your words have reached Petra.', 'Je video en je woorden zijn bij Petra aangekomen.', 'Dein Video und deine Worte sind bei Petra angekommen.')
+        : state.video && videoFailed ? t('Your words have reached Petra. The video did not upload. If you can, send it to her on WhatsApp.', 'Je woorden zijn bij Petra aangekomen. De video is niet geupload. Als je wilt, stuur hem dan via WhatsApp.', 'Deine Worte sind bei Petra angekommen. Das Video wurde nicht hochgeladen. Wenn du magst, schick es ihr per WhatsApp.')
+        : t('Your words have reached Petra.', 'Je woorden zijn bij Petra aangekomen.', 'Deine Worte sind bei Petra angekommen.');
+      go(7);
+    }).catch(function () {
+      updateSend(); $('note').classList.add('bad');
+      $('note').textContent = t('That did not go through. Please try again in a moment.', 'Het versturen is niet gelukt. Probeer het zo nog eens.', 'Das hat nicht geklappt. Bitte versuche es gleich noch einmal.');
+    });
+  });
+
+  renderProg(); go(0);
+})();
+</script>
+</body>
+</html>
