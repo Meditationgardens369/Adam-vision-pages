@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Fuller Room</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A fuller room, Petra">
+<meta property="og:description" content="One small way to start, based on what you told me.">
+<meta name="theme-color" content="#FBF4EC">
+<meta name="color-scheme" content="light only">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💫</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap">
+<style>
+  /* Petra: the first offer. Sand, plum and marigold, same family as her questions page. Light only.
+     The numbers live in CONFIG in the script at the bottom, so they can be changed in one place.
+     DRAFT until Adam confirms the price. Not sent to Petra yet. */
+  :root {
+    --bg: #FBF4EC; --card: #FFFCF8; --card-2: #F1E4D6; --ink: #2E1F2B; --muted: #6A5764; --faint: #9A8791;
+    --line: #E8D8C8; --plum: #7A2E5C; --plum-soft: #F5E3EC; --gold: #D98A1F; --gold-soft: #FBEBD2;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; color: var(--ink); font: 18px/1.6 "DM Sans", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(900px 420px at 100% -10%, #FBE6CF 0%, transparent 60%),
+      radial-gradient(700px 380px at -10% 0%, #F7E1EA 0%, transparent 55%),
+      var(--bg);
+    background-attachment: fixed; overflow-x: hidden;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 22px; }
+  section { padding: 38px 0; }
+  h1, h2 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; margin: 0 0 14px; text-wrap: balance; }
+  h1 { font-size: clamp(42px, 11vw, 64px); line-height: 1.02; letter-spacing: -.01em; }
+  h2 { font-size: clamp(28px, 7vw, 38px); line-height: 1.12; }
+  em { font-style: italic; color: var(--plum); }
+  p { margin: 0 0 14px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 15px; line-height: 1.5; color: var(--faint); }
+  .kicker { font: 600 12px "DM Sans", sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin: 0 0 16px; }
+  .rule { height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--plum) 0%, #C4577F 50%, var(--gold) 100%); margin: 0 0 34px; }
+  .hero { padding: 34px 0 20px; }
+  .brand { font: 500 18px "Cormorant Garamond", Georgia, serif; letter-spacing: .08em; text-transform: uppercase; color: var(--plum); margin: 0 0 16px; }
+
+  blockquote { margin: 0 0 12px; padding: 18px 20px; background: var(--card); border: 1.5px solid var(--line); border-radius: 18px; font: italic 400 23px/1.3 "Cormorant Garamond", Georgia, serif; color: var(--ink); }
+  blockquote span { display: block; font: 500 13px "DM Sans", sans-serif; color: var(--faint); margin-top: 8px; font-style: normal; }
+
+  details { background: var(--card); border: 1.5px solid var(--line); border-radius: 18px; margin: 0 0 10px; overflow: hidden; }
+  summary { list-style: none; cursor: pointer; padding: 16px 52px 16px 20px; font-weight: 600; position: relative; min-height: 44px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font: 400 26px "Cormorant Garamond", serif; color: var(--plum); }
+  details[open] summary::after { content: "\2212"; }
+  details[open] { border-color: var(--plum); background: var(--plum-soft); }
+  details p { padding: 0 20px 18px; margin: 0; color: var(--muted); }
+  summary:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--plum); outline-offset: 3px; }
+
+  .price { background: var(--card); border: 1.5px solid var(--line); border-radius: 24px; padding: 26px 22px; }
+  .big { font: 500 clamp(40px, 11vw, 58px)/1 "Cormorant Garamond", Georgia, serif; color: var(--plum); margin: 0 0 10px; }
+  .slider { margin: 24px 0 6px; }
+  .slider label { display: flex; justify-content: space-between; align-items: baseline; font-weight: 600; margin-bottom: 10px; }
+  .slider output { font: 500 30px "Cormorant Garamond", serif; color: var(--plum); }
+  input[type=range] { width: 100%; accent-color: var(--plum); height: 32px; margin: 0; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .split div { border-radius: 16px; padding: 14px 16px; background: var(--gold-soft); }
+  .split div + div { background: var(--plum-soft); }
+  .split b { display: block; font: 500 32px/1.1 "Cormorant Garamond", serif; font-variant-numeric: tabular-nums; }
+  .split span { font-size: 14px; color: var(--muted); }
+
+  .cta { display: block; text-align: center; text-decoration: none; background: var(--plum); color: #FFFCF8; font-weight: 600; font-size: 18px; padding: 18px 24px; border-radius: 999px; margin: 8px 0 14px; }
+  .sig { font: italic 400 26px "Cormorant Garamond", Georgia, serif; color: var(--plum); margin-top: 26px; }
+  footer { padding: 0 0 60px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section class="hero">
+    <p class="brand">LEAP with Petra</p>
+    <div class="rule"></div>
+    <p class="kicker">For Petra</p>
+    <h1>Full LEAP sessions, <em>without chasing.</em></h1>
+    <p class="muted">That is what you said you want a year from now. Here is one small way to start.</p>
+  </section>
+
+  <section>
+    <p class="kicker">What you told me</p>
+    <blockquote>"Getting people in sessions, making events, organizing."<span>The part that takes the most energy from you</span></blockquote>
+    <blockquote>"Mostly that is because I've met them in person."<span>How people come to your sessions</span></blockquote>
+  </section>
+
+  <section>
+    <p class="kicker">The idea</p>
+    <h2>Everyone who meets you hears about <em>the next date.</em></h2>
+    <p class="muted">People come because they met you, at the market, at your dance class, through a friend. Then they go home and the date passes. So I set up four small things and they run without you touching them.</p>
+    <details>
+      <summary>A sign for your stand and your class</summary>
+      <p>It has a code people scan with their phone while you are talking to them. They leave their name and how to reach them, and that is all they need to do.</p>
+    </details>
+    <details>
+      <summary>One simple page</summary>
+      <p>What LEAP is, in your words, the next date and a button to book. It becomes the one link on your Instagram too.</p>
+    </details>
+    <details>
+      <summary>The invite goes out for you</summary>
+      <p>Everyone who scanned gets the next date, and a reminder a few days before. You don't write it and you don't send it.</p>
+    </details>
+    <details>
+      <summary>Your events made for you</summary>
+      <p>You send me one voice message with the date and the place. The Eventbrite listing, the Instagram post and the WhatsApp invite come back ready, and you just say yes.</p>
+    </details>
+  </section>
+
+  <section>
+    <p class="kicker">How we know it works</p>
+    <h2>We count the people <em>in the room.</em></h2>
+    <p class="muted">Today it is 5 to 8, and it goes up and down. We try it for three sessions and we count.</p>
+  </section>
+
+  <section>
+    <p class="kicker">What it costs</p>
+    <div class="price">
+      <p class="big">Nothing to start.</p>
+      <p class="muted">For three sessions, we share the ticket of every guest above eight, half each. If the room does not grow, you pay nothing.</p>
+      <div class="slider">
+        <label for="n">People in the room <output id="nOut" for="n">8</output></label>
+        <input type="range" id="n" min="4" max="16" step="1" value="8" aria-describedby="note">
+      </div>
+      <div class="split" aria-live="polite">
+        <div><b id="you">€360</b><span>to you</span></div>
+        <div><b id="me">€0</b><span>to me</span></div>
+      </div>
+      <p class="small" id="note" style="margin:14px 0 0">Counted at €45 a ticket, before Eventbrite fees and the room.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">And after</p>
+    <p class="muted">Your programme for women is written and ready. If the room fills, the same people are the first ones to hear about your retreat, and I would love to help you open it.</p>
+  </section>
+
+  <footer>
+    <a class="cta" id="cta" href="https://wa.me/351922102740?text=Hi%20Adam%2C%20yes%2C%20let%27s%20try%20it%20for%20three%20sessions.">Yes, let's try it</a>
+    <p class="small" style="text-align:center">It opens WhatsApp with a message to me. Nothing is fixed until we have talked.</p>
+    <p class="sig">Adam</p>
+  </footer>
+
+</div>
+<script>
+/* Change the numbers here. */
+var CONFIG = { ticket: 45, baseline: 8, share: 0.5 };
+(function () {
+  var n = document.getElementById("n"), out = document.getElementById("nOut"),
+      you = document.getElementById("you"), me = document.getElementById("me");
+  function euro(v) { return "€" + (Math.round(v * 100) / 100).toLocaleString("en-GB", { minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2 }); }
+  function draw() {
+    var g = +n.value, extra = Math.max(0, g - CONFIG.baseline);
+    var mine = extra * CONFIG.ticket * CONFIG.share;
+    out.textContent = g;
+    you.textContent = euro(g * CONFIG.ticket - mine);
+    me.textContent = euro(mine);
+  }
+  n.addEventListener("input", draw);
+  draw();
+})();
+</script>
+</body>
+</html>
