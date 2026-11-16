@@ -1,4 +1,4 @@
-/* Dori: child therapist at the forest school Adam's children go to. About 20 years with
+/* Dor: child therapist at the forest school Adam's children go to. About 20 years with
    children, no website, no social media, all word of mouth. Parents at the school credit her
    with real change (ADHD, behaviour). Splits her life between Portugal and Israel and is
    unsure where to settle, so working online would free her from one place.
@@ -152,11 +152,11 @@
   };
 
   var INTRO = {
-    en: { greeting: 'Hi Dori', title: 'Twenty years of changing children’s lives. <em>Let’s help more families find you.</em>',
+    en: { greeting: 'Hi Dor', title: 'Twenty years of changing children’s lives. <em>Let’s help more families find you.</em>',
           note: 'These questions help me find three things: what makes your work different, the first videos and posts to make, and the first thing you could offer families wherever you live. Skip anything you like, and write in whichever language feels easiest.' },
-    pt: { greeting: 'Olá Dori', title: 'Vinte anos a mudar a vida de crianças. <em>Vamos ajudar mais famílias a encontrá-la.</em>',
+    pt: { greeting: 'Olá Dor', title: 'Vinte anos a mudar a vida de crianças. <em>Vamos ajudar mais famílias a encontrá-la.</em>',
           note: 'Estas perguntas ajudam-me a perceber três coisas: o que torna o seu trabalho diferente, os primeiros vídeos e publicações a fazer, e a primeira coisa que poderia oferecer a famílias, viva onde viver. Pode saltar o que quiser e escrever na língua que lhe for mais fácil.' },
-    he: { greeting: 'היי דורי', title: 'עשרים שנה של שינוי בחיים של ילדים. <em>בואי נעזור ליותר משפחות למצוא אותך.</em>',
+    he: { greeting: 'היי דור', title: 'עשרים שנה של שינוי בחיים של ילדים. <em>בואי נעזור ליותר משפחות למצוא אותך.</em>',
           note: 'השאלות האלה עוזרות לי להבין שלושה דברים: מה מייחד את העבודה שלך, הסרטונים והפוסטים הראשונים שכדאי ליצור, והדבר הראשון שתוכלי להציע למשפחות, לא משנה איפה תגורי. אפשר לדלג על כל שאלה ולכתוב בשפה שהכי נוחה לך.' }
   };
 
@@ -174,10 +174,10 @@
 
   window.INTAKE = {
     slug: L === 'en' ? 'dori' : 'dori-' + L,
-    name: 'Dori',
-    business: 'Dori, child therapist (forest school)',
+    name: 'Dor',
+    business: 'Dor, child therapist (forest school)',
     headline: 'gift',
-    brand: L === 'he' ? 'דורי · מטפלת ילדים' : (L === 'pt' ? 'Dori · terapeuta infantil' : 'Dori · child therapist'),
+    brand: L === 'he' ? 'דור · מטפלת ילדים' : (L === 'pt' ? 'Dor · terapeuta infantil' : 'Dor · child therapist'),
     greeting: pick(INTRO).greeting,
     introTitle: pick(INTRO).title,
     introNote: pick(INTRO).note,
