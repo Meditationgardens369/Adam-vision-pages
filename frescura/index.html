@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt" data-title="title">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Florista Frescura · Flores em Lagoa</title>
+<meta name="description" content="Flores frescas em Lagoa há 26 anos. Ramos, casamentos e homenagens feitos à mão pela Leen. Encomende por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Florista Frescura · Flores em Lagoa">
+<meta property="og:description" content="Ramos, casamentos e homenagens feitos à mão pela Leen. Encomende por WhatsApp.">
+<meta property="og:image" content="img/18.jpg">
+<meta name="theme-color" content="#FBF6EE">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a class="mark" href="./">Fresc<i>u</i>ra</a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="pt">PT</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="nl">NL</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <h1 data-i18n="h1"></h1>
+        <p data-i18n="sub"></p>
+        <a class="btn btn-wa" id="heroCta" data-wa target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.200 8.200 0 0 1-4.200-1.150l-.3-.18-3 .78.800-2.900-.2-.300A8.200 8.200 0 1 1 12 20.200zm4.500-6.100c-.250-.120-1.460-.720-1.690-.800-.230-.090-.390-.120-.560.120-.160.250-.640.800-.780.970-.140.160-.290.180-.530.060a6.700 6.700 0 0 1-2-1.220 7.400 7.400 0 0 1-1.360-1.700c-.140-.250 0-.380.110-.500.110-.110.250-.290.370-.430.120-.140.160-.250.250-.410.080-.160.040-.310-.020-.430-.060-.120-.560-1.340-.760-1.830-.200-.480-.400-.420-.560-.420h-.470a.900.900 0 0 0-.660.310 2.760 2.760 0 0 0-.860 2.050c0 1.210.880 2.380 1 2.540.120.160 1.730 2.640 4.200 3.700.590.250 1.040.400 1.400.520.590.190 1.120.160 1.550.100.470-.070 1.460-.600 1.660-1.170.200-.580.200-1.070.140-1.170-.060-.110-.220-.170-.470-.290z"/></svg>
+          <span data-i18n="cta"></span>
+        </a>
+      </div>
+      <div class="trio" aria-hidden="true">
+        <img src="img/1.jpg" alt="" width="903" height="1600">
+        <img src="img/18.jpg" alt="" width="1530" height="1933">
+        <img src="img/4.jpg" alt="" width="1500" height="2000">
+      </div>
+    </div>
+
+    <section>
+      <h2 data-i18n="occTitle"></h2>
+      <p class="hint" data-i18n="occHint"></p>
+      <div class="chips" id="occ"></div>
+    </section>
+
+    <section id="trabalho">
+      <h2 data-i18n="galTitle"></h2>
+      <p class="hint" data-i18n="galHint"></p>
+      <div class="filters" id="filters"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section>
+      <h2 data-i18n="revTitle"></h2>
+      <p class="hint"></p>
+      <div class="reviews" id="reviews"></div>
+      <a class="btn btn-line" href="opiniao.html" data-i18n="revCta"></a>
+    </section>
+
+    <section>
+      <div class="visit">
+        <h2 data-i18n="visitTitle"></h2>
+        <p data-i18n="visitSub"></p>
+        <div class="row">
+          <a class="btn btn-line" id="maps" target="_blank" rel="noopener" data-i18n="directions"></a>
+          <a class="btn btn-line" id="tel" data-i18n="call"></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="end">
+    <span data-i18n="foot"></span> · <a id="fb" target="_blank" rel="noopener">Facebook</a>
+  </footer>
+</div>
+
+<a class="btn btn-wa fab" id="fab" data-wa target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.200 8.200 0 0 1-4.200-1.150l-.3-.18-3 .78.800-2.900-.2-.300A8.200 8.200 0 1 1 12 20.200z"/></svg>
+  <span data-i18n="cta"></span>
+</a>
+
+<dialog class="box" id="box">
+  <div class="box-in">
+    <div class="box-img">
+      <img id="boxImg" alt="">
+      <button type="button" class="round box-x" id="boxX" data-i18n-label="close">✕</button>
+    </div>
+    <div class="box-bar">
+      <button type="button" class="round" id="boxPrev" data-i18n-label="prev">‹</button>
+      <a class="btn btn-wa" id="boxCta" target="_blank" rel="noopener" data-i18n="like"></a>
+      <button type="button" class="round" id="boxNext" data-i18n-label="next">›</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  "use strict";
+  var F = window.FRESCURA;
+  var $ = function (id) { return document.getElementById(id); };
+  var cat = "all", shown = [], at = 0;
+
+  $("maps").href = F.MAPS;
+  $("tel").href = "tel:" + F.PHONE;
+  $("fb").href = F.FACEBOOK;
+
+  function el(tag, attrs, text) {
+    var e = document.createElement(tag), k;
+    for (k in attrs) { e.setAttribute(k, attrs[k]); }
+    if (text != null) { e.textContent = text; }
+    return e;
+  }
+
+  function drawOcc() {
+    var box = $("occ"); box.textContent = "";
+    F.t("occ").forEach(function (o) {
+      box.appendChild(el("a", { class: "chip", target: "_blank", rel: "noopener", href: F.wa(F.t("waOcc") + o.toLowerCase() + ".") }, o));
+    });
+  }
+
+  function drawFilters() {
+    var box = $("filters"); box.textContent = "";
+    ["all", "ramos", "casamentos", "homenagens", "arranjos"].forEach(function (c) {
+      var b = el("button", { type: "button", "aria-pressed": String(c === cat) }, F.t(c));
+      b.onclick = function () { cat = c; drawFilters(); drawGrid(); };
+      box.appendChild(b);
+    });
+  }
+
+  function drawGrid() {
+    var box = $("grid"); box.textContent = "";
+    shown = F.PHOTOS.filter(function (p) { return cat === "all" || p.cat === cat; });
+    shown.forEach(function (p, i) {
+      var b = el("button", { type: "button", "aria-label": F.t(p.cat) });
+      b.appendChild(el("img", { src: "img/" + p.f, alt: F.t("alt") + ", " + F.t(p.cat), loading: "lazy", decoding: "async" }));
+      b.onclick = function () { open(i); };
+      box.appendChild(b);
+    });
+  }
+
+  function drawReviews() {
+    var box = $("reviews"); box.textContent = "";
+    F.REVIEWS.forEach(function (r) {
+      var q = el("blockquote", { class: "review" });
+      q.appendChild(el("p", {}, "“" + r.text + "”"));
+      q.appendChild(el("footer", {}, r.name + (r.where ? " · " + r.where : "")));
+      box.appendChild(q);
+    });
+  }
+
+  function show() {
+    var p = shown[at];
+    $("boxImg").src = "img/" + p.f;
+    $("boxImg").alt = F.t("alt") + ", " + F.t(p.cat);
+    $("boxCta").href = F.wa(F.t("waPhoto") + new URL("img/" + p.f, location.href).href);
+  }
+  function open(i) { at = i; show(); $("box").showModal(); }
+  function step(d) { at = (at + d + shown.length) % shown.length; show(); }
+
+  $("boxX").onclick = function () { $("box").close(); };
+  $("boxPrev").onclick = function () { step(-1); };
+  $("boxNext").onclick = function () { step(1); };
+  $("box").addEventListener("click", function (e) { if (e.target === $("box")) { $("box").close(); } });
+  $("box").addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") { step(-1); }
+    if (e.key === "ArrowRight") { step(1); }
+  });
+
+  /* the floating button appears once the hero button has scrolled away */
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (en) {
+      $("fab").classList.toggle("on", !en[0].isIntersecting);
+    }).observe($("heroCta"));
+  } else { $("fab").classList.add("on"); }
+
+  F.onLang(function () {
+    drawOcc(); drawFilters(); drawGrid(); drawReviews();
+    if ($("box").open) { show(); }
+  });
+  F.apply();
+})();
+</script>
+</body>
+</html>

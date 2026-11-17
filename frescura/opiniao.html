@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt" data-title="rTitle">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Uma palavra para a Leen</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Uma palavra para a Leen · Florista Frescura">
+<meta property="og:description" content="Recebeu flores da Leen? Conte como foi. Demora um minuto.">
+<meta property="og:image" content="img/17.jpg">
+<meta name="theme-color" content="#FBF6EE">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a class="mark" href="./">Fresc<i>u</i>ra</a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="pt">PT</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="nl">NL</button>
+    </div>
+  </header>
+
+  <main class="form">
+    <form id="f" novalidate>
+      <h1 data-i18n="rH1"></h1>
+      <p class="lead" data-i18n="rSub"></p>
+
+      <div class="field">
+        <label for="name" data-i18n="rName"></label>
+        <input type="text" id="name" autocomplete="given-name" maxlength="60">
+      </div>
+
+      <div class="field">
+        <span class="lab" data-i18n="rOcc"></span>
+        <div class="pick" id="pick"></div>
+      </div>
+
+      <div class="field">
+        <label for="text" data-i18n="rText"></label>
+        <textarea id="text" maxlength="1500" data-i18n-ph="rTextPh"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="check">
+          <input type="checkbox" id="ok">
+          <span data-i18n="rOk"></span>
+        </label>
+      </div>
+
+      <button class="btn btn-wa" type="submit" id="send" data-i18n="rSend"></button>
+      <p class="msg" id="msg" role="alert"></p>
+    </form>
+
+    <div class="done" id="done" hidden>
+      <img src="img/17.jpg" alt="">
+      <h1 data-i18n="rDone"></h1>
+      <p class="lead" data-i18n="rDoneSub"></p>
+      <a class="btn btn-line" id="fb" target="_blank" rel="noopener" data-i18n="rFb"></a>
+      <a class="btn btn-line" href="./" data-i18n="rBack"></a>
+    </div>
+  </main>
+</div>
+
+<script src="site.js"></script>
+<script>
+/* Reviews go to the same Supabase table as Adam's question pages (insert-only
+   publishable key, nothing can be read back from here). Slug "frescura-review". */
+(function () {
+  "use strict";
+  var F = window.FRESCURA;
+  var SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+  var $ = function (id) { return document.getElementById(id); };
+  var occIndex = -1, busy = false;
+
+  $("fb").href = F.FACEBOOK + "reviews";
+
+  function drawPick() {
+    var box = $("pick"); box.textContent = "";
+    F.t("occ").forEach(function (o, i) {
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = o;
+      b.setAttribute("aria-pressed", String(i === occIndex));
+      b.onclick = function () { occIndex = (occIndex === i ? -1 : i); drawPick(); };
+      box.appendChild(b);
+    });
+  }
+
+  $("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (busy) { return; }
+    var name = $("name").value.trim(), text = $("text").value.trim();
+    if (!name || text.length < 3) { $("msg").textContent = F.t("rNeed"); return; }
+    busy = true; $("msg").textContent = ""; $("send").textContent = F.t("rSending");
+
+    var occ = occIndex < 0 ? null : F.t("occ")[occIndex];
+    var body = {
+      prospect_slug: "frescura-review",
+      prospect_name: name,
+      business: "Florista Frescura, customer review",
+      properties_target: null,
+      answers: {
+        review:   { n: 1, question: "Review", answer: text, type: "text" },
+        occasion: { n: 2, question: "Occasion", answer: occ, type: "one" },
+        publish:  { n: 3, question: "May publish with first name", answer: $("ok").checked ? "Yes" : "No", type: "one" },
+        lang:     { n: 4, question: "Language", answer: F.lang, type: "one" }
+      },
+      worst_hour: text.slice(0, 300),
+      source: "questions"
+    };
+
+    fetch(SUPABASE_URL + "/rest/v1/intake_responses", {
+      method: "POST",
+      headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY, "Content-Type": "application/json", "Prefer": "return=minimal" },
+      body: JSON.stringify(body)
+    }).then(function (res) {
+      if (!res.ok) { throw new Error("status " + res.status); }
+      $("f").hidden = true; $("done").hidden = false; window.scrollTo(0, 0);
+    }).catch(function () {
+      busy = false; $("send").textContent = F.t("rSend"); $("msg").textContent = F.t("rFail");
+    });
+  });
+
+  F.onLang(drawPick);
+  F.apply();
+})();
+</script>
+</body>
+</html>
