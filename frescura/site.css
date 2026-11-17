@@ -29,6 +29,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .top { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
 .mark { font-family: var(--display); font-size: 26px; font-weight: 500; letter-spacing: -0.01em; text-decoration: none; }
 .mark i { font-style: italic; color: var(--peach); }
+.mark { display: inline-flex; align-items: center; gap: 10px; }
+.mark img { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); object-fit: cover; }
+.seal { width: 132px; height: 132px; margin: 0 auto 16px; border-radius: 50%; border: 1px solid var(--line); object-fit: cover; }
 .lang { display: flex; gap: 2px; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--card); }
 .lang button { border: 0; background: none; border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--soft); min-height: 34px; }
 .lang button[aria-pressed="true"] { background: var(--leaf); color: #fff; }
