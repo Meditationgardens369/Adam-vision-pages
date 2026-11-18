@@ -12,8 +12,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600;700;800;900&display=swap">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="assets/three.min.js"></script>
+<script src="assets/qrcode.min.js"></script>
 <style>
 /* Matthias, in English. A guided journey in nine stops, each a 3D stage beside a glass card.
    Light only, in the Regenbogenkreis colours. Channel, Telegram and shop figures were read
@@ -94,21 +94,63 @@ section{padding:96px 0;position:relative}
 .chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);background:var(--glass2);border-radius:999px;padding:8px 14px;font:700 13px var(--sans);transition:background .2s,color .2s,border-color .2s}
 button.chip[aria-pressed="true"],button.chip[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
 
-/* hero */
-.hero{padding:56px 0 30px;min-height:calc(100vh - 60px);display:flex;align-items:center}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:20px;align-items:center;width:100%}
-@media(max-width:900px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
+/* hero: the forest opens the page */
+.hero{padding:0;position:relative}
+.hero h1,.hero .lede{color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.5)}
+.hero h1 em{color:var(--sun)}
+.hero .lede{font-size:clamp(17px,1.5vw,21px);max-width:44ch}
+.hero .forest .kicker{color:#fff}
+.hero .btn.ghost{background:rgba(255,253,247,.92);border-color:transparent}
 .hero h1 span{display:inline-block;opacity:0;transform:translateY(26px) rotate(2deg);animation:word .9s cubic-bezier(.2,.7,.2,1) forwards}
 @keyframes word{to{opacity:1;transform:none}}
 .hero h1.done span{opacity:1;transform:none;animation:none}
 .rbline{height:5px;width:230px;border-radius:3px;background:var(--rb);margin:22px 0 0}
 .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
-.globe{position:relative;aspect-ratio:1/1;max-width:640px;width:100%;margin-inline:auto}
+.forest{position:relative;z-index:2;min-height:calc(100vh - 84px);margin:12px clamp(10px,1.4vw,22px) 0;border-radius:40px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(34,65,48,.65);background:#16261d;--r:200px;display:flex;align-items:center}
+.fpar{position:absolute;left:0;right:0;top:-10%;bottom:-10%;will-change:transform}
+.fzoom{position:absolute;inset:0;animation:ken 46s ease-in-out infinite alternate;transform-origin:62% 50%}
+@keyframes ken{from{transform:scale(1.02)}to{transform:scale(1.16)}}
+.fzoom img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.fgrey{filter:grayscale(1) brightness(.55) contrast(.95)}
+.fcol{filter:saturate(1.3) brightness(1.12);-webkit-mask-image:radial-gradient(circle at 64% 50%,#000 calc(var(--r) - 46px),transparent var(--r));mask-image:radial-gradient(circle at 64% 50%,#000 calc(var(--r) - 46px),transparent var(--r))}
+.fring{position:absolute;left:64%;top:50%;width:calc(var(--r)*2);height:calc(var(--r)*2);margin:calc(var(--r)*-1) 0 0 calc(var(--r)*-1);border-radius:50%;border:2px solid rgba(254,193,2,.9);box-shadow:0 0 60px rgba(254,193,2,.5),inset 0 0 60px rgba(254,193,2,.22);pointer-events:none}
+.mist{position:absolute;inset:0;pointer-events:none;background:radial-gradient(40% 26% at 20% 30%,rgba(255,255,255,.22),transparent 70%),radial-gradient(34% 22% at 78% 62%,rgba(255,255,255,.2),transparent 70%),radial-gradient(30% 18% at 55% 14%,rgba(255,255,255,.18),transparent 70%);background-size:160% 100%;animation:drift 38s linear infinite alternate;mix-blend-mode:screen}
+@keyframes drift{from{background-position:0 0}to{background-position:100% 0}}
+.forest::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(10,22,16,.72),rgba(10,22,16,.3) 46%,transparent 70%),linear-gradient(rgba(10,22,16,.25),transparent 30%,transparent 62%,rgba(10,22,16,.5));border-radius:inherit}
+.heroin{position:relative;z-index:2;width:100%;padding:clamp(34px,7vh,80px) clamp(22px,5vw,76px) clamp(60px,12vh,130px)}
+.heroin>div{max-width:min(760px,58%)}
+.hud{position:absolute;right:clamp(26px,4vw,70px);bottom:clamp(22px,5vh,54px);z-index:4;width:min(476px,calc(100% - 52px));padding:20px 22px 16px;background:rgba(255,253,247,.93);border-radius:26px;box-shadow:var(--sh2);backdrop-filter:blur(12px)}
+.hud .kicker{margin-bottom:10px}
+.hudrow{display:flex;align-items:flex-end;gap:14px}
+.fy{font:400 68px/.86 var(--serif);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.fn b{display:block;font:600 clamp(21px,2vw,28px)/1 var(--serif);color:var(--teal);font-variant-numeric:tabular-nums;letter-spacing:-.02em;white-space:nowrap}
+.fn i{display:block;font:italic 400 19px/1.15 var(--serif);margin-top:5px}
+.fslide{margin-top:14px}
+.fslide input{width:100%;accent-color:var(--teal);display:block;margin:0;height:22px}
+.fticks{display:flex;justify-content:space-between;font:700 11px var(--sans);color:var(--mut);margin-top:2px}
+.frow2{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:12px}
+.frow2 .chip{padding:6px 11px;font-size:12px}
+.hudfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px}
+.hudfoot .tiny{font-size:11.5px;line-height:1.35}
+#fplay{flex:none;border:1px solid var(--line2);background:#fff;border-radius:999px;padding:7px 13px;font:800 12px var(--sans)}
+#fplay:hover{border-color:var(--teal)}
+@media(max-width:900px){
+  .forest{min-height:74vh;border-radius:28px;align-items:flex-start}
+  .heroin{padding:40px 22px 110px}
+  .heroin>div{max-width:none}
+  .forest::after{background:linear-gradient(rgba(10,22,16,.66),rgba(10,22,16,.28) 60%,rgba(10,22,16,.5))}
+  .hud{position:relative;right:auto;bottom:auto;margin:-84px auto 0;width:calc(100% - 28px)}
+  .fy{font-size:50px}.fn b{font-size:19px}.fn i{font-size:17px}.hudrow{gap:10px}
+  .fcol{-webkit-mask-image:radial-gradient(circle at 50% 64%,#000 calc(var(--r) - 46px),transparent var(--r));mask-image:radial-gradient(circle at 50% 64%,#000 calc(var(--r) - 46px),transparent var(--r))}
+  .fring{left:50%;top:64%}
+}
+.globe{position:relative;aspect-ratio:1/1;max-width:600px;width:100%;margin-inline:auto}
 .globe::before{content:"";position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(254,193,2,.34),rgba(254,193,2,.06) 55%,transparent 70%);filter:blur(6px)}
 .globe canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .glabel{position:absolute;left:0;top:0;font:700 11.5px var(--sans);background:var(--glass2);border:1px solid var(--line);border-radius:999px;padding:4px 9px;box-shadow:var(--sh1);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .4s;will-change:transform}
 .glabel.on{opacity:1}
 .glabel.home{background:var(--sun);border-color:var(--sun)}
+.guide b.n{display:block;font:600 clamp(34px,5vw,56px)/1 var(--serif);letter-spacing:-.02em}
 
 /* wins */
 .wins{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;perspective:1200px;margin-top:26px}
@@ -117,31 +159,6 @@ button.chip[aria-pressed="true"],button.chip[aria-selected="true"]{background:va
 .win::after{content:"";position:absolute;right:-30%;bottom:-70%;width:180px;height:180px;border-radius:50%;background:#fff;opacity:.5;filter:blur(24px)}
 .win b{display:block;font:600 clamp(28px,4vw,44px)/1 var(--serif);letter-spacing:-.02em;position:relative}
 .win span{display:block;font-size:14px;color:var(--mut);margin-top:8px;position:relative}
-.forest{position:relative;z-index:2;height:min(88vh,900px);margin:34px clamp(10px,2vw,28px) 0;border-radius:40px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(34,65,48,.65);background:#16261d;--r:200px}
-.fpar{position:absolute;left:0;right:0;top:-10%;bottom:-10%;will-change:transform}
-.fzoom{position:absolute;inset:0;animation:ken 46s ease-in-out infinite alternate;transform-origin:50% 55%}
-@keyframes ken{from{transform:scale(1.02)}to{transform:scale(1.16)}}
-.fzoom img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.fgrey{filter:grayscale(1) brightness(.6) contrast(.95)}
-.fcol{filter:saturate(1.3) brightness(1.14);-webkit-mask-image:radial-gradient(circle at 50% 55%,#000 calc(var(--r) - 46px),transparent var(--r));mask-image:radial-gradient(circle at 50% 55%,#000 calc(var(--r) - 46px),transparent var(--r))}
-.fring{position:absolute;left:50%;top:55%;width:calc(var(--r)*2);height:calc(var(--r)*2);margin:calc(var(--r)*-1) 0 0 calc(var(--r)*-1);border-radius:50%;border:2px solid rgba(254,193,2,.9);box-shadow:0 0 60px rgba(254,193,2,.5),inset 0 0 60px rgba(254,193,2,.22);pointer-events:none}
-.mist{position:absolute;inset:0;pointer-events:none;background:radial-gradient(40% 26% at 20% 30%,rgba(255,255,255,.26),transparent 70%),radial-gradient(34% 22% at 78% 62%,rgba(255,255,255,.2),transparent 70%),radial-gradient(30% 18% at 55% 14%,rgba(255,255,255,.18),transparent 70%);background-size:160% 100%;animation:drift 38s linear infinite alternate;mix-blend-mode:screen}
-@keyframes drift{from{background-position:0 0}to{background-position:100% 0}}
-.forest::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(10,22,16,.28),transparent 26%,transparent 44%,rgba(10,22,16,.78));border-radius:inherit}
-.fhud{position:absolute;left:clamp(20px,5vw,70px);right:clamp(20px,5vw,70px);bottom:158px;z-index:2;color:#fff;display:flex;align-items:flex-end;gap:clamp(14px,3vw,44px);flex-wrap:wrap;text-shadow:0 2px 30px rgba(0,0,0,.6)}
-.fy{font:400 clamp(92px,16vw,230px)/.8 var(--serif);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-.fn b{display:block;font:600 clamp(30px,5.4vw,76px)/1 var(--serif);color:var(--sun);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.fn i{display:block;font:italic 400 clamp(22px,3.2vw,42px)/1.1 var(--serif);margin-top:10px}
-.ftag{position:absolute;left:clamp(20px,5vw,70px);top:26px;z-index:2;color:#fff;font:700 12px var(--sans);letter-spacing:.16em;text-transform:uppercase;text-shadow:0 2px 14px rgba(0,0,0,.6)}
-.forestcard{position:relative;z-index:3;max-width:980px;margin:-118px auto 0;padding:22px 26px;background:rgba(255,253,247,.93)}
-.frow{display:flex;align-items:center;gap:18px}
-.frow .btn{flex:none;padding:11px 18px}
-.fslide{flex:1;min-width:0}
-.fslide input{width:100%;accent-color:var(--teal);display:block;margin:0;height:22px}
-.fticks{display:flex;justify-content:space-between;font:700 11.5px var(--sans);color:var(--mut);margin-top:2px}
-.frow2{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px}
-.frow2>b{font:800 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-right:4px}
-@media(max-width:700px){.forest{height:76vh;border-radius:26px}.fhud{bottom:140px;gap:6px}.forestcard{margin-top:-96px;padding:16px}.frow{flex-direction:column;align-items:stretch;gap:10px}}
 
 /* videos: flip cards */
 .vhead{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:22px}
@@ -404,21 +421,40 @@ footer p{max-width:100ch;margin-bottom:8px}
 </nav>
 
 <section class="hero" id="top">
-  <div class="wrap">
-    <div>
+  <div class="forest" id="forest">
+    <div class="fpar" id="fpar"><div class="fzoom">
+      <img class="fgrey" src="assets/rainforest-canopy-2400.jpg" srcset="assets/rainforest-canopy-1400.jpg 1400w, assets/rainforest-canopy-2400.jpg 2400w" sizes="100vw" alt="" aria-hidden="true">
+      <img class="fcol" src="assets/rainforest-canopy-2400.jpg" srcset="assets/rainforest-canopy-1400.jpg 1400w, assets/rainforest-canopy-2400.jpg 2400w" sizes="100vw" alt="Mist rising from a dense tropical rainforest canopy, seen from the air">
+      <div class="fring" aria-hidden="true"></div>
+    </div></div>
+    <div class="mist" aria-hidden="true"></div>
+    <div class="heroin"><div>
       <div class="kicker">A plan from Brigitte and Adam</div>
       <h1 id="h1"><span>Your</span> <span>voice,</span><br><em><span>in</span> <span>English.</span></em></h1>
       <div class="rbline"></div>
-      <p class="lede">45 million views, every one of them in German. The conversations already exist. They only need to travel.</p>
+      <p class="lede">45 million views and a protected rainforest more than twice the size of Berlin. Outside the German-speaking world, almost nobody knows.</p>
       <div class="cta"><a class="btn" href="#videos">See your titles in English</a><a class="btn ghost" href="#start">Pick your first six</a></div>
+    </div></div>
+  </div>
+  <div class="hud" id="hud">
+    <div class="kicker">Rainforest you have protected</div>
+    <div class="hudrow">
+      <div class="fy" id="fy">2020</div>
+      <div class="fn"><b><span id="fa">161,000,000</span> m²</b><i id="fc">0.2 times Berlin</i></div>
     </div>
-    <div class="globe" id="globe" role="img" aria-label="A globe with lines travelling from Germany to English-speaking cities">
-      <canvas id="gl"></canvas>
+    <div class="fslide"><input type="range" id="fr" min="0" max="1000" value="0" aria-label="Year, from 2020 to 2026"><div class="fticks" aria-hidden="true"><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div></div>
+    <div class="frow2" id="fchips" role="group" aria-label="Show it as">
+      <button class="chip" type="button" aria-pressed="true" data-m="berlin">Berlin</button>
+      <button class="chip" type="button" aria-pressed="false" data-m="tokyo">Tokyo</button>
+      <button class="chip" type="button" aria-pressed="false" data-m="nyc">New York</button>
+      <button class="chip" type="button" aria-pressed="false" data-m="man">Manhattan</button>
+      <button class="chip" type="button" aria-pressed="false" data-m="pitch">Pitches</button>
     </div>
+    <div class="hudfoot"><p class="tiny">2020 and 2026 are your published figures. The years between are drawn in.</p><button type="button" id="fplay">Replay</button></div>
   </div>
 </section>
 
-<section id="wins" style="padding-top:40px">
+<section id="wins">
   <div class="wrap">
     <div class="kicker">Where you stand today</div>
     <h2 class="rv">Built in German. <em>All of it real.</em></h2>
@@ -431,35 +467,6 @@ footer p{max-width:100ch;margin-bottom:8px}
       <div class="win rv" style="--c:var(--sky-s)"><b data-n="60" data-suf="K+">0</b><span>newsletter readers</span></div>
       <div class="win rv" style="--c:var(--sun-s)"><b>Bestseller</b><span>Reise in die Freiheit, Spiegel list</span></div>
       <div class="win rv" style="--c:var(--teal-s)"><b>0</b><span>of it in English, so far</span></div>
-    </div>
-    </div>
-  <div class="forest rv" id="forest">
-    <div class="fpar" id="fpar"><div class="fzoom">
-      <img class="fgrey" src="assets/rainforest-canopy-2400.jpg" srcset="assets/rainforest-canopy-1400.jpg 1400w, assets/rainforest-canopy-2400.jpg 2400w" sizes="100vw" alt="" aria-hidden="true">
-      <img class="fcol" src="assets/rainforest-canopy-2400.jpg" srcset="assets/rainforest-canopy-1400.jpg 1400w, assets/rainforest-canopy-2400.jpg 2400w" sizes="100vw" alt="Mist rising from a dense tropical rainforest canopy, seen from the air">
-      <div class="fring" aria-hidden="true"></div>
-    </div></div>
-    <div class="mist" aria-hidden="true"></div>
-    <div class="ftag">Rainforest you have protected</div>
-    <div class="fhud">
-      <div class="fy" id="fy">2020</div>
-      <div class="fn"><b><span id="fa">161,000,000</span> m²</b><i id="fc">0.2 times Berlin</i></div>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="forestcard glass rv">
-      <div class="frow">
-        <button class="btn" type="button" id="fplay">Play 2020 to 2026</button>
-        <div class="fslide"><input type="range" id="fr" min="0" max="1000" value="0" aria-label="Year, from 2020 to 2026"><div class="fticks" aria-hidden="true"><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div></div>
-      </div>
-      <div class="frow2" id="fchips"><b>Show it as</b>
-        <button class="chip" type="button" aria-pressed="true" data-m="berlin">Berlin</button>
-        <button class="chip" type="button" aria-pressed="false" data-m="tokyo">Tokyo</button>
-        <button class="chip" type="button" aria-pressed="false" data-m="nyc">New York</button>
-        <button class="chip" type="button" aria-pressed="false" data-m="man">Manhattan</button>
-        <button class="chip" type="button" aria-pressed="false" data-m="pitch">Football pitches</button>
-      </div>
-      <p class="tiny" style="margin-top:12px">The 2020 and 2026 figures are your published numbers. The years between are drawn in.</p>
     </div>
   </div>
 </section>
@@ -475,15 +482,22 @@ footer p{max-width:100ch;margin-bottom:8px}
       <button class="btn ghost" type="button" id="flipall">Flip all to English</button>
     </div>
     <div class="vids" id="vids"></div>
-    <div class="tally">
-      <div class="tbox glass rv"><b class="n" data-n="1062175" data-sep="1">0</b><p class="lede" style="margin-top:8px">German views on these eight alone. Their English versions do not exist yet.</p></div>
-      <div class="tbox glass rv">
-        <h3>Who could understand them</h3>
+    <div class="stop" style="margin-top:46px">
+      <div class="guide glass rv">
+        <div class="kicker">Where they could travel</div>
+        <b class="n" data-n="1062175" data-sep="1">0</b>
+        <p class="lede" style="margin-top:8px">German views on these eight alone. Their English versions do not exist yet.</p>
+        <h3 style="margin-top:24px">Who could understand them</h3>
         <div class="bars">
           <div class="barrow"><span>German</span><div class="bar"><i style="--c:var(--sun);--w:.09"></i></div><span>about 130 million</span></div>
           <div class="barrow"><span>English</span><div class="bar"><i style="--c:var(--teal);--w:1"></i></div><span>about 1.5 billion</span></div>
         </div>
         <p class="tiny" style="margin-top:12px">Speakers worldwide, first and second language. Nobody can promise reach. The room is simply bigger.</p>
+      </div>
+      <div class="stage rv">
+        <div class="globe" id="globe" role="img" aria-label="A globe with lines travelling from Germany to English-speaking cities">
+          <canvas id="gl"></canvas>
+        </div>
       </div>
     </div>
   </div>
@@ -725,7 +739,7 @@ footer p{max-width:100ch;margin-bottom:8px}
   function fset(k){fk=k;var a=k>=1?A1:A0*Math.pow(A1/A0,k);
     fy.textContent=2020+Math.min(6,Math.floor(k*6+1e-6));
     farea.textContent=(Math.round(a/1e6)*1e6).toLocaleString('en-US');fc.textContent=CMP[fmode](a);
-    var w=F.clientWidth,h=F.clientHeight*1.2,R=Math.sqrt(w*w+h*h)/2*1.12;
+    var w=F.clientWidth,h=F.clientHeight*1.2,R=Math.sqrt(w*w+h*h)/2*1.5;
     F.style.setProperty('--r',(k>=1?R+80:R*Math.sqrt(a/A1))+'px');fr.value=Math.round(k*1000)}
   function fgo(){cancelAnimationFrame(fraf);var t0=performance.now();(function f(t){var k=Math.min(1,(t-t0)/8000);fset(k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2);if(k<1)fraf=requestAnimationFrame(f)})(t0)}
   fr.addEventListener('input',function(){cancelAnimationFrame(fraf);fset(fr.value/1000)});
@@ -733,7 +747,7 @@ footer p{max-width:100ch;margin-bottom:8px}
   var fch=[].slice.call(document.querySelectorAll('#fchips .chip'));
   fch.forEach(function(c){c.addEventListener('click',function(){fch.forEach(function(x){x.setAttribute('aria-pressed','false')});c.setAttribute('aria-pressed','true');fmode=c.dataset.m;fset(fk)})});
   addEventListener('resize',function(){fset(fk)});
-  if(reduce)fset(1);else{fset(0);new IntersectionObserver(function(es,ob){if(es[0].isIntersecting){ob.disconnect();setTimeout(fgo,500)}},{threshold:.45}).observe(F)}
+  if(reduce)fset(1);else{fset(0);setTimeout(fgo,1100)}
 
   /* ---------- videos ---------- */
   var V=[
@@ -881,7 +895,7 @@ footer p{max-width:100ch;margin-bottom:8px}
     mk.onload=function(){try{var W=360,Hh=180,c=document.createElement('canvas');c.width=W;c.height=Hh;var x=c.getContext('2d');x.fillStyle='#000';x.fillRect(0,0,W,Hh);x.drawImage(mk,0,0,W,Hh);var d=x.getImageData(0,0,W,Hh).data;
       function val(lat,lon){var u=Math.min(W-1,Math.max(0,Math.floor((lon+180)/360*W))),v=Math.min(Hh-1,Math.max(0,Math.floor((90-lat)/180*Hh)));return d[(v*W+u)*4]}
       var water=val(0,-150);buildDots(function(lat,lon){return Math.abs(val(lat,lon)-water)>90})}catch(e){}};
-    mk.src='https://cdn.jsdelivr.net/npm/three-globe@2.31.0/example/img/earth-water.png';
+    mk.src='assets/earth-water.png';
     var home=ll(51.2,10.4,R),C=[['London',51.5,-.1],['New York',40.7,-74],['Vancouver',49.3,-123.1],['Los Angeles',34,-118.2],['Lagos',6.5,3.4],['Cape Town',-33.9,18.4],['Mumbai',19.1,72.9],['Singapore',1.35,103.8],['Sydney',-33.9,151.2],['Auckland',-36.8,174.7]];
     function disc(v,col,s){var m=new THREE.Mesh(new THREE.CircleGeometry(s,28),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:.95,side:THREE.DoubleSide}));m.position.copy(v.clone().multiplyScalar(1.008));m.lookAt(0,0,0);g.add(m);return m}
     var hm=disc(home,0xfec102,.085),hring=new THREE.Mesh(new THREE.RingGeometry(.1,.125,40),new THREE.MeshBasicMaterial({color:0xfec102,transparent:true,opacity:.8,side:THREE.DoubleSide}));hring.position.copy(hm.position);hring.lookAt(0,0,0);g.add(hring);
