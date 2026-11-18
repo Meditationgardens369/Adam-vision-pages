@@ -3,473 +3,770 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Regenbogenkreis in English, a plan for Matthias</title>
+<title>Matthias, in English</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="How one German recording a week could become an English channel, three handles, nine landing pages and a weekly letter, run by Brigitte and Adam.">
-<meta name="color-scheme" content="light">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23fec102'/><rect x='30' y='30' width='40' height='40' fill='%23224130'/></svg>">
+<meta name="description" content="How the conversations Matthias already records could travel into English: his own titles, three handles, landing pages, a letter and the shop.">
+<meta name="theme-color" content="#fffdf7">
+<meta name="color-scheme" content="light only">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='36' fill='none' stroke='%23fec102' stroke-width='14'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600;700;800;900&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-/* Hallmark · shape: Split Studio · genre: editorial · theme: Editorial (deal 1/3, seed english-content-engine-vision-f2f4·ce47a9aa·2026-11-18·r0) · job: hire · draw: 8c01f5
- * hero: Banner · nav: floating bar · footer: index columns · imagery: photographs, library 4, natural · product sample in engine · signature: one recording traced through four stages in a working switcher
- * axes: light/display-condensed/chromatic-green · posture: full palette (ink forest, signal teal, seal sunflower on the one primary action and the picked state) · brand: Regenbogenkreis (spec 2026-10-25) · contrast: pass · fold: pass · v2.0.0 */
-/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: P, the first plan argued "more reach"; the head now leads with the limit he named himself, two million views all in German */
-/* Hallmark · answered F4 · the tab's ink fill and the topic's sunflower fill are selected states of a switcher and a toggle, the one filled action stays the hero's button */
-:root {
-  color-scheme: light;
-  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
-  --text-xs: 0.8125rem; --text-sm: 0.875rem; --text-md: 1rem; --text-body: 1.0625rem; --text-lg: 1.25rem; --text-xl: 1.5625rem; --text-2xl: 1.953rem; --text-3xl: 2.441rem;
-  --text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.75rem); --text-display: clamp(3rem, 6.2vw + 1rem, 6.5rem);
-  --text-section: clamp(2rem, 2.5vw + 1rem, 3.5rem); --text-title: clamp(1.25rem, 0.75vw + 0.875rem, 1.625rem); --text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.375rem);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
-  --color-error: oklch(52% 0.19 27); --color-success: oklch(50% 0.12 150);
-  --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
-  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
-  /* brand lock, from .hallmark/brand-spec.md: forest ink, teal signal, sunflower seal */
-  --color-paper: oklch(97.5% 0.010 125); --color-paper-2: oklch(94.5% 0.016 130); --color-paper-3: oklch(91.5% 0.020 132);
-  --color-ink: oklch(27% 0.045 159); --color-ink-2: oklch(34.6% 0.048 159); --color-muted: oklch(46% 0.028 155);
-  --color-rule: oklch(86% 0.018 135); --color-rule-2: oklch(64% 0.024 145);
-  --color-accent: oklch(48% 0.095 180); --color-accent-ink: oklch(98% 0.008 150); --color-focus: oklch(50% 0.120 180);
-  --color-tint-mint: oklch(94.3% 0.043 167); --color-tint-leaf: oklch(95.3% 0.046 127); --color-tint-sun: oklch(95% 0.070 106);
-  --color-sun: oklch(84.3% 0.172 85); --color-sun-2: oklch(79% 0.168 82); --color-sun-ink: oklch(27% 0.045 159);
-  --font-display: "Bricolage Grotesque", ui-sans-serif, sans-serif; --font-body: "Figtree", ui-sans-serif, system-ui, sans-serif;
-  --radius-card: 0; --radius-pill: 0; --rule-hair: 1px; --rule-heavy: 4px; --shadow-card: none;
-  --tracking-display: -0.012em; --display-weight: 800;
-  --nav-height: 64px;
+/* Matthias, in English. A guided journey in nine stops, each a 3D stage beside a glass card.
+   Light only, in the Regenbogenkreis colours. Channel, Telegram and shop figures were read
+   live on 18 Nov 2026. English titles are translations to show the idea. Nothing here is
+   published in English yet, and plan quantities are proposals. */
+:root{
+  --paper:#fffdf7;--paper2:#f6f8ef;--ink:#224130;--mut:#55705f;--faint:#8ea296;
+  --line:rgba(34,65,48,.12);--line2:rgba(34,65,48,.22);
+  --teal:#108474;--teal-s:#d2f6e6;--sun:#fec102;--sun-s:#fff3c4;
+  --leaf:#3f8f4f;--leaf-s:#e7f6d5;--lilac:#7b5ea7;--lilac-s:#efe9fb;--rose:#c2557a;--rose-s:#fbe9f0;--sky:#3b6fd1;--sky-s:#e4edfb;
+  --glass:rgba(255,255,255,.72);--glass2:rgba(255,255,255,.92);
+  --sh1:0 1px 3px rgba(34,65,48,.06),0 10px 24px -14px rgba(34,65,48,.25);
+  --sh2:0 2px 6px rgba(34,65,48,.06),0 26px 60px -22px rgba(34,65,48,.35);
+  --serif:Fraunces,Georgia,serif;--sans:Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --rb:linear-gradient(90deg,#ff6b6b,#ffb347,#fec102,#7fd8a7,#6fc3ff,#b48cff,#ff7fc0);
+  --r:26px;color-scheme:light;
 }
-*, *::before, *::after { box-sizing: border-box; }
-html, body { overflow-x: clip; }
-html { scrollbar-color: var(--color-muted) var(--color-paper); scroll-padding-top: var(--space-4xl); scroll-behavior: smooth; }
-body { margin: 0; background: var(--color-paper); color: var(--color-ink-2); font-family: var(--font-body); font-size: var(--text-body); line-height: 1.55; -webkit-font-smoothing: antialiased; caret-color: var(--color-accent); }
-::selection { background: color-mix(in oklab, var(--color-accent) 22%, transparent); }
-:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
-a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: var(--color-rule-2); }
-a:hover { text-decoration-color: var(--color-accent); }
-h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: var(--display-weight); font-variation-settings: "wdth" 75, "opsz" 96; font-synthesis: none; letter-spacing: var(--tracking-display); line-height: 1; color: var(--color-ink); overflow-wrap: break-word; min-width: 0; text-wrap: balance; font-variant-numeric: lining-nums tabular-nums; }
-h1 { max-width: 26ch; font-size: var(--text-display); line-height: 0.92; }
-h2 { max-width: 16ch; font-size: var(--text-section); }
-h3 { max-width: 40ch; font-size: var(--text-title); line-height: 1.1; }
-.lead { font-size: var(--text-lead); line-height: 1.4; max-width: 34ch; color: var(--color-ink); }
-p { margin: 0; text-wrap: pretty; }
-p:not([class]) { max-width: 65ch; }
-img, video { max-width: 100%; height: auto; display: block; }
-svg { display: block; }
-[hidden] { display: none !important; }
-button, input, select, textarea { font: inherit; }
-.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
-.num { font-variant-numeric: tabular-nums; }
-.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-[data-slot] { position: relative; overflow: hidden; background: linear-gradient(160deg, var(--color-paper-2), var(--color-paper-3)); }
-[data-slot] > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: var(--z-base); filter: saturate(0.9) contrast(1.04); outline: 1px solid color-mix(in oklab, var(--color-ink) 8%, transparent); outline-offset: -1px; }
-@media (max-width: 60rem) { :root { --gutter: 24px; --section-gap-s: 80px; --section-gap: 96px; --section-gap-l: 120px; } }
-@media (max-width: 40rem) { :root { --gutter: 16px; --section-gap-s: 56px; --section-gap: 72px; --section-gap-l: 96px; --gap-columns: 16px; } }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *:not(.keep-motion), *:not(.keep-motion)::before, *:not(.keep-motion)::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:10px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;margin:0;text-wrap:balance;line-height:1.04}
+h1{font-size:clamp(46px,8.4vw,104px)}
+h2{font-size:clamp(34px,5.4vw,60px)}
+h3{font-size:22px;font-weight:600;line-height:1.15}
+em{font-style:italic;color:var(--teal)}
+p{margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:max(18px,env(safe-area-inset-left,0px));position:relative;z-index:2}
+.kicker{display:inline-flex;gap:10px;align-items:center;font:700 11.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.kicker::before{content:"";width:22px;height:2px;background:var(--sun)}
+.lede{font-size:18px;color:var(--mut);max-width:52ch;margin-top:14px}
+.tiny{font-size:12.5px;color:var(--faint)}
+section{padding:96px 0;position:relative}
+@media(max-width:700px){section{padding:64px 0}}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--sun);background:var(--sun);color:var(--ink);border-radius:999px;padding:13px 22px;font-weight:800;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(254,193,2,.9)}
+.btn.ghost{background:var(--glass);border-color:var(--line2);font-weight:700;backdrop-filter:blur(8px)}
+.btn.ghost:hover{border-color:var(--teal);box-shadow:none}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
 
-/* controls */
-.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 var(--space-lg); border: var(--rule-hair) solid var(--color-ink); border-radius: var(--radius-pill); background: var(--color-sun); color: var(--color-sun-ink); font: 600 var(--text-md)/1 var(--font-body); white-space: nowrap; text-decoration: none; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
-.btn:hover { background: var(--color-sun-2); }
-.btn:active { transform: translateY(1px); }
-.btn:disabled, .btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; transform: none; }
-.btn--quiet { background: transparent; color: var(--color-ink); }
-.btn--quiet:hover { background: var(--color-paper-2); }
-.skip { position: absolute; left: var(--space-md); top: calc(-1 * var(--space-3xl)); z-index: var(--z-toast); padding: var(--space-xs) var(--space-md); background: var(--color-ink); color: var(--color-paper); }
-.skip:focus-visible { top: var(--space-md); }
+/* living background */
+.aura{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(46% 36% at 8% 0%,rgba(254,193,2,.20),transparent 70%),
+  radial-gradient(40% 40% at 100% 22%,rgba(16,132,116,.14),transparent 70%),
+  radial-gradient(46% 40% at 40% 100%,rgba(123,94,167,.12),transparent 70%)}
+.ring{position:fixed;z-index:0;pointer-events:none;border-radius:50%;background:conic-gradient(from 0deg,#ff6b6b,#ffb347,#fec102,#7fd8a7,#6fc3ff,#b48cff,#ff7fc0,#ff6b6b);
+  -webkit-mask:radial-gradient(circle,transparent 60%,#000 62%,#000 69%,transparent 71%);mask:radial-gradient(circle,transparent 60%,#000 62%,#000 69%,transparent 71%);filter:blur(10px);opacity:.34;animation:spin 90s linear infinite;will-change:transform}
+.ring.a{width:min(96vw,820px);height:min(96vw,820px);top:-30vh;right:-20vw}
+.ring.b{width:min(60vw,440px);height:min(60vw,440px);bottom:-20vh;left:-14vw;opacity:.2;animation-duration:130s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+#pollen{position:fixed;inset:0;z-index:1;pointer-events:none}
 
-/* nav: one floating bar, a wordmark and one action */
-.nav { position: sticky; top: var(--space-md); z-index: var(--z-sticky-nav); margin-top: var(--space-md); }
-.nav__bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); min-height: var(--nav-height); padding: 0 var(--space-md) 0 var(--space-lg); background: var(--color-paper); border: var(--rule-hair) solid var(--color-ink); }
-.wordmark { font-family: var(--font-display); font-weight: var(--display-weight); font-variation-settings: "wdth" 75, "opsz" 24; font-size: var(--text-xl); line-height: 1; color: var(--color-ink); text-decoration: none; white-space: nowrap; }
-.nav .btn { min-height: 44px; padding: 0 var(--space-md); }
+/* rail */
+.rail{position:sticky;top:0;z-index:30;background:rgba(255,253,247,.84);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.rail .wrap{display:flex;align-items:center;gap:14px;padding-block:10px}
+.brand{font:600 19px var(--serif);white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:8px}
+.brand i{width:18px;height:18px;border-radius:50%;background:conic-gradient(#ff6b6b,#ffb347,#fec102,#7fd8a7,#6fc3ff,#b48cff,#ff7fc0,#ff6b6b);-webkit-mask:radial-gradient(circle,transparent 42%,#000 46%);mask:radial-gradient(circle,transparent 42%,#000 46%)}
+.stops{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0;padding:4px 2px}
+.stops::-webkit-scrollbar{display:none}
+.stops a{flex:none;text-decoration:none;font:600 13px var(--sans);color:var(--mut);padding:7px 12px;border-radius:999px;border:1px solid transparent;transition:background .2s,color .2s,border-color .2s}
+.stops a.on{background:var(--ink);color:#fff}
+.stops a:hover{border-color:var(--line2)}
+.rail .btn{padding:9px 16px;font-size:14px;flex:none}
+@media(max-width:640px){.brand span{display:none}}
 
-/* hero: a banner, the head leads with the limit */
-.hero { padding-block: var(--space-3xl) var(--space-2xl); }
-.hero .lead { margin-top: var(--space-lg); max-width: 40ch; }
-.hero .btn { margin-top: var(--space-xl); }
+/* glass card + stage */
+.glass{background:var(--glass);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);box-shadow:var(--sh2);border-radius:var(--r)}
+.stop{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:36px;align-items:center}
+.stop.flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.guide{padding:28px}
+.guide h2{font-size:clamp(30px,4vw,46px)}
+.guide .lede{font-size:17px}
+.guide .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.stage{perspective:1400px;position:relative}
+@media(max-width:900px){.stop,.stop.flip{grid-template-columns:minmax(0,1fr)}.stop.flip .guide{order:-1}}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);background:var(--glass2);border-radius:999px;padding:8px 14px;font:700 13px var(--sans);transition:background .2s,color .2s,border-color .2s}
+button.chip[aria-pressed="true"],button.chip[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
 
-/* split rows: text on the left, proof on the right, all the way down */
-.row { padding-block: var(--section-gap-s); }
-.row--roomy { padding-block: var(--section-gap); }
-.row--wide { padding-block: var(--section-gap-l) var(--section-gap); }
-.row__grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); column-gap: var(--space-2xl); row-gap: var(--space-xl); align-items: start; }
-.row__grid--lead { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-.opens { border-top: var(--rule-heavy) solid var(--color-ink); padding-top: var(--space-lg); }
-.hairline { border-top: var(--rule-hair) solid var(--color-rule-2); padding-top: var(--space-lg); }
-.row__text .lead { margin-top: var(--space-lg); }
-.row__text .btn { margin-top: var(--space-xl); }
-.well { background: var(--color-paper-2); border-top: var(--rule-hair) solid var(--color-rule-2); }
+/* hero */
+.hero{padding:56px 0 30px;min-height:calc(100vh - 60px);display:flex;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:20px;align-items:center;width:100%}
+@media(max-width:900px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
+.hero h1 span{display:inline-block;opacity:0;transform:translateY(26px) rotate(2deg);animation:word .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes word{to{opacity:1;transform:none}}
+.hero h1.done span{opacity:1;transform:none;animation:none}
+.rbline{height:5px;width:230px;border-radius:3px;background:var(--rb);margin:22px 0 0}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.globe{position:relative;aspect-ratio:1/1;max-width:640px;width:100%;margin-inline:auto}
+.globe::before{content:"";position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(254,193,2,.34),rgba(254,193,2,.06) 55%,transparent 70%);filter:blur(6px)}
+.globe canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.glabel{position:absolute;left:0;top:0;font:700 11.5px var(--sans);background:var(--glass2);border:1px solid var(--line);border-radius:999px;padding:4px 9px;box-shadow:var(--sh1);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .4s;will-change:transform}
+.glabel.on{opacity:1}
+.glabel.home{background:var(--sun);border-color:var(--sun)}
 
-/* switcher */
-.seg { display: flex; flex-wrap: nowrap; overflow-x: auto; margin-bottom: var(--space-md); }
-.seg button { flex: none; min-height: 44px; padding: 0 var(--space-md); border: var(--rule-hair) solid var(--color-ink); border-right-width: 0; background: transparent; color: var(--color-ink); font: 600 var(--text-sm)/1 var(--font-body); white-space: nowrap; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out); }
-.seg button:last-child { border-right-width: var(--rule-hair); }
-.seg button:hover { background: var(--color-paper-2); }
-.seg button[aria-selected="true"] { background: var(--color-ink); color: var(--color-paper); }
-.seg button:disabled { opacity: 0.55; cursor: not-allowed; }
-.board { background: none; }
-.tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-xs); }
-.tile { display: flex; flex-direction: column; justify-content: space-between; min-height: 112px; padding: var(--space-sm) var(--space-md); background: var(--color-paper-2); transition: opacity var(--dur-short) var(--ease-out); }
-.tile b { font-weight: 600; line-height: 1.2; color: var(--color-ink); }
-.tile span { font-size: var(--text-sm); line-height: 1.3; color: var(--color-ink-2); }
-.tile--source { background: var(--color-ink); }
-.tile--source b, .tile--source span { color: var(--color-paper); }
-.tile--rooted { background: var(--color-tint-mint); }
-.tile--gut { background: var(--color-tint-leaf); }
-.tile--kitchen { background: var(--color-tint-sun); }
-.js .tile:not(.is-on) { opacity: 0.25; }
-.board__note { margin-top: var(--space-lg); font-size: var(--text-lead); line-height: 1.4; color: var(--color-ink); max-width: 40ch; min-height: 2lh; }
-.facts { margin: 0; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
-.facts dt, .facts dd { margin: 0; padding-block: var(--space-sm); border-top: var(--rule-hair) solid var(--color-rule-2); }
-.facts dt { font-weight: 600; color: var(--color-ink); padding-right: var(--space-md); }
+/* wins */
+.wins{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;perspective:1200px;margin-top:26px}
+@media(max-width:900px){.wins{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.win{padding:20px;border-radius:22px;background:var(--c,var(--sun-s));box-shadow:var(--sh1);transform-style:preserve-3d;transition:transform .25s ease-out,opacity .8s;position:relative;overflow:hidden}
+.win::after{content:"";position:absolute;right:-30%;bottom:-70%;width:180px;height:180px;border-radius:50%;background:#fff;opacity:.5;filter:blur(24px)}
+.win b{display:block;font:600 clamp(28px,4vw,44px)/1 var(--serif);letter-spacing:-.02em;position:relative}
+.win span{display:block;font-size:14px;color:var(--mut);margin-top:8px;position:relative}
+.band{margin-top:22px;border-radius:var(--r);overflow:hidden;height:300px;position:relative;box-shadow:var(--sh2)}
+.band img{position:absolute;left:0;top:-15%;width:100%;height:130%;object-fit:cover;object-position:50% 55%;will-change:transform}
+.bandcap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:15px;color:var(--mut);align-items:baseline}
+.bandcap b{color:var(--ink);font:600 20px var(--serif)}
 
-/* handles */
-.photo { margin: 0; aspect-ratio: 4 / 3; min-height: 360px; }
-.caption { margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--color-muted); }
-.titles { list-style: none; margin: var(--space-lg) 0 0; padding: 0; }
-.titles li { padding-block: var(--space-sm); border-top: var(--rule-hair) solid var(--color-rule-2); font-weight: 600; color: var(--color-ink); }
+/* videos: flip cards */
+.vhead{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:22px}
+.vids{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media(max-width:1000px){.vids{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.vids{grid-template-columns:minmax(0,1fr)}}
+.vid{perspective:1200px;border:0;background:none;padding:0;text-align:left;display:block;width:100%}
+.vid .inner{display:grid;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.7,.2,1);height:100%}
+.vid.en .inner{transform:rotateY(180deg)}
+.vid:hover .inner{transform:rotateY(14deg)}
+.vid.en:hover .inner{transform:rotateY(166deg)}
+.vid .face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;background:#fff;box-shadow:var(--sh1);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column}
+.vid .back{transform:rotateY(180deg)}
+.thumb{aspect-ratio:16/9;width:100%;object-fit:cover;display:block;background:var(--paper2)}
+.vmeta{padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.vmeta b{font:700 14.5px/1.3 var(--sans)}
+.vmeta>span{font-size:12.5px;color:var(--mut);margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.lang{font:800 10px var(--sans);font-style:normal;letter-spacing:.12em;padding:3px 7px;border-radius:999px;background:var(--paper2);color:var(--mut)}
+.lang.en{background:var(--teal);color:#fff}
+.ethumb{display:block;aspect-ratio:16/9;width:100%;position:relative;overflow:hidden;background:var(--paper2)}
+.ethumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ethumb strong{position:absolute;left:0;right:0;top:0;height:29%;display:flex;align-items:center;padding:0 4%;background:linear-gradient(90deg,#6a2fb8,#a35fe6);color:#fff;font:800 clamp(15px,1.75vw,23px)/1 var(--sans);letter-spacing:-.02em;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.ethumb small{position:absolute;left:4%;bottom:6%;font:800 10px var(--sans);letter-spacing:.1em;background:var(--sun);color:var(--ink);border-radius:999px;padding:3px 8px}
+.tally{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:22px}
+@media(max-width:800px){.tally{grid-template-columns:minmax(0,1fr)}}
+.tbox{padding:22px 24px}
+.tbox b.n{display:block;font:600 clamp(34px,5vw,56px)/1 var(--serif);letter-spacing:-.02em}
+.bars{display:grid;gap:10px;margin-top:14px}
+.barrow{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:10px;align-items:center;font:700 13px var(--sans)}
+.bar{height:16px;border-radius:999px;background:var(--paper2);overflow:hidden}
+.bar i{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:left;border-radius:999px;background:var(--c);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.in .bar i{transform:scaleX(var(--w))}
 
-/* index of landing pages and the table */
-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-th, td { text-align: left; vertical-align: top; padding: var(--space-md) var(--space-md) var(--space-md) 0; border-bottom: var(--rule-hair) solid var(--color-rule); }
-thead th { font-size: var(--text-sm); font-weight: 600; color: var(--color-muted); border-bottom-color: var(--color-rule-2); white-space: nowrap; }
-tbody th { font-weight: 600; color: var(--color-ink); }
-.index tbody tr:first-child th { font-family: var(--font-display); font-weight: var(--display-weight); font-variation-settings: "wdth" 75, "opsz" 48; font-size: var(--text-title); line-height: 1.1; }
-.index td { color: var(--color-muted); white-space: nowrap; }
+/* engine flow */
+.flow{padding:22px;display:grid;grid-template-columns:minmax(0,3fr) 60px minmax(0,8fr);align-items:center;transform:rotateY(-6deg) rotateX(3deg);transform-style:preserve-3d;transition:transform .4s}
+.flow:hover{transform:none}
+@media(max-width:700px){.flow{grid-template-columns:minmax(0,1fr);transform:none;gap:14px}.wire{display:none}}
+.src{background:var(--ink);color:#fff;border-radius:20px;padding:18px;text-align:center;box-shadow:0 24px 40px -22px rgba(34,65,48,.8);transform:translateZ(30px)}
+.src b{display:block;font:600 30px var(--serif)}
+.src span{font-size:12.5px;opacity:.8}
+.wave{display:flex;gap:3px;align-items:center;justify-content:center;height:34px;margin:10px 0}
+.wave i{width:4px;height:30px;border-radius:2px;background:var(--sun);transform:scaleY(.25);animation:wv .9s ease-in-out infinite alternate}
+.wave i:nth-child(2n){animation-delay:.15s}.wave i:nth-child(3n){animation-delay:.3s}.wave i:nth-child(4n){animation-delay:.45s}.wave i:nth-child(5n){animation-delay:.6s}
+@keyframes wv{to{transform:scaleY(1)}}
+.wire{height:3px;background:repeating-linear-gradient(90deg,var(--teal) 0 8px,transparent 8px 16px);background-size:16px 3px;animation:dash 1s linear infinite;opacity:.7}
+@keyframes dash{to{background-position:16px 0}}
+.lanes{display:grid;gap:12px}
+.lane{display:grid;grid-template-columns:66px minmax(0,1fr);gap:10px;align-items:center}
+.lane>b{font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.outs{display:flex;gap:8px;flex-wrap:wrap}
+.o{padding:9px 12px;border-radius:14px;background:var(--c,#fff);border:1px solid var(--line);font:700 13px var(--sans);box-shadow:var(--sh1);opacity:.18;transform:translateY(10px) scale(.94);transition:opacity .5s,transform .5s cubic-bezier(.2,.9,.3,1.3)}
+.o.on{opacity:1;transform:none}
+.o small{display:block;font:600 11px var(--sans);color:var(--mut)}
+.stagepills{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.note{font:400 21px/1.3 var(--serif);margin-top:16px;min-height:2.7em}
 
-/* the close: a working picker */
-.pick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-xs); }
-.pick button { min-height: 52px; padding: 0 var(--space-md); border: var(--rule-hair) solid var(--color-rule-2); background: var(--color-paper); color: var(--color-ink); font: 600 var(--text-sm)/1.2 var(--font-body); text-align: left; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
-.pick button:hover { border-color: var(--color-ink); }
-.pick button:active { transform: translateY(1px); }
-.pick button[aria-pressed="true"] { background: var(--color-sun); color: var(--color-sun-ink); border-color: var(--color-ink); }
-.pick button:disabled { opacity: 0.55; cursor: not-allowed; }
-.tally { margin-top: var(--space-xl); font-family: var(--font-display); font-weight: var(--display-weight); font-variation-settings: "wdth" 75, "opsz" 96; font-size: var(--text-display-s); line-height: 1; color: var(--color-ink); font-variant-numeric: tabular-nums; }
-.status { min-height: 1lh; margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--color-muted); }
+/* handles: three phones */
+.phones{display:flex;justify-content:center;gap:22px;transform-style:preserve-3d;padding:20px 0 30px}
+@media(max-width:700px){.phones{gap:8px}.pshot q{font-size:10px;padding:4px 5px;left:5%;right:5%}.pinfo b{font-size:13.5px}.pinfo span{display:none}.phone{padding:5px;border-radius:24px}.pscreen{border-radius:19px}}
+.phone{flex:0 1 210px;min-width:0;border:0;padding:8px;border-radius:34px;background:#1b2a22;box-shadow:var(--sh2);text-align:left;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .4s;animation:bob 6s ease-in-out infinite}
+.phone:nth-child(1){transform:rotateY(18deg) translateZ(-30px);animation-delay:-2s}
+.phone:nth-child(3){transform:rotateY(-18deg) translateZ(-30px);animation-delay:-4s}
+.phone.sel{transform:translateZ(60px) scale(1.06);z-index:2}
+.phones.has-sel .phone:not(.sel){opacity:.85}
+@keyframes bob{50%{translate:0 -10px}}
+.pscreen{border-radius:27px;overflow:hidden;background:#fff;display:flex;flex-direction:column;aspect-ratio:9/17}
+.pshot{display:block;position:relative;flex:1;min-height:0;overflow:hidden;background:var(--paper2)}
+.pshot img{position:absolute;left:0;bottom:0;width:100%;height:100%;object-fit:cover;display:block}
+.pshot.yt img{height:142%;object-position:88% 100%}
+.pshot q{position:absolute;left:8%;right:8%;bottom:9%;quotes:none;text-align:center;font:800 13px/1.2 var(--sans);color:#fff;background:rgba(27,42,34,.78);border-radius:10px;padding:7px 8px}
+.pinfo{display:block;padding:10px 12px 12px;background:var(--c)}
+.pinfo b{display:block;font:600 17px/1.15 var(--serif)}
+.pinfo span{display:block;font-size:11.5px;color:var(--mut);margin-top:2px}
+.shorts{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.shorts li{padding:10px 14px;border-radius:14px;background:var(--glass2);border:1px solid var(--line);font:600 14.5px var(--sans);animation:rise .5s both}
+.shorts li:nth-child(2){animation-delay:.08s}.shorts li:nth-child(3){animation-delay:.16s}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
 
-/* footer: index columns */
-.foot { padding-block: var(--space-2xl) var(--space-3xl); border-top: var(--rule-heavy) solid var(--color-ink); }
-.foot__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr); column-gap: var(--space-2xl); row-gap: var(--space-xl); }
-.foot h3 { font-family: var(--font-body); font-variation-settings: normal; font-weight: 600; font-size: var(--text-sm); letter-spacing: 0; color: var(--color-muted); margin-bottom: var(--space-sm); }
-.foot ul { list-style: none; margin: 0; padding: 0; }
-.foot li { padding-block: var(--space-2xs); }
-.foot small { display: block; margin-top: var(--space-xl); font-size: var(--text-sm); color: var(--color-muted); max-width: 90ch; }
+/* landing wall */
+.wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;transform:rotateX(24deg) rotateZ(-5deg);transform-style:preserve-3d;transition:transform .3s ease-out;padding:10px 0 30px}
+@media(max-width:700px){.wall{grid-template-columns:repeat(2,minmax(0,1fr));transform:none;padding:0}}
+.lp{border:0;text-align:left;padding:0;border-radius:14px;background:#fff;box-shadow:var(--sh1);overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .3s,box-shadow .3s;display:block}
+.lp:hover,.lp.sel{transform:translateZ(46px);box-shadow:var(--sh2)}
+.lp.dim{opacity:.22}
+.lp .top{display:block;height:46px;background:var(--c);position:relative}
+.lp .top::after{content:"";position:absolute;left:10px;bottom:-9px;width:34px;height:18px;border-radius:999px;background:var(--ink)}
+.lp .bd{display:block;padding:16px 10px 10px}
+.lp b{display:block;font:700 12.5px/1.25 var(--sans);min-height:2.5em}
+.lp i{display:block;height:5px;border-radius:3px;background:var(--paper2);margin-top:6px}
+.lp i+i{width:60%}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.lpnote{margin-top:16px;padding:14px 16px;border-radius:16px;background:var(--glass2);border:1px solid var(--line);min-height:76px}
+.lpnote b{display:block;font:600 19px var(--serif)}
+.lpnote span{font-size:14px;color:var(--mut)}
 
-@media (max-width: 60rem) {
-  .row__grid, .row__grid--lead, .foot__grid { grid-template-columns: minmax(0, 1fr); }
-  .photo { min-height: 0; }
-  .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .pick { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .facts { grid-template-columns: minmax(0, 1fr); }
-  .facts dd { border-top: 0; padding-top: 0; }
-  .index td { white-space: normal; }
+/* circle: telegram + letter */
+.circle{position:relative;height:500px;max-width:520px;margin-inline:auto;transform-style:preserve-3d}
+.tg,.letter{position:absolute;top:0;border:0;padding:0;text-align:left;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .5s;display:block}
+.tg{left:0;width:250px;border-radius:34px;background:#1b2a22;padding:8px;box-shadow:var(--sh2)}
+.tgs{display:flex;flex-direction:column;gap:8px;border-radius:27px;background:linear-gradient(#e7f6d5,#d2f6e6);padding:0 0 12px;min-height:440px;overflow:hidden}
+.tgh{display:flex;gap:9px;align-items:center;background:#fff;padding:10px 12px}
+.tgh img{width:34px;height:34px;border-radius:50%;display:block}
+.tgh b{display:block;font:700 13.5px/1.2 var(--sans)}
+.tgh span{display:block;font-size:11px;color:var(--mut)}
+.bub{display:block;margin:0 10px;background:#fff;border-radius:14px 14px 14px 4px;padding:8px 10px;font-size:12.5px;line-height:1.35;box-shadow:var(--sh1)}
+.bub .ethumb{border-radius:9px;margin-bottom:6px}
+.bub .ethumb strong{font-size:14px}
+.tgh img.off{visibility:hidden}
+.tgh{position:relative}
+.tgh::before{content:"";position:absolute;left:12px;top:10px;width:34px;height:34px;border-radius:50%;background:conic-gradient(#ff6b6b,#ffb347,#fec102,#7fd8a7,#6fc3ff,#b48cff,#ff7fc0,#ff6b6b)}
+.tgh img{position:relative}
+.bub .wave{height:22px;margin:0;justify-content:flex-start}
+.bub .wave i{height:20px;background:var(--teal)}
+.letter{right:0;top:30px;width:300px;border-radius:22px;background:#fff;box-shadow:var(--sh2);padding:22px;border-top:6px solid var(--sun)}
+.letter small{display:block;font:800 10.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.letter b{display:block;font:600 24px/1.1 var(--serif);margin:8px 0 14px}
+.letter i{display:block;height:7px;border-radius:4px;background:var(--paper2);margin-top:8px}
+.letter i.s{width:64%}
+.letter .lbtn{display:inline-block;margin-top:16px;background:var(--sun);border-radius:999px;padding:9px 16px;font:800 13px var(--sans)}
+.letter .sig{display:block;font:italic 400 17px/1.3 var(--serif);color:var(--teal);margin-top:16px}
+.circle.show-tg .tg{transform:translateZ(70px) rotateY(8deg);z-index:2}
+.circle.show-tg .letter{transform:translateZ(-60px) rotateY(-16deg);opacity:.75}
+.circle.show-letter .letter{transform:translateZ(70px) rotateY(-6deg) translateX(-40px);z-index:2}
+.circle.show-letter .tg{transform:translateZ(-60px) rotateY(18deg);opacity:.75}
+@media(max-width:560px){.circle{height:480px;max-width:340px}.letter{width:250px;padding:18px}.tg{width:220px}}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.pair div{padding:12px 14px;border-radius:16px;background:var(--c)}
+.pair b{display:block;font:600 30px/1 var(--serif)}
+.pair span{font-size:13px;color:var(--mut)}
+
+/* bottle */
+.btl{display:flex;justify-content:center;align-items:flex-end;gap:34px;padding:20px 0;position:relative}
+@media(max-width:520px){.btl{gap:14px}}
+.bottle{width:120px;height:290px;position:relative;animation:bob 7s ease-in-out infinite;flex:none}
+.bottle .body{position:absolute;left:0;right:0;top:44px;bottom:0;border-radius:24px 24px 30px 30px;background:linear-gradient(90deg,#2a1850 0%,#5a3aa0 22%,#8d6bd6 48%,#5a3aa0 74%,#2a1850 100%);box-shadow:inset 0 -30px 50px rgba(0,0,0,.45),0 40px 60px -30px rgba(42,24,80,.8)}
+.bottle .body::after{content:"";position:absolute;left:12%;top:8%;width:12%;height:72%;border-radius:999px;background:linear-gradient(rgba(255,255,255,.6),rgba(255,255,255,.05))}
+.bottle .neck{position:absolute;left:34px;top:12px;width:52px;height:40px;border-radius:8px 8px 0 0;background:linear-gradient(90deg,#1a1030,#3a2766,#1a1030)}
+.bottle .capb{position:absolute;left:26px;top:0;width:68px;height:22px;border-radius:7px;background:linear-gradient(90deg,#0f0a1c,#2a2140,#0f0a1c)}
+.bottle .stick{position:absolute;left:12px;right:12px;top:110px;border-radius:10px;background:#fffdf7;padding:8px;text-align:center;box-shadow:0 6px 14px -6px rgba(0,0,0,.5)}
+.bottle .stick b{display:block;font:800 9px var(--sans);letter-spacing:.1em;color:var(--teal)}
+#qr{width:70px;height:70px;margin:6px auto 0}
+#qr img,#qr canvas{width:70px!important;height:70px!important}
+.beam{position:absolute;left:calc(50% - 60px);top:44%;width:120px;height:3px;background:linear-gradient(90deg,transparent,var(--sun),transparent);animation:beam 2.6s ease-in-out infinite}
+@keyframes beam{0%,100%{transform:translateX(-50px);opacity:0}50%{transform:translateX(50px);opacity:1}}
+.gphone{width:190px;border-radius:30px;background:#1b2a22;padding:8px;box-shadow:var(--sh2);flex:0 1 190px;min-width:0;animation:bob 7s ease-in-out -3s infinite}
+.gscreen{border-radius:23px;background:#fff;padding:14px 12px;display:grid;gap:8px;min-height:300px;align-content:start}
+.gscreen h3{font-size:17px}
+.gday{display:flex;gap:8px;align-items:flex-start;padding:8px;border-radius:12px;background:var(--c);font-size:12px;line-height:1.3}
+.gday i{flex:none;font:800 9.5px var(--sans);font-style:normal;background:#fff;border-radius:6px;padding:4px 6px}
+
+/* month */
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;padding:20px;transform:rotateX(14deg);transform-style:preserve-3d}
+@media(max-width:700px){.cal{transform:none;gap:5px;padding:12px}}
+.dow{font:800 10.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);text-align:center}
+.day{aspect-ratio:1/1;border-radius:12px;background:#fff;border:1px solid var(--line);display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:4px;padding:4px;opacity:.25;transform:scale(.9);transition:opacity .4s,transform .4s cubic-bezier(.2,.9,.3,1.3)}
+.day.on{opacity:1;transform:none}
+.day u{width:12px;height:12px;border-radius:50%;background:var(--c);text-decoration:none}
+.day u.s{width:7px;height:7px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;font:600 13px var(--sans);color:var(--mut)}
+.legend u{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--c);margin-right:6px;vertical-align:-1px}
+.counts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.counts div{padding:12px 14px;border-radius:16px;background:var(--c)}
+.counts b{display:block;font:600 32px/1 var(--serif)}
+.counts span{font-size:13px;color:var(--mut)}
+
+/* start */
+.roles{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:16px;margin-top:22px}
+@media(max-width:800px){.roles{grid-template-columns:minmax(0,1fr)}}
+.role{padding:24px}
+.role b.n{display:block;font:600 clamp(40px,6vw,72px)/1 var(--serif);letter-spacing:-.02em}
+.role .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.promises{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}
+@media(max-width:800px){.promises{grid-template-columns:minmax(0,1fr)}}
+.promise{padding:18px 20px;border-radius:20px;background:var(--c)}
+.promise b{display:block;font:600 20px var(--serif);margin-bottom:4px}
+.promise span{font-size:14.5px;color:var(--mut)}
+.pickbox{margin-top:16px;padding:28px}
+.pick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+@media(max-width:900px){.pick{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pick button{border:1px solid var(--line2);background:#fff;border-radius:16px;padding:12px 14px;text-align:left;font:700 14px/1.25 var(--sans);transition:transform .2s,background .2s,box-shadow .2s;min-height:68px}
+.pick button small{display:block;font:600 11.5px var(--sans);color:var(--mut);margin-top:4px}
+.pick button:hover{transform:translateY(-2px);box-shadow:var(--sh1)}
+.pick button[aria-pressed="true"]{background:var(--sun);border-color:var(--sun);box-shadow:0 12px 26px -14px rgba(254,193,2,.95)}
+.pick button:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.pickfoot{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:18px}
+.pickfoot .n{font:600 40px/1 var(--serif)}
+
+footer{padding:40px 0 70px;border-top:1px solid var(--line);color:var(--faint);font-size:13px;position:relative;z-index:2}
+footer p{max-width:100ch;margin-bottom:8px}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.win.rv.in{transition:transform .25s ease-out,opacity .8s}
+@media(prefers-reduced-motion:reduce){
+  .ring,.wave i,.wire,.phone,.bottle,.gphone,.beam{animation:none}
+  .rv,.hero h1 span,.o,.day{opacity:1;transform:none;animation:none}
+  #pollen{display:none}
+  html{scroll-behavior:auto}
 }
-@media (max-width: 40rem) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tile { min-height: 88px; } .wordmark__rest { display: none; } .nav__bar { padding: 0 var(--space-xs) 0 var(--space-md); } }
-@media (prefers-reduced-motion: reduce) { .btn, .seg button, .pick button, .tile { transition: none; } }
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<div class="aura" aria-hidden="true"></div>
+<div class="ring a" aria-hidden="true"></div><div class="ring b" aria-hidden="true"></div>
+<canvas id="pollen" aria-hidden="true"></canvas>
 
-<header class="nav">
-  <div class="container">
-    <div class="nav__bar">
-      <a class="wordmark" href="#top" aria-label="Regenbogenkreis in English, top of page">Regenbogenkreis<span class="wordmark__rest">, in English</span></a>
-      <a class="btn btn--quiet" href="#six">Pick six</a>
+<nav class="rail" aria-label="Stops">
+  <div class="wrap">
+    <a class="brand" href="#top"><i></i><span>Matthias, in English</span></a>
+    <div class="stops" id="stops">
+      <a href="#wins">Today</a><a href="#videos">Your titles</a><a href="#engine">The engine</a><a href="#handles">Handles</a><a href="#pages">Pages</a><a href="#circle">Your circle</a><a href="#bottle">The shop</a><a href="#month">A month</a><a href="#start">Start</a>
+    </div>
+    <a class="btn" href="#start">Pick six</a>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="kicker">A plan from Brigitte and Adam</div>
+      <h1 id="h1"><span>Your</span> <span>voice,</span><br><em><span>in</span> <span>English.</span></em></h1>
+      <div class="rbline"></div>
+      <p class="lede">45 million views, every one of them in German. The conversations already exist. They only need to travel.</p>
+      <div class="cta"><a class="btn" href="#videos">See your titles in English</a><a class="btn ghost" href="#start">Pick your first six</a></div>
+    </div>
+    <div class="globe" id="globe" role="img" aria-label="A globe with lines travelling from Germany to English-speaking cities">
+      <canvas id="gl"></canvas>
     </div>
   </div>
-</header>
+</section>
 
-<main id="main">
-  <section class="hero" id="top">
-    <div class="container">
-      <h1>Two million views a month,<br>all German.</h1>
-      <p class="lead">The same recordings could speak English, run by Brigitte and Adam.</p>
-      <a class="btn" href="#six">Pick your first six</a>
+<section id="wins" style="padding-top:40px">
+  <div class="wrap">
+    <div class="kicker">Where you stand today</div>
+    <h2 class="rv">Built in German. <em>All of it real.</em></h2>
+    <div class="wins">
+      <div class="win rv" style="--c:var(--sun-s)"><b data-n="152" data-suf="K">0</b><span>YouTube subscribers</span></div>
+      <div class="win rv" style="--c:var(--teal-s)"><b data-n="45.3" data-dec="1" data-suf="M">0</b><span>views on 1,685 videos</span></div>
+      <div class="win rv" style="--c:var(--lilac-s)"><b data-n="63.8" data-dec="1" data-suf="K">0</b><span>on Telegram</span></div>
+      <div class="win rv" style="--c:var(--rose-s)"><b data-n="260" data-suf="K+">0</b><span>customers since 2008</span></div>
+      <div class="win rv" style="--c:var(--leaf-s)"><b data-n="44948" data-sep="1">0</b><span>reviews, 4.87 stars</span></div>
+      <div class="win rv" style="--c:var(--sky-s)"><b data-n="60" data-suf="K+">0</b><span>newsletter readers</span></div>
+      <div class="win rv" style="--c:var(--sun-s)"><b>Bestseller</b><span>Reise in die Freiheit, Spiegel list</span></div>
+      <div class="win rv" style="--c:var(--teal-s)"><b>0</b><span>of it in English, so far</span></div>
     </div>
-  </section>
+    <div class="band rv"><img id="bandimg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg/1280px-Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg/960px-Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg/1920px-Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg 1920w" sizes="100vw" alt="Wooden steps climbing through a misty green forest" loading="lazy"></div>
+    <div class="bandcap rv"><b>2.147 billion m² of rainforest protected</b><span>A story most English speakers have never heard.</span></div>
+  </div>
+</section>
 
-  <section class="row" id="engine">
-    <div class="container">
-      <div class="row__grid row__grid--lead opens">
-        <div class="row__text">
-          <h2>One recording, eleven places</h2>
-          <p class="lead">You record once, in German, as now.</p>
-          <button class="btn btn--quiet" type="button" data-next>Next stage</button>
-        </div>
-        <div data-engine>
-          <div class="seg" role="tablist" aria-label="Stages of one recording">
-            <button type="button" role="tab" id="tb1" aria-controls="board" aria-selected="true">German</button>
-            <button type="button" role="tab" id="tb2" aria-controls="board" aria-selected="false" tabindex="-1">English</button>
-            <button type="button" role="tab" id="tb3" aria-controls="board" aria-selected="false" tabindex="-1">Cut</button>
-            <button type="button" role="tab" id="tb4" aria-controls="board" aria-selected="false" tabindex="-1">Sent</button>
-          </div>
-          <div class="board" id="board" role="tabpanel" aria-labelledby="tb1" data-slot="engine" data-kind="product" data-alt="One recording traced to its eleven English places">
-            <ul class="tiles">
-              <li class="tile tile--source" data-from="1"><b>The recording</b><span>German, one hour</span></li>
-              <li class="tile" data-from="2"><b>Full video</b><span>English</span></li>
-              <li class="tile" data-from="2"><b>Podcast</b><span>English audio</span></li>
-              <li class="tile tile--rooted" data-from="3"><b>Short</b><span>Rooted</span></li>
-              <li class="tile tile--rooted" data-from="3"><b>Short</b><span>Rooted</span></li>
-              <li class="tile tile--gut" data-from="3"><b>Short</b><span>Gut and balance</span></li>
-              <li class="tile tile--gut" data-from="3"><b>Short</b><span>Gut and balance</span></li>
-              <li class="tile tile--kitchen" data-from="3"><b>Short</b><span>Living kitchen</span></li>
-              <li class="tile tile--kitchen" data-from="3"><b>Short</b><span>Living kitchen</span></li>
-              <li class="tile" data-from="4"><b>The letter</b><span>Sunday</span></li>
-              <li class="tile" data-from="4"><b>Article</b><span>On the site</span></li>
-              <li class="tile" data-from="4"><b>Landing page</b><span>One button</span></li>
-            </ul>
-            <p class="board__note" id="stage-note" aria-live="polite">One hour in German becomes eleven English pieces.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="row row--roomy" id="handles">
-    <div class="container">
-      <div class="row__grid hairline">
-        <div class="row__text">
-          <h2>Three handles from one voice</h2>
-          <p class="lead">Each short goes where its audience is.</p>
-        </div>
-        <div data-switch="handles">
-          <div class="seg" role="tablist" aria-label="The three handles">
-            <button type="button" role="tab" id="hb1" aria-controls="hp1" aria-selected="true">Rooted</button>
-            <button type="button" role="tab" id="hb2" aria-controls="hp2" aria-selected="false" tabindex="-1">Gut and balance</button>
-            <button type="button" role="tab" id="hb3" aria-controls="hp3" aria-selected="false" tabindex="-1">Living kitchen</button>
-          </div>
-          <section role="tabpanel" id="hp1" aria-labelledby="hb1">
-            <figure class="photo" data-slot="handle-rooted" data-alt="Matthias outdoors, calm, seen from behind or at a distance">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg/1280px-Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg/960px-Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg/1280px-Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg 1280w, https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg/1920px-Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg 1920w" sizes="(min-width: 60rem) 45vw, 100vw" width="6392" height="4319" alt="Wooden steps climbing through a misty green forest" style="object-position: 45% 60%" loading="lazy">
-            </figure>
-            <p class="caption">Trust, grounding and inner strength.</p>
-          </section>
-          <section role="tabpanel" id="hp2" aria-labelledby="hb2">
-            <figure class="photo" data-slot="handle-gut" data-alt="A Regenbogenkreis tincture being measured into a glass of water">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Taking_rosemary_oil_from_a_bottle.jpg/1280px-Taking_rosemary_oil_from_a_bottle.jpg" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Taking_rosemary_oil_from_a_bottle.jpg/960px-Taking_rosemary_oil_from_a_bottle.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Taking_rosemary_oil_from_a_bottle.jpg/1280px-Taking_rosemary_oil_from_a_bottle.jpg 1280w, https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Taking_rosemary_oil_from_a_bottle.jpg/1920px-Taking_rosemary_oil_from_a_bottle.jpg 1920w" sizes="(min-width: 60rem) 45vw, 100vw" width="4000" height="2667" alt="A hand drawing oil into a glass dropper over an amber bottle and rosemary" style="object-position: 40% 45%" loading="lazy">
-            </figure>
-            <p class="caption">Cleansing and how to take each product.</p>
-          </section>
-          <section role="tabpanel" id="hp3" aria-labelledby="hb3">
-            <figure class="photo" data-slot="handle-kitchen" data-alt="A dish from Vegane Kochkunst, photographed from above">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Capsicum_baccatum_in_Sa%C3%BAde_flea_market%2C_S%C3%A3o_Paulo%2C_Brazil.jpg/1280px-Capsicum_baccatum_in_Sa%C3%BAde_flea_market%2C_S%C3%A3o_Paulo%2C_Brazil.jpg" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Capsicum_baccatum_in_Sa%C3%BAde_flea_market%2C_S%C3%A3o_Paulo%2C_Brazil.jpg/960px-Capsicum_baccatum_in_Sa%C3%BAde_flea_market%2C_S%C3%A3o_Paulo%2C_Brazil.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Capsicum_baccatum_in_Sa%C3%BAde_flea_market%2C_S%C3%A3o_Paulo%2C_Brazil.jpg/1280px-Capsicum_baccatum_in_Sa%C3%BAde_flea_market%2C_S%C3%A3o_Paulo%2C_Brazil.jpg 1280w, https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Capsicum_baccatum_in_Sa%C3%BAde_flea_market%2C_S%C3%A3o_Paulo%2C_Brazil.jpg/1920px-Capsicum_baccatum_in_Sa%C3%BAde_flea_market%2C_S%C3%A3o_Paulo%2C_Brazil.jpg 1920w" sizes="(min-width: 60rem) 45vw, 100vw" width="6212" height="4928" alt="Colourful bowls of fresh chilli peppers seen from above at a market" loading="lazy">
-            </figure>
-            <p class="caption">Living food and recipes from your cookbook.</p>
-          </section>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="row" id="pages">
-    <div class="container">
-      <div class="row__grid opens">
-        <div class="row__text">
-          <h2>Nine English landing pages</h2>
-          <p class="lead">Each page has one job and one button.</p>
-        </div>
-        <table class="index">
-          <thead><tr><th scope="col">Page</th><th scope="col">Its job</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">The free gut health guide</th><td>Collects emails</td></tr>
-            <tr><th scope="row">Eleven percent off a first order</th><td>Sells</td></tr>
-            <tr><th scope="row">Reise in die Freiheit, chapter one</th><td>Collects emails</td></tr>
-            <tr><th scope="row">Your cleanse, day by day</th><td>Teaches</td></tr>
-            <tr><th scope="row">The rainforest you protect</th><td>Earns trust</td></tr>
-            <tr><th scope="row">Every conversation in English</th><td>Archive</td></tr>
-            <tr><th scope="row">The weekly letter</th><td>Collects emails</td></tr>
-            <tr><th scope="row">Recipes from Vegane Kochkunst</th><td>Collects emails</td></tr>
-            <tr><th scope="row">Meet Matthias</th><td>Introduces you</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="row row--wide" id="bottle">
-    <div class="container">
-      <div class="row__grid">
-        <div class="row__text">
-          <h2>The bottle stays as it is</h2>
-          <p class="lead">A sticker and a QR code carry the English.</p>
-          <dl class="facts" style="margin-top: var(--space-xl)">
-            <dt>Sticker</dt><dd>Required details, in English</dd>
-            <dt>QR code</dt><dd>Opens the phone guide</dd>
-            <dt>Countries</dt><dd>One at a time, rules first</dd>
-          </dl>
-        </div>
-        <div>
-          <figure class="photo" data-slot="bottle" data-alt="A Regenbogenkreis violet glass bottle with the English sticker and QR code">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Rosemary_Oil_in_a_bottle_and_rosemary_herb.jpg/1280px-Rosemary_Oil_in_a_bottle_and_rosemary_herb.jpg" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Rosemary_Oil_in_a_bottle_and_rosemary_herb.jpg/960px-Rosemary_Oil_in_a_bottle_and_rosemary_herb.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Rosemary_Oil_in_a_bottle_and_rosemary_herb.jpg/1280px-Rosemary_Oil_in_a_bottle_and_rosemary_herb.jpg 1280w, https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Rosemary_Oil_in_a_bottle_and_rosemary_herb.jpg/1920px-Rosemary_Oil_in_a_bottle_and_rosemary_herb.jpg 1920w" sizes="(min-width: 60rem) 45vw, 100vw" width="4000" height="2667" alt="An unlabelled amber dropper bottle among rosemary sprigs on a wooden table" loading="lazy">
-          </figure>
-          <p class="caption">The guide says how to take it, and nothing about what it cures.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="row" id="roles">
-    <div class="container">
-      <div class="row__grid opens">
-        <div class="row__text">
-          <h2>Two hours a month from you</h2>
-          <p class="lead">The rest is ours to do, and yours to veto.</p>
-        </div>
-        <table>
-          <thead><tr><th scope="col">Work</th><th scope="col">You</th><th scope="col">Brigitte and Adam</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Recording in German</th><td>As now</td><td>Nothing changes</td></tr>
-            <tr><th scope="row">English conversations</th><td>Two hours a month</td><td>Host, edit, publish</td></tr>
-            <tr><th scope="row">Translation and voice</th><td>Approve three</td><td>Every episode</td></tr>
-            <tr><th scope="row">Thumbnails, titles, pages</th><td>Veto</td><td>Brigitte designs</td></tr>
-            <tr><th scope="row">Guests and product wording</th><td>Nothing</td><td>Asked and checked</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="row row--roomy well" id="six">
-    <div class="container">
-      <div class="row__grid">
-        <div class="row__text">
-          <h2>Pick six to begin</h2>
-          <p class="lead">Tap six topics. We translate those first, and you judge by ear.</p>
-          <p class="tally"><span id="count">0</span> of 6</p>
-          <button class="btn btn--quiet" type="button" id="copy" disabled>Copy my six</button>
-          <p class="status" id="status" role="status" aria-live="polite"></p>
-        </div>
-        <div class="pick" role="group" aria-label="Topics to translate first">
-          <button type="button" aria-pressed="false">Staying in trust</button>
-          <button type="button" aria-pressed="false">Inner strength</button>
-          <button type="button" aria-pressed="false">Two years in the wild</button>
-          <button type="button" aria-pressed="false">Why the rainforest</button>
-          <button type="button" aria-pressed="false">The gut cleanse</button>
-          <button type="button" aria-pressed="false">Living food</button>
-          <button type="button" aria-pressed="false">Sleep and calm</button>
-          <button type="button" aria-pressed="false">Fasting</button>
-          <button type="button" aria-pressed="false">Grounding</button>
-          <button type="button" aria-pressed="false">Children and nature</button>
-          <button type="button" aria-pressed="false">Water</button>
-          <button type="button" aria-pressed="false">Soul plans</button>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="foot">
-  <div class="container">
-    <div class="foot__grid">
+<section id="videos">
+  <div class="wrap">
+    <div class="vhead">
       <div>
-        <p class="wordmark">Regenbogenkreis, in English</p>
-        <p style="margin-top: var(--space-md)">A plan from Brigitte and Adam, November 2026. Quantities are proposals, not results.</p>
+        <div class="kicker">Your own titles</div>
+        <h2 class="rv">Eight of yours. <em>Tap to turn them English.</em></h2>
+        <p class="lede rv">English titles by Adam. English thumbnails designed by Brigitte.</p>
       </div>
-      <div>
-        <h3>On this page</h3>
-        <ul>
-          <li><a href="#engine">One recording</a></li>
-          <li><a href="#handles">Three handles</a></li>
-          <li><a href="#pages">Landing pages</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Already made for you</h3>
-        <ul>
-          <li><a href="matthias-vision.html">Sieben Bausteine, auf Deutsch</a></li>
-          <li><a href="matthias-vision-en.html">Seven pieces, in English</a></li>
-        </ul>
+      <button class="btn ghost" type="button" id="flipall">Flip all to English</button>
+    </div>
+    <div class="vids" id="vids"></div>
+    <div class="tally">
+      <div class="tbox glass rv"><b class="n" data-n="1062175" data-sep="1">0</b><p class="lede" style="margin-top:8px">German views on these eight alone. Their English versions do not exist yet.</p></div>
+      <div class="tbox glass rv">
+        <h3>Who could understand them</h3>
+        <div class="bars">
+          <div class="barrow"><span>German</span><div class="bar"><i style="--c:var(--sun);--w:.09"></i></div><span>about 130 million</span></div>
+          <div class="barrow"><span>English</span><div class="bar"><i style="--c:var(--teal);--w:1"></i></div><span>about 1.5 billion</span></div>
+        </div>
+        <p class="tiny" style="margin-top:12px">Speakers worldwide, first and second language. Nobody can promise reach. The room is simply bigger.</p>
       </div>
     </div>
-    <small data-credits>Photographs, stand-ins until yours replace them: <a href="https://commons.wikimedia.org/wiki/File:Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg">Basile Morin</a> (CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Taking_rosemary_oil_from_a_bottle.jpg">formulatehealth</a> (CC BY 2.0), <a href="https://commons.wikimedia.org/wiki/File:Capsicum_baccatum_in_Sa%C3%BAde_flea_market,_S%C3%A3o_Paulo,_Brazil.jpg">Wilfredor</a> (CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Rosemary_Oil_in_a_bottle_and_rosemary_herb.jpg">formulatehealth</a> (CC BY 2.0), all via Wikimedia Commons.</small>
+  </div>
+</section>
+
+<section id="engine">
+  <div class="wrap stop">
+    <div class="guide glass rv">
+      <div class="kicker">The engine</div>
+      <h2>One recording. <em>Eleven places.</em></h2>
+      <div class="stagepills" role="tablist" aria-label="Stages">
+        <button class="chip" type="button" role="tab" aria-selected="true" data-stage="0">German</button>
+        <button class="chip" type="button" role="tab" aria-selected="false" data-stage="1">English</button>
+        <button class="chip" type="button" role="tab" aria-selected="false" data-stage="2">Cut</button>
+        <button class="chip" type="button" role="tab" aria-selected="false" data-stage="3">Sent</button>
+      </div>
+      <p class="note" id="note" aria-live="polite">You record on Saturday, in German, as now.</p>
+    </div>
+    <div class="stage rv">
+      <div class="flow glass" id="flow">
+        <div class="src"><b>58:12</b><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span>The recording, in German</span></div>
+        <div class="wire" aria-hidden="true"></div>
+        <div class="lanes">
+          <div class="lane"><b>English</b><div class="outs"><div class="o" data-from="1">Full video<small>your voice, or subtitles</small></div><div class="o" data-from="1">Podcast<small>the same hour</small></div></div></div>
+          <div class="lane"><b>Shorts</b><div class="outs"><div class="o" data-from="2" style="--c:var(--teal-s)">Short<small>Rooted</small></div><div class="o" data-from="2" style="--c:var(--teal-s)">Short<small>Rooted</small></div><div class="o" data-from="2" style="--c:var(--lilac-s)">Short<small>The Great Shift</small></div><div class="o" data-from="2" style="--c:var(--lilac-s)">Short<small>The Great Shift</small></div><div class="o" data-from="2" style="--c:var(--leaf-s)">Short<small>Gut and balance</small></div><div class="o" data-from="2" style="--c:var(--leaf-s)">Short<small>Gut and balance</small></div></div></div>
+          <div class="lane"><b>Sent</b><div class="outs"><div class="o" data-from="3" style="--c:var(--sun-s)">The letter<small>Sunday</small></div><div class="o" data-from="3" style="--c:var(--sun-s)">Article<small>on the site</small></div><div class="o" data-from="3" style="--c:var(--sun-s)">Landing page<small>one button</small></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="handles">
+  <div class="wrap stop flip">
+    <div class="stage rv">
+      <div class="phones" id="phones">
+        <button class="phone" type="button" aria-label="Rooted"><span class="pscreen"><span class="pshot yt"><img src="https://i.ytimg.com/vi/dvkN_BxzvPM/hq720.jpg" alt="" loading="lazy"><q>Stay in your own strength</q></span><span class="pinfo" style="--c:var(--teal-s)"><b>Rooted</b><span>Trust and inner strength</span></span></span></button>
+        <button class="phone" type="button" aria-label="The Great Shift"><span class="pscreen"><span class="pshot yt"><img src="https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg" alt="" loading="lazy"><q>Everything is about to change</q></span><span class="pinfo" style="--c:var(--lilac-s)"><b>The Great Shift</b><span>Prophecy and change</span></span></span></button>
+        <button class="phone" type="button" aria-label="Gut and balance"><span class="pscreen"><span class="pshot"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Taking_rosemary_oil_from_a_bottle.jpg/960px-Taking_rosemary_oil_from_a_bottle.jpg" alt="" loading="lazy"><q>How to take the tincture</q></span><span class="pinfo" style="--c:var(--leaf-s)"><b>Gut and balance</b><span>Cleansing, food, the shop</span></span></span></button>
+      </div>
+    </div>
+    <div class="guide glass rv">
+      <div class="kicker">Handles and platforms</div>
+      <h2>Three handles. <em>One voice.</em></h2>
+      <p class="lede" id="hline">Feeds now follow interest. Each short goes where its audience already is.</p>
+      <ul class="shorts" id="shorts"></ul>
+    </div>
+  </div>
+</section>
+
+<section id="pages">
+  <div class="wrap stop">
+    <div class="guide glass rv">
+      <div class="kicker">Landing pages</div>
+      <h2>Sixteen doors, <em>each with one job.</em></h2>
+      <div class="filters" id="filters">
+        <button class="chip" type="button" aria-pressed="true" data-f="all">All</button>
+        <button class="chip" type="button" aria-pressed="false" data-f="email">Collect emails</button>
+        <button class="chip" type="button" aria-pressed="false" data-f="sell">Sell</button>
+        <button class="chip" type="button" aria-pressed="false" data-f="teach">Teach</button>
+        <button class="chip" type="button" aria-pressed="false" data-f="trust">Earn trust</button>
+      </div>
+      <div class="lpnote" id="lpnote" aria-live="polite"><b>Tap a page</b><span>You run about twenty of these in German. The English set mirrors the best of them.</span></div>
+    </div>
+    <div class="stage rv" id="wallwrap"><div class="wall" id="wall"></div></div>
+  </div>
+</section>
+
+<section id="circle">
+  <div class="wrap stop flip">
+    <div class="stage rv">
+      <div class="circle show-tg" id="circ">
+        <button class="tg" type="button" aria-label="The English Telegram channel"><span class="tgs">
+          <span class="tgh"><img id="ava" referrerpolicy="no-referrer" src="https://yt3.googleusercontent.com/8dDpXbecdryxvS5QJplQRRTzno-wTrpSOMnrvMfCzJnE7NwVPxL5BheE1Yn_cWzYhXPHWLOBeg=s200-c-k-c0x00ffffff-no-rj" alt=""><span><b>Matthias, in English</b><span>channel</span></span></span>
+          <span class="bub"><span class="ethumb"><img src="https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg" alt="" loading="lazy"><strong>The SHIFT Has Begun!</strong></span>The Great Shift, now in English.</span>
+          <span class="bub"><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>A word from you, 0:48</span>
+          <span class="bub">The Sunday letter is out.</span>
+          <span class="bub">Live with Adam on Thursday. Bring your questions.</span>
+        </span></button>
+        <button class="letter" type="button" aria-label="The Sunday letter">
+          <small>The Sunday letter</small>
+          <b>Why everything is about to change</b>
+          <i></i><i></i><i class="s"></i>
+          <span class="lbtn">Watch the conversation</span>
+          <span class="sig">Stay in your strength and in trust. With love, Matthias</span>
+        </button>
+      </div>
+    </div>
+    <div class="guide glass rv">
+      <div class="kicker">Telegram and the letter</div>
+      <h2>Your circle, <em>in English.</em></h2>
+      <div class="pair">
+        <div style="--c:var(--lilac-s)"><b>63.8K</b><span>on Telegram, in German</span></div>
+        <div style="--c:var(--sky-s)"><b>60K+</b><span>read the newsletter, in German</span></div>
+      </div>
+      <p class="lede">The English circle starts at zero. Every video invites people in.</p>
+      <div class="row" role="group" aria-label="Show">
+        <button class="chip" type="button" aria-pressed="true" data-c="tg">Telegram</button>
+        <button class="chip" type="button" aria-pressed="false" data-c="letter">The letter</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bottle">
+  <div class="wrap stop">
+    <div class="guide glass rv">
+      <div class="kicker">The shop, in English</div>
+      <h2>The bottle <em>stays as it is.</em></h2>
+      <p class="lede">An English sticker carries the required details. The QR code opens the guide on a phone.</p>
+      <div class="row"><span class="chip">No new packaging</span><span class="chip">One country at a time</span><span class="chip">Label rules checked first</span></div>
+    </div>
+    <div class="stage rv">
+      <div class="btl">
+        <div class="bottle"><div class="capb"></div><div class="neck"></div><div class="body"></div><div class="stick"><b>ENGLISH GUIDE</b><div id="qr"></div></div></div>
+        <div class="beam" aria-hidden="true"></div>
+        <div class="gphone"><div class="gscreen">
+          <h3>Your tincture</h3>
+          <div class="gday" style="--c:var(--teal-s)"><i>DAY 1</i>How to take it, mornings.</div>
+          <div class="gday" style="--c:var(--sun-s)"><i>DAY 14</i>A short film from Matthias.</div>
+          <div class="gday" style="--c:var(--lilac-s)"><i>DAY 80</i>Nearly empty. Reorder in one tap.</div>
+          <div class="gday" style="--c:var(--rose-s)"><i>ASK</i>Questions go to a person.</div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="month">
+  <div class="wrap stop flip">
+    <div class="stage rv">
+      <div class="cal glass" id="cal"></div>
+      <div class="legend"><span><u style="--c:var(--teal)"></u>Interview in English</span><span><u style="--c:var(--rose)"></u>You and Adam, live in English</span><span><u style="--c:var(--sun)"></u>Shorts</span><span><u style="--c:var(--lilac)"></u>The letter</span></div>
+    </div>
+    <div class="guide glass rv">
+      <div class="kicker">A month in the engine</div>
+      <h2>Four weeks, <em>as planned.</em></h2>
+      <div class="counts">
+        <div style="--c:var(--teal-s)"><b data-n="8">0</b><span>interviews in English</span></div>
+        <div style="--c:var(--rose-s)"><b data-n="2">0</b><span>conversations with Adam</span></div>
+        <div style="--c:var(--sun-s)"><b data-n="48">0</b><span>shorts across three handles</span></div>
+        <div style="--c:var(--lilac-s)"><b data-n="4">0</b><span>letters</span></div>
+      </div>
+      <p class="tiny" style="margin-top:12px">These quantities are our plan for month one.</p>
+    </div>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap">
+    <div class="kicker">How we would work</div>
+    <h2 class="rv">Two hours a month <em>from you.</em></h2>
+    <div class="roles">
+      <div class="role glass rv"><b class="n">2 h</b><h3 style="margin-top:8px">You</h3><div class="chips"><span class="chip">Record as now</span><span class="chip">Two English conversations</span><span class="chip">Veto anything</span></div></div>
+      <div class="role glass rv"><b class="n">The rest</b><h3 style="margin-top:8px">Brigitte and Adam</h3><div class="chips"><span class="chip">Translation and voice</span><span class="chip">English titles</span><span class="chip">Thumbnails by Brigitte</span><span class="chip">Shorts</span><span class="chip">Landing pages</span><span class="chip">The letter</span><span class="chip">Telegram</span><span class="chip">Publishing</span><span class="chip">A one-page report</span></div></div>
+    </div>
+    <div class="promises">
+      <div class="promise rv" style="--c:var(--teal-s)"><b>Guests say yes first</b><span>No interview is translated without its guest agreeing.</span></div>
+      <div class="promise rv" style="--c:var(--sun-s)"><b>You hear it first</b><span>The first three English versions go to you before anyone else.</span></div>
+      <div class="promise rv" style="--c:var(--lilac-s)"><b>Every product line checked</b><span>What a text may say about a supplement is checked before it goes out.</span></div>
+    </div>
+    <div class="pickbox glass rv">
+      <h2>Pick six <em>to begin.</em></h2>
+      <div class="pick" id="pick" role="group" aria-label="Interviews to translate first"></div>
+      <div class="pickfoot">
+        <span class="n"><span id="count">0</span> of 6</span>
+        <button class="btn" type="button" id="copy" disabled>Copy my six</button>
+        <span id="status" role="status" aria-live="polite" class="tiny"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Prepared by Brigitte and Adam, November 2026. Channel, Telegram and shop figures were read on 18 November 2026. English titles are translations to show the idea. Nothing here is published in English yet.</p>
+    <p>Thumbnails and titles are from your own channel. Speaker estimates follow Ethnologue. Photographs: <a href="https://commons.wikimedia.org/wiki/File:Wooden_staircase_steps_in_the_forest_of_Hallasan_Park_Eorimok_Trail_at_dusk_on_Jeju_Island_in_South_Korea.jpg">Basile Morin</a> (CC BY-SA 4.0) and <a href="https://commons.wikimedia.org/wiki/File:Taking_rosemary_oil_from_a_bottle.jpg">formulatehealth</a> (CC BY 2.0), via Wikimedia Commons, as stand-ins until yours replace them.</p>
+    <p>The seven building blocks: <a href="matthias-vision.html">Deutsch</a>, <a href="matthias-vision-en.html">English</a></p>
   </div>
 </footer>
 
 <script>
-(function () {
-  /* switchers: every panel shows without script; with it, one at a time, arrow keys move */
-  document.querySelectorAll('[data-switch]').forEach(function (sw) {
-    var tabs = Array.prototype.slice.call(sw.querySelectorAll('[role="tab"]'));
-    function show(i) {
-      tabs.forEach(function (t, k) {
-        var on = k === i;
-        t.setAttribute('aria-selected', String(on));
-        t.tabIndex = on ? 0 : -1;
-        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-      });
-      sw.dataset.at = i;
-    }
-    tabs.forEach(function (t, i) {
-      t.addEventListener('click', function () { show(i); });
-      t.addEventListener('keydown', function (e) {
-        var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-        if (!d) return;
-        e.preventDefault();
-        var n = (i + d + tabs.length) % tabs.length;
-        show(n); tabs[n].focus({ preventScroll: true });
-      });
-    });
-    show(0);
-    sw.next = function () { show(((+sw.dataset.at || 0) + 1) % tabs.length); };
-  });
-  /* the engine board: twelve tiles light up as the recording travels */
-  var NOTES = ['Saturday: you record in German, as now.', 'Your own voice in English, or subtitles. You hear the first three first.', 'Six shorts, two for each handle.', 'By Sunday it sits in eleven English places.'];
-  var eng = document.querySelector('[data-engine]');
-  if (eng) {
-    var etabs = Array.prototype.slice.call(eng.querySelectorAll('[role="tab"]')), tiles = eng.querySelectorAll('.tile'), note = document.getElementById('stage-note'), board = document.getElementById('board'), at = 0;
-    var stage = function (i) {
-      at = i;
-      etabs.forEach(function (t, k) { var on = k === i; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; });
-      tiles.forEach(function (t) { t.classList.toggle('is-on', +t.dataset.from <= i + 1); });
-      board.setAttribute('aria-labelledby', etabs[i].id);
-      note.textContent = NOTES[i];
-    };
-    etabs.forEach(function (t, i) {
-      t.addEventListener('click', function () { stage(i); });
-      t.addEventListener('keydown', function (e) {
-        var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-        if (!d) return;
-        e.preventDefault();
-        var n = (i + d + etabs.length) % etabs.length;
-        stage(n); etabs[n].focus({ preventScroll: true });
-      });
-    });
-    document.querySelectorAll('[data-next]').forEach(function (b) { b.addEventListener('click', function () { stage((at + 1) % etabs.length); }); });
-    stage(0);
-  }
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('#h1 span').forEach(function(s,i){s.style.animationDelay=(0.12*i)+'s'});
+  setTimeout(function(){document.getElementById('h1').classList.add('done')},1700);
 
-  /* the picker: six of twelve, then a real copy to the clipboard */
-  var picks = Array.prototype.slice.call(document.querySelectorAll('.pick button'));
-  var count = document.getElementById('count'), copy = document.getElementById('copy'), status = document.getElementById('status');
-  function chosen() { return picks.filter(function (p) { return p.getAttribute('aria-pressed') === 'true'; }); }
-  function sync() {
-    var c = chosen();
-    count.textContent = c.length;
-    copy.disabled = c.length !== 6;
-    picks.forEach(function (p) { p.disabled = c.length >= 6 && p.getAttribute('aria-pressed') !== 'true'; });
-    status.textContent = c.length === 6 ? 'Six chosen. Copy the list and send it to Adam.' : '';
+  /* pollen */
+  var pc=document.getElementById('pollen'),px=pc.getContext('2d'),PW,PH,P=[];
+  function psize(){PW=pc.width=innerWidth;PH=pc.height=innerHeight}
+  psize();addEventListener('resize',psize);
+  for(var i=0;i<60;i++)P.push({x:Math.random(),y:Math.random(),z:Math.random()*.8+.2,r:Math.random()*2.2+.6,s:Math.random()*.00012+.00004,c:['254,193,2','16,132,116','180,140,255','255,127,192'][i%4]});
+  function pdraw(t){px.clearRect(0,0,PW,PH);var sc=scrollY;P.forEach(function(p){var y=((p.y+t*p.s)%1);var py=(y*PH-sc*p.z*.25)%PH;if(py<0)py+=PH;var x=p.x*PW+Math.sin(t*.0004+p.x*9)*16*p.z;px.beginPath();px.arc(x,py,p.r*p.z*1.6,0,6.283);px.fillStyle='rgba('+p.c+','+(.2*p.z+.06)+')';px.fill()});requestAnimationFrame(pdraw)}
+  if(!reduce)requestAnimationFrame(pdraw);
+
+  /* reveal + counters */
+  function countTo(el){if(el.dataset.done)return;el.dataset.done=1;var n=+el.dataset.n,dec=+el.dataset.dec||0,suf=el.dataset.suf||'',sep=el.dataset.sep,t0=performance.now();
+    function fmt(v){var s=dec?v.toFixed(dec):String(Math.round(v));if(sep)s=Math.round(v).toLocaleString('en-US');return s+suf}
+    if(reduce){el.textContent=fmt(n);return}
+    var iv=setInterval(function(){var k=Math.min(1,(performance.now()-t0)/1600);el.textContent=fmt(n*(1-Math.pow(1-k,3)));if(k>=1)clearInterval(iv)},30)}
+  function seen(el){el.classList.add('in');el.querySelectorAll('[data-n]').forEach(countTo)}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){seen(e.target);io.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  function sweep(){var h=innerHeight;document.querySelectorAll('.rv:not(.in)').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<h*.92&&r.bottom>0)seen(el)})}
+  addEventListener('scroll',sweep,{passive:true});setInterval(sweep,500);sweep();
+
+  /* rail: active stop */
+  var links=[].slice.call(document.querySelectorAll('#stops a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  var stopsEl=document.getElementById('stops'),railAt=-2;
+  function rail(){var y=innerHeight*.35,cur=-1;secs.forEach(function(s,i){if(s&&s.getBoundingClientRect().top<y)cur=i});links.forEach(function(a,i){a.classList.toggle('on',i===cur)});if(cur!==railAt){railAt=cur;if(cur>=0)stopsEl.scrollLeft=links[cur].offsetLeft-stopsEl.offsetLeft-40}}
+  addEventListener('scroll',rail,{passive:true});rail();
+
+  /* tilt */
+  var wallEl=document.getElementById('wall');
+  if(matchMedia('(pointer:fine)').matches&&!reduce){
+    document.querySelectorAll('.win').forEach(function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='rotateX('+(-y*10)+'deg) rotateY('+(x*12)+'deg) translateZ(8px)'});c.addEventListener('mouseleave',function(){c.style.transform=''})});
+    var ww=document.getElementById('wallwrap');
+    ww.addEventListener('mousemove',function(e){if(innerWidth<=700)return;var r=ww.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;wallEl.style.transform='rotateX('+(24-y*10)+'deg) rotateZ('+(-5+x*4)+'deg) rotateY('+(x*8)+'deg)'});
+    ww.addEventListener('mouseleave',function(){wallEl.style.transform=''});
   }
-  picks.forEach(function (p) {
-    p.addEventListener('click', function () {
-      p.setAttribute('aria-pressed', String(p.getAttribute('aria-pressed') !== 'true'));
-      sync();
-    });
+  /* band parallax */
+  var bi=document.getElementById('bandimg');
+  if(!reduce)addEventListener('scroll',function(){var r=bi.parentNode.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)bi.style.transform='translate3d(0,'+((r.top-innerHeight/2)*-.08)+'px,0)'},{passive:true});
+
+  /* ---------- videos ---------- */
+  var V=[
+    ['tYjOG6IIiCM','Der Sturm kommt: Die neuesten Prophezeiungen aus der geistigen Welt','Peter Denk',294227,'The storm is coming','The Storm Is Coming: New Prophecies from the Spirit World','Summit of the Mediums'],
+    ['dvkN_BxzvPM','Machtvolle Veränderungen: Warum alles in die richtige Richtung geht','Peter Denk',174441,'It is going the right way','Powerful Changes: Why Everything Is Moving in the Right Direction','Is There Still Hope?'],
+    ['WKTXL7tSrPQ','Großer Wandel: Warum sich jetzt alles verändern wird','Lia Lohmann',160443,'The great shift','The Great Shift: Why Everything Is About to Change','The SHIFT Has Begun!'],
+    ['S4PEgV4CiPQ','Sie wussten zu viel: Warum die Kirche die Schriften der Gnostiker vernichtete','Frank Jacob',132172,'They knew too much','They Knew Too Much: Why the Church Destroyed the Gnostic Texts','Forbidden Knowledge'],
+    ['YQap4X1ax04','7 Jahre auf dem Raumschiff: Zeitreisende packt aus','Lia Lohmann',104804,'7 years on a spaceship','7 Years on a Spaceship: A Time Traveller Speaks','I Lived with ETs!'],
+    ['uIR9xmJzFos','Extreme Veränderungen unserer Erde: Was steckt wirklich dahinter?','Sonja Ariel von Staden',82948,'The Earth is changing','Extreme Changes on Our Earth: What Is Really Behind Them?','Magnetic Field Fading'],
+    ['2VoEj3Y7yw8','Zukunft: Wird KI unsere Arbeit überflüssig machen?','Peter Denk',80734,'Will AI take our work?','The Future: Will AI Make Our Work Obsolete?','Will I Lose My Job?'],
+    ['JOcIgyjWb6Y','Unbesiegbar: Warum KI uns niemals übertrumpfen wird','Maxim Mankevich',32406,'Unbeatable','Unbeatable: Why AI Will Never Surpass Us','The Human Genius']
+  ];
+  var vbox=document.getElementById('vids');
+  V.forEach(function(v){
+    var b=document.createElement('button');b.className='vid rv';b.type='button';b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',v[5]+'. Tap to switch language.');
+    b.innerHTML='<span class="inner"><span class="face"><img class="thumb" loading="lazy" alt="" src="https://i.ytimg.com/vi/'+v[0]+'/hq720.jpg"><span class="vmeta"><b></b><span><span>'+v[3].toLocaleString('en-US')+' views</span><i class="lang">DE</i></span></span></span>'
+      +'<span class="face back"><span class="ethumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/'+v[0]+'/hq720.jpg"><strong></strong><small>ENGLISH</small></span><span class="vmeta"><b></b><span><span>Thumbnail: Brigitte</span><i class="lang en">EN</i></span></span></span></span>';
+    var bs=b.querySelectorAll('.vmeta b');bs[0].textContent=v[1];bs[1].textContent=v[5];
+    b.querySelector('.ethumb strong').textContent=v[6];
+    b.addEventListener('click',function(){var on=!b.classList.contains('en');b.classList.toggle('en',on);b.setAttribute('aria-pressed',String(on))});
+    vbox.appendChild(b);io.observe(b);
   });
-  copy.addEventListener('click', function () {
-    var text = 'My first six for English: ' + chosen().map(function (p) { return p.textContent; }).join(', ') + '.';
-    if (!navigator.clipboard) { status.textContent = text; return; }
-    navigator.clipboard.writeText(text).then(
-      function () { status.textContent = 'Copied. Paste it into a message to Adam.'; },
-      function () { status.textContent = text; }
-    );
-  });
+  var fa=document.getElementById('flipall'),allEn=false;
+  fa.addEventListener('click',function(){allEn=!allEn;[].forEach.call(vbox.children,function(c,i){setTimeout(function(){c.classList.toggle('en',allEn);c.setAttribute('aria-pressed',String(allEn))},reduce?0:i*90)});fa.textContent=allEn?'Flip back to German':'Flip all to English'});
+
+  /* ---------- engine ---------- */
+  var NOTES=['You record on Saturday, in German, as now.','Your own voice in English, or subtitles. You hear the first three first.','Six shorts, two for each handle.','By Sunday it sits in eleven English places.'];
+  var pills=[].slice.call(document.querySelectorAll('[data-stage]')),outs=document.querySelectorAll('.o'),note=document.getElementById('note'),at=0,touched=false;
+  function stage(i){at=i;pills.forEach(function(p,k){p.setAttribute('aria-selected',String(k===i))});outs.forEach(function(o,k){var on=+o.dataset.from<=i;o.style.transitionDelay=on?(k*60)+'ms':'0ms';o.classList.toggle('on',on)});note.textContent=NOTES[i]}
+  pills.forEach(function(p,i){p.addEventListener('click',function(){touched=true;stage(i)})});
+  stage(0);
+  var flowSeen=false;new IntersectionObserver(function(es){flowSeen=es[0].isIntersecting},{threshold:.4}).observe(document.getElementById('flow'));
+  if(!reduce)setInterval(function(){if(flowSeen&&!touched)stage((at+1)%4)},2600);else stage(3);
+
+  /* ---------- handles ---------- */
+  var H=[
+    ['Rooted, for people who want calm in loud times.',['Trust is a practice','Why it is going the right way','Stay in your own strength']],
+    ['The Great Shift, for people who feel the world is turning.',['The storm is coming','Why everything is about to change','What the prophecies agree on']],
+    ['Gut and balance, for people who start with the body.',['How to take the tincture','Thirty days of cleansing, day by day','Three foods I never skip']]
+  ];
+  var phones=document.getElementById('phones'),hline=document.getElementById('hline'),shorts=document.getElementById('shorts');
+  function pickH(i){[].forEach.call(phones.children,function(p,k){p.classList.toggle('sel',k===i)});phones.classList.add('has-sel');hline.textContent=H[i][0];shorts.innerHTML='';H[i][1].forEach(function(t){var li=document.createElement('li');li.textContent=t;shorts.appendChild(li)})}
+  [].forEach.call(phones.children,function(p,i){p.addEventListener('click',function(){pickH(i)})});
+  pickH(1);
+
+  /* ---------- landing wall ---------- */
+  var LP=[
+    ['Free gut health guide','email','Send me the guide','var(--leaf-s)'],['11 percent off a first order','sell','Get my code','var(--sun-s)'],['Reise in die Freiheit, chapter one','email','Read chapter one','var(--lilac-s)'],['Your cleanse, day by day','teach','Start day one','var(--teal-s)'],
+    ['The rainforest you protect','trust','See the forest','var(--leaf-s)'],['Every conversation, in English','teach','Watch','var(--sky-s)'],['The weekly letter','email','Subscribe','var(--rose-s)'],['Recipes from Vegane Kochkunst','email','Send three recipes','var(--sun-s)'],
+    ['Meet Matthias','trust','His story','var(--lilac-s)'],['Why violet glass','trust','See why','var(--lilac-s)'],['Sleep and calm starter','email','Send it','var(--sky-s)'],['Living food starter','email','Send it','var(--leaf-s)'],
+    ['Talk to a person','trust','Book a free call','var(--rose-s)'],['For practitioners','sell','Apply','var(--sun-s)'],['The cleanse sets','sell','Choose a set','var(--teal-s)'],['Rooted, the short films','teach','Watch','var(--teal-s)']
+  ];
+  var JOB={email:'Collects emails',sell:'Sells',teach:'Teaches',trust:'Earns trust'};
+  var lpnote=document.getElementById('lpnote');
+  LP.forEach(function(p){var b=document.createElement('button');b.type='button';b.className='lp';b.dataset.job=p[1];b.style.setProperty('--c',p[3]);b.innerHTML='<span class="top"></span><span class="bd"><b></b><i></i><i></i></span>';b.querySelector('b').textContent=p[0];
+    b.addEventListener('click',function(){[].forEach.call(wallEl.children,function(x){x.classList.remove('sel')});b.classList.add('sel');lpnote.innerHTML='<b></b><span></span>';lpnote.querySelector('b').textContent=p[0];lpnote.querySelector('span').textContent=JOB[p[1]]+'. One button: "'+p[2]+'".'});
+    wallEl.appendChild(b)});
+  var fchips=[].slice.call(document.querySelectorAll('#filters .chip'));
+  fchips.forEach(function(c){c.addEventListener('click',function(){fchips.forEach(function(x){x.setAttribute('aria-pressed','false')});c.setAttribute('aria-pressed','true');var f=c.dataset.f;[].forEach.call(wallEl.children,function(x){x.classList.toggle('dim',f!=='all'&&x.dataset.job!==f)})})});
+
+  /* ---------- circle ---------- */
+  var circ=document.getElementById('circ'),cchips=[].slice.call(document.querySelectorAll('[data-c]'));
+  function showC(w){circ.className='circle show-'+w;cchips.forEach(function(c){c.setAttribute('aria-pressed',String(c.dataset.c===w))})}
+  cchips.forEach(function(c){c.addEventListener('click',function(){showC(c.dataset.c)})});
+  circ.querySelector('.tg').addEventListener('click',function(){showC('tg')});
+  circ.querySelector('.letter').addEventListener('click',function(){showC('letter')});
+
+  var ava=document.getElementById('ava');function avaOff(){ava.classList.add('off')}ava.addEventListener('error',avaOff);if(ava.complete&&!ava.naturalWidth)avaOff();
+
+  /* ---------- qr ---------- */
+  try{new QRCode(document.getElementById('qr'),{text:'https://meditationgardens369.github.io/Adam-vision-pages/matthias-english.html',width:140,height:140,colorDark:'#224130',colorLight:'#fffdf7',correctLevel:QRCode.CorrectLevel.L})}catch(e){}
+
+  /* ---------- calendar ---------- */
+  var cal=document.getElementById('cal');
+  ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(function(d){var s=document.createElement('div');s.className='dow';s.textContent=d;cal.appendChild(s)});
+  for(var d=0;d<28;d++){var dow=d%7,wk=Math.floor(d/7),cell=document.createElement('div');cell.className='day';var h='';
+    if(dow===2||dow===5)h+='<u style="--c:var(--teal)"></u>';
+    if(dow===1&&(wk===1||wk===3))h+='<u style="--c:var(--rose)"></u>';
+    if(dow===6)h+='<u style="--c:var(--lilac)"></u>';
+    if(dow!==6)h+='<u class="s" style="--c:var(--sun)"></u><u class="s" style="--c:var(--sun)"></u>';
+    cell.innerHTML=h;cal.appendChild(cell)}
+  var days=cal.querySelectorAll('.day');
+  new IntersectionObserver(function(es,ob){if(es[0].isIntersecting){days.forEach(function(c,i){setTimeout(function(){c.classList.add('on')},reduce?0:i*70)});ob.disconnect()}},{threshold:.3}).observe(cal);
+
+  /* ---------- pick six ---------- */
+  var PK=V.map(function(v){return [v[4],v[3]]});
+  var pick=document.getElementById('pick'),count=document.getElementById('count'),copy=document.getElementById('copy'),status=document.getElementById('status');
+  PK.forEach(function(p){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.textContent=p[0];var s=document.createElement('small');s.textContent=p[1].toLocaleString('en-US')+' views in German';b.appendChild(s);b.dataset.t=p[0];
+    b.addEventListener('click',function(){b.setAttribute('aria-pressed',String(b.getAttribute('aria-pressed')!=='true'));sync()});pick.appendChild(b)});
+  function chosen(){return [].filter.call(pick.children,function(p){return p.getAttribute('aria-pressed')==='true'})}
+  function sync(){var c=chosen();count.textContent=c.length;copy.disabled=c.length!==6;[].forEach.call(pick.children,function(p){p.disabled=c.length>=6&&p.getAttribute('aria-pressed')!=='true'});status.textContent=c.length===6?'Six chosen. Copy the list and send it to Adam.':''}
+  copy.addEventListener('click',function(){var text='My first six for English: '+chosen().map(function(p){return p.dataset.t}).join('; ')+'.';
+    if(!navigator.clipboard){status.textContent=text;return}
+    navigator.clipboard.writeText(text).then(function(){status.textContent='Copied. Paste it into a message to Adam.'},function(){status.textContent=text})});
   sync();
+
+  /* ---------- globe ---------- */
+  var holder=document.getElementById('globe'),cv=document.getElementById('gl');
+  if(window.THREE){try{
+    var R=2,renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));
+    var scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(34,1,.1,100);cam.position.set(0,0,7.6);
+    var g=new THREE.Group();scene.add(g);
+    function ll(lat,lon,r){var p=(90-lat)*Math.PI/180,t=(lon+180)*Math.PI/180;return new THREE.Vector3(-r*Math.sin(p)*Math.cos(t),r*Math.cos(p),r*Math.sin(p)*Math.sin(t))}
+    g.add(new THREE.Mesh(new THREE.SphereGeometry(R-.02,48,48),new THREE.MeshBasicMaterial({color:0xfffdf7,transparent:true,opacity:.95})));
+    g.add(new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.SphereGeometry(R+.004,18,12)),new THREE.LineBasicMaterial({color:0x224130,transparent:true,opacity:.05})));
+    g.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.1,40,40),new THREE.MeshBasicMaterial({color:0xfec102,transparent:true,opacity:.10,side:THREE.BackSide})));
+    var dotObjs=[];
+    function cloud(arr,col,size,op){var geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(new Float32Array(arr),3));var o=new THREE.Points(geo,new THREE.PointsMaterial({color:col,size:size,transparent:true,opacity:op}));g.add(o);dotObjs.push(o)}
+    function buildDots(isLand){dotObjs.forEach(function(o){g.remove(o)});dotObjs=[];var N=isLand?16000:2400,land=[],sea=[];
+      for(var k=0;k<N;k++){var y=1-(k/(N-1))*2,rr=Math.sqrt(1-y*y),th=k*2.399963,x=Math.cos(th)*rr,z=Math.sin(th)*rr;
+        if(isLand){var lat=Math.asin(y)*180/Math.PI,lon=Math.atan2(z,-x)*180/Math.PI-180;if(lon<-180)lon+=360;
+          if(isLand(lat,lon))land.push(x*R,y*R,z*R);else if(k%7===0)sea.push(x*R,y*R,z*R)}
+        else land.push(x*R,y*R,z*R)}
+      cloud(land,0x0c6e61,isLand?.04:.034,isLand?1:.55);if(sea.length)cloud(sea,0x108474,.022,.22)}
+    buildDots(null);
+    var mk=new Image();mk.crossOrigin='anonymous';
+    mk.onload=function(){try{var W=360,Hh=180,c=document.createElement('canvas');c.width=W;c.height=Hh;var x=c.getContext('2d');x.fillStyle='#000';x.fillRect(0,0,W,Hh);x.drawImage(mk,0,0,W,Hh);var d=x.getImageData(0,0,W,Hh).data;
+      function val(lat,lon){var u=Math.min(W-1,Math.max(0,Math.floor((lon+180)/360*W))),v=Math.min(Hh-1,Math.max(0,Math.floor((90-lat)/180*Hh)));return d[(v*W+u)*4]}
+      var water=val(0,-150);buildDots(function(lat,lon){return Math.abs(val(lat,lon)-water)>90})}catch(e){}};
+    mk.src='https://cdn.jsdelivr.net/npm/three-globe@2.31.0/example/img/earth-water.png';
+    var home=ll(51.2,10.4,R),C=[['London',51.5,-.1],['New York',40.7,-74],['Vancouver',49.3,-123.1],['Los Angeles',34,-118.2],['Lagos',6.5,3.4],['Cape Town',-33.9,18.4],['Mumbai',19.1,72.9],['Singapore',1.35,103.8],['Sydney',-33.9,151.2],['Auckland',-36.8,174.7]];
+    function disc(v,col,s){var m=new THREE.Mesh(new THREE.CircleGeometry(s,28),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:.95,side:THREE.DoubleSide}));m.position.copy(v.clone().multiplyScalar(1.008));m.lookAt(0,0,0);g.add(m);return m}
+    var hm=disc(home,0xfec102,.085),hring=new THREE.Mesh(new THREE.RingGeometry(.1,.125,40),new THREE.MeshBasicMaterial({color:0xfec102,transparent:true,opacity:.8,side:THREE.DoubleSide}));hring.position.copy(hm.position);hring.lookAt(0,0,0);g.add(hring);
+    var arcs=C.map(function(c,i){var b=ll(c[1],c[2],R),a=home.clone().normalize(),bn=b.clone().normalize(),ang=a.angleTo(bn),pts=[],S=70;
+      for(var s=0;s<=S;s++){var t=s/S,v=new THREE.Vector3().copy(a).multiplyScalar(Math.sin((1-t)*ang)/Math.sin(ang)).add(bn.clone().multiplyScalar(Math.sin(t*ang)/Math.sin(ang)));v.multiplyScalar(R*(1+(0.16+0.3*ang/Math.PI)*Math.sin(Math.PI*t)));pts.push(v)}
+      var geo=new THREE.BufferGeometry().setFromPoints(pts),line=new THREE.Line(geo,new THREE.LineBasicMaterial({color:0xc2557a,transparent:true,opacity:.9}));g.add(line);
+      var comet=new THREE.Mesh(new THREE.SphereGeometry(.045,12,12),new THREE.MeshBasicMaterial({color:0xfec102}));g.add(comet);
+      var dot=disc(b,0xc2557a,.055);dot.material.opacity=0;
+      var lab=document.createElement('span');lab.className='glabel';lab.textContent=c[0];holder.appendChild(lab);
+      return {pts:pts,line:line,geo:geo,comet:comet,dot:dot,end:b,lab:lab,off:i*.9}});
+    var hl=document.createElement('span');hl.className='glabel home';hl.textContent='Germany';holder.appendChild(hl);
+    var f0=ll(0,-16,1),baseY=Math.atan2(-f0.x,f0.z);g.rotation.x=.42;g.rotation.y=baseY;
+    function rs(){renderer.setSize(holder.clientWidth,holder.clientHeight,false)}
+    rs();addEventListener('resize',rs);
+    var tmp=new THREE.Vector3(),gvis=true,t0=performance.now(),running=false;
+    function place(el,v,below){tmp.copy(v).applyMatrix4(g.matrixWorld);var front=tmp.z>0.35;tmp.project(cam);el.style.transform='translate('+((tmp.x*.5+.5)*holder.clientWidth)+'px,'+((-tmp.y*.5+.5)*holder.clientHeight)+'px) translate(-50%,'+(below?'60%':'-150%')+')';return front}
+    function draw(t){var dt=(t-t0)/1000;if(!reduce)g.rotation.y=baseY+Math.sin(dt*.11)*1.05;
+      g.updateMatrixWorld();
+      var p=1+Math.sin(dt*2.4)*.25;hring.scale.setScalar(p);hring.material.opacity=.9-(p-1)*1.6;
+      arcs.forEach(function(a){var cyc=reduce?.6:((dt+a.off)%9)/9,n=a.pts.length,grow=Math.min(1,cyc/.32),fade=cyc>.82?1-(cyc-.82)/.18:1;
+        a.geo.setDrawRange(0,Math.max(2,Math.floor(n*grow)));a.line.material.opacity=.9*fade;
+        a.comet.position.copy(a.pts[Math.min(n-1,Math.floor((n-1)*grow))]);a.comet.visible=grow<1;
+        a.dot.material.opacity=grow>=1?fade:0;
+        var front=place(a.lab,a.end);a.lab.classList.toggle('on',front&&grow>=1&&fade>.4)});
+      hl.classList.toggle('on',place(hl,home,true));
+      renderer.render(scene,cam)}
+    function frame(t){if(!gvis){running=false;return}draw(t);requestAnimationFrame(frame)}
+    function kick(){if(reduce){draw(performance.now());return}if(!running){running=true;requestAnimationFrame(frame)}}
+    new IntersectionObserver(function(es){gvis=es[0].isIntersecting;if(gvis)kick()},{threshold:.02}).observe(holder);
+    kick();if(reduce)mk.addEventListener('load',function(){draw(performance.now())});
+  }catch(e){holder.style.display='none'}}
 })();
 </script>
-<script>window.hallmarkSlots = (m) => { for (const [k, v] of Object.entries(m)) { const s = document.querySelector(`[data-slot="${k}"]`); if (!s) continue; const im = new Image(); im.src = typeof v === 'string' ? v : v.src; im.alt = (typeof v === 'object' && v.alt) || s.dataset.alt || ''; s.querySelectorAll(':scope > img').forEach((o) => o.remove()); s.prepend(im); } };
-document.querySelectorAll('[data-slot] img').forEach((i) => { if (i.complete && !i.naturalWidth) i.remove(); else i.addEventListener('error', () => i.remove(), { once: true }); });</script>
 </body>
 </html>
