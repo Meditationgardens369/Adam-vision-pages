@@ -660,7 +660,7 @@ footer p{max-width:100ch;margin-bottom:8px}
         <p class="tiny" style="margin-top:12px">Speakers worldwide, first and second language. Nobody can promise reach. The room is simply bigger.</p>
       </div>
       <div class="stage rv">
-        <div class="globe" id="globe" role="img" aria-label="A globe with lines travelling from Germany to English-speaking cities">
+        <div class="globe" id="globe" role="img" aria-label="A globe with a line from Lagos in Portugal to Germany, and lines travelling on to English-speaking cities around the world">
           <canvas id="gl"></canvas>
         </div>
       </div>
@@ -1163,16 +1163,17 @@ footer p{max-width:100ch;margin-bottom:8px}
       function val(lat,lon){var u=Math.min(mw-1,Math.max(0,Math.floor((lon+180)/360*mw))),v=Math.min(mh-1,Math.max(0,Math.floor((90-lat)/180*mh)));return d[(v*mw+u)*4]}
       var water=val(0,-150);build(function(lat,lon){return Math.abs(val(lat,lon)-water)>90});if(reduce)draw(performance.now())}catch(e){}};
     mask.src='assets/earth-water.png';
-    var home=xyz(51.2,10.4);
-    var C=[['London',51.5,-.1],['New York',40.7,-74],['Vancouver',49.3,-123.1],['Los Angeles',34,-118.2],['Lagos',6.5,3.4],['Cape Town',-33.9,18.4],['Mumbai',19.1,72.9],['Singapore',1.35,103.8],['Sydney',-33.9,151.2],['Auckland',-36.8,174.7]].map(function(c,i){
-      var b=xyz(c[1],c[2]),dot=home[0]*b[0]+home[1]*b[1]+home[2]*b[2],ang=Math.acos(Math.max(-1,Math.min(1,dot))),pts=[],S=60;
-      for(var q=0;q<=S;q++){var t=q/S,ka=Math.sin((1-t)*ang)/Math.sin(ang),kb=Math.sin(t*ang)/Math.sin(ang),h=1+(0.14+0.26*ang/Math.PI)*Math.sin(Math.PI*t);pts.push([(home[0]*ka+b[0]*kb)*h,(home[1]*ka+b[1]*kb)*h,(home[2]*ka+b[2]*kb)*h])}
-      return {n:c[0],end:b,pts:pts,off:i*.9}});
+    var home=xyz(37.1,-8.67),ger=xyz(51.2,10.4);
+    function arcPts(b){var dot=home[0]*b[0]+home[1]*b[1]+home[2]*b[2],ang=Math.acos(Math.max(-1,Math.min(1,dot))),pts=[],S=60;for(var q=0;q<=S;q++){var t=q/S,ka=Math.sin((1-t)*ang)/Math.sin(ang),kb=Math.sin(t*ang)/Math.sin(ang),h=1+(0.14+0.26*ang/Math.PI)*Math.sin(Math.PI*t);pts.push([(home[0]*ka+b[0]*kb)*h,(home[1]*ka+b[1]*kb)*h,(home[2]*ka+b[2]*kb)*h])}return pts}
+    var gpts=arcPts(ger);
+    var C=[['London',51.5,-.1],['New York',40.7,-74],['Miami',25.8,-80.2],['Toronto',43.7,-79.4],['Los Angeles',34,-118.2],['Cape Town',-33.9,18.4],['Dubai',25.2,55.3],['Mumbai',19.1,72.9],['Singapore',1.35,103.8],['Sydney',-33.9,151.2],['Auckland',-36.8,174.7]].map(function(c,i){
+      var b=xyz(c[1],c[2]),pts=arcPts(b);
+      return {n:c[0],end:b,pts:pts,off:i*.75}});
     function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()}
-    function label(txt,x,y,isHome){ctx.font='700 11.5px Figtree, system-ui, sans-serif';var pw=ctx.measureText(txt).width+16,ph=20;
-      ctx.fillStyle=isHome?'#fec102':'rgba(255,255,255,.95)';rr(x-pw/2,y-ph/2,pw,ph,10);ctx.fill();
-      if(!isHome){ctx.strokeStyle='rgba(34,65,48,.16)';ctx.lineWidth=1;ctx.stroke()}
-      ctx.fillStyle='#224130';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(txt,x,y+.5)}
+    function label(txt,x,y,kind){ctx.font='700 11.5px Figtree, system-ui, sans-serif';var pw=ctx.measureText(txt).width+16,ph=20;
+      ctx.fillStyle=kind===1?'#fec102':kind===2?'#224130':'rgba(255,255,255,.95)';rr(x-pw/2,y-ph/2,pw,ph,10);ctx.fill();
+      if(!kind){ctx.strokeStyle='rgba(34,65,48,.16)';ctx.lineWidth=1;ctx.stroke()}
+      ctx.fillStyle=kind===2?'#ffffff':'#224130';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(txt,x,y+.5)}
     function draw(now){var w=holder.clientWidth,h=holder.clientHeight;if(!w||!h)return;var d2=Math.min(window.devicePixelRatio||1,2);
       if(w!==W||h!==Hh||d2!==dpr){W=w;Hh=h;dpr=d2;cv.width=Math.round(W*dpr);cv.height=Math.round(Hh*dpr)}
       var dt=(now-t0)/1000,yaw=-16*RAD+(reduce?0:Math.sin(dt*.11)*1.05),tilt=.36,cy=Math.cos(yaw),sy=Math.sin(yaw),ct=Math.cos(tilt),st=Math.sin(tilt),cx0=W/2,cy0=Hh/2,R=Math.min(W,Hh)*.4;
@@ -1191,9 +1192,11 @@ footer p{max-width:100ch;margin-bottom:8px}
         for(var k=0;k<m;k++){var pq=P(a.pts[k]);if(shown(pq)){if(pen)ctx.lineTo(pq[0],pq[1]);else{ctx.moveTo(pq[0],pq[1]);pen=true}}else pen=false}
         ctx.stroke();
         var hd=P(a.pts[m-1]);if(grow<1&&shown(hd)){ctx.fillStyle='#fec102';ctx.beginPath();ctx.arc(hd[0],hd[1],3.4,0,TAU);ctx.fill()}
-        var e=P(a.end);if(grow>=1&&e[2]>.05){ctx.globalAlpha=fade;ctx.fillStyle='#c2557a';ctx.beginPath();ctx.arc(e[0],e[1],4.2,0,TAU);ctx.fill();ctx.globalAlpha=1;if(e[2]>.2&&fade>.4)labels.push([a.n,e[0],e[1]-15,false])}});
+        var e=P(a.end);if(grow>=1&&e[2]>.05){ctx.globalAlpha=fade;ctx.fillStyle='#c2557a';ctx.beginPath();ctx.arc(e[0],e[1],4.2,0,TAU);ctx.fill();ctx.globalAlpha=1;if(e[2]>.2&&fade>.4)labels.push([a.n,e[0],e[1]-15,0])}});
+      var gq=P(ger),pen2=false;ctx.strokeStyle='#fec102';ctx.lineWidth=3;ctx.beginPath();for(var k2=0;k2<gpts.length;k2++){var g2=P(gpts[k2]);if(shown(g2)){if(pen2)ctx.lineTo(g2[0],g2[1]);else{ctx.moveTo(g2[0],g2[1]);pen2=true}}else pen2=false}ctx.stroke();
+      if(gq[2]>0){ctx.fillStyle='#224130';ctx.beginPath();ctx.arc(gq[0],gq[1],5,0,TAU);ctx.fill();labels.push(['Germany, today',gq[0],gq[1]-16,2])}
       var hq=P(home);if(hq[2]>0){var pu=1+Math.sin(dt*2.4)*.25;ctx.strokeStyle='rgba(254,193,2,'+(.9-(pu-1)*1.6)+')';ctx.lineWidth=2;ctx.beginPath();ctx.arc(hq[0],hq[1],9*pu,0,TAU);ctx.stroke();
-        ctx.fillStyle='#fec102';ctx.beginPath();ctx.arc(hq[0],hq[1],5.5,0,TAU);ctx.fill();labels.push(['Germany',hq[0],hq[1]+20,true])}
+        ctx.fillStyle='#fec102';ctx.beginPath();ctx.arc(hq[0],hq[1],5.5,0,TAU);ctx.fill();labels.push(['Lagos, Portugal',hq[0],hq[1]+22,1])}
       labels.forEach(function(l){label(l[0],l[1],l[2],l[3])})}
     function onScreen(){var r=holder.getBoundingClientRect();return r.width>0&&r.bottom>0&&r.top<innerHeight}
     function safe(now){try{if(onScreen())draw(now)}catch(e){}}
