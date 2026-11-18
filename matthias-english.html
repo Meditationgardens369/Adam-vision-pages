@@ -537,6 +537,55 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .tv-cal i.x{background:var(--teal)}
 .tv-rep{align-items:flex-end;gap:6px;padding-bottom:12px;background:var(--sky-s)}
 .tv-rep i{display:block;width:13px;border-radius:3px 3px 0 0;background:var(--teal)}
+.tv{height:104px;border-radius:12px}
+.tx-tr{gap:8px;background:var(--sun-s)}
+.tx-tr b{flex:none;width:38px;height:38px;border-radius:50%;background:url(assets/lp-matthias.jpg) center/cover;box-shadow:0 0 0 2px #fff}
+.tx-tr .wave{height:28px;margin:0;gap:2px}
+.tx-tr .wave i{width:3px;height:24px;background:var(--teal)}
+.tx-tr em{font:800 11px var(--sans);background:var(--teal);color:#fff;border-radius:8px;padding:5px 7px}
+.tx-ti{flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:0 13px;background:var(--lilac-s)}
+.tx-ti s{font:600 10px/1.2 var(--sans);color:var(--mut);opacity:.75}
+.tx-ti strong{font:600 16px/1.1 var(--serif)}
+.tx-lp{background:var(--leaf-s);padding:9px;gap:9px;justify-content:flex-start}
+.tx-lp>i{flex:none;width:40%;align-self:stretch;border-radius:8px;background:#fff url(assets/real-book.jpg) center/contain no-repeat}
+.tx-lp>span{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}
+.tx-lp strong{font:600 13px/1.1 var(--serif)}
+.tx-lp u{display:block;height:14px;border-radius:5px;background:#fff;border:1px solid var(--line2)}
+.tx-lp em{font:800 9px var(--sans);background:var(--sun);border-radius:99px;padding:4px 8px;text-align:center;color:var(--ink)}
+.tx-le{background:var(--lilac-s);padding:9px 14px}
+.tx-le>span{display:block;width:100%;height:100%;background:#fff;border-top:4px solid var(--sun);border-radius:8px;padding:7px 9px;box-shadow:var(--sh1)}
+.tx-le u{display:block;text-decoration:none;font:800 6.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.tx-le strong{display:block;font:600 12px/1.1 var(--serif);margin-top:3px}
+.tx-le em{display:block;font:italic 400 10px var(--serif);margin-top:6px}
+.tx-tg{background:linear-gradient(#e7f6d5,#d2f6e6);flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:0 10px}
+.tx-tg>span{display:flex;align-items:center;gap:6px;background:#fff;border-radius:10px 10px 10px 3px;padding:4px 8px 4px 4px;font:600 10px/1.2 var(--sans);box-shadow:var(--sh1);max-width:100%}
+.tx-tg>span+span{padding-left:8px}
+.tx-tg i{flex:none;width:48px;height:27px;border-radius:5px;background:center/cover;position:relative;overflow:hidden}
+.tx-tg i::before{content:"";position:absolute;left:0;right:0;top:0;height:30%;background:linear-gradient(90deg,#6a2fb8,#a35fe6)}
+.tx-pub{display:grid;grid-template-columns:repeat(3,auto);gap:9px 14px;justify-content:center;align-content:center;background:var(--sun-s)}
+.tx-pub span{position:relative;display:block}
+.tx-pub svg{display:block;width:32px;height:32px;padding:6px;border-radius:50%;background:#fff;border:1px solid var(--line2);color:var(--ink);stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tx-pub span::after{content:"\2713";position:absolute;right:-5px;bottom:-3px;width:14px;height:14px;border-radius:50%;background:var(--teal);color:#fff;font:800 9px/14px var(--sans);text-align:center;box-shadow:0 0 0 2px var(--sun-s)}
+.tx-rep{background:var(--sky-s);padding:9px 14px}
+.tx-rep>span{display:block;width:100%;height:100%;background:#fff;border-radius:8px;padding:8px 10px;box-shadow:var(--sh1)}
+.tx-rep u{display:block;text-decoration:none;font:600 11.5px/1.1 var(--serif)}
+.tv-th em{height:30%;display:flex;align-items:center;padding:0 7px}
+.tv-sh s{width:30px;height:56px}
+.tx-le>span,.tx-rep>span{overflow:hidden}
+@media(max-width:520px){
+  .tx-tr{gap:5px}
+  .tx-tr b{width:30px;height:30px}
+  .tx-tr .wave i{width:2px}
+  .tx-pub{gap:8px 9px}
+  .tx-pub svg{width:27px;height:27px;padding:5px}
+  .tx-le{padding:8px}
+  .tx-le em{display:none}
+  .tx-rep{padding:8px}
+  .tx-lp strong{font-size:11.5px}
+}
+.rr{display:grid;grid-template-columns:40px minmax(0,1fr);align-items:center;gap:6px;margin-top:6px}
+.rr b{font:700 8px var(--sans);color:var(--mut)}
+.rr i{display:block;height:7px;border-radius:4px;background:var(--c);width:var(--w)}
 .promises{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}
 @media(max-width:800px){.promises{grid-template-columns:minmax(0,1fr)}}
 .promise{padding:18px 20px;border-radius:20px;background:var(--c)}
@@ -945,15 +994,15 @@ footer p{max-width:100ch;margin-bottom:8px}
         <b class="n">The rest</b>
         <h3 style="margin-top:8px">Brigitte and Adam</h3>
         <div class="tasks" id="tasks">
-          <div class="tk"><span class="tv tv-tr"><i>DE</i><u></u><i class="en">EN</i></span><b>Translation and voice</b></div>
-          <div class="tk"><span class="tv tv-aa">Aa</span><b>English titles</b></div>
+          <div class="tk"><span class="tv tx-tr"><b></b><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><em>EN</em></span><b>Translation and voice</b></div>
+          <div class="tk"><span class="tv tx-ti"><s>Der SHIFT hat begonnen!</s><strong>The SHIFT Has Begun!</strong></span><b>English titles</b></div>
           <div class="tk"><small>Brigitte</small><span class="tv tv-th" style="background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"><em>The SHIFT Has Begun!</em></span><b>Thumbnails</b></div>
           <div class="tk"><span class="tv tv-sh"><s style="background-image:url(https://i.ytimg.com/vi/tYjOG6IIiCM/hq720.jpg)"></s><s style="background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"></s><s style="background-image:url(https://i.ytimg.com/vi/JOcIgyjWb6Y/hq720.jpg)"></s></span><b>Shorts</b></div>
-          <div class="tk"><small>Brigitte</small><span class="tv tv-lp"><i></i><i></i><i></i><u></u></span><b>Landing pages</b></div>
-          <div class="tk"><span class="tv tv-le"><span class="denv"></span></span><b>The letter</b></div>
-          <div class="tk"><span class="tv tv-tg"><i></i><i></i></span><b>Telegram</b></div>
-          <div class="tk"><span class="tv tv-cal"><i class="x"></i><i></i><i class="x"></i><i></i><i class="x"></i><i></i><i class="x"></i><i></i><i class="x"></i><i></i></span><b>Publishing</b></div>
-          <div class="tk"><span class="tv tv-rep"><i style="height:16px"></i><i style="height:28px"></i><i style="height:42px"></i></span><b>A one-page report</b></div>
+          <div class="tk"><small>Brigitte</small><span class="tv tx-lp"><i></i><span><strong>Read chapter one</strong><u></u><em>Read it</em></span></span><b>Landing pages</b></div>
+          <div class="tk"><span class="tv tx-le"><span><u>The Sunday letter</u><strong>Why everything is changing</strong><i class="ln"></i><i class="ln s"></i><em>With love, Matthias</em></span></span><b>The letter</b></div>
+          <div class="tk"><span class="tv tx-tg"><span><i style="background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"></i>Now in English</span><span>The Sunday letter is out.</span></span><b>Telegram</b></div>
+          <div class="tk"><span class="tv tx-pub"><span><svg aria-hidden="true"><use href="#p-yt"/></svg></span><span><svg aria-hidden="true"><use href="#p-ig"/></svg></span><span><svg aria-hidden="true"><use href="#p-tt"/></svg></span><span><svg aria-hidden="true"><use href="#p-fb"/></svg></span><span><svg aria-hidden="true"><use href="#p-x"/></svg></span><span><svg aria-hidden="true"><use href="#p-tg"/></svg></span></span><b>Publishing</b></div>
+          <div class="tk"><span class="tv tx-rep"><span><u>Your month, on one page</u><span class="rr"><b>Views</b><i style="--w:92%;--c:var(--teal)"></i></span><span class="rr"><b>Readers</b><i style="--w:64%;--c:var(--sun)"></i></span><span class="rr"><b>Orders</b><i style="--w:40%;--c:var(--lilac)"></i></span></span></span><b>A one-page report</b></div>
         </div>
       </div>
     </div>
