@@ -322,6 +322,7 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .mpn i{width:10px;height:10px;border-radius:50%;background:conic-gradient(#ff6b6b,#ffb347,#fec102,#7fd8a7,#6fc3ff,#b48cff,#ff7fc0,#ff6b6b);-webkit-mask:radial-gradient(circle,transparent 40%,#000 44%);mask:radial-gradient(circle,transparent 40%,#000 44%)}
 .mpn u{margin-left:auto;text-decoration:none;font:800 7px var(--sans);letter-spacing:.1em;border:1px solid var(--line2);border-radius:99px;padding:1px 5px}
 .mph{display:block;flex:none;height:128px;background:var(--paper2) center/cover no-repeat;position:relative;margin:0 8px;border-radius:12px;overflow:hidden}
+.mph.ct{background-color:#fff;background-size:contain}
 .mph.obj{background:none;display:flex;align-items:center;justify-content:center;gap:8px;overflow:visible}
 .mph.obj.col{flex-direction:column;align-items:stretch;justify-content:center;padding:0 4px;gap:7px}
 .mpb{display:flex;flex-direction:column;gap:6px;padding:11px 12px 12px;flex:1;position:relative}
@@ -489,7 +490,8 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .mcyou i{width:clamp(46px,6.4vw,84px);height:clamp(46px,6.4vw,84px);border-radius:50%;background:url(assets/lp-matthias.jpg) center/cover;box-shadow:0 0 0 3px #fff,0 0 0 6px var(--sun),0 14px 30px -8px rgba(0,0,0,.6)}
 .mcyou b{font:800 11.5px var(--sans);background:var(--sun);color:var(--ink);border-radius:999px;padding:4px 10px;white-space:nowrap}
 #mcmain[data-cam="1"] .mcyou{opacity:0}
-#mcmain[data-cam="2"] .mcyou,#mcmain[data-cam="3"] .mcyou,#mcmain[data-cam="4"] .mcyou{left:86%;top:56%}
+#mcmain[data-cam="2"] .mcyou,#mcmain[data-cam="4"] .mcyou{left:86%;top:54%}
+#mcmain[data-cam="3"] .mcyou{left:13%;top:50%}
 
 /* start: who does what */
 .roles{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:16px;margin-top:22px}
@@ -564,6 +566,8 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 @keyframes tpop{from{transform:scale(.7);opacity:0}}
 .tray i::after{content:attr(data-n);position:absolute;left:7px;top:4px;font:800 12px var(--sans);color:var(--faint)}
 .tray i.f::after{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.8)}
+.tray.locked i{box-shadow:0 0 0 3px var(--sun),var(--sh1);animation:tpop .5s cubic-bezier(.2,1.4,.4,1) both}
+.tray.locked i:nth-child(2){animation-delay:.07s}.tray.locked i:nth-child(3){animation-delay:.14s}.tray.locked i:nth-child(4){animation-delay:.21s}.tray.locked i:nth-child(5){animation-delay:.28s}.tray.locked i:nth-child(6){animation-delay:.35s}
 .pickfoot{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:14px}
 .pickfoot .n{font:600 40px/1 var(--serif)}
 .next{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:24px;counter-reset:st}
@@ -901,7 +905,7 @@ footer p{max-width:100ch;margin-bottom:8px}
       <div class="mc glass">
         <div class="mcmain" id="mcmain" data-cam="0">
           <img class="on" src="assets/cam-1.jpg" alt="Two people talking on a sofa among plants, seen wide"><img src="assets/cam-2.jpg" alt="" loading="lazy"><img src="assets/cam-3.jpg" alt="" loading="lazy"><img src="assets/cam-4.jpg" alt="" loading="lazy"><img src="assets/cam-5.jpg" alt="" loading="lazy">
-          <span class="mcrec"><i></i><b id="mclab">Camera 1, wide</b></span>
+          <span class="mcrec"><i></i><b id="mclab">Shot 1, wide</b></span>
           <span class="mcyou" aria-hidden="true"><i></i><b>Your seat</b></span>
         </div>
         <div class="mcthumbs" id="mcthumbs">
@@ -916,8 +920,8 @@ footer p{max-width:100ch;margin-bottom:8px}
     <div class="guide glass rv">
       <div class="kicker">Twice a month</div>
       <h2>You and Adam, <em>in English.</em></h2>
-      <p class="lede">A real conversation in the garden, filmed from five angles. These frames are from Adam's conversation with Guida. The gold circle marks your seat.</p>
-      <div class="row"><span class="chip">Five cameras</span><span class="chip">Your topics</span><span class="chip">Cut into shorts too</span></div>
+      <p class="lede">A real conversation in the garden, cut between five shots. These frames are from Adam's conversation with Guida. The gold circle marks your seat.</p>
+      <div class="row"><span class="chip">Five shots</span><span class="chip">Your topics</span><span class="chip">Cut into shorts too</span></div>
     </div>
   </div>
 </section>
@@ -967,12 +971,12 @@ footer p{max-width:100ch;margin-bottom:8px}
         <div class="tray" id="tray" aria-hidden="true"></div>
         <div class="pickfoot">
           <span class="n"><span id="count">0</span> of 6</span>
-          <button class="btn" type="button" id="copy" disabled>Copy my six</button>
+          <button class="btn" type="button" id="copy" disabled>Lock in these six</button>
           <span id="status" role="status" aria-live="polite" class="tiny"></span>
         </div>
       </div>
       <div class="next">
-        <div style="--c:var(--sun-s)"><b>You send your six</b><span>One message to Adam.</span></div>
+        <div style="--c:var(--sun-s)"><b>You pick your six</b><span>Here, today.</span></div>
         <div style="--c:var(--teal-s)"><b>We ask the guests</b><span>Each one says yes first.</span></div>
         <div style="--c:var(--lilac-s)"><b>You hear three</b><span>Before anyone else does.</span></div>
         <div style="--c:var(--leaf-s)"><b>They go out</b><span>In English, on your name.</span></div>
@@ -1082,19 +1086,19 @@ footer p{max-width:100ch;margin-bottom:8px}
   var YT='https://i.ytimg.com/vi/',LP=[
     {t:'Free gut health guide',j:'email',h:'The gut health guide',s:'Free, by email, in English.',c:'Send me the guide',i:'assets/lp-leaves.jpg',f:1,k:'leaf'},
     {t:'11 percent off a first order',j:'sell',h:'Welcome to the circle',s:'Your code for a first order.',c:'Get my code',o:'big',l:'tint',k:'sun'},
-    {t:'Your cleanse, day by day',j:'teach',h:'Your cleanse, day by day',s:'A short note each morning.',c:'Start day one',i:'assets/lp-dropper.jpg',k:'teal'},
-    {t:'Reise in die Freiheit, chapter one',j:'email',h:'Read chapter one',s:'The Spiegel bestseller. First chapter in English.',c:'Read chapter one',o:'book',l:'tint',f:1,k:'lilac'},
+    {t:'Your cleanse, day by day',j:'teach',h:'Your cleanse, day by day',s:'A short note each morning.',c:'Start day one',i:'assets/real-edp.jpg',ct:1,k:'teal'},
+    {t:'Reise in die Freiheit, chapter one',j:'email',h:'Read chapter one',s:'The Spiegel bestseller. First chapter in English.',c:'Read chapter one',i:'assets/real-book.jpg',ct:1,l:'tint',f:1,k:'lilac'},
     {t:'The rainforest you protect',j:'trust',h:'2.147 billion m²',s:'Rainforest protected so far.',c:'See the forest',i:'assets/rainforest-canopy-1400.jpg',l:'full',k:'leaf'},
     {t:'The weekly letter',j:'email',h:'The Sunday letter',s:'One letter a week from Matthias.',c:'Subscribe',o:'ava',l:'tint',f:1,k:'rose'},
     {t:'Every conversation, in English',j:'teach',h:'The conversations',s:'Two a week, now in English.',c:'Watch',i:YT+'WKTXL7tSrPQ/hq720.jpg',o:'play',k:'sky'},
-    {t:'Why violet glass',j:'trust',h:'Why violet glass',s:'What the bottle does for what is inside.',c:'See why',o:'bottle',l:'tint',k:'lilac'},
-    {t:'Recipes from Vegane Kochkunst',j:'email',h:'Three recipes to start',s:'From the cookbook Vegane Kochkunst.',c:'Send three recipes',i:'assets/lp-bowl.jpg',f:1,k:'sun'},
+    {t:'Why violet glass',j:'trust',h:'Why violet glass',s:'What the bottle does for what is inside.',c:'See why',i:'assets/real-fulvin.jpg',ct:1,l:'tint',k:'lilac'},
+    {t:'Recipes from Vegane Kochkunst',j:'email',h:'Three recipes to start',s:'From the cookbook Vegane Kochkunst.',c:'Send three recipes',i:'assets/real-cookbook.jpg',f:1,k:'sun'},
     {t:'Meet Matthias',j:'trust',h:'Meet Matthias',s:'Two years in the wild. Then a small shop, in 2008.',c:'His story',i:'assets/lp-matthias.jpg',k:'lilac'},
     {t:'Sleep and calm starter',j:'email',h:'Sleep and calm',s:'A seven-day starter, by email.',c:'Send it',i:'assets/lp-mist.jpg',l:'full',f:1,k:'sky'},
     {t:'Talk to a person',j:'trust',h:'Talk to a person',s:'Real people answer, seven days a week.',c:'Book a free call',o:'bub',l:'tint',k:'rose'},
     {t:'Living food starter',j:'email',h:'Living food',s:'A first week of simple, raw plates.',c:'Send it',i:'assets/lp-veg.jpg',f:1,k:'leaf'},
-    {t:'The cleanse sets',j:'sell',h:'The cleanse sets',s:'Three sets, one clear start.',c:'Choose a set',o:'bottles',l:'tint',k:'teal'},
-    {t:'For practitioners',j:'sell',h:'For practitioners',s:'Stock the range in your practice.',c:'Apply',i:'assets/lp-bottle.jpg',k:'sun'},
+    {t:'His own favourites',j:'sell',h:'His own favourites',s:'The set Matthias recommends first.',c:'See the set',i:'assets/real-set.jpg',ct:1,l:'tint',k:'teal'},
+    {t:'For practitioners',j:'sell',h:'For practitioners',s:'Stock the range in your practice.',c:'Apply',i:'assets/prod-curcumin.jpg',ct:1,k:'sun'},
     {t:'Rooted, the short films',j:'teach',h:'Rooted',s:'One minute of calm, most days.',c:'Watch',o:'shorts',l:'tint',k:'teal'}
   ];
   var JOB={email:'Collects emails',sell:'Sells',teach:'Teaches',trust:'Earns trust'};
@@ -1103,7 +1107,7 @@ footer p{max-width:100ch;margin-bottom:8px}
   function mpInner(p){var hero;
     if(p.o==='bub')hero='<span class="mph obj col"><span class="mbub">Which set suits me?</span><span class="mbub me">Tell me a little about you.</span></span>';
     else if(p.o&&OBJ[p.o])hero='<span class="mph obj">'+OBJ[p.o]+'</span>';
-    else hero='<span class="mph" style="background-image:url('+p.i+')">'+(p.o==='play'?'<span class="mban">The SHIFT Has Begun!</span><span class="mplay"></span>':'')+'</span>';
+    else hero='<span class="mph'+(p.ct?' ct':'')+'" style="background-image:url('+p.i+')">'+(p.o==='play'?'<span class="mban">The SHIFT Has Begun!</span><span class="mplay"></span>':'')+'</span>';
     return '<span class="mpn"><i></i>Regenbogenkreis<u>EN</u></span>'+hero+'<span class="mpb"><b>'+p.h+'</b><em>'+p.s+'</em>'+(p.f?'<span class="mpf">Your email</span>':'')+'<span class="mpc">'+p.c+'</span></span>'}
   function mkPage(p,tag){var el=document.createElement(tag);el.className='mp'+(p.l?' '+p.l:'');el.style.setProperty('--c','var(--'+p.k+'-s)');el.dataset.job=p.j;el.innerHTML=mpInner(p);return el}
   var tilt=document.getElementById('lptilt'),dlg=document.getElementById('lpdlg');
@@ -1156,7 +1160,7 @@ footer p{max-width:100ch;margin-bottom:8px}
   if(reduce)setLayer('en');else new IntersectionObserver(function(es,ob){if(es[0].isIntersecting){ob.disconnect();setTimeout(function(){if(!wkTouched)setLayer('en')},1500)}},{threshold:.35}).observe(wkb);
 
   /* ---------- talks: five angles ---------- */
-  var MC=['Camera 1, wide','Camera 2, Adam','Camera 3, the guest','Camera 4, from the side','Camera 5, hands'],mcImgs=document.querySelectorAll('#mcmain img'),mcBtns=[].slice.call(document.querySelectorAll('#mcthumbs button')),mcAt=0,mcSeen=false,mcHold=0;
+  var MC=['Shot 1, wide','Shot 2, Adam','Shot 3, the guest','Shot 4, over the shoulder','Shot 5, close-up'],mcImgs=document.querySelectorAll('#mcmain img'),mcBtns=[].slice.call(document.querySelectorAll('#mcthumbs button')),mcAt=0,mcSeen=false,mcHold=0;
   function setCam(i){mcAt=i;mcImgs.forEach(function(im,k){im.classList.toggle('on',k===i)});mcBtns.forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i))});document.getElementById('mclab').textContent=MC[i];document.getElementById('mcmain').setAttribute('data-cam',i)}
   mcBtns.forEach(function(b,i){b.addEventListener('click',function(){mcHold=3;setCam(i)})});
   new IntersectionObserver(function(es){mcSeen=es[0].isIntersecting},{threshold:.3}).observe(document.getElementById('mcmain'));
@@ -1176,10 +1180,9 @@ footer p{max-width:100ch;margin-bottom:8px}
     b.addEventListener('click',function(){var k=order.indexOf(i);if(k>=0)order.splice(k,1);else if(order.length<6)order.push(i);sync()});pick.appendChild(b)});
   function sync(){[].forEach.call(pick.children,function(b,i){var k=order.indexOf(i);b.setAttribute('aria-pressed',String(k>=0));b.querySelector('em').textContent=k>=0?k+1:'';b.disabled=order.length>=6&&k<0});
     [].forEach.call(tray.children,function(sl,n){var i=order[n],has=i!==undefined;if(has!==sl.classList.contains('f')||has)sl.style.backgroundImage=has?'url('+YT+PK[i][0]+'/hq720.jpg)':'';sl.classList.toggle('f',has)});
-    count.textContent=order.length;copy.disabled=order.length!==6;status.textContent=order.length===6?'Six chosen. Copy the list and send it to Adam.':''}
-  copy.addEventListener('click',function(){var text='My first six for English: '+order.map(function(i){return PK[i][1]}).join('; ')+'.';
-    if(!navigator.clipboard){status.textContent=text;return}
-    navigator.clipboard.writeText(text).then(function(){status.textContent='Copied. Paste it into a message to Adam.'},function(){status.textContent=text})});
+    count.textContent=order.length;copy.disabled=order.length!==6;if(order.length!==6){tray.classList.remove('locked');copy.textContent='Lock in these six'}status.textContent=order.length===6&&!tray.classList.contains('locked')?'Six chosen. Lock them in when you are happy.':tray.classList.contains('locked')?status.textContent:''}
+  copy.addEventListener('click',function(){if(order.length!==6)return;tray.classList.add('locked');copy.textContent='Locked in';status.textContent='These six go first.';
+    try{localStorage.setItem('matthias-first-six',JSON.stringify(order.map(function(i){return PK[i][1]})))}catch(e){}});
   sync();
 
   /* ---------- globe: plain 2D canvas, no WebGL and no library ---------- */
