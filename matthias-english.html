@@ -220,22 +220,66 @@ button.chip[aria-pressed="true"],button.chip[aria-selected="true"]{background:va
 .shorts li:nth-child(2){animation-delay:.08s}.shorts li:nth-child(3){animation-delay:.16s}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}}
 
-/* landing wall */
-.wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;transform:rotateX(24deg) rotateZ(-5deg);transform-style:preserve-3d;transition:transform .3s ease-out;padding:10px 0 30px}
-@media(max-width:700px){.wall{grid-template-columns:repeat(2,minmax(0,1fr));transform:none;padding:0}}
-.lp{border:0;text-align:left;padding:0;border-radius:14px;background:#fff;box-shadow:var(--sh1);overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .3s,box-shadow .3s;display:block}
-.lp:hover,.lp.sel{transform:translateZ(46px);box-shadow:var(--sh2)}
-.lp.dim{opacity:.22}
-.lp .top{display:block;height:46px;background:var(--c);position:relative}
-.lp .top::after{content:"";position:absolute;left:10px;bottom:-9px;width:34px;height:18px;border-radius:999px;background:var(--ink)}
-.lp .bd{display:block;padding:16px 10px 10px}
-.lp b{display:block;font:700 12.5px/1.25 var(--sans);min-height:2.5em}
-.lp i{display:block;height:5px;border-radius:3px;background:var(--paper2);margin-top:6px}
-.lp i+i{width:60%}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
-.lpnote{margin-top:16px;padding:14px 16px;border-radius:16px;background:var(--glass2);border:1px solid var(--line);min-height:76px}
-.lpnote b{display:block;font:600 19px var(--serif)}
-.lpnote span{font-size:14px;color:var(--mut)}
+/* landing pages: two drifting rows of real mini pages */
+#pages{overflow:hidden}
+.lphead{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:26px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.lpstage{position:relative;z-index:2;perspective:1700px;padding:14px 0 46px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.lptilt{transform:rotateX(10deg) rotateZ(-2.5deg);transform-style:preserve-3d;display:grid;gap:24px}
+.lprow{display:flex;transform-style:preserve-3d}
+.lptrack{display:flex;gap:24px;padding-right:24px;flex:none;animation:lpm 90s linear infinite;transform-style:preserve-3d}
+.lprow.rev .lptrack{animation-direction:reverse}
+@keyframes lpm{to{transform:translateX(-100%)}}
+.lpstage:hover .lptrack,.lpstage:focus-within .lptrack{animation-play-state:paused}
+@media(max-width:700px){.lptilt{transform:none;gap:16px}.lptrack{gap:16px;padding-right:16px;animation-duration:70s}}
+.mp{flex:none;width:240px;height:330px;border:0;padding:0;text-align:left;border-radius:18px;background:#fff;box-shadow:var(--sh2);overflow:hidden;display:flex;flex-direction:column;position:relative;transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .3s,filter .3s;font-family:var(--sans);color:var(--ink)}
+button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
+.mp.dim{opacity:.16;filter:grayscale(1)}
+.mp.tint{background:var(--c)}
+.mpn{display:flex;align-items:center;gap:5px;padding:9px 11px 8px;font:700 8.5px var(--sans);position:relative;z-index:1}
+.mpn i{width:10px;height:10px;border-radius:50%;background:conic-gradient(#ff6b6b,#ffb347,#fec102,#7fd8a7,#6fc3ff,#b48cff,#ff7fc0,#ff6b6b);-webkit-mask:radial-gradient(circle,transparent 40%,#000 44%);mask:radial-gradient(circle,transparent 40%,#000 44%)}
+.mpn u{margin-left:auto;text-decoration:none;font:800 7px var(--sans);letter-spacing:.1em;border:1px solid var(--line2);border-radius:99px;padding:1px 5px}
+.mph{display:block;flex:none;height:128px;background:var(--paper2) center/cover no-repeat;position:relative;margin:0 8px;border-radius:12px;overflow:hidden}
+.mph.obj{background:none;display:flex;align-items:center;justify-content:center;gap:8px;overflow:visible}
+.mph.obj.col{flex-direction:column;align-items:stretch;justify-content:center;padding:0 4px;gap:7px}
+.mpb{display:flex;flex-direction:column;gap:6px;padding:11px 12px 12px;flex:1;position:relative}
+.mpb b{font:600 19px/1.06 var(--serif);letter-spacing:-.015em}
+.mpb em{font:400 10px/1.35 var(--sans);color:var(--mut)}
+.mpf{display:block;border:1px solid var(--line2);background:#fff;border-radius:8px;padding:6px 8px;font-size:9px;color:var(--faint);margin-top:auto}
+.mpc{display:block;text-align:center;background:var(--sun);border-radius:99px;padding:7px 8px;font:800 10px var(--sans);margin-top:auto}
+.mpf+.mpc{margin-top:0}
+.mp.full .mph{position:absolute;left:0;top:0;right:0;bottom:0;height:auto;margin:0;border-radius:0}
+.mp.full .mpn{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.mp.full .mpn u{border-color:rgba(255,255,255,.7)}
+.mp.full .mpb{flex:none;margin:auto 8px 8px;background:rgba(255,253,247,.95);border-radius:12px;padding:10px 11px 11px}
+.mbig{font:600 78px/1 var(--serif);letter-spacing:-.04em}
+.mbook{width:86px;height:120px;border-radius:3px 8px 8px 3px;background:linear-gradient(135deg,#224130,#108474);color:#fff;padding:11px 9px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:8px 10px 20px -8px rgba(34,65,48,.65),inset 4px 0 0 rgba(255,255,255,.18);transform:rotate(-5deg)}
+.mbook b{font:600 12.5px/1.1 var(--serif)}
+.mbook i{font:600 6.5px var(--sans);font-style:normal;opacity:.85}
+.mava{width:110px;height:110px;border-radius:50%;background:center/cover;box-shadow:0 0 0 5px #fff,0 14px 26px -10px rgba(34,65,48,.5)}
+.mbot{width:40px;height:100px;border-radius:9px 9px 11px 11px;background:linear-gradient(90deg,#2a1850,#5a3aa0 24%,#8d6bd6 50%,#5a3aa0 76%,#2a1850);position:relative;margin-top:20px;box-shadow:0 16px 22px -12px rgba(42,24,80,.8)}
+.mbot::before{content:"";position:absolute;left:10px;top:-16px;width:20px;height:18px;border-radius:4px 4px 0 0;background:#1a1030}
+.mbot::after{content:"";position:absolute;left:5px;right:5px;top:36px;height:30px;border-radius:4px;background:#fffdf7}
+.mbot.s{transform:scale(.8);transform-origin:bottom}
+.mbub{font:600 9.5px/1.3 var(--sans);background:#fff;border-radius:12px 12px 12px 3px;padding:7px 9px;box-shadow:var(--sh1);align-self:flex-start;max-width:86%}
+.mbub.me{align-self:flex-end;background:var(--teal);color:#fff;border-radius:12px 12px 3px 12px}
+.msh{width:56px;height:106px;border-radius:9px;background:#ccc 88% 100%/auto 142% no-repeat;box-shadow:var(--sh1)}
+.msh:nth-child(2){transform:translateY(-8px)}
+.mplay{position:absolute;left:50%;top:60%;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;background:rgba(255,255,255,.94);box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.mplay::after{content:"";position:absolute;left:15px;top:11px;border-left:12px solid var(--ink);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.mban{position:absolute;left:0;right:0;top:0;height:27%;display:flex;align-items:center;padding:0 6%;background:linear-gradient(90deg,#6a2fb8,#a35fe6);color:#fff;font:800 11px var(--sans)}
+#lpdlg{border:0;padding:0;background:transparent;max-width:min(94vw,840px);width:100%;overflow:visible;color:var(--ink)}
+#lpdlg::backdrop{background:rgba(34,65,48,.5);backdrop-filter:blur(8px)}
+.dlgin{display:grid;grid-template-columns:auto minmax(0,1fr);gap:30px;align-items:center;background:var(--paper);border-radius:32px;padding:28px;box-shadow:var(--sh2)}
+#lpdlg[open] .dlgin{animation:dpop .4s cubic-bezier(.2,.9,.3,1.15)}
+@keyframes dpop{from{opacity:0;transform:scale(.9) translateY(14px)}}
+.dlgphone{--z:1.6;width:calc(240px*var(--z) + 16px);height:calc(330px*var(--z) + 16px);padding:8px;border-radius:38px;background:#1b2a22;box-shadow:var(--sh2)}
+.dlgscale{width:240px;height:330px;transform:scale(var(--z));transform-origin:0 0}
+.dlgscale .mp{box-shadow:none}
+.dlgtxt h3{font-size:clamp(26px,3.4vw,38px);font-weight:400;margin:14px 0 8px}
+.dlgtxt p{color:var(--mut);margin-bottom:10px}
+.dlgtxt .btn{margin-top:10px}
+@media(max-width:760px){.dlgin{grid-template-columns:minmax(0,1fr);justify-items:center;padding:16px;gap:12px;text-align:center}.dlgphone{--z:1.1}}
 
 /* circle: telegram + letter */
 .circle{position:relative;height:500px;max-width:520px;margin-inline:auto;transform-style:preserve-3d}
@@ -336,7 +380,8 @@ footer p{max-width:100ch;margin-bottom:8px}
 .rv.in{opacity:1;transform:none}
 .win.rv.in{transition:transform .25s ease-out,opacity .8s}
 @media(prefers-reduced-motion:reduce){
-  .ring,.wave i,.wire,.phone,.bottle,.gphone,.beam,.fzoom,.mist{animation:none}
+  .ring,.wave i,.wire,.phone,.bottle,.gphone,.beam,.fzoom,.mist,.lptrack{animation:none}
+  .lprow{overflow-x:auto}.lptrack[aria-hidden]{display:none}
   .rv,.hero h1 span,.o,.day{opacity:1;transform:none;animation:none}
   #pollen{display:none}
   html{scroll-behavior:auto}
@@ -490,21 +535,35 @@ footer p{max-width:100ch;margin-bottom:8px}
 </section>
 
 <section id="pages">
-  <div class="wrap stop">
-    <div class="guide glass rv">
-      <div class="kicker">Landing pages</div>
-      <h2>Sixteen doors, <em>each with one job.</em></h2>
-      <div class="filters" id="filters">
+  <div class="wrap">
+    <div class="lphead">
+      <div>
+        <div class="kicker">Landing pages</div>
+        <h2 class="rv">Sixteen doors, <em>each with one job.</em></h2>
+        <p class="lede rv">You run about twenty of these in German. Tap any page to open it.</p>
+      </div>
+      <div class="filters rv" id="filters" role="group" aria-label="Show pages by job">
         <button class="chip" type="button" aria-pressed="true" data-f="all">All</button>
         <button class="chip" type="button" aria-pressed="false" data-f="email">Collect emails</button>
         <button class="chip" type="button" aria-pressed="false" data-f="sell">Sell</button>
         <button class="chip" type="button" aria-pressed="false" data-f="teach">Teach</button>
         <button class="chip" type="button" aria-pressed="false" data-f="trust">Earn trust</button>
       </div>
-      <div class="lpnote" id="lpnote" aria-live="polite"><b>Tap a page</b><span>You run about twenty of these in German. The English set mirrors the best of them.</span></div>
     </div>
-    <div class="stage rv" id="wallwrap"><div class="wall" id="wall"></div></div>
   </div>
+  <div class="lpstage rv"><div class="lptilt" id="lptilt"></div></div>
+  <dialog id="lpdlg" aria-labelledby="lpdt">
+    <div class="dlgin">
+      <div class="dlgphone"><div class="dlgscale" id="lpdp"></div></div>
+      <div class="dlgtxt">
+        <span class="chip" id="lpdj"></span>
+        <h3 id="lpdt"></h3>
+        <p id="lpdd"></p>
+        <p class="tiny">A sketch to show the idea. The real page gets Brigitte's full design.</p>
+        <button class="btn ghost" type="button" id="lpdx">Close</button>
+      </div>
+    </div>
+  </dialog>
 </section>
 
 <section id="circle">
@@ -615,7 +674,7 @@ footer p{max-width:100ch;margin-bottom:8px}
 <footer>
   <div class="wrap">
     <p>Prepared by Brigitte and Adam, November 2026. Channel, Telegram and shop figures were read on 18 November 2026. English titles are translations to show the idea. Nothing here is published in English yet.</p>
-    <p>Thumbnails and titles are from your own channel. Speaker estimates follow Ethnologue. Photographs: the rainforest canopy is a licensed stock photograph, and the tincture photo is by <a href="https://commons.wikimedia.org/wiki/File:Taking_rosemary_oil_from_a_bottle.jpg">formulatehealth</a> (CC BY 2.0) via Wikimedia Commons. Both are stand-ins until yours replace them.</p>
+    <p>Thumbnails and titles are from your own channel. Speaker estimates follow Ethnologue. Photographs: the rainforest canopy is a licensed stock photograph. The tincture photos are by <a href="https://commons.wikimedia.org/wiki/File:Taking_rosemary_oil_from_a_bottle.jpg">formulatehealth</a> (CC BY 2.0, Wikimedia Commons). The other photographs are from Unsplash. All are stand-ins until yours replace them.</p>
     <p>The seven building blocks: <a href="matthias-vision.html">Deutsch</a>, <a href="matthias-vision-en.html">English</a></p>
   </div>
 </footer>
@@ -653,12 +712,8 @@ footer p{max-width:100ch;margin-bottom:8px}
   addEventListener('scroll',rail,{passive:true});rail();
 
   /* tilt */
-  var wallEl=document.getElementById('wall');
   if(matchMedia('(pointer:fine)').matches&&!reduce){
     document.querySelectorAll('.win').forEach(function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='rotateX('+(-y*10)+'deg) rotateY('+(x*12)+'deg) translateZ(8px)'});c.addEventListener('mouseleave',function(){c.style.transform=''})});
-    var ww=document.getElementById('wallwrap');
-    ww.addEventListener('mousemove',function(e){if(innerWidth<=700)return;var r=ww.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;wallEl.style.transform='rotateX('+(24-y*10)+'deg) rotateZ('+(-5+x*4)+'deg) rotateY('+(x*8)+'deg)'});
-    ww.addEventListener('mouseleave',function(){wallEl.style.transform=''});
   }
   /* band parallax */
   var bi=document.getElementById('fpar');
@@ -724,20 +779,48 @@ footer p{max-width:100ch;margin-bottom:8px}
   [].forEach.call(phones.children,function(p,i){p.addEventListener('click',function(){pickH(i)})});
   pickH(1);
 
-  /* ---------- landing wall ---------- */
-  var LP=[
-    ['Free gut health guide','email','Send me the guide','var(--leaf-s)'],['11 percent off a first order','sell','Get my code','var(--sun-s)'],['Reise in die Freiheit, chapter one','email','Read chapter one','var(--lilac-s)'],['Your cleanse, day by day','teach','Start day one','var(--teal-s)'],
-    ['The rainforest you protect','trust','See the forest','var(--leaf-s)'],['Every conversation, in English','teach','Watch','var(--sky-s)'],['The weekly letter','email','Subscribe','var(--rose-s)'],['Recipes from Vegane Kochkunst','email','Send three recipes','var(--sun-s)'],
-    ['Meet Matthias','trust','His story','var(--lilac-s)'],['Why violet glass','trust','See why','var(--lilac-s)'],['Sleep and calm starter','email','Send it','var(--sky-s)'],['Living food starter','email','Send it','var(--leaf-s)'],
-    ['Talk to a person','trust','Book a free call','var(--rose-s)'],['For practitioners','sell','Apply','var(--sun-s)'],['The cleanse sets','sell','Choose a set','var(--teal-s)'],['Rooted, the short films','teach','Watch','var(--teal-s)']
+  /* ---------- landing pages ---------- */
+  var YT='https://i.ytimg.com/vi/',LP=[
+    {t:'Free gut health guide',j:'email',h:'The gut health guide',s:'Free, by email, in English.',c:'Send me the guide',i:'assets/lp-leaves.jpg',f:1,k:'leaf'},
+    {t:'11 percent off a first order',j:'sell',h:'Welcome to the circle',s:'Your code for a first order.',c:'Get my code',o:'big',l:'tint',k:'sun'},
+    {t:'Your cleanse, day by day',j:'teach',h:'Your cleanse, day by day',s:'A short note each morning.',c:'Start day one',i:'assets/lp-dropper.jpg',k:'teal'},
+    {t:'Reise in die Freiheit, chapter one',j:'email',h:'Read chapter one',s:'The Spiegel bestseller. First chapter in English.',c:'Read chapter one',o:'book',l:'tint',f:1,k:'lilac'},
+    {t:'The rainforest you protect',j:'trust',h:'2.147 billion m²',s:'Rainforest protected so far.',c:'See the forest',i:'assets/rainforest-canopy-1400.jpg',l:'full',k:'leaf'},
+    {t:'The weekly letter',j:'email',h:'The Sunday letter',s:'One letter a week from Matthias.',c:'Subscribe',o:'ava',l:'tint',f:1,k:'rose'},
+    {t:'Every conversation, in English',j:'teach',h:'The conversations',s:'Two a week, now in English.',c:'Watch',i:YT+'WKTXL7tSrPQ/hq720.jpg',o:'play',k:'sky'},
+    {t:'Why violet glass',j:'trust',h:'Why violet glass',s:'What the bottle does for what is inside.',c:'See why',o:'bottle',l:'tint',k:'lilac'},
+    {t:'Recipes from Vegane Kochkunst',j:'email',h:'Three recipes to start',s:'From the cookbook Vegane Kochkunst.',c:'Send three recipes',i:'assets/lp-bowl.jpg',f:1,k:'sun'},
+    {t:'Meet Matthias',j:'trust',h:'Meet Matthias',s:'Two years in the wild. Then a small shop, in 2008.',c:'His story',i:'assets/lp-matthias.jpg',k:'lilac'},
+    {t:'Sleep and calm starter',j:'email',h:'Sleep and calm',s:'A seven-day starter, by email.',c:'Send it',i:'assets/lp-mist.jpg',l:'full',f:1,k:'sky'},
+    {t:'Talk to a person',j:'trust',h:'Talk to a person',s:'Real people answer, seven days a week.',c:'Book a free call',o:'bub',l:'tint',k:'rose'},
+    {t:'Living food starter',j:'email',h:'Living food',s:'A first week of simple, raw plates.',c:'Send it',i:'assets/lp-veg.jpg',f:1,k:'leaf'},
+    {t:'The cleanse sets',j:'sell',h:'The cleanse sets',s:'Three sets, one clear start.',c:'Choose a set',o:'bottles',l:'tint',k:'teal'},
+    {t:'For practitioners',j:'sell',h:'For practitioners',s:'Stock the range in your practice.',c:'Apply',i:'assets/lp-bottle.jpg',k:'sun'},
+    {t:'Rooted, the short films',j:'teach',h:'Rooted',s:'One minute of calm, most days.',c:'Watch',o:'shorts',l:'tint',k:'teal'}
   ];
   var JOB={email:'Collects emails',sell:'Sells',teach:'Teaches',trust:'Earns trust'};
-  var lpnote=document.getElementById('lpnote');
-  LP.forEach(function(p){var b=document.createElement('button');b.type='button';b.className='lp';b.dataset.job=p[1];b.style.setProperty('--c',p[3]);b.innerHTML='<span class="top"></span><span class="bd"><b></b><i></i><i></i></span>';b.querySelector('b').textContent=p[0];
-    b.addEventListener('click',function(){[].forEach.call(wallEl.children,function(x){x.classList.remove('sel')});b.classList.add('sel');lpnote.innerHTML='<b></b><span></span>';lpnote.querySelector('b').textContent=p[0];lpnote.querySelector('span').textContent=JOB[p[1]]+'. One button: "'+p[2]+'".'});
-    wallEl.appendChild(b)});
+  var OBJ={big:'<span class="mbig">11%</span>',book:'<span class="mbook"><b>Reise in die Freiheit</b><i>Matthias Langwasser</i></span>',ava:'<span class="mava" style="background-image:url(assets/lp-matthias.jpg)"></span>',bottle:'<span class="mbot"></span>',bottles:'<span class="mbot s"></span><span class="mbot"></span><span class="mbot s"></span>',
+    shorts:['dvkN_BxzvPM','WKTXL7tSrPQ','JOcIgyjWb6Y'].map(function(v){return '<span class="msh" style="background-image:url('+YT+v+'/hq720.jpg)"></span>'}).join('')};
+  function mpInner(p){var hero;
+    if(p.o==='bub')hero='<span class="mph obj col"><span class="mbub">Which set suits me?</span><span class="mbub me">Tell me a little about you.</span></span>';
+    else if(p.o&&OBJ[p.o])hero='<span class="mph obj">'+OBJ[p.o]+'</span>';
+    else hero='<span class="mph" style="background-image:url('+p.i+')">'+(p.o==='play'?'<span class="mban">The SHIFT Has Begun!</span><span class="mplay"></span>':'')+'</span>';
+    return '<span class="mpn"><i></i>Regenbogenkreis<u>EN</u></span>'+hero+'<span class="mpb"><b>'+p.h+'</b><em>'+p.s+'</em>'+(p.f?'<span class="mpf">Your email</span>':'')+'<span class="mpc">'+p.c+'</span></span>'}
+  function mkPage(p,tag){var el=document.createElement(tag);el.className='mp'+(p.l?' '+p.l:'');el.style.setProperty('--c','var(--'+p.k+'-s)');el.dataset.job=p.j;el.innerHTML=mpInner(p);return el}
+  var tilt=document.getElementById('lptilt'),dlg=document.getElementById('lpdlg');
+  function openLP(p){var hold=document.getElementById('lpdp');hold.innerHTML='';hold.appendChild(mkPage(p,'div'));
+    document.getElementById('lpdj').textContent=JOB[p.j];document.getElementById('lpdt').textContent=p.t;
+    document.getElementById('lpdd').textContent='One page, one job, one button: "'+p.c+'".';
+    if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')}
+  [LP.slice(0,8),LP.slice(8)].forEach(function(set,ri){var row=document.createElement('div');row.className='lprow'+(ri?' rev':'');
+    [0,1].forEach(function(c){var tr=document.createElement('div');tr.className='lptrack';if(c)tr.setAttribute('aria-hidden','true');
+      set.forEach(function(p){var b=mkPage(p,'button');b.type='button';b.setAttribute('aria-label',p.t+'. Open a larger preview.');if(c)b.tabIndex=-1;b.addEventListener('click',function(){openLP(p)});tr.appendChild(b)});
+      row.appendChild(tr)});
+    tilt.appendChild(row)});
+  document.getElementById('lpdx').addEventListener('click',function(){dlg.close()});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
   var fchips=[].slice.call(document.querySelectorAll('#filters .chip'));
-  fchips.forEach(function(c){c.addEventListener('click',function(){fchips.forEach(function(x){x.setAttribute('aria-pressed','false')});c.setAttribute('aria-pressed','true');var f=c.dataset.f;[].forEach.call(wallEl.children,function(x){x.classList.toggle('dim',f!=='all'&&x.dataset.job!==f)})})});
+  fchips.forEach(function(c){c.addEventListener('click',function(){fchips.forEach(function(x){x.setAttribute('aria-pressed','false')});c.setAttribute('aria-pressed','true');var f=c.dataset.f;tilt.querySelectorAll('.mp').forEach(function(x){x.classList.toggle('dim',f!=='all'&&x.dataset.job!==f)})})});
 
   /* ---------- circle ---------- */
   var circ=document.getElementById('circ'),cchips=[].slice.call(document.querySelectorAll('[data-c]'));
