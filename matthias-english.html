@@ -276,7 +276,7 @@ button.chip[aria-pressed="true"],button.chip[aria-selected="true"]{background:va
 .chan.in:hover{transform:translateY(-8px)}
 .chban{height:54px;background:linear-gradient(135deg,var(--c),var(--cs))}
 .chtop{display:flex;align-items:flex-end;gap:12px;padding:0 18px;margin-top:-30px}
-.chava{flex:none;width:68px;height:68px;border-radius:50%;background:url(assets/lp-matthias.jpg) center/cover;box-shadow:0 0 0 3px #fff,0 0 0 6px var(--c)}
+.chava{flex:none;width:68px;height:68px;border-radius:50%;background-color:var(--paper2);box-shadow:0 0 0 3px #fff,0 0 0 6px var(--c)}
 .chtop div{flex:1;min-width:0;padding-bottom:2px}
 .chtop b{display:block;font:600 22px/1.1 var(--serif)}
 .chtop small{display:block;font:600 12px var(--sans);color:var(--mut)}
@@ -287,7 +287,19 @@ button.chip[aria-pressed="true"],button.chip[aria-selected="true"]{background:va
 .cht.yt{background-position:97% 100%;background-size:auto 168%}
 .cht q{position:absolute;left:5px;right:5px;bottom:6px;quotes:none;font:800 9.5px/1.15 var(--sans);color:#fff;background:rgba(27,42,34,.82);border-radius:7px;padding:4px 5px;text-align:center}
 .chplat{display:flex;gap:6px;flex-wrap:wrap;padding:14px 18px 18px}
-.chplat span{font:700 11px var(--sans);border:1px solid var(--line2);border-radius:999px;padding:4px 9px;background:#fff}
+
+.chava{position:relative;background-position:center;background-size:cover}
+.chava i{position:absolute;right:-5px;bottom:-5px;width:28px;height:28px;border-radius:50%;background:url(assets/lp-matthias.jpg) center/cover;box-shadow:0 0 0 2px #fff}
+.chplat svg,.ph svg{width:32px;height:32px;padding:6px;border-radius:50%;background:#fff;border:1px solid var(--line2);color:var(--ink);stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.plat{margin-top:22px;padding:24px 26px;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:28px;align-items:center}
+.plat b.n{display:block;font:600 clamp(40px,5vw,64px)/1 var(--serif);letter-spacing:-.02em}
+.pm{display:grid;grid-template-columns:minmax(120px,1.5fr) repeat(6,minmax(0,1fr));gap:12px 6px;align-items:center}
+.ph{display:flex;flex-direction:column;align-items:center;gap:5px;font:700 10.5px var(--sans);color:var(--mut)}
+.pmr{display:flex;align-items:center;gap:9px;font:600 16px/1.1 var(--serif)}
+.pmr i{flex:none;width:30px;height:30px;border-radius:50%;background:center/cover}
+.pd{justify-self:center;width:22px;height:22px;border-radius:50%;background:var(--c);box-shadow:0 0 0 5px var(--cs);transform:scale(0);transition:transform .45s cubic-bezier(.2,1.5,.4,1);transition-delay:calc(var(--d)*55ms + 200ms)}
+.plat.in .pd{transform:scale(1)}
+@media(max-width:860px){.plat{grid-template-columns:minmax(0,1fr);padding:18px;gap:16px}.pm{grid-template-columns:minmax(74px,1.3fr) repeat(6,minmax(0,1fr));gap:10px 2px}.ph span{display:none}.ph svg{width:26px;height:26px;padding:5px}.pmr{font-size:12.5px;gap:5px}.pmr i{width:20px;height:20px}.pd{width:14px;height:14px;box-shadow:0 0 0 3px var(--cs)}}
 @media(max-width:860px){.chans{grid-template-columns:minmax(0,1fr)}.chpipes{display:none}.chsrc{margin-bottom:22px}.chan p{min-height:0}}
 
 /* landing pages: two drifting rows of real mini pages */
@@ -472,6 +484,12 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .mcthumbs img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
 .mcthumbs button[aria-pressed="true"]{border-color:var(--sun);transform:translateY(-4px)}
 .mcthumbs span{position:absolute;left:6px;bottom:4px;font:800 10px var(--sans);color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.9)}
+
+.mcyou{position:absolute;left:26%;top:16%;display:flex;flex-direction:column;align-items:center;gap:6px;transform:translate(-50%,0);transition:left .6s,top .6s,opacity .4s;pointer-events:none}
+.mcyou i{width:clamp(54px,9vw,96px);height:clamp(54px,9vw,96px);border-radius:50%;background:url(assets/lp-matthias.jpg) center/cover;box-shadow:0 0 0 3px #fff,0 0 0 6px var(--sun),0 14px 30px -8px rgba(0,0,0,.6)}
+.mcyou b{font:800 11.5px var(--sans);background:var(--sun);color:var(--ink);border-radius:999px;padding:4px 10px;white-space:nowrap}
+#mcmain[data-cam="1"] .mcyou{opacity:0}
+#mcmain[data-cam="2"] .mcyou,#mcmain[data-cam="3"] .mcyou,#mcmain[data-cam="4"] .mcyou{left:86%;top:56%}
 
 /* start: who does what */
 .roles{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:16px;margin-top:22px}
@@ -721,25 +739,41 @@ footer p{max-width:100ch;margin-bottom:8px}
     <div class="chans">
       <article class="chan glass rv" style="--c:var(--teal);--cs:var(--teal-s)">
         <div class="chban"></div>
-        <div class="chtop"><span class="chava"></span><div><b>Rooted</b><small>@rooted</small></div><span class="chfol">Follow</span></div>
+        <div class="chtop"><span class="chava" style="background-image:url(assets/ch-rooted.jpg)"><i></i></span><div><b>Rooted</b><small>@rooted</small></div><span class="chfol">Follow</span></div>
         <p>For people who want calm in loud times.</p>
         <div class="chgrid"><span class="cht yt" style="background-image:url(https://i.ytimg.com/vi/tYjOG6IIiCM/hq720.jpg)"><q>Stay in your own strength</q></span><span class="cht yt" style="background-image:url(https://i.ytimg.com/vi/JOcIgyjWb6Y/hq720.jpg)"><q>Trust is a practice</q></span><span class="cht yt" style="background-image:url(https://i.ytimg.com/vi/2VoEj3Y7yw8/hq720.jpg)"><q>Why it is going the right way</q></span></div>
-        <div class="chplat"><span>YouTube Shorts</span><span>Instagram</span><span>TikTok</span></div>
+        <div class="chplat"><svg role="img" aria-label="YouTube"><use href="#p-yt"/></svg><svg role="img" aria-label="Instagram"><use href="#p-ig"/></svg><svg role="img" aria-label="TikTok"><use href="#p-tt"/></svg><svg role="img" aria-label="Facebook"><use href="#p-fb"/></svg><svg role="img" aria-label="X"><use href="#p-x"/></svg><svg role="img" aria-label="Telegram"><use href="#p-tg"/></svg></div>
       </article>
       <article class="chan glass rv" style="--c:var(--lilac);--cs:var(--lilac-s)">
         <div class="chban"></div>
-        <div class="chtop"><span class="chava"></span><div><b>The Great Shift</b><small>@thegreatshift</small></div><span class="chfol">Follow</span></div>
+        <div class="chtop"><span class="chava" style="background-image:url(assets/ch-shift.jpg)"><i></i></span><div><b>The Great Shift</b><small>@thegreatshift</small></div><span class="chfol">Follow</span></div>
         <p>For people who feel the world is turning.</p>
         <div class="chgrid"><span class="cht yt" style="background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"><q>Everything is about to change</q></span><span class="cht yt" style="background-image:url(https://i.ytimg.com/vi/YQap4X1ax04/hq720.jpg)"><q>What the prophecies agree on</q></span><span class="cht yt" style="background-image:url(https://i.ytimg.com/vi/uIR9xmJzFos/hq720.jpg)"><q>The Earth is changing</q></span></div>
-        <div class="chplat"><span>YouTube Shorts</span><span>Instagram</span><span>TikTok</span></div>
+        <div class="chplat"><svg role="img" aria-label="YouTube"><use href="#p-yt"/></svg><svg role="img" aria-label="Instagram"><use href="#p-ig"/></svg><svg role="img" aria-label="TikTok"><use href="#p-tt"/></svg><svg role="img" aria-label="Facebook"><use href="#p-fb"/></svg><svg role="img" aria-label="X"><use href="#p-x"/></svg><svg role="img" aria-label="Telegram"><use href="#p-tg"/></svg></div>
       </article>
       <article class="chan glass rv" style="--c:var(--leaf);--cs:var(--leaf-s)">
         <div class="chban"></div>
-        <div class="chtop"><span class="chava"></span><div><b>Gut and balance</b><small>@gutandbalance</small></div><span class="chfol">Follow</span></div>
+        <div class="chtop"><span class="chava" style="background-image:url(assets/lp-leaves.jpg)"><i></i></span><div><b>Gut and balance</b><small>@gutandbalance</small></div><span class="chfol">Follow</span></div>
         <p>For people who start with the body.</p>
         <div class="chgrid"><span class="cht" style="background-image:url(assets/lp-dropper.jpg)"><q>How to take it</q></span><span class="cht" style="background-image:url(assets/lp-veg.jpg)"><q>Three foods I never skip</q></span><span class="cht" style="background-image:url(assets/lp-bowl.jpg)"><q>A week of simple plates</q></span></div>
-        <div class="chplat"><span>YouTube Shorts</span><span>Instagram</span><span>TikTok</span></div>
+        <div class="chplat"><svg role="img" aria-label="YouTube"><use href="#p-yt"/></svg><svg role="img" aria-label="Instagram"><use href="#p-ig"/></svg><svg role="img" aria-label="TikTok"><use href="#p-tt"/></svg><svg role="img" aria-label="Facebook"><use href="#p-fb"/></svg><svg role="img" aria-label="X"><use href="#p-x"/></svg><svg role="img" aria-label="Telegram"><use href="#p-tg"/></svg></div>
       </article>
+    </div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="p-yt" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.5v5l4-2.5z" fill="currentColor" stroke="none"/></symbol>
+<symbol id="p-ig" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r=".9" fill="currentColor" stroke="none"/></symbol>
+<symbol id="p-tt" viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.4 2.4 2 4 4.5 4.3"/></symbol>
+<symbol id="p-fb" viewBox="0 0 24 24"><path d="M14.5 21v-8h2.7l.5-3.2h-3.2V8c0-1 .4-1.7 1.8-1.7h1.5V3.4c-.6-.1-1.5-.2-2.5-.2-2.6 0-4.3 1.6-4.3 4.4v2.2H8.5V13H11v8"/></symbol>
+<symbol id="p-x" viewBox="0 0 24 24"><path d="M5 4l14 16M19 4L5 20"/></symbol>
+<symbol id="p-tg" viewBox="0 0 24 24"><path d="M21 4L3 11l5.5 2 2 6 3-4 4.5 3.5z"/><path d="M8.5 13L17 7"/></symbol>
+</defs></svg>
+    <div class="plat glass rv">
+      <div>
+        <b class="n">18</b>
+        <h3 style="margin-top:6px">places for one voice</h3>
+        <p class="lede" style="font-size:16px">Three channels on six platforms. One recording feeds them all, and we do the posting.</p>
+      </div>
+      <div class="pm" role="img" aria-label="Each of the three channels is present on YouTube, Instagram, TikTok, Facebook, X and Telegram"><span></span><span class="ph"><svg aria-hidden="true"><use href="#p-yt"/></svg><span>YouTube</span></span><span class="ph"><svg aria-hidden="true"><use href="#p-ig"/></svg><span>Instagram</span></span><span class="ph"><svg aria-hidden="true"><use href="#p-tt"/></svg><span>TikTok</span></span><span class="ph"><svg aria-hidden="true"><use href="#p-fb"/></svg><span>Facebook</span></span><span class="ph"><svg aria-hidden="true"><use href="#p-x"/></svg><span>X</span></span><span class="ph"><svg aria-hidden="true"><use href="#p-tg"/></svg><span>Telegram</span></span><span class="pmr"><i style="background-image:url(assets/ch-rooted.jpg)"></i>Rooted</span><span class="pd" style="--c:var(--teal);--cs:var(--teal-s);--d:0"></span><span class="pd" style="--c:var(--teal);--cs:var(--teal-s);--d:1"></span><span class="pd" style="--c:var(--teal);--cs:var(--teal-s);--d:2"></span><span class="pd" style="--c:var(--teal);--cs:var(--teal-s);--d:3"></span><span class="pd" style="--c:var(--teal);--cs:var(--teal-s);--d:4"></span><span class="pd" style="--c:var(--teal);--cs:var(--teal-s);--d:5"></span><span class="pmr"><i style="background-image:url(assets/ch-shift.jpg)"></i>The Great Shift</span><span class="pd" style="--c:var(--lilac);--cs:var(--lilac-s);--d:6"></span><span class="pd" style="--c:var(--lilac);--cs:var(--lilac-s);--d:7"></span><span class="pd" style="--c:var(--lilac);--cs:var(--lilac-s);--d:8"></span><span class="pd" style="--c:var(--lilac);--cs:var(--lilac-s);--d:9"></span><span class="pd" style="--c:var(--lilac);--cs:var(--lilac-s);--d:10"></span><span class="pd" style="--c:var(--lilac);--cs:var(--lilac-s);--d:11"></span><span class="pmr"><i style="background-image:url(assets/lp-leaves.jpg)"></i>Gut and balance</span><span class="pd" style="--c:var(--leaf);--cs:var(--leaf-s);--d:12"></span><span class="pd" style="--c:var(--leaf);--cs:var(--leaf-s);--d:13"></span><span class="pd" style="--c:var(--leaf);--cs:var(--leaf-s);--d:14"></span><span class="pd" style="--c:var(--leaf);--cs:var(--leaf-s);--d:15"></span><span class="pd" style="--c:var(--leaf);--cs:var(--leaf-s);--d:16"></span><span class="pd" style="--c:var(--leaf);--cs:var(--leaf-s);--d:17"></span></div>
     </div>
     <p class="tiny" style="text-align:center;margin-top:16px">Channel names are working titles.</p>
   </div>
@@ -865,9 +899,10 @@ footer p{max-width:100ch;margin-bottom:8px}
   <div class="wrap stop flip">
     <div class="stage rv">
       <div class="mc glass">
-        <div class="mcmain" id="mcmain">
+        <div class="mcmain" id="mcmain" data-cam="0">
           <img class="on" src="assets/cam-1.jpg" alt="Two people talking on a sofa among plants, seen wide"><img src="assets/cam-2.jpg" alt="" loading="lazy"><img src="assets/cam-3.jpg" alt="" loading="lazy"><img src="assets/cam-4.jpg" alt="" loading="lazy"><img src="assets/cam-5.jpg" alt="" loading="lazy">
           <span class="mcrec"><i></i><b id="mclab">Camera 1, wide</b></span>
+          <span class="mcyou" aria-hidden="true"><i></i><b>Your seat</b></span>
         </div>
         <div class="mcthumbs" id="mcthumbs">
           <button type="button" aria-pressed="true"><img src="assets/cam-1.jpg" alt=""><span>1</span></button>
@@ -881,7 +916,7 @@ footer p{max-width:100ch;margin-bottom:8px}
     <div class="guide glass rv">
       <div class="kicker">Twice a month</div>
       <h2>You and Adam, <em>in English.</em></h2>
-      <p class="lede">A real conversation in the garden, filmed from five angles. These frames are from Adam's conversation with Guida. You would sit where she sat.</p>
+      <p class="lede">A real conversation in the garden, filmed from five angles. These frames are from Adam's conversation with Guida. The gold circle marks your seat.</p>
       <div class="row"><span class="chip">Five cameras</span><span class="chip">Your topics</span><span class="chip">Cut into shorts too</span></div>
     </div>
   </div>
@@ -1122,7 +1157,7 @@ footer p{max-width:100ch;margin-bottom:8px}
 
   /* ---------- talks: five angles ---------- */
   var MC=['Camera 1, wide','Camera 2, Adam','Camera 3, the guest','Camera 4, from the side','Camera 5, hands'],mcImgs=document.querySelectorAll('#mcmain img'),mcBtns=[].slice.call(document.querySelectorAll('#mcthumbs button')),mcAt=0,mcSeen=false,mcHold=0;
-  function setCam(i){mcAt=i;mcImgs.forEach(function(im,k){im.classList.toggle('on',k===i)});mcBtns.forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i))});document.getElementById('mclab').textContent=MC[i]}
+  function setCam(i){mcAt=i;mcImgs.forEach(function(im,k){im.classList.toggle('on',k===i)});mcBtns.forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i))});document.getElementById('mclab').textContent=MC[i];document.getElementById('mcmain').setAttribute('data-cam',i)}
   mcBtns.forEach(function(b,i){b.addEventListener('click',function(){mcHold=3;setCam(i)})});
   new IntersectionObserver(function(es){mcSeen=es[0].isIntersecting},{threshold:.3}).observe(document.getElementById('mcmain'));
   if(!reduce)setInterval(function(){if(!mcSeen)return;if(mcHold>0){mcHold--;return}setCam((mcAt+1)%5)},2600);
