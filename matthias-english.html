@@ -12,7 +12,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600;700;800;900&display=swap">
-<script src="assets/three.min.js"></script>
 <script src="assets/qrcode.min.js"></script>
 <style>
 /* Matthias, in English. A guided journey in nine stops, each a 3D stage beside a glass card.
@@ -409,63 +408,70 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .gday{display:flex;gap:8px;align-items:flex-start;padding:8px;border-radius:12px;background:var(--c);font-size:12px;line-height:1.3;animation:rise .45s both}
 .gday i{flex:none;font:800 9px var(--sans);font-style:normal;background:#fff;border-radius:6px;padding:4px 6px}
 
-/* month: a calendar made of the real pieces */
-.counts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;min-width:min(100%,560px)}
-@media(max-width:700px){.counts{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}}
+/* week board: the German week stays, English is added on top */
+.counts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:16px}
+@media(max-width:760px){.counts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .counts div{padding:12px 14px;border-radius:16px;background:var(--c)}
 .counts b{display:block;font:600 32px/1 var(--serif)}
 .counts span{font-size:13px;color:var(--mut)}
-.calstage{perspective:1700px}
-.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;padding:18px;transform:rotateX(13deg);transform-origin:50% 0;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.calstage:hover .cal{transform:rotateX(3deg)}
-.dow{font:800 10.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);text-align:center}
-.day{border:1px solid var(--line);background:#fff;border-radius:14px;padding:7px;display:flex;flex-direction:column;gap:6px;min-height:122px;position:relative;text-align:left;opacity:.15;transform:translateY(14px) scale(.94);transition:opacity .45s,transform .45s cubic-bezier(.2,.9,.3,1.25),box-shadow .25s;overflow:hidden}
-.day.on{opacity:1;transform:none}
-.day.on:hover,.day.on.sel{transform:translateZ(34px);box-shadow:var(--sh2)}
-.day.sel{outline:2px solid var(--teal);outline-offset:-2px}
-.dn{font:800 10px var(--sans);font-style:normal;color:var(--faint)}
-.dth{display:block;aspect-ratio:16/9;border-radius:8px;background:var(--paper2) center/cover;position:relative}
-.dth u{position:absolute;left:4px;top:4px;font:800 7.5px var(--sans);letter-spacing:.08em;background:var(--teal);color:#fff;border-radius:99px;padding:1px 5px;text-decoration:none}
-.dsh{display:flex;gap:5px;margin-top:auto;align-items:flex-end}
-.dsh s{display:block;width:17px;height:29px;border-radius:5px;background:#ccc 88% 100%/auto 142% no-repeat;box-shadow:0 0 0 2px var(--c);text-decoration:none}
-.day.big .dsh{justify-content:center;margin:auto;gap:8px}
-.day.big .dsh s{width:32px;height:56px;border-radius:8px}
-.day.live{background:var(--rose-s)}
-.dlive{display:flex;justify-content:center;margin:auto 0 0}
-.dlive b{width:40px;height:40px;border-radius:50%;background:var(--rose) center/cover;box-shadow:0 0 0 2px #fff;display:grid;place-items:center;color:#fff;font:800 15px var(--sans)}
-.dlive b+b{margin-left:-9px}
-.day.live .dsh{margin-top:6px;justify-content:center}
-.day.sun{background:var(--lilac-s);align-items:center;justify-content:center}
-.day.sun .dn{position:absolute;left:7px;top:7px}
+.wktog{display:flex;gap:8px;flex-wrap:wrap}
+.wk{padding:16px 18px 18px;display:grid;gap:10px}
+.wkrow{display:grid;grid-template-columns:108px repeat(7,minmax(0,1fr));gap:10px;align-items:stretch}
+.wkhead b{font:800 10.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);text-align:center}
+.wkl{display:flex;flex-direction:column;justify-content:center;transition:opacity .5s}
+.wkl b{font:600 20px/1.1 var(--serif)}
+.wkl small{font:600 11px var(--sans);color:var(--mut);margin-top:3px}
+.wc{min-height:118px;border-radius:14px;background:rgba(255,255,255,.5);border:1px dashed var(--line);padding:7px;display:flex;flex-direction:column;justify-content:center}
+.lane-de .wc{background:rgba(255,243,196,.55);border-color:transparent}
+.wi{display:block;transition:opacity .5s,transform .55s cubic-bezier(.2,.9,.3,1.25);transition-delay:calc(var(--d,0)*70ms)}
+.wi>small{display:block;font:700 10.5px/1.25 var(--sans);margin-top:6px;color:var(--mut)}
+.wth{display:block;aspect-ratio:16/9;border-radius:9px;background:var(--paper2) center/cover;position:relative;overflow:hidden;box-shadow:var(--sh1)}
+.wth u{position:absolute;left:4px;bottom:4px;font:800 8px var(--sans);letter-spacing:.08em;background:var(--teal);color:#fff;border-radius:99px;padding:1px 6px;text-decoration:none}
+.wth u.de{background:var(--ink)}
+.wth em{position:absolute;left:0;right:0;top:0;height:29%;display:flex;align-items:center;padding:0 5%;background:linear-gradient(90deg,#6a2fb8,#a35fe6);color:#fff;font:800 8.5px/1 var(--sans);white-space:nowrap;overflow:hidden}
+.wth.two{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#fff}
+.wth.two i{display:block;background:center 20%/cover}
+.wlet{display:block;background:#fff;border-top:4px solid var(--sun);border-radius:9px;padding:8px;box-shadow:var(--sh1)}
+.wlet u{display:block;text-decoration:none;font:800 7px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.wlet strong{display:block;font:600 11.5px/1.1 var(--serif);margin-top:3px}
+.wsh{display:flex;gap:7px;justify-content:center}
+.wsh s{display:block;width:38px;height:66px;border-radius:9px;background:#ccc center/cover;box-shadow:0 0 0 2px var(--c);text-decoration:none}
+.wsh s.yt{background-position:97% 100%;background-size:auto 168%}
+.wk[data-layer="de"] .lane-en .wi{opacity:0;transform:translateY(14px) scale(.88);transition-delay:0ms}
+.wk[data-layer="de"] .lane-en .wkl{opacity:.35}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font:600 13px var(--sans);color:var(--mut);margin-top:12px}
+.legend u{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--c);margin-right:6px;vertical-align:-1px}
 .denv{display:block;width:58px;height:40px;border-radius:7px;background:#fff;position:relative;box-shadow:var(--sh1);overflow:hidden}
 .denv::before{content:"";position:absolute;left:50%;top:-29px;width:58px;height:58px;margin-left:-29px;transform:rotate(45deg);border:2px solid var(--lilac);border-radius:6px}
 .denv::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:13px;margin:-3px 0 0 -6.5px;border-radius:50%;background:var(--sun)}
-.calfoot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;margin-top:18px}
-.calnote{font:400 clamp(18px,2vw,23px)/1.3 var(--serif);min-height:1.4em;max-width:60ch}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font:600 13px var(--sans);color:var(--mut)}
-.legend u{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--c);margin-right:6px;vertical-align:-1px}
-@media(max-width:700px){
-  .cal{gap:4px;padding:8px;transform:none}
-  .calstage:hover .cal{transform:none}
-  .day{min-height:66px;padding:3px;border-radius:8px;gap:3px}
-  .dn,.dth u{display:none}
-  .dth{border-radius:4px}
-  .dsh{gap:3px}
-  .dsh s{width:8px;height:14px;border-radius:2px;box-shadow:0 0 0 1px var(--c)}
-  .day.big .dsh s{width:13px;height:24px;border-radius:3px}
-  .dlive b{width:19px;height:19px;font-size:8px}
-  .denv{width:28px;height:20px;border-radius:4px}
-  .denv::before{display:none}
-  .denv::after{width:8px;height:8px;margin:-4px 0 0 -4px}
+@media(max-width:760px){
+  .wk{padding:10px;gap:6px}
+  .wkrow{grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+  .wkhead>span{display:none}
+  .wkl{grid-column:1/-1;flex-direction:row;gap:8px;align-items:baseline;margin-top:4px}
+  .wc{min-height:56px;padding:2px;border-radius:8px}
+  .wi>small,.wth em,.wlet strong,.wlet .ln{display:none}
+  .wth{border-radius:4px}
+  .wth u{font-size:6px;padding:0 3px;left:2px;bottom:2px}
+  .wlet{padding:4px 2px;border-top-width:3px}
+  .wlet u{font-size:5.5px;letter-spacing:0}
+  .wsh{gap:3px}
+  .wsh s{width:17px;height:30px;border-radius:4px;box-shadow:0 0 0 1px var(--c)}
 }
 
-.dchip{display:inline-flex;align-items:center;gap:4px;align-self:flex-start;margin-top:auto;font:700 10.5px var(--sans);background:var(--sun-s);border-radius:999px;padding:3px 9px}
-.dchip u{width:6px;height:6px;border-radius:50%;background:var(--sun);text-decoration:none}
-.day.big{background:rgba(255,255,255,.45);border-style:dashed;align-items:center;justify-content:center}
-.day.big .dn{position:absolute;left:7px;top:7px}
-.day.big .dchip{margin:0;align-self:center}
-.day.live .dchip{align-self:center;margin-top:8px}
-@media(max-width:700px){.dchip{padding:3px 4px;gap:2px}.dchip span{display:none}.dchip u{width:5px;height:5px}}
+/* talks: the conversation, five angles */
+.mc{padding:14px}
+.mcmain{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#16261d}
+.mcmain img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s}
+.mcmain img.on{opacity:1}
+.mcrec{position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:7px;font:800 11.5px var(--sans);color:#fff;background:rgba(0,0,0,.55);border-radius:999px;padding:5px 11px}
+.mcrec i{width:8px;height:8px;border-radius:50%;background:#ff4d4d;animation:blink 1.2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.mcthumbs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:10px}
+.mcthumbs button{border:2px solid transparent;border-radius:12px;padding:0;overflow:hidden;background:none;position:relative;transition:transform .25s,border-color .25s}
+.mcthumbs img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.mcthumbs button[aria-pressed="true"]{border-color:var(--sun);transform:translateY(-4px)}
+.mcthumbs span{position:absolute;left:6px;bottom:4px;font:800 10px var(--sans);color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.9)}
 
 /* start: who does what */
 .roles{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:16px;margin-top:22px}
@@ -573,7 +579,7 @@ footer p{max-width:100ch;margin-bottom:8px}
   <div class="wrap">
     <a class="brand" href="#top"><i></i><span>Matthias, in English</span></a>
     <div class="stops" id="stops">
-      <a href="#wins">Today</a><a href="#videos">Your titles</a><a href="#engine">The engine</a><a href="#handles">Channels</a><a href="#pages">Pages</a><a href="#circle">Your circle</a><a href="#bottle">The shop</a><a href="#month">A month</a><a href="#start">Start</a>
+      <a href="#wins">Today</a><a href="#videos">Your titles</a><a href="#engine">The engine</a><a href="#handles">Channels</a><a href="#pages">Pages</a><a href="#circle">Your circle</a><a href="#bottle">The shop</a><a href="#month">A week</a><a href="#start">Start</a>
     </div>
     <a class="btn" href="#start">Pick six</a>
   </div>
@@ -829,23 +835,55 @@ footer p{max-width:100ch;margin-bottom:8px}
   <div class="wrap">
     <div class="lphead">
       <div>
-        <div class="kicker">A month in the engine</div>
-        <h2 class="rv">Four weeks, <em>as planned.</em></h2>
-        <p class="lede rv">Tap a day to see what goes out.</p>
+        <div class="kicker">A week in the engine</div>
+        <h2 class="rv">Your German week stays. <em>English goes on top.</em></h2>
+        <p class="lede rv">Wednesday and Saturday at 18:00 stay exactly as they are. Everything in English is added by us.</p>
       </div>
-      <div class="counts rv">
-        <div style="--c:var(--teal-s)"><b data-n="8">0</b><span>interviews in English</span></div>
-        <div style="--c:var(--rose-s)"><b data-n="2">0</b><span>talks with Adam</span></div>
-        <div style="--c:var(--sun-s)"><b data-n="48">0</b><span>shorts</span></div>
-        <div style="--c:var(--lilac-s)"><b data-n="4">0</b><span>letters</span></div>
+      <div class="wktog rv" role="group" aria-label="Layers">
+        <button class="chip" type="button" aria-pressed="true" data-l="de">German, as today</button>
+        <button class="chip" type="button" aria-pressed="false" data-l="en">German and English</button>
       </div>
     </div>
-    <div class="calstage rv"><div class="cal glass" id="cal"></div></div>
-    <div class="calfoot">
-      <p class="calnote" id="calnote" aria-live="polite">Week 1, Wed: the first interview goes out in English.</p>
-      <div class="legend"><span><u style="--c:var(--teal)"></u>Interview in English</span><span><u style="--c:var(--rose)"></u>You and Adam, in English</span><span><u style="--c:var(--sun)"></u>Shorts</span><span><u style="--c:var(--lilac)"></u>The letter</span></div>
+    <div class="wk glass rv" id="wk" data-layer="de">
+      <div class="wkrow wkhead"><span></span><b>Mon</b><b>Tue</b><b>Wed</b><b>Thu</b><b>Fri</b><b>Sat</b><b>Sun</b></div>
+      <div class="wkrow lane-de"><span class="wkl"><b>German</b><small>yours, unchanged</small></span><div class="wc"></div><div class="wc"></div><div class="wc"><span class="wi"><span class="wth" style="background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"><u class="de">DE</u></span><small>Wed, 18:00</small></span></div><div class="wc"></div><div class="wc"></div><div class="wc"><span class="wi"><span class="wth" style="background-image:url(https://i.ytimg.com/vi/S4PEgV4CiPQ/hq720.jpg)"><u class="de">DE</u></span><small>Sat, 18:00</small></span></div><div class="wc"></div></div>
+      <div class="wkrow lane-en"><span class="wkl"><b>English</b><small>added on top</small></span><div class="wc"><span class="wi" style="--d:0"><span class="wth" style="background-image:url(https://i.ytimg.com/vi/JOcIgyjWb6Y/hq720.jpg)"><em>The Human Genius</em><u>EN</u></span><small>Last Saturday's, in English</small></span></div><div class="wc"><span class="wi" style="--d:1"><span class="wth two"><i style="background-image:url(assets/lp-matthias.jpg)"></i><i style="background-image:url(assets/adam-face.jpg)"></i></span><small>You and Adam, twice a month</small></span></div><div class="wc"></div><div class="wc"><span class="wi" style="--d:2"><span class="wth" style="background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"><em>The SHIFT Has Begun!</em><u>EN</u></span><small>Wednesday's, in English</small></span></div><div class="wc"></div><div class="wc"></div><div class="wc"><span class="wi" style="--d:3"><span class="wlet"><u>The Sunday letter</u><strong>Why everything is about to change</strong><i class="ln"></i><i class="ln s"></i></span><small>To the English list</small></span></div></div>
+      <div class="wkrow lane-en"><span class="wkl"><b>Shorts</b><small>two a day, three channels</small></span><div class="wc"><span class="wi wsh" style="--d:4"><s class="yt" style="--c:var(--teal);background-image:url(https://i.ytimg.com/vi/tYjOG6IIiCM/hq720.jpg)"></s><s class="yt" style="--c:var(--lilac);background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:5"><s class="" style="--c:var(--leaf);background-image:url(assets/lp-veg.jpg)"></s><s class="yt" style="--c:var(--teal);background-image:url(https://i.ytimg.com/vi/JOcIgyjWb6Y/hq720.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:6"><s class="yt" style="--c:var(--lilac);background-image:url(https://i.ytimg.com/vi/YQap4X1ax04/hq720.jpg)"></s><s class="" style="--c:var(--leaf);background-image:url(assets/lp-dropper.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:7"><s class="yt" style="--c:var(--teal);background-image:url(https://i.ytimg.com/vi/2VoEj3Y7yw8/hq720.jpg)"></s><s class="yt" style="--c:var(--lilac);background-image:url(https://i.ytimg.com/vi/uIR9xmJzFos/hq720.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:8"><s class="" style="--c:var(--leaf);background-image:url(assets/lp-bowl.jpg)"></s><s class="yt" style="--c:var(--teal);background-image:url(https://i.ytimg.com/vi/S4PEgV4CiPQ/hq720.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:9"><s class="yt" style="--c:var(--lilac);background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"></s><s class="" style="--c:var(--leaf);background-image:url(assets/lp-leaves.jpg)"></s></span></div><div class="wc"></div></div>
     </div>
-    <p class="tiny" style="margin-top:10px">These quantities are our plan for month one.</p>
+    <div class="counts rv">
+      <div style="--c:var(--sun-s)"><b data-n="8">0</b><span>interviews in German, as today</span></div>
+      <div style="--c:var(--teal-s)"><b data-n="8">0</b><span>of them in English</span></div>
+      <div style="--c:var(--rose-s)"><b data-n="2">0</b><span>talks with Adam</span></div>
+      <div style="--c:var(--lilac-s)"><b data-n="48">0</b><span>shorts</span></div>
+      <div style="--c:var(--leaf-s)"><b data-n="4">0</b><span>letters</span></div>
+    </div>
+    <p class="tiny" style="margin-top:10px">One typical week, and what four of them add up to. These quantities are our plan for month one.</p>
+  </div>
+</section>
+
+<section id="talks">
+  <div class="wrap stop flip">
+    <div class="stage rv">
+      <div class="mc glass">
+        <div class="mcmain" id="mcmain">
+          <img class="on" src="assets/cam-1.jpg" alt="Two people talking on a sofa among plants, seen wide"><img src="assets/cam-2.jpg" alt="" loading="lazy"><img src="assets/cam-3.jpg" alt="" loading="lazy"><img src="assets/cam-4.jpg" alt="" loading="lazy"><img src="assets/cam-5.jpg" alt="" loading="lazy">
+          <span class="mcrec"><i></i><b id="mclab">Camera 1, wide</b></span>
+        </div>
+        <div class="mcthumbs" id="mcthumbs">
+          <button type="button" aria-pressed="true"><img src="assets/cam-1.jpg" alt=""><span>1</span></button>
+          <button type="button" aria-pressed="false"><img src="assets/cam-2.jpg" alt="" loading="lazy"><span>2</span></button>
+          <button type="button" aria-pressed="false"><img src="assets/cam-3.jpg" alt="" loading="lazy"><span>3</span></button>
+          <button type="button" aria-pressed="false"><img src="assets/cam-4.jpg" alt="" loading="lazy"><span>4</span></button>
+          <button type="button" aria-pressed="false"><img src="assets/cam-5.jpg" alt="" loading="lazy"><span>5</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="guide glass rv">
+      <div class="kicker">Twice a month</div>
+      <h2>You and Adam, <em>in English.</em></h2>
+      <p class="lede">A real conversation in the garden, filmed from five angles. These frames are from Adam's conversation with Guida. You would sit where she sat.</p>
+      <div class="row"><span class="chip">Five cameras</span><span class="chip">Your topics</span><span class="chip">Cut into shorts too</span></div>
+    </div>
   </div>
 </section>
 
@@ -1076,21 +1114,18 @@ footer p{max-width:100ch;margin-bottom:8px}
   pickP(0);
   new IntersectionObserver(function(es,ob){if(es[0].isIntersecting){ob.disconnect();[].forEach.call(shelf.children,function(b,i){setTimeout(function(){b.classList.add('on')},reduce?0:300+i*260)})}},{threshold:.4}).observe(shelf);
 
-  /* ---------- calendar ---------- */
-  var cal=document.getElementById('cal'),calnote=document.getElementById('calnote'),DOWN=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],HC=['teal','lilac','leaf'],vi=0;
-  DOWN.forEach(function(d){var el=document.createElement('div');el.className='dow';el.textContent=d;cal.appendChild(el)});
-  function shortsHTML(){return '<span class="dchip"><u></u><u></u><span>2 shorts</span></span>'}
-  for(var d=0;d<28;d++)(function(d){var dow=d%7,wk=Math.floor(d/7),cell=document.createElement('button'),h='<i class="dn">'+(d+1)+'</i>',note='Week '+(wk+1)+', '+DOWN[dow]+': ';
-    cell.type='button';cell.className='day';
-    if(dow===6){cell.className+=' sun';h+='<span class="denv"></span>';note+='the Sunday letter goes out.'}
-    else if(dow===2||dow===5){var v=V[vi++%V.length];h+='<span class="dth" style="background-image:url('+YT+v[0]+'/hq720.jpg)"><u>EN</u></span>'+shortsHTML(d,2);note+='"'+v[6]+'" goes out in English, with two shorts.'}
-    else if(dow===1&&(wk===1||wk===3)){cell.className+=' live';h+='<span class="dlive"><b style="background-image:url(assets/lp-matthias.jpg)"></b><b>A</b></span>'+shortsHTML(d,2);note+='you and Adam record a conversation in English. Two shorts go out too.'}
-    else{cell.className+=' big';h+=shortsHTML(d,2);note+="two shorts, cut from this week's interviews."}
-    cell.innerHTML=h;cell.setAttribute('aria-label',note);
-    cell.addEventListener('click',function(){[].forEach.call(cal.querySelectorAll('.day'),function(x){x.classList.remove('sel')});cell.classList.add('sel');calnote.textContent=note});
-    cal.appendChild(cell)})(d);
-  var days=cal.querySelectorAll('.day');
-  new IntersectionObserver(function(es,ob){if(es[0].isIntersecting){days.forEach(function(c,i){setTimeout(function(){c.classList.add('on')},reduce?0:i*60)});ob.disconnect()}},{threshold:.2}).observe(cal);
+  /* ---------- week board ---------- */
+  var wkb=document.getElementById('wk'),wchips=[].slice.call(document.querySelectorAll('[data-l]')),wkTouched=false;
+  function setLayer(l){wkb.setAttribute('data-layer',l);wchips.forEach(function(c){c.setAttribute('aria-pressed',String(c.dataset.l===l))})}
+  wchips.forEach(function(c){c.addEventListener('click',function(){wkTouched=true;setLayer(c.dataset.l)})});
+  if(reduce)setLayer('en');else new IntersectionObserver(function(es,ob){if(es[0].isIntersecting){ob.disconnect();setTimeout(function(){if(!wkTouched)setLayer('en')},1500)}},{threshold:.35}).observe(wkb);
+
+  /* ---------- talks: five angles ---------- */
+  var MC=['Camera 1, wide','Camera 2, Adam','Camera 3, the guest','Camera 4, from the side','Camera 5, hands'],mcImgs=document.querySelectorAll('#mcmain img'),mcBtns=[].slice.call(document.querySelectorAll('#mcthumbs button')),mcAt=0,mcSeen=false,mcHold=0;
+  function setCam(i){mcAt=i;mcImgs.forEach(function(im,k){im.classList.toggle('on',k===i)});mcBtns.forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i))});document.getElementById('mclab').textContent=MC[i]}
+  mcBtns.forEach(function(b,i){b.addEventListener('click',function(){mcHold=3;setCam(i)})});
+  new IntersectionObserver(function(es){mcSeen=es[0].isIntersecting},{threshold:.3}).observe(document.getElementById('mcmain'));
+  if(!reduce)setInterval(function(){if(!mcSeen)return;if(mcHold>0){mcHold--;return}setCam((mcAt+1)%5)},2600);
 
   /* ---------- roles ---------- */
   var tks=document.querySelectorAll('#tasks .tk'),hot=-1,tseen=false;
@@ -1112,61 +1147,60 @@ footer p{max-width:100ch;margin-bottom:8px}
     navigator.clipboard.writeText(text).then(function(){status.textContent='Copied. Paste it into a message to Adam.'},function(){status.textContent=text})});
   sync();
 
-  /* ---------- globe ---------- */
-  var holder=document.getElementById('globe'),cv=document.getElementById('gl');
-  if(window.THREE){try{
-    var R=2,renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));
-    var scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(34,1,.1,100);cam.position.set(0,0,7.6);
-    var g=new THREE.Group();scene.add(g);
-    function ll(lat,lon,r){var p=(90-lat)*Math.PI/180,t=(lon+180)*Math.PI/180;return new THREE.Vector3(-r*Math.sin(p)*Math.cos(t),r*Math.cos(p),r*Math.sin(p)*Math.sin(t))}
-    g.add(new THREE.Mesh(new THREE.SphereGeometry(R-.02,48,48),new THREE.MeshBasicMaterial({color:0xfffdf7,transparent:true,opacity:.95})));
-    g.add(new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.SphereGeometry(R+.004,18,12)),new THREE.LineBasicMaterial({color:0x224130,transparent:true,opacity:.05})));
-    g.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.1,40,40),new THREE.MeshBasicMaterial({color:0xfec102,transparent:true,opacity:.10,side:THREE.BackSide})));
-    var dotObjs=[];
-    function cloud(arr,col,size,op){var geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(new Float32Array(arr),3));var o=new THREE.Points(geo,new THREE.PointsMaterial({color:col,size:size,transparent:true,opacity:op}));g.add(o);dotObjs.push(o)}
-    function buildDots(isLand){dotObjs.forEach(function(o){g.remove(o)});dotObjs=[];var N=isLand?16000:2400,land=[],sea=[];
-      for(var k=0;k<N;k++){var y=1-(k/(N-1))*2,rr=Math.sqrt(1-y*y),th=k*2.399963,x=Math.cos(th)*rr,z=Math.sin(th)*rr;
-        if(isLand){var lat=Math.asin(y)*180/Math.PI,lon=Math.atan2(z,-x)*180/Math.PI-180;if(lon<-180)lon+=360;
-          if(isLand(lat,lon))land.push(x*R,y*R,z*R);else if(k%7===0)sea.push(x*R,y*R,z*R)}
-        else land.push(x*R,y*R,z*R)}
-      cloud(land,0x0c6e61,isLand?.04:.034,isLand?1:.55);if(sea.length)cloud(sea,0x108474,.022,.22)}
-    buildDots(null);
-    var mk=new Image();mk.crossOrigin='anonymous';
-    mk.onload=function(){try{var W=360,Hh=180,c=document.createElement('canvas');c.width=W;c.height=Hh;var x=c.getContext('2d');x.fillStyle='#000';x.fillRect(0,0,W,Hh);x.drawImage(mk,0,0,W,Hh);var d=x.getImageData(0,0,W,Hh).data;
-      function val(lat,lon){var u=Math.min(W-1,Math.max(0,Math.floor((lon+180)/360*W))),v=Math.min(Hh-1,Math.max(0,Math.floor((90-lat)/180*Hh)));return d[(v*W+u)*4]}
-      var water=val(0,-150);buildDots(function(lat,lon){return Math.abs(val(lat,lon)-water)>90})}catch(e){}};
-    mk.src='assets/earth-water.png';
-    var home=ll(51.2,10.4,R),C=[['London',51.5,-.1],['New York',40.7,-74],['Vancouver',49.3,-123.1],['Los Angeles',34,-118.2],['Lagos',6.5,3.4],['Cape Town',-33.9,18.4],['Mumbai',19.1,72.9],['Singapore',1.35,103.8],['Sydney',-33.9,151.2],['Auckland',-36.8,174.7]];
-    function disc(v,col,s){var m=new THREE.Mesh(new THREE.CircleGeometry(s,28),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:.95,side:THREE.DoubleSide}));m.position.copy(v.clone().multiplyScalar(1.008));m.lookAt(0,0,0);g.add(m);return m}
-    var hm=disc(home,0xfec102,.085),hring=new THREE.Mesh(new THREE.RingGeometry(.1,.125,40),new THREE.MeshBasicMaterial({color:0xfec102,transparent:true,opacity:.8,side:THREE.DoubleSide}));hring.position.copy(hm.position);hring.lookAt(0,0,0);g.add(hring);
-    var arcs=C.map(function(c,i){var b=ll(c[1],c[2],R),a=home.clone().normalize(),bn=b.clone().normalize(),ang=a.angleTo(bn),pts=[],S=70;
-      for(var s=0;s<=S;s++){var t=s/S,v=new THREE.Vector3().copy(a).multiplyScalar(Math.sin((1-t)*ang)/Math.sin(ang)).add(bn.clone().multiplyScalar(Math.sin(t*ang)/Math.sin(ang)));v.multiplyScalar(R*(1+(0.16+0.3*ang/Math.PI)*Math.sin(Math.PI*t)));pts.push(v)}
-      var geo=new THREE.BufferGeometry().setFromPoints(pts),line=new THREE.Line(geo,new THREE.LineBasicMaterial({color:0xc2557a,transparent:true,opacity:.9}));g.add(line);
-      var comet=new THREE.Mesh(new THREE.SphereGeometry(.045,12,12),new THREE.MeshBasicMaterial({color:0xfec102}));g.add(comet);
-      var dot=disc(b,0xc2557a,.055);dot.material.opacity=0;
-      var lab=document.createElement('span');lab.className='glabel';lab.textContent=c[0];holder.appendChild(lab);
-      return {pts:pts,line:line,geo:geo,comet:comet,dot:dot,end:b,lab:lab,off:i*.9}});
-    var hl=document.createElement('span');hl.className='glabel home';hl.textContent='Germany';holder.appendChild(hl);
-    var f0=ll(0,-16,1),baseY=Math.atan2(-f0.x,f0.z);g.rotation.x=.42;g.rotation.y=baseY;
-    function rs(){renderer.setSize(holder.clientWidth,holder.clientHeight,false)}
-    rs();addEventListener('resize',rs);
-    var tmp=new THREE.Vector3(),gvis=true,t0=performance.now(),running=false;
-    function place(el,v,below){tmp.copy(v).applyMatrix4(g.matrixWorld);var front=tmp.z>0.35;tmp.project(cam);el.style.transform='translate('+((tmp.x*.5+.5)*holder.clientWidth)+'px,'+((-tmp.y*.5+.5)*holder.clientHeight)+'px) translate(-50%,'+(below?'60%':'-150%')+')';return front}
-    function draw(t){var dt=(t-t0)/1000;if(!reduce)g.rotation.y=baseY+Math.sin(dt*.11)*1.05;
-      g.updateMatrixWorld();
-      var p=1+Math.sin(dt*2.4)*.25;hring.scale.setScalar(p);hring.material.opacity=.9-(p-1)*1.6;
-      arcs.forEach(function(a){var cyc=reduce?.6:((dt+a.off)%9)/9,n=a.pts.length,grow=Math.min(1,cyc/.32),fade=cyc>.82?1-(cyc-.82)/.18:1;
-        a.geo.setDrawRange(0,Math.max(2,Math.floor(n*grow)));a.line.material.opacity=.9*fade;
-        a.comet.position.copy(a.pts[Math.min(n-1,Math.floor((n-1)*grow))]);a.comet.visible=grow<1;
-        a.dot.material.opacity=grow>=1?fade:0;
-        var front=place(a.lab,a.end);a.lab.classList.toggle('on',front&&grow>=1&&fade>.4)});
-      hl.classList.toggle('on',place(hl,home,true));
-      renderer.render(scene,cam)}
-    function frame(t){if(!gvis){running=false;return}draw(t);requestAnimationFrame(frame)}
-    function kick(){if(reduce){draw(performance.now());return}if(!running){running=true;requestAnimationFrame(frame)}}
-    new IntersectionObserver(function(es){gvis=es[0].isIntersecting;if(gvis)kick()},{threshold:.02}).observe(holder);
-    kick();if(reduce)mk.addEventListener('load',function(){draw(performance.now())});
-  }catch(e){holder.style.display='none'}}
+  /* ---------- globe: plain 2D canvas, no WebGL and no library ---------- */
+  (function(){
+    var holder=document.getElementById('globe'),cv=document.getElementById('gl');if(!holder||!cv||!cv.getContext)return;
+    var ctx=cv.getContext('2d');if(!ctx)return;
+    var RAD=Math.PI/180,TAU=6.2832,W=0,Hh=0,dpr=1,land=[],sea=[],t0=performance.now();
+    function xyz(lat,lon){var a=lat*RAD,l=lon*RAD;return [Math.cos(a)*Math.sin(l),Math.sin(a),Math.cos(a)*Math.cos(l)]}
+    function build(isLand){land=[];sea=[];var N=isLand?15000:2200;
+      for(var k=0;k<N;k++){var y=1-(k/(N-1))*2,r=Math.sqrt(1-y*y),th=k*2.399963,x=Math.cos(th)*r,z=Math.sin(th)*r;
+        if(!isLand){land.push([x,y,z]);continue}
+        if(isLand(Math.asin(y)/RAD,Math.atan2(x,z)/RAD))land.push([x,y,z]);else if(k%8===0)sea.push([x,y,z])}}
+    build(null);
+    var mask=new Image();
+    mask.onload=function(){try{var mw=360,mh=180,c=document.createElement('canvas');c.width=mw;c.height=mh;var x=c.getContext('2d');x.fillStyle='#000';x.fillRect(0,0,mw,mh);x.drawImage(mask,0,0,mw,mh);var d=x.getImageData(0,0,mw,mh).data;
+      function val(lat,lon){var u=Math.min(mw-1,Math.max(0,Math.floor((lon+180)/360*mw))),v=Math.min(mh-1,Math.max(0,Math.floor((90-lat)/180*mh)));return d[(v*mw+u)*4]}
+      var water=val(0,-150);build(function(lat,lon){return Math.abs(val(lat,lon)-water)>90});if(reduce)draw(performance.now())}catch(e){}};
+    mask.src='assets/earth-water.png';
+    var home=xyz(51.2,10.4);
+    var C=[['London',51.5,-.1],['New York',40.7,-74],['Vancouver',49.3,-123.1],['Los Angeles',34,-118.2],['Lagos',6.5,3.4],['Cape Town',-33.9,18.4],['Mumbai',19.1,72.9],['Singapore',1.35,103.8],['Sydney',-33.9,151.2],['Auckland',-36.8,174.7]].map(function(c,i){
+      var b=xyz(c[1],c[2]),dot=home[0]*b[0]+home[1]*b[1]+home[2]*b[2],ang=Math.acos(Math.max(-1,Math.min(1,dot))),pts=[],S=60;
+      for(var q=0;q<=S;q++){var t=q/S,ka=Math.sin((1-t)*ang)/Math.sin(ang),kb=Math.sin(t*ang)/Math.sin(ang),h=1+(0.14+0.26*ang/Math.PI)*Math.sin(Math.PI*t);pts.push([(home[0]*ka+b[0]*kb)*h,(home[1]*ka+b[1]*kb)*h,(home[2]*ka+b[2]*kb)*h])}
+      return {n:c[0],end:b,pts:pts,off:i*.9}});
+    function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()}
+    function label(txt,x,y,isHome){ctx.font='700 11.5px Figtree, system-ui, sans-serif';var pw=ctx.measureText(txt).width+16,ph=20;
+      ctx.fillStyle=isHome?'#fec102':'rgba(255,255,255,.95)';rr(x-pw/2,y-ph/2,pw,ph,10);ctx.fill();
+      if(!isHome){ctx.strokeStyle='rgba(34,65,48,.16)';ctx.lineWidth=1;ctx.stroke()}
+      ctx.fillStyle='#224130';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(txt,x,y+.5)}
+    function draw(now){var w=holder.clientWidth,h=holder.clientHeight;if(!w||!h)return;var d2=Math.min(window.devicePixelRatio||1,2);
+      if(w!==W||h!==Hh||d2!==dpr){W=w;Hh=h;dpr=d2;cv.width=Math.round(W*dpr);cv.height=Math.round(Hh*dpr)}
+      var dt=(now-t0)/1000,yaw=-16*RAD+(reduce?0:Math.sin(dt*.11)*1.05),tilt=.36,cy=Math.cos(yaw),sy=Math.sin(yaw),ct=Math.cos(tilt),st=Math.sin(tilt),cx0=W/2,cy0=Hh/2,R=Math.min(W,Hh)*.4;
+      function P(v){var x=v[0]*cy-v[2]*sy,z=v[0]*sy+v[2]*cy,y=v[1];return [cx0+x*R,cy0-(y*ct-z*st)*R,y*st+z*ct]}
+      function shown(q){return q[2]>0||Math.sqrt((q[0]-cx0)*(q[0]-cx0)+(q[1]-cy0)*(q[1]-cy0))>R}
+      ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,Hh);ctx.globalAlpha=1;
+      var gr=ctx.createRadialGradient(cx0,cy0,R*.94,cx0,cy0,R*1.16);gr.addColorStop(0,'rgba(254,193,2,.34)');gr.addColorStop(1,'rgba(254,193,2,0)');ctx.fillStyle=gr;ctx.beginPath();ctx.arc(cx0,cy0,R*1.16,0,TAU);ctx.fill();
+      var dg=ctx.createRadialGradient(cx0-R*.35,cy0-R*.4,R*.1,cx0,cy0,R);dg.addColorStop(0,'#ffffff');dg.addColorStop(1,'#f1f5e8');ctx.fillStyle=dg;ctx.beginPath();ctx.arc(cx0,cy0,R,0,TAU);ctx.fill();
+      var i,q,ds=Math.max(1.1,R/170);
+      ctx.fillStyle='rgba(16,132,116,.2)';for(i=0;i<sea.length;i++){q=P(sea[i]);if(q[2]>0)ctx.fillRect(q[0]-ds*.4,q[1]-ds*.4,ds*.8,ds*.8)}
+      ctx.fillStyle='#0c6e61';for(i=0;i<land.length;i++){q=P(land[i]);if(q[2]>0){ctx.globalAlpha=.3+.7*q[2];ctx.beginPath();ctx.arc(q[0],q[1],ds*.62,0,TAU);ctx.fill()}}
+      ctx.globalAlpha=1;ctx.lineCap='round';
+      var labels=[];
+      C.forEach(function(a){var cyc=reduce?.6:((dt+a.off)%9)/9,n=a.pts.length,grow=Math.min(1,cyc/.32),fade=cyc>.82?1-(cyc-.82)/.18:1,m=Math.max(2,Math.floor(n*grow)),pen=false;
+        ctx.strokeStyle='rgba(194,85,122,'+(.9*fade)+')';ctx.lineWidth=1.7;ctx.beginPath();
+        for(var k=0;k<m;k++){var pq=P(a.pts[k]);if(shown(pq)){if(pen)ctx.lineTo(pq[0],pq[1]);else{ctx.moveTo(pq[0],pq[1]);pen=true}}else pen=false}
+        ctx.stroke();
+        var hd=P(a.pts[m-1]);if(grow<1&&shown(hd)){ctx.fillStyle='#fec102';ctx.beginPath();ctx.arc(hd[0],hd[1],3.4,0,TAU);ctx.fill()}
+        var e=P(a.end);if(grow>=1&&e[2]>.05){ctx.globalAlpha=fade;ctx.fillStyle='#c2557a';ctx.beginPath();ctx.arc(e[0],e[1],4.2,0,TAU);ctx.fill();ctx.globalAlpha=1;if(e[2]>.2&&fade>.4)labels.push([a.n,e[0],e[1]-15,false])}});
+      var hq=P(home);if(hq[2]>0){var pu=1+Math.sin(dt*2.4)*.25;ctx.strokeStyle='rgba(254,193,2,'+(.9-(pu-1)*1.6)+')';ctx.lineWidth=2;ctx.beginPath();ctx.arc(hq[0],hq[1],9*pu,0,TAU);ctx.stroke();
+        ctx.fillStyle='#fec102';ctx.beginPath();ctx.arc(hq[0],hq[1],5.5,0,TAU);ctx.fill();labels.push(['Germany',hq[0],hq[1]+20,true])}
+      labels.forEach(function(l){label(l[0],l[1],l[2],l[3])})}
+    function onScreen(){var r=holder.getBoundingClientRect();return r.width>0&&r.bottom>0&&r.top<innerHeight}
+    function safe(now){try{if(onScreen())draw(now)}catch(e){}}
+    if(reduce){safe(performance.now());addEventListener('scroll',function(){safe(performance.now())},{passive:true});addEventListener('resize',function(){safe(performance.now())})}
+    else{var last=0;(function tick(now){last=performance.now();safe(now);requestAnimationFrame(tick)})(performance.now());
+      setInterval(function(){if(performance.now()-last>1500)safe(performance.now())},1000)}
+  })();
 })();
 </script>
 </body>
