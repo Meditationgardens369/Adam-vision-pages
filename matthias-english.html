@@ -117,19 +117,31 @@ button.chip[aria-pressed="true"],button.chip[aria-selected="true"]{background:va
 .win::after{content:"";position:absolute;right:-30%;bottom:-70%;width:180px;height:180px;border-radius:50%;background:#fff;opacity:.5;filter:blur(24px)}
 .win b{display:block;font:600 clamp(28px,4vw,44px)/1 var(--serif);letter-spacing:-.02em;position:relative}
 .win span{display:block;font-size:14px;color:var(--mut);margin-top:8px;position:relative}
-.forest{position:relative;z-index:2;height:min(84vh,860px);margin:34px clamp(10px,2vw,28px) 0;border-radius:40px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(34,65,48,.65)}
-.fpar{position:absolute;left:0;right:0;top:-12%;bottom:-12%;will-change:transform}
-.fpar img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;animation:ken 46s ease-in-out infinite alternate;transform-origin:42% 55%}
-@keyframes ken{from{transform:scale(1.04)}to{transform:scale(1.2)}}
-.mist{position:absolute;inset:0;pointer-events:none;background:radial-gradient(40% 26% at 20% 30%,rgba(255,255,255,.34),transparent 70%),radial-gradient(34% 22% at 78% 62%,rgba(255,255,255,.26),transparent 70%),radial-gradient(30% 18% at 55% 14%,rgba(255,255,255,.22),transparent 70%);background-size:160% 100%;animation:drift 38s linear infinite alternate;mix-blend-mode:screen}
+.forest{position:relative;z-index:2;height:min(88vh,900px);margin:34px clamp(10px,2vw,28px) 0;border-radius:40px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(34,65,48,.65);background:#16261d;--r:200px}
+.fpar{position:absolute;left:0;right:0;top:-10%;bottom:-10%;will-change:transform}
+.fzoom{position:absolute;inset:0;animation:ken 46s ease-in-out infinite alternate;transform-origin:50% 55%}
+@keyframes ken{from{transform:scale(1.02)}to{transform:scale(1.16)}}
+.fzoom img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.fgrey{filter:grayscale(1) brightness(.6) contrast(.95)}
+.fcol{filter:saturate(1.3) brightness(1.14);-webkit-mask-image:radial-gradient(circle at 50% 55%,#000 calc(var(--r) - 46px),transparent var(--r));mask-image:radial-gradient(circle at 50% 55%,#000 calc(var(--r) - 46px),transparent var(--r))}
+.fring{position:absolute;left:50%;top:55%;width:calc(var(--r)*2);height:calc(var(--r)*2);margin:calc(var(--r)*-1) 0 0 calc(var(--r)*-1);border-radius:50%;border:2px solid rgba(254,193,2,.9);box-shadow:0 0 60px rgba(254,193,2,.5),inset 0 0 60px rgba(254,193,2,.22);pointer-events:none}
+.mist{position:absolute;inset:0;pointer-events:none;background:radial-gradient(40% 26% at 20% 30%,rgba(255,255,255,.26),transparent 70%),radial-gradient(34% 22% at 78% 62%,rgba(255,255,255,.2),transparent 70%),radial-gradient(30% 18% at 55% 14%,rgba(255,255,255,.18),transparent 70%);background-size:160% 100%;animation:drift 38s linear infinite alternate;mix-blend-mode:screen}
 @keyframes drift{from{background-position:0 0}to{background-position:100% 0}}
-.forest::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(255,253,247,.0) 62%,rgba(34,65,48,.38));border-radius:inherit}
-.forestcard{position:relative;z-index:3;max-width:820px;margin:-120px auto 0;padding:28px 34px;text-align:center}
-.forestcard b{display:block;font:600 clamp(36px,7.2vw,88px)/1 var(--serif);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.forestcard b small{font:600 .42em var(--serif);letter-spacing:0;margin-left:.2em}
-.forestcard span{display:block;font:600 clamp(17px,2vw,22px) var(--serif);color:var(--teal);margin-top:8px}
-.forestcard p{color:var(--mut);margin-top:8px}
-@media(max-width:700px){.forest{height:62vh;border-radius:26px}.forestcard{margin-top:-70px;padding:20px}}
+.forest::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(10,22,16,.28),transparent 26%,transparent 44%,rgba(10,22,16,.78));border-radius:inherit}
+.fhud{position:absolute;left:clamp(20px,5vw,70px);right:clamp(20px,5vw,70px);bottom:158px;z-index:2;color:#fff;display:flex;align-items:flex-end;gap:clamp(14px,3vw,44px);flex-wrap:wrap;text-shadow:0 2px 30px rgba(0,0,0,.6)}
+.fy{font:400 clamp(92px,16vw,230px)/.8 var(--serif);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.fn b{display:block;font:600 clamp(30px,5.4vw,76px)/1 var(--serif);color:var(--sun);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.fn i{display:block;font:italic 400 clamp(22px,3.2vw,42px)/1.1 var(--serif);margin-top:10px}
+.ftag{position:absolute;left:clamp(20px,5vw,70px);top:26px;z-index:2;color:#fff;font:700 12px var(--sans);letter-spacing:.16em;text-transform:uppercase;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.forestcard{position:relative;z-index:3;max-width:980px;margin:-118px auto 0;padding:22px 26px;background:rgba(255,253,247,.93)}
+.frow{display:flex;align-items:center;gap:18px}
+.frow .btn{flex:none;padding:11px 18px}
+.fslide{flex:1;min-width:0}
+.fslide input{width:100%;accent-color:var(--teal);display:block;margin:0;height:22px}
+.fticks{display:flex;justify-content:space-between;font:700 11.5px var(--sans);color:var(--mut);margin-top:2px}
+.frow2{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+.frow2>b{font:800 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-right:4px}
+@media(max-width:700px){.forest{height:76vh;border-radius:26px}.fhud{bottom:140px;gap:6px}.forestcard{margin-top:-96px;padding:16px}.frow{flex-direction:column;align-items:stretch;gap:10px}}
 
 /* videos: flip cards */
 .vhead{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:22px}
@@ -324,7 +336,7 @@ footer p{max-width:100ch;margin-bottom:8px}
 .rv.in{opacity:1;transform:none}
 .win.rv.in{transition:transform .25s ease-out,opacity .8s}
 @media(prefers-reduced-motion:reduce){
-  .ring,.wave i,.wire,.phone,.bottle,.gphone,.beam,.fpar img,.mist{animation:none}
+  .ring,.wave i,.wire,.phone,.bottle,.gphone,.beam,.fzoom,.mist{animation:none}
   .rv,.hero h1 span,.o,.day{opacity:1;transform:none;animation:none}
   #pollen{display:none}
   html{scroll-behavior:auto}
@@ -377,11 +389,33 @@ footer p{max-width:100ch;margin-bottom:8px}
     </div>
     </div>
   <div class="forest rv" id="forest">
-    <div class="fpar" id="fpar"><img src="assets/rainforest-amazon-1920.jpg" srcset="assets/rainforest-amazon-1280.jpg 1280w, assets/rainforest-amazon-1920.jpg 1920w" sizes="100vw" alt="The Amazon rainforest from the air, a dark blue river winding through unbroken green canopy"></div>
+    <div class="fpar" id="fpar"><div class="fzoom">
+      <img class="fgrey" src="assets/rainforest-canopy-2400.jpg" srcset="assets/rainforest-canopy-1400.jpg 1400w, assets/rainforest-canopy-2400.jpg 2400w" sizes="100vw" alt="" aria-hidden="true">
+      <img class="fcol" src="assets/rainforest-canopy-2400.jpg" srcset="assets/rainforest-canopy-1400.jpg 1400w, assets/rainforest-canopy-2400.jpg 2400w" sizes="100vw" alt="Mist rising from a dense tropical rainforest canopy, seen from the air">
+      <div class="fring" aria-hidden="true"></div>
+    </div></div>
     <div class="mist" aria-hidden="true"></div>
+    <div class="ftag">Rainforest you have protected</div>
+    <div class="fhud">
+      <div class="fy" id="fy">2020</div>
+      <div class="fn"><b><span id="fa">161,000,000</span> m²</b><i id="fc">0.2 times Berlin</i></div>
+    </div>
   </div>
   <div class="wrap">
-    <div class="forestcard glass rv"><b><i data-n="2147000000" data-sep="1" style="font-style:normal">0</i><small>m²</small></b><span>of rainforest protected</span><p>A story most English speakers have never heard.</p></div>
+    <div class="forestcard glass rv">
+      <div class="frow">
+        <button class="btn" type="button" id="fplay">Play 2020 to 2026</button>
+        <div class="fslide"><input type="range" id="fr" min="0" max="1000" value="0" aria-label="Year, from 2020 to 2026"><div class="fticks" aria-hidden="true"><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div></div>
+      </div>
+      <div class="frow2" id="fchips"><b>Show it as</b>
+        <button class="chip" type="button" aria-pressed="true" data-m="berlin">Berlin</button>
+        <button class="chip" type="button" aria-pressed="false" data-m="tokyo">Tokyo</button>
+        <button class="chip" type="button" aria-pressed="false" data-m="nyc">New York</button>
+        <button class="chip" type="button" aria-pressed="false" data-m="man">Manhattan</button>
+        <button class="chip" type="button" aria-pressed="false" data-m="pitch">Football pitches</button>
+      </div>
+      <p class="tiny" style="margin-top:12px">The 2020 and 2026 figures are your published numbers. The years between are drawn in.</p>
+    </div>
   </div>
 </section>
 
@@ -581,7 +615,7 @@ footer p{max-width:100ch;margin-bottom:8px}
 <footer>
   <div class="wrap">
     <p>Prepared by Brigitte and Adam, November 2026. Channel, Telegram and shop figures were read on 18 November 2026. English titles are translations to show the idea. Nothing here is published in English yet.</p>
-    <p>Thumbnails and titles are from your own channel. Speaker estimates follow Ethnologue. Photographs: <a href="https://commons.wikimedia.org/wiki/File:Amazon_CIAT_(3).jpg">Neil Palmer, CIAT</a> (the Amazon near Manaus, CC BY-SA 2.0) and <a href="https://commons.wikimedia.org/wiki/File:Taking_rosemary_oil_from_a_bottle.jpg">formulatehealth</a> (CC BY 2.0), via Wikimedia Commons, as stand-ins until yours replace them.</p>
+    <p>Thumbnails and titles are from your own channel. Speaker estimates follow Ethnologue. Photographs: the rainforest canopy is a licensed stock photograph, and the tincture photo is by <a href="https://commons.wikimedia.org/wiki/File:Taking_rosemary_oil_from_a_bottle.jpg">formulatehealth</a> (CC BY 2.0) via Wikimedia Commons. Both are stand-ins until yours replace them.</p>
     <p>The seven building blocks: <a href="matthias-vision.html">Deutsch</a>, <a href="matthias-vision-en.html">English</a></p>
   </div>
 </footer>
@@ -629,6 +663,22 @@ footer p{max-width:100ch;margin-bottom:8px}
   /* band parallax */
   var bi=document.getElementById('fpar');
   if(!reduce)addEventListener('scroll',function(){var r=bi.parentNode.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)bi.style.transform='translate3d(0,'+((r.top+r.height/2-innerHeight/2)*-.1)+'px,0)'},{passive:true});
+
+  /* ---------- forest: 2020 to 2026 ---------- */
+  var F=document.getElementById('forest'),fy=document.getElementById('fy'),farea=document.getElementById('fa'),fc=document.getElementById('fc'),fr=document.getElementById('fr'),A0=161e6,A1=2147e6,fk=0,fmode='berlin',fraf=0;
+  var CMP={berlin:function(a){return (a/891.7e6).toFixed(1)+' times Berlin'},tokyo:function(a){return Math.round(a/2194e6*100)+'% of all Tokyo'},nyc:function(a){return (a/778.2e6).toFixed(1)+' New York Cities'},man:function(a){return Math.round(a/59.1e6)+' Manhattans'},pitch:function(a){return Math.round(a/7140).toLocaleString('en-US')+' football pitches'}};
+  function fset(k){fk=k;var a=k>=1?A1:A0*Math.pow(A1/A0,k);
+    fy.textContent=2020+Math.min(6,Math.floor(k*6+1e-6));
+    farea.textContent=(Math.round(a/1e6)*1e6).toLocaleString('en-US');fc.textContent=CMP[fmode](a);
+    var w=F.clientWidth,h=F.clientHeight*1.2,R=Math.sqrt(w*w+h*h)/2*1.12;
+    F.style.setProperty('--r',(k>=1?R+80:R*Math.sqrt(a/A1))+'px');fr.value=Math.round(k*1000)}
+  function fgo(){cancelAnimationFrame(fraf);var t0=performance.now();(function f(t){var k=Math.min(1,(t-t0)/8000);fset(k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2);if(k<1)fraf=requestAnimationFrame(f)})(t0)}
+  fr.addEventListener('input',function(){cancelAnimationFrame(fraf);fset(fr.value/1000)});
+  document.getElementById('fplay').addEventListener('click',fgo);
+  var fch=[].slice.call(document.querySelectorAll('#fchips .chip'));
+  fch.forEach(function(c){c.addEventListener('click',function(){fch.forEach(function(x){x.setAttribute('aria-pressed','false')});c.setAttribute('aria-pressed','true');fmode=c.dataset.m;fset(fk)})});
+  addEventListener('resize',function(){fset(fk)});
+  if(reduce)fset(1);else{fset(0);new IntersectionObserver(function(es,ob){if(es[0].isIntersecting){ob.disconnect();setTimeout(fgo,500)}},{threshold:.45}).observe(F)}
 
   /* ---------- videos ---------- */
   var V=[
