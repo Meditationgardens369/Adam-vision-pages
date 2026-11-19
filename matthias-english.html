@@ -154,6 +154,18 @@ button.chip[aria-pressed="true"],button.chip[aria-selected="true"]{background:va
 /* wins */
 .wins{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;perspective:1200px;margin-top:26px}
 @media(max-width:900px){.wins{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.gap{margin-top:22px;padding:26px 28px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px;align-items:center}
+.gap b.n{display:block;font:600 clamp(44px,5.5vw,72px)/1 var(--serif);letter-spacing:-.02em;color:var(--rose)}
+.gbars{display:grid;gap:13px}
+.gr{display:grid;grid-template-columns:32px 84px minmax(0,1fr) 56px;align-items:center;gap:10px}
+.gr svg{width:32px;height:32px;padding:6px;border-radius:50%;background:#fff;border:1px solid var(--line2);color:var(--ink);stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gr>span{font:700 14px var(--sans)}
+.gr .gt{display:block;height:18px;border-radius:9px;background:rgba(34,65,48,.06);overflow:hidden}
+.gr i{display:block;height:100%;width:var(--w);min-width:7px;border-radius:9px;background:var(--c);transform-origin:left;transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--d)*120ms + 250ms)}
+.gap.in .gr i{transform:scaleX(1)}
+.gr b{font:600 19px/1 var(--serif);text-align:right}
+@media(prefers-reduced-motion:reduce){.gr i{transform:none;transition:none}}
+@media(max-width:860px){.gap{grid-template-columns:minmax(0,1fr);padding:18px;gap:18px}.gr{grid-template-columns:28px 72px minmax(0,1fr) 48px;gap:8px}.gr svg{width:28px;height:28px;padding:5px}.gr>span{font-size:13px}.gr b{font-size:17px}}
 .win{padding:20px;border-radius:22px;background:var(--c,var(--sun-s));box-shadow:var(--sh1);transform-style:preserve-3d;transition:transform .25s ease-out,opacity .8s;position:relative;overflow:hidden}
 .win::after{content:"";position:absolute;right:-30%;bottom:-70%;width:180px;height:180px;border-radius:50%;background:#fff;opacity:.5;filter:blur(24px)}
 .win b{display:block;font:600 clamp(28px,4vw,44px)/1 var(--serif);letter-spacing:-.02em;position:relative}
@@ -720,6 +732,15 @@ footer p{max-width:100ch;margin-bottom:8px}
       <div class="win rv" style="--c:var(--sun-s)"><b>Bestseller</b><span>Reise in die Freiheit, Spiegel list</span></div>
       <div class="win rv" style="--c:var(--teal-s)"><b>0</b><span>of it in English, so far</span></div>
     </div>
+    <div class="gap glass rv">
+      <div>
+        <b class="n">20x</b>
+        <h3 style="margin-top:6px">Your YouTube is twenty times your Instagram.</h3>
+        <p class="lede" style="font-size:16px">The long interviews carry everything. The short clips, where new people find you, have barely started.</p>
+      </div>
+      <div class="gbars" role="img" aria-label="Followers today: YouTube 152 thousand, Telegram 63.8 thousand, Facebook 16 thousand, TikTok 7.8 thousand, Instagram 7.5 thousand"><div class="gr" style="--w:100%;--c:var(--teal);--d:0"><svg aria-hidden="true"><use href="#p-yt"/></svg><span>YouTube</span><span class="gt"><i></i></span><b>152K</b></div><div class="gr" style="--w:42%;--c:var(--teal);--d:1"><svg aria-hidden="true"><use href="#p-tg"/></svg><span>Telegram</span><span class="gt"><i></i></span><b>63.8K</b></div><div class="gr" style="--w:10.5%;--c:var(--rose);--d:2"><svg aria-hidden="true"><use href="#p-fb"/></svg><span>Facebook</span><span class="gt"><i></i></span><b>16K</b></div><div class="gr" style="--w:5.1%;--c:var(--rose);--d:3"><svg aria-hidden="true"><use href="#p-tt"/></svg><span>TikTok</span><span class="gt"><i></i></span><b>7.8K</b></div><div class="gr" style="--w:4.9%;--c:var(--rose);--d:4"><svg aria-hidden="true"><use href="#p-ig"/></svg><span>Instagram</span><span class="gt"><i></i></span><b>7.5K</b></div></div>
+    </div>
+    <p class="tiny" style="text-align:center;margin-top:14px">Followers on each platform, read on 19 November 2026.</p>
   </div>
 </section>
 
