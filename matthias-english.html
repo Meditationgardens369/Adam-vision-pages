@@ -453,8 +453,15 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .wlet u{display:block;text-decoration:none;font:800 7px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
 .wlet strong{display:block;font:600 11.5px/1.1 var(--serif);margin-top:3px}
 .wsh{display:flex;gap:7px;justify-content:center}
-.wsh s{display:block;width:38px;height:66px;border-radius:9px;background:#ccc center/cover;box-shadow:0 0 0 2px var(--c);text-decoration:none}
-.wsh s.yt{background-position:97% 100%;background-size:auto 168%}
+.wsh s{display:block;position:relative;width:34px;height:60px;border-radius:9px;background:#ccc center/cover;box-shadow:0 0 0 2px var(--c);text-decoration:none}
+.wsh s u{position:absolute;left:3px;bottom:3px;font:800 7px var(--sans);letter-spacing:.06em;background:var(--ink);color:#fff;border-radius:99px;padding:1px 4px;text-decoration:none}
+.wc.mix{display:grid;place-items:center}
+.wc.mix>*{grid-area:1/1}
+.wc.mix .wi{translate:19.5px 0}
+.wde{transition:transform .55s cubic-bezier(.2,.9,.3,1.1)}
+.wk[data-layer="en"] .wde{transform:translateX(-39px)}
+.wk[data-layer="de"] .lane-sh .wi{opacity:0;transform:translateY(14px) scale(.88);transition-delay:0ms}
+.wk[data-layer="de"] .wkl small.len,.wk[data-layer="en"] .wkl small.lde{display:none}
 .wk[data-layer="de"] .lane-en .wi{opacity:0;transform:translateY(14px) scale(.88);transition-delay:0ms}
 .wk[data-layer="de"] .lane-en .wkl{opacity:.35}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font:600 13px var(--sans);color:var(--mut);margin-top:12px}
@@ -475,6 +482,10 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
   .wlet u{font-size:5.5px;letter-spacing:0}
   .wsh{gap:3px}
   .wsh s{width:17px;height:30px;border-radius:4px;box-shadow:0 0 0 1px var(--c)}
+  .wsh s u{display:none}
+  .wc.mix .wsh s{width:11px;height:24px;border-radius:3px}
+  .wc.mix .wi{translate:7px 0}
+  .wk[data-layer="en"] .wde{transform:translateX(-14px)}
 }
 
 /* talks: the conversation, five angles */
@@ -932,7 +943,7 @@ footer p{max-width:100ch;margin-bottom:8px}
       <div>
         <div class="kicker">A week in the engine</div>
         <h2 class="rv">Your German week stays. <em>English goes on top.</em></h2>
-        <p class="lede rv">Wednesday and Saturday at 18:00 stay exactly as they are. Everything in English is added by us.</p>
+        <p class="lede rv">Wednesday and Saturday at 18:00 stay exactly as they are, and so does the short you post with each one. Everything in English is added by us.</p>
       </div>
       <div class="wktog rv" role="group" aria-label="Layers">
         <button class="chip" type="button" aria-pressed="true" data-l="de">German, as today</button>
@@ -943,13 +954,13 @@ footer p{max-width:100ch;margin-bottom:8px}
       <div class="wkrow wkhead"><span></span><b>Mon</b><b>Tue</b><b>Wed</b><b>Thu</b><b>Fri</b><b>Sat</b><b>Sun</b></div>
       <div class="wkrow lane-de"><span class="wkl"><b>German</b><small>yours, unchanged</small></span><div class="wc"></div><div class="wc"></div><div class="wc"><span class="wi"><span class="wth" style="background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"><u class="de">DE</u></span><small>Wed, 18:00</small></span></div><div class="wc"></div><div class="wc"></div><div class="wc"><span class="wi"><span class="wth" style="background-image:url(https://i.ytimg.com/vi/S4PEgV4CiPQ/hq720.jpg)"><u class="de">DE</u></span><small>Sat, 18:00</small></span></div><div class="wc"></div></div>
       <div class="wkrow lane-en"><span class="wkl"><b>English</b><small>added on top</small></span><div class="wc"><span class="wi" style="--d:0"><span class="wth" style="background-image:url(https://i.ytimg.com/vi/JOcIgyjWb6Y/hq720.jpg)"><em>The Human Genius</em><u>EN</u></span><small>Last Saturday's, in English</small></span></div><div class="wc"><span class="wi" style="--d:1"><span class="wth two"><i style="background-image:url(assets/lp-matthias.jpg)"></i><i style="background-image:url(assets/adam-face.jpg)"></i></span><small>You and Adam, twice a month</small></span></div><div class="wc"></div><div class="wc"><span class="wi" style="--d:2"><span class="wth" style="background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"><em>The SHIFT Has Begun!</em><u>EN</u></span><small>Wednesday's, in English</small></span></div><div class="wc"></div><div class="wc"></div><div class="wc"><span class="wi" style="--d:3"><span class="wlet"><u>The Sunday letter</u><strong>Why everything is about to change</strong><i class="ln"></i><i class="ln s"></i></span><small>To the English list</small></span></div></div>
-      <div class="wkrow lane-en"><span class="wkl"><b>Shorts</b><small>two a day, three channels</small></span><div class="wc"><span class="wi wsh" style="--d:4"><s style="--c:var(--teal);background-image:url(assets/sh-m-solo.jpg)"></s><s style="--c:var(--lilac);background-image:url(assets/sh-lia.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:5"><s class="" style="--c:var(--leaf);background-image:url(assets/lp-veg.jpg)"></s><s style="--c:var(--teal);background-image:url(assets/sh-m-smile.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:6"><s style="--c:var(--lilac);background-image:url(assets/sh-m-flowers.jpg)"></s><s class="" style="--c:var(--leaf);background-image:url(assets/lp-dropper.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:7"><s style="--c:var(--teal);background-image:url(assets/sh-m-mint.jpg)"></s><s style="--c:var(--lilac);background-image:url(assets/sh-stage.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:8"><s class="" style="--c:var(--leaf);background-image:url(assets/lp-bowl.jpg)"></s><s style="--c:var(--teal);background-image:url(assets/sh-m-laugh.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:9"><s style="--c:var(--lilac);background-image:url(assets/sh-lia.jpg)"></s><s class="" style="--c:var(--leaf);background-image:url(assets/lp-leaves.jpg)"></s></span></div><div class="wc"></div></div>
+      <div class="wkrow lane-sh"><span class="wkl"><b>Shorts</b><small class="lde">yours, one per interview</small><small class="len">yours, plus two a day in English</small></span><div class="wc"><span class="wi wsh" style="--d:4"><s style="--c:var(--teal);background-image:url(assets/sh-m-solo.jpg)"></s><s style="--c:var(--lilac);background-image:url(assets/sh-lia.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:5"><s class="" style="--c:var(--leaf);background-image:url(assets/lp-veg.jpg)"></s><s style="--c:var(--teal);background-image:url(assets/sh-m-smile.jpg)"></s></span></div><div class="wc mix"><span class="wsh wde"><s style="--c:var(--sun);background-image:url(assets/sh-m-pink.jpg)"><u>DE</u></s></span><span class="wi wsh" style="--d:6"><s style="--c:var(--lilac);background-image:url(assets/sh-m-flowers.jpg)"></s><s class="" style="--c:var(--leaf);background-image:url(assets/lp-dropper.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:7"><s style="--c:var(--teal);background-image:url(assets/sh-m-mint.jpg)"></s><s style="--c:var(--lilac);background-image:url(assets/sh-stage.jpg)"></s></span></div><div class="wc"><span class="wi wsh" style="--d:8"><s class="" style="--c:var(--leaf);background-image:url(assets/lp-bowl.jpg)"></s><s style="--c:var(--teal);background-image:url(assets/sh-forest.jpg)"></s></span></div><div class="wc mix"><span class="wsh wde"><s style="--c:var(--sun);background-image:url(assets/sh-m-laugh.jpg)"><u>DE</u></s></span><span class="wi wsh" style="--d:9"><s style="--c:var(--lilac);background-image:url(assets/sh-lia.jpg)"></s><s class="" style="--c:var(--leaf);background-image:url(assets/lp-leaves.jpg)"></s></span></div><div class="wc"></div></div>
     </div>
     <div class="counts rv">
       <div style="--c:var(--sun-s)"><b data-n="8">0</b><span>interviews in German, as today</span></div>
       <div style="--c:var(--teal-s)"><b data-n="8">0</b><span>of them in English</span></div>
       <div style="--c:var(--rose-s)"><b data-n="2">0</b><span>talks with Adam</span></div>
-      <div style="--c:var(--lilac-s)"><b data-n="48">0</b><span>shorts</span></div>
+      <div style="--c:var(--lilac-s)"><b data-n="48">0</b><span>English shorts</span></div>
       <div style="--c:var(--leaf-s)"><b data-n="4">0</b><span>letters</span></div>
     </div>
     <p class="tiny" style="margin-top:10px">One typical week, and what four of them add up to. These quantities are our plan for month one.</p>
