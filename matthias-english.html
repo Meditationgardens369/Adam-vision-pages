@@ -605,19 +605,22 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .filmhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 16px;margin-bottom:16px}
 .filmhead b{font:600 clamp(22px,2.5vw,31px)/1.15 var(--serif);letter-spacing:-.01em}
 .filmhead span{font:600 13.5px var(--sans);color:var(--faint)}
-.filmgrid{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1.6fr);gap:16px;align-items:start}
 .film figure{margin:0}
-.fframe{position:relative;border-radius:18px;overflow:hidden;background:var(--ink);box-shadow:var(--sh2)}
-.filmmain .fframe{aspect-ratio:16/9}
+.fframe{position:relative;border-radius:20px;overflow:hidden;background:var(--ink);box-shadow:var(--sh2)}
+.filmmain .fframe{aspect-ratio:21/9}
 .fframe video{display:block;width:100%;height:100%;object-fit:cover}
-.filmmain figcaption{margin-top:10px}
-.filmmain figcaption b{display:block;font:600 19px/1.2 var(--serif)}
-.filmmain figcaption span{font-size:13.5px;color:var(--mut)}
-.filmshorts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.filmshorts .fframe{aspect-ratio:9/16}
-.filmout{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
-.filmout span{display:block;background:var(--cs);border-radius:16px;padding:12px 14px;font-size:13.5px;line-height:1.3;color:var(--mut)}
-.filmout b{display:block;font:600 28px/1 var(--serif);color:var(--ink);margin-bottom:4px}
+.filmmain figcaption{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px;align-items:start;margin-top:16px}
+.fcl b{display:block;font:600 22px/1.2 var(--serif)}
+.fcl small{display:block;font:600 13.5px var(--sans);color:var(--faint);margin-top:3px}
+.fcr{font:500 17px/1.5 var(--serif);color:var(--mut);border-left:3px solid var(--sun);padding-left:18px}
+.grow{margin-top:34px;text-align:center}
+.grow small{display:block;font:700 12.5px var(--sans);color:var(--faint);margin-bottom:18px}
+.growline{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start}
+.growline::before{content:"";position:absolute;left:12.5%;right:12.5%;top:20px;border-top:2px dashed var(--line2)}
+.growline span{position:relative;display:block}
+.growline i{display:block;width:var(--z);height:var(--z);margin:calc(20px - var(--z)/2) auto;border-radius:50%;background:var(--sun);box-shadow:0 0 0 5px var(--paper)}
+.growline b{display:block;font:600 17px/1.2 var(--serif);margin-top:14px}
+.growline em{display:block;font:400 13.5px/1.35 var(--sans);font-style:normal;color:var(--mut);margin-top:3px}
 .inv{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:34px;align-items:center;padding:30px;margin-top:18px}
 .invcard{background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--sh2);transform:rotate(-1.4deg)}
 .invpic{display:block;height:clamp(150px,17vw,220px);background:url(assets/alg-group.jpg) center 62%/cover}
@@ -640,17 +643,12 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .invpts{list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:1px dashed var(--line2);display:grid;gap:9px}
 .invpts li{position:relative;padding-left:20px;font-size:15.5px;line-height:1.4;color:var(--mut)}
 .invpts li::before{content:"";position:absolute;left:0;top:.45em;width:9px;height:9px;border-radius:50%;background:var(--sun)}
-.algfmt{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
-.algfmt div{border-radius:18px;padding:16px;background:var(--cs)}
-.algfmt svg{display:block;width:26px;height:26px;fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.algfmt b{display:block;font:600 17px/1.2 var(--serif);margin:9px 0 3px}
-.algfmt span{display:block;font-size:13.5px;line-height:1.35;color:var(--mut)}
 .algpath{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:22px}
 .algpath span{font:700 14px var(--sans);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:9px 16px}
 .algpath span:last-child{background:var(--sun);border-color:var(--sun)}
 .algpath i{width:34px;border-top:2px dashed var(--line2)}
 @media(prefers-reduced-motion:reduce){.algmos img,.mod,.modwho,.seats i,.exb i{transition:none}}
-@media(max-width:900px){.sum{grid-template-columns:minmax(0,1fr);padding:22px;gap:18px}.film{padding:22px}.filmgrid{grid-template-columns:minmax(0,1fr)}.filmout{grid-template-columns:repeat(2,minmax(0,1fr))}.exp{grid-template-columns:minmax(0,1fr);padding:22px;gap:22px}.exr{grid-template-columns:46px minmax(0,1fr) auto;gap:6px 12px}.exr .exb{grid-column:1/-1;grid-row:2;height:14px}.exa{width:46px;height:46px;line-height:46px}.inv{grid-template-columns:minmax(0,1fr);padding:22px;gap:26px}.invcard{transform:none}.algfmt{grid-template-columns:repeat(2,minmax(0,1fr))}.algmos{grid-template-rows:repeat(2,clamp(110px,22vw,180px))}}
+@media(max-width:900px){.sum{grid-template-columns:minmax(0,1fr);padding:22px;gap:18px}.film{padding:22px}.filmmain .fframe{aspect-ratio:16/9}.filmmain figcaption{grid-template-columns:minmax(0,1fr);gap:12px}.growline{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}.growline::before{display:none}.exp{grid-template-columns:minmax(0,1fr);padding:22px;gap:22px}.exr{grid-template-columns:46px minmax(0,1fr) auto;gap:6px 12px}.exr .exb{grid-column:1/-1;grid-row:2;height:14px}.exa{width:46px;height:46px;line-height:46px}.inv{grid-template-columns:minmax(0,1fr);padding:22px;gap:26px}.invcard{transform:none}.algmos{grid-template-rows:repeat(2,clamp(110px,22vw,180px))}}
 @media(max-width:520px){.algmos{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:170px 110px 110px;gap:10px}.algmos .m1{grid-column:1/3;grid-row:1}.algmos .m2{grid-column:1/3;grid-row:2}.algnum{gap:8px}.algnum .win{padding:14px}.algnum .win span{font-size:12px}.mod{width:68vw;max-width:250px}.inv{padding:16px}.invbody{padding:16px 16px 20px}.invdays div{grid-template-columns:74px minmax(0,1fr)}.algpath{flex-direction:column;gap:6px}.algpath i{width:0;height:14px;border-top:0;border-left:2px dashed var(--line2)}}
 .team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}
 .tm{padding:24px;display:flex;flex-direction:column;gap:14px;border-top:5px solid var(--c)}
@@ -1313,30 +1311,22 @@ footer p{max-width:100ch;margin-bottom:8px}
       </div>
     </div>
     <div class="film glass rv">
-      <div class="filmhead"><b>And we film it. The weekend becomes the next videos.</b><span>One weekend feeds your channel for months</span></div>
+      <div class="filmhead"><b>And we film it. The weekend becomes the next videos.</b></div>
       <div class="filmgrid">
         <figure class="filmmain">
           <div class="fframe"><video src="assets/alg-film.mp4" poster="assets/alg-film.jpg" muted loop playsinline preload="metadata" aria-label="A short film of the Algarve coast, boats, a sea cave, a group meditating on a clifftop, a singing bowl and a shared table"></video><span class="mcrec"><i></i><b>The film</b></span></div>
-          <figcaption><b>Three days in the Algarve</b><span>One long film for your channel</span></figcaption>
+          <figcaption><span class="fcl"><b>Three days in the Algarve</b><small>The film of the weekend</small></span><span class="fcr">One weekend gives you a long film, a dozen shorts, a letter with the story and the invitation to the next one.</span></figcaption>
         </figure>
-        <div class="filmshorts">
-          <figure><div class="fframe"><video src="assets/alg-film.mp4" data-at="7.2" muted loop playsinline preload="metadata" aria-hidden="true" style="object-position:62% 50%"></video><span class="mcrec"><i></i><b>Short</b></span></div></figure>
-          <figure><div class="fframe"><video src="assets/alg-film.mp4" data-at="13.4" muted loop playsinline preload="metadata" aria-hidden="true" style="object-position:55% 50%"></video><span class="mcrec"><i></i><b>Short</b></span></div></figure>
-          <figure><div class="fframe"><video src="assets/alg-film.mp4" data-at="16.6" muted loop playsinline preload="metadata" aria-hidden="true" style="object-position:68% 50%"></video><span class="mcrec"><i></i><b>Short</b></span></div></figure>
-        </div>
-      </div>
-      <div class="filmout">
-        <span style="--cs:var(--sun-s)"><b>1</b>long film</span>
-        <span style="--cs:var(--teal-s)"><b>12</b>shorts</span>
-        <span style="--cs:var(--lilac-s)"><b>1</b>letter with the story</span>
-        <span style="--cs:var(--rose-s)"><b>1</b>invitation to the next weekend</span>
       </div>
     </div>
-    <div class="algfmt">
-      <div style="--cs:var(--sun-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><b>An evening talk</b><span>You and a guest, in one room</span></div>
-      <div style="--cs:var(--leaf-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-6"/><path d="M12 3l5 7h-3l4 5H6l4-5H7z"/></svg><b>A day in nature</b><span>Walking, speaking and eating together</span></div>
-      <div style="--cs:var(--sky-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M4 4l16 16"/></svg><b>A weekend without phones</b><span>Offline, by the sea</span></div>
-      <div style="--cs:var(--lilac-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><b>A retreat week</b><span>Several healers, one small group</span></div>
+    <div class="grow rv" role="img" aria-label="It can start small: an evening talk, then a day in nature, then a weekend without phones, then a retreat week">
+      <small>It can start small</small>
+      <div class="growline">
+        <span style="--z:14px"><i></i><b>An evening talk</b><em>You and a guest, one room</em></span>
+        <span style="--z:22px"><i></i><b>A day in nature</b><em>Walking, speaking, eating together</em></span>
+        <span style="--z:30px"><i></i><b>A weekend without phones</b><em>Offline, by the sea</em></span>
+        <span style="--z:40px"><i></i><b>A retreat week</b><em>Several healers, one small group</em></span>
+      </div>
     </div>
     <div class="algpath rv" role="img" aria-label="An English video leads to the Sunday letter, the letter to a seat in the Algarve, and the weekend to the next film">
       <span>An English video</span><i></i><span>The Sunday letter</span><i></i><span>A seat in the Algarve</span><i></i><span>The film of the weekend</span>
