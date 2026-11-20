@@ -170,6 +170,31 @@ button.chip[aria-pressed="true"],button.chip[aria-selected="true"]{background:va
 .win::after{content:"";position:absolute;right:-30%;bottom:-70%;width:180px;height:180px;border-radius:50%;background:#fff;opacity:.5;filter:blur(24px)}
 .win b{display:block;font:600 clamp(28px,4vw,44px)/1 var(--serif);letter-spacing:-.02em;position:relative}
 .win span{display:block;font-size:14px;color:var(--mut);margin-top:8px;position:relative}
+.wins .win{display:flex;flex-direction:column-reverse;align-items:flex-start;justify-content:flex-end;gap:14px}
+.wins .win.wide{flex-direction:row;align-items:center;justify-content:space-between}
+.win.wide{grid-column:span 2}
+.wt{min-width:0;position:relative;z-index:1}
+.wv{flex:none;position:relative;z-index:1}
+.wv.av{width:68px;height:68px}
+.wv.av img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff,var(--sh1)}
+.wv.av i{position:absolute;right:-7px;bottom:-4px;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;color:#fff;box-shadow:0 0 0 2px #fff}
+.wv.av i svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.wv.wyt i{background:#ff0033}
+.wv.wtg i{background:#2aabee}
+.wv.fan{width:112px;height:70px}
+.wv.fan img{position:absolute;left:50%;top:50%;width:80px;aspect-ratio:16/9;object-fit:cover;border-radius:7px;box-shadow:0 0 0 2px #fff,var(--sh1);transform:translate(-50%,-50%) translateX(var(--x)) rotate(var(--r))}
+.wv.prods{display:flex;align-items:flex-end;gap:2px;height:76px;padding:6px 10px;border-radius:14px;background:#fff;box-shadow:var(--sh1)}
+.wv.prods img{display:block;height:100%;width:auto}
+.wv.stars{display:flex;gap:2px;color:var(--sun)}
+.wv.stars{height:68px;align-items:center}
+.wv.stars svg{width:30px;height:30px;fill:currentColor;filter:drop-shadow(0 1px 1px rgba(34,65,48,.25))}
+.wv.mail svg{display:block;width:68px;height:68px;padding:13px;border-radius:16px;background:#fff;box-shadow:var(--sh1);fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.wv.book{padding:8px 12px;border-radius:14px;background:#fff;box-shadow:var(--sh1);transform:rotate(3deg)}
+.wv.book img{display:block;height:128px;width:auto}
+.zero{display:flex;align-items:center;gap:22px;margin-top:14px;padding:18px 30px;border-radius:22px;background:var(--sun);box-shadow:var(--sh1)}
+.zero b{font:600 clamp(64px,8vw,104px)/.9 var(--serif);letter-spacing:-.03em;color:var(--ink)}
+.zero p{font:600 clamp(22px,2.6vw,34px)/1.15 var(--serif);color:var(--ink);margin:0}
+@media(max-width:560px){.wins .win{gap:10px}.wv.book img{height:92px}.wv.stars svg{width:24px;height:24px}.wv.prods{height:66px}.zero{padding:14px 20px;gap:16px}}
 
 /* videos: flip cards */
 .vhead{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:22px}
@@ -973,15 +998,15 @@ footer p{max-width:100ch;margin-bottom:8px}
     <div class="kicker">Where you stand today</div>
     <h2 class="rv">Built in German. <em>All of it real.</em></h2>
     <div class="wins">
-      <div class="win rv" style="--c:var(--sun-s)"><b data-n="152" data-suf="K">0</b><span>YouTube subscribers</span></div>
-      <div class="win rv" style="--c:var(--teal-s)"><b data-n="45.3" data-dec="1" data-suf="M">0</b><span>views on 1,685 videos</span></div>
-      <div class="win rv" style="--c:var(--lilac-s)"><b data-n="63.8" data-dec="1" data-suf="K">0</b><span>on Telegram</span></div>
-      <div class="win rv" style="--c:var(--rose-s)"><b data-n="260" data-suf="K+">0</b><span>customers since 2008</span></div>
-      <div class="win rv" style="--c:var(--leaf-s)"><b data-n="44948" data-sep="1">0</b><span>reviews, 4.87 stars</span></div>
-      <div class="win rv" style="--c:var(--sky-s)"><b data-n="60" data-suf="K+">0</b><span>newsletter readers</span></div>
-      <div class="win rv" style="--c:var(--sun-s)"><b>Bestseller</b><span>Reise in die Freiheit, Spiegel list</span></div>
-      <div class="win rv" style="--c:var(--teal-s)"><b>0</b><span>of it in English, so far</span></div>
+      <div class="win rv" style="--c:var(--sun-s)"><div class="wt"><b data-n="152" data-suf="K">0</b><span>YouTube subscribers</span></div><div class="wv av wyt" aria-hidden="true"><img src="assets/lp-matthias.jpg" alt="" loading="lazy"><i><svg viewBox="0 0 24 24"><path d="M9 7v10l8-5z" fill="currentColor" stroke="none"/></svg></i></div></div>
+      <div class="win rv" style="--c:var(--teal-s)"><div class="wt"><b data-n="45.3" data-dec="1" data-suf="M">0</b><span>views on 1,685 videos</span></div><div class="wv fan" aria-hidden="true"><img style="--r:-9deg;--x:-16px" src="https://i.ytimg.com/vi/tYjOG6IIiCM/hq720.jpg" alt="" loading="lazy"><img style="--r:8deg;--x:16px" src="https://i.ytimg.com/vi/S4PEgV4CiPQ/hq720.jpg" alt="" loading="lazy"><img style="--r:0deg;--x:0px" src="https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg" alt="" loading="lazy"></div></div>
+      <div class="win rv" style="--c:var(--lilac-s)"><div class="wt"><b data-n="63.8" data-dec="1" data-suf="K">0</b><span>on Telegram</span></div><div class="wv av wtg" aria-hidden="true"><img src="assets/lp-matthias.jpg" alt="" loading="lazy"><i><svg viewBox="0 0 24 24"><use href="#p-tg"/></svg></i></div></div>
+      <div class="win rv" style="--c:var(--rose-s)"><div class="wt"><b data-n="260" data-suf="K+">0</b><span>customers since 2008</span></div><div class="wv prods" aria-hidden="true"><img src="assets/real-fulvin.jpg" alt="" loading="lazy"><img src="assets/prod-curcumin.jpg" alt="" loading="lazy"><img src="assets/prod-blueberry.jpg" alt="" loading="lazy"></div></div>
+      <div class="win rv" style="--c:var(--leaf-s)"><div class="wt"><b data-n="44948" data-sep="1">0</b><span>reviews, 4.87 stars</span></div><div class="wv stars" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg></div></div>
+      <div class="win rv" style="--c:var(--sky-s)"><div class="wt"><b data-n="60" data-suf="K+">0</b><span>newsletter readers</span></div><div class="wv mail" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6.5L20.5 7"/></svg></div></div>
+      <div class="win wide rv" style="--c:var(--sun-s)"><div class="wt"><b>Bestseller</b><span>Reise in die Freiheit, on the Spiegel list</span></div><div class="wv book"><img src="assets/real-book.jpg" alt="The book Reise in die Freiheit with a Spiegel Bestseller badge" loading="lazy"></div></div>
     </div>
+    <div class="zero rv"><b>0</b><p>of it in English, so far.</p></div>
     <div class="gap glass rv">
       <div>
         <b class="n">20x</b>
