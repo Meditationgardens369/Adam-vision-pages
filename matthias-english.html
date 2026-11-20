@@ -535,6 +535,23 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .rvid figcaption b{display:block;font:600 18px/1.15 var(--serif)}
 .rvid figcaption span{display:block;font-size:13px;color:var(--mut);margin-top:2px}
 @media(max-width:860px){.reel{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.rvid.wide{grid-column:1/-1}.rvid figcaption b{font-size:15px}}
+.bastand{display:inline-block;margin:14px 0 0;font:700 13px var(--sans);background:var(--sun-s);border:1px dashed var(--sun);border-radius:999px;padding:7px 14px;color:var(--ink)}
+.bawrap{margin-top:22px}
+.bawave{display:block;font:600 22px/1.2 var(--serif);margin:20px 0 10px}
+.bagrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ba{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:var(--paper2);box-shadow:var(--sh2)}
+.ba img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;display:block}
+.ba .af{clip-path:inset(0 0 0 var(--p))}
+.bah{position:absolute;top:0;bottom:0;left:var(--p);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.18);pointer-events:none}
+.bah::after{content:"";position:absolute;top:50%;left:50%;width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23224130' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 7l-5 5 5 5M15 7l5 5-5 5'/%3E%3C/svg%3E") center/20px no-repeat;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.ba input{position:absolute;left:0;top:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y}
+.ba:focus-within{outline:3px solid var(--sun);outline-offset:2px}
+.bafig{min-width:0}
+.bacap{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.bal,.bar{font:800 11px var(--sans);border-radius:999px;padding:4px 10px}
+.bal{background:var(--ink);color:#fff}
+.bar{background:var(--sun);color:var(--ink)}
+@media(max-width:760px){.bagrid{grid-template-columns:minmax(0,1fr);gap:10px}.bawave{font-size:19px;margin-top:16px}}
 .team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}
 .tm{padding:24px;display:flex;flex-direction:column;gap:14px;border-top:5px solid var(--c)}
 .tmtop{display:flex;align-items:center;gap:16px}
@@ -1069,6 +1086,25 @@ footer p{max-width:100ch;margin-bottom:8px}
   </div>
 </section>
 
+<section id="design" hidden>
+  <div class="wrap">
+    <div class="chhead">
+      <div class="kicker">Brigitte's eye</div>
+      <h2 class="rv">We thought these were ready. <em>Then she touched them.</em></h2>
+      <p class="lede rv">Nine covers for our own therapy music. Each one starts as the computer's draft and ends as hers. Drag the line across any cover.</p>
+      <p class="bastand" id="bastand">Stand-in pictures for now. Brigitte's nine covers go in here.</p>
+    </div>
+    <div class="bawrap rv">
+      <b class="bawave">Alpha</b>
+      <div class="bagrid"><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/tm-before-1.jpg" alt="First draft of a Alpha cover" loading="lazy"><img class="af" src="assets/tm-after-1.jpg" alt="The same Alpha cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Alpha cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/tm-before-2.jpg" alt="First draft of a Alpha cover" loading="lazy"><img class="af" src="assets/tm-after-2.jpg" alt="The same Alpha cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Alpha cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/tm-before-3.jpg" alt="First draft of a Alpha cover" loading="lazy"><img class="af" src="assets/tm-after-3.jpg" alt="The same Alpha cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Alpha cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div></div>
+      <b class="bawave">Delta</b>
+      <div class="bagrid"><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/tm-before-4.jpg" alt="First draft of a Delta cover" loading="lazy"><img class="af" src="assets/tm-after-4.jpg" alt="The same Delta cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Delta cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/tm-before-5.jpg" alt="First draft of a Delta cover" loading="lazy"><img class="af" src="assets/tm-after-5.jpg" alt="The same Delta cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Delta cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/tm-before-6.jpg" alt="First draft of a Delta cover" loading="lazy"><img class="af" src="assets/tm-after-6.jpg" alt="The same Delta cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Delta cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div></div>
+      <b class="bawave">Theta</b>
+      <div class="bagrid"><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/tm-before-7.jpg" alt="First draft of a Theta cover" loading="lazy"><img class="af" src="assets/tm-after-7.jpg" alt="The same Theta cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Theta cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/tm-before-8.jpg" alt="First draft of a Theta cover" loading="lazy"><img class="af" src="assets/tm-after-8.jpg" alt="The same Theta cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Theta cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/tm-before-9.jpg" alt="First draft of a Theta cover" loading="lazy"><img class="af" src="assets/tm-after-9.jpg" alt="The same Theta cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Theta cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div></div>
+    </div>
+  </div>
+</section>
+
 <section id="team">
   <div class="wrap">
     <div class="chhead">
@@ -1358,6 +1394,12 @@ footer p{max-width:100ch;margin-bottom:8px}
   function rSound(v,on){rvids.forEach(function(o){o.muted=!(on&&o===v);var b=o.parentNode.querySelector('.rsnd');b.setAttribute('aria-pressed',String(!o.muted));b.textContent=o.muted?'Sound on':'Sound off'});if(on)rPlay(v)}
   rvids.forEach(function(v){var f=v.parentNode;f.addEventListener('click',function(){rSound(v,v.muted)});
     new IntersectionObserver(function(es){if(es[0].isIntersecting){if(!reduce)rPlay(v)}else{v.pause();if(!v.muted)rSound(v,false)}},{threshold:.35}).observe(f)});
+
+  /* ---------- before and after covers ---------- */
+  /* hidden until Brigitte's real covers are in; add ?covers to the address to preview it */
+  var coverSec=document.getElementById('design');
+  if(coverSec&&/[?&]covers(?:[=&]|$)/.test(location.search))coverSec.hidden=false;
+  [].forEach.call(document.querySelectorAll('.ba input'),function(r){var bx=r.parentNode;function baSet(){bx.style.setProperty('--p',r.value+'%')}r.addEventListener('input',baSet);baSet()});
 
   /* ---------- roles ---------- */
   var tks=document.querySelectorAll('#tasks .tk'),hot=-1,tseen=false;
