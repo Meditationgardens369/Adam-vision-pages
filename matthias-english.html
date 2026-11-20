@@ -589,6 +589,35 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .exb i{display:block;height:100%;width:var(--w);border-radius:10px;background:var(--c);transform-origin:left;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--d)*140ms + 250ms)}
 .exp.in .exb i{transform:scaleX(1)}
 .exv{font:600 19px/1 var(--serif);text-align:right;white-space:nowrap}
+.sum{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:30px;align-items:center;padding:28px 30px;margin-top:18px}
+.suml small{display:block;font:700 12.5px var(--sans);color:var(--faint)}
+.suml>b{display:block;font:600 clamp(28px,3.4vw,44px)/1.08 var(--serif);letter-spacing:-.02em;margin:6px 0 12px}
+.suml p{font:600 17px/1.9 var(--serif);margin:0}
+.sumchips{display:inline-flex;gap:6px;vertical-align:middle;margin:0 4px}
+.sumchips button{font:700 14px var(--sans);color:var(--ink);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:7px 13px;cursor:pointer}
+.sumchips button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.sumchips button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.sumr{background:var(--sun-s);border-radius:20px;padding:20px 24px}
+.sumr b.n{display:inline-block;font:600 clamp(48px,6vw,84px)/1 var(--serif);letter-spacing:-.03em;color:var(--ink)}
+.sumr>span{font:600 20px var(--serif);margin-left:8px}
+.sumr p{font-size:15.5px;line-height:1.4;color:var(--mut);margin:8px 0 0}
+.film{padding:28px 30px;margin-top:18px}
+.filmhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 16px;margin-bottom:16px}
+.filmhead b{font:600 clamp(22px,2.5vw,31px)/1.15 var(--serif);letter-spacing:-.01em}
+.filmhead span{font:600 13.5px var(--sans);color:var(--faint)}
+.filmgrid{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1.6fr);gap:16px;align-items:start}
+.film figure{margin:0}
+.fframe{position:relative;border-radius:18px;overflow:hidden;background:var(--ink);box-shadow:var(--sh2)}
+.filmmain .fframe{aspect-ratio:16/9}
+.fframe video{display:block;width:100%;height:100%;object-fit:cover}
+.filmmain figcaption{margin-top:10px}
+.filmmain figcaption b{display:block;font:600 19px/1.2 var(--serif)}
+.filmmain figcaption span{font-size:13.5px;color:var(--mut)}
+.filmshorts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.filmshorts .fframe{aspect-ratio:9/16}
+.filmout{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.filmout span{display:block;background:var(--cs);border-radius:16px;padding:12px 14px;font-size:13.5px;line-height:1.3;color:var(--mut)}
+.filmout b{display:block;font:600 28px/1 var(--serif);color:var(--ink);margin-bottom:4px}
 .inv{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:34px;align-items:center;padding:30px;margin-top:18px}
 .invcard{background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--sh2);transform:rotate(-1.4deg)}
 .invpic{display:block;height:clamp(150px,17vw,220px);background:url(assets/alg-group.jpg) center 62%/cover}
@@ -621,7 +650,7 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .algpath span:last-child{background:var(--sun);border-color:var(--sun)}
 .algpath i{width:34px;border-top:2px dashed var(--line2)}
 @media(prefers-reduced-motion:reduce){.algmos img,.mod,.modwho,.seats i,.exb i{transition:none}}
-@media(max-width:900px){.exp{grid-template-columns:minmax(0,1fr);padding:22px;gap:22px}.exr{grid-template-columns:46px minmax(0,1fr) auto;gap:6px 12px}.exr .exb{grid-column:1/-1;grid-row:2;height:14px}.exa{width:46px;height:46px;line-height:46px}.inv{grid-template-columns:minmax(0,1fr);padding:22px;gap:26px}.invcard{transform:none}.algfmt{grid-template-columns:repeat(2,minmax(0,1fr))}.algmos{grid-template-rows:repeat(2,clamp(110px,22vw,180px))}}
+@media(max-width:900px){.sum{grid-template-columns:minmax(0,1fr);padding:22px;gap:18px}.film{padding:22px}.filmgrid{grid-template-columns:minmax(0,1fr)}.filmout{grid-template-columns:repeat(2,minmax(0,1fr))}.exp{grid-template-columns:minmax(0,1fr);padding:22px;gap:22px}.exr{grid-template-columns:46px minmax(0,1fr) auto;gap:6px 12px}.exr .exb{grid-column:1/-1;grid-row:2;height:14px}.exa{width:46px;height:46px;line-height:46px}.inv{grid-template-columns:minmax(0,1fr);padding:22px;gap:26px}.invcard{transform:none}.algfmt{grid-template-columns:repeat(2,minmax(0,1fr))}.algmos{grid-template-rows:repeat(2,clamp(110px,22vw,180px))}}
 @media(max-width:520px){.algmos{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:170px 110px 110px;gap:10px}.algmos .m1{grid-column:1/3;grid-row:1}.algmos .m2{grid-column:1/3;grid-row:2}.algnum{gap:8px}.algnum .win{padding:14px}.algnum .win span{font-size:12px}.mod{width:68vw;max-width:250px}.inv{padding:16px}.invbody{padding:16px 16px 20px}.invdays div{grid-template-columns:74px minmax(0,1fr)}.algpath{flex-direction:column;gap:6px}.algpath i{width:0;height:14px;border-top:0;border-left:2px dashed var(--line2)}}
 .team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}
 .tm{padding:24px;display:flex;flex-direction:column;gap:14px;border-top:5px solid var(--c)}
@@ -1222,7 +1251,7 @@ footer p{max-width:100ch;margin-bottom:8px}
     <div class="chhead">
       <div class="kicker">Where it can lead</div>
       <h2 class="rv">Your viewers are everywhere. <em>We all live here.</em></h2>
-      <p class="lede rv">Once English viewers know you, some will want to meet you. People already fly to this coast to rest, and we know many of its healers.</p>
+      <p class="lede rv">Videos inspire people from far away. The dream is to bring some of them here: the ocean, the caves by boat, rooms that feel like paradise, and healers with decades of practice. A vision we could build together, later.</p>
     </div>
     <div class="algmos rv">
       <figure class="m1"><img src="assets/alg-coast.jpg" alt="Golden cliffs above blue sea at Praia do Camilo in Lagos" loading="lazy"></figure>
@@ -1244,6 +1273,18 @@ footer p{max-width:100ch;margin-bottom:8px}
         <p>These people have done their work for decades. A healing retreat here would stand on that.</p>
       </div>
       <div class="exrows" role="img" aria-label="Years of practice: Brigitte more than 40, Guida more than 30, Lara more than 20, Petra more than 20, Leanne more than 10"><div class="exr" style="--c:var(--lilac);--cs:var(--lilac-s);--w:100%;--d:0"><i class="exa" style="background-image:url(assets/team-brigitte.jpg);background-position:28% 40%;background-size:118%"></i><span class="ext"><b>Brigitte</b>Sound. Healing music since 2013</span><span class="exb"><i></i></span><b class="exv">40+ years</b></div><div class="exr" style="--c:var(--rose);--cs:var(--rose-s);--w:75%;--d:1"><i class="exa" style="background-image:url(assets/circle-guida2.jpg)"></i><span class="ext"><b>Guida</b>Hands-on healing and Trauma Release</span><span class="exb"><i></i></span><b class="exv">30+ years</b></div><div class="exr" style="--c:var(--leaf);--cs:var(--leaf-s);--w:50%;--d:2"><i class="exa" style="background-image:url(assets/circle-lara.jpg)"></i><span class="ext"><b>Lara</b>Massage, hotels and Bowen therapy</span><span class="exb"><i></i></span><b class="exv">20+ years</b></div><div class="exr" style="--c:var(--teal);--cs:var(--teal-s);--w:50%;--d:3"><i class="exa" style="background-image:url(assets/circle-petra.jpg)"></i><span class="ext"><b>Petra</b>Teaching dance</span><span class="exb"><i></i></span><b class="exv">20+ years</b></div><div class="exr" style="--c:var(--sun);--cs:var(--sun-s);--w:25%;--d:4"><i class="exa" style="background-image:url(assets/circle-leanne.jpg)"></i><span class="ext"><b>Leanne</b>Working with frequencies</span><span class="exb"><i></i></span><b class="exv">10+ years</b></div></div>
+    </div>
+    <div class="sum glass rv">
+      <div class="suml">
+        <small>The sums, as an example</small>
+        <b>1,000,000 English views.</b>
+        <p>If one view in <span class="sumchips" id="sumChips" role="group" aria-label="How many views it takes for one guest"><button type="button" data-g="10000" aria-pressed="false">100</button><button type="button" data-g="1000" aria-pressed="true">1,000</button><button type="button" data-g="100" aria-pressed="false">10,000</button></span> becomes a guest</p>
+      </div>
+      <div class="sumr" aria-live="polite">
+        <b class="n" id="sumN">1,000</b>
+        <span>guests</span>
+        <p id="sumW">That is 25 full weekends of forty.</p>
+      </div>
     </div>
     <div class="inv glass rv">
       <div class="invcard">
@@ -1267,8 +1308,28 @@ footer p{max-width:100ch;margin-bottom:8px}
         <ul class="invpts">
           <li>Your letter readers hear first</li>
           <li>We make the page, the tickets and the reminders</li>
-          <li>We film it, so the weekend becomes new videos</li>
+          <li>Small on purpose: forty people, three days</li>
         </ul>
+      </div>
+    </div>
+    <div class="film glass rv">
+      <div class="filmhead"><b>And we film it. The weekend becomes the next videos.</b><span>One weekend feeds your channel for months</span></div>
+      <div class="filmgrid">
+        <figure class="filmmain">
+          <div class="fframe"><video src="assets/alg-film.mp4" poster="assets/alg-film.jpg" muted loop playsinline preload="metadata" aria-label="A short film of the Algarve coast, boats, a sea cave, a group meditating on a clifftop, a singing bowl and a shared table"></video><span class="mcrec"><i></i><b>The film</b></span></div>
+          <figcaption><b>Three days in the Algarve</b><span>One long film for your channel</span></figcaption>
+        </figure>
+        <div class="filmshorts">
+          <figure><div class="fframe"><video src="assets/alg-film.mp4" data-at="7.2" muted loop playsinline preload="metadata" aria-hidden="true" style="object-position:62% 50%"></video><span class="mcrec"><i></i><b>Short</b></span></div></figure>
+          <figure><div class="fframe"><video src="assets/alg-film.mp4" data-at="13.4" muted loop playsinline preload="metadata" aria-hidden="true" style="object-position:55% 50%"></video><span class="mcrec"><i></i><b>Short</b></span></div></figure>
+          <figure><div class="fframe"><video src="assets/alg-film.mp4" data-at="16.6" muted loop playsinline preload="metadata" aria-hidden="true" style="object-position:68% 50%"></video><span class="mcrec"><i></i><b>Short</b></span></div></figure>
+        </div>
+      </div>
+      <div class="filmout">
+        <span style="--cs:var(--sun-s)"><b>1</b>long film</span>
+        <span style="--cs:var(--teal-s)"><b>12</b>shorts</span>
+        <span style="--cs:var(--lilac-s)"><b>1</b>letter with the story</span>
+        <span style="--cs:var(--rose-s)"><b>1</b>invitation to the next weekend</span>
       </div>
     </div>
     <div class="algfmt">
@@ -1277,10 +1338,10 @@ footer p{max-width:100ch;margin-bottom:8px}
       <div style="--cs:var(--sky-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M4 4l16 16"/></svg><b>A weekend without phones</b><span>Offline, by the sea</span></div>
       <div style="--cs:var(--lilac-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><b>A retreat week</b><span>Several healers, one small group</span></div>
     </div>
-    <div class="algpath rv" role="img" aria-label="An English video leads to the Sunday letter, and the letter leads to a seat in the Algarve">
-      <span>An English video</span><i></i><span>The Sunday letter</span><i></i><span>A seat in the Algarve</span>
+    <div class="algpath rv" role="img" aria-label="An English video leads to the Sunday letter, the letter to a seat in the Algarve, and the weekend to the next film">
+      <span>An English video</span><i></i><span>The Sunday letter</span><i></i><span>A seat in the Algarve</span><i></i><span>The film of the weekend</span>
     </div>
-    <p class="tiny" style="text-align:center;margin-top:16px">Later, and only if you want it. The English content comes first.<br>The coast is Lagos, photographed by Theo Crazzolara and Sergei Gussev (CC BY 2.0). The house, the gathering and the practice pictures are from Unsplash and show the feeling, not a booked place. Forty seats is an example. Years are as each person counts their own practice.</p>
+    <p class="tiny" style="text-align:center;margin-top:16px">Later, and only if you want it. The English content comes first.<br>The coast is Lagos, photographed by Theo Crazzolara and Sergei Gussev (CC BY 2.0). The house, the gathering and the practice pictures are from Unsplash and show the feeling, not a booked place. Forty seats and the sums are examples. The film is stand-in footage from Pexels, with the real Algarve coast in it. Ours comes from the first weekend. Years are as each person counts their own practice.</p>
   </div>
 </section>
 
@@ -1541,6 +1602,16 @@ footer p{max-width:100ch;margin-bottom:8px}
   if(seatBox&&seatOut){for(var sq=0;sq<40;sq++)seatBox.appendChild(document.createElement('i'));
     new IntersectionObserver(function(es,ob){if(!es[0].isIntersecting)return;ob.disconnect();var taken=0;
       (function seatStep(){if(taken<40){seatBox.children[taken].className='on';taken++;seatOut.textContent=taken+' of 40 seats taken';setTimeout(seatStep,reduce?0:75)}else seatOut.textContent='40 of 40. Waiting list open.'})()},{threshold:.5}).observe(seatBox)}
+
+  /* ---------- Algarve: the sums and the film of the weekend ---------- */
+  var sumChips=[].slice.call(document.querySelectorAll('#sumChips button')),sumN=document.getElementById('sumN'),sumW=document.getElementById('sumW'),sumNow=1000,sumRaf=0;
+  var sumText={10000:'That is 250 full weekends of forty.',1000:'That is 25 full weekends of forty.',100:'That is 2 full weekends of forty, and a waiting list.'};
+  function sumGo(goal){cancelAnimationFrame(sumRaf);var from=sumNow,t0=performance.now();sumW.textContent=sumText[goal];
+    (function sumTick(now){var k=reduce?1:Math.min(1,(now-t0)/700),e=1-Math.pow(1-k,3);sumNow=Math.round(from+(goal-from)*e);sumN.textContent=sumNow.toLocaleString('en-US');if(k<1)sumRaf=requestAnimationFrame(sumTick)})(t0)}
+  sumChips.forEach(function(chip){chip.addEventListener('click',function(){sumChips.forEach(function(o){o.setAttribute('aria-pressed',String(o===chip))});sumGo(+chip.dataset.g)})});
+  [].forEach.call(document.querySelectorAll('.film video'),function(clip){var at=+clip.dataset.at||0;
+    if(at)clip.addEventListener('loadedmetadata',function(){try{clip.currentTime=at}catch(e){}});
+    new IntersectionObserver(function(es){if(es[0].isIntersecting){if(!reduce){var q=clip.play();if(q&&q.catch)q.catch(function(){})}}else clip.pause()},{threshold:.25}).observe(clip)});
 
   /* ---------- roles ---------- */
   var tks=document.querySelectorAll('#tasks .tk'),hot=-1,tseen=false;
