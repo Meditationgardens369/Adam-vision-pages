@@ -536,6 +536,23 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .rvid figcaption span{display:block;font-size:13px;color:var(--mut);margin-top:2px}
 @media(max-width:860px){.reel{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.rvid.wide{grid-column:1/-1}.rvid figcaption b{font-size:15px}}
 .bastand{display:inline-block;margin:14px 0 0;font:700 13px var(--sans);background:var(--sun-s);border:1px dashed var(--sun);border-radius:999px;padding:7px 14px;color:var(--ink)}
+.bafeat{margin-top:26px}
+.bafeat .ba{border-radius:24px}
+.bafeat .bah{width:4px;margin-left:-2px}
+.bafeat .bah::after{width:56px;height:56px;margin:-28px 0 0 -28px;background-size:28px}
+.bacapt{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px;margin-top:14px}
+.bct{font:800 13px/1.2 var(--sans);border-radius:999px;padding:7px 14px;white-space:nowrap}
+.bct.d{background:var(--ink);color:#fff}
+.bct.b{background:var(--sun);color:var(--ink)}
+.bamid{text-align:center}
+.bamid b{font:600 clamp(22px,2.4vw,30px)/1.1 var(--serif);margin-right:10px}
+.bamid em{font:600 14px var(--sans);font-style:normal;color:var(--mut)}
+.bathumbs{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:10px;margin-top:16px}
+.bathumbs button{aspect-ratio:16/9;border:0;padding:0;border-radius:10px;background:var(--paper2) center/cover;cursor:pointer;opacity:.6;box-shadow:var(--sh1);transition:opacity .25s,transform .25s,box-shadow .25s}
+.bathumbs button:hover{opacity:1}
+.bathumbs button[aria-pressed="true"]{opacity:1;transform:translateY(-3px);box-shadow:0 0 0 3px var(--sun),var(--sh1)}
+.bathumbs button:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+@media(max-width:760px){.bafeat .ba{border-radius:16px}.bathumbs{grid-template-columns:repeat(3,minmax(0,1fr))}.bamid b{display:block;margin:0}.bafeat .bah::after{width:44px;height:44px;margin:-22px 0 0 -22px;background-size:22px}}
 .bawrap{margin-top:22px}
 .bawave{display:block;font:600 22px/1.2 var(--serif);margin:20px 0 10px}
 .bagrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -1255,16 +1272,13 @@ footer p{max-width:100ch;margin-bottom:8px}
   <div class="wrap">
     <div class="chhead">
       <div class="kicker">Brigitte's eye</div>
-      <h2 class="rv">We thought these were ready. <em>Then she touched them.</em></h2>
-      <p class="lede rv">Nine covers for our own therapy music. Each one started as the computer's draft, and then Brigitte finished it by hand. Drag the line across any cover.</p>
+      <h2 class="rv">What Brigitte's hand <em>adds to a draft.</em></h2>
+      <p class="lede rv">Nine covers for our own therapy music. The computer made each first draft, and Brigitte turned it into a finished cover. Drag the line to compare.</p>
     </div>
-    <div class="bawrap rv">
-      <b class="bawave">Alpha</b>
-      <div class="bagrid"><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/cv-before-1.jpg" alt="First draft of a Alpha cover" loading="lazy"><img class="af" src="assets/cv-after-1.jpg" alt="The same Alpha cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Alpha cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/cv-before-2.jpg" alt="First draft of a Alpha cover" loading="lazy"><img class="af" src="assets/cv-after-2.jpg" alt="The same Alpha cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Alpha cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/cv-before-3.jpg" alt="First draft of a Alpha cover" loading="lazy"><img class="af" src="assets/cv-after-3.jpg" alt="The same Alpha cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Alpha cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div></div>
-      <b class="bawave">Delta</b>
-      <div class="bagrid"><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/cv-before-4.jpg" alt="First draft of a Delta cover" loading="lazy"><img class="af" src="assets/cv-after-4.jpg" alt="The same Delta cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Delta cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/cv-before-5.jpg" alt="First draft of a Delta cover" loading="lazy"><img class="af" src="assets/cv-after-5.jpg" alt="The same Delta cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Delta cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/cv-before-6.jpg" alt="First draft of a Delta cover" loading="lazy"><img class="af" src="assets/cv-after-6.jpg" alt="The same Delta cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Delta cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div></div>
-      <b class="bawave">Theta</b>
-      <div class="bagrid"><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/cv-before-7.jpg" alt="First draft of a Theta cover" loading="lazy"><img class="af" src="assets/cv-after-7.jpg" alt="The same Theta cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Theta cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/cv-before-8.jpg" alt="First draft of a Theta cover" loading="lazy"><img class="af" src="assets/cv-after-8.jpg" alt="The same Theta cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Theta cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div><div class="bafig"><div class="ba" style="--p:50%"><img src="assets/cv-before-9.jpg" alt="First draft of a Theta cover" loading="lazy"><img class="af" src="assets/cv-after-9.jpg" alt="The same Theta cover after Brigitte" loading="lazy"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's Theta cover"></div><div class="bacap"><span class="bal">First draft</span><span class="bar">Brigitte</span></div></div></div>
+    <div class="bafeat rv">
+      <div class="ba" id="baBig" style="--p:50%"><img id="baB" src="assets/cv-before-1.jpg" alt="First draft of the cover"><img class="af" id="baA" src="assets/cv-after-1.jpg" alt="The same cover, finished by Brigitte"><i class="bah"></i><input type="range" min="0" max="100" value="50" aria-label="Slide between the first draft and Brigitte's cover"></div>
+      <div class="bacapt"><span class="bct d">First draft</span><span class="bamid"><b id="baTitle">Calm Focus</b><em id="baSub">Alpha, 10 Hz</em></span><span class="bct b">Brigitte</span></div>
+      <div class="bathumbs" id="baThumbs" role="group" aria-label="Choose a cover"><button type="button" data-k="1" data-t="Calm Focus" data-s="Alpha, 10 Hz" aria-pressed="true" aria-label="Calm Focus" style="background-image:url(assets/cv-after-1.jpg)"></button><button type="button" data-k="2" data-t="Calm Study" data-s="Alpha, 10 Hz" aria-pressed="false" aria-label="Calm Study" style="background-image:url(assets/cv-after-2.jpg)"></button><button type="button" data-k="3" data-t="Let Go" data-s="Alpha, 10 Hz" aria-pressed="false" aria-label="Let Go" style="background-image:url(assets/cv-after-3.jpg)"></button><button type="button" data-k="4" data-t="Deep Sleep" data-s="Delta, 3 Hz, with rain" aria-pressed="false" aria-label="Deep Sleep" style="background-image:url(assets/cv-after-4.jpg)"></button><button type="button" data-k="5" data-t="Back To Sleep" data-s="Delta, 3 Hz, with rain" aria-pressed="false" aria-label="Back To Sleep" style="background-image:url(assets/cv-after-5.jpg)"></button><button type="button" data-k="6" data-t="Deepest Rest" data-s="Delta, 3 Hz, with rain" aria-pressed="false" aria-label="Deepest Rest" style="background-image:url(assets/cv-after-6.jpg)"></button><button type="button" data-k="7" data-t="Deep Theta" data-s="Theta, 6 Hz" aria-pressed="false" aria-label="Deep Theta" style="background-image:url(assets/cv-after-7.jpg)"></button><button type="button" data-k="8" data-t="Inner Balance" data-s="Theta, 6 Hz" aria-pressed="false" aria-label="Inner Balance" style="background-image:url(assets/cv-after-8.jpg)"></button><button type="button" data-k="9" data-t="Release The Day" data-s="Theta, 6 Hz" aria-pressed="false" aria-label="Release The Day" style="background-image:url(assets/cv-after-9.jpg)"></button></div>
     </div>
   </div>
 </section>
@@ -1281,7 +1295,7 @@ footer p{max-width:100ch;margin-bottom:8px}
         <div class="tmtop"><span class="tmav" style="background-image:url(assets/team-brigitte.jpg);background-position:28% 40%;background-size:118%"></span><div><b>Brigitte</b><small>Brand, film and edit</small><em class="tmgift">Soul gift: Divine Power and Divine Truth</em></div></div>
         <div class="tmhero"><b class="n">156M+</b><p>plays of Sound Dreamer, the meditation, sleep and healing music brand she co-founded in 2013.</p></div>
         <div class="tmstats"><span><b>60M</b>plays on one track alone</span><span><b>50,000+</b>digital products with her art</span><span><b>2,000</b>guests at her largest event</span></div>
-        <ul><li>Designs all of it herself: covers, thumbnails, packaging, banners and invitations</li><li>Films and edits. The conversation and the shorts on this page are her cut</li><li>Launched major products in South Africa, new Nissan cars among them</li><li>Her Scottish band, Broke, won a silver award for record sales. She also sang on adverts for major brands</li><li>Ran hundreds of events. The largest was a charity weekend in London for the conservation of African wildlife, from flying in the musicians to the last banner</li><li>Reads soul gifts in the Akashic Records</li></ul>
+        <ul><li>Designs all of it herself: covers, thumbnails, packaging, banners and invitations</li><li>Films and edits. The conversation and the shorts on this page are her cut</li><li>Creates and produces her own music, and does the technical set-up herself</li><li>Launched major products in South Africa, new Nissan cars among them</li><li>Her Scottish band won a silver award for record sales. She also sang on adverts for major brands</li><li>Ran hundreds of events. The largest was a charity weekend in London for the conservation of African wildlife, from flying in the musicians to the last banner</li><li>Reads soul gifts in the Akashic Records</li></ul>
         <p class="tmyou"><b>For you</b>The look of your English brand: thumbnails, landing pages and every edit.</p>
       </article>
       <article class="tm glass rv" style="--c:var(--teal);--cs:var(--teal-s)">
@@ -1705,6 +1719,18 @@ footer p{max-width:100ch;margin-bottom:8px}
   function firstLoop(){clearTimeout(firstTimer);var nx=firstAt>=2?-1:firstAt+1;firstShow(nx);firstTimer=setTimeout(firstLoop,nx===2?4600:nx===-1?800:2800)}
   firstSteps.forEach(function(o,i){o.addEventListener('click',function(){firstTouched=true;clearTimeout(firstTimer);firstShow(i)})});
   if(firstLine){if(reduce)firstShow(2);else new IntersectionObserver(function(es){clearTimeout(firstTimer);if(es[0].isIntersecting&&!firstTouched)firstLoop()},{threshold:.3}).observe(firstLine)}
+
+  /* ---------- Brigitte's covers: one large comparison, nine to choose from ---------- */
+  var baBig=document.getElementById('baBig');
+  if(baBig){var baRange=baBig.querySelector('input'),baThumbs=[].slice.call(document.querySelectorAll('#baThumbs button')),baRaf=0,baUser=false;
+    function baPos(v){baRange.value=v;baBig.style.setProperty('--p',v+'%')}
+    function baSweep(){cancelAnimationFrame(baRaf);if(reduce){baPos(50);return}var t0=performance.now();
+      (function baTick(now){var k=Math.min(1,(now-t0)/2800);baPos(k<1?50+40*Math.sin(k*Math.PI*2):50);if(k<1&&!baUser)baRaf=requestAnimationFrame(baTick)})(t0)}
+    ['pointerdown','touchstart','keydown'].forEach(function(evn){baRange.addEventListener(evn,function(){baUser=true;cancelAnimationFrame(baRaf)},{passive:true})});
+    baThumbs.forEach(function(th){th.addEventListener('click',function(){var k=th.dataset.k;baThumbs.forEach(function(o){o.setAttribute('aria-pressed',String(o===th))});
+      document.getElementById('baB').src='assets/cv-before-'+k+'.jpg';document.getElementById('baA').src='assets/cv-after-'+k+'.jpg';
+      document.getElementById('baTitle').textContent=th.dataset.t;document.getElementById('baSub').textContent=th.dataset.s;baUser=false;baSweep()})});
+    new IntersectionObserver(function(es,ob){if(es[0].isIntersecting){ob.disconnect();baSweep()}},{threshold:.5}).observe(baBig)}
 
   /* ---------- roles ---------- */
   var tks=document.querySelectorAll('#tasks .tk'),hot=-1,tseen=false;
