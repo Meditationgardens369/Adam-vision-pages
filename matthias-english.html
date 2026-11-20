@@ -552,31 +552,66 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .bal{background:var(--ink);color:#fff}
 .bar{background:var(--sun);color:var(--ink)}
 @media(max-width:760px){.bagrid{grid-template-columns:minmax(0,1fr);gap:10px}.bawave{font-size:19px;margin-top:16px}}
-.algpics{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:14px;margin-top:28px}
-.algpics figure{margin:0;height:clamp(220px,29vw,390px);border-radius:22px;overflow:hidden;box-shadow:var(--sh2)}
-.algpics img{width:100%;height:100%;object-fit:cover;display:block}
-.alg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
-.algcard{padding:24px;display:flex;flex-direction:column}
-.algfmt{flex:1;grid-auto-rows:1fr}
+.algmos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,clamp(120px,15vw,205px));gap:14px;margin-top:28px}
+.algmos figure{margin:0;border-radius:22px;overflow:hidden;box-shadow:var(--sh2)}
+.algmos .m1{grid-column:1/3;grid-row:1/3}
+.algmos .m2{grid-column:3/5}
+.algmos img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s ease-out}
+.algmos figure:hover img{transform:scale(1.05)}
+.algnum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
 .algl{display:block;font:600 22px/1.2 var(--serif);margin-bottom:16px}
-.algppl{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.algppl li{display:flex;align-items:center;gap:16px}
-.algppl i{flex:none;width:58px;height:58px;border-radius:50%;background:#fff center/cover;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--c)}
-.algppl i.ini{font:600 25px/58px var(--serif);font-style:normal;text-align:center;color:var(--ink);background:var(--teal-s)}
-.algppl span{font-size:14.5px;line-height:1.35;color:var(--mut)}
-.algppl b{display:block;font:600 20px/1.2 var(--serif);color:var(--ink)}
-.algmore{margin:16px 0 0;padding-top:12px;border-top:1px dashed var(--line2);font-size:14px;color:var(--mut)}
-.algfmt{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.algfmt div{border-radius:16px;padding:15px;background:var(--cs)}
+.circ{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center;padding:28px;margin-top:18px}
+.orb{--sz:clamp(270px,33vw,400px);position:relative;width:var(--sz);height:var(--sz);margin:0 auto}
+.orbring{position:absolute;inset:10%;border-radius:50%;border:2px dashed var(--line2);animation:orbspin 80s linear infinite}
+@keyframes orbspin{to{transform:rotate(360deg)}}
+.orbmid{position:absolute;inset:27%;border-radius:50%;background:url(assets/alg-sunset.jpg) 40% 50%/cover;box-shadow:0 0 0 5px #fff,var(--sh2)}
+.orbn{position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;padding:0;border:0;border-radius:50%;background:#fff;cursor:pointer;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--c),0 8px 18px -8px rgba(34,65,48,.5);transform:rotate(calc(var(--i)*40deg)) translateY(calc(var(--sz)*-.4)) rotate(calc(var(--i)*-40deg));transition:transform .35s ease,box-shadow .35s ease}
+.orbn i{display:block;width:100%;height:100%;border-radius:50%;background:var(--cs) center/cover;font:600 20px/62px var(--serif);font-style:normal;text-align:center;color:var(--ink)}
+.orbn[aria-pressed="true"]{transform:rotate(calc(var(--i)*40deg)) translateY(calc(var(--sz)*-.4)) rotate(calc(var(--i)*-40deg)) scale(1.22);box-shadow:0 0 0 3px #fff,0 0 0 7px var(--c),0 14px 26px -8px rgba(34,65,48,.55);z-index:2}
+.orbn:focus-visible{outline:3px solid var(--sun);outline-offset:6px}
+.orbcard{min-width:0;border-left:5px solid var(--c,var(--sun));padding-left:22px;transition:border-color .35s}
+.orbcard small{display:block;font:700 12.5px var(--sans);color:var(--faint);margin-bottom:8px}
+.orbcard>b{display:block;font:600 clamp(34px,4vw,50px)/1.05 var(--serif);letter-spacing:-.02em}
+.orbtags{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 10px}
+.orbtags span{font:700 13px var(--sans);background:var(--cs,var(--sun-s));border-radius:999px;padding:6px 12px}
+.orbcard p{font-size:17px;line-height:1.45;color:var(--mut);margin:0;min-height:3em}
+.orbnames{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line2)}
+.orbnames button{font:600 13.5px var(--sans);color:var(--ink);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:7px 12px;cursor:pointer}
+.orbnames button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.orbnames button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.day{padding:24px;margin-top:18px}
+.sky{position:relative;height:clamp(120px,15vw,170px);border-radius:18px;overflow:hidden;--sx:10%;--sy:20%}
+.skl{position:absolute;inset:0;opacity:0;transition:opacity 1.2s}
+.skl.l0{background:linear-gradient(#ffd3bd,#fff0cf)}
+.skl.l1{background:linear-gradient(#cfe9f7,#f1f9ff)}
+.skl.l2{background:linear-gradient(#b9e0f4,#eaf6fb)}
+.skl.l3{background:linear-gradient(#c9e8ef,#fdf3d3)}
+.skl.l4{background:linear-gradient(#ffd690,#ffe9c9)}
+.skl.l5{background:linear-gradient(#d9cdf2,#f8d6c8)}
+.sky[data-h="0"] .l0,.sky[data-h="1"] .l1,.sky[data-h="2"] .l2,.sky[data-h="3"] .l3,.sky[data-h="4"] .l4,.sky[data-h="5"] .l5{opacity:1}
+.sun{position:absolute;left:var(--sx);bottom:var(--sy);width:46px;height:46px;margin:0 0 -23px -23px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6c9,var(--sun));box-shadow:0 0 0 10px rgba(254,193,2,.18),0 0 46px 12px rgba(254,193,2,.45);transition:left 1.2s cubic-bezier(.4,0,.2,1),bottom 1.2s cubic-bezier(.4,0,.2,1)}
+.sky svg{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;display:block}
+.sky .sea{fill:#9fd3d8}
+.sky .land{fill:#d9b27a}
+.slots{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}
+.slots button{text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px;cursor:pointer;font:inherit;color:var(--ink);transition:background .3s,border-color .3s,transform .3s}
+.slots small{display:block;font:800 12px var(--sans);color:var(--teal)}
+.slots b{display:block;font:600 16px/1.2 var(--serif);margin:5px 0 3px}
+.slots span{display:block;font-size:13px;color:var(--mut)}
+.slots button[aria-pressed="true"]{background:var(--sun-s);border-color:var(--sun);transform:translateY(-3px)}
+.slots button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.algfmt{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+.algfmt div{border-radius:18px;padding:16px;background:var(--cs)}
 .algfmt svg{display:block;width:26px;height:26px;fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .algfmt b{display:block;font:600 17px/1.2 var(--serif);margin:9px 0 3px}
 .algfmt span{display:block;font-size:13.5px;line-height:1.35;color:var(--mut)}
-.algpath{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:20px}
+.algpath{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:22px}
 .algpath span{font:700 14px var(--sans);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:9px 16px}
 .algpath span:last-child{background:var(--sun);border-color:var(--sun)}
 .algpath i{width:34px;border-top:2px dashed var(--line2)}
-@media(max-width:820px){.alg{grid-template-columns:minmax(0,1fr)}.algpics{grid-template-columns:minmax(0,1fr)}.algpics figure{height:210px}.algpics figure+figure{display:none}}
-@media(max-width:520px){.algcard{padding:18px}.algpath{flex-direction:column;gap:6px}.algpath i{width:0;height:14px;border-top:0;border-left:2px dashed var(--line2)}}
+@media(prefers-reduced-motion:reduce){.orbring{animation:none}.sun,.skl,.algmos img{transition:none}}
+@media(max-width:900px){.circ{grid-template-columns:minmax(0,1fr);padding:22px}.orb{--sz:clamp(260px,74vw,360px)}.slots{grid-template-columns:repeat(3,minmax(0,1fr))}.algfmt{grid-template-columns:repeat(2,minmax(0,1fr))}.algmos{grid-template-rows:repeat(2,clamp(110px,22vw,180px))}}
+@media(max-width:520px){.algmos{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:170px 110px 110px;gap:10px}.algmos .m1{grid-column:1/3;grid-row:1}.algmos .m2{grid-column:1/3;grid-row:2}.algnum{gap:8px}.algnum .win{padding:14px}.algnum .win span{font-size:12px}.orbn{width:50px;height:50px;margin:-25px 0 0 -25px}.orbn i{font-size:16px;line-height:50px}.orbcard{padding-left:16px}.day{padding:18px}.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.algpath{flex-direction:column;gap:6px}.algpath i{width:0;height:14px;border-top:0;border-left:2px dashed var(--line2)}}
 .team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}
 .tm{padding:24px;display:flex;flex-direction:column;gap:14px;border-top:5px solid var(--c)}
 .tmtop{display:flex;align-items:center;gap:16px}
@@ -1142,21 +1177,21 @@ footer p{max-width:100ch;margin-bottom:8px}
         <div class="tmtop"><span class="tmav" style="background-image:url(assets/team-brigitte.jpg);background-position:28% 40%;background-size:118%"></span><div><b>Brigitte</b><small>Brand, film and edit</small><em class="tmgift">Soul gift: Divine Power and Divine Truth</em></div></div>
         <div class="tmhero"><b class="n">156M+</b><p>plays of Sound Dreamer, the meditation, sleep and healing music brand she co-founded in 2013.</p></div>
         <div class="tmstats"><span><b>60M</b>plays on one track alone</span><span><b>50,000+</b>digital products with her art</span><span><b>2,000</b>guests at her largest event</span></div>
-        <ul><li>Designs all of it herself: covers, thumbnails, packaging, banners and invitations</li><li>Films and edits. The conversation and the shorts on this page are her cut</li><li>Launched major products in South Africa, new Nissan cars among them</li><li>Holds a silver disc for her Scottish music, and sang on adverts for major brands</li><li>Ran hundreds of events. The largest was a charity weekend in London, from flying in the musicians to the last banner</li><li>Reads soul gifts in the Akashic Records</li></ul>
+        <ul><li>Designs all of it herself: covers, thumbnails, packaging, banners and invitations</li><li>Films and edits. The conversation and the shorts on this page are her cut</li><li>Launched major products in South Africa, new Nissan cars among them</li><li>Her Scottish band, Broke, won a silver award for record sales. She also sang on adverts for major brands</li><li>Ran hundreds of events. The largest was a charity weekend in London for the conservation of African wildlife, from flying in the musicians to the last banner</li><li>Reads soul gifts in the Akashic Records</li></ul>
         <p class="tmyou"><b>For you</b>The look of your English brand: thumbnails, landing pages and every edit.</p>
       </article>
       <article class="tm glass rv" style="--c:var(--teal);--cs:var(--teal-s)">
         <div class="tmtop"><span class="tmav" style="background-image:url(assets/team-tamara.jpg)"></span><div><b>Tamara</b><small>Words and communication</small><em class="tmgift">Soul gift: Divine Communication</em></div></div>
         <div class="tmhero"><b class="n">16 years</b><p>running communication for a whole non-profit international school in South Africa.</p></div>
-        <div class="tmstats"><span><b>1,200</b>students at the school's peak</span><span><b>$38K</b>a year per student at the top fee</span><span><b>14</b>crafts, all done hands-on</span></div>
+        <div class="tmstats"><span><b>1,200</b>students at the school's peak</span><span><b>&times; $35K</b>a year for each student, about</span><span><b>= $42M</b>a year in school fees</span></div>
         <ul><li>Speaks for the entire school: to parents, staff, press and new families</li><li>Built that department from nothing and leads the team</li><li>Project lead on the full rebuild of the school website</li><li>Films, edits, photographs and designs herself</li><li>Found calm words when a whole school community needed them fast</li><li>Her line: "Everything you sell is an experience."</li></ul>
         <p class="tmyou"><b>For you</b>Your English words: titles, the Sunday letter, and a clear plan for what goes out when.</p>
       </article>
       <article class="tm glass rv" style="--c:var(--leaf);--cs:var(--leaf-s)">
         <div class="tmtop"><span class="tmav" style="background-image:url(assets/team-matthew.jpg)"></span><div><b>Matthew</b><small>Clients and numbers</small><em class="tmgift">Soul gift: Divine Compassion and Divine Love</em></div></div>
-        <div class="tmhero"><b class="n">21 years</b><p>looking after major organisations in IT services.</p></div>
-        <div class="tmstats"><span><b>R1.3M</b>first-year value found on one account</span><span><b>R19.7M</b>a year, the account he rebuilt</span><span><b>20 h to 3 min</b>one monthly task at a mine</span></div>
-        <ul><li>Looks after major organisations, some with billions in revenue</li><li>Client firms from 50 to 4,000 people, in retail, mining and telecoms</li><li>Works the Kaizen way: maps how a business really runs, finds the gaps, fixes them</li><li>Found that R1.3 million by fixing leaks, with no discount given</li><li>Explains numbers so anyone can follow them, then presents and trains</li></ul>
+        <div class="tmhero"><b class="n">21 years</b><p>looking after major organisations in IT services, and keeping them.</p></div>
+        <div class="tmstats"><span><b>R1bn+</b>a year, turnover of his largest client group</span><span><b>R19.7M</b>a year, the account he rebuilt</span><span><b>R1.3M</b>first-year value found on that account</span></div>
+        <ul><li>Holds the relationship with major clients, so they stay</li><li>The person clients call first. He listens, then says it plainly</li><li>Client firms from 50 to 4,000 people, in retail, mining and telecoms</li><li>Works the Kaizen way: maps how a business really runs, finds the gaps, fixes them</li><li>Cut one monthly task at a mine from 20 hours to 3 minutes</li><li>Found that R1.3 million by fixing leaks, with no discount given</li><li>Presents and trains, so whole teams follow the numbers</li></ul>
         <p class="tmyou"><b>For you</b>The numbers. Each month he reads what worked and tells you plainly.</p>
       </article>
       <article class="tm glass rv" style="--c:var(--rose);--cs:var(--rose-s)">
@@ -1167,16 +1202,6 @@ footer p{max-width:100ch;margin-bottom:8px}
         <p class="tmyou"><b>For you</b>Your host in English and your one point of contact, week to week.</p>
       </article>
     </div>
-    <div class="byg glass rv">
-      <b class="bygl">How we work, by gift</b>
-      <div class="bygrow">
-        <span style="--c:var(--leaf)"><i style="background-image:url(assets/team-matthew.jpg)"></i>Matthew listens and holds the relationship.</span>
-        <span style="--c:var(--lilac)"><i style="background-image:url(assets/team-brigitte.jpg);background-position:28% 40%;background-size:118%"></i>Brigitte names what is really going on.</span>
-        <span style="--c:var(--rose)"><i style="background-image:url(assets/adam-face.jpg)"></i>Adam shows what can be built.</span>
-        <span style="--c:var(--teal)"><i style="background-image:url(assets/team-tamara.jpg)"></i>Tamara turns it into words you keep.</span>
-      </div>
-      <p class="bygwhy">Where it leads: what we earn together goes toward healing centres and retreats for the next generation.</p>
-    </div>
     <p class="tiny" style="text-align:center;margin-top:16px">Soul gifts come from Brigitte's Soul Realignment readings in the Akashic Records.</p>
   </div>
 </section>
@@ -1186,38 +1211,52 @@ footer p{max-width:100ch;margin-bottom:8px}
     <div class="chhead">
       <div class="kicker">Where it can lead</div>
       <h2 class="rv">Your viewers are everywhere. <em>We all live here.</em></h2>
-      <p class="lede rv">Once English viewers know you, some will want to meet you. People already fly to this coast to rest, and several gifted practitioners live on it. Retreats and events could bring them together.</p>
+      <p class="lede rv">Once English viewers know you, some will want to meet you. People already fly to this coast to rest, and we know many of its healers.</p>
     </div>
-    <div class="algpics rv">
-      <figure><img src="assets/alg-coast.jpg" alt="Golden cliffs above blue sea at Praia do Camilo in Lagos" loading="lazy"></figure>
-      <figure><img src="assets/alg-sunset.jpg" alt="The cliffs and lighthouse of Ponta da Piedade at sunset" loading="lazy"></figure>
+    <div class="algmos rv">
+      <figure class="m1"><img src="assets/alg-coast.jpg" alt="Golden cliffs above blue sea at Praia do Camilo in Lagos" loading="lazy"></figure>
+      <figure class="m2"><img src="assets/alg-house.jpg" alt="A retreat house with a pool and loungers under pine trees" loading="lazy"></figure>
+      <figure class="m3"><img src="assets/alg-bowl.jpg" alt="Hands holding a brass singing bowl" loading="lazy"></figure>
+      <figure class="m4"><img src="assets/alg-group.jpg" alt="A group sitting on a hillside, watching the sun go down" loading="lazy"></figure>
     </div>
-    <div class="alg">
-      <div class="algcard glass rv">
-        <b class="algl">Imagine this panel</b>
-        <ul class="algppl">
-          <li style="--c:var(--sun)"><i style="background-image:url(assets/sh-m-smile.jpg);background-position:50% 18%"></i><span><b>You</b>Nature, purpose and the rainforest</span></li>
-          <li style="--c:var(--rose)"><i style="background-image:url(assets/circle-guida.jpg)"></i><span><b>Guida</b>Thirty years of healing work, and Trauma Release, given to her by the Divine</span></li>
-          <li style="--c:var(--teal)"><i class="ini">P</i><span><b>Petra</b>LEAP energy sessions, dance fitness and food</span></li>
-          <li style="--c:var(--lilac)"><i style="background-image:url(assets/team-brigitte.jpg);background-position:28% 40%;background-size:118%"></i><span><b>Brigitte</b>Soul Realignment and sound therapy</span></li>
-          
-        </ul>
-        <p class="algmore">And more. All of us live on this coast.</p>
+    <div class="algnum">
+      <div class="win rv" style="--c:var(--sun-s)"><b data-n="9">0</b><span>healers in our circle so far</span></div>
+      <div class="win rv" style="--c:var(--lilac-s)"><b data-n="12">0</b><span>ways of working, from sound to Bowen</span></div>
+      <div class="win rv" style="--c:var(--teal-s)"><b data-n="300">0</b><span>days of sun a year, about</span></div>
+    </div>
+    <div class="circ glass rv">
+      <div class="orb" id="orb">
+        <span class="orbring" aria-hidden="true"></span>
+        <span class="orbmid" aria-hidden="true"></span>
+        <button type="button" class="orbn" style="--i:0;--c:var(--sun);--cs:var(--sun-s)" data-name="You" data-tags="Nature|Purpose|The rainforest" data-line="A walk in nature and a talk, with the people who found you in English." aria-label="You" aria-pressed="false"><i style="background-image:url(assets/sh-m-smile.jpg);background-position:50% 18%"></i></button><button type="button" class="orbn" style="--i:1;--c:var(--rose);--cs:var(--rose-s)" data-name="Guida" data-tags="Trauma Release|Reconnective Healing" data-line="Thirty years of healing work. Trauma Release was given to her by the Divine." aria-label="Guida" aria-pressed="false"><i style="background-image:url(assets/circle-guida.jpg)"></i></button><button type="button" class="orbn" style="--i:2;--c:var(--teal);--cs:var(--teal-s)" data-name="Petra" data-tags="LEAP|Dance fitness|Food" data-line="Energy sessions, dance to start the day, and food made with care." aria-label="Petra" aria-pressed="false"><i>P</i></button><button type="button" class="orbn" style="--i:3;--c:var(--lilac);--cs:var(--lilac-s)" data-name="Brigitte" data-tags="Soul Realignment|Sound therapy" data-line="Readings in the Akashic Records, and evenings of sound." aria-label="Brigitte" aria-pressed="false"><i style="background-image:url(assets/team-brigitte.jpg);background-position:28% 40%;background-size:118%"></i></button><button type="button" class="orbn" style="--i:4;--c:var(--leaf);--cs:var(--leaf-s)" data-name="Leanne" data-tags="Frequency healing|Quantum-based tools" data-line="Frequency scans, and the tools that go with them." aria-label="Leanne" aria-pressed="false"><i>Le</i></button><button type="button" class="orbn" style="--i:5;--c:var(--sun);--cs:var(--sun-s)" data-name="Lara" data-tags="Bowen therapy|Nervous system release" data-line="Gentle hands-on work for the body and the nervous system." aria-label="Lara" aria-pressed="false"><i>La</i></button><button type="button" class="orbn" style="--i:6;--c:var(--rose);--cs:var(--rose-s)" data-name="In Harmony" data-tags="Chinese medicine|Acupuncture|Sex therapy" data-line="Two practitioners who work with the body and with intimacy." aria-label="In Harmony" aria-pressed="false"><i>IH</i></button><button type="button" class="orbn" style="--i:7;--c:var(--teal);--cs:var(--teal-s)" data-name="Micaela" data-tags="Cognitive work|Trauma release" data-line="She joins work with the mind to release in the body." aria-label="Micaela" aria-pressed="false"><i>Mi</i></button><button type="button" class="orbn" style="--i:8;--c:var(--lilac);--cs:var(--lilac-s)" data-name="And more" data-tags="Still growing" data-line="We keep meeting practitioners along this coast, and the circle keeps growing." aria-label="And more" aria-pressed="false"><i>+</i></button>
       </div>
-      <div class="algcard glass rv">
-        <b class="algl">What it could become</b>
-        <div class="algfmt">
-          <div style="--cs:var(--sun-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><b>An evening talk</b><span>You and a guest, in one room</span></div>
-          <div style="--cs:var(--leaf-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-6"/><path d="M12 3l5 7h-3l4 5H6l4-5H7z"/></svg><b>A day in nature</b><span>Walking, speaking and eating together</span></div>
-          <div style="--cs:var(--sky-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M4 4l16 16"/></svg><b>A weekend without phones</b><span>Offline, by the sea</span></div>
-          <div style="--cs:var(--lilac-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><b>A retreat week</b><span>Several practitioners, one small group</span></div>
-        </div>
+      <div class="orbcard" id="orbCard" aria-live="polite">
+        <small>The circle. Tap a name.</small>
+        <b id="orbName"></b>
+        <div class="orbtags" id="orbTags"></div>
+        <p id="orbLine"></p>
+        <div class="orbnames" id="orbNames"><button type="button" aria-pressed="false">You</button><button type="button" aria-pressed="false">Guida</button><button type="button" aria-pressed="false">Petra</button><button type="button" aria-pressed="false">Brigitte</button><button type="button" aria-pressed="false">Leanne</button><button type="button" aria-pressed="false">Lara</button><button type="button" aria-pressed="false">In Harmony</button><button type="button" aria-pressed="false">Micaela</button><button type="button" aria-pressed="false">And more</button></div>
       </div>
+    </div>
+    <div class="day glass rv">
+      <b class="algl">One day here, imagined</b>
+      <div class="sky" id="sky" data-h="0" aria-hidden="true">
+        <span class="skl l0"></span><span class="skl l1"></span><span class="skl l2"></span><span class="skl l3"></span><span class="skl l4"></span><span class="skl l5"></span>
+        <span class="sun"></span>
+        <svg viewBox="0 0 1000 90" preserveAspectRatio="none"><path class="sea" d="M0 46h1000v44H0z"/><path class="land" d="M0 62C90 30 170 54 260 44s150-30 250-6 170 24 260 6 150-14 230 4v42H0z"/></svg>
+      </div>
+      <div class="slots" id="slots"><button type="button" aria-pressed="false"><small>07:30</small><b>Dance and breath</b><span>Petra</span></button><button type="button" aria-pressed="false"><small>09:30</small><b>Bowen and nervous system</b><span>Lara</span></button><button type="button" aria-pressed="false"><small>12:30</small><b>Living food</b><span>From your cookbook</span></button><button type="button" aria-pressed="false"><small>15:00</small><b>A walk and a talk</b><span>You</span></button><button type="button" aria-pressed="false"><small>17:30</small><b>Trauma Release</b><span>Guida</span></button><button type="button" aria-pressed="false"><small>20:30</small><b>An evening of sound</b><span>Brigitte</span></button></div>
+    </div>
+    <div class="algfmt">
+      <div style="--cs:var(--sun-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><b>An evening talk</b><span>You and a guest, in one room</span></div>
+      <div style="--cs:var(--leaf-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-6"/><path d="M12 3l5 7h-3l4 5H6l4-5H7z"/></svg><b>A day in nature</b><span>Walking, speaking and eating together</span></div>
+      <div style="--cs:var(--sky-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M4 4l16 16"/></svg><b>A weekend without phones</b><span>Offline, by the sea</span></div>
+      <div style="--cs:var(--lilac-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><b>A retreat week</b><span>Several healers, one small group</span></div>
     </div>
     <div class="algpath rv" role="img" aria-label="An English video leads to the Sunday letter, and the letter leads to a seat in the Algarve">
       <span>An English video</span><i></i><span>The Sunday letter</span><i></i><span>A seat in the Algarve</span>
     </div>
-    <p class="tiny" style="text-align:center;margin-top:16px">Later, and only if you want it. The English content comes first. Photos: Theo Crazzolara and Sergei Gussev, CC BY 2.0.</p>
+    <p class="tiny" style="text-align:center;margin-top:16px">Later, and only if you want it. The English content comes first.<br>The coast is Lagos, photographed by Theo Crazzolara and Sergei Gussev (CC BY 2.0). The house, the bowl and the gathering are Unsplash pictures that show the feeling, not a booked place.</p>
   </div>
 </section>
 
@@ -1465,6 +1504,21 @@ footer p{max-width:100ch;margin-bottom:8px}
   var coverSec=document.getElementById('design');
   if(coverSec&&/[?&]covers(?:[=&]|$)/.test(location.search))coverSec.hidden=false;
   [].forEach.call(document.querySelectorAll('.ba input'),function(r){var bx=r.parentNode;function baSet(){bx.style.setProperty('--p',r.value+'%')}r.addEventListener('input',baSet);baSet()});
+
+  /* ---------- Algarve: circle of healers and the imagined day ---------- */
+  var orbNodes=[].slice.call(document.querySelectorAll('#orb .orbn')),orbChips=[].slice.call(document.querySelectorAll('#orbNames button')),orbAt=-1,orbTouched=false,orbTimer=null;
+  function orbShow(k){orbAt=k;var nd=orbNodes[k];orbNodes.forEach(function(o,i){o.setAttribute('aria-pressed',String(i===k))});orbChips.forEach(function(o,i){o.setAttribute('aria-pressed',String(i===k))});
+    document.getElementById('orbName').textContent=nd.dataset.name;document.getElementById('orbLine').textContent=nd.dataset.line;
+    var tagBox=document.getElementById('orbTags');tagBox.textContent='';nd.dataset.tags.split('|').forEach(function(x){var chip=document.createElement('span');chip.textContent=x;tagBox.appendChild(chip)});
+    var card=document.getElementById('orbCard');card.style.setProperty('--c',nd.style.getPropertyValue('--c'));card.style.setProperty('--cs',nd.style.getPropertyValue('--cs'))}
+  function orbPick(k){orbTouched=true;clearInterval(orbTimer);orbShow(k)}
+  orbNodes.forEach(function(o,i){o.addEventListener('click',function(){orbPick(i)})});
+  orbChips.forEach(function(o,i){o.addEventListener('click',function(){orbPick(i)})});
+  if(orbNodes.length){orbShow(0);if(!reduce)new IntersectionObserver(function(es){clearInterval(orbTimer);if(es[0].isIntersecting&&!orbTouched)orbTimer=setInterval(function(){orbShow((orbAt+1)%orbNodes.length)},2800)},{threshold:.3}).observe(document.getElementById('orb'))}
+  var daySlots=[].slice.call(document.querySelectorAll('#slots button')),skyEl=document.getElementById('sky'),dayAt=-1,dayTouched=false,dayTimer=null,dayPos=[.06,.24,.5,.68,.85,.96];
+  function dayShow(k){dayAt=k;daySlots.forEach(function(o,i){o.setAttribute('aria-pressed',String(i===k))});skyEl.setAttribute('data-h',k);var pt=dayPos[k];skyEl.style.setProperty('--sx',(6+pt*88)+'%');skyEl.style.setProperty('--sy',(10+Math.sin(Math.PI*pt)*58)+'%')}
+  daySlots.forEach(function(o,i){o.addEventListener('click',function(){dayTouched=true;clearInterval(dayTimer);dayShow(i)})});
+  if(daySlots.length&&skyEl){dayShow(0);if(!reduce)new IntersectionObserver(function(es){clearInterval(dayTimer);if(es[0].isIntersecting&&!dayTouched)dayTimer=setInterval(function(){dayShow((dayAt+1)%daySlots.length)},2400)},{threshold:.4}).observe(skyEl)}
 
   /* ---------- roles ---------- */
   var tks=document.querySelectorAll('#tasks .tk'),hot=-1,tseen=false;
