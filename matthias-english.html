@@ -560,46 +560,44 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .algmos figure:hover img{transform:scale(1.05)}
 .algnum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
 .algl{display:block;font:600 22px/1.2 var(--serif);margin-bottom:16px}
-.circ{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center;padding:28px;margin-top:18px}
-.orb{--sz:clamp(270px,33vw,400px);position:relative;width:var(--sz);height:var(--sz);margin:0 auto}
-.orbring{position:absolute;inset:10%;border-radius:50%;border:2px dashed var(--line2);animation:orbspin 80s linear infinite}
-@keyframes orbspin{to{transform:rotate(360deg)}}
-.orbmid{position:absolute;inset:27%;border-radius:50%;background:url(assets/alg-sunset.jpg) 40% 50%/cover;box-shadow:0 0 0 5px #fff,var(--sh2)}
-.orbn{position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;padding:0;border:0;border-radius:50%;background:#fff;cursor:pointer;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--c),0 8px 18px -8px rgba(34,65,48,.5);transform:rotate(calc(var(--i)*40deg)) translateY(calc(var(--sz)*-.4)) rotate(calc(var(--i)*-40deg));transition:transform .35s ease,box-shadow .35s ease}
-.orbn i{display:block;width:100%;height:100%;border-radius:50%;background:var(--cs) center/cover;font:600 20px/62px var(--serif);font-style:normal;text-align:center;color:var(--ink)}
-.orbn[aria-pressed="true"]{transform:rotate(calc(var(--i)*40deg)) translateY(calc(var(--sz)*-.4)) rotate(calc(var(--i)*-40deg)) scale(1.22);box-shadow:0 0 0 3px #fff,0 0 0 7px var(--c),0 14px 26px -8px rgba(34,65,48,.55);z-index:2}
-.orbn:focus-visible{outline:3px solid var(--sun);outline-offset:6px}
-.orbcard{min-width:0;border-left:5px solid var(--c,var(--sun));padding-left:22px;transition:border-color .35s}
-.orbcard small{display:block;font:700 12.5px var(--sans);color:var(--faint);margin-bottom:8px}
-.orbcard>b{display:block;font:600 clamp(34px,4vw,50px)/1.05 var(--serif);letter-spacing:-.02em}
-.orbtags{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 10px}
-.orbtags span{font:700 13px var(--sans);background:var(--cs,var(--sun-s));border-radius:999px;padding:6px 12px}
-.orbcard p{font-size:17px;line-height:1.45;color:var(--mut);margin:0;min-height:3em}
-.orbnames{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line2)}
-.orbnames button{font:600 13.5px var(--sans);color:var(--ink);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:7px 12px;cursor:pointer}
-.orbnames button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
-.orbnames button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
-.day{padding:24px;margin-top:18px}
-.sky{position:relative;height:clamp(120px,15vw,170px);border-radius:18px;overflow:hidden;--sx:10%;--sy:20%}
-.skl{position:absolute;inset:0;opacity:0;transition:opacity 1.2s}
-.skl.l0{background:linear-gradient(#ffd3bd,#fff0cf)}
-.skl.l1{background:linear-gradient(#cfe9f7,#f1f9ff)}
-.skl.l2{background:linear-gradient(#b9e0f4,#eaf6fb)}
-.skl.l3{background:linear-gradient(#c9e8ef,#fdf3d3)}
-.skl.l4{background:linear-gradient(#ffd690,#ffe9c9)}
-.skl.l5{background:linear-gradient(#d9cdf2,#f8d6c8)}
-.sky[data-h="0"] .l0,.sky[data-h="1"] .l1,.sky[data-h="2"] .l2,.sky[data-h="3"] .l3,.sky[data-h="4"] .l4,.sky[data-h="5"] .l5{opacity:1}
-.sun{position:absolute;left:var(--sx);bottom:var(--sy);width:46px;height:46px;margin:0 0 -23px -23px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6c9,var(--sun));box-shadow:0 0 0 10px rgba(254,193,2,.18),0 0 46px 12px rgba(254,193,2,.45);transition:left 1.2s cubic-bezier(.4,0,.2,1),bottom 1.2s cubic-bezier(.4,0,.2,1)}
-.sky svg{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;display:block}
-.sky .sea{fill:#9fd3d8}
-.sky .land{fill:#d9b27a}
-.slots{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}
-.slots button{text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px;cursor:pointer;font:inherit;color:var(--ink);transition:background .3s,border-color .3s,transform .3s}
-.slots small{display:block;font:800 12px var(--sans);color:var(--teal)}
-.slots b{display:block;font:600 16px/1.2 var(--serif);margin:5px 0 3px}
-.slots span{display:block;font-size:13px;color:var(--mut)}
-.slots button[aria-pressed="true"]{background:var(--sun-s);border-color:var(--sun);transform:translateY(-3px)}
-.slots button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.modhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 16px;margin:38px 0 12px}
+.modhead b{font:600 clamp(24px,2.7vw,34px)/1.15 var(--serif);letter-spacing:-.01em}
+.modhead span{font:600 13.5px var(--sans);color:var(--faint)}
+.mods{display:flex;gap:16px;overflow-x:auto;padding:8px 4px 22px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+.mods::-webkit-scrollbar{display:none}
+.mod{flex:none;width:clamp(200px,20vw,250px);padding:0;border:0;background:#fff;border-radius:22px;overflow:hidden;text-align:left;box-shadow:var(--sh2);cursor:pointer;font:inherit;color:var(--ink);transition:transform .35s ease}
+.mod:hover{transform:translateY(-6px)}
+.mod:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.modpic{display:block;position:relative;aspect-ratio:4/5;background:var(--cs) center/cover;overflow:hidden}
+.modpic::after{content:"+";position:absolute;right:10px;top:10px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.92);font:600 20px/29px var(--sans);text-align:center;color:var(--ink);transition:transform .35s ease}
+.mod[aria-pressed="true"] .modpic::after{transform:rotate(45deg)}
+.modwho{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:var(--cs);font:600 16px/1.3 var(--serif);transform:translateY(102%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.mod[aria-pressed="true"] .modwho{transform:none}
+.modtxt{display:block;padding:14px 16px 17px}
+.modtxt b{display:block;font:600 19px/1.2 var(--serif)}
+.modtxt span{display:block;font-size:13.5px;line-height:1.35;color:var(--mut);margin-top:4px}
+.inv{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:34px;align-items:center;padding:30px;margin-top:8px}
+.invcard{background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--sh2);transform:rotate(-1.4deg)}
+.invpic{display:block;height:clamp(150px,17vw,220px);background:url(assets/alg-group.jpg) center 62%/cover}
+.invbody{padding:20px 24px 24px}
+.invbody small{display:block;font:700 12.5px var(--sans);color:var(--teal)}
+.invbody h3{font:600 clamp(23px,2.5vw,31px)/1.12 var(--serif);letter-spacing:-.01em;margin:6px 0 14px}
+.invdays{display:grid;gap:10px}
+.invdays div{display:grid;grid-template-columns:86px minmax(0,1fr);gap:10px;align-items:start;padding-top:10px;border-top:1px dashed var(--line2)}
+.invdays b{font:600 16px/1.6 var(--serif)}
+.invdays span{display:flex;flex-wrap:wrap;gap:6px}
+.invdays em{font:600 12.5px var(--sans);font-style:normal;background:var(--cs);border-radius:999px;padding:5px 10px}
+.invbtn{display:inline-block;margin-top:18px;font:800 14px var(--sans);background:var(--sun);border-radius:999px;padding:11px 20px}
+.invside{min-width:0}
+.invside>small{display:block;font:700 12.5px var(--sans);color:var(--faint)}
+.invside>b{display:block;font:600 clamp(30px,3.6vw,46px)/1.05 var(--serif);letter-spacing:-.02em;margin:6px 0 18px}
+.seats{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px;max-width:400px}
+.seats i{aspect-ratio:1;border-radius:50%;background:#fff;border:2px solid var(--line2);transition:background .3s,border-color .3s,transform .3s}
+.seats i.on{background:var(--teal);border-color:var(--teal);transform:scale(1.1)}
+.seatout{font:700 15px var(--sans);color:var(--teal);margin:14px 0 0}
+.invpts{list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:1px dashed var(--line2);display:grid;gap:9px}
+.invpts li{position:relative;padding-left:20px;font-size:15.5px;line-height:1.4;color:var(--mut)}
+.invpts li::before{content:"";position:absolute;left:0;top:.45em;width:9px;height:9px;border-radius:50%;background:var(--sun)}
 .algfmt{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
 .algfmt div{border-radius:18px;padding:16px;background:var(--cs)}
 .algfmt svg{display:block;width:26px;height:26px;fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -609,9 +607,9 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .algpath span{font:700 14px var(--sans);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:9px 16px}
 .algpath span:last-child{background:var(--sun);border-color:var(--sun)}
 .algpath i{width:34px;border-top:2px dashed var(--line2)}
-@media(prefers-reduced-motion:reduce){.orbring{animation:none}.sun,.skl,.algmos img{transition:none}}
-@media(max-width:900px){.circ{grid-template-columns:minmax(0,1fr);padding:22px}.orb{--sz:clamp(260px,74vw,360px)}.slots{grid-template-columns:repeat(3,minmax(0,1fr))}.algfmt{grid-template-columns:repeat(2,minmax(0,1fr))}.algmos{grid-template-rows:repeat(2,clamp(110px,22vw,180px))}}
-@media(max-width:520px){.algmos{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:170px 110px 110px;gap:10px}.algmos .m1{grid-column:1/3;grid-row:1}.algmos .m2{grid-column:1/3;grid-row:2}.algnum{gap:8px}.algnum .win{padding:14px}.algnum .win span{font-size:12px}.orbn{width:50px;height:50px;margin:-25px 0 0 -25px}.orbn i{font-size:16px;line-height:50px}.orbcard{padding-left:16px}.day{padding:18px}.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.algpath{flex-direction:column;gap:6px}.algpath i{width:0;height:14px;border-top:0;border-left:2px dashed var(--line2)}}
+@media(prefers-reduced-motion:reduce){.algmos img,.mod,.modwho,.seats i{transition:none}}
+@media(max-width:900px){.inv{grid-template-columns:minmax(0,1fr);padding:22px;gap:26px}.invcard{transform:none}.algfmt{grid-template-columns:repeat(2,minmax(0,1fr))}.algmos{grid-template-rows:repeat(2,clamp(110px,22vw,180px))}}
+@media(max-width:520px){.algmos{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:170px 110px 110px;gap:10px}.algmos .m1{grid-column:1/3;grid-row:1}.algmos .m2{grid-column:1/3;grid-row:2}.algnum{gap:8px}.algnum .win{padding:14px}.algnum .win span{font-size:12px}.mod{width:68vw;max-width:250px}.inv{padding:16px}.invbody{padding:16px 16px 20px}.invdays div{grid-template-columns:74px minmax(0,1fr)}.algpath{flex-direction:column;gap:6px}.algpath i{width:0;height:14px;border-top:0;border-left:2px dashed var(--line2)}}
 .team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}
 .tm{padding:24px;display:flex;flex-direction:column;gap:14px;border-top:5px solid var(--c)}
 .tmtop{display:flex;align-items:center;gap:16px}
@@ -1134,11 +1132,11 @@ footer p{max-width:100ch;margin-bottom:8px}
         <figcaption><b>The long conversation</b><span>Cut between five shots</span></figcaption>
       </figure>
       <figure class="rvid tall glass">
-        <div class="rframe"><video src="assets/reel-short-1.mp4" poster="assets/reel-short-1.jpg" playsinline muted loop preload="metadata" aria-label="Vertical short with captions, Guida speaking"></video><span class="mcrec"><i></i><b>Short</b></span><button class="rsnd" type="button" aria-pressed="false">Sound on</button></div>
+        <div class="rframe"><video src="assets/reel-b2.mp4" poster="assets/reel-b2.jpg" playsinline muted loop preload="metadata" aria-label="Vertical short with captions, Guida speaking"></video><span class="mcrec"><i></i><b>Short</b></span><button class="rsnd" type="button" aria-pressed="false">Sound on</button></div>
         <figcaption><b>A finished short</b><span>Hook, captions, three shots</span></figcaption>
       </figure>
       <figure class="rvid tall glass">
-        <div class="rframe"><video src="assets/reel-short-2.mp4" poster="assets/reel-short-2.jpg" playsinline muted loop preload="metadata" aria-label="Vertical short with captions, Guida speaking"></video><span class="mcrec"><i></i><b>Short</b></span><button class="rsnd" type="button" aria-pressed="false">Sound on</button></div>
+        <div class="rframe"><video src="assets/reel-b1.mp4" poster="assets/reel-b1.jpg" playsinline muted loop preload="metadata" aria-label="Vertical short with captions, Guida speaking"></video><span class="mcrec"><i></i><b>Short</b></span><button class="rsnd" type="button" aria-pressed="false">Sound on</button></div>
         <figcaption><b>Another one</b><span>From the same hour</span></figcaption>
       </figure>
     </div>
@@ -1220,32 +1218,37 @@ footer p{max-width:100ch;margin-bottom:8px}
       <figure class="m4"><img src="assets/alg-group.jpg" alt="A group sitting on a hillside, watching the sun go down" loading="lazy"></figure>
     </div>
     <div class="algnum">
-      <div class="win rv" style="--c:var(--sun-s)"><b data-n="9">0</b><span>healers in our circle so far</span></div>
+      <div class="win rv" style="--c:var(--sun-s)"><b data-n="9">0</b><span>healers we know on this coast</span></div>
       <div class="win rv" style="--c:var(--lilac-s)"><b data-n="12">0</b><span>ways of working, from sound to Bowen</span></div>
       <div class="win rv" style="--c:var(--teal-s)"><b data-n="300">0</b><span>days of sun a year, about</span></div>
     </div>
-    <div class="circ glass rv">
-      <div class="orb" id="orb">
-        <span class="orbring" aria-hidden="true"></span>
-        <span class="orbmid" aria-hidden="true"></span>
-        <button type="button" class="orbn" style="--i:0;--c:var(--sun);--cs:var(--sun-s)" data-name="You" data-tags="Nature|Purpose|The rainforest" data-line="A walk in nature and a talk, with the people who found you in English." aria-label="You" aria-pressed="false"><i style="background-image:url(assets/sh-m-smile.jpg);background-position:50% 18%"></i></button><button type="button" class="orbn" style="--i:1;--c:var(--rose);--cs:var(--rose-s)" data-name="Guida" data-tags="Trauma Release|Reconnective Healing" data-line="Thirty years of healing work. Trauma Release was given to her by the Divine." aria-label="Guida" aria-pressed="false"><i style="background-image:url(assets/circle-guida.jpg)"></i></button><button type="button" class="orbn" style="--i:2;--c:var(--teal);--cs:var(--teal-s)" data-name="Petra" data-tags="LEAP|Dance fitness|Food" data-line="Energy sessions, dance to start the day, and food made with care." aria-label="Petra" aria-pressed="false"><i>P</i></button><button type="button" class="orbn" style="--i:3;--c:var(--lilac);--cs:var(--lilac-s)" data-name="Brigitte" data-tags="Soul Realignment|Sound therapy" data-line="Readings in the Akashic Records, and evenings of sound." aria-label="Brigitte" aria-pressed="false"><i style="background-image:url(assets/team-brigitte.jpg);background-position:28% 40%;background-size:118%"></i></button><button type="button" class="orbn" style="--i:4;--c:var(--leaf);--cs:var(--leaf-s)" data-name="Leanne" data-tags="Frequency healing|Quantum-based tools" data-line="Frequency scans, and the tools that go with them." aria-label="Leanne" aria-pressed="false"><i>Le</i></button><button type="button" class="orbn" style="--i:5;--c:var(--sun);--cs:var(--sun-s)" data-name="Lara" data-tags="Bowen therapy|Nervous system release" data-line="Gentle hands-on work for the body and the nervous system." aria-label="Lara" aria-pressed="false"><i>La</i></button><button type="button" class="orbn" style="--i:6;--c:var(--rose);--cs:var(--rose-s)" data-name="In Harmony" data-tags="Chinese medicine|Acupuncture|Sex therapy" data-line="Two practitioners who work with the body and with intimacy." aria-label="In Harmony" aria-pressed="false"><i>IH</i></button><button type="button" class="orbn" style="--i:7;--c:var(--teal);--cs:var(--teal-s)" data-name="Micaela" data-tags="Cognitive work|Trauma release" data-line="She joins work with the mind to release in the body." aria-label="Micaela" aria-pressed="false"><i>Mi</i></button><button type="button" class="orbn" style="--i:8;--c:var(--lilac);--cs:var(--lilac-s)" data-name="And more" data-tags="Still growing" data-line="We keep meeting practitioners along this coast, and the circle keeps growing." aria-label="And more" aria-pressed="false"><i>+</i></button>
+    <div class="modhead rv"><b>What people could feel here</b><span>Tap a picture to see who brings it</span></div>
+    <div class="mods" id="mods"><button type="button" class="mod" style="--cs:var(--lilac-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/alg-bowl.jpg);background-position:50% 50%"><span class="modwho">With Brigitte</span></span><span class="modtxt"><b>Sound therapy</b><span>Bowls, gongs and voice</span></span></button><button type="button" class="mod" style="--cs:var(--rose-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-body.jpg);background-position:50% 50%"><span class="modwho">With Guida. Thirty years of healing work</span></span><span class="modtxt"><b>Trauma Release</b><span>Hands-on work with what the body holds</span></span></button><button type="button" class="mod" style="--cs:var(--sun-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-dance.jpg);background-position:40% 50%"><span class="modwho">With Petra</span></span><span class="modtxt"><b>Dance and breath</b><span>Movement to start the day</span></span></button><button type="button" class="mod" style="--cs:var(--teal-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-energy.jpg);background-position:50% 50%"><span class="modwho">With Petra</span></span><span class="modtxt"><b>Energy sessions</b><span>LEAP, lying down with eyes closed</span></span></button><button type="button" class="mod" style="--cs:var(--leaf-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-bowen.jpg);background-position:50% 50%"><span class="modwho">With Lara</span></span><span class="modtxt"><b>Bowen therapy</b><span>Gentle touch for the nervous system</span></span></button><button type="button" class="mod" style="--cs:var(--rose-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-acu.jpg);background-position:50% 50%"><span class="modwho">With In Harmony</span></span><span class="modtxt"><b>Chinese medicine</b><span>Acupuncture, an old tradition</span></span></button><button type="button" class="mod" style="--cs:var(--sky-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-fork.jpg);background-position:50% 50%"><span class="modwho">With Leanne</span></span><span class="modtxt"><b>Frequency healing</b><span>Scans and quantum-based tools</span></span></button><button type="button" class="mod" style="--cs:var(--lilac-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-soul.jpg);background-position:50% 50%"><span class="modwho">With Brigitte</span></span><span class="modtxt"><b>Soul readings</b><span>Soul Realignment in the Akashic Records</span></span></button><button type="button" class="mod" style="--cs:var(--leaf-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-nature.jpg);background-position:50% 60%"><span class="modwho">With you</span></span><span class="modtxt"><b>Nature and purpose</b><span>A walk, a talk, the rainforest story</span></span></button><button type="button" class="mod" style="--cs:var(--sun-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/lp-bowl.jpg);background-position:50% 50%"><span class="modwho">From your kitchen</span></span><span class="modtxt"><b>Living food</b><span>Raw and vegan, from your cookbook</span></span></button></div>
+    <div class="inv glass rv">
+      <div class="invcard">
+        <span class="invpic" role="img" aria-label="A group sitting on a hillside at sunset"></span>
+        <div class="invbody">
+          <small>An example invitation</small>
+          <h3>Three days in the Algarve with Matthias Langwasser</h3>
+          <div class="invdays">
+            <div style="--cs:var(--sun-s)"><b>Friday</b><span><em>Arrive</em><em>Evening talk</em><em>Sound</em></span></div>
+            <div style="--cs:var(--leaf-s)"><b>Saturday</b><span><em>Dance and breath</em><em>Sessions</em><em>Living food</em></span></div>
+            <div style="--cs:var(--lilac-s)"><b>Sunday</b><span><em>Sunrise walk</em><em>Closing circle</em></span></div>
+          </div>
+          <span class="invbtn">Reserve a seat</span>
+        </div>
       </div>
-      <div class="orbcard" id="orbCard" aria-live="polite">
-        <small>The circle. Tap a name.</small>
-        <b id="orbName"></b>
-        <div class="orbtags" id="orbTags"></div>
-        <p id="orbLine"></p>
-        <div class="orbnames" id="orbNames"><button type="button" aria-pressed="false">You</button><button type="button" aria-pressed="false">Guida</button><button type="button" aria-pressed="false">Petra</button><button type="button" aria-pressed="false">Brigitte</button><button type="button" aria-pressed="false">Leanne</button><button type="button" aria-pressed="false">Lara</button><button type="button" aria-pressed="false">In Harmony</button><button type="button" aria-pressed="false">Micaela</button><button type="button" aria-pressed="false">And more</button></div>
+      <div class="invside">
+        <small>How the room fills</small>
+        <b>From a screen to a room.</b>
+        <div class="seats" id="seats" aria-hidden="true"></div>
+        <p class="seatout" id="seatOut" aria-live="polite">0 of 40 seats taken</p>
+        <ul class="invpts">
+          <li>Your letter readers hear first</li>
+          <li>We make the page, the tickets and the reminders</li>
+          <li>We film it, so the weekend becomes new videos</li>
+        </ul>
       </div>
-    </div>
-    <div class="day glass rv">
-      <b class="algl">One day here, imagined</b>
-      <div class="sky" id="sky" data-h="0" aria-hidden="true">
-        <span class="skl l0"></span><span class="skl l1"></span><span class="skl l2"></span><span class="skl l3"></span><span class="skl l4"></span><span class="skl l5"></span>
-        <span class="sun"></span>
-        <svg viewBox="0 0 1000 90" preserveAspectRatio="none"><path class="sea" d="M0 46h1000v44H0z"/><path class="land" d="M0 62C90 30 170 54 260 44s150-30 250-6 170 24 260 6 150-14 230 4v42H0z"/></svg>
-      </div>
-      <div class="slots" id="slots"><button type="button" aria-pressed="false"><small>07:30</small><b>Dance and breath</b><span>Petra</span></button><button type="button" aria-pressed="false"><small>09:30</small><b>Bowen and nervous system</b><span>Lara</span></button><button type="button" aria-pressed="false"><small>12:30</small><b>Living food</b><span>From your cookbook</span></button><button type="button" aria-pressed="false"><small>15:00</small><b>A walk and a talk</b><span>You</span></button><button type="button" aria-pressed="false"><small>17:30</small><b>Trauma Release</b><span>Guida</span></button><button type="button" aria-pressed="false"><small>20:30</small><b>An evening of sound</b><span>Brigitte</span></button></div>
     </div>
     <div class="algfmt">
       <div style="--cs:var(--sun-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><b>An evening talk</b><span>You and a guest, in one room</span></div>
@@ -1256,7 +1259,7 @@ footer p{max-width:100ch;margin-bottom:8px}
     <div class="algpath rv" role="img" aria-label="An English video leads to the Sunday letter, and the letter leads to a seat in the Algarve">
       <span>An English video</span><i></i><span>The Sunday letter</span><i></i><span>A seat in the Algarve</span>
     </div>
-    <p class="tiny" style="text-align:center;margin-top:16px">Later, and only if you want it. The English content comes first.<br>The coast is Lagos, photographed by Theo Crazzolara and Sergei Gussev (CC BY 2.0). The house, the bowl and the gathering are Unsplash pictures that show the feeling, not a booked place.</p>
+    <p class="tiny" style="text-align:center;margin-top:16px">Later, and only if you want it. The English content comes first.<br>The coast is Lagos, photographed by Theo Crazzolara and Sergei Gussev (CC BY 2.0). The house, the gathering and the practice pictures are from Unsplash and show the feeling, not a booked place. Forty seats is an example.</p>
   </div>
 </section>
 
@@ -1505,20 +1508,18 @@ footer p{max-width:100ch;margin-bottom:8px}
   if(coverSec&&/[?&]covers(?:[=&]|$)/.test(location.search))coverSec.hidden=false;
   [].forEach.call(document.querySelectorAll('.ba input'),function(r){var bx=r.parentNode;function baSet(){bx.style.setProperty('--p',r.value+'%')}r.addEventListener('input',baSet);baSet()});
 
-  /* ---------- Algarve: circle of healers and the imagined day ---------- */
-  var orbNodes=[].slice.call(document.querySelectorAll('#orb .orbn')),orbChips=[].slice.call(document.querySelectorAll('#orbNames button')),orbAt=-1,orbTouched=false,orbTimer=null;
-  function orbShow(k){orbAt=k;var nd=orbNodes[k];orbNodes.forEach(function(o,i){o.setAttribute('aria-pressed',String(i===k))});orbChips.forEach(function(o,i){o.setAttribute('aria-pressed',String(i===k))});
-    document.getElementById('orbName').textContent=nd.dataset.name;document.getElementById('orbLine').textContent=nd.dataset.line;
-    var tagBox=document.getElementById('orbTags');tagBox.textContent='';nd.dataset.tags.split('|').forEach(function(x){var chip=document.createElement('span');chip.textContent=x;tagBox.appendChild(chip)});
-    var card=document.getElementById('orbCard');card.style.setProperty('--c',nd.style.getPropertyValue('--c'));card.style.setProperty('--cs',nd.style.getPropertyValue('--cs'))}
-  function orbPick(k){orbTouched=true;clearInterval(orbTimer);orbShow(k)}
-  orbNodes.forEach(function(o,i){o.addEventListener('click',function(){orbPick(i)})});
-  orbChips.forEach(function(o,i){o.addEventListener('click',function(){orbPick(i)})});
-  if(orbNodes.length){orbShow(0);if(!reduce)new IntersectionObserver(function(es){clearInterval(orbTimer);if(es[0].isIntersecting&&!orbTouched)orbTimer=setInterval(function(){orbShow((orbAt+1)%orbNodes.length)},2800)},{threshold:.3}).observe(document.getElementById('orb'))}
-  var daySlots=[].slice.call(document.querySelectorAll('#slots button')),skyEl=document.getElementById('sky'),dayAt=-1,dayTouched=false,dayTimer=null,dayPos=[.06,.24,.5,.68,.85,.96];
-  function dayShow(k){dayAt=k;daySlots.forEach(function(o,i){o.setAttribute('aria-pressed',String(i===k))});skyEl.setAttribute('data-h',k);var pt=dayPos[k];skyEl.style.setProperty('--sx',(6+pt*88)+'%');skyEl.style.setProperty('--sy',(10+Math.sin(Math.PI*pt)*58)+'%')}
-  daySlots.forEach(function(o,i){o.addEventListener('click',function(){dayTouched=true;clearInterval(dayTimer);dayShow(i)})});
-  if(daySlots.length&&skyEl){dayShow(0);if(!reduce)new IntersectionObserver(function(es){clearInterval(dayTimer);if(es[0].isIntersecting&&!dayTouched)dayTimer=setInterval(function(){dayShow((dayAt+1)%daySlots.length)},2400)},{threshold:.4}).observe(skyEl)}
+  /* ---------- Algarve: practices strip and the example invitation ---------- */
+  var modRail=document.getElementById('mods');
+  if(modRail){var modHold=false,modOver=false,modSeen=false,modDir=1,modX=0;
+    [].forEach.call(modRail.querySelectorAll('.mod'),function(card){card.addEventListener('click',function(){card.setAttribute('aria-pressed',String(card.getAttribute('aria-pressed')!=='true'))})});
+    ['pointerdown','wheel','touchstart','keydown'].forEach(function(evn){modRail.addEventListener(evn,function(){modHold=true},{passive:true})});
+    modRail.addEventListener('mouseenter',function(){modOver=true});modRail.addEventListener('mouseleave',function(){modOver=false;modX=modRail.scrollLeft});
+    if(!reduce){new IntersectionObserver(function(es){modSeen=es[0].isIntersecting},{threshold:.2}).observe(modRail);
+      (function modDrift(){if(modSeen&&!modHold&&!modOver){var room=modRail.scrollWidth-modRail.clientWidth;modX+=modDir*.45;if(modX>=room){modX=room;modDir=-1}else if(modX<=0){modX=0;modDir=1}modRail.scrollLeft=modX}requestAnimationFrame(modDrift)})()}}
+  var seatBox=document.getElementById('seats'),seatOut=document.getElementById('seatOut');
+  if(seatBox&&seatOut){for(var sq=0;sq<40;sq++)seatBox.appendChild(document.createElement('i'));
+    new IntersectionObserver(function(es,ob){if(!es[0].isIntersecting)return;ob.disconnect();var taken=0;
+      (function seatStep(){if(taken<40){seatBox.children[taken].className='on';taken++;seatOut.textContent=taken+' of 40 seats taken';setTimeout(seatStep,reduce?0:75)}else seatOut.textContent='40 of 40. Waiting list open.'})()},{threshold:.5}).observe(seatBox)}
 
   /* ---------- roles ---------- */
   var tks=document.querySelectorAll('#tasks .tk'),hot=-1,tseen=false;
