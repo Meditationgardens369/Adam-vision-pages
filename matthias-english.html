@@ -552,6 +552,31 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .bal{background:var(--ink);color:#fff}
 .bar{background:var(--sun);color:var(--ink)}
 @media(max-width:760px){.bagrid{grid-template-columns:minmax(0,1fr);gap:10px}.bawave{font-size:19px;margin-top:16px}}
+.algpics{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:14px;margin-top:28px}
+.algpics figure{margin:0;height:clamp(220px,29vw,390px);border-radius:22px;overflow:hidden;box-shadow:var(--sh2)}
+.algpics img{width:100%;height:100%;object-fit:cover;display:block}
+.alg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+.algcard{padding:24px;display:flex;flex-direction:column}
+.algfmt{flex:1;grid-auto-rows:1fr}
+.algl{display:block;font:600 22px/1.2 var(--serif);margin-bottom:16px}
+.algppl{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.algppl li{display:flex;align-items:center;gap:16px}
+.algppl i{flex:none;width:58px;height:58px;border-radius:50%;background:#fff center/cover;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--c)}
+.algppl i.ini{font:600 25px/58px var(--serif);font-style:normal;text-align:center;color:var(--ink);background:var(--teal-s)}
+.algppl span{font-size:14.5px;line-height:1.35;color:var(--mut)}
+.algppl b{display:block;font:600 20px/1.2 var(--serif);color:var(--ink)}
+.algmore{margin:16px 0 0;padding-top:12px;border-top:1px dashed var(--line2);font-size:14px;color:var(--mut)}
+.algfmt{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.algfmt div{border-radius:16px;padding:15px;background:var(--cs)}
+.algfmt svg{display:block;width:26px;height:26px;fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.algfmt b{display:block;font:600 17px/1.2 var(--serif);margin:9px 0 3px}
+.algfmt span{display:block;font-size:13.5px;line-height:1.35;color:var(--mut)}
+.algpath{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:20px}
+.algpath span{font:700 14px var(--sans);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:9px 16px}
+.algpath span:last-child{background:var(--sun);border-color:var(--sun)}
+.algpath i{width:34px;border-top:2px dashed var(--line2)}
+@media(max-width:820px){.alg{grid-template-columns:minmax(0,1fr)}.algpics{grid-template-columns:minmax(0,1fr)}.algpics figure{height:210px}.algpics figure+figure{display:none}}
+@media(max-width:520px){.algcard{padding:18px}.algpath{flex-direction:column;gap:6px}.algpath i{width:0;height:14px;border-top:0;border-left:2px dashed var(--line2)}}
 .team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}
 .tm{padding:24px;display:flex;flex-direction:column;gap:14px;border-top:5px solid var(--c)}
 .tmtop{display:flex;align-items:center;gap:16px}
@@ -746,7 +771,7 @@ footer p{max-width:100ch;margin-bottom:8px}
   <div class="wrap">
     <a class="brand" href="#top"><i></i><span>Matthias, in English</span></a>
     <div class="stops" id="stops">
-      <a href="#wins">Today</a><a href="#videos">Your titles</a><a href="#engine">The engine</a><a href="#handles">Channels</a><a href="#pages">Pages</a><a href="#circle">Your circle</a><a href="#bottle">The shop</a><a href="#month">A week</a><a href="#team">The team</a><a href="#start">Start</a>
+      <a href="#wins">Today</a><a href="#videos">Your titles</a><a href="#engine">The engine</a><a href="#handles">Channels</a><a href="#pages">Pages</a><a href="#circle">Your circle</a><a href="#bottle">The shop</a><a href="#month">A week</a><a href="#team">The team</a><a href="#here">The Algarve</a><a href="#start">Start</a>
     </div>
     <a class="btn" href="#start">Pick six</a>
   </div>
@@ -1153,6 +1178,45 @@ footer p{max-width:100ch;margin-bottom:8px}
       <p class="bygwhy">Where it leads: what we earn together goes toward healing centres and retreats for the next generation.</p>
     </div>
     <p class="tiny" style="text-align:center;margin-top:16px">Soul gifts come from Brigitte's Soul Realignment readings in the Akashic Records.</p>
+  </div>
+</section>
+
+<section id="here">
+  <div class="wrap">
+    <div class="chhead">
+      <div class="kicker">Where it can lead</div>
+      <h2 class="rv">Your viewers are everywhere. <em>We all live here.</em></h2>
+      <p class="lede rv">Once English viewers know you, some will want to meet you. People already fly to this coast to rest, and several gifted practitioners live on it.</p>
+    </div>
+    <div class="algpics rv">
+      <figure><img src="assets/alg-coast.jpg" alt="Golden cliffs above blue sea at Praia do Camilo in Lagos" loading="lazy"></figure>
+      <figure><img src="assets/alg-sunset.jpg" alt="The cliffs and lighthouse of Ponta da Piedade at sunset" loading="lazy"></figure>
+    </div>
+    <div class="alg">
+      <div class="algcard glass rv">
+        <b class="algl">Already on this coast</b>
+        <ul class="algppl">
+          <li style="--c:var(--sun)"><i style="background-image:url(assets/sh-m-smile.jpg);background-position:50% 18%"></i><span><b>You</b>Nature, purpose and the rainforest</span></li>
+          <li style="--c:var(--rose)"><i style="background-image:url(assets/circle-guida.jpg)"></i><span><b>Guida</b>Trauma release and Reconnective Healing</span></li>
+          <li style="--c:var(--lilac)"><i style="background-image:url(assets/team-brigitte.jpg);background-position:28% 40%;background-size:118%"></i><span><b>Brigitte</b>Soul Realignment in the Akashic Records</span></li>
+          <li style="--c:var(--teal)"><i class="ini">M</i><span><b>Micaela</b>Trauma work through mind and body</span></li>
+        </ul>
+        <p class="algmore">More practitioners along the coast are already in our circle.</p>
+      </div>
+      <div class="algcard glass rv">
+        <b class="algl">What it could become</b>
+        <div class="algfmt">
+          <div style="--cs:var(--sun-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><b>An evening talk</b><span>You and a guest, in one room</span></div>
+          <div style="--cs:var(--leaf-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-6"/><path d="M12 3l5 7h-3l4 5H6l4-5H7z"/></svg><b>A day in nature</b><span>Walking, speaking and eating together</span></div>
+          <div style="--cs:var(--sky-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M4 4l16 16"/></svg><b>A weekend without phones</b><span>Offline, by the sea</span></div>
+          <div style="--cs:var(--lilac-s)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><b>A retreat week</b><span>Several practitioners, one small group</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="algpath rv" role="img" aria-label="An English video leads to the Sunday letter, and the letter leads to a seat in the Algarve">
+      <span>An English video</span><i></i><span>The Sunday letter</span><i></i><span>A seat in the Algarve</span>
+    </div>
+    <p class="tiny" style="text-align:center;margin-top:16px">Later, and only if you want it. The English content comes first. Photos: Theo Crazzolara and Sergei Gussev, CC BY 2.0.</p>
   </div>
 </section>
 
