@@ -467,12 +467,55 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .pr.on .stk{transform:rotate(7deg) scale(1)}
 .stk b{display:block;font:800 6px var(--sans);letter-spacing:.06em;color:var(--teal)}
 .stk .q{display:block;width:100%;aspect-ratio:1;margin-top:2px;background:var(--qr,repeating-conic-gradient(#224130 0 25%,#fff 0 50%) 0 0/8px 8px) center/contain no-repeat}
-.gphone{width:206px;border-radius:30px;background:#1b2a22;padding:8px;box-shadow:var(--sh2);flex:none;animation:bob 7s ease-in-out -3s infinite}
-.gscreen{border-radius:23px;background:#fff;padding:14px 12px;display:grid;gap:7px;min-height:330px;align-content:start}
-.gscreen h3{font-size:18px}
-.gscreen small{font-size:11px;color:var(--mut);margin-bottom:4px}
-.gday{display:flex;gap:8px;align-items:flex-start;padding:8px;border-radius:12px;background:var(--c);font-size:12px;line-height:1.3;animation:rise .45s both}
-.gday i{flex:none;font:800 9px var(--sans);font-style:normal;background:#fff;border-radius:6px;padding:4px 6px}
+.gphone{--mag:#9b2d8b;width:272px;border-radius:38px;background:#1b2a22;padding:9px;box-shadow:var(--sh2);flex:none;animation:bob 7s ease-in-out -3s infinite}
+.gscreen{border-radius:30px;background:#fff;overflow:hidden;display:flex;flex-direction:column;height:540px}
+.gtop{display:flex;align-items:center;gap:9px;padding:14px 14px 10px}
+.gtop img{width:40px;height:40px;object-fit:contain;flex:none}
+.gtop b{display:block;font:700 14px/1.1 var(--sans);color:var(--ink)}
+.gtop small{display:block;font:500 10.5px/1.2 var(--sans);color:var(--mut);margin-top:2px}
+.gtop em{margin-left:auto;font:800 10px/1 var(--sans);font-style:normal;color:#fff;background:var(--teal);border-radius:999px;padding:4px 7px}
+.grain{display:block;height:4px;flex:none;background:linear-gradient(90deg,#f6c56b,#b7e08a,#7ad3c0,#8e9df0,#c66bd6,#e86a8c)}
+.gprod{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--paper2);transition:margin .35s,opacity .3s}
+.gprod img{width:42px;height:42px;object-fit:contain;border-radius:8px;background:#fff;flex:none}
+.gprod b{display:block;font:600 15px/1.15 var(--serif)}
+.gprod small{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.gscreen.film .gprod{display:none}
+.gviews{position:relative;flex:1;min-height:0}
+.gv{position:absolute;inset:0;padding:14px;opacity:0;pointer-events:none;transform:translateX(14px);transition:opacity .3s,transform .3s}
+.gv.on{opacity:1;pointer-events:auto;transform:none}
+.gv h4{font:600 19px/1.15 var(--serif);margin:0 0 10px}
+.gnote{font-size:11px;line-height:1.35;color:var(--mut);margin:10px 0 0}
+.ghow{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:gh}
+.ghow li{counter-increment:gh;display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:var(--teal-s);font-size:13px;line-height:1.3}
+.ghow li::before{content:counter(gh);flex:none;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font:700 12px/24px var(--sans);text-align:center}
+.gin{margin:0;display:grid;gap:6px}
+.gin div{padding:8px 10px;border-radius:11px;background:var(--sun-s)}
+.gin dt{font-size:10.5px;color:var(--mut)}
+.gin dd{margin:1px 0 0;font:600 13.5px/1.2 var(--sans);color:var(--ink)}
+.gfilm{position:relative;height:calc(100% - 44px);aspect-ratio:9/16;margin:0 auto;border-radius:14px;overflow:hidden;background:var(--ink)}
+.gfilm button{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;background:var(--ink) center/cover;cursor:pointer}
+.gfilm button i{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:rgba(255,255,255,.94);box-shadow:0 8px 22px rgba(0,0,0,.35)}
+.gfilm button i::after{content:"";position:absolute;left:23px;top:17px;border:12px solid transparent;border-left:19px solid var(--ink);border-right:0}
+.gfilm iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.gv[data-v="film"] .gnote{text-align:center}
+.gcart{display:flex;align-items:center;gap:10px;padding:10px;border-radius:14px;border:1px solid var(--line2)}
+.gcart img{width:56px;height:56px;object-fit:contain;flex:none}
+.gcart b{display:block;font:700 13.5px/1.2 var(--sans)}
+.gcart small{display:block;font-size:11.5px;color:var(--mut);margin-top:2px}
+.gbuy{display:block;width:100%;margin-top:12px;border:0;border-radius:999px;background:var(--mag);color:#fff;font:800 14.5px/1 var(--sans);padding:15px 12px;cursor:pointer;transition:background .35s,transform .15s}
+.gbuy:active,.gbuy.press{transform:scale(.96)}
+.gbuy.done{background:var(--teal)}
+.gbuy.done span::before{content:"\2713\00a0\00a0"}
+.gchat{display:grid;gap:8px}
+.gchat p{margin:0;max-width:86%;padding:9px 11px;border-radius:14px;font-size:12.5px;line-height:1.35}
+.gchat .me{justify-self:end;background:var(--mag);color:#fff;border-bottom-right-radius:4px}
+.gchat .they{background:var(--paper2);color:var(--ink);border-bottom-left-radius:4px}
+.gtype{margin-top:12px;border:1px solid var(--line2);border-radius:999px;padding:10px 14px;font-size:12px;color:var(--faint)}
+.gtabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line);padding:6px 4px 10px;flex:none;background:#fff}
+.gtabs button{border:0;background:none;padding:6px 0 2px;display:grid;justify-items:center;gap:3px;font:700 9.5px/1 var(--sans);color:var(--faint);cursor:pointer;border-radius:10px}
+.gtabs svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gtabs button[aria-selected="true"]{color:var(--mag)}
+.gtabs button:focus-visible{outline:2px solid var(--mag);outline-offset:-2px}
 
 /* week board: the German week stays, English is added on top */
 .counts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:16px}
@@ -1234,7 +1277,19 @@ footer p{max-width:100ch;margin-bottom:8px}
     <div class="stage rv">
       <div class="shelfwrap">
         <div class="shelf" id="shelf"></div>
-        <div class="gphone"><div class="gscreen" id="gscreen" aria-live="polite"></div></div>
+        <div class="gphone"><div class="gscreen" id="gscreen">
+          <div class="gtop"><img src="assets/his-logo.jpg" alt=""><span><b>Regenbogenkreis</b><small>Your guide, in English</small></span><em>EN</em></div>
+          <i class="grain" aria-hidden="true"></i>
+          <div class="gprod"><img id="gpImg" src="assets/prod-astaxanthin.jpg" alt=""><span><b id="gpName"></b><small id="gpSize"></small></span></div>
+          <div class="gviews" id="gviews" aria-live="polite">
+            <div class="gv on" data-v="how"><h4>How to take it</h4><ol class="ghow"><li>The amount for one day</li><li>The best time to take it</li><li>What to take it with</li></ol><p class="gnote">Word for word from your German label.</p></div>
+            <div class="gv" data-v="inside"><h4>What is inside</h4><dl class="gin"><div><dt>Zutaten</dt><dd>Ingredients</dd></div><div><dt>Verzehrempfehlung</dt><dd>Recommended use</dd></div><div><dt>Hinweise</dt><dd>Notes</dd></div><div><dt>Mindestens haltbar bis</dt><dd>Best before</dd></div><div><dt>Nettofüllmenge</dt><dd>Net quantity</dd></div></dl></div>
+            <div class="gv" data-v="film"><div class="gfilm" id="gFilm"><button type="button" id="gPlay" aria-label="Play the film" style="background-image:url(https://i.ytimg.com/vi/vv0FYW03JAg/oar2.jpg)"><i></i></button></div><p class="gnote">A short film from you. This one is one of your Shorts.</p></div>
+            <div class="gv" data-v="more"><h4>Reorder</h4><div class="gcart"><img id="gcImg" src="assets/prod-astaxanthin.jpg" alt=""><span><b>Same as last time</b><small id="gcLine"></small><small>To your saved address</small></span></div><button type="button" class="gbuy" id="gBuy"><span>Reorder in one tap</span></button><p class="gnote" id="gBuyNote">No basket, no form.</p></div>
+            <div class="gv" data-v="ask"><h4>Ask a person</h4><div class="gchat"><p class="me">Hello, can someone help me in English?</p><p class="they">Of course. I am on the team, and I am a person.</p></div><div class="gtype">Write a message</div></div>
+          </div>
+          <div class="gtabs" id="gtabs" role="tablist" aria-label="Guide sections"><button type="button" role="tab" data-v="how" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h9"/></svg>How</button><button type="button" role="tab" data-v="inside" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-14 14z"/><path d="M5 19c3-5 6-7 10-9"/></svg>Inside</button><button type="button" role="tab" data-v="film" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg>Film</button><button type="button" role="tab" data-v="more" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h2l2 10h9l2-7H7"/><circle cx="9.5" cy="19" r="1.2"/><circle cx="16.5" cy="19" r="1.2"/></svg>Reorder</button><button type="button" role="tab" data-v="ask" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H10l-5 4v-4H4z"/></svg>Ask</button></div>
+        </div></div>
       </div>
     </div>
   </div>
@@ -1685,12 +1740,22 @@ footer p{max-width:100ch;margin-bottom:8px}
     {k:'curcumin',en:'Liposomal curcumin',n:'30 capsules'},
     {k:'vitamina',en:'Liposomal vitamin A',n:'30 capsules'}
   ];
-  var GR=[['HOW','How to take it, in plain English.','teal'],['INSIDE','Every ingredient, translated.','sun'],['FILM','A short film from Matthias.','lilac'],['MORE','Reorder in one tap.','leaf'],['ASK','Questions go to a person.','rose']];
   var shelf=document.getElementById('shelf'),gscreen=document.getElementById('gscreen');
   try{var qh=document.createElement('div');new QRCode(qh,{text:'https://meditationgardens369.github.io/Adam-vision-pages/matthias-english.html',width:168,height:168,colorDark:'#224130',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.L});var qc=qh.querySelector('canvas');if(qc)document.documentElement.style.setProperty('--qr','url('+qc.toDataURL()+')')}catch(e){}
+  var gTabs=[].slice.call(document.querySelectorAll('#gtabs button')),gViews=[].slice.call(document.querySelectorAll('#gviews .gv')),gBuy=document.getElementById('gBuy'),gBuyNote=document.getElementById('gBuyNote'),gFilm=document.getElementById('gFilm'),gFilmHtml=gFilm.innerHTML,gAuto=null,gTouched=false,gAt=0;
+  function gBuyReset(){gBuy.classList.remove('done','press');gBuy.querySelector('span').textContent='Reorder in one tap';gBuyNote.textContent='No basket, no form.'}
+  function gBuyGo(){if(gBuy.classList.contains('done')){gBuyReset();return}gBuy.classList.add('press');setTimeout(function(){gBuy.classList.remove('press');gBuy.classList.add('done');gBuy.querySelector('span').textContent='Ordered. Thank you.';gBuyNote.textContent='One tap. A confirmation goes to your email.'},180)}
+  function gShow(k){gAt=k;var name=gTabs[k].dataset.v;gTabs.forEach(function(o,i){o.setAttribute('aria-selected',String(i===k))});gViews.forEach(function(o){o.classList.toggle('on',o.dataset.v===name)});gscreen.classList.toggle('film',name==='film');
+    if(name!=='film'&&gFilm.querySelector('iframe')){gFilm.innerHTML=gFilmHtml;gFilmBind()}if(name!=='more')gBuyReset()}
+  function gFilmBind(){document.getElementById('gPlay').addEventListener('click',function(){gStop();gFilm.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/vv0FYW03JAg?autoplay=1&playsinline=1&rel=0" title="A short film from Matthias" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'})}
+  function gStop(){gTouched=true;clearTimeout(gAuto)}
+  function gLoop(){clearTimeout(gAuto);if(gTouched)return;var nx=(gAt+1)%gTabs.length;gShow(nx);var isBuy=gTabs[nx].dataset.v==='more';if(isBuy)setTimeout(function(){if(!gTouched&&gAt===nx)gBuyGo()},1300);gAuto=setTimeout(gLoop,isBuy?4200:2600)}
+  gTabs.forEach(function(o,i){o.addEventListener('click',function(){gStop();gShow(i)})});
+  gBuy.addEventListener('click',function(){gStop();gBuyGo()});gFilmBind();
   function pickP(i){[].forEach.call(shelf.children,function(b,k){b.classList.toggle('sel',k===i);b.setAttribute('aria-pressed',String(k===i))});var p=PR[i];
-    gscreen.innerHTML='<h3></h3><small></small>'+GR.map(function(g,k){return '<div class="gday" style="--c:var(--'+g[2]+'-s);animation-delay:'+(k*70)+'ms"><i>'+g[0]+'</i>'+g[1]+'</div>'}).join('');
-    gscreen.querySelector('h3').textContent=p.en;gscreen.querySelector('small').textContent=p.n+'. Opened from the sticker.'}
+    document.getElementById('gpName').textContent=p.en;document.getElementById('gpSize').textContent=p.n+'. Opened from the sticker.';document.getElementById('gcLine').textContent='1 x '+p.en+', '+p.n;
+    document.getElementById('gpImg').src='assets/prod-'+p.k+'.jpg';document.getElementById('gcImg').src='assets/prod-'+p.k+'.jpg';gBuyReset()}
+  if(!reduce)new IntersectionObserver(function(es){clearTimeout(gAuto);if(es[0].isIntersecting&&!gTouched)gAuto=setTimeout(gLoop,2200)},{threshold:.5}).observe(gscreen);
   PR.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.className='pr';b.setAttribute('aria-label',p.en+', '+p.n);
     b.innerHTML='<span class="pimg"><img alt="" src="assets/prod-'+p.k+'.jpg"><span class="stk"><b>ENGLISH</b><span class="q"></span></span></span>';
     b.addEventListener('click',function(){pickP(i)});shelf.appendChild(b)});
