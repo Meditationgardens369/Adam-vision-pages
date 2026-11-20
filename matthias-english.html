@@ -790,18 +790,45 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .first{margin:48px 0 34px;text-align:center}
 .firsthead small{display:block;font:700 12.5px var(--sans);color:var(--faint)}
 .firsthead b{display:block;font:600 clamp(30px,3.6vw,46px)/1.1 var(--serif);letter-spacing:-.02em;margin:6px 0 28px}
-.firstline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;position:relative}
-.firstline::before{content:"";position:absolute;left:16.6%;right:16.6%;top:27px;height:3px;border-radius:2px;background:var(--teal);transform-origin:left;transform:scaleX(0);transition:transform 1.2s cubic-bezier(.2,.8,.2,1) .25s}
-.first.in .firstline::before{transform:scaleX(1)}
-.firstline li{position:relative}
-.firstline i{display:grid;place-items:center;width:56px;height:56px;margin:0 auto 14px;border-radius:50%;background:var(--teal);color:#fff;font:600 26px/1 var(--serif);font-style:normal;box-shadow:0 0 0 6px var(--paper)}
-.firstline b{display:block;font:600 21px/1.2 var(--serif)}
-.firstline span{display:block;font-size:15px;line-height:1.45;color:var(--mut);margin:6px auto 0;max-width:30ch}
+.firstline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;position:relative}
+.firstline::before{content:"";position:absolute;left:16.6%;right:16.6%;top:27px;height:3px;border-radius:2px;background:var(--line2)}
+.firstline::after{content:"";position:absolute;left:16.6%;right:16.6%;top:27px;height:3px;border-radius:2px;background:var(--teal);transform-origin:left;transform:scaleX(var(--p,0));transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.firstline li{position:relative;cursor:pointer}
+.firstline li>i{position:relative;z-index:1;display:grid;place-items:center;width:56px;height:56px;margin:0 auto 16px;border-radius:50%;background:#fff;border:3px solid var(--line2);color:var(--faint);font:600 26px/1 var(--serif);font-style:normal;box-shadow:0 0 0 6px var(--paper);transition:background .4s,border-color .4s,color .4s}
+.firstline li.on>i{background:var(--teal);border-color:var(--teal);color:#fff}
+.firstline li>b{display:block;font:600 21px/1.2 var(--serif)}
+.fdesc{font-size:15px;line-height:1.45;color:var(--mut);margin:6px auto 0;max-width:30ch}
+.fstage{position:relative;aspect-ratio:16/10;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh1);overflow:hidden;margin:0 0 14px;text-align:left}
+.fs1{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:7px;padding:11px}
+.fth{position:relative;border-radius:8px;background:var(--paper2) center/cover;overflow:hidden;opacity:.5;filter:saturate(.45);transition:opacity .5s,filter .5s,box-shadow .5s;transition-delay:calc(var(--k)*.26s)}
+.fth em,.fth u{position:absolute;left:5px;bottom:5px;font:800 9.5px/1 var(--sans);font-style:normal;text-decoration:none;color:#fff;border-radius:999px;padding:3px 6px;transition:opacity .4s,transform .4s;transition-delay:calc(var(--k)*.26s)}
+.fth em{background:rgba(0,0,0,.62)}
+.fth u{background:var(--teal);opacity:0;transform:scale(.4)}
+li.on .fth{opacity:1;filter:none;box-shadow:0 0 0 2px var(--teal)}
+li.on .fth em{opacity:0}
+li.on .fth u{opacity:1;transform:none}
+.fwide{position:absolute;left:6%;top:50%;width:36%;aspect-ratio:16/9;transform:translateY(-50%);border-radius:10px;background:var(--paper2) center/cover;box-shadow:var(--sh1);z-index:2}
+.fsh{position:absolute;top:50%;left:calc(45% + var(--k)*15%);width:20%;aspect-ratio:9/16;border-radius:10px;background:var(--paper2) center/cover;box-shadow:0 6px 16px -6px rgba(34,65,48,.5);transform:translate(calc(-150% - var(--k)*75%),-50%) scale(.5);opacity:0;transition:transform .75s cubic-bezier(.2,.8,.2,1),opacity .5s;transition-delay:calc(var(--k)*.24s + .1s)}
+li.on .fsh{transform:translate(0,-50%) rotate(var(--r));opacity:1}
+.fchip{position:absolute;right:10px;top:10px;font:800 11px/1 var(--sans);font-style:normal;color:var(--ink);background:var(--sun);border-radius:999px;padding:5px 9px;opacity:0;transform:scale(.5);transition:opacity .4s .9s,transform .4s .9s}
+li.on .fchip{opacity:1;transform:none}
+.fpage{position:absolute;left:7%;top:11%;bottom:11%;width:42%;border-radius:10px;background:var(--paper2);box-shadow:var(--sh1);padding:4% 4% 0}
+.fpage i{display:block;height:46%;border-radius:6px;background:var(--sun-s) url(assets/real-book.jpg) center/contain no-repeat}
+.fpage b{display:block;font:600 12px/1.2 var(--serif);margin-top:7%}
+.fpage u{display:inline-block;margin-top:6%;font:800 9px/1 var(--sans);text-decoration:none;background:var(--sun);border-radius:999px;padding:4px 9px}
+.fmail{position:absolute;right:7%;top:14%;width:38%;border-radius:10px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh2);padding:4% 4% 5%;transform:translateY(70%) rotate(8deg);opacity:0;transition:transform .7s cubic-bezier(.2,.8,.2,1) .15s,opacity .5s .15s}
+.fmail b{display:block;font:600 12px/1.2 var(--serif)}
+.fmail s{display:block;height:4px;border-radius:2px;background:var(--line2);margin-top:7px;text-decoration:none}
+.fmail s+s{width:60%}
+li.on .fmail{transform:rotate(3deg);opacity:1}
+.fppl{position:absolute;right:7%;bottom:12%;width:38%;display:flex;flex-wrap:wrap;gap:5px}
+.fppl span{width:13px;height:13px;border-radius:50%;background:var(--teal);transform:scale(0);transition:transform .35s cubic-bezier(.3,1.6,.5,1);transition-delay:calc(var(--k)*.11s + .65s)}
+li.on .fppl span{transform:scale(1)}
 .firstlater{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:30px 0 0}
 .firstlater em{font:700 12.5px var(--sans);font-style:normal;color:var(--faint);margin-right:4px}
 .firstlater span{font:600 13.5px var(--sans);color:var(--mut);border:1px dashed var(--line2);border-radius:999px;padding:6px 12px}
-@media(prefers-reduced-motion:reduce){.firstline::before{transition:none;transform:none}}
-@media(max-width:760px){.firstline{grid-template-columns:minmax(0,1fr);gap:26px}.firstline::before{display:none}}
+@media(prefers-reduced-motion:reduce){.firstline::after,.fth,.fth em,.fth u,.fsh,.fchip,.fmail,.fppl span{transition:none}}
+@media(max-width:760px){.firstline{grid-template-columns:minmax(0,1fr);gap:30px}.firstline::before,.firstline::after{display:none}.fstage{max-width:360px;margin-inline:auto}}
 .deal{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:34px;align-items:center;padding:30px;margin-top:18px}
 .deal small{display:block;font:700 12.5px var(--sans);color:var(--faint);margin-bottom:12px}
 .dealcirc{display:flex;align-items:flex-end;gap:26px;padding-bottom:30px}
@@ -1276,7 +1303,7 @@ footer p{max-width:100ch;margin-bottom:8px}
         <div class="tmtop"><span class="tmav" style="background-image:url(assets/adam-face.jpg)"></span><div><b>Adam</b><small>Host and systems</small><em class="tmgift">Soul gift: Divine Manifestation</em></div></div>
         <div class="tmhero"><b class="n">50K</b><p>followers on an Instagram page he grew from nothing.</p></div>
         <div class="tmstats"><span><b>100K+</b>views on his own videos</span><span><b>60</b>listings in one system he is building</span><span><b>5</b>shots in every conversation he films</span></div>
-        <ul><li>Hosts long conversations on camera. The first, with Guida, is on this page</li><li>Runs several social media channels and groups, most of them motivational</li><li>Studies marketing, the platforms and what makes organic content travel</li><li>Builds custom apps, automations and workflows for local businesses in the Algarve</li><li>Clients: a property consultant, a dental clinic and a manager of almost 20 rental properties</li><li>One example: the month-end report for each property owner, ready without typing</li><li>Planned this engine and put this board together for you</li><li>Lives here in the Algarve, so the two of you can sit down in person</li></ul>
+        <ul><li>Hosts long conversations on camera. The first, with Guida, is on this page</li><li>Built and ran motivational pages and groups before this</li><li>Now making content for our own channels and with healers here, starting with Guida and Petra</li><li>Studies marketing, the platforms and what makes organic content travel</li><li>Builds custom apps and automations for local businesses: answering enquiries, bookings and reminders, follow-ups, monthly reports</li><li>Works with a property consultant and a dental clinic</li><li>Planned this engine and put this board together for you</li><li>Lives here in the Algarve, so the two of you can sit down in person</li></ul>
         <p class="tmyou"><b>For you</b>Your host in English and your one point of contact, week to week.</p>
       </article>
     </div>
@@ -1433,9 +1460,9 @@ footer p{max-width:100ch;margin-bottom:8px}
     <div class="first rv">
       <div class="firsthead"><small>It is a lot. We would not start with all of it.</small><b>First, three things.</b></div>
       <ol class="firstline">
-        <li><i>1</i><b>Six conversations in English</b><span>You pick them below. You hear the first three before anyone else.</span></li>
-        <li><i>2</i><b>Shorts from those six</b><span>Cut and posted by us, two a day, on one English channel.</span></li>
-        <li><i>3</i><b>One page and the Sunday letter</b><span>So the people who find you have somewhere to stay.</span></li>
+        <li><i>1</i><div class="fstage fs1" aria-hidden="true"><span class="fth" style="--k:0;background-image:url(https://i.ytimg.com/vi/tYjOG6IIiCM/hq720.jpg)"><em>DE</em><u>EN</u></span><span class="fth" style="--k:1;background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"><em>DE</em><u>EN</u></span><span class="fth" style="--k:2;background-image:url(https://i.ytimg.com/vi/S4PEgV4CiPQ/hq720.jpg)"><em>DE</em><u>EN</u></span><span class="fth" style="--k:3;background-image:url(https://i.ytimg.com/vi/YQap4X1ax04/hq720.jpg)"><em>DE</em><u>EN</u></span><span class="fth" style="--k:4;background-image:url(https://i.ytimg.com/vi/uIR9xmJzFos/hq720.jpg)"><em>DE</em><u>EN</u></span><span class="fth" style="--k:5;background-image:url(https://i.ytimg.com/vi/JOcIgyjWb6Y/hq720.jpg)"><em>DE</em><u>EN</u></span></div><b>Six conversations in English</b><p class="fdesc">You pick them below. You hear the first three before anyone else.</p></li>
+        <li><i>2</i><div class="fstage fs2" aria-hidden="true"><span class="fwide" style="background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"></span><span class="fsh" style="--k:0;--r:-5deg;background-image:url(assets/sh-m-solo.jpg)"></span><span class="fsh" style="--k:1;--r:0deg;background-image:url(assets/sh-lia.jpg)"></span><span class="fsh" style="--k:2;--r:5deg;background-image:url(assets/sh-m-smile.jpg)"></span><em class="fchip">2 a day</em></div><b>Shorts from those six</b><p class="fdesc">Cut and posted by us, two a day, on one English channel.</p></li>
+        <li><i>3</i><div class="fstage fs3" aria-hidden="true"><span class="fpage"><i></i><b>Read chapter one</b><u>Read it</u></span><span class="fmail"><b>The Sunday letter</b><s></s><s></s></span><span class="fppl"><span style="--k:0"></span><span style="--k:1"></span><span style="--k:2"></span><span style="--k:3"></span><span style="--k:4"></span><span style="--k:5"></span><span style="--k:6"></span><span style="--k:7"></span><span style="--k:8"></span><span style="--k:9"></span><span style="--k:10"></span><span style="--k:11"></span></span></div><b>One page and the Sunday letter</b><p class="fdesc">So the people who find you have somewhere to stay.</p></li>
       </ol>
       <p class="firstlater"><em>Later, when these work</em><span>More channels</span><span>The shop in English</span><span>Gatherings in the Algarve</span></p>
     </div>
@@ -1672,6 +1699,13 @@ footer p{max-width:100ch;margin-bottom:8px}
   [].forEach.call(document.querySelectorAll('.film video'),function(clip){var at=+clip.dataset.at||0;
     if(at)clip.addEventListener('loadedmetadata',function(){try{clip.currentTime=at}catch(e){}});
     new IntersectionObserver(function(es){if(es[0].isIntersecting){if(!reduce){var q=clip.play();if(q&&q.catch)q.catch(function(){})}}else clip.pause()},{threshold:.25}).observe(clip)});
+
+  /* ---------- the first three things, played one after another ---------- */
+  var firstSteps=[].slice.call(document.querySelectorAll('.firstline li')),firstLine=document.querySelector('.firstline'),firstAt=-1,firstTimer=null,firstTouched=false;
+  function firstShow(k){firstAt=k;firstSteps.forEach(function(o,i){o.classList.toggle('on',i<=k)});firstLine.style.setProperty('--p',Math.max(0,k)/2)}
+  function firstLoop(){clearTimeout(firstTimer);var nx=firstAt>=2?-1:firstAt+1;firstShow(nx);firstTimer=setTimeout(firstLoop,nx===2?4600:nx===-1?800:2800)}
+  firstSteps.forEach(function(o,i){o.addEventListener('click',function(){firstTouched=true;clearTimeout(firstTimer);firstShow(i)})});
+  if(firstLine){if(reduce)firstShow(2);else new IntersectionObserver(function(es){clearTimeout(firstTimer);if(es[0].isIntersecting&&!firstTouched)firstLoop()},{threshold:.3}).observe(firstLine)}
 
   /* ---------- roles ---------- */
   var tks=document.querySelectorAll('#tasks .tk'),hot=-1,tseen=false;
