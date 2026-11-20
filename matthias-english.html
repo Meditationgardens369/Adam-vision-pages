@@ -562,7 +562,12 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .algl{display:block;font:600 22px/1.2 var(--serif);margin-bottom:16px}
 .modhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 16px;margin:38px 0 12px}
 .modhead b{font:600 clamp(24px,2.7vw,34px)/1.15 var(--serif);letter-spacing:-.01em}
-.modhead span{font:600 13.5px var(--sans);color:var(--faint)}
+.modnav{display:flex;align-items:center;gap:10px;font:600 13.5px var(--sans);color:var(--faint)}
+.modnav em{font-style:normal}
+.modnav button{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);background:#fff;color:var(--ink);cursor:pointer;display:grid;place-items:center;box-shadow:var(--sh1);transition:transform .2s,background .2s}
+.modnav button:hover{background:var(--sun);border-color:var(--sun);transform:scale(1.06)}
+.modnav button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.modnav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .mods{display:flex;gap:16px;overflow-x:auto;padding:8px 4px 22px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
 .mods::-webkit-scrollbar{display:none}
 .mod{flex:none;width:clamp(200px,20vw,250px);padding:0;border:0;background:#fff;border-radius:22px;overflow:hidden;text-align:left;box-shadow:var(--sh2);cursor:pointer;font:inherit;color:var(--ink);transition:transform .35s ease}
@@ -782,6 +787,25 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .rr b{font:700 8px var(--sans);color:var(--mut)}
 .rr i{display:block;height:7px;border-radius:4px;background:var(--c);width:var(--w)}
 .promises{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}
+.deal{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:34px;align-items:center;padding:30px;margin-top:18px}
+.deal small{display:block;font:700 12.5px var(--sans);color:var(--faint);margin-bottom:12px}
+.dealcirc{display:flex;align-items:flex-end;gap:26px;padding-bottom:30px}
+.dc{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:50%;text-align:center;transform:scale(0);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.deal.in .dc{transform:none}
+.dc.de{width:74px;height:74px;background:var(--line2)}
+.dc.en{width:252px;height:252px;background:var(--teal);color:#fff;transition-delay:.35s}
+.dc b{font:600 19px/1 var(--serif)}
+.dc.en b{font-size:54px;letter-spacing:-.02em}
+.dc{position:relative}
+.dc.de em{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:8px;font:600 13.5px/1.1 var(--sans);font-style:normal;color:var(--mut);white-space:nowrap}
+.dc.en em{display:block;font:600 15px/1.1 var(--sans);font-style:normal;margin-top:6px;color:#fff}
+.dealroom p{font:500 17px/1.45 var(--serif);color:var(--mut);margin:16px 0 0}
+.dealrisk b.n{display:block;font:600 clamp(64px,8vw,104px)/1 var(--serif);letter-spacing:-.03em;color:var(--teal)}
+.dealrisk ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.dealrisk li{position:relative;padding-left:22px;font-size:16px;line-height:1.4}
+.dealrisk li::before{content:"";position:absolute;left:0;top:.45em;width:10px;height:10px;border-radius:50%;background:var(--sun)}
+@media(prefers-reduced-motion:reduce){.dc{transition:none;transform:none}}
+@media(max-width:900px){.deal{grid-template-columns:minmax(0,1fr);padding:22px;gap:24px}.dc.en{width:200px;height:200px}.dc.en b{font-size:44px}.dc.de{width:59px;height:59px}.dc.de b{font-size:15px}.modnav em{display:none}}
 @media(max-width:800px){.promises{grid-template-columns:minmax(0,1fr)}}
 .promise{padding:18px 20px;border-radius:20px;background:var(--c)}
 .promise b{display:block;font:600 20px var(--serif);margin-bottom:4px}
@@ -1263,7 +1287,7 @@ footer p{max-width:100ch;margin-bottom:8px}
       <div class="win rv" style="--c:var(--lilac-s)"><b data-n="12">0</b><span>ways of working, from sound to Bowen</span></div>
       <div class="win rv" style="--c:var(--teal-s)"><b data-n="300">0</b><span>days of sun a year, about</span></div>
     </div>
-    <div class="modhead rv"><b>What people could feel here</b><span>Tap a picture to see who brings it</span></div>
+    <div class="modhead rv"><b>What people could feel here</b><span class="modnav"><em>11 practices. Tap one to see who brings it</em><button type="button" id="modPrev" aria-label="Earlier practices"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" id="modNext" aria-label="More practices"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></span></div>
     <div class="mods" id="mods"><button type="button" class="mod" style="--cs:var(--lilac-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/alg-bowl.jpg);background-position:50% 50%"><span class="modwho">With Brigitte. Four decades in sound</span></span><span class="modtxt"><b>Sound therapy</b><span>Bowls, gongs and voice</span></span></button><button type="button" class="mod" style="--cs:var(--sky-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-silent.jpg);background-position:50% 35%"><span class="modwho">Guided, with our own music</span></span><span class="modtxt"><b>Silent meditation</b><span>Guided, with headphones, under the open sky</span></span></button><button type="button" class="mod" style="--cs:var(--rose-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-body.jpg);background-position:50% 50%"><span class="modwho">With Guida. Thirty years of healing work</span></span><span class="modtxt"><b>Trauma Release</b><span>Hands-on work with what the body holds</span></span></button><button type="button" class="mod" style="--cs:var(--sun-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-breath.jpg);background-position:50% 50%"><span class="modwho">With Petra. Twenty years of teaching dance</span></span><span class="modtxt"><b>Movement and breath</b><span>On the beach, to start the day</span></span></button><button type="button" class="mod" style="--cs:var(--teal-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-energy.jpg);background-position:50% 50%"><span class="modwho">With Petra</span></span><span class="modtxt"><b>Energy sessions</b><span>LEAP, a Kundalini awakening process</span></span></button><button type="button" class="mod" style="--cs:var(--leaf-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-bowen.jpg);background-position:50% 50%"><span class="modwho">With Lara. Two decades of hands-on work</span></span><span class="modtxt"><b>Bowen therapy</b><span>Gentle touch for the nervous system</span></span></button><button type="button" class="mod" style="--cs:var(--rose-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-acu.jpg);background-position:50% 50%"><span class="modwho">With In Harmony</span></span><span class="modtxt"><b>Chinese medicine</b><span>Acupuncture, an old tradition</span></span></button><button type="button" class="mod" style="--cs:var(--sky-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-fork.jpg);background-position:50% 50%"><span class="modwho">With Leanne. Over a decade with frequencies</span></span><span class="modtxt"><b>Frequency healing</b><span>Scans and quantum-based tools</span></span></button><button type="button" class="mod" style="--cs:var(--lilac-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-soul.jpg);background-position:50% 50%"><span class="modwho">With Brigitte. Healing music since 2013</span></span><span class="modtxt"><b>Soul readings</b><span>Soul Realignment in the Akashic Records</span></span></button><button type="button" class="mod" style="--cs:var(--leaf-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/mod-nature.jpg);background-position:50% 60%"><span class="modwho">With you</span></span><span class="modtxt"><b>Nature and purpose</b><span>A walk, a talk, the rainforest story</span></span></button><button type="button" class="mod" style="--cs:var(--sun-s)" aria-pressed="false"><span class="modpic" style="background-image:url(assets/lp-bowl.jpg);background-position:50% 50%"><span class="modwho">With you, and plant-based cooks we know</span></span><span class="modtxt"><b>Holistic food workshops</b><span>Organic and plant-based, cooked together</span></span></button></div>
     <div class="exp glass rv">
       <div class="exl">
@@ -1371,6 +1395,25 @@ footer p{max-width:100ch;margin-bottom:8px}
       <div class="promise rv" style="--c:var(--teal-s)"><b>Guests say yes first</b><span>No interview is translated without its guest agreeing.</span></div>
       <div class="promise rv" style="--c:var(--sun-s)"><b>You hear it first</b><span>The first three English versions go to you before anyone else.</span></div>
       <div class="promise rv" style="--c:var(--lilac-s)"><b>Every product line checked</b><span>What a text may say about a supplement is checked before it goes out.</span></div>
+    </div>
+    <div class="deal glass rv">
+      <div class="dealroom">
+        <small>The size of the room</small>
+        <div class="dealcirc" role="img" aria-label="About 130 million people speak German. About 1.5 billion speak English.">
+          <span class="dc de"><b>130M</b><em>speak German</em></span>
+          <span class="dc en"><b>1.5bn</b><em>speak English</em></span>
+        </div>
+        <p>The same conversations, in a room more than ten times the size.</p>
+      </div>
+      <div class="dealrisk">
+        <small>What it costs you to try</small>
+        <b class="n">€0</b>
+        <ul>
+          <li>We do the work. You give a few hours a month</li>
+          <li>We earn a share of what the English side brings in, agreed with you first</li>
+          <li>If it brings in nothing, you owe us nothing</li>
+        </ul>
+      </div>
     </div>
     <div class="pickbox glass rv">
       <h2>Pick six <em>to begin.</em></h2>
@@ -1590,6 +1633,7 @@ footer p{max-width:100ch;margin-bottom:8px}
     modRail.addEventListener('mouseenter',function(){modOver=true});modRail.addEventListener('mouseleave',function(){modOver=false;modX=modRail.scrollLeft});
     if(!reduce){new IntersectionObserver(function(es){modSeen=es[0].isIntersecting},{threshold:.2}).observe(modRail);
       (function modDrift(){if(modSeen&&!modHold&&!modOver){var room=modRail.scrollWidth-modRail.clientWidth;modX+=modDir*.45;if(modX>=room){modX=room;modDir=-1}else if(modX<=0){modX=0;modDir=1}modRail.scrollLeft=modX}requestAnimationFrame(modDrift)})()}}
+  [['modPrev',-1],['modNext',1]].forEach(function(pair){var navBtn=document.getElementById(pair[0]);if(navBtn&&modRail)navBtn.addEventListener('click',function(){modHold=true;var firstCard=modRail.querySelector('.mod');modRail.scrollBy({left:pair[1]*(firstCard.offsetWidth+16)*2,behavior:'smooth'})})});
   var seatBox=document.getElementById('seats'),seatOut=document.getElementById('seatOut');
   if(seatBox&&seatOut){for(var sq=0;sq<40;sq++)seatBox.appendChild(document.createElement('i'));
     new IntersectionObserver(function(es,ob){if(!es[0].isIntersecting)return;ob.disconnect();var taken=0;
