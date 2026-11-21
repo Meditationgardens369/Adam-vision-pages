@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How English earns</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="For Matthias: how the English side could earn without shipping a bottle, with an estimator you can move yourself.">
+<meta name="theme-color" content="#fffdf7">
+<meta name="color-scheme" content="light only">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='36' fill='none' stroke='%23fec102' stroke-width='14'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600;700;800&display=swap">
+<style>
+/* A stand-alone page for Matthias Langwasser. It answers one question from 21 Nov 2026:
+   how the English side earns without shipping supplements. Prices and rates are examples. */
+:root{
+  --paper:#fffdf7;--paper2:#f6f8ef;--ink:#224130;--mut:#55705f;--faint:#8ea296;
+  --line:rgba(34,65,48,.12);--line2:rgba(34,65,48,.22);
+  --teal:#108474;--teal-s:#d2f6e6;--sun:#fec102;--sun-s:#fff3c4;--leaf-s:#e7f6d5;--lilac-s:#efe9fb;--rose-s:#fbe9f0;
+  --sh1:0 1px 3px rgba(34,65,48,.06),0 10px 24px -14px rgba(34,65,48,.25);
+  --sh2:0 2px 6px rgba(34,65,48,.06),0 26px 60px -22px rgba(34,65,48,.35);
+  --serif:Fraunces,Georgia,serif;--sans:Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --rb:linear-gradient(90deg,#ff6b6b,#ffb347,#fec102,#7fd8a7,#6fc3ff,#b48cff,#ff7fc0);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;margin:0;text-wrap:balance;line-height:1.06}
+h1{font-size:clamp(40px,8vw,72px)}
+h2{font-size:clamp(30px,5.4vw,46px)}
+h3{font-size:22px;font-weight:600}
+em{font-style:italic;color:var(--teal)}
+p{margin:0}
+.wrap{max-width:820px;margin:0 auto;padding-inline:max(18px,env(safe-area-inset-left,0px))}
+.rbline{height:5px;background:var(--rb)}
+.top{display:flex;align-items:center;gap:10px;padding:16px 0}
+.top i{width:16px;height:16px;border-radius:50%;border:3px solid var(--sun)}
+.top b{font:600 17px var(--serif)}
+.top span{margin-left:auto;font:600 13px var(--sans);color:var(--faint)}
+section{padding:44px 0}
+.kicker{display:block;font:700 13px var(--sans);color:var(--teal);margin-bottom:12px}
+.lede{font-size:19px;line-height:1.5;color:var(--mut);margin-top:16px;max-width:56ch}
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--sh1);padding:24px}
+.tiny{font-size:13px;line-height:1.45;color:var(--faint)}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+
+/* hero */
+.hero{padding-top:26px}
+.who{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.who img{width:54px;height:54px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--sun)}
+.who b{display:block;font:600 18px var(--serif)}
+.who span{display:block;font-size:13.5px;color:var(--mut)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:26px}
+.facts span{display:block;border-radius:18px;padding:14px 16px;background:var(--c);font:600 16px/1.25 var(--serif)}
+.facts small{display:block;font:500 13px/1.35 var(--sans);color:var(--mut);margin-top:4px}
+
+/* the idea */
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px;position:relative}
+.flow::before{content:"";position:absolute;left:16.6%;right:16.6%;top:30px;height:3px;border-radius:2px;background:var(--line2)}
+.flow::after{content:"";position:absolute;left:16.6%;right:16.6%;top:30px;height:3px;border-radius:2px;background:var(--teal);transform-origin:left;transform:scaleX(0);transition:transform 1.6s cubic-bezier(.2,.8,.2,1) .3s}
+.flow.in::after{transform:scaleX(1)}
+.flow div{position:relative;text-align:center}
+.flow i{position:relative;z-index:1;display:grid;place-items:center;width:60px;height:60px;margin:0 auto 14px;border-radius:50%;background:var(--teal);color:#fff;font:600 26px var(--serif);font-style:normal;box-shadow:0 0 0 6px var(--paper)}
+.flow b{display:block;font:600 20px/1.2 var(--serif)}
+.flow p{font-size:15px;line-height:1.45;color:var(--mut);margin-top:6px}
+
+/* estimator */
+.est{padding:26px}
+.estq{display:block;font:700 13px var(--sans);color:var(--teal);margin-bottom:6px}
+.estbig{font:600 clamp(28px,6vw,44px)/1.1 var(--serif);letter-spacing:-.02em}
+.est input[type=range]{width:100%;height:34px;margin-top:10px;accent-color:var(--teal);cursor:pointer}
+.estnote{font-size:14px;line-height:1.45;color:var(--mut);margin-top:6px}
+.estdiv{border:0;border-top:1px dashed var(--line2);margin:22px 0}
+.moods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
+.moods button{border:1px solid var(--line2);background:#fff;border-radius:16px;padding:12px 8px;font:700 15px var(--sans);color:var(--ink);cursor:pointer}
+.moods button small{display:block;font:500 12px/1.3 var(--sans);color:var(--mut);margin-top:3px}
+.moods button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.moods button[aria-pressed="true"] small{color:rgba(255,255,255,.78)}
+.res{display:grid;gap:12px;margin-top:18px}
+.r{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:center;border-radius:18px;padding:16px 18px;background:var(--paper2)}
+.r.c{background:var(--sun-s)}
+.r h3{font-size:19px}
+.r .how{grid-column:1/-1;font-size:14px;line-height:1.4;color:var(--mut)}
+.r .val{font:600 clamp(26px,6vw,36px)/1 var(--serif);letter-spacing:-.02em;text-align:right;white-space:nowrap}
+.r .val small{display:block;font:600 12.5px var(--sans);letter-spacing:0;color:var(--mut);margin-top:4px}
+.step{grid-column:1/-1;display:flex;align-items:center;gap:10px;margin-top:4px}
+.step span{font:600 14px var(--sans);color:var(--mut)}
+.step b{font:600 19px var(--serif);min-width:74px;text-align:center}
+.step button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line2);background:#fff;font:600 22px/1 var(--sans);color:var(--ink);cursor:pointer}
+.step button:active{background:var(--sun)}
+.total{margin-top:14px;border-radius:20px;padding:20px 22px;background:var(--sun);color:var(--ink);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:center}
+.total b{font:600 clamp(32px,7.4vw,50px)/1 var(--serif);letter-spacing:-.02em;text-align:right;color:var(--ink)}
+.total h3{color:var(--ink);font-size:20px}
+.total p{grid-column:1/-1;font-size:14px;line-height:1.45;color:var(--ink)}
+
+/* what people pay for */
+.offers{display:grid;gap:10px;margin-top:22px}
+.of{border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--sh1);overflow:hidden}
+.of>button{width:100%;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;border:0;background:none;padding:16px 18px;text-align:left;font:inherit;color:var(--ink);cursor:pointer}
+.of i{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--teal-s);font:600 20px var(--serif);font-style:normal}
+.of b{display:block;font:600 19px/1.2 var(--serif)}
+.of small{display:block;font-size:14px;color:var(--mut);margin-top:2px}
+.of .pr{font:700 14px var(--sans);white-space:nowrap;background:var(--sun-s);border-radius:999px;padding:6px 11px}
+.of .more{display:none;padding:0 18px 18px 76px}
+.of.open .more{display:block}
+.of .more p{font-size:15.5px;line-height:1.5;color:var(--mut)}
+.of .you{margin-top:12px;border-left:4px solid var(--teal);padding:2px 0 2px 12px;font:600 16px/1.3 var(--serif)}
+.of .you small{display:block;font:700 12px var(--sans);color:var(--teal);margin:0 0 2px}
+.of>button::after{content:"+";grid-column:3;grid-row:1;display:none}
+
+/* asks */
+.asks{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-top:22px}
+.asks .card b.n{display:block;font:600 clamp(40px,9vw,64px)/1 var(--serif);letter-spacing:-.03em;color:var(--teal)}
+.asks ul,.easy ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:9px}
+.asks li,.easy li{position:relative;padding-left:22px;font-size:16px;line-height:1.4}
+.asks li::before,.easy li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;border-radius:50%;background:var(--sun)}
+
+/* order */
+.ord{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:0;counter-reset:o}
+.ord li{counter-increment:o;position:relative;padding:0 0 22px 58px}
+.ord li::before{content:counter(o);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--sun);font:600 19px/40px var(--serif);text-align:center}
+.ord li::after{content:"";position:absolute;left:19px;top:44px;bottom:2px;border-left:2px dashed var(--line2)}
+.ord li:last-child::after{display:none}
+.ord b{display:block;font:600 19px/1.25 var(--serif);padding-top:6px}
+.ord span{display:block;font-size:15px;color:var(--mut)}
+
+/* close */
+.close{text-align:center;padding-bottom:70px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;background:var(--sun);color:var(--ink);border-radius:999px;padding:17px 30px;font:800 18px var(--sans);text-decoration:none;box-shadow:0 16px 34px -16px rgba(254,193,2,.95)}
+.link{display:inline-block;margin-top:18px;font:600 15px var(--sans);color:var(--teal)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+@media(max-width:640px){
+  .facts,.asks{grid-template-columns:minmax(0,1fr)}
+  .flow{grid-template-columns:minmax(0,1fr);gap:22px}
+  .flow::before,.flow::after{display:none}
+  .of .more{padding-left:18px}
+  .of>button{grid-template-columns:44px minmax(0,1fr)}
+  .of .pr{grid-column:2;justify-self:start}
+  .est{padding:20px}
+}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.flow::after{transition:none;transform:scaleX(1)}}
+</style>
+</head>
+<body>
+<div class="rbline" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="top"><i aria-hidden="true"></i><b>Matthias, in English</b><span>How it earns</span></div>
+
+  <section class="hero">
+    <div class="who"><img src="assets/lp-matthias.jpg" alt=""><div><b>For Matthias</b><span>From Adam and Brigitte, after Saturday</span></div></div>
+    <h1>English can earn <em>without shipping a bottle.</em></h1>
+    <p class="lede">You liked the vision. You also said your supplements cannot cross borders for now, and that you do not want more work. So this page answers one question: where would the money come from?</p>
+    <div class="facts">
+      <span style="--c:var(--teal-s)">Nothing to ship<small>Everything is digital</small></span>
+      <span style="--c:var(--sun-s)">No advertising<small>Your videos stay free of it</small></span>
+      <span style="--c:var(--lilac-s)">A few hours a month<small>From you. We do the rest</small></span>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">The idea</span>
+    <h2>Three steps, <em>in this order.</em></h2>
+    <div class="flow rv">
+      <div><i>1</i><b>Free videos</b><p>Your conversations, in English. Anyone can watch.</p></div>
+      <div><i>2</i><b>The Sunday letter</b><p>People who want more leave their email.</p></div>
+      <div><i>3</i><b>What they pay for</b><p>A community, courses, a summit, your books.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">Try your own numbers</span>
+    <h2>Move it <em>and see.</em></h2>
+    <p class="lede">Nothing here is a promise. It shows how the pieces multiply, so you can judge it yourself.</p>
+    <div class="card est rv" style="margin-top:22px">
+      <span class="estq">1. How many English views a month?</span>
+      <div class="estbig"><span id="vOut">200,000</span> views</div>
+      <input type="range" id="vIn" min="50000" max="1000000" step="50000" value="200000" aria-label="English views a month">
+      <p class="estnote">For scale: two German videos a week at about 96,000 views each is roughly 800,000 a month.</p>
+
+      <hr class="estdiv">
+      <span class="estq">2. How careful do you want to be?</span>
+      <div class="moods" id="moods" role="group" aria-label="How careful the estimate is">
+        <button type="button" data-m="0" aria-pressed="false">Careful<small>few people act</small></button>
+        <button type="button" data-m="1" aria-pressed="true">Middle<small>a fair guess</small></button>
+        <button type="button" data-m="2" aria-pressed="false">Bold<small>it goes well</small></button>
+      </div>
+      <p class="estnote" id="moodNote"></p>
+
+      <hr class="estdiv">
+      <span class="estq">3. What comes out</span>
+      <div class="res" aria-live="polite">
+        <div class="r"><h3>Letter readers after a year</h3><div class="val" id="oReaders">0</div><p class="how" id="hReaders"></p></div>
+        <div class="r c"><h3>The community</h3><div class="val"><span id="oComm">0</span><small>a month</small></div><p class="how" id="hComm"></p>
+          <div class="step"><span>Price a month</span><button type="button" data-k="c" data-d="-1" aria-label="Lower the community price">&minus;</button><b id="pC">€50</b><button type="button" data-k="c" data-d="1" aria-label="Raise the community price">+</button></div></div>
+        <div class="r"><h3>One course</h3><div class="val"><span id="oCourse">0</span><small>per launch</small></div><p class="how" id="hCourse"></p>
+          <div class="step"><span>Price</span><button type="button" data-k="k" data-d="-1" aria-label="Lower the course price">&minus;</button><b id="pK">€297</b><button type="button" data-k="k" data-d="1" aria-label="Raise the course price">+</button></div></div>
+        <div class="r"><h3>One summit</h3><div class="val"><span id="oSummit">0</span><small>per summit</small></div><p class="how" id="hSummit"></p>
+          <div class="step"><span>Price</span><button type="button" data-k="s" data-d="-1" aria-label="Lower the summit price">&minus;</button><b id="pS">€147</b><button type="button" data-k="s" data-d="1" aria-label="Raise the summit price">+</button></div></div>
+      </div>
+      <div class="total"><h3>A full year at this level</h3><b id="oYear">0</b><p>Twelve months of the community, two course launches and one summit. Before costs and before our share. It takes about a year of videos to get here.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">What people would pay for</span>
+    <h2>Six things, <em>none of them in a parcel.</em></h2>
+    <p class="lede">Tap one to see what it is and what it asks of you.</p>
+    <div class="offers" id="offers">
+      <div class="of open"><button type="button" aria-expanded="true"><i>1</i><span><b>Videos and the Sunday letter</b><small>Where everyone starts</small></span><span class="pr">Free</span></button>
+        <div class="more"><p>Your conversations in English, a free guide or a chapter of your book, and a letter every Sunday. The videos carry no advertising. Their job is to bring people to the letter.</p><p class="you"><small>From you</small>Nothing new</p></div></div>
+      <div class="of"><button type="button" aria-expanded="false"><i>2</i><span><b>Books, recipes, meditations</b><small>Small things people buy first</small></span><span class="pr">€9 to €29</span></button>
+        <div class="more"><p>Reise in die Freiheit and your cookbook in English, as ebook, audiobook and print on demand. Amazon prints and sends. Guided meditations with your voice and Brigitte's music.</p><p class="you"><small>From you</small>Nothing new to write</p></div></div>
+      <div class="of"><button type="button" aria-expanded="false"><i>3</i><span><b>The community</b><small>The centre of it</small></span><span class="pr">About €50 a month</span></button>
+        <div class="more"><p>A private circle with a live session every week, a library that grows, and people who think alike. You host one week. Guida, Brigitte and Petra host the others.</p><p class="you"><small>From you</small>One live conversation a month</p></div></div>
+      <div class="of"><button type="button" aria-expanded="false"><i>4</i><span><b>Courses</b><small>Thirty days, done together</small></span><span class="pr">€197 to €497</span></button>
+        <div class="more"><p>For example Journey to freedom, from your two years on foot, or the living kitchen from your cookbook. We plan it, film it and run it.</p><p class="you"><small>From you</small>Record it once</p></div></div>
+      <div class="of"><button type="button" aria-expanded="false"><i>5</i><span><b>A summit</b><small>Your interviews on one theme</small></span><span class="pr">€97 to €197</span></button>
+        <div class="more"><p>What you may know as an Online-Kongress. Free to watch for 48 hours, then paid to keep. Made from conversations you already have, with the guests' agreement.</p><p class="you"><small>From you</small>Nothing new</p></div></div>
+      <div class="of"><button type="button" aria-expanded="false"><i>6</i><span><b>In person</b><small>Here in the Algarve</small></span><span class="pr">€1,000 to €5,000</span></button>
+        <div class="more"><p>Gatherings by the sea with the healers we know here, and a small yearly group for people building a business with heart. Later, once people know you in English.</p><p class="you"><small>From you</small>A few days a year</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">What it asks of you</span>
+    <h2>Very little, <em>on purpose.</em></h2>
+    <div class="asks">
+      <div class="card rv"><b class="n">€0</b><h3 style="margin-top:8px">to try</h3>
+        <ul><li>We do the work and carry the cost</li><li>We earn a share of what the English side brings in, agreed with you first</li><li>If it brings in nothing, you owe us nothing</li></ul></div>
+      <div class="card rv"><b class="n" style="font-size:clamp(30px,7vw,44px);padding-top:8px">A few hours</b><h3 style="margin-top:8px">a month from you</h3>
+        <ul><li>Two conversations in English</li><li>One of them live, for the community</li><li>Your word is final on everything</li></ul></div>
+    </div>
+  </section>
+
+  <section class="easy">
+    <span class="kicker">Simpler than supplements</span>
+    <h2>The part <em>that worried you.</em></h2>
+    <div class="card rv" style="margin-top:22px">
+      <ul>
+        <li>No customs, no labels, no parcels</li>
+        <li>A reseller platform such as Digistore24 sells in its own name and handles the tax for each country</li>
+        <li>Your accountant confirms the setup once</li>
+        <li>Courses stay on food, habits and lifestyle, with no healing promises</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">The order</span>
+    <h2>One thing <em>at a time.</em></h2>
+    <ol class="ord">
+      <li><b>Six of your conversations, in English</b><span>With the letter and a free guide from the first video</span></li>
+      <li><b>Your books in English</b><span>The first thing people can buy</span></li>
+      <li><b>A summit from your interviews</b><span>The first paid launch</span></li>
+      <li><b>The community opens</b><span>To the people who bought the summit</span></li>
+      <li><b>A course, then the first gathering</b><span>When the circle asks for more</span></li>
+    </ol>
+  </section>
+
+  <section class="close">
+    <h2>If this makes sense, <em>say yes.</em></h2>
+    <p class="lede" style="margin-inline:auto">We begin with six conversations you choose. Nothing else starts until those are out.</p>
+    <p style="margin-top:26px"><a class="btn" href="https://wa.me/?text=Yes%2C%20let%27s%20start%20with%20six%20conversations.">Send Adam a yes on WhatsApp</a></p>
+    <a class="link" href="matthias-english.html">See the whole vision again</a>
+    <p class="tiny" style="margin-top:34px">Prices are ideas and the figures are examples, not forecasts. How tax is handled depends on the platform chosen, so your accountant should confirm it for your company.</p>
+  </section>
+</div>
+<script>
+(function(){
+  'use strict';
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* reveal */
+  var rv=[].slice.call(document.querySelectorAll('.rv'));
+  if(reduce||!('IntersectionObserver' in window)){rv.forEach(function(e){e.classList.add('in')})}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.2});rv.forEach(function(e){io.observe(e)})}
+
+  /* estimator */
+  var MOODS=[{n:500,c:.01,k:.005,s:.01},{n:300,c:.02,k:.01,s:.02},{n:200,c:.03,k:.015,s:.03}];
+  var PRICE={c:[50,5,20,100],k:[297,50,97,497],s:[147,25,47,247]};
+  var mood=1,vIn=document.getElementById('vIn');
+  function $(id){return document.getElementById(id)}
+  function fmt(n){return Math.round(n).toLocaleString('en-US')}
+  function eur(n){return '€'+fmt(n)}
+  function pct(x){return (x*100).toFixed(x*100%1?1:0)+'%'}
+  function calc(){
+    var m=MOODS[mood],views=+vIn.value,readers=views/m.n*12;
+    var members=readers*m.c,sales=readers*m.k,passes=readers*m.s;
+    var pc=PRICE.c[0],pk=PRICE.k[0],ps=PRICE.s[0];
+    $('vOut').textContent=fmt(views);
+    $('moodNote').textContent='This assumes 1 viewer in '+m.n+' joins the letter. Of the readers, '+pct(m.c)+' join the community, '+pct(m.k)+' buy a course and '+pct(m.s)+' buy a summit pass.';
+    $('oReaders').textContent=fmt(readers);$('hReaders').textContent=fmt(views)+' views, 1 in '+m.n+' joins, for twelve months';
+    $('oComm').textContent=eur(members*pc);$('hComm').textContent=fmt(members)+' members at '+eur(pc);
+    $('oCourse').textContent=eur(sales*pk);$('hCourse').textContent=fmt(sales)+' people at '+eur(pk);
+    $('oSummit').textContent=eur(passes*ps);$('hSummit').textContent=fmt(passes)+' passes at '+eur(ps);
+    $('pC').textContent=eur(pc);$('pK').textContent=eur(pk);$('pS').textContent=eur(ps);
+    $('oYear').textContent=eur(members*pc*12+sales*pk*2+passes*ps);
+  }
+  vIn.addEventListener('input',calc);
+  [].forEach.call(document.querySelectorAll('#moods button'),function(b){b.addEventListener('click',function(){mood=+b.dataset.m;[].forEach.call(document.querySelectorAll('#moods button'),function(o){o.setAttribute('aria-pressed',String(o===b))});calc()})});
+  [].forEach.call(document.querySelectorAll('.step button'),function(b){b.addEventListener('click',function(){var p=PRICE[b.dataset.k];p[0]=Math.max(p[2],Math.min(p[3],p[0]+p[1]*(+b.dataset.d)));calc()})});
+  calc();
+
+  /* offers */
+  [].forEach.call(document.querySelectorAll('#offers .of'),function(of){var bt=of.querySelector('button');bt.addEventListener('click',function(){var open=!of.classList.contains('open');[].forEach.call(document.querySelectorAll('#offers .of'),function(o){o.classList.remove('open');o.querySelector('button').setAttribute('aria-expanded','false')});if(open){of.classList.add('open');bt.setAttribute('aria-expanded','true')}})});
+})();
+</script>
+</body>
+</html>
