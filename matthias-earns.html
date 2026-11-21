@@ -259,7 +259,9 @@ section{padding:52px 0}
 .mpv{position:relative;display:grid;place-items:center;aspect-ratio:16/10;border-radius:14px;background:var(--paper2);overflow:hidden;margin-bottom:12px}
 .mp>b{display:block;font:600 18px/1.2 var(--serif)}
 .mp>small{display:block;font-size:13.5px;color:var(--mut);margin-top:2px}
-.mp>u{display:inline-block;text-decoration:none;font:700 13px var(--sans);background:var(--sun);border-radius:999px;padding:6px 11px;margin-top:10px}
+.mpc{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.mpc u{text-decoration:none;font:700 13px var(--sans);background:var(--sun);border-radius:999px;padding:6px 11px}
+.mpc u.yo{background:var(--teal-s)}
 .vbook{position:relative;width:38%;aspect-ratio:3/4;border-radius:5px 9px 9px 5px;background:#fff center/cover no-repeat;box-shadow:-8px 10px 20px -10px rgba(34,65,48,.55);animation:tiltIn .7s cubic-bezier(.2,.9,.3,1.2) both .2s}
 @keyframes tiltIn{from{opacity:0;transform:rotate(8deg) translateY(14px)}to{opacity:1;transform:rotate(-5deg)}}
 .vbook::after{content:"English";position:absolute;right:-14px;top:10px;font:800 11px/1 var(--sans);color:#fff;background:var(--teal);border-radius:999px;padding:5px 8px;box-shadow:0 0 0 2px #fff}
@@ -302,6 +304,8 @@ section{padding:52px 0}
 .mkearn b{display:block;font:600 23px/1.15 var(--serif);margin:3px 0 6px}
 .mkearn p{font-size:14.5px;line-height:1.4;color:var(--mut)}
 .mkearn p+small{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line2)}
+.mkearn small.you{margin-top:10px}
+.mkearn em{font-size:15.5px}
 .mkearn em{display:block;font:600 17px/1.25 var(--serif);font-style:normal;color:var(--ink);margin-top:2px}
 
 /* 5. estimator */
@@ -355,6 +359,22 @@ section{padding:52px 0}
 .legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;background:var(--c)}
 
 /* asks, order, close */
+.wdo{margin-top:24px;padding:24px}
+.whohead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+.whobar{flex:1;min-width:160px;max-width:420px;display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--paper2)}
+.whobar i{display:block;height:100%;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.whobar i:first-child{background:var(--teal)}
+.whobar i:last-child{background:var(--sun)}
+.whocols{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:16px;margin-top:18px;align-items:start}
+.whocol{border-radius:20px;padding:18px}
+.whocol.we{background:var(--teal-s)}
+.whocol.you{background:var(--sun-s)}
+.whocol h3{display:flex;align-items:baseline;gap:10px}
+.whocol h3 span{font:600 34px/1 var(--serif);letter-spacing:-.02em}
+.whocol ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px}
+.whocol.we ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+.whocol li{background:#fff;border-radius:12px;padding:10px 12px;font:600 14.5px/1.3 var(--sans);animation:rise .45s both;animation-delay:calc(var(--k)*.07s)}
+.whocol li small{display:block;font:500 12.5px/1.3 var(--sans);color:var(--mut);margin-top:2px}
 .asks{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-top:22px}
 .asks .card{padding:24px}
 .asks b.n{display:block;font:600 clamp(40px,7vw,64px)/1 var(--serif);letter-spacing:-.03em;color:var(--teal)}
@@ -405,6 +425,10 @@ section{padding:52px 0}
   .srcs{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   .srcs button i{aspect-ratio:16/9}
   .mk{padding:16px}
+  .wdo{padding:16px}
+  .whocols{grid-template-columns:minmax(0,1fr)}
+  .whocol.we ul{grid-template-columns:minmax(0,1fr)}
+  .whocol.you{order:-1}
   .mps{grid-template-columns:minmax(0,1fr)}
   .mp{display:grid;grid-template-columns:112px minmax(0,1fr);gap:2px 12px;align-content:center}
   .mp .mpv{grid-row:1/4;aspect-ratio:1;margin-bottom:0}
@@ -413,7 +437,7 @@ section{padding:52px 0}
   .vlive{width:56%}
   .vguide{width:44%}
   .mp>b{align-self:end}
-  .mp>u{justify-self:start;margin-top:6px}
+  .mpc{margin-top:6px}
   .vpass{padding:8px 8px 8px 9px;border-left-width:6px}
   .vpass em{font-size:12px}
   .vpass span i{width:20px;height:20px}
@@ -423,7 +447,7 @@ section{padding:52px 0}
   .flnote{min-height:96px}
   .gets,.outs{min-height:0}
 }
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.trk i,.lstage>img{animation:none}.pane.on,.vid,.get,.q.mine,.ex,.mp,.mkrow,.mkearn,.vbook,.vdays i,.vlib i,.vclips i,.vpass,.vguide i,.mkflow i,.vlive img,.wsc>*,.wsc>.sq,.wsc>.snext,.sw i,.sdo div.ok::before,.swave u,.sring .fg,.sring .ck,.sface img{animation:none}.sring .fg,.sring .ck{stroke-dashoffset:0}.vdays i{background:var(--teal)}.vbook{transform:rotate(-5deg)}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.trk i,.lstage>img{animation:none}.pane.on,.vid,.get,.q.mine,.ex,.mp,.mkrow,.mkearn,.vbook,.vdays i,.vlib i,.vclips i,.vpass,.vguide i,.mkflow i,.vlive img,.whocol li,.wsc>*,.wsc>.sq,.wsc>.snext,.sw i,.sdo div.ok::before,.swave u,.sring .fg,.sring .ck,.sface img{animation:none}.sring .fg,.sring .ck{stroke-dashoffset:0}.vdays i{background:var(--teal)}.vbook{transform:rotate(-5deg)}}
 </style>
 </head>
 <body>
@@ -551,10 +575,10 @@ section{padding:52px 0}
   <section>
     <span class="kicker">5. From what you already have</span>
     <h2>Nothing new to invent. <em>You have lived all of it.</em></h2>
-    <p class="lede">Tap something you already have and see what it becomes. Then tap a product to look inside.</p>
+    <p class="lede">Tap something you already have and see what we make from it. Then tap a product to see what is inside, and how little it needs from you.</p>
     <div class="srcs" id="srcs" role="group" aria-label="What you already have"></div>
     <div class="card mk rv">
-      <div class="mkhead"><small>From</small><b id="mkName"></b><span class="mkflow" aria-hidden="true"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i></span><span class="to">three things people can buy or join</span></div>
+      <div class="mkhead"><small>From</small><b id="mkName"></b><span class="mkflow" aria-hidden="true"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i></span><span class="to">three things we make from it</span></div>
       <div class="mps" id="mps"></div>
       <div class="mkin" id="mkin" aria-live="polite"></div>
     </div>
@@ -613,12 +637,26 @@ section{padding:52px 0}
 
   <section>
     <span class="kicker">7. What it asks of you</span>
-    <h2>Very little, <em>on purpose.</em></h2>
+    <h2>We do the work. <em>You stay you.</em></h2>
+    <p class="lede">Nothing here asks you to learn a platform, translate a page or work out a tax rule. That part is ours.</p>
+    <div class="card wdo rv" id="who">
+      <div class="whohead">
+        <div class="seg" id="whoSeg" role="group" aria-label="When">
+          <button type="button" data-w="start" aria-pressed="true">To get started</button>
+          <button type="button" data-w="month" aria-pressed="false">Every month</button>
+        </div>
+        <div class="whobar" aria-hidden="true"><i id="whoWe"></i><i id="whoYou"></i></div>
+      </div>
+      <div class="whocols">
+        <div class="whocol we"><h3>We do <span id="whoWeN"></span></h3><ul id="whoWeL"></ul></div>
+        <div class="whocol you"><h3>You <span id="whoYouN"></span></h3><ul id="whoYouL"></ul></div>
+      </div>
+    </div>
     <div class="asks">
       <div class="card rv"><b class="n">€0</b><h3 style="margin-top:8px">to try</h3>
         <ul class="dots"><li>We do the work and carry the cost</li><li>We earn a share of what the English side brings in, agreed with you first</li><li>If it brings in nothing, you owe us nothing</li></ul></div>
       <div class="card rv"><b class="n" style="font-size:clamp(30px,5vw,44px);padding-top:8px">A few hours</b><h3 style="margin-top:8px">a month from you</h3>
-        <ul class="dots"><li>Two conversations in English, one of them live</li><li>No parcels, no customs, no labels, no advertising</li><li>A reseller platform such as Digistore24 handles each country's tax. Your accountant confirms it once</li></ul></div>
+        <ul class="dots"><li>One recorded conversation with Adam, and one live hour in the circle</li><li>No parcels, no customs, no labels, no advertising</li><li>We prepare the tax setup with a reseller such as Digistore24. Your accountant only confirms one page</li></ul></div>
     </div>
   </section>
 
@@ -629,8 +667,8 @@ section{padding:52px 0}
       <li><b>Six conversations</b><span>In English, with the letter from the first video</span></li>
       <li><b>The circle opens</b><span>Set up in a day. Small at first, with the library and a live hour</span></li>
       <li><b>A summit</b><span>From your interviews. It fills the letter and the circle</span></li>
-      <li><b>A programme</b><span>Recorded once, from your book or your kitchen</span></li>
-      <li><b>Your books in English</b><span>Translation takes longest, so it runs in the background</span></li>
+      <li><b>A programme</b><span>Built by us from your book</span></li>
+      <li><b>Your books in English</b><span>We translate and publish. It takes longest, so it runs in the background</span></li>
     </ol>
   </section>
 
@@ -780,28 +818,29 @@ section{padding:52px 0}
   /* 4. from what you already have: each thing becomes three products, each opens */
   var T1=YT('WKTXL7tSrPQ'),T2=YT('tYjOG6IIiCM'),T3=YT('S4PEgV4CiPQ'),T4=YT('2VoEj3Y7yw8'),T5=YT('uIR9xmJzFos'),T6=YT('JOcIgyjWb6Y');
   var AMZ='Amazon prints it, sends it and handles the tax in each country.';
-  var ONCE='Recorded once. It can sell for years without more of your time.';
+  var ONCE='Built once. It can sell for years without more of your time.';
   var SMALL='Small and easy to say yes to. Often the first thing someone buys.';
+  var BOOKWE='We translate it, a native editor polishes it, and we do the layout, cover and publishing.';
   var SRC=[
     {n:'Reise in die Freiheit',img:'assets/real-book.jpg',p:[
-      {t:'book',img:'assets/real-book.jpg',fit:'contain',n:'Journey to freedom',k:'Your book, in English',chip:'€10 to €25',price:'About €10 to €25 a copy',earn:AMZ,you:'Your OK on the translation',rows:[['Ebook','On any phone or reader, the same day'],['Audiobook','Heard in your own voice, in English'],['Print','Printed one at a time, when someone orders']]},
-      {t:'prog',days:30,n:'Journey to freedom, 30 days',k:'A programme people follow',chip:'€197 to €497',price:'€197 to €497, paid once',earn:ONCE,you:'Two days of filming',rows:[['Day 1','What do you really need?'],['Day 9','One day without your phone'],['Day 18','What you own, and what owns you'],['Day 30','Your own next step']]},
-      {t:'guide',n:'The first step',k:'A short guide',chip:'€9 to €29',price:'€9 to €29',earn:SMALL,you:'Nothing new',rows:[['Part 1','Seven questions from the book'],['Part 2','One week of small changes'],['Part 3','Where to go from here']]}
+      {t:'book',img:'assets/real-book.jpg',fit:'contain',n:'Journey to freedom',k:'Your book, in English',chip:'€10 to €25',price:'About €10 to €25 a copy',earn:AMZ,ys:'Your OK',you:'Your OK, and one email to your publisher that we write for you',we:BOOKWE,rows:[['Ebook','On any phone or reader, the same day'],['Audiobook','Heard in your own voice, in English'],['Print','Printed one at a time, when someone orders']]},
+      {t:'prog',days:30,n:'Journey to freedom, 30 days',k:'A programme people follow',chip:'€197 to €497',price:'€197 to €497, paid once',earn:ONCE,ys:'Your OK',you:'Your OK on the lessons. A two-minute welcome if you like',we:'We turn the book into 30 short lessons, with clips from talks you have already given.',rows:[['Day 1','What do you really need?'],['Day 9','One day without your phone'],['Day 18','What you own, and what owns you'],['Day 30','Your own next step']]},
+      {t:'guide',n:'The first step',k:'A short guide',chip:'€9 to €29',price:'€9 to €29',earn:SMALL,ys:'Nothing new',you:'Nothing new',we:'We write it from the book and design it.',rows:[['Part 1','Seven questions from the book'],['Part 2','One week of small changes'],['Part 3','Where to go from here']]}
     ]},
     {n:'Your vegan cookbook',img:'assets/real-cookbook.jpg',p:[
-      {t:'book',img:'assets/real-cookbook.jpg',n:'The cookbook, in English',k:'Your recipes, translated',chip:'€10 to €25',price:'About €10 to €25 a copy',earn:AMZ,you:'Your OK on the translation',rows:[['Ebook','On any phone or reader, the same day'],['Print','Printed one at a time, when someone orders'],['Photos','The ones you already have']]},
-      {t:'prog',days:21,n:'The living kitchen, 21 days',k:'A programme people cook through',chip:'€197 to €497',price:'€197 to €497, paid once',earn:ONCE,you:'Three days filmed in your kitchen',rows:[['Day 1','Clear one shelf'],['Day 3','Your first full plant-based day'],['Day 10','Cooking for people who eat differently'],['Day 21','A dinner for friends']]},
-      {t:'food',img:'assets/lp-bowl.jpg',tag:'This week',n:'One recipe a week',k:'Inside the circle',chip:'In the circle',price:'Part of the €50 a month',earn:'Something new every week is a reason members stay.',you:'Nothing new. They are in your book',rows:[['Monday','The recipe, with a short film'],['Midweek','Members post their own plates'],['Sunday','You pick one in the letter']]}
+      {t:'book',img:'assets/real-cookbook.jpg',n:'The cookbook, in English',k:'Your recipes, translated',chip:'€10 to €25',price:'About €10 to €25 a copy',earn:AMZ,ys:'Your OK',you:'Your OK, and one email to your publisher that we write for you',we:BOOKWE,rows:[['Ebook','On any phone or reader, the same day'],['Print','Printed one at a time, when someone orders'],['Photos','The ones you already have']]},
+      {t:'prog',days:21,n:'The living kitchen, 21 days',k:'A programme people cook through',chip:'€197 to €497',price:'€197 to €497, paid once',earn:ONCE,ys:'Your OK',you:'Your OK. The recipes and photos come from your book',we:'We set out 21 days of recipes, shopping lists and short notes.',rows:[['Day 1','Clear one shelf'],['Day 3','Your first full plant-based day'],['Day 10','Cooking for people who eat differently'],['Day 21','A dinner for friends']]},
+      {t:'food',img:'assets/lp-bowl.jpg',tag:'This week',n:'One recipe a week',k:'Inside the circle',chip:'In the circle',price:'Part of the €50 a month',earn:'Something new every week is a reason members stay.',ys:'Nothing new',you:'Nothing new. They are in your book',we:'We post it, answer questions and choose the plate of the week.',rows:[['Monday','The recipe, with the photo from your book'],['Midweek','Members post their own plates'],['Sunday','We feature one in the letter']]}
     ]},
     {n:'1,685 conversations',img:T1,p:[
-      {t:'summit',n:'The great shift, a summit',k:'An online event',chip:'€97 to €197',price:'€97 to €197 for the pass',earn:'Free to watch for 48 hours. People pay once to keep it.',you:'One live question hour',rows:[['Day 1','Two talks open, free for 48 hours'],['Day 2','Two more. New readers join the letter'],['Day 4','A live question hour with you'],['After','The pass keeps every recording']]},
-      {t:'lib',n:'The library',k:'Inside the circle',chip:'In the circle',price:'Part of the €50 a month',earn:'A reason to join, and it grows with every talk.',you:'Nothing new',rows:[['The great shift','Every talk on it, in order'],['Hidden history','From the first to the newest'],['People and machines','What stays human'],['Living food','Your own kitchen and habits']]},
-      {t:'clips',n:'Short clips',k:'Free, every day',chip:'Free',price:'Free',earn:'They earn nothing themselves. They bring new people to the letter every day.',you:'Nothing new',rows:[['48 clips','Cut from the first eight talks'],['Captions','In English, in your colours'],['The last second','Points to the letter']]}
+      {t:'summit',n:'The great shift, a summit',k:'An online event',chip:'€97 to €197',price:'€97 to €197 for the pass',earn:'Free to watch for 48 hours. People pay once to keep it.',ys:'One hour',you:'One live question hour',we:'We choose the talks, dub them, ask each guest and run the event.',rows:[['Day 1','Two talks open, free for 48 hours'],['Day 2','Two more. New readers join the letter'],['Day 4','A live question hour with you'],['After','The pass keeps every recording']]},
+      {t:'lib',n:'The library',k:'Inside the circle',chip:'In the circle',price:'Part of the €50 a month',earn:'A reason to join, and it grows with every talk.',ys:'Nothing new',you:'Nothing new',we:'We sort every talk by subject and keep it up to date.',rows:[['The great shift','Every talk on it, in order'],['Hidden history','From the first to the newest'],['People and machines','What stays human'],['Living food','Your own kitchen and habits']]},
+      {t:'clips',n:'Short clips',k:'Free, every day',chip:'Free',price:'Free',earn:'They earn nothing themselves. They bring new people to the letter every day.',ys:'Nothing new',you:'Nothing new',we:'We cut them, caption them and post them.',rows:[['48 clips','Cut from the first eight talks'],['Captions','In English, in your colours'],['The last second','Points to the letter']]}
     ]},
     {n:'How you have lived since 17',img:'assets/lp-matthias.jpg',p:[
-      {t:'prog',days:14,n:'Plant-based, from the start',k:'A programme people follow',chip:'€197 to €497',price:'€197 to €497, paid once',earn:ONCE,you:'Two days of filming',rows:[['Day 1','Why you began at 17'],['Day 4','What you eat in a day'],['Day 9','Eating out, travel and family'],['Day 14','Making it their own']]},
-      {t:'live',n:'A live hour with you',k:'Inside the circle',chip:'In the circle',price:'Part of the €50 a month',earn:'Being able to ask you directly is a strong reason to join.',you:'One hour a month',rows:[['Before','Members send questions and vote'],['Live','You answer for one hour'],['After','The recording goes into the library']]},
-      {t:'guide',n:'A day with Matthias',k:'A short guide',chip:'€9 to €29',price:'€9 to €29',earn:SMALL,you:'One afternoon of filming',rows:[['Morning','How you start'],['Food','What is on the plate'],['Movement','How you keep strong'],['Evening','How you close the day']]}
+      {t:'prog',days:14,n:'Plant-based, from the start',k:'A programme people follow',chip:'€197 to €497',price:'€197 to €497, paid once',earn:ONCE,ys:'One conversation',you:'One recorded conversation with Adam',we:'We ask the questions, film it and cut it into 14 days.',rows:[['Day 1','Why you began at 17'],['Day 4','What you eat in a day'],['Day 9','Eating out, travel and family'],['Day 14','Making it their own']]},
+      {t:'live',n:'A live hour with you',k:'Inside the circle',chip:'In the circle',price:'Part of the €50 a month',earn:'Being able to ask you directly is a strong reason to join.',ys:'One hour a month',you:'One hour a month',we:'We collect the questions, host the call and post the recording.',rows:[['Before','Members send questions and vote'],['Live','You answer for one hour'],['After','The recording goes into the library']]},
+      {t:'guide',n:'A day with Matthias',k:'A short guide',chip:'€9 to €29',price:'€9 to €29',earn:SMALL,ys:'Twenty minutes',you:'Twenty minutes, in the same conversation with Adam',we:'We write it up and design it.',rows:[['Morning','How you start'],['Food','What is on the plate'],['Movement','How you keep strong'],['Evening','How you close the day']]}
     ]}
   ];
   function bgi(node,u){node.style.backgroundImage='url('+u+')';return node}
@@ -820,15 +859,32 @@ section{padding:52px 0}
     all('.mp',$('mps')).forEach(function(b,i){b.setAttribute('aria-pressed',String(i===j))});
     box.textContent='';var h=el('h3','','Inside: '+p.n);h.appendChild(el('span','','A sketch'));box.appendChild(h);
     var rows=el('div','mkrows');p.rows.forEach(function(r,i){var d=el('div','mkrow');d.style.setProperty('--k',i);d.appendChild(el('b','',r[0]));d.appendChild(el('span','',r[1]));rows.appendChild(d)});box.appendChild(rows);
-    var e=el('div','mkearn');e.appendChild(el('small','','How it earns'));e.appendChild(el('b','',p.price));e.appendChild(el('p','',p.earn));e.appendChild(el('small','','From you'));e.appendChild(el('em','',p.you));box.appendChild(e);
+    var e=el('div','mkearn');e.appendChild(el('small','','How it earns'));e.appendChild(el('b','',p.price));e.appendChild(el('p','',p.earn));e.appendChild(el('small','','We do'));e.appendChild(el('em','',p.we));e.appendChild(el('small','you','From you'));e.appendChild(el('em','',p.you));box.appendChild(e);
     if(byHand&&box.getBoundingClientRect().bottom>window.innerHeight)box.scrollIntoView({block:'nearest',behavior:reduce?'auto':'smooth'})}
   function mkShow(k){mkAt=k;all('button',srcBox).forEach(function(b,i){b.setAttribute('aria-pressed',String(i===k))});$('mkName').textContent=SRC[k].n;
     var box=$('mps');box.textContent='';
-    SRC[k].p.forEach(function(p,j){var b=el('button','mp');b.type='button';b.style.setProperty('--k',j);b.appendChild(vis(p));b.appendChild(el('b','',p.n));b.appendChild(el('small','',p.k));b.appendChild(el('u','',p.chip));b.addEventListener('click',function(){mkOpen(j,true)});box.appendChild(b)});
+    SRC[k].p.forEach(function(p,j){var b=el('button','mp');b.type='button';b.style.setProperty('--k',j);b.appendChild(vis(p));b.appendChild(el('b','',p.n));b.appendChild(el('small','',p.k));var ch=el('span','mpc');ch.appendChild(el('u','',p.chip));ch.appendChild(el('u','yo','From you: '+p.ys.charAt(0).toLowerCase()+p.ys.slice(1)));b.appendChild(ch);b.addEventListener('click',function(){mkOpen(j,true)});box.appendChild(b)});
     mkOpen(0,false)}
   SRC.forEach(function(sr,i){var b=el('button');b.type='button';b.appendChild(bgi(el('i'),sr.img));b.appendChild(el('b','',sr.n));b.addEventListener('click',function(){mkShow(i)});srcBox.appendChild(b)});
   mkShow(0);
   if(!reduce&&'IntersectionObserver' in window){new IntersectionObserver(function(es,o){if(es[0].isIntersecting){o.disconnect();mkShow(mkAt)}},{threshold:.35}).observe($('mps'))}
+
+  /* 7. who does what */
+  var WHO={
+    start:{we:['Translate and dub the first six conversations','A native speaker checks every script','Covers, titles and short clips','Set up the letter and a free guide','Build the circle','Ask each guest for their OK','Write the email to your publisher about English rights','Prepare the payment account and a one-page tax note'],
+      you:[['Say yes','and allow your voice in English'],['Pick the six conversations',''],['Send one email to your publisher','we write it'],['Open the payment account in your company name','we prepare every step']]},
+    month:{we:['Translate and dub two videos a week','Write and send the Sunday letter','Run the circle and answer members','Build programmes and guides from your books','Translate and publish your books','Run the summit when it is time','Send you the numbers'],
+      you:[['One recorded conversation with Adam','about two hours'],['One live hour in the circle',''],['Read and approve','what goes out in your name']]}
+  };
+  var whoBtns=all('#whoSeg button');
+  function whoShow(k){var d=WHO[k],a=$('whoWeL'),b=$('whoYouL');whoBtns.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.w===k))});
+    a.textContent='';b.textContent='';
+    d.we.forEach(function(t,i){var li=el('li','',t);li.style.setProperty('--k',i);a.appendChild(li)});
+    d.you.forEach(function(t,i){var li=el('li','',t[0]);if(t[1])li.appendChild(el('small','',t[1]));li.style.setProperty('--k',i);b.appendChild(li)});
+    $('whoWeN').textContent=d.we.length;$('whoYouN').textContent=d.you.length;
+    var tot=d.we.length+d.you.length;$('whoWe').style.width=(d.we.length/tot*100)+'%';$('whoYou').style.width=(d.you.length/tot*100)+'%'}
+  whoBtns.forEach(function(x){x.addEventListener('click',function(){whoShow(x.dataset.w)})});
+  whoShow('start');
 
   /* 5. estimator */
   var GERMAN=2000000;
