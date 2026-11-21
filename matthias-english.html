@@ -916,6 +916,38 @@ li.on .fppl span{transform:scale(1)}
 .firstlater span{font:600 13.5px var(--sans);color:var(--mut);border:1px dashed var(--line2);border-radius:999px;padding:6px 12px}
 @media(prefers-reduced-motion:reduce){.firstline::after,.fth,.fth em,.fth u,.fsh,.fchip,.fmail,.fppl span{transition:none}}
 @media(max-width:760px){.firstline{grid-template-columns:minmax(0,1fr);gap:30px}.firstline::before,.firstline::after{display:none}.fstage{max-width:360px;margin-inline:auto}}
+.earn3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:28px}
+.ec{padding:20px;display:flex;flex-direction:column}
+.ec>b{display:block;font:600 23px/1.2 var(--serif);margin-top:16px}
+.ec>p{font-size:15px;line-height:1.45;color:var(--mut);margin:8px 0 16px}
+.ecyou{margin-top:auto;border-left:4px solid var(--teal);background:#fff;border-radius:0 12px 12px 0;padding:10px 12px;font:600 15px/1.3 var(--serif);color:var(--ink)}
+.ecyou small{display:block;font:700 11.5px var(--sans);color:var(--teal);margin-bottom:2px}
+.ecstage{position:relative;aspect-ratio:16/10;border-radius:16px;background:var(--paper2);overflow:hidden}
+.esv{position:absolute;left:50%;top:50%;width:62%;aspect-ratio:16/9;transform:translate(-50%,-50%);border-radius:10px;background:var(--ink) center/cover;box-shadow:0 0 0 3px #fff,var(--sh1);overflow:hidden}
+.esv i{position:absolute;left:0;right:0;bottom:0;height:5px;background:#ff0033;transform-origin:left;transform:scaleX(0)}
+.ec.in .esv i{animation:esplay 5s linear .4s infinite}
+@keyframes esplay{to{transform:scaleX(1)}}
+.es1 em{position:absolute;font:800 12px/1 var(--sans);font-style:normal;color:var(--ink);background:var(--sun);border-radius:999px;padding:6px 9px;box-shadow:var(--sh1);transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1);transition-delay:calc(var(--k)*.22s + .5s)}
+.es1 em:nth-of-type(1){left:6%;top:12%}
+.es1 em:nth-of-type(2){right:6%;top:16%}
+.es1 em:nth-of-type(3){left:7%;bottom:12%}
+.es1 em:nth-of-type(4){right:7%;bottom:14%}
+.ec.in .es1 em{transform:none}
+.esb{position:absolute;left:9%;top:10%;bottom:10%;aspect-ratio:462/520;border-radius:10px;background:#fff;box-shadow:var(--sh1);padding:6px;transform:rotate(-3deg)}
+.esb img{display:block;width:100%;height:100%;object-fit:contain}
+.esf{position:absolute;right:7%;top:50%;transform:translateY(-50%);display:grid;gap:8px;justify-items:start}
+.esf em{font:700 13px/1 var(--sans);font-style:normal;color:var(--ink);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:8px 12px;opacity:0;transform:translateX(18px);transition:opacity .45s,transform .45s;transition-delay:calc(var(--k)*.28s + .4s)}
+.ec.in .esf em{opacity:1;transform:none}
+.esring{position:absolute;inset:0}
+.esring i{position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--teal);transform:rotate(calc(var(--i)*30deg)) translateY(-74px) scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1);transition-delay:calc(var(--i)*.09s + .5s)}
+.esring i:nth-child(3n){background:var(--sun)}
+.ec.in .esring i{transform:rotate(calc(var(--i)*30deg)) translateY(-74px) scale(1)}
+.esme{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px}
+.esme img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 4px #fff,var(--sh1)}
+.esme em{position:absolute;left:50%;bottom:-9px;transform:translateX(-50%);font:800 10.5px/1 var(--sans);font-style:normal;color:#fff;background:#ff0033;border-radius:999px;padding:4px 8px;box-shadow:0 0 0 2px #fff}
+.earnlater{margin-top:26px}
+@media(prefers-reduced-motion:reduce){.ec .esv i{animation:none}.es1 em,.esf em,.esring i{transition:none}}
+@media(max-width:900px){.earn3{grid-template-columns:minmax(0,1fr)}.ecstage{max-width:420px}}
 .deal{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:34px;align-items:center;padding:30px;margin-top:18px}
 .deal small{display:block;font:700 12.5px var(--sans);color:var(--faint);margin-bottom:12px}
 .dealcirc{display:flex;align-items:flex-end;gap:26px;padding-bottom:30px}
@@ -998,7 +1030,7 @@ footer p{max-width:100ch;margin-bottom:8px}
   <div class="wrap">
     <a class="brand" href="#top"><i></i><span>Matthias, in English</span></a>
     <div class="stops" id="stops">
-      <a href="#wins">Today</a><a href="#videos">Your titles</a><a href="#engine">The engine</a><a href="#handles">Channels</a><a href="#pages">Pages</a><a href="#circle">Your circle</a><a href="#bottle">The shop</a><a href="#month">A week</a><a href="#team">The team</a><a href="#here">The Algarve</a><a href="#start">Start</a>
+      <a href="#wins">Today</a><a href="#videos">Your titles</a><a href="#engine">The engine</a><a href="#handles">Channels</a><a href="#pages">Pages</a><a href="#circle">Your circle</a><a href="#earn">How it earns</a><a href="#month">A week</a><a href="#team">The team</a><a href="#here">The Algarve</a><a href="#start">Start</a>
     </div>
     <a class="btn" href="#start">Pick six</a>
   </div>
@@ -1265,12 +1297,44 @@ footer p{max-width:100ch;margin-bottom:8px}
   </div>
 </section>
 
+<section id="earn">
+  <div class="wrap">
+    <div class="chhead">
+      <div class="kicker">How it earns</div>
+      <h2 class="rv">It earns <em>without shipping a bottle.</em></h2>
+      <p class="lede rv">Your supplements stay where they are sold today. In English, everything that earns is digital, or handled by someone else.</p>
+    </div>
+    <div class="earn3">
+      <article class="ec glass rv">
+        <div class="ecstage es1" aria-hidden="true"><span class="esv" style="background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"><i></i></span><em style="--k:0">US</em><em style="--k:1">UK</em><em style="--k:2">CA</em><em style="--k:3">AU</em></div>
+        <b>Advertising on your videos</b>
+        <p>English reaches the US, the UK, Canada and Australia. An English voice can also sit on videos your channel already has.</p>
+        <div class="ecyou"><small>From you</small>Nothing new</div>
+      </article>
+      <article class="ec glass rv">
+        <div class="ecstage es2" aria-hidden="true"><span class="esb"><img src="assets/real-book.jpg" alt="" loading="lazy"></span><span class="esf"><em style="--k:0">Ebook</em><em style="--k:1">Audiobook</em><em style="--k:2">Print on demand</em></span></div>
+        <b>Your books, in English</b>
+        <p>Reise in die Freiheit and the cookbook. Amazon prints, sends and handles each country's tax.</p>
+        <div class="ecyou"><small>From you</small>Nothing new to write</div>
+      </article>
+      <article class="ec glass rv">
+        <div class="ecstage es3" aria-hidden="true"><span class="esring"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i></span><span class="esme"><img src="assets/lp-matthias.jpg" alt="" loading="lazy"><em>Live</em></span></div>
+        <b>A paid English circle</b>
+        <p>A monthly membership with one live conversation. As a sum only: 1,000 members at €10 is €10,000 a month.</p>
+        <div class="ecyou"><small>From you</small>The conversations you already record</div>
+      </article>
+    </div>
+    <p class="firstlater earnlater rv"><em>Later, once people are watching</em><span>A set of your interviews on one theme</span><span>Programmes from your cookbook</span><span>Partners in each country</span><span>Gatherings in the Algarve</span><span>Supplements abroad, through a local partner</span></p>
+    <p class="tiny" style="text-align:center;margin-top:18px">The sum is an example, not a forecast. Amazon, YouTube and membership platforms collect each country's tax on these sales. Your accountant should confirm that for your company.</p>
+  </div>
+</section>
+
 <section id="bottle">
   <div class="wrap stop wide">
     <div class="guide glass rv">
-      <div class="kicker">The shop, in English</div>
-      <h2>Every label <em>stays as it is.</em></h2>
-      <p class="lede">These are your products as they are today. An English sticker carries the required details, and its QR code opens the guide on a phone.</p>
+      <div class="kicker">Later, only if you want it</div>
+      <h2>The shop, <em>one country at a time.</em></h2>
+      <p class="lede">Shipping abroad is not for now. If that changes, your labels stay as they are: an English sticker carries the required details, and its QR code opens this guide.</p>
       <div class="row"><span class="chip">No new packaging</span><span class="chip">One country at a time</span><span class="chip">Label rules checked first</span></div>
       <p class="tiny" style="margin-top:14px">Tap a product to scan its sticker.</p>
     </div>
