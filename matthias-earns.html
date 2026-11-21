@@ -160,20 +160,62 @@ section{padding:52px 0}
 .hosts span{display:flex;align-items:center;gap:7px}
 .hosts img{width:34px;height:34px;border-radius:50%;object-fit:cover}
 
-/* 3. why people would pay */
-.want{margin-top:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:22px;align-items:start}
-.wants{display:grid;gap:10px}
-.wants button{text-align:left;border:1px solid var(--line2);background:#fff;border-radius:18px;padding:16px 18px;cursor:pointer;font:600 19px/1.25 var(--serif);transition:background .3s,transform .3s}
+/* 3. why people would pay: a member's first month, played on a phone */
+.want{margin-top:22px;display:grid;grid-template-columns:minmax(0,1fr) 372px;gap:22px;align-items:center}
+.wants{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.wants button{border:1px solid var(--line2);background:#fff;border-radius:22px;padding:12px;cursor:pointer;text-align:left;font:600 19px/1.2 var(--serif);transition:box-shadow .3s,border-color .3s,transform .3s}
+.wants button i{display:block;aspect-ratio:16/10;border-radius:14px;background:var(--paper2) center/cover;margin-bottom:11px}
 .wants button small{display:block;font:700 12px var(--sans);color:var(--faint);margin-bottom:2px}
-.wants button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff;transform:translateX(6px)}
-.wants button[aria-pressed="true"] small{color:rgba(255,255,255,.7)}
-.gets{padding:22px;min-height:330px}
-.gets>small{display:block;font:700 12.5px var(--sans);color:var(--teal);margin-bottom:12px}
-.get{display:grid;grid-template-columns:54px minmax(0,1fr);gap:14px;align-items:center;padding:12px 0;border-top:1px dashed var(--line2);animation:paneIn .45s both;animation-delay:calc(var(--k)*.12s)}
-.get:first-of-type{border-top:0}
-.get i{width:54px;height:54px;border-radius:14px;background:var(--paper2) center/cover}
-.get b{display:block;font:600 18px/1.25 var(--serif)}
-.get span{display:block;font-size:14.5px;line-height:1.4;color:var(--mut);margin-top:2px}
+.wants button[aria-pressed="true"]{border-color:var(--sun);box-shadow:0 0 0 3px var(--sun),var(--sh1);transform:translateY(-3px)}
+.ph{padding:18px}
+.phone{position:relative;width:min(100%,300px);margin:0 auto;border:9px solid #e9ede2;border-radius:38px;background:var(--paper);box-shadow:var(--sh2);overflow:hidden}
+.phone::before{content:"";position:absolute;left:50%;top:8px;width:74px;height:8px;margin-left:-37px;border-radius:4px;background:#e9ede2;z-index:2}
+.phtop{display:flex;align-items:center;gap:8px;padding:26px 14px 10px;border-bottom:1px solid var(--line)}
+.phtop img{width:26px;height:26px;object-fit:contain}
+.phtop b{font:700 14px var(--sans)}
+.phtop span{margin-left:auto;font:700 11.5px var(--sans);color:#fff;background:var(--mag);border-radius:999px;padding:4px 9px}
+.phsc{height:290px;padding:14px;display:grid;align-content:center;justify-items:center;gap:12px}
+.phsc>*{animation:rise .5s both}
+.phcap{padding:0 14px 16px;min-height:104px}
+.phcap small{display:block;font:700 11.5px var(--sans);color:var(--teal)}
+.phcap b{display:block;font:600 19px/1.2 var(--serif);margin-top:2px}
+.phcap span{display:block;font-size:13.5px;line-height:1.35;color:var(--mut);margin-top:3px}
+.wk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:14px}
+.wk button{border:1px solid var(--line2);background:#fff;border-radius:999px;padding:9px 2px;font:700 13.5px var(--sans);color:var(--mut);cursor:pointer}
+.wk button.done{background:var(--teal-s);border-color:var(--teal-s);color:var(--ink)}
+.wk button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.sw{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;background:var(--paper2) center/cover;box-shadow:var(--sh1);overflow:hidden}
+.sw::before{content:"";position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(255,255,255,.94) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7v10l8-5z' fill='%23224130'/%3E%3C/svg%3E") center/26px no-repeat}
+.sw i{position:absolute;left:0;bottom:0;height:5px;width:100%;background:#ff0033;transform-origin:left;transform:scaleX(0);animation:swp 6s linear .6s forwards}
+@keyframes swp{to{transform:scaleX(.45)}}
+.sdays{display:flex;gap:5px}
+.sdays u{text-decoration:none;width:27px;height:27px;border-radius:50%;display:grid;place-items:center;font:700 11.5px var(--sans);background:var(--paper2);color:var(--mut)}
+.sdays u.on{background:var(--teal);color:#fff}
+.simg{width:100%;height:92px;border-radius:12px;background:var(--paper2) center/cover;box-shadow:var(--sh1)}
+.sdo{width:100%;display:grid;gap:7px}
+.sdo div{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font:600 14px var(--sans)}
+.sdo div::before{content:"";flex:none;width:20px;height:20px;border-radius:6px;border:2px solid var(--line2)}
+.sdo div.ok::before{animation:tick .3s both;animation-delay:calc(var(--k)*1.1s + 1s)}
+@keyframes tick{to{border-color:var(--teal);background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/15px no-repeat}}
+.sdisc{width:124px;height:124px;border-radius:50%;background:var(--paper2) center/cover;box-shadow:0 0 0 5px #fff,0 0 0 8px var(--sun-s),var(--sh1)}
+.swave{display:flex;align-items:center;gap:4px;height:34px}
+.swave u{width:5px;height:30%;border-radius:3px;background:var(--teal);animation:wv 1.3s ease-in-out infinite;animation-delay:calc(var(--k)*-.12s)}
+@keyframes wv{50%{height:100%}}
+.slen{font:700 12px var(--sans);color:var(--mut)}
+.sface{position:relative;width:112px;height:112px}
+.sface img{width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 4px #fff,0 0 0 7px var(--sun);animation:talk 2.4s ease-in-out infinite}
+.sface b{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);font:800 11px/1 var(--sans);color:#fff;background:#ff0033;border-radius:999px;padding:5px 9px;box-shadow:0 0 0 2px #fff}
+.phsc>.sq{justify-self:start;max-width:94%;background:#fff;border:1px solid var(--line);border-radius:16px 16px 16px 4px;padding:10px 12px;font:600 14.5px/1.3 var(--sans);box-shadow:var(--sh1);animation:rise .5s both 1.2s}
+.sq small{display:block;font:700 11px var(--sans);color:var(--teal);margin-bottom:2px}
+.sring{width:112px;height:112px}
+.sring circle,.sring path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.sring .bg{stroke:var(--paper2);stroke-width:10}
+.sring .fg{stroke:var(--teal);stroke-width:10;stroke-dasharray:315;stroke-dashoffset:315;transform:rotate(-90deg);transform-origin:60px 60px;animation:ringGo 1.4s ease-out .4s forwards}
+.sring .ck{stroke:var(--teal);stroke-width:8;stroke-dasharray:60;stroke-dashoffset:60;animation:ringGo .5s ease-out 1.7s forwards}
+@keyframes ringGo{to{stroke-dashoffset:0}}
+.phsc>.snext{display:flex;align-items:center;gap:10px;width:100%;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;font:600 14px/1.25 var(--sans);animation:rise .5s both 2.1s}
+.snext i{flex:none;width:46px;height:46px;border-radius:10px;background:var(--paper2) center/cover}
+.snext small{display:block;font:700 11px var(--sans);color:var(--teal)}
 
 /* the record, and others who already do it */
 .rec{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:26px}
@@ -345,6 +387,7 @@ section{padding:52px 0}
   .ord li::before{position:absolute;left:0;top:0;margin:0}
   .fb{grid-template-columns:108px minmax(0,1fr)}
   .fl,.est{padding:20px}
+  .wants button{font-size:16.5px;padding:10px}
   .wants button[aria-pressed="true"]{transform:none}
   .rec{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   .rec div:last-child{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}
@@ -374,7 +417,7 @@ section{padding:52px 0}
   .flnote{min-height:96px}
   .gets,.outs{min-height:0}
 }
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.trk i,.lstage>img{animation:none}.pane.on,.vid,.get,.q.mine,.ex,.mp,.mkrow,.mkearn,.vbook,.vdays i,.vlib i,.vclips i,.vpass,.vguide i,.mkflow i,.vlive img{animation:none}.vdays i{background:var(--teal)}.vbook{transform:rotate(-5deg)}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.trk i,.lstage>img{animation:none}.pane.on,.vid,.get,.q.mine,.ex,.mp,.mkrow,.mkearn,.vbook,.vdays i,.vlib i,.vclips i,.vpass,.vguide i,.mkflow i,.vlive img,.phsc>*,.phsc>.sq,.phsc>.snext,.sw i,.sdo div.ok::before,.swave u,.sring .fg,.sring .ck,.sface img{animation:none}.sring .fg,.sring .ck{stroke-dashoffset:0}.vdays i{background:var(--teal)}.vbook{transform:rotate(-5deg)}}
 </style>
 </head>
 <body>
@@ -474,11 +517,20 @@ section{padding:52px 0}
       <div><i style="background-image:url(assets/real-book.jpg)"></i><b>Bestseller</b><span>Reise in die Freiheit, your own road written down</span></div>
     </div>
     <p class="recline rv">Very few people in this field have a record like this. English speakers have not heard it yet.</p>
-    <h3 class="sub">What a member comes for</h3>
-    <p class="lede" style="margin-top:8px">A free video starts a question. The person who wants the answer needs order, a path and someone to ask. Pick one.</p>
+    <h3 class="sub">A member's first month</h3>
+    <p class="lede" style="margin-top:8px">A free video starts a question. Pick what someone came for, and follow their first four weeks inside.</p>
     <div class="want">
       <div class="wants" id="wants" role="group" aria-label="What a member wants"></div>
-      <div class="card gets rv" id="gets" aria-live="polite"></div>
+      <div class="card ph rv">
+        <div class="phone">
+          <div class="phtop"><img src="assets/his-logo.jpg" alt=""><b>The Circle</b><span id="phWeek">Week 1</span></div>
+          <div class="phsc" id="phsc"></div>
+          <div class="phcap" id="phcap" aria-live="polite"></div>
+        </div>
+        <div class="wk" id="wk" role="group" aria-label="Which week">
+          <button type="button">Week 1</button><button type="button">Week 2</button><button type="button">Week 3</button><button type="button">Week 4</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -635,19 +687,46 @@ section{padding:52px 0}
   askBtn.addEventListener('click',function(){appStop();var q=el('div','q mine');q.appendChild(el('i','','1'));q.appendChild(el('span','','Your question. It is in the queue, and Matthias can see it.'));$('qs').insertBefore(q,$('qs').firstChild);askBtn.textContent='Sent. He answers it live';askBtn.disabled=true;
     setTimeout(function(){all('.q.now').forEach(function(o){o.classList.remove('now')});q.classList.remove('mine');q.classList.add('now');$('nowQ').textContent='Your question'},2600)});
 
-  /* 3. why people would pay */
+  /* 3. why people would pay: pick a wish, watch the first four weeks */
+  var ME='assets/lp-matthias.jpg';
   var WANT=[
-    ['eat plant-based',[['assets/lp-veg.jpg','Plant-based, from the start','A 14-day programme. You have eaten this way since you were 17'],['assets/real-cookbook.jpg','The living kitchen','Your cookbook, cooked through together'],['assets/lp-matthias.jpg','A live hour with you','They ask what the book could not answer']]],
-    ['stay calm while the world shifts',[[YT('WKTXL7tSrPQ'),'The great shift, in order','Every conversation on it, from the first to the newest'],['assets/lp-mist.jpg','Guided meditations','Your voice, with Brigitte\'s music'],['assets/lp-matthias.jpg','A live hour with you','For the questions the news leaves them with']]],
-    ['step out of the system',[['assets/real-book.jpg','Journey to freedom','Your two years on foot, as 30 days they can follow'],['assets/sh-forest.jpg','People doing the same','A circle where this is normal'],['assets/lp-matthias.jpg','A live hour with you','How you did it, in your own words']]],
-    ['let go of what I carry',[['assets/circle-guida4.jpg','A live evening with Guida','Thirty years of hands-on healing work'],['assets/team-brigitte.jpg','Sound evenings with Brigitte','Four decades in sound'],['assets/circle-petra.jpg','Movement with Petra','Dance and energy sessions']]]
+    {w:'eat plant-based',img:'assets/lp-veg.jpg',wk:[
+      {t:'watch',img:'assets/lp-veg.jpg',tag:'Programme',h:'Plant-based, from the start',s:'Day 1 of 14. Ten minutes a day, in order.'},
+      {t:'do',img:'assets/lp-bowl.jpg',tag:'The living kitchen',h:'This week\'s plate',s:'They cook it and show the circle.',items:['Shop the list','Cook it once','Post the plate']},
+      {t:'live',img:ME,tag:'Live',h:'A live hour with you',s:'They ask what a book cannot answer.',q:'What do I eat when I travel?'},
+      {t:'keep',img:'assets/real-cookbook.jpg',tag:'One month in',h:'14 days done',s:'A habit, and people to keep it with.',next:'The living kitchen, 21 days'}]},
+    {w:'stay calm while the world shifts',img:'assets/lp-mist.jpg',wk:[
+      {t:'watch',img:YT('WKTXL7tSrPQ'),tag:'Library',h:'The great shift, in order',s:'From the first talk, not the newest.'},
+      {t:'listen',img:'assets/lp-mist.jpg',tag:'Meditation',h:'Morning stillness',s:'Your voice, with Brigitte\'s music.',len:'12 minutes'},
+      {t:'live',img:ME,tag:'Live',h:'A live hour with you',s:'For the questions the news leaves them with.',q:'How do I talk to my family about this?'},
+      {t:'keep',img:YT('S4PEgV4CiPQ'),tag:'One month in',h:'Thirty mornings done',s:'They know where to go when the noise rises.',next:'Hidden history, in order'}]},
+    {w:'step out of the system',img:'assets/sh-forest.jpg',wk:[
+      {t:'watch',img:'assets/sh-forest.jpg',tag:'Programme',h:'Journey to freedom',s:'Day 1 of 30. Your road, as steps they can take.'},
+      {t:'do',img:'assets/alg-coast.jpg',tag:'This week',h:'One step a week',s:'Small enough to do, real enough to count.',items:['One day without the phone','Write what you really need','Tell the circle']},
+      {t:'live',img:ME,tag:'Live',h:'A live hour with you',s:'How you did it, in your own words.',q:'What was the hardest thing to leave?'},
+      {t:'keep',img:'assets/alg-group.jpg',tag:'One month in',h:'30 days done',s:'And people walking the same way.',next:'A gathering in the Algarve'}]},
+    {w:'let go of what I carry',img:'assets/alg-bowl.jpg',wk:[
+      {t:'live',img:'assets/circle-guida4.jpg',tag:'Live',h:'An evening with Guida',s:'Thirty years of hands-on work, live.',q:'Can I join from home?'},
+      {t:'listen',img:'assets/team-brigitte.jpg',pos:'28% 40%',tag:'Sound',h:'A sound evening with Brigitte',s:'Headphones on, lights low.',len:'40 minutes'},
+      {t:'do',img:'assets/circle-petra.jpg',tag:'Movement',h:'Movement with Petra',s:'Short sessions they can repeat.',items:['Ten minutes, morning','Ten minutes, evening','Share how it went']},
+      {t:'keep',img:'assets/alg-group.jpg',tag:'One month in',h:'Four weeks, three teachers',s:'They know who to turn to.',next:'A weekend with them, in person'}]}
   ];
-  var wantsBox=$('wants'),gets=$('gets'),wantTouched=false,wantTimer=null,wantAt=0;
-  function wantShow(k){wantAt=k;all('button',wantsBox).forEach(function(b,i){b.setAttribute('aria-pressed',String(i===k))});gets.textContent='';gets.appendChild(el('small','','Inside the circle they find'));
-    WANT[k][1].forEach(function(g,i){var r=el('div','get');r.style.setProperty('--k',i);var im=el('i');im.style.backgroundImage='url('+g[0]+')';r.appendChild(im);var d=el('div');d.appendChild(el('b','',g[1]));d.appendChild(el('span','',g[2]));r.appendChild(d);gets.appendChild(r)})}
-  WANT.forEach(function(w,i){var b=el('button');b.type='button';b.appendChild(el('small','','I want to'));b.appendChild(document.createTextNode(w[0]));b.addEventListener('click',function(){wantTouched=true;clearInterval(wantTimer);wantShow(i)});wantsBox.appendChild(b)});
+  var RING='<svg class="sring" viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50"/><path class="ck" d="M42 61l12 12 24-26"/></svg>';
+  function scene(d){var box=$('phsc'),x,y,i;box.textContent='';
+    if(d.t==='watch'){x=bgi(el('div','sw'),d.img);x.appendChild(el('i'));box.appendChild(x);y=el('div','sdays');for(i=1;i<=7;i++)y.appendChild(el('u',i===1?'on':'',String(i)));box.appendChild(y)}
+    else if(d.t==='do'){box.appendChild(bgi(el('div','simg'),d.img));x=el('div','sdo');d.items.forEach(function(t,n){var r=el('div',n<2?'ok':'',t);r.style.setProperty('--k',n);x.appendChild(r)});box.appendChild(x)}
+    else if(d.t==='listen'){x=bgi(el('div','sdisc'),d.img);if(d.pos)x.style.backgroundPosition=d.pos;box.appendChild(x);y=el('div','swave');for(i=0;i<14;i++){var u=el('u');u.style.setProperty('--k',(i*5)%11);y.appendChild(u)}box.appendChild(y);box.appendChild(el('div','slen',d.len))}
+    else if(d.t==='live'){x=el('div','sface');var im=document.createElement('img');im.src=d.img;im.alt='';x.appendChild(im);x.appendChild(el('b','','Live'));box.appendChild(x);y=el('div','sq');y.appendChild(el('small','','A member asks'));y.appendChild(document.createTextNode(d.q));box.appendChild(y)}
+    else{x=el('div');x.innerHTML=RING;box.appendChild(x.firstChild);y=el('div','snext');y.appendChild(bgi(el('i'),d.img));var t=el('span');t.appendChild(el('small','','Next'));t.appendChild(document.createTextNode(d.next));y.appendChild(t);box.appendChild(y)}}
+  var wantsBox=$('wants'),wkBtns=all('#wk button'),wAt=0,wkAt=0,wTouched=false,wTimer=null,wSeen=false;
+  function wkShow(k){wkAt=k;var d=WANT[wAt].wk[k];wkBtns.forEach(function(b,i){b.setAttribute('aria-pressed',String(i===k));b.classList.toggle('done',i<k)});
+    $('phWeek').textContent='Week '+(k+1);scene(d);var c=$('phcap');c.textContent='';c.appendChild(el('small','',d.tag));c.appendChild(el('b','',d.h));c.appendChild(el('span','',d.s))}
+  function wRun(){clearInterval(wTimer);if(wTouched||reduce||!wSeen)return;wTimer=setInterval(function(){if(wkAt>=3){clearInterval(wTimer);return}wkShow(wkAt+1)},8000)}
+  function wantShow(k){wAt=k;all('button',wantsBox).forEach(function(b,i){b.setAttribute('aria-pressed',String(i===k))});wkShow(0)}
+  WANT.forEach(function(w,i){var b=el('button');b.type='button';b.appendChild(bgi(el('i'),w.img));b.appendChild(el('small','','I want to'));b.appendChild(document.createTextNode(w.w));b.addEventListener('click',function(){wTouched=false;wantShow(i);wRun()});wantsBox.appendChild(b)});
+  wkBtns.forEach(function(b,i){b.addEventListener('click',function(){wTouched=true;clearInterval(wTimer);wkShow(i)})});
   wantShow(0);
-  watch(wantsBox,function(on){clearInterval(wantTimer);if(on&&!wantTouched)wantTimer=setInterval(function(){var k=(wantAt+1)%WANT.length;wantShow(k);if(k===0){wantTouched=true;clearInterval(wantTimer)}},8000)});
+  watch($('phsc'),function(on){if(on&&!wSeen){wSeen=true;wkShow(wkAt)}wSeen=wSeen||on;if(on)wRun();else clearInterval(wTimer)},.4);
 
   /* the record counts up once */
   function countUp(node){var to=+node.dataset.c,dec=+(node.dataset.dec||0),t0=null;
