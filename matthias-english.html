@@ -712,7 +712,7 @@ button.mp:hover,button.mp:focus-visible{transform:translateZ(60px) scale(1.06)}
 .growline::before{content:"";position:absolute;left:12.5%;right:12.5%;top:20px;border-top:2px dashed var(--line2)}
 .growline span{position:relative;display:block}
 .growline i{display:block;width:var(--z);height:var(--z);margin:calc(20px - var(--z)/2) auto;border-radius:50%;background:var(--sun);box-shadow:0 0 0 5px var(--paper)}
-.growline b{display:block;font:600 17px/1.2 var(--serif);margin-top:14px}
+.growline b{display:block;font:600 17px/1.2 var(--serif);margin-top:0;padding-top:14px}
 .growline em{display:block;font:400 13.5px/1.35 var(--sans);font-style:normal;color:var(--mut);margin-top:3px}
 .inv{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:34px;align-items:center;padding:30px;margin-top:18px}
 .invcard{background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--sh2);transform:rotate(-1.4deg)}
@@ -945,7 +945,72 @@ li.on .fppl span{transform:scale(1)}
 .esme{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px}
 .esme img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 4px #fff,var(--sh1)}
 .esme em{position:absolute;left:50%;bottom:-9px;transform:translateX(-50%);font:800 10.5px/1 var(--sans);font-style:normal;color:#fff;background:#ff0033;border-radius:999px;padding:4px 8px;box-shadow:0 0 0 2px #fff}
-.earnlater{margin-top:26px}
+.ehead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 16px;margin:44px 0 14px}
+.ehead b{font:600 clamp(24px,2.7vw,34px)/1.15 var(--serif);letter-spacing:-.01em}
+.ehead span{font:600 13.5px var(--sans);color:var(--faint)}
+.eladwrap{padding:26px 26px 24px}
+.eladder{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;align-items:end;height:clamp(210px,24vw,290px)}
+.estep{position:relative;height:var(--h);border:0;padding:10px 6px 9px;border-radius:14px 14px 6px 6px;background:var(--leaf-s);color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;font:inherit;transition:background .3s,transform .3s,box-shadow .3s}
+.estep i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;font:600 16px/1 var(--serif);font-style:normal;color:var(--ink)}
+.estep span{font:700 12.5px/1.15 var(--sans);text-align:center}
+.estep:hover{transform:translateY(-4px)}
+.estep[aria-pressed="true"]{background:var(--teal);color:#fff;box-shadow:0 14px 26px -14px rgba(16,132,116,.9)}
+.estep:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.edet{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:26px;align-items:center;margin-top:20px;padding-top:20px;border-top:1px dashed var(--line2)}
+.edl small{display:block;font:700 12.5px var(--sans);color:var(--teal)}
+.edl b{display:block;font:600 clamp(24px,2.8vw,34px)/1.1 var(--serif);letter-spacing:-.01em;margin:4px 0 8px}
+.edl p{font-size:16px;line-height:1.45;color:var(--mut);margin:0;min-height:2.9em}
+.edr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.edr span{display:block;border-radius:16px;padding:14px;background:var(--sun-s)}
+.edr span.you{background:#fff;border-left:4px solid var(--teal);border-radius:0 16px 16px 0}
+.edr small{display:block;font:700 11.5px var(--sans);color:var(--mut);margin-bottom:4px}
+.edr .you small{color:var(--teal)}
+.edr b{display:block;font:600 19px/1.2 var(--serif)}
+.emonth{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:30px;align-items:center;padding:28px 30px;margin-top:18px}
+.eml>b{display:block;font:600 clamp(22px,2.5vw,30px)/1.15 var(--serif);letter-spacing:-.01em}
+.eml p{font-size:15.5px;line-height:1.45;color:var(--mut);margin:10px 0 0}
+.echips{display:flex;flex-wrap:wrap;gap:7px}
+.echips span{font:600 13px var(--sans);color:var(--ink);background:var(--paper2);border-radius:999px;padding:6px 12px}
+.ewks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;position:relative}
+.ewks::before{content:"";position:absolute;left:12.5%;right:12.5%;top:38px;border-top:2px dashed var(--line2)}
+.ewk{position:relative;display:block;text-align:center}
+.ewk i{display:block;width:76px;height:76px;margin:0 auto 10px;border-radius:50%;background:var(--paper2) center/cover;box-shadow:0 0 0 4px #fff,0 0 0 6px var(--line2);animation:ewkon 8s calc(var(--k)*2s) infinite}
+@keyframes ewkon{0%,22%{box-shadow:0 0 0 4px #fff,0 0 0 8px var(--sun);transform:scale(1.08)}28%,100%{box-shadow:0 0 0 4px #fff,0 0 0 6px var(--line2);transform:none}}
+.ewk small{display:block;font:700 11.5px var(--sans);color:var(--faint)}
+.ewk b{display:block;font:600 17px/1.2 var(--serif)}
+.eu1{display:flex;align-items:center;justify-content:center;gap:12px}
+.eu1 img{width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff,var(--sh1)}
+.euw{display:flex;align-items:center;gap:4px;height:56px}
+.euw i{display:block;width:5px;border-radius:3px;background:var(--teal);height:20%;animation:euwave 1.4s ease-in-out calc(var(--k)*-.16s) infinite alternate}
+@keyframes euwave{to{height:100%}}
+.eul{position:absolute;right:7%;top:50%;transform:translateY(-50%);display:grid;gap:7px;width:44%}
+.eul em{display:block;font:700 12px/1 var(--sans);font-style:normal;color:var(--ink);background:#fff;border-radius:999px;padding:7px 12px;border:1px solid var(--line2);opacity:0;transform:translateX(18px);transition:opacity .45s,transform .45s;transition-delay:calc(var(--k)*.24s + .4s)}
+.ec.in .eul em{opacity:1;transform:none}
+.eu3{background:url(assets/rainforest-canopy-1400.jpg) center/cover}
+.eusq{position:absolute;inset:14% 12%;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;align-content:center}
+.eusq i{display:block;aspect-ratio:1;border-radius:4px;background:var(--sun);opacity:0;transform:scale(.3);transition:opacity .4s,transform .4s cubic-bezier(.3,1.6,.5,1);transition-delay:calc(var(--k)*.1s + .4s)}
+.ec.in .eusq i{opacity:.95;transform:none}
+.ecalc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:30px;align-items:center;padding:28px 30px;margin-top:18px}
+.ecl small{display:block;font:700 12.5px var(--sans);color:var(--faint)}
+.ecl>b{display:block;font:600 clamp(24px,2.8vw,36px)/1.1 var(--serif);letter-spacing:-.02em;margin:6px 0 16px}
+.ecl p{font-size:13.5px;line-height:1.45;color:var(--mut);margin:14px 0 0}
+.ecl input{width:100%;accent-color:var(--teal);height:28px;cursor:pointer}
+.ecr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ecr span{display:block;border-radius:16px;padding:14px 16px;background:var(--paper2)}
+.ecr span:nth-child(2){background:var(--sun-s)}
+.ecr b{display:block;font:600 clamp(26px,3vw,38px)/1 var(--serif);letter-spacing:-.02em;color:var(--ink)}
+.ecr em{display:block;font:600 14px/1.3 var(--sans);font-style:normal;color:var(--ink);margin-top:5px}
+.ecr small{display:block;font-size:12px;line-height:1.3;color:var(--mut);margin-top:3px}
+.eeasy{margin-top:30px;text-align:center}
+.eeasy b{display:block;font:600 22px/1.2 var(--serif);margin-bottom:12px}
+.eeasy ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.eeasy li{font:600 13.5px/1.3 var(--sans);background:#fff;border:1px solid var(--line2);border-radius:999px;padding:8px 14px 8px 30px;position:relative;text-align:left}
+.eeasy li::before{content:"";position:absolute;left:12px;top:50%;width:9px;height:9px;margin-top:-5px;border-radius:50%;background:var(--teal)}
+.eord .growline{grid-template-columns:repeat(5,minmax(0,1fr))}
+.eord .growline::before{left:10%;right:10%}
+@media(prefers-reduced-motion:reduce){.ewk i,.euw i{animation:none}.eul em,.eusq i{transition:none}}
+@media(max-width:900px){.edet,.emonth,.ecalc{grid-template-columns:minmax(0,1fr);gap:20px}.eladwrap,.emonth,.ecalc{padding:20px}.eladder{gap:6px}.estep span{display:none}.estep{padding:8px 2px}.eord .growline{grid-template-columns:repeat(2,minmax(0,1fr))}.ewk i{width:60px;height:60px}.ewks::before{top:30px}}
+@media(max-width:520px){.ecr{grid-template-columns:minmax(0,1fr)}.edr{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){.ec .esv i{animation:none}.es1 em,.esf em,.esring i{transition:none}}
 @media(max-width:900px){.earn3{grid-template-columns:minmax(0,1fr)}.ecstage{max-width:420px}}
 .deal{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:34px;align-items:center;padding:30px;margin-top:18px}
@@ -1302,7 +1367,7 @@ footer p{max-width:100ch;margin-bottom:8px}
     <div class="chhead">
       <div class="kicker">How it earns</div>
       <h2 class="rv">It earns <em>without shipping a bottle.</em></h2>
-      <p class="lede rv">Your supplements stay where they are sold today. In English, everything that earns is digital, or handled by someone else.</p>
+      <p class="lede rv">Your supplements stay where they are sold today. In English, everything that earns is digital, or handled by someone else. Three of them need nothing new from you.</p>
     </div>
     <div class="earn3">
       <article class="ec glass rv">
@@ -1324,8 +1389,74 @@ footer p{max-width:100ch;margin-bottom:8px}
         <div class="ecyou"><small>From you</small>The conversations you already record</div>
       </article>
     </div>
-    <p class="firstlater earnlater rv"><em>Later, once people are watching</em><span>A set of your interviews on one theme</span><span>Programmes from your cookbook</span><span>Partners in each country</span><span>Gatherings in the Algarve</span><span>Supplements abroad, through a local partner</span></p>
-    <p class="tiny" style="text-align:center;margin-top:18px">The sum is an example, not a forecast. Amazon, YouTube and membership platforms collect each country's tax on these sales. Your accountant should confirm that for your company.</p>
+    <div class="ehead rv"><b>The whole ladder, from free to in person</b><span>Tap a step</span></div>
+    <div class="eladwrap glass rv">
+      <div class="eladder" id="eLadder" role="group" aria-label="Seven ways the English side earns"><button type="button" class="estep" style="--h:34%" data-t="Videos, shorts and the Sunday letter" data-g="Your conversations in English, a free guide or book chapter, and a letter every Sunday. The videos earn advertising." data-p="Free" data-y="Nothing new" aria-pressed="true"><i>1</i><span>Free</span></button><button type="button" class="estep" style="--h:45%" data-t="Books, recipes, meditations" data-g="Your two books in English, a recipe collection from the cookbook, and guided meditations." data-p="€9 to €29" data-y="Nothing new" aria-pressed="false"><i>2</i><span>Small products</span></button><button type="button" class="estep" style="--h:56%" data-t="A paid circle" data-g="A private community with a live session every week, a growing library, and each other." data-p="€29 to €49 a month" data-y="One live a month" aria-pressed="false"><i>3</i><span>The community</span></button><button type="button" class="estep" style="--h:67%" data-t="Programmes people do together" data-g="Thirty days at a time, such as Journey to freedom or the living kitchen." data-p="€197 to €497" data-y="Record once" aria-pressed="false"><i>4</i><span>Courses</span></button><button type="button" class="estep" style="--h:78%" data-t="Your interviews on one theme" data-g="Free to watch for 48 hours, paid to keep. Made from conversations you already have." data-p="€97 to €197" data-y="Nothing new" aria-pressed="false"><i>5</i><span>A congress</span></button><button type="button" class="estep" style="--h:89%" data-t="One to one, online" data-g="Members book Guida, Brigitte, Leanne and others through the community." data-p="€80 to €250" data-y="Nothing" aria-pressed="false"><i>6</i><span>Healer sessions</span></button><button type="button" class="estep" style="--h:100%" data-t="The Algarve" data-g="Gatherings here, and a small yearly group for people building a business with heart." data-p="€1,000 to €5,000" data-y="A few days a year" aria-pressed="false"><i>7</i><span>In person</span></button></div>
+      <div class="edet" id="eDet" aria-live="polite">
+        <div class="edl"><small id="eNum">Step 1</small><b id="eTitle"></b><p id="eGet"></p></div>
+        <div class="edr"><span><small>Price idea</small><b id="ePrice"></b></span><span class="you"><small>From you</small><b id="eYou"></b></span></div>
+      </div>
+    </div>
+
+    <div class="emonth glass rv">
+      <div class="eml"><b>The community runs every week. You come once a month.</b><p>The healers host the other weeks, so members always have something live. Lara and Leanne take the month after.</p>
+        <p class="echips"><span>A library that grows</span><span>One community first</span><span>A founding price for the first 100</span></p></div>
+      <div class="ewks" aria-hidden="true"><span class="ewk" style="--k:0"><i style="background-image:url(assets/lp-matthias.jpg);"></i><small>Week 1</small><b>You, live</b></span><span class="ewk" style="--k:1"><i style="background-image:url(assets/circle-guida4.jpg);"></i><small>Week 2</small><b>Guida</b></span><span class="ewk" style="--k:2"><i style="background-image:url(assets/team-brigitte.jpg);background-position:28% 40%;background-size:118%"></i><small>Week 3</small><b>Brigitte</b></span><span class="ewk" style="--k:3"><i style="background-image:url(assets/circle-petra.jpg);"></i><small>Week 4</small><b>Petra</b></span></div>
+    </div>
+
+    <div class="ehead rv"><b>Three things only this group can make</b></div>
+    <div class="earn3">
+      <article class="ec glass rv">
+        <div class="ecstage eu1" aria-hidden="true"><img src="assets/lp-matthias.jpg" alt=""><span class="euw"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i></span><img src="assets/team-brigitte.jpg" alt="" style="object-position:28% 40%"></div>
+        <b>Meditations, your voice and Brigitte's music</b>
+        <p>She already makes sleep and healing music. Guided audio from the two of you is a finished product.</p>
+        <div class="ecyou"><small>From you</small>An afternoon at a microphone</div>
+      </article>
+      <article class="ec glass rv">
+        <div class="ecstage eu2" aria-hidden="true"><span class="esb"><img src="assets/real-book.jpg" alt="" loading="lazy"></span><span class="eul"><em style="--k:0">Week 1</em><em style="--k:1">Week 2</em><em style="--k:2">Week 3</em><em style="--k:3">Week 4</em></span></div>
+        <b>Journey to freedom, the course</b>
+        <p>Two years on foot without money. Your own story, as a programme on trust and stepping out of the system.</p>
+        <div class="ecyou"><small>From you</small>Record it once</div>
+      </article>
+      <article class="ec glass rv">
+        <div class="ecstage eu3" aria-hidden="true"><span class="eusq"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i><i style="--k:7"></i><i style="--k:8"></i><i style="--k:9"></i><i style="--k:10"></i><i style="--k:11"></i><i style="--k:12"></i><i style="--k:13"></i><i style="--k:14"></i><i style="--k:15"></i><i style="--k:16"></i><i style="--k:17"></i><i style="--k:18"></i><i style="--k:19"></i><i style="--k:20"></i><i style="--k:21"></i><i style="--k:22"></i><i style="--k:23"></i></span></div>
+        <b>A rainforest tier</b>
+        <p>Part of every membership protects forest, and members watch the square metres add up.</p>
+        <div class="ecyou"><small>From you</small>What you already do</div>
+      </article>
+    </div>
+
+    <div class="ecalc glass rv">
+      <div class="ecl">
+        <small>What the numbers could look like</small>
+        <b><span id="ecViews">300,000</span> English views a month</b>
+        <input type="range" id="ecRange" min="100000" max="1000000" step="50000" value="300000" aria-label="English views a month">
+        <p>Move the line. The rates under each figure are assumptions that show how it works. They are not a forecast.</p>
+      </div>
+      <div class="ecr" aria-live="polite">
+        <span><b id="ecReaders">12,000</b><em>letter readers after a year</em><small>if 1 viewer in 300 joins</small></span>
+        <span><b id="ecMembers">€14,040</b><em>a month from the community</em><small id="ecMembersS">360 members at €39, if 3% of readers join</small></span>
+        <span><b id="ecCourse">€35,640</b><em>from one course launch</em><small id="ecCourseS">120 sales at €297, if 1% buy</small></span>
+        <span><b id="ecCongress">€35,280</b><em>from one congress</em><small id="ecCongressS">240 passes at €147, if 2% buy</small></span>
+      </div>
+    </div>
+
+    <div class="eeasy rv">
+      <b>Simpler than supplements</b>
+      <ul><li>No customs, no labels, no parcels</li><li>A reseller platform such as Digistore24 sells in its own name and handles each country's tax</li><li>Your accountant confirms the setup once</li><li>Courses stay on food, habits and lifestyle, with no healing promises</li></ul>
+    </div>
+
+    <div class="grow eord rv" role="img" aria-label="The order: the letter and a free guide, then the books in English, then a congress from your interviews, then the community opens, then the first course and the first gathering">
+      <small>The order we would do it in</small>
+      <div class="growline">
+        <span style="--z:16px"><i></i><b>The letter</b><em>and a free guide</em></span>
+        <span style="--z:21px"><i></i><b>The books</b><em>in English</em></span>
+        <span style="--z:26px"><i></i><b>A congress</b><em>from your interviews</em></span>
+        <span style="--z:32px"><i></i><b>The community</b><em>opens to the buyers</em></span>
+        <span style="--z:40px"><i></i><b>A course</b><em>then the first gathering</em></span>
+      </div>
+    </div>
+    <p class="tiny" style="text-align:center;margin-top:22px">Prices are ideas and the figures are examples. Tax handling depends on the platform chosen, so your accountant should confirm it for your company.</p>
   </div>
 </section>
 
@@ -1887,6 +2018,22 @@ footer p{max-width:100ch;margin-bottom:8px}
       document.getElementById('baB').src='assets/cv-before-'+k+'.jpg';document.getElementById('baA').src='assets/cv-after-'+k+'.jpg';
       document.getElementById('baTitle').textContent=th.dataset.t;document.getElementById('baSub').textContent=th.dataset.s;baUser=false;baSweep()})});
     new IntersectionObserver(function(es,ob){if(es[0].isIntersecting){ob.disconnect();baSweep()}},{threshold:.5}).observe(baBig)}
+
+  /* ---------- how it earns: the ladder and the sums ---------- */
+  var eSteps=[].slice.call(document.querySelectorAll('#eLadder .estep')),eAt=0,eTimer=null,eTouched=false;
+  function eShow(k){eAt=k;var st=eSteps[k];eSteps.forEach(function(o,i){o.setAttribute('aria-pressed',String(i===k))});
+    document.getElementById('eNum').textContent='Step '+(k+1)+' of '+eSteps.length;document.getElementById('eTitle').textContent=st.dataset.t;document.getElementById('eGet').textContent=st.dataset.g;
+    document.getElementById('ePrice').textContent=st.dataset.p;document.getElementById('eYou').textContent=st.dataset.y}
+  eSteps.forEach(function(o,i){o.addEventListener('click',function(){eTouched=true;clearInterval(eTimer);eShow(i)})});
+  if(eSteps.length){eShow(0);if(!reduce)new IntersectionObserver(function(es){clearInterval(eTimer);if(es[0].isIntersecting&&!eTouched)eTimer=setInterval(function(){eShow((eAt+1)%eSteps.length)},2600)},{threshold:.4}).observe(document.getElementById('eLadder'))}
+  var ecRange=document.getElementById('ecRange');
+  if(ecRange){var ecFmt=function(n){return Math.round(n).toLocaleString('en-US')};
+    var ecCalc=function(){var views=+ecRange.value,readers=views/300*12,members=readers*.03,course=readers*.01,pass=readers*.02;
+      document.getElementById('ecViews').textContent=ecFmt(views);document.getElementById('ecReaders').textContent=ecFmt(readers);
+      document.getElementById('ecMembers').textContent='\u20ac'+ecFmt(members*39);document.getElementById('ecMembersS').textContent=ecFmt(members)+' members at \u20ac39, if 3% of readers join';
+      document.getElementById('ecCourse').textContent='\u20ac'+ecFmt(course*297);document.getElementById('ecCourseS').textContent=ecFmt(course)+' sales at \u20ac297, if 1% buy';
+      document.getElementById('ecCongress').textContent='\u20ac'+ecFmt(pass*147);document.getElementById('ecCongressS').textContent=ecFmt(pass)+' passes at \u20ac147, if 2% buy'};
+    ecRange.addEventListener('input',ecCalc);ecCalc()}
 
   /* ---------- roles ---------- */
   var tks=document.querySelectorAll('#tasks .tk'),hot=-1,tseen=false;
