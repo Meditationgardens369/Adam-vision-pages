@@ -419,8 +419,8 @@ section{padding:52px 0}
     <p class="lede">These are real and open for you to check. Each is one teacher with a circle around them. None of them posts a bottle.</p>
     <div class="exhead">
       <div class="seg" id="exSeg" role="group" aria-label="Which examples">
-        <button type="button" data-x="large" aria-pressed="true">Larger circles</button>
-        <button type="button" data-x="small" aria-pressed="false">Small circles</button>
+        <button type="button" data-x="small" aria-pressed="true">Small circles</button>
+        <button type="button" data-x="large" aria-pressed="false">Larger circles</button>
         <button type="button" data-x="big" aria-pressed="false">Big names</button>
       </div>
       <p id="exCap"></p>
@@ -541,7 +541,7 @@ section{padding:52px 0}
   function flSet(m){fl.setAttribute('data-m',m);flBtns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.m===m))});
     $('roomN').textContent=m==='en'?'1.5 billion':'130 million';$('roomT').textContent=m==='en'?'people speak English':'people speak German'}
   flBtns.forEach(function(b){b.addEventListener('click',function(){flTouched=true;clearInterval(flTimer);flSet(b.dataset.m)})});
-  watch(fl,function(on){clearInterval(flTimer);if(on&&!flTouched)flTimer=setInterval(function(){flSet(fl.getAttribute('data-m')==='de'?'en':'de')},4200)},.45);
+  watch(fl,function(on){clearInterval(flTimer);if(on&&!flTouched)flTimer=setTimeout(function(){flTouched=true;flSet('en')},9000)},.45);
 
   /* 2. inside the circle */
   var SUBJ=[
@@ -559,14 +559,14 @@ section{padding:52px 0}
   SUBJ.forEach(function(sj,i){var b=el('button','',sj[0]);b.type='button';b.addEventListener('click',function(){appStop();subjShow(i)});subjBox.appendChild(b)});
   subjShow(0);
   tabs.forEach(function(b,i){b.addEventListener('click',function(){appStop();tabShow(i)})});
-  watch($('app'),function(on){clearInterval(appTimer);if(on&&!appTouched)appTimer=setInterval(function(){tabShow((appAt+1)%tabs.length)},5200)},.3);
+  watch($('app'),function(on){clearInterval(appTimer);if(on&&!appTouched)appTimer=setInterval(function(){tabShow(appAt+1);if(appAt>=tabs.length-1)appStop()},11000)},.3);
   var askBtn=$('askBtn');
   askBtn.addEventListener('click',function(){appStop();var q=el('div','q mine');q.appendChild(el('i','','1'));q.appendChild(el('span','','Your question. It is in the queue, and Matthias can see it.'));$('qs').insertBefore(q,$('qs').firstChild);askBtn.textContent='Sent. He answers it live';askBtn.disabled=true;
     setTimeout(function(){all('.q.now').forEach(function(o){o.classList.remove('now')});q.classList.remove('mine');q.classList.add('now');$('nowQ').textContent='Your question'},2600)});
 
   /* 3. why people would pay */
   var WANT=[
-    ['eat plant-based',[['assets/lp-veg.jpg','Plant-based, from the start','A 14-day programme from someone who has eaten this way since he was 17'],['assets/real-cookbook.jpg','The living kitchen','Your cookbook, cooked through together'],['assets/lp-matthias.jpg','A live hour with you','They ask what the book could not answer']]],
+    ['eat plant-based',[['assets/lp-veg.jpg','Plant-based, from the start','A 14-day programme. You have eaten this way since you were 17'],['assets/real-cookbook.jpg','The living kitchen','Your cookbook, cooked through together'],['assets/lp-matthias.jpg','A live hour with you','They ask what the book could not answer']]],
     ['stay calm while the world shifts',[[YT('WKTXL7tSrPQ'),'The great shift, in order','Every conversation on it, from the first to the newest'],['assets/lp-mist.jpg','Guided meditations','Your voice, with Brigitte\'s music'],['assets/lp-matthias.jpg','A live hour with you','For the questions the news leaves them with']]],
     ['step out of the system',[['assets/real-book.jpg','Journey to freedom','Your two years on foot, as 30 days they can follow'],['assets/sh-forest.jpg','People doing the same','A circle where this is normal'],['assets/lp-matthias.jpg','A live hour with you','How you did it, in your own words']]],
     ['let go of what I carry',[['assets/circle-guida4.jpg','A live evening with Guida','Thirty years of hands-on healing work'],['assets/team-brigitte.jpg','Sound evenings with Brigitte','Four decades in sound'],['assets/circle-petra.jpg','Movement with Petra','Dance and energy sessions']]]
@@ -576,7 +576,7 @@ section{padding:52px 0}
     WANT[k][1].forEach(function(g,i){var r=el('div','get');r.style.setProperty('--k',i);var im=el('i');im.style.backgroundImage='url('+g[0]+')';r.appendChild(im);var d=el('div');d.appendChild(el('b','',g[1]));d.appendChild(el('span','',g[2]));r.appendChild(d);gets.appendChild(r)})}
   WANT.forEach(function(w,i){var b=el('button');b.type='button';b.appendChild(el('small','','I want to'));b.appendChild(document.createTextNode(w[0]));b.addEventListener('click',function(){wantTouched=true;clearInterval(wantTimer);wantShow(i)});wantsBox.appendChild(b)});
   wantShow(0);
-  watch(wantsBox,function(on){clearInterval(wantTimer);if(on&&!wantTouched)wantTimer=setInterval(function(){wantShow((wantAt+1)%WANT.length)},3800)});
+  watch(wantsBox,function(on){clearInterval(wantTimer);if(on&&!wantTouched)wantTimer=setInterval(function(){var k=(wantAt+1)%WANT.length;wantShow(k);if(k===0){wantTouched=true;clearInterval(wantTimer)}},8000)});
 
   /* the record counts up once */
   function countUp(node){var to=+node.dataset.c,dec=+(node.dataset.dec||0),t0=null;
@@ -608,14 +608,14 @@ section{padding:52px 0}
       ['Dr Joe Dispenza','A meditation teacher. Courses online, then week-long retreats',['About $2,500 a seat','1,200+ people at one sold-out week'],'Courses lead to the room','Gatherings','https://drjoedispenza.com','--sun-s']
     ]]
   };
-  var exBox=$('exs'),exBtns=all('#exSeg button'),exTouched=false,exTimer=null,exAt='large',exOrder=['large','small','big'];
+  var exBox=$('exs'),exBtns=all('#exSeg button'),exTouched=false,exTimer=null,exAt='small',exOrder=['small','large','big'];
   function exShow(kind){exAt=kind;exBtns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.x===kind))});$('exCap').textContent=EX[kind][0];exBox.textContent='';
     EX[kind][1].forEach(function(x,i){var c=el('div','ex');c.style.setProperty('--k',i);var ic=el('i','',x[0].charAt(0));ic.style.setProperty('--c','var('+x[6]+')');c.appendChild(ic);c.appendChild(el('b','',x[0]));c.appendChild(el('span','',x[1]));
       var n=el('div','exn');x[2].forEach(function(t){n.appendChild(el('u','',t))});n.appendChild(el('u','hot',x[3]));c.appendChild(n);
       var f=el('div','exf');f.appendChild(el('span','','In your plan: '+x[4].charAt(0).toLowerCase()+x[4].slice(1)));var a=el('a','','See it');a.href=x[5];a.target='_blank';a.rel='noopener';f.appendChild(a);c.appendChild(f);exBox.appendChild(c)})}
   exBtns.forEach(function(b){b.addEventListener('click',function(){exTouched=true;clearInterval(exTimer);exShow(b.dataset.x)})});
-  exShow('large');
-  watch(exBox,function(on){clearInterval(exTimer);if(on&&!exTouched)exTimer=setInterval(function(){exShow(exOrder[(exOrder.indexOf(exAt)+1)%3])},6000)},.3);
+  exShow('small');
+  watch(exBox,function(on){clearInterval(exTimer);if(on&&!exTouched)exTimer=setInterval(function(){var k=(exOrder.indexOf(exAt)+1)%3;exShow(exOrder[k]);if(k===0){exTouched=true;clearInterval(exTimer)}},12000)},.3);
 
   /* 4. from what you already have */
   var SRC=[
@@ -629,7 +629,7 @@ section{padding:52px 0}
     SRC[k][2].forEach(function(t,i){var o=el('div','out',t);o.style.setProperty('--k',i);outs.appendChild(o)})}
   SRC.forEach(function(sr,i){var b=el('button');b.type='button';var im=el('i');im.style.backgroundImage='url('+sr[1]+')';b.appendChild(im);b.appendChild(el('b','',sr[0]));b.addEventListener('click',function(){srcTouched=true;clearInterval(srcTimer);srcShow(i)});srcBox.appendChild(b)});
   srcShow(0);
-  watch(srcBox,function(on){clearInterval(srcTimer);if(on&&!srcTouched)srcTimer=setInterval(function(){srcShow((srcAt+1)%SRC.length)},3800)});
+  watch(srcBox,function(on){clearInterval(srcTimer);if(on&&!srcTouched)srcTimer=setInterval(function(){var k=(srcAt+1)%SRC.length;srcShow(k);if(k===0){srcTouched=true;clearInterval(srcTimer)}},8000)});
 
   /* 5. estimator */
   var GERMAN=800000;
