@@ -375,6 +375,22 @@ section{padding:52px 0}
 .whocol.we ul{grid-template-columns:repeat(2,minmax(0,1fr))}
 .whocol li{background:#fff;border-radius:12px;padding:10px 12px;font:600 14.5px/1.3 var(--sans);animation:rise .45s both;animation-delay:calc(var(--k)*.07s)}
 .whocol li small{display:block;font:500 12.5px/1.3 var(--sans);color:var(--mut);margin-top:2px}
+.keep{margin-top:16px;padding:24px}
+.keepsub{font-size:16px;line-height:1.5;color:var(--mut);margin-top:6px;max-width:62ch}
+.keepvs{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:14px;margin:18px 0}
+.keepvs>div{border-radius:18px;padding:16px;background:var(--paper2)}
+.keepvs>div:last-child{background:var(--teal-s)}
+.keepvs small{display:block;font:700 12.5px var(--sans);color:var(--mut);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chips u{text-decoration:none;font:600 14px var(--sans);background:#fff;border-radius:999px;padding:7px 12px}
+.keeprow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center;margin-top:18px}
+.keeppc b{display:block;font:600 clamp(46px,8vw,74px)/1 var(--serif);letter-spacing:-.03em;color:var(--teal)}
+.keeppc small{display:block;font:700 13px var(--sans);color:var(--mut);margin-top:2px}
+.keepbar{height:26px;border-radius:13px;background:var(--mag);overflow:hidden}
+.keepbar i{display:block;height:100%;width:0;background:var(--teal);transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.keeplab{display:flex;justify-content:space-between;gap:10px;margin-top:7px;font:700 13.5px var(--sans)}
+.keeplab span:last-child{color:var(--mag)}
+.keepline{font-size:14.5px;color:var(--mut);margin-top:12px}
 .asks{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-top:22px}
 .asks .card{padding:24px}
 .asks b.n{display:block;font:600 clamp(40px,7vw,64px)/1 var(--serif);letter-spacing:-.03em;color:var(--teal)}
@@ -426,6 +442,10 @@ section{padding:52px 0}
   .srcs button i{aspect-ratio:16/9}
   .mk{padding:16px}
   .wdo{padding:16px}
+  .keep{padding:16px}
+  .keepvs{grid-template-columns:minmax(0,1fr)}
+  .keeprow{gap:14px}
+  #keepSeg button{padding:9px 10px;font-size:13.5px}
   .whocols{grid-template-columns:minmax(0,1fr)}
   .whocol.we ul{grid-template-columns:minmax(0,1fr)}
   .whocol.you{order:-1}
@@ -631,7 +651,26 @@ section{padding:52px 0}
       <div class="total"><h3>A full year at this level</h3><b id="oYear">0</b>
         <div class="split" aria-hidden="true"><i id="s1"></i><i id="s2"></i><i id="s3"></i></div>
         <div class="legend"><span style="--c:var(--ink)">The circle, twelve months</span><span style="--c:var(--teal)">Two programme launches</span><span style="--c:var(--mag)">One summit</span></div>
-        <p>Before costs and before our share. It takes about a year of videos to reach this level.</p></div>
+        <p>Before platform fees and our share. It takes about a year of videos to reach this level.</p></div>
+    </div>
+    <div class="card keep rv">
+      <h3>What is left of each sale</h3>
+      <p class="keepsub">With supplements, a long list comes off every sale. With a digital product, almost nothing does. The thousandth copy costs the same to make as the first: nothing.</p>
+      <div class="keepvs">
+        <div><small>Comes off a bottle sent abroad</small><p class="chips"><u>Ingredients</u><u>Bottle and label</u><u>Storage</u><u>Shipping</u><u>Returns</u><u>Customs and tax abroad</u></p></div>
+        <div><small>Comes off a digital sale</small><p class="chips"><u>One platform fee</u></p></div>
+      </div>
+      <div class="seg" id="keepSeg" role="group" aria-label="Which product">
+        <button type="button" data-k="c" aria-pressed="true">The circle</button>
+        <button type="button" data-k="k" aria-pressed="false">A programme</button>
+        <button type="button" data-k="s" aria-pressed="false">A summit pass</button>
+      </div>
+      <div class="keeprow" aria-live="polite">
+        <div class="keeppc"><b id="keepPc"></b><small>is left</small></div>
+        <div><div class="keepbar"><i id="keepL"></i></div><div class="keeplab"><span id="keepLt"></span><span id="keepFt"></span></div></div>
+      </div>
+      <p class="keepline" id="keepLine"></p>
+      <p class="tiny" style="margin-top:12px;max-width:80ch">Fees as listed in November 2026: Skool takes 2.9% and 30 cents on its $99 a month plan, and Digistore24 takes 7.9% and €1, which includes handling each country's tax. What is left is shared between you and us. Making a product costs time, and that time is ours.</p>
     </div>
   </section>
 
@@ -894,6 +933,14 @@ section{padding:52px 0}
   function fmt(n){return Math.round(n).toLocaleString('en-US')}
   function eur(n){return '€'+fmt(n)}
   function pct(x){return (Math.round(x*1000)/10)+'%'}
+  var KEEP={c:['The circle','a month',.029,.3,'Skool'],k:['A programme','paid once',.079,1,'Digistore24'],s:['A summit pass','paid once',.079,1,'Digistore24']},keepAt='c';
+  function money(n){return '€'+(Math.round(n*100)/100).toFixed(2)}
+  function keepDraw(){var d=KEEP[keepAt],pr=PRICE[keepAt][0],fee=pr*d[2]+d[3],left=pr-fee;
+    all('#keepSeg button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.k===keepAt))});
+    $('keepPc').textContent=Math.round(left/pr*100)+'%';$('keepL').style.width=(left/pr*100)+'%';
+    $('keepLt').textContent=money(left)+' is left';$('keepFt').textContent=money(fee)+' fee';
+    $('keepLine').textContent=d[0]+' at '+eur(pr)+', '+d[1]+', sold through '+d[4]+'. Change the price above and this follows.'}
+  all('#keepSeg button').forEach(function(b){b.addEventListener('click',function(){keepAt=b.dataset.k;keepDraw()})});
   function calc(){
     var m=MOODS[mood],mult=+vIn.value,views=GERMAN*mult,yearViews=views*12,readers=yearViews/m.n;
     var members=readers*m.c,sales=readers*m.k,passes=readers*m.s,pc=PRICE.c[0],pk=PRICE.k[0],ps=PRICE.s[0];
@@ -909,7 +956,7 @@ section{padding:52px 0}
     $('oSummit').textContent=eur(passes*ps);$('hSummit').textContent=fmt(passes)+' passes at '+eur(ps);
     $('pC').textContent=eur(pc);$('pK').textContent=eur(pk);$('pS').textContent=eur(ps);
     $('oYear').textContent=eur(tot);
-    $('s1').style.width=(a/tot*100)+'%';$('s2').style.width=(b/tot*100)+'%';$('s3').style.width=(c/tot*100)+'%';
+    $('s1').style.width=(a/tot*100)+'%';$('s2').style.width=(b/tot*100)+'%';$('s3').style.width=(c/tot*100)+'%';keepDraw();
   }
   vIn.addEventListener('input',calc);
   all('#moods button').forEach(function(b){b.addEventListener('click',function(){mood=+b.dataset.m;all('#moods button').forEach(function(o){o.setAttribute('aria-pressed',String(o===b))});calc()})});
