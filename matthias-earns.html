@@ -445,10 +445,10 @@ section{padding:52px 0}
     <p class="lede">Nothing here is a promise. It shows how the pieces multiply, so you can judge it yourself.</p>
     <div class="card est rv">
       <span class="estq">How many English views a month?</span>
-      <div class="estbig"><span id="vOut">800,000</span> views</div>
-      <input type="range" id="vIn" min="0.25" max="10" step="0.25" value="1" aria-label="English views compared with your German views">
-      <div class="ticks"><span>a quarter</span><span id="vX">the same as German today</span><span>ten times</span></div>
-      <p class="estnote">German today is about 800,000 views a month: two videos a week at about 96,000 each. English speakers are more than ten times as many.</p>
+      <div class="estbig"><span id="vOut">500,000</span> views</div>
+      <input type="range" id="vIn" min="0.05" max="10" step="0.05" value="0.25" aria-label="English views compared with your German views">
+      <div class="ticks"><span>100,000</span><span id="vX">a quarter of German today</span><span>ten times German</span></div>
+      <p class="estnote">Your German channel gets about 2 million views a month, by your own count. This starts at a quarter of that. English speakers are more than ten times as many.</p>
 
       <hr class="estdiv">
       <span class="estq">How careful do you want to be?</span>
@@ -632,7 +632,7 @@ section{padding:52px 0}
   watch(srcBox,function(on){clearInterval(srcTimer);if(on&&!srcTouched)srcTimer=setInterval(function(){var k=(srcAt+1)%SRC.length;srcShow(k);if(k===0){srcTouched=true;clearInterval(srcTimer)}},8000)});
 
   /* 5. estimator */
-  var GERMAN=800000;
+  var GERMAN=2000000;
   var MOODS=[{n:1000,c:.01,k:.005,s:.01},{n:750,c:.02,k:.01,s:.02},{n:400,c:.03,k:.015,s:.03}];
   var PRICE={c:[50,5,20,100],k:[297,50,97,497],s:[147,25,47,247]};
   var mood=1,vIn=$('vIn');
@@ -644,7 +644,7 @@ section{padding:52px 0}
     var members=readers*m.c,sales=readers*m.k,passes=readers*m.s,pc=PRICE.c[0],pk=PRICE.k[0],ps=PRICE.s[0];
     var a=members*pc*12,b=sales*pk*2,c=passes*ps,tot=a+b+c;
     $('vOut').textContent=fmt(views);
-    $('vX').textContent=mult===1?'the same as German today':(mult<1?fmt(mult*100)+'% of German today':String(mult)+' times German today');
+    $('vX').textContent=mult===1?'the same as German today':(mult===0.25?'a quarter of German today':(mult===0.5?'half of German today':(mult<1?fmt(mult*100)+'% of German today':String(Math.round(mult*100)/100)+' times German today')));
     $('moodNote').textContent=(mood===1?'In German, about 1 view in 750 became a newsletter reader: 60,000 readers from 45 million views. This uses the same rate. ':'This assumes 1 view in '+fmt(m.n)+' becomes a letter reader. ')+'Of the readers, '+pct(m.c)+' join the circle, '+pct(m.k)+' buy a programme and '+pct(m.s)+' buy a summit pass.';
     $('fV').textContent=fmt(yearViews);$('fV').style.setProperty('--w','100%');
     $('fR').textContent=fmt(readers);$('fR').style.setProperty('--w',Math.max(18,Math.min(70,30+Math.log(readers/1000)/Math.LN10*14))+'%');
