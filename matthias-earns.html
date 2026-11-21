@@ -239,6 +239,15 @@ section{padding:52px 0}
 .step b{font:600 18px var(--serif);min-width:64px;text-align:center}
 .step button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:#fff;font:600 21px/1 var(--sans);cursor:pointer}
 .step button:active{background:var(--sun)}
+.what{margin-top:12px;border:1px solid var(--line2);border-radius:16px;background:#fff;padding:0 16px}
+.what summary{cursor:pointer;font:700 15px var(--sans);padding:14px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.what summary::-webkit-details-marker{display:none}
+.what summary::after{content:"+";font:600 22px/1 var(--sans);color:var(--teal)}
+.what[open] summary::after{content:"\2212"}
+.what ol{margin:0;padding:0 0 16px;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;counter-reset:w}
+.what li{counter-increment:w;font-size:14.5px;line-height:1.4;color:var(--mut)}
+.what li b{display:block;font:600 17px/1.2 var(--serif);color:var(--ink);margin-bottom:3px}
+.what li::before{content:counter(w);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--sun);font:600 15px var(--serif);color:var(--ink);margin-bottom:8px}
 .total{margin-top:14px;border-radius:20px;padding:20px 22px;background:var(--sun);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 14px;align-items:center}
 .total>b{font:600 clamp(32px,6vw,54px)/1 var(--serif);letter-spacing:-.02em;text-align:right}
 .total h3{font-size:20px}
@@ -291,6 +300,8 @@ section{padding:52px 0}
   .rec div:last-child b{align-self:end}
   .rec div:last-child span{align-self:start}
   .exs{grid-template-columns:minmax(0,1fr)}
+  #exSeg button{padding:9px 11px;font-size:13.5px}
+  .what ol{grid-template-columns:minmax(0,1fr)}
   .flnote{min-height:96px}
   .gets,.outs{min-height:0}
 }
@@ -405,16 +416,17 @@ section{padding:52px 0}
   <section>
     <span class="kicker">4. It already works</span>
     <h2>People pay for this today. <em>Look at who.</em></h2>
-    <p class="lede">These are real and open for you to check. Some are one teacher with a few hundred members. None of them posts a bottle.</p>
+    <p class="lede">These are real and open for you to check. Each is one teacher with a circle around them. None of them posts a bottle.</p>
     <div class="exhead">
       <div class="seg" id="exSeg" role="group" aria-label="Which examples">
-        <button type="button" data-x="small" aria-pressed="true">Small circles</button>
+        <button type="button" data-x="large" aria-pressed="true">Larger circles</button>
+        <button type="button" data-x="small" aria-pressed="false">Small circles</button>
         <button type="button" data-x="big" aria-pressed="false">Big names</button>
       </div>
       <p id="exCap"></p>
     </div>
     <div class="exs" id="exs" aria-live="polite"></div>
-    <p class="tiny" style="margin-top:14px;max-width:80ch">Members and prices as listed on Skool on 21 November 2026. Members times price is the ceiling: some members are on trials or older prices. Gaia figures come from its own reports, with members last reported in 2025. Other prices are as listed on their sites or in press.</p>
+    <p class="tiny" style="margin-top:14px;max-width:80ch">Members and prices as listed on Skool on 21 November 2026. Members times price is the ceiling: some members are on trials or older prices, and Harmony also has a free level. Gaia figures come from its own reports, with members last reported in 2025. Other prices are as listed on their sites or in press.</p>
   </section>
 
   <section>
@@ -463,6 +475,14 @@ section{padding:52px 0}
         <div class="r"><h3>One summit</h3><div class="val"><span id="oSummit">0</span><small>each</small></div><p class="how" id="hSummit"></p>
           <div class="step"><button type="button" data-k="s" data-d="-1" aria-label="Lower the summit price">&minus;</button><b id="pS">€147</b><button type="button" data-k="s" data-d="1" aria-label="Raise the summit price">+</button></div></div>
       </div>
+      <details class="what" open>
+        <summary>What is a summit?</summary>
+        <ol>
+          <li><b>Eight to ten of your talks</b>On one theme, in English, released over a few days as an online event.</li>
+          <li><b>Free for 48 hours</b>People sign up with their email to watch, so the letter grows fast.</li>
+          <li><b>The pass keeps it</b>Pay once and keep every recording, plus a live question hour with you.</li>
+        </ol>
+      </details>
       <div class="total"><h3>A full year at this level</h3><b id="oYear">0</b>
         <div class="split" aria-hidden="true"><i id="s1"></i><i id="s2"></i><i id="s3"></i></div>
         <div class="legend"><span style="--c:var(--ink)">The circle, twelve months</span><span style="--c:var(--teal)">Two programme launches</span><span style="--c:var(--mag)">One summit</span></div>
@@ -570,10 +590,16 @@ section{padding:52px 0}
 
   /* others who already do it */
   var EX={
-    small:['One teacher, a few hundred to a few thousand people',[
+    large:['One teacher each. Everyone pays to join',[
+      ['Eternal Life Tribe','Breathwork, courses and a live question hour twice a month',['3,256 members','$55 a month'],'Up to about $179,000 a month','A circle with live calls','https://www.skool.com/eternallifetribe/about','--teal-s'],
+      ['Angel Archetype Society','A private library of meditations and rituals',['997 members','$98 a month'],'Up to about $97,000 a month','A library','https://www.skool.com/angelarchetype/about','--rose-s'],
+      ['Mindful Movemend','Gentle movement and breathing, with four live calls a month',['1,867 members','$44 a month'],'Up to about $82,000 a month','A circle with live calls','https://www.skool.com/mindfulmovemend/about','--sun-s'],
+      ['4biddenknowledge Academy','Hidden knowledge and consciousness, from a known speaker',['1,364 members','$55 a month'],'Up to about $75,000 a month','A circle','https://www.skool.com/4biddenknowledge/about','--lilac-s']
+    ]],
+    small:['A few hundred members is already a business',[
       ['Club Raw','Raw vegan living, taught by one health YouTuber',['616 members','$39 a month'],'Up to about $24,000 a month','A circle','https://www.skool.com/clubraw/about','--leaf-s'],
       ['The University of Metaphysics','One teacher on mind and consciousness',['1,063 members','$33 a month'],'Up to about $35,000 a month','A circle','https://www.skool.com/the-university-of-metaphysics-4287/about','--lilac-s'],
-      ['Angel Archetype Society','A private library of meditations and rituals',['997 members','$98 a month'],'Up to about $97,000 a month','A library','https://www.skool.com/angelarchetype/about','--rose-s'],
+      ['Reality Revolution','A podcast host on consciousness, with live events inside',['601 members','$55 a month'],'Up to about $33,000 a month','A circle','https://www.skool.com/realityrevolution/about','--rose-s'],
       ['Harmony','Healing frequencies and live online concerts',['58,000 members','$27 a month for premium'],'Free to join, paid to go deeper','Music and a circle','https://www.skool.com/harmony/about','--sky-s']
     ]],
     big:['The same idea, grown large',[
@@ -582,14 +608,14 @@ section{padding:52px 0}
       ['Dr Joe Dispenza','A meditation teacher. Courses online, then week-long retreats',['About $2,500 a seat','1,200+ people at one sold-out week'],'Courses lead to the room','Gatherings','https://drjoedispenza.com','--sun-s']
     ]]
   };
-  var exBox=$('exs'),exBtns=all('#exSeg button'),exTouched=false,exTimer=null,exAt='small';
+  var exBox=$('exs'),exBtns=all('#exSeg button'),exTouched=false,exTimer=null,exAt='large',exOrder=['large','small','big'];
   function exShow(kind){exAt=kind;exBtns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.x===kind))});$('exCap').textContent=EX[kind][0];exBox.textContent='';
     EX[kind][1].forEach(function(x,i){var c=el('div','ex');c.style.setProperty('--k',i);var ic=el('i','',x[0].charAt(0));ic.style.setProperty('--c','var('+x[6]+')');c.appendChild(ic);c.appendChild(el('b','',x[0]));c.appendChild(el('span','',x[1]));
       var n=el('div','exn');x[2].forEach(function(t){n.appendChild(el('u','',t))});n.appendChild(el('u','hot',x[3]));c.appendChild(n);
       var f=el('div','exf');f.appendChild(el('span','','In your plan: '+x[4].charAt(0).toLowerCase()+x[4].slice(1)));var a=el('a','','See it');a.href=x[5];a.target='_blank';a.rel='noopener';f.appendChild(a);c.appendChild(f);exBox.appendChild(c)})}
   exBtns.forEach(function(b){b.addEventListener('click',function(){exTouched=true;clearInterval(exTimer);exShow(b.dataset.x)})});
-  exShow('small');
-  watch(exBox,function(on){clearInterval(exTimer);if(on&&!exTouched)exTimer=setInterval(function(){exShow(exAt==='small'?'big':'small')},6000)},.3);
+  exShow('large');
+  watch(exBox,function(on){clearInterval(exTimer);if(on&&!exTouched)exTimer=setInterval(function(){exShow(exOrder[(exOrder.indexOf(exAt)+1)%3])},6000)},.3);
 
   /* 4. from what you already have */
   var SRC=[
