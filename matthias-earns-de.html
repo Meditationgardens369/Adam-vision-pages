@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>So rechnet sich Englisch</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Für Matthias: wohin englische Zuschauer statt in den Shop gehen könnten, was sie dort finden, und ein Rechner zum Selbstbewegen.">
+<meta name="theme-color" content="#fffdf7">
+<meta name="color-scheme" content="light only">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='36' fill='none' stroke='%23fec102' stroke-width='14'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600;700;800&display=swap">
+<style>
+/* A stand-alone page for Matthias Langwasser. It answers his question from 21 Nov 2026:
+   how the English side earns when supplements cannot be shipped abroad. The community shown
+   is a mock-up of something not built yet. Prices and rates are examples, not forecasts. */
+:root{
+  --paper:#fffdf7;--paper2:#f6f8ef;--ink:#224130;--mut:#55705f;--faint:#8ea296;
+  --line:rgba(34,65,48,.12);--line2:rgba(34,65,48,.22);
+  --teal:#108474;--teal-s:#d2f6e6;--sun:#fec102;--sun-s:#fff3c4;--leaf-s:#e7f6d5;--lilac-s:#efe9fb;--rose-s:#fbe9f0;--sky-s:#e4edfb;--mag:#9b2d8b;
+  --sh1:0 1px 3px rgba(34,65,48,.06),0 10px 24px -14px rgba(34,65,48,.25);
+  --sh2:0 2px 6px rgba(34,65,48,.06),0 26px 60px -22px rgba(34,65,48,.35);
+  --serif:Fraunces,Georgia,serif;--sans:Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --rb:linear-gradient(90deg,#ff6b6b,#ffb347,#fec102,#7fd8a7,#6fc3ff,#b48cff,#ff7fc0);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;margin:0;text-wrap:balance;line-height:1.06}
+h1{font-size:clamp(40px,7.4vw,76px)}
+h2{font-size:clamp(30px,5vw,50px)}
+h3{font-size:21px;font-weight:600}
+em{font-style:italic;color:var(--teal)}
+p{margin:0}
+button{font:inherit;color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:max(18px,env(safe-area-inset-left,0px))}
+.rbline{height:5px;background:var(--rb)}
+.top{display:flex;align-items:center;gap:10px;padding:16px 0}
+.top img{width:34px;height:34px;object-fit:contain}
+.top b{font:600 17px var(--serif)}
+.top span{margin-left:auto;font:600 13px var(--sans);color:var(--faint)}
+.lang{display:flex;gap:2px;padding:3px;margin-left:14px;border-radius:999px;background:var(--paper2);border:1px solid var(--line)}
+.lang a{font:700 13px var(--sans);color:var(--mut);text-decoration:none;padding:6px 12px;border-radius:999px}
+.lang a[aria-current]{background:var(--ink);color:#fff}
+section{padding:52px 0}
+.kicker{display:block;font:700 13px var(--sans);color:var(--teal);margin-bottom:12px}
+.lede{font-size:19px;line-height:1.5;color:var(--mut);margin-top:16px;max-width:58ch}
+.card{background:#fff;border:1px solid var(--line);border-radius:26px;box-shadow:var(--sh2)}
+.tiny{font-size:13px;line-height:1.45;color:var(--faint)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.seg{display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:var(--paper2);border:1px solid var(--line)}
+.seg button{border:0;background:none;border-radius:999px;padding:10px 18px;font:700 15px var(--sans);color:var(--mut);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+/* hero */
+.hero{padding-top:22px}
+.who{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.who img{width:56px;height:56px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--sun)}
+.who b{display:block;font:600 18px var(--serif)}
+.who span{display:block;font-size:13.5px;color:var(--mut)}
+
+/* 1. today and in English */
+.fl{margin-top:26px;padding:28px}
+.flhead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+.room{display:flex;align-items:center;gap:14px;min-height:74px}
+.room i{flex:none;display:block;border-radius:50%;background:var(--line2);transition:width .8s cubic-bezier(.2,.8,.2,1),height .8s cubic-bezier(.2,.8,.2,1),background .5s;width:22px;height:22px}
+.fl[data-m="en"] .room i{width:74px;height:74px;background:var(--teal)}
+.room b{display:block;font:600 26px/1 var(--serif)}
+.room span{display:block;font-size:13.5px;color:var(--mut);margin-top:3px}
+.flrow{display:grid;grid-template-columns:minmax(0,1fr) 70px minmax(0,1fr) 70px minmax(0,1.15fr);align-items:center;margin-top:26px}
+.node{text-align:center;min-width:0}
+.nvis{position:relative;height:150px;display:grid;place-items:center}
+.face{grid-area:1/1;transition:opacity .5s,transform .5s}
+.fl[data-m="de"] .face.en,.fl[data-m="en"] .face.de{opacity:0;transform:scale(.86);pointer-events:none}
+.ntxt{position:relative;min-height:74px}
+.ntxt>div{position:absolute;left:0;right:0;top:0;transition:opacity .5s}
+.fl[data-m="de"] .ntxt .en,.fl[data-m="en"] .ntxt .de{opacity:0}
+.ntxt b{display:block;font:600 20px/1.2 var(--serif)}
+.ntxt span{display:block;font-size:14px;line-height:1.35;color:var(--mut);margin-top:3px}
+.fan{position:relative;width:170px;height:110px;grid-area:1/1}
+.fan img{position:absolute;left:50%;top:50%;width:118px;aspect-ratio:16/9;object-fit:cover;border-radius:9px;box-shadow:0 0 0 3px #fff,var(--sh1);transform:translate(-50%,-50%) translateX(var(--x)) rotate(var(--r))}
+.fan .tag{position:absolute;right:-4px;bottom:-4px;font:800 11px/1 var(--sans);color:#fff;background:var(--teal);border-radius:999px;padding:5px 8px;box-shadow:0 0 0 2px #fff;transition:opacity .5s}
+.fl[data-m="de"] .fan .tag{opacity:0}
+.av{position:relative;width:96px;height:96px}
+.av img{width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 4px #fff,var(--sh1)}
+.av i{position:absolute;right:-6px;bottom:-2px;width:36px;height:36px;border-radius:11px;background:#2aabee;display:grid;place-items:center;box-shadow:0 0 0 3px #fff}
+.av svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mailv{width:100px;height:100px;border-radius:24px;background:var(--sun-s);display:grid;place-items:center;box-shadow:var(--sh1)}
+.mailv svg{width:54px;height:54px;fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.shopv{width:min(100%,250px);border-radius:12px;overflow:hidden;box-shadow:0 0 0 3px #fff,var(--sh1)}
+.shopv img{display:block;width:100%}
+.minic{width:min(100%,230px);border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh1);padding:10px;text-align:left}
+.minic>b{display:flex;align-items:center;gap:6px;font:700 13px var(--sans)}
+.minic>b img{width:20px;height:20px;object-fit:contain}
+.minic div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-top:8px}
+.minic div span{display:block;aspect-ratio:16/10;border-radius:6px;background:var(--teal-s) center/cover}
+.minic small{display:block;margin-top:8px;font:700 11px var(--sans);color:#fff;background:var(--mag);border-radius:999px;padding:5px 8px;text-align:center}
+.trk{position:relative;height:4px;border-radius:2px;background:var(--line2);align-self:start;margin-top:73px}
+.trk i{position:absolute;top:-5px;left:0;width:14px;height:14px;border-radius:50%;background:var(--c,var(--faint));animation:goh 2.6s linear infinite;animation-delay:calc(var(--k)*-.87s);transition:background .5s}
+.fl[data-m="en"] .trk i{--c:var(--teal)}
+.fl[data-m="de"] .trk i{--c:var(--mag)}
+@keyframes goh{from{left:-14px;opacity:0}12%{opacity:1}88%{opacity:1}to{left:100%;opacity:0}}
+@keyframes gov{from{top:-14px;opacity:0}12%{opacity:1}88%{opacity:1}to{top:100%;opacity:0}}
+.flnote{position:relative;min-height:60px;margin-top:20px;padding-top:18px;border-top:1px dashed var(--line2);text-align:center}
+.flnote p{position:absolute;left:0;right:0;font:500 clamp(19px,2.4vw,25px)/1.3 var(--serif);transition:opacity .5s}
+.fl[data-m="de"] .flnote .en,.fl[data-m="en"] .flnote .de{opacity:0}
+
+/* 2. inside the circle */
+.app{margin-top:26px;overflow:hidden}
+.apphead{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.apphead img{width:40px;height:40px;object-fit:contain}
+.apphead b{display:block;font:700 17px/1.1 var(--sans)}
+.apphead small{display:block;font-size:12.5px;color:var(--mut);margin-top:2px}
+.apphead .sk{margin-left:auto;font:700 12px var(--sans);color:var(--mut);background:var(--paper2);border-radius:999px;padding:6px 11px}
+.tabs{display:flex;gap:4px;padding:10px 14px 0;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;border:0;background:none;padding:10px 14px 12px;font:700 15px var(--sans);color:var(--mut);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--mag)}
+.pane{display:none;padding:22px 20px 24px}
+.pane.on{display:block;animation:paneIn .45s both}
+@keyframes paneIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pcap{font:500 17px/1.4 var(--serif);color:var(--mut);margin-bottom:16px;max-width:60ch}
+.subj{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.subj button{border:1px solid var(--line2);background:#fff;border-radius:999px;padding:8px 14px;font:700 14px var(--sans);cursor:pointer}
+.subj button[aria-pressed="true"]{background:var(--mag);border-color:var(--mag);color:#fff}
+.shelf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.vid{display:block;animation:paneIn .45s both;animation-delay:calc(var(--k)*.08s)}
+.vid span{display:block;position:relative;aspect-ratio:16/9;border-radius:12px;background:var(--paper2) center/cover;box-shadow:var(--sh1)}
+.vid span::after{content:"";position:absolute;left:10px;bottom:10px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.94) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7v10l8-5z' fill='%23224130'/%3E%3C/svg%3E") center/18px no-repeat}
+.vid b{display:block;font:600 15.5px/1.25 var(--serif);margin-top:9px}
+.vid small{display:block;font-size:12.5px;color:var(--mut);margin-top:2px}
+.progs{display:grid;gap:12px}
+.prog{display:grid;grid-template-columns:76px minmax(0,1fr);gap:16px;align-items:center;border:1px solid var(--line);border-radius:18px;padding:14px}
+.prog img{width:76px;height:76px;border-radius:12px;object-fit:cover;background:var(--paper2)}
+.prog b{display:block;font:600 19px/1.2 var(--serif)}
+.prog small{display:block;font-size:13.5px;color:var(--mut);margin-top:2px}
+.pbar{display:flex;align-items:center;gap:10px;margin-top:9px}
+.pbar i{flex:1;height:9px;border-radius:5px;background:var(--paper2);overflow:hidden}
+.pbar i::after{content:"";display:block;height:100%;width:var(--w);border-radius:5px;background:var(--teal);transform-origin:left;transform:scaleX(0);transition:transform 1.2s cubic-bezier(.2,.8,.2,1) .2s}
+.pane.on .pbar i::after{transform:scaleX(1)}
+.pbar span{font:700 12.5px var(--sans);color:var(--mut);white-space:nowrap}
+.live{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px;align-items:start}
+.lstage{position:relative;border-radius:18px;background:var(--paper2);aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden}
+.lstage>img{width:40%;aspect-ratio:1;border-radius:50%;object-fit:cover;box-shadow:0 0 0 5px #fff,0 0 0 9px var(--sun);animation:talk 2.4s ease-in-out infinite;margin-bottom:44px}
+@keyframes talk{50%{box-shadow:0 0 0 5px #fff,0 0 0 15px rgba(254,193,2,.35)}}
+.lstage .lv{position:absolute;left:12px;top:12px;font:800 11.5px/1 var(--sans);color:#fff;background:#ff0033;border-radius:999px;padding:6px 10px}
+.lstage .when{position:absolute;right:12px;top:12px;font:700 12px var(--sans);color:var(--ink);background:#fff;border-radius:999px;padding:5px 10px}
+.lstage p{position:absolute;left:12px;right:12px;bottom:12px;font:600 14px/1.3 var(--sans);background:rgba(255,255,255,.94);border-radius:12px;padding:9px 12px}
+.lstage p b{display:block;font:700 11.5px var(--sans);color:var(--teal)}
+.qs{display:grid;gap:8px}
+.q{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.35;transition:background .4s,border-color .4s}
+.q i{display:grid;place-items:center;min-width:42px;height:42px;border-radius:12px;background:var(--paper2);font:700 14px var(--sans);font-style:normal}
+.q.now{background:var(--sun-s);border-color:var(--sun)}
+.q.mine{background:var(--teal-s);border-color:var(--teal);animation:paneIn .4s both}
+.askbtn{margin-top:10px;width:100%;border:0;border-radius:999px;background:var(--mag);color:#fff;font:800 15.5px var(--sans);padding:14px;cursor:pointer}
+.askbtn:disabled{background:var(--teal)}
+.hosts{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line2);font:600 14px var(--sans)}
+.hosts span{display:flex;align-items:center;gap:7px}
+.hosts img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+
+/* 3. why people would pay: a member's first month, as four scenes in a row */
+.mo{margin-top:22px;padding:26px}
+.mochips{display:flex;flex-wrap:wrap;gap:8px}
+.mochips button{display:flex;align-items:center;gap:9px;border:1px solid var(--line2);background:#fff;border-radius:999px;padding:5px 16px 5px 5px;font:700 14.5px var(--sans);cursor:pointer;text-align:left;transition:background .3s,color .3s,border-color .3s}
+.mochips button i{flex:none;width:38px;height:38px;border-radius:50%;background:var(--paper2) center/cover}
+.mochips button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.moq{font:400 clamp(27px,4.2vw,42px)/1.1 var(--serif);letter-spacing:-.02em;margin-top:24px;text-wrap:balance}
+.wrow{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:24px}
+.wcol{cursor:pointer;transition:opacity .7s,filter .7s,transform .6s}
+.wcol.dim{opacity:.55;filter:saturate(.45)}
+.wcol.on{transform:translateY(-5px)}
+.whd{display:flex;align-items:center;gap:8px;margin-bottom:10px;font:700 13px var(--sans);color:var(--mut)}
+.whd u{text-decoration:none;flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--paper2);font:700 13px var(--sans);color:var(--mut);transition:background .5s,color .5s}
+.whd::after{content:"";flex:1;height:3px;border-radius:2px;background:var(--line2);transition:background .5s}
+.wcol:last-child .whd::after{visibility:hidden}
+.wcol.on .whd u{background:var(--sun);color:var(--ink)}
+.wcol.done .whd u{background:var(--teal);color:#fff}
+.wcol.done .whd::after{background:var(--teal)}
+.wsc{height:252px;border-radius:20px;background:var(--c,var(--paper2));padding:14px;display:grid;align-content:center;justify-items:center;gap:11px;transition:box-shadow .5s}
+.wcol.on .wsc{box-shadow:0 0 0 3px var(--sun),var(--sh1)}
+.wsc>*{animation:rise .5s both}
+.wcol .tag{display:block;font:700 11.5px var(--sans);color:var(--teal);margin-top:12px}
+.wcol .h{display:block;font:600 18px/1.2 var(--serif);margin-top:2px}
+.wcol .s{display:block;font-size:13.5px;line-height:1.35;color:var(--mut);margin-top:3px}
+.sw{position:relative;width:100%;aspect-ratio:16/10;border-radius:12px;background:#fff center/cover;box-shadow:var(--sh1);overflow:hidden}
+.sw::before{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:rgba(255,255,255,.94) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7v10l8-5z' fill='%23224130'/%3E%3C/svg%3E") center/26px no-repeat}
+.sw i{position:absolute;left:0;bottom:0;height:5px;width:100%;background:#ff0033;transform-origin:left;transform:scaleX(0);animation:swp 6s linear .6s forwards}
+@keyframes swp{to{transform:scaleX(.45)}}
+.sdays{display:flex;gap:4px}
+.sdays u{text-decoration:none;width:23px;height:23px;border-radius:50%;display:grid;place-items:center;font:700 11px var(--sans);background:#fff;color:var(--mut)}
+.sdays u.on{background:var(--teal);color:#fff}
+.simg{width:100%;height:78px;border-radius:12px;background:#fff center/cover;box-shadow:var(--sh1)}
+.sdo{width:100%;display:grid;gap:6px}
+.sdo div{display:flex;align-items:center;gap:9px;background:#fff;border-radius:11px;padding:8px 10px;font:600 13.5px/1.2 var(--sans)}
+.sdo div::before{content:"";flex:none;width:19px;height:19px;border-radius:6px;border:2px solid var(--line2)}
+.sdo div.ok::before{animation:tick .3s both;animation-delay:calc(var(--k)*1.1s + 1s)}
+@keyframes tick{to{border-color:var(--teal);background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/15px no-repeat}}
+.sdisc{width:118px;height:118px;border-radius:50%;background:#fff center/cover;box-shadow:0 0 0 5px #fff,var(--sh1)}
+.swave{display:flex;align-items:center;gap:4px;height:32px}
+.swave u{width:5px;height:30%;border-radius:3px;background:var(--teal);animation:wv 1.3s ease-in-out infinite;animation-delay:calc(var(--k)*-.12s)}
+@keyframes wv{50%{height:100%}}
+.slen{font:700 12px var(--sans);color:var(--mut)}
+.sface{position:relative;width:104px;height:104px}
+.sface img{width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 4px #fff,0 0 0 7px var(--sun);animation:talk 2.4s ease-in-out infinite}
+.sface b{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);font:800 11px/1 var(--sans);color:#fff;background:#ff0033;border-radius:999px;padding:5px 9px;box-shadow:0 0 0 2px #fff}
+.wsc>.sq{justify-self:start;max-width:100%;background:#fff;border-radius:16px 16px 16px 4px;padding:9px 12px;font:600 14px/1.3 var(--sans);box-shadow:var(--sh1);animation:rise .5s both 1.2s}
+.sq small{display:block;font:700 11px var(--sans);color:var(--teal);margin-bottom:2px}
+.sring{width:104px;height:104px}
+.sring circle,.sring path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.sring .bg{stroke:#fff;stroke-width:10}
+.sring .fg{stroke:var(--teal);stroke-width:10;stroke-dasharray:315;stroke-dashoffset:315;transform:rotate(-90deg);transform-origin:60px 60px;animation:ringGo 1.4s ease-out .4s forwards}
+.sring .ck{stroke:var(--teal);stroke-width:8;stroke-dasharray:60;stroke-dashoffset:60;animation:ringGo .5s ease-out 1.7s forwards}
+@keyframes ringGo{to{stroke-dashoffset:0}}
+.wsc>.snext{display:flex;align-items:center;gap:9px;width:100%;background:#fff;border-radius:14px;padding:7px;font:600 13.5px/1.25 var(--sans);animation:rise .5s both 2.1s}
+.snext i{flex:none;width:44px;height:44px;border-radius:10px;background:var(--paper2) center/cover}
+.snext small{display:block;font:700 11px var(--sans);color:var(--teal)}
+
+/* the record, and others who already do it */
+.rec{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:26px}
+.rec div{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--sh1)}
+.rec i{display:block;aspect-ratio:4/3;background:var(--paper2) center/cover}
+.rec b{display:block;font:600 clamp(23px,2.5vw,30px)/1 var(--serif);letter-spacing:-.02em;padding:14px 14px 0;white-space:nowrap}
+.rec span{display:block;font-size:13.5px;line-height:1.35;color:var(--mut);padding:5px 14px 14px}
+.recline{font:500 clamp(20px,2.6vw,27px)/1.3 var(--serif);text-align:center;margin:26px auto 0;max-width:30ch}
+.sub{font:600 22px/1.2 var(--serif);margin-top:44px}
+.exhead{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:24px}
+.exhead p{font:600 14px var(--sans);color:var(--mut)}
+.exs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+.ex{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--sh1);display:grid;grid-template-columns:52px minmax(0,1fr);gap:2px 14px;align-content:start;animation:paneIn .45s both;animation-delay:calc(var(--k)*.08s)}
+.ex>i{grid-row:1/3;width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font:600 24px var(--serif);font-style:normal;background:var(--c)}
+.ex>b{font:600 20px/1.2 var(--serif);align-self:end}
+.ex>span{font-size:14px;line-height:1.35;color:var(--mut)}
+.exn{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.exn u{text-decoration:none;font:700 14px var(--sans);background:var(--paper2);border-radius:999px;padding:7px 12px}
+.exn u.hot{background:var(--sun)}
+.exf{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line2);font:600 13.5px var(--sans)}
+.exf span{color:var(--teal)}
+.exf a{color:var(--mut)}
+
+/* 4. from what you already have */
+.srcs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px}
+.srcs button{border:1px solid var(--line2);background:#fff;border-radius:20px;padding:12px;cursor:pointer;text-align:left;transition:box-shadow .3s,border-color .3s,transform .3s}
+.srcs button i{display:block;aspect-ratio:4/3;border-radius:12px;background:var(--paper2) center/cover;margin-bottom:10px}
+.srcs button b{display:block;font:600 16px/1.2 var(--serif)}
+.srcs button[aria-pressed="true"]{border-color:var(--sun);box-shadow:0 0 0 3px var(--sun),var(--sh1);transform:translateY(-3px)}
+.mk{margin-top:16px;padding:22px}
+.mkhead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.mkhead small{font:700 12.5px var(--sans);color:var(--teal)}
+.mkhead b{font:600 22px/1.15 var(--serif)}
+.mkhead .to{font:600 14px var(--sans);color:var(--mut)}
+.mkflow{position:relative;flex:1;min-width:70px;height:4px;border-radius:2px;background:var(--line2)}
+.mkflow i{position:absolute;top:-5px;left:0;width:14px;height:14px;border-radius:50%;background:var(--sun);animation:goh 2.6s linear infinite;animation-delay:calc(var(--k)*-.87s)}
+.mps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.mp{display:block;border:1px solid var(--line2);background:#fff;border-radius:20px;padding:12px;cursor:pointer;text-align:left;animation:mpIn .55s cubic-bezier(.2,.9,.3,1.2) both;animation-delay:calc(var(--k)*.14s);transition:box-shadow .3s,border-color .3s}
+@keyframes mpIn{from{opacity:0;transform:translateY(16px) scale(.94)}to{opacity:1;transform:none}}
+.mp[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink),var(--sh1)}
+.mpv{position:relative;display:grid;place-items:center;aspect-ratio:16/10;border-radius:14px;background:var(--paper2);overflow:hidden;margin-bottom:12px}
+.mp>b{display:block;font:600 18px/1.2 var(--serif)}
+.mp>small{display:block;font-size:13.5px;color:var(--mut);margin-top:2px}
+.mpc{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.mpc u{text-decoration:none;font:700 13px var(--sans);background:var(--sun);border-radius:999px;padding:6px 11px}
+.mpc u.yo{background:var(--teal-s)}
+.vbook{position:relative;width:38%;aspect-ratio:3/4;border-radius:5px 9px 9px 5px;background:#fff center/cover no-repeat;box-shadow:-8px 10px 20px -10px rgba(34,65,48,.55);animation:tiltIn .7s cubic-bezier(.2,.9,.3,1.2) both .2s}
+@keyframes tiltIn{from{opacity:0;transform:rotate(8deg) translateY(14px)}to{opacity:1;transform:rotate(-5deg)}}
+.vbook::after{content:"English";position:absolute;right:-14px;top:10px;font:800 11px/1 var(--sans);color:#fff;background:var(--teal);border-radius:999px;padding:5px 8px;box-shadow:0 0 0 2px #fff}
+.vdays{display:grid;gap:4px;width:74%}
+.vdays i{aspect-ratio:1;border-radius:50%;background:var(--line2);animation:dayOn .3s both;animation-delay:calc(var(--d)*70ms + .4s)}
+.vdays i:last-child{animation-name:dayEnd}
+@keyframes dayOn{to{background:var(--teal)}}
+@keyframes dayEnd{to{background:var(--sun);transform:scale(1.25)}}
+.vguide{position:relative;width:34%;aspect-ratio:3/4}
+.vguide i{position:absolute;inset:0;border-radius:6px;background:#fff;border:1px solid var(--line2);box-shadow:var(--sh1)}
+.vguide i:nth-child(1){transform:rotate(-9deg) translateX(-10px)}
+.vguide i:nth-child(2){transform:rotate(6deg) translateX(10px)}
+.vguide i:nth-child(3){background:repeating-linear-gradient(var(--line2) 0 2px,transparent 2px 9px) 50% 70%/76% 52% no-repeat #fff;animation:rise .6s both .25s}
+.vguide i:nth-child(3)::before{content:"";position:absolute;left:12%;top:12%;width:52%;height:9%;border-radius:3px;background:var(--sun)}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.vlib{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;width:84%}
+.vlib i{aspect-ratio:16/9;border-radius:5px;background:var(--line2) center/cover;animation:mpIn .4s both;animation-delay:calc(var(--d)*80ms + .2s)}
+.vpass{position:relative;width:80%;border-radius:12px;background:#fff;box-shadow:var(--sh1);padding:10px 12px 10px 14px;border-left:8px solid var(--mag);animation:rise .6s both .2s}
+.vpass b{display:block;font:800 11px var(--sans);color:var(--mag)}
+.vpass em{display:block;font:600 15px/1.15 var(--serif);font-style:normal;color:var(--ink)}
+.vpass span{display:flex;margin-top:7px}
+.vpass span i{width:26px;height:26px;border-radius:50%;background:var(--line2) center/cover;box-shadow:0 0 0 2px #fff;margin-right:-6px}
+.vclips{display:flex;gap:7px;align-items:center;justify-content:center;width:60%}
+.vclips i{flex:1;aspect-ratio:9/16;border-radius:8px;background:var(--line2) center/cover;box-shadow:var(--sh1);animation:mpIn .45s both;animation-delay:calc(var(--d)*120ms + .2s)}
+.vclips i:nth-child(2){flex:1.25}
+.vlive{position:relative;width:36%;aspect-ratio:1;margin-bottom:8px}
+.vlive img{width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 4px #fff,0 0 0 7px var(--sun);animation:talk 2.4s ease-in-out infinite}
+.vlive b{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);font:800 11px/1 var(--sans);color:#fff;background:#ff0033;border-radius:999px;padding:5px 9px;box-shadow:0 0 0 2px #fff}
+.vfood{position:absolute;inset:0;background:center/cover}
+.vfood b{position:absolute;left:10px;top:10px;font:800 11px/1 var(--sans);color:var(--ink);background:var(--sun);border-radius:999px;padding:6px 9px}
+.mkin{margin-top:14px;border-radius:18px;background:var(--paper2);padding:18px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:14px 18px;align-items:start}
+.mkin h3{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:20px}
+.mkin h3 span{font:700 12px var(--sans);color:var(--mut);background:#fff;border-radius:999px;padding:5px 10px}
+.mkrows{display:grid;gap:8px}
+.mkrow{display:grid;grid-template-columns:104px minmax(0,1fr);gap:12px;align-items:center;background:#fff;border-radius:12px;padding:11px 12px;font-size:15px;line-height:1.3;animation:rowIn .45s both;animation-delay:calc(var(--k)*.16s + .1s)}
+@keyframes rowIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+.mkrow b{font:700 13px/1.25 var(--sans);color:var(--teal)}
+.mkearn{background:#fff;border-radius:14px;padding:16px;animation:rowIn .45s both .5s}
+.mkearn small{display:block;font:700 12px var(--sans);color:var(--teal)}
+.mkearn b{display:block;font:600 23px/1.15 var(--serif);margin:3px 0 6px}
+.mkearn p{font-size:14.5px;line-height:1.4;color:var(--mut)}
+.mkearn p+small{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line2)}
+.mkearn small.you{margin-top:10px}
+.mkearn em{font-size:15.5px}
+.mkearn em{display:block;font:600 17px/1.25 var(--serif);font-style:normal;color:var(--ink);margin-top:2px}
+
+/* 5. estimator */
+.est{margin-top:24px;padding:26px}
+.estq{display:block;font:700 13px var(--sans);color:var(--teal);margin-bottom:6px}
+.estbig{font:600 clamp(28px,5.2vw,46px)/1.1 var(--serif);letter-spacing:-.02em}
+.est input[type=range]{width:100%;height:34px;margin-top:10px;accent-color:var(--teal);cursor:pointer}
+.ticks{display:flex;justify-content:space-between;gap:10px;font:600 12.5px var(--sans);color:var(--faint)}
+.ticks span:nth-child(2){color:var(--teal);text-align:center}
+.estnote{font-size:14.5px;line-height:1.45;color:var(--mut);margin-top:8px}
+.estdiv{border:0;border-top:1px dashed var(--line2);margin:22px 0}
+.moods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
+.moods button{border:1px solid var(--line2);background:#fff;border-radius:16px;padding:12px 8px;font:700 15px var(--sans);cursor:pointer}
+.moods button small{display:block;font:500 12px/1.3 var(--sans);color:var(--mut);margin-top:3px}
+.moods button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.moods button[aria-pressed="true"] small{color:rgba(255,255,255,.78)}
+.funnel{display:grid;gap:8px;margin-top:6px}
+.fb{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:center}
+.fb span{font:600 14px var(--sans);color:var(--mut)}
+.fb i{display:flex;align-items:center;height:34px;border-radius:10px;background:var(--c);width:var(--w,100%);min-width:92px;padding:0 12px;font:700 15px var(--sans);font-style:normal;color:var(--ink);white-space:nowrap;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.r{border-radius:18px;padding:16px 18px;background:var(--paper2)}
+.r.c{background:var(--sun-s)}
+.r h3{font-size:18px}
+.r .val{font:600 clamp(26px,3.6vw,36px)/1 var(--serif);letter-spacing:-.02em;margin-top:8px}
+.r .val small{font:600 12.5px var(--sans);letter-spacing:0;color:var(--mut);margin-left:6px}
+.r .how{font-size:13.5px;line-height:1.4;color:var(--mut);margin-top:5px}
+.step{display:flex;align-items:center;gap:8px;margin-top:10px}
+.step b{font:600 18px var(--serif);min-width:64px;text-align:center}
+.step button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:#fff;font:600 21px/1 var(--sans);cursor:pointer}
+.step button:active{background:var(--sun)}
+.what{margin-top:12px;border:1px solid var(--line2);border-radius:16px;background:#fff;padding:0 16px}
+.what summary{cursor:pointer;font:700 15px var(--sans);padding:14px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.what summary::-webkit-details-marker{display:none}
+.what summary::after{content:"+";font:600 22px/1 var(--sans);color:var(--teal)}
+.what[open] summary::after{content:"\2212"}
+.what ol{margin:0;padding:0 0 16px;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;counter-reset:w}
+.what li{counter-increment:w;font-size:14.5px;line-height:1.4;color:var(--mut)}
+.what li b{display:block;font:600 17px/1.2 var(--serif);color:var(--ink);margin-bottom:3px}
+.what li::before{content:counter(w);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--sun);font:600 15px var(--serif);color:var(--ink);margin-bottom:8px}
+.total{margin-top:14px;border-radius:20px;padding:20px 22px;background:var(--sun);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 14px;align-items:center}
+.total>b{font:600 clamp(32px,6vw,54px)/1 var(--serif);letter-spacing:-.02em;text-align:right}
+.total h3{font-size:20px}
+.total p{grid-column:1/-1;font-size:14px;line-height:1.45}
+.split{grid-column:1/-1;display:flex;height:12px;border-radius:6px;overflow:hidden;background:rgba(34,65,48,.12)}
+.split i{display:block;height:100%;transition:width .6s}
+.split i:nth-child(1){background:var(--ink)}
+.split i:nth-child(2){background:var(--teal)}
+.split i:nth-child(3){background:var(--mag)}
+.legend{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 16px;font:600 12.5px var(--sans)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;background:var(--c)}
+
+/* asks, order, close */
+.wdo{margin-top:24px;padding:24px}
+.whohead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+.whobar{flex:1;min-width:160px;max-width:420px;display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--paper2)}
+.whobar i{display:block;height:100%;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.whobar i:first-child{background:var(--teal)}
+.whobar i:last-child{background:var(--sun)}
+.whocols{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:16px;margin-top:18px;align-items:start}
+.whocol{border-radius:20px;padding:18px}
+.whocol.we{background:var(--teal-s)}
+.whocol.you{background:var(--sun-s)}
+.whocol h3{display:flex;align-items:baseline;gap:10px}
+.whocol h3 span{font:600 34px/1 var(--serif);letter-spacing:-.02em}
+.whocol ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px}
+.whocol.we ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+.whocol li{background:#fff;border-radius:12px;padding:10px 12px;font:600 14.5px/1.3 var(--sans);animation:rise .45s both;animation-delay:calc(var(--k)*.07s)}
+.whocol li small{display:block;font:500 12.5px/1.3 var(--sans);color:var(--mut);margin-top:2px}
+.keep{margin-top:16px;padding:24px}
+.keepsub{font-size:16px;line-height:1.5;color:var(--mut);margin-top:6px;max-width:62ch}
+.keepvs{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:14px;margin:18px 0}
+.keepvs>div{border-radius:18px;padding:16px;background:var(--paper2)}
+.keepvs>div:last-child{background:var(--teal-s)}
+.keepvs small{display:block;font:700 12.5px var(--sans);color:var(--mut);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chips u{text-decoration:none;font:600 14px var(--sans);background:#fff;border-radius:999px;padding:7px 12px}
+.keeprow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center;margin-top:18px}
+.keeppc b{display:block;font:600 clamp(46px,8vw,74px)/1 var(--serif);letter-spacing:-.03em;color:var(--teal)}
+.keeppc small{display:block;font:700 13px var(--sans);color:var(--mut);margin-top:2px}
+.keepbar{height:26px;border-radius:13px;background:var(--mag);overflow:hidden}
+.keepbar i{display:block;height:100%;width:0;background:var(--teal);transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.keeplab{display:flex;justify-content:space-between;gap:10px;margin-top:7px;font:700 13.5px var(--sans)}
+.keeplab span:last-child{color:var(--mag)}
+.keepline{font-size:14.5px;color:var(--mut);margin-top:12px}
+.asks{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-top:22px}
+.asks .card{padding:24px}
+.asks b.n{display:block;font:600 clamp(40px,7vw,64px)/1 var(--serif);letter-spacing:-.03em;color:var(--teal)}
+.dots{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:9px}
+.dots li{position:relative;padding-left:22px;font-size:16px;line-height:1.4}
+.dots li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;border-radius:50%;background:var(--sun)}
+.ord{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;counter-reset:o;position:relative}
+.ord::before{content:"";position:absolute;left:10%;right:10%;top:22px;border-top:2px dashed var(--line2)}
+.ord li{counter-increment:o;position:relative;text-align:center}
+.ord li::before{content:counter(o);display:block;position:relative;width:44px;height:44px;margin:0 auto 12px;border-radius:50%;background:var(--sun);font:600 20px/44px var(--serif);box-shadow:0 0 0 6px var(--paper)}
+.ord b{display:block;font:600 17px/1.25 var(--serif)}
+.ord span{display:block;font-size:13.5px;line-height:1.35;color:var(--mut);margin-top:3px}
+.close{text-align:center;padding-bottom:70px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;background:var(--sun);color:var(--ink);border-radius:999px;padding:17px 30px;font:800 18px var(--sans);text-decoration:none;box-shadow:0 16px 34px -16px rgba(254,193,2,.95)}
+.link{display:inline-block;margin-top:18px;font:600 15px var(--sans);color:var(--teal)}
+
+@media(max-width:820px){
+  .top span{display:none}
+  .lang{margin-left:auto}
+  .flrow{grid-template-columns:minmax(0,1fr);gap:0}
+  .trk{width:4px;height:48px;margin:6px auto;align-self:auto}
+  .trk i{left:-5px;top:0;animation-name:gov}
+  .nvis{height:132px}
+  .ntxt{min-height:66px}
+  .live,.want,.make{grid-template-columns:minmax(0,1fr)}
+  .shelf{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .res{grid-template-columns:minmax(0,1fr)}
+  .asks{grid-template-columns:minmax(0,1fr)}
+  .ord{grid-template-columns:minmax(0,1fr);gap:16px}
+  .ord::before{display:none}
+  .ord li{text-align:left;padding-left:60px;min-height:46px}
+  .ord li::before{position:absolute;left:0;top:0;margin:0}
+  .fb{grid-template-columns:108px minmax(0,1fr)}
+  .fl,.est{padding:20px}
+  .mo{padding:16px}
+  .mochips{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .mochips button{font-size:13.5px;padding-right:10px}
+  .wrow{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:18px -16px 0;padding:8px 16px 10px;scrollbar-width:none}
+  .wrow::-webkit-scrollbar{display:none}
+  .wcol{flex:0 0 76%;scroll-snap-align:center}
+  .wcol.on{transform:none}
+  .wants button[aria-pressed="true"]{transform:none}
+  .rec{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .rec div:last-child{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}
+  .rec div:last-child i{grid-row:1/3;aspect-ratio:auto;height:100%;min-height:96px}
+  .rec div:last-child b{align-self:end}
+  .rec div:last-child span{align-self:start}
+  .exs{grid-template-columns:minmax(0,1fr)}
+  #exSeg button{padding:9px 11px;font-size:13.5px}
+  .srcs{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .srcs button i{aspect-ratio:16/9}
+  .mk{padding:16px}
+  .wdo{padding:16px}
+  .keep{padding:16px}
+  .keepvs{grid-template-columns:minmax(0,1fr)}
+  .keeprow{gap:14px}
+  #keepSeg button{padding:9px 10px;font-size:13.5px}
+  .whocols{grid-template-columns:minmax(0,1fr)}
+  .whocol.we ul{grid-template-columns:minmax(0,1fr)}
+  .whocol.you{order:-1}
+  .mps{grid-template-columns:minmax(0,1fr)}
+  .mp{display:grid;grid-template-columns:112px minmax(0,1fr);gap:2px 12px;align-content:center}
+  .mp .mpv{grid-row:1/4;aspect-ratio:1;margin-bottom:0}
+  .vbook{width:56%}
+  .vclips{width:86%}
+  .vlive{width:56%}
+  .vguide{width:44%}
+  .mp>b{align-self:end}
+  .mpc{margin-top:6px}
+  .vpass{padding:8px 8px 8px 9px;border-left-width:6px}
+  .vpass em{font-size:12px}
+  .vpass span i{width:20px;height:20px}
+  .mkin{grid-template-columns:minmax(0,1fr);padding:14px}
+  .mkrow{grid-template-columns:84px minmax(0,1fr)}
+  .what ol{grid-template-columns:minmax(0,1fr)}
+  .flnote{min-height:96px}
+  .gets,.outs{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.trk i,.lstage>img{animation:none}.pane.on,.vid,.get,.q.mine,.ex,.mp,.mkrow,.mkearn,.vbook,.vdays i,.vlib i,.vclips i,.vpass,.vguide i,.mkflow i,.vlive img,.whocol li,.wsc>*,.wsc>.sq,.wsc>.snext,.sw i,.sdo div.ok::before,.swave u,.sring .fg,.sring .ck,.sface img{animation:none}.sring .fg,.sring .ck{stroke-dashoffset:0}.vdays i{background:var(--teal)}.vbook{transform:rotate(-5deg)}}
+.rec b{white-space:normal;font-size:clamp(21px,2.1vw,25px)}
+</style>
+</head>
+<body>
+<div class="rbline" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="top"><img src="assets/his-logo.jpg" alt=""><b>Matthias, auf Englisch</b><span>So rechnet es sich</span><nav class="lang" aria-label="Sprache"><a href="matthias-earns.html" lang="en" title="English">EN</a><a href="matthias-earns-de.html" aria-current="true" lang="de">DE</a></nav></div>
+
+  <section class="hero">
+    <div class="who"><img src="assets/lp-matthias.jpg" alt=""><div><b>Für Matthias</b><span>Von Adam und Brigitte, nach dem Samstag</span></div></div>
+    <h1>Dieselben Videos. <em>Am Ende eine andere Tür.</em></h1>
+    <p class="lede">Heute führen deine Videos die Menschen in deinen Shop. Auf Englisch kann der Shop ihnen nicht folgen, weil die Flaschen nicht über die Grenzen können. Diese Seite zeigt, wohin diese Menschen stattdessen gehen könnten und was sie dort finden. Die Zahlen kannst du selbst bewegen.</p>
+  </section>
+
+  <section>
+    <span class="kicker">1. Der Weg der Menschen</span>
+    <h2>Wo deine Zuschauer <em>ankommen.</em></h2>
+    <div class="card fl rv" id="fl" data-m="de">
+      <div class="flhead">
+        <div class="seg" role="group" aria-label="Welche Sprache">
+          <button type="button" data-m="de" aria-pressed="true">Heute, auf Deutsch</button>
+          <button type="button" data-m="en" aria-pressed="false">Auf Englisch</button>
+        </div>
+        <div class="room" aria-live="polite"><i aria-hidden="true"></i><div><b id="roomN">130 Millionen</b><span id="roomT">Menschen sprechen Deutsch</span></div></div>
+      </div>
+      <div class="flrow">
+        <div class="node">
+          <div class="nvis"><span class="fan"><img style="--x:-26px;--r:-8deg" src="https://i.ytimg.com/vi/tYjOG6IIiCM/hq720.jpg" alt=""><img style="--x:26px;--r:8deg" src="https://i.ytimg.com/vi/S4PEgV4CiPQ/hq720.jpg" alt=""><img style="--x:0px;--r:0deg" src="https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg" alt=""><span class="tag">EN</span></span></div>
+          <div class="ntxt"><div class="de"><b>Deine Gespräche</b><span>152.000 Abonnenten</span></div><div class="en"><b>Deine Gespräche</b><span>Übersetzt, dazu neue auf Englisch</span></div></div>
+        </div>
+        <div class="trk" aria-hidden="true"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i></div>
+        <div class="node">
+          <div class="nvis"><span class="face de av"><img src="assets/his-telegram.jpg" alt=""><i><svg viewBox="0 0 24 24"><path d="M21 4L3 11l5.5 2 2 6 3-4 4.5 3.5z"/><path d="M8.5 13L17 7"/></svg></i></span><span class="face en mailv"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6.5L20.5 7"/></svg></span></div>
+          <div class="ntxt"><div class="de"><b>Telegram und deine Links</b><span>63.800 Menschen, dein bester Weg</span></div><div class="en"><b>Der Sonntagsbrief</b><span>Ihre E-Mail-Adresse, die dir bleibt</span></div></div>
+        </div>
+        <div class="trk" aria-hidden="true"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i></div>
+        <div class="node">
+          <div class="nvis"><span class="face de shopv"><img src="assets/his-shop.jpg" alt="Dein Shop"></span>
+            <span class="face en minic"><b><img src="assets/his-logo.jpg" alt="">Dein Kreis</b><div><span style="background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"></span><span style="background-image:url(assets/real-book.jpg)"></span><span style="background-image:url(assets/lp-veg.jpg)"></span></div><small>Beitreten</small></span></div>
+          <div class="ntxt"><div class="de"><b>Dein Shop</b><span>Nahrungsergänzung, per Post</span></div><div class="en"><b>Dein Kreis</b><span>Eine bezahlte Gemeinschaft. Nichts zu verschicken</span></div></div>
+        </div>
+      </div>
+      <div class="flnote"><p class="de">Das funktioniert. Und es endet an der Grenze.</p><p class="en">Derselbe Weg, mit einem Ziel, das keine Grenze kennt.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">2. Im Kreis</span>
+    <h2>Kein Feed zum Durchscrollen. <em>Ein Ort, an den man geht.</em></h2>
+    <p class="lede">Auf YouTube ist ein Video nach einer Woche begraben. Hier ist alles, was du gemacht hast, geordnet. Die Menschen folgen dem Thema, das ihnen wichtig ist, und sie können dich fragen. Tipp dich durch. Es ist ein Entwurf dessen, was wir bauen würden, zum Beispiel auf Skool.</p>
+    <div class="card app rv" id="app">
+      <div class="apphead"><img src="assets/his-logo.jpg" alt=""><div><b>Der Kreis</b><small>Mit Matthias Langwasser</small></div><span class="sk">Ein Entwurf</span></div>
+      <div class="tabs" role="tablist" aria-label="Im Kreis">
+        <button type="button" role="tab" data-p="lib" aria-selected="true">Bibliothek</button>
+        <button type="button" role="tab" data-p="prog" aria-selected="false">Programme</button>
+        <button type="button" role="tab" data-p="live" aria-selected="false">Live</button>
+      </div>
+      <div class="panes">
+        <div class="pane on" data-p="lib">
+          <p class="pcap">Deine Gespräche nach Thema, nicht nach Datum, mit englischen Titeln. Wähle eins.</p>
+          <div class="subj" id="subj" role="group" aria-label="Themen"></div>
+          <div class="shelf" id="shelf" aria-live="polite"></div>
+        </div>
+        <div class="pane" data-p="prog">
+          <p class="pcap">Aus deinen Büchern werden Programme, denen die Menschen Tag für Tag folgen, in ihrem eigenen Tempo.</p>
+          <div class="progs">
+            <div class="prog"><img src="assets/real-book.jpg" alt=""><div><b>Journey to freedom</b><small>Aus Reise in die Freiheit. 30 Tage</small><div class="pbar"><i style="--w:30%"></i><span>Tag 9 von 30</span></div></div></div>
+            <div class="prog"><img src="assets/real-cookbook.jpg" alt=""><div><b>The living kitchen</b><small>Aus deinem Kochbuch. 21 Tage</small><div class="pbar"><i style="--w:62%"></i><span>Tag 13 von 21</span></div></div></div>
+            <div class="prog"><img src="assets/lp-veg.jpg" alt=""><div><b>Plant-based, from the start</b><small>Was du lebst, seit du 17 bist. 14 Tage</small><div class="pbar"><i style="--w:14%"></i><span>Tag 2 von 14</span></div></div></div>
+          </div>
+        </div>
+        <div class="pane" data-p="live">
+          <p class="pcap">Einmal pro Woche ist jemand live, und die Mitglieder stellen ihre eigenen Fragen. Probier es aus.</p>
+          <div class="live">
+            <div class="lstage"><img src="assets/lp-matthias.jpg" alt=""><span class="lv">Live</span><span class="when">Donnerstag, 19:00</span><p><b>Antwortet gerade</b><span id="nowQ">Wie hast du angefangen, als du deine Ernährung umgestellt hast?</span></p></div>
+            <div><div class="qs" id="qs">
+                <div class="q now"><i>24</i><span>Wie hast du angefangen, als du deine Ernährung umgestellt hast?</span></div>
+                <div class="q"><i>17</i><span>Was tust du, wenn die Angst um die Welt hochkommt?</span></div>
+                <div class="q"><i>9</i><span>Wo fange ich mit deinem Buch an?</span></div>
+              </div>
+              <button type="button" class="askbtn" id="askBtn">Stell deine eigene Frage</button></div>
+          </div>
+          <div class="hosts"><span><img src="assets/lp-matthias.jpg" alt="">Du, Woche 1</span><span><img src="assets/circle-guida4.jpg" alt="">Guida, Woche 2</span><span><img src="assets/team-brigitte.jpg" alt="" style="object-position:28% 40%">Brigitte, Woche 3</span><span><img src="assets/circle-petra.jpg" alt="">Petra, Woche 4</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">3. Warum Menschen zahlen würden</span>
+    <h2>Menschen zahlen, um <em>von jemandem zu lernen, der es gelebt hat.</em></h2>
+    <p class="lede">Niemand bezahlt einen Fremden für Ratschläge. Menschen bezahlen den, der schon getan hat, was sie selbst tun wollen. In deinem Feld bist das du.</p>
+    <div class="rec rv" id="rec">
+      <div><i style="background-image:url(assets/lp-veg.jpg)"></i><b>Seit 17</b><span>isst du pflanzlich, jeden Tag</span></div>
+      <div><i style="background-image:url(assets/rainforest-canopy-1400.jpg)"></i><b><span data-c="2.147" data-dec="3" style="display:inline;padding:0;font:inherit;color:inherit">0</span> Mrd. m²</b><span>Regenwald geschützt</span></div>
+      <div><i style="background-image:url(assets/his-shop.jpg)"></i><b><span data-c="260" style="display:inline;padding:0;font:inherit;color:inherit">0</span>.000+</b><span>Kunden seit 2008 und 44.948 Bewertungen mit 4,87 Sternen</span></div>
+      <div><i style="background-image:url(https://i.ytimg.com/vi/WKTXL7tSrPQ/hq720.jpg)"></i><b><span data-c="45.3" data-dec="1" style="display:inline;padding:0;font:inherit;color:inherit">0</span> Mio.</b><span>Aufrufe bei 1.685 Videos</span></div>
+      <div><i style="background-image:url(assets/real-book.jpg)"></i><b>Bestseller</b><span>Reise in die Freiheit, dein eigener Weg als Buch</span></div>
+    </div>
+    <p class="recline rv">Kaum jemand in diesem Feld hat so viel vorzuweisen. Die englischsprachige Welt hat es noch nicht gehört.</p>
+    <h3 class="sub">Der erste Monat eines Mitglieds</h3>
+    <p class="lede" style="margin-top:8px">Ein kostenloses Video weckt eine Frage. Wähle, weshalb jemand gekommen ist, und sieh die ersten vier Wochen im Kreis.</p>
+    <div class="card mo rv">
+      <div class="mochips" id="mochips" role="group" aria-label="Was ein Mitglied will"></div>
+      <p class="moq" id="moq" aria-live="polite"></p>
+      <div class="wrow" id="wrow"></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">4. Es funktioniert schon</span>
+    <h2>Dafür zahlen Menschen schon heute. <em>Sieh dir an, bei wem.</em></h2>
+    <p class="lede">Diese Beispiele sind echt, und du kannst sie selbst prüfen. Jedes ist eine Person mit einem Kreis um sich. Keines verschickt eine Flasche.</p>
+    <div class="exhead">
+      <div class="seg" id="exSeg" role="group" aria-label="Welche Beispiele">
+        <button type="button" data-x="small" aria-pressed="true">Kleine Kreise</button>
+        <button type="button" data-x="large" aria-pressed="false">Größere Kreise</button>
+        <button type="button" data-x="big" aria-pressed="false">Große Namen</button>
+      </div>
+      <p id="exCap"></p>
+    </div>
+    <div class="exs" id="exs" aria-live="polite"></div>
+    <p class="tiny" style="margin-top:14px;max-width:80ch">Mitglieder und Preise wie am 21. November 2026 auf Skool angegeben. Mitglieder mal Preis ist die Obergrenze: Manche Mitglieder sind in der Probezeit oder zahlen ältere Preise, und Harmony hat auch eine kostenlose Stufe. Die Zahlen zu Gaia stammen aus den eigenen Berichten, die Mitgliederzahl wurde zuletzt 2025 genannt. Andere Preise wie auf den jeweiligen Seiten oder in der Presse angegeben.</p>
+  </section>
+
+  <section>
+    <span class="kicker">5. Aus dem, was du schon hast</span>
+    <h2>Nichts muss neu erfunden werden. <em>Du hast alles schon gelebt.</em></h2>
+    <p class="lede">Tipp auf etwas, das du schon hast, und sieh, was wir daraus machen. Tipp dann auf ein Produkt und sieh, was darin steckt und wie wenig es von dir braucht.</p>
+    <div class="srcs" id="srcs" role="group" aria-label="Was du schon hast"></div>
+    <div class="card mk rv">
+      <div class="mkhead"><small>Aus</small><b id="mkName"></b><span class="mkflow" aria-hidden="true"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i></span><span class="to">machen wir drei Dinge</span></div>
+      <div class="mps" id="mps"></div>
+      <div class="mkin" id="mkin" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">6. Probier deine eigenen Zahlen</span>
+    <h2>Beweg es <em>und sieh selbst.</em></h2>
+    <p class="lede">Nichts hier ist ein Versprechen. Es zeigt, wie sich die Teile multiplizieren, damit du es selbst beurteilen kannst.</p>
+    <div class="card est rv">
+      <span class="estq">Wie viele englische Aufrufe im Monat?</span>
+      <div class="estbig"><span id="vOut">500.000</span> Aufrufe</div>
+      <input type="range" id="vIn" min="0.05" max="10" step="0.05" value="0.25" aria-label="Englische Aufrufe im Vergleich zu deinen deutschen">
+      <div class="ticks"><span>100.000</span><span id="vX">ein Viertel von Deutsch heute</span><span>zehnmal Deutsch</span></div>
+      <p class="estnote">Dein deutscher Kanal hat nach deiner eigenen Angabe etwa 2 Millionen Aufrufe im Monat. Wir beginnen hier bei einem Viertel davon. Englisch sprechen mehr als zehnmal so viele Menschen.</p>
+
+      <hr class="estdiv">
+      <span class="estq">Wie vorsichtig willst du rechnen?</span>
+      <div class="moods" id="moods" role="group" aria-label="Wie vorsichtig die Schätzung ist">
+        <button type="button" data-m="0" aria-pressed="false">Vorsichtig<small>weniger handeln</small></button>
+        <button type="button" data-m="1" aria-pressed="true">Wie Deutsch<small>deine eigene Quote</small></button>
+        <button type="button" data-m="2" aria-pressed="false">Mutig<small>es läuft gut</small></button>
+      </div>
+      <p class="estnote" id="moodNote"></p>
+
+      <hr class="estdiv">
+      <span class="estq">Von Zuschauern zu Mitgliedern, nach einem Jahr</span>
+      <div class="funnel" aria-live="polite">
+        <div class="fb"><span>Aufrufe im Jahr</span><i id="fV" style="--c:var(--sky-s)"></i></div>
+        <div class="fb"><span>Leser des Briefs</span><i id="fR" style="--c:var(--sun-s)"></i></div>
+        <div class="fb"><span>Mitglieder im Kreis</span><i id="fM" style="--c:var(--teal-s)"></i></div>
+      </div>
+
+      <div class="res">
+        <div class="r c"><h3>Der Kreis</h3><div class="val"><span id="oComm">0</span><small>im Monat</small></div><p class="how" id="hComm"></p>
+          <div class="step"><button type="button" data-k="c" data-d="-1" aria-label="Monatspreis senken">&minus;</button><b id="pC">50 €</b><button type="button" data-k="c" data-d="1" aria-label="Monatspreis erhöhen">+</button></div></div>
+        <div class="r"><h3>Ein Programm</h3><div class="val"><span id="oCourse">0</span><small>pro Start</small></div><p class="how" id="hCourse"></p>
+          <div class="step"><button type="button" data-k="k" data-d="-1" aria-label="Programmpreis senken">&minus;</button><b id="pK">297 €</b><button type="button" data-k="k" data-d="1" aria-label="Programmpreis erhöhen">+</button></div></div>
+        <div class="r"><h3>Ein Online-Kongress</h3><div class="val"><span id="oSummit">0</span><small>jeweils</small></div><p class="how" id="hSummit"></p>
+          <div class="step"><button type="button" data-k="s" data-d="-1" aria-label="Kongresspreis senken">&minus;</button><b id="pS">147 €</b><button type="button" data-k="s" data-d="1" aria-label="Kongresspreis erhöhen">+</button></div></div>
+      </div>
+      <details class="what" open>
+        <summary>Was ist ein Online-Kongress?</summary>
+        <ol>
+          <li><b>Acht bis zehn deiner Gespräche</b>Zu einem Thema, auf Englisch, über ein paar Tage als Online-Veranstaltung veröffentlicht.</li>
+          <li><b>48 Stunden kostenlos</b>Wer zusehen will, meldet sich mit seiner E-Mail-Adresse an. So wächst der Brief schnell.</li>
+          <li><b>Das Kongresspaket bleibt</b>Einmal zahlen und jede Aufzeichnung behalten, dazu eine Live-Fragestunde mit dir.</li>
+        </ol>
+      </details>
+      <div class="total"><h3>Ein volles Jahr auf diesem Niveau</h3><b id="oYear">0</b>
+        <div class="split" aria-hidden="true"><i id="s1"></i><i id="s2"></i><i id="s3"></i></div>
+        <div class="legend"><span style="--c:var(--ink)">Der Kreis, zwölf Monate</span><span style="--c:var(--teal)">Zwei Programmstarts</span><span style="--c:var(--mag)">Ein Online-Kongress</span></div>
+        <p>Vor Plattformgebühren und unserem Anteil. Es braucht etwa ein Jahr an Videos, um dieses Niveau zu erreichen.</p></div>
+    </div>
+    <div class="card keep rv">
+      <h3>Was von jedem Verkauf bleibt</h3>
+      <p class="keepsub">Bei Nahrungsergänzung geht von jedem Verkauf eine lange Liste ab. Bei einem digitalen Produkt fast nichts. Das tausendste Exemplar kostet in der Herstellung so viel wie das erste: nichts.</p>
+      <div class="keepvs">
+        <div><small>Geht von einer Flasche ins Ausland ab</small><p class="chips"><u>Zutaten</u><u>Flasche und Etikett</u><u>Lagerung</u><u>Versand</u><u>Rücksendungen</u><u>Zoll und Steuern im Ausland</u></p></div>
+        <div><small>Geht von einem digitalen Verkauf ab</small><p class="chips"><u>Eine Plattformgebühr</u></p></div>
+      </div>
+      <div class="seg" id="keepSeg" role="group" aria-label="Welches Produkt">
+        <button type="button" data-k="c" aria-pressed="true">Der Kreis</button>
+        <button type="button" data-k="k" aria-pressed="false">Ein Programm</button>
+        <button type="button" data-k="s" aria-pressed="false">Ein Kongresspaket</button>
+      </div>
+      <div class="keeprow" aria-live="polite">
+        <div class="keeppc"><b id="keepPc"></b><small>bleiben</small></div>
+        <div><div class="keepbar"><i id="keepL"></i></div><div class="keeplab"><span id="keepLt"></span><span id="keepFt"></span></div></div>
+      </div>
+      <p class="keepline" id="keepLine"></p>
+      <p class="tiny" style="margin-top:12px;max-width:80ch">Gebühren Stand November 2026: Skool nimmt 2,9 % und 30 Cent in seinem Tarif für 99 $ im Monat. Digistore24 nimmt 7,9 % und 1 €, darin ist die Abwicklung der Steuer jedes Landes enthalten. Was bleibt, teilen wir zwischen dir und uns. Ein Produkt zu bauen kostet Zeit, und diese Zeit ist unsere.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">7. Was es von dir braucht</span>
+    <h2>Wir machen die Arbeit. <em>Du bleibst du.</em></h2>
+    <p class="lede">Nichts hier verlangt von dir, eine Plattform zu lernen, eine Seite zu übersetzen oder eine Steuerregel zu klären. Das ist unser Teil.</p>
+    <div class="card wdo rv" id="who">
+      <div class="whohead">
+        <div class="seg" id="whoSeg" role="group" aria-label="Wann">
+          <button type="button" data-w="start" aria-pressed="true">Zum Start</button>
+          <button type="button" data-w="month" aria-pressed="false">Jeden Monat</button>
+        </div>
+        <div class="whobar" aria-hidden="true"><i id="whoWe"></i><i id="whoYou"></i></div>
+      </div>
+      <div class="whocols">
+        <div class="whocol we"><h3>Wir <span id="whoWeN"></span></h3><ul id="whoWeL"></ul></div>
+        <div class="whocol you"><h3>Du <span id="whoYouN"></span></h3><ul id="whoYouL"></ul></div>
+      </div>
+    </div>
+    <div class="asks">
+      <div class="card rv"><b class="n">0 €</b><h3 style="margin-top:8px">zum Ausprobieren</h3>
+        <ul class="dots"><li>Wir machen die Arbeit und tragen die Kosten</li><li>Wir verdienen einen Anteil an dem, was die englische Seite einbringt, vorher mit dir vereinbart</li><li>Bringt sie nichts ein, schuldest du uns nichts</li></ul></div>
+      <div class="card rv"><b class="n" style="font-size:clamp(30px,5vw,44px);padding-top:8px">Ein paar Stunden</b><h3 style="margin-top:8px">im Monat von dir</h3>
+        <ul class="dots"><li>Ein aufgezeichnetes Gespräch mit Adam und eine Live-Stunde im Kreis</li><li>Keine Pakete, kein Zoll, keine Etiketten, keine Werbung</li><li>Wir bereiten die steuerliche Abwicklung mit einem Reseller wie Digistore24 vor. Dein Steuerberater prüft sie einmal und unterschreibt ein US-Steuerformular</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">8. Die Reihenfolge</span>
+    <h2>Eins <em>nach dem anderen.</em></h2>
+    <ol class="ord">
+      <li><b>Sechs Gespräche</b><span>Auf Englisch, mit dem Brief ab dem ersten Video</span></li>
+      <li><b>Der Kreis öffnet</b><span>In einem Tag eingerichtet. Erst klein, mit der Bibliothek und einer Live-Stunde</span></li>
+      <li><b>Ein Online-Kongress</b><span>Aus deinen Gesprächen. Er füllt den Brief und den Kreis</span></li>
+      <li><b>Ein Programm</b><span>Von uns aus deinem Buch gebaut</span></li>
+      <li><b>Deine Bücher auf Englisch</b><span>Wir übersetzen und veröffentlichen. Das dauert am längsten, also läuft es im Hintergrund</span></li>
+    </ol>
+  </section>
+
+  <section class="close">
+    <h2>Wenn das für dich Sinn ergibt, <em>sag Ja.</em></h2>
+    <p class="lede" style="margin-inline:auto">Wir beginnen mit sechs Gesprächen, die du auswählst. Nichts anderes startet, bevor sie draußen sind.</p>
+    <p style="margin-top:26px"><a class="btn" href="https://wa.me/?text=Ja%2C%20lass%20uns%20mit%20sechs%20Gespr%C3%A4chen%20starten.">Schick Adam ein Ja per WhatsApp</a></p>
+    <a class="link" href="matthias-english.html">Die ganze Vision noch einmal ansehen (auf Englisch)</a>
+    <p class="tiny" style="margin-top:34px;max-width:64ch;margin-inline:auto">Der hier gezeigte Kreis ist ein Entwurf und existiert noch nicht. Die Preise sind Ideen, die Zahlen Beispiele und keine Prognosen. Wie die Steuer abgewickelt wird, hängt von der gewählten Plattform ab. Dein Steuerberater sollte es für deine Firma bestätigen. Die Programme bleiben bei Ernährung, Gewohnheiten und Lebensweise und geben keine Heilversprechen.</p>
+  </section>
+</div>
+<script>
+(function(){
+  'use strict';
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function $(id){return document.getElementById(id)}
+  function all(q,r){return [].slice.call((r||document).querySelectorAll(q))}
+  function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+  function YT(id){return 'https://i.ytimg.com/vi/'+id+'/hq720.jpg'}
+  function watch(node,fn,th){if(reduce||!('IntersectionObserver' in window))return;new IntersectionObserver(function(es){fn(es[0].isIntersecting)},{threshold:th||.4}).observe(node)}
+
+  /* reveal */
+  var rvs=all('.rv');
+  if(reduce||!('IntersectionObserver' in window)){rvs.forEach(function(e){e.classList.add('in')})}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});rvs.forEach(function(e){io.observe(e)})}
+
+  /* 1. the road, German or English */
+  var fl=$('fl'),flBtns=all('.seg button',fl),flTouched=false,flTimer=null;
+  function flSet(m){fl.setAttribute('data-m',m);flBtns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.m===m))});
+    $('roomN').textContent=m==='en'?'1,5 Milliarden':'130 Millionen';$('roomT').textContent=m==='en'?'Menschen sprechen Englisch':'Menschen sprechen Deutsch'}
+  flBtns.forEach(function(b){b.addEventListener('click',function(){flTouched=true;clearInterval(flTimer);flSet(b.dataset.m)})});
+  watch(fl,function(on){clearInterval(flTimer);if(on&&!flTouched)flTimer=setTimeout(function(){flTouched=true;flSet('en')},9000)},.45);
+
+  /* 2. inside the circle */
+  var SUBJ=[
+    ['The great shift',[['WKTXL7tSrPQ','Why Everything Is About to Change','mit Lia Lohmann'],['tYjOG6IIiCM','The Storm Is Coming','mit Peter Denk'],['uIR9xmJzFos','Extreme Changes on Our Earth','mit Sonja Ariel von Staden']]],
+    ['Hidden history',[['S4PEgV4CiPQ','They Knew Too Much','mit Frank Jacob'],['YQap4X1ax04','7 Years on a Spaceship','mit Lia Lohmann'],['JOcIgyjWb6Y','The Human Genius','mit Maxim Mankevich']]],
+    ['People and machines',[['2VoEj3Y7yw8','Will AI Make Our Work Obsolete?','mit Peter Denk'],['JOcIgyjWb6Y','Why AI Will Never Surpass Us','mit Maxim Mankevich'],['tYjOG6IIiCM','New Prophecies','mit Peter Denk']]],
+    ['Living food',[['assets/lp-veg.jpg','Plant-based, where to begin','mit dir'],['assets/lp-bowl.jpg','A week of simple plates','mit dir'],['assets/lp-leaves.jpg','What I eat in a day','mit dir']]]
+  ];
+  var subjBox=$('subj'),shelf=$('shelf');
+  function subjShow(k){all('button',subjBox).forEach(function(b,i){b.setAttribute('aria-pressed',String(i===k))});shelf.textContent='';
+    SUBJ[k][1].forEach(function(v,i){var a=el('div','vid');a.style.setProperty('--k',i);var s=el('span');s.style.backgroundImage='url('+(v[0].indexOf('assets/')===0?v[0]:YT(v[0]))+')';a.appendChild(s);a.appendChild(el('b','',v[1]));a.appendChild(el('small','',v[2]));shelf.appendChild(a)})}
+  var tabs=all('.tabs button'),panes=all('.pane'),appAt=0,appTimer=null,appTouched=false;
+  function appStop(){appTouched=true;clearInterval(appTimer)}
+  function tabShow(k){appAt=k;tabs.forEach(function(b,i){b.setAttribute('aria-selected',String(i===k))});panes.forEach(function(pn){pn.classList.toggle('on',pn.dataset.p===tabs[k].dataset.p)})}
+  SUBJ.forEach(function(sj,i){var b=el('button','',sj[0]);b.type='button';b.addEventListener('click',function(){appStop();subjShow(i)});subjBox.appendChild(b)});
+  subjShow(0);
+  tabs.forEach(function(b,i){b.addEventListener('click',function(){appStop();tabShow(i)})});
+  watch($('app'),function(on){clearInterval(appTimer);if(on&&!appTouched)appTimer=setInterval(function(){tabShow(appAt+1);if(appAt>=tabs.length-1)appStop()},11000)},.3);
+  var askBtn=$('askBtn');
+  askBtn.addEventListener('click',function(){appStop();var q=el('div','q mine');q.appendChild(el('i','','1'));q.appendChild(el('span','','Deine Frage. Sie steht in der Liste, und Matthias sieht sie.'));$('qs').insertBefore(q,$('qs').firstChild);askBtn.textContent='Gesendet. Er antwortet live';askBtn.disabled=true;
+    setTimeout(function(){all('.q.now').forEach(function(o){o.classList.remove('now')});q.classList.remove('mine');q.classList.add('now');$('nowQ').textContent='Deine Frage'},2600)});
+
+  /* 3. why people would pay: pick a wish, the first four weeks light up one by one */
+  var ME='assets/lp-matthias.jpg';
+  var WANT=[
+    {c:'Pflanzlich essen',w:'pflanzlich essen',img:'assets/lp-veg.jpg',wk:[
+      {t:'watch',img:'assets/lp-veg.jpg',tag:'Programm',h:'Plant-based, from the start',s:'Tag 1 von 14. Zehn Minuten am Tag, der Reihe nach.'},
+      {t:'do',img:'assets/lp-bowl.jpg',tag:'The living kitchen',h:'Der Teller der Woche',s:'Sie kochen ihn und zeigen ihn im Kreis.',items:['Einkaufsliste besorgen','Einmal kochen','Den Teller zeigen']},
+      {t:'live',img:ME,tag:'Live',h:'Eine Live-Stunde mit dir',s:'Sie fragen, was kein Buch beantwortet.',q:'Was esse ich auf Reisen?'},
+      {t:'keep',img:'assets/real-cookbook.jpg',tag:'Nach einem Monat',h:'14 Tage geschafft',s:'Eine Gewohnheit, und Menschen, die sie teilen.',next:'The living kitchen, 21 Tage'}]},
+    {c:'Ruhig bleiben',w:'ruhig bleiben, während die Welt sich wandelt',img:'assets/lp-mist.jpg',wk:[
+      {t:'watch',img:YT('WKTXL7tSrPQ'),tag:'Bibliothek',h:'The great shift, der Reihe nach',s:'Vom ersten Gespräch an, nicht vom neuesten.'},
+      {t:'listen',img:'assets/lp-mist.jpg',tag:'Meditation',h:'Stille am Morgen',s:'Deine Stimme, mit Brigittes Musik.',len:'12 Minuten'},
+      {t:'live',img:ME,tag:'Live',h:'Eine Live-Stunde mit dir',s:'Für die Fragen, mit denen die Nachrichten sie allein lassen.',q:'Wie rede ich mit meiner Familie darüber?'},
+      {t:'keep',img:YT('S4PEgV4CiPQ'),tag:'Nach einem Monat',h:'Dreißig Morgen geschafft',s:'Sie wissen, wohin sie gehen, wenn der Lärm lauter wird.',next:'Hidden history, der Reihe nach'}]},
+    {c:'Aus dem System aussteigen',w:'aus dem System aussteigen',img:'assets/sh-forest.jpg',wk:[
+      {t:'watch',img:'assets/sh-forest.jpg',tag:'Programm',h:'Journey to freedom',s:'Tag 1 von 30. Dein Weg, in Schritten, die sie gehen können.'},
+      {t:'do',img:'assets/alg-coast.jpg',tag:'Diese Woche',h:'Ein Schritt pro Woche',s:'Klein genug, um ihn zu tun. Echt genug, um zu zählen.',items:['Ein Tag ohne Handy','Aufschreiben, was du wirklich brauchst','Dem Kreis davon erzählen']},
+      {t:'live',img:ME,tag:'Live',h:'Eine Live-Stunde mit dir',s:'Wie du es gemacht hast, in deinen Worten.',q:'Was war am schwersten loszulassen?'},
+      {t:'keep',img:'assets/alg-group.jpg',tag:'Nach einem Monat',h:'30 Tage geschafft',s:'Und Menschen, die denselben Weg gehen.',next:'Ein Treffen an der Algarve'}]},
+    {c:'Loslassen',w:'loslassen, was ich mit mir trage',img:'assets/alg-bowl.jpg',wk:[
+      {t:'live',img:'assets/circle-guida4.jpg',tag:'Live',h:'Ein Abend mit Guida',s:'Dreißig Jahre Arbeit mit den Händen, live.',q:'Kann ich von zu Hause mitmachen?'},
+      {t:'listen',img:'assets/team-brigitte.jpg',pos:'28% 40%',tag:'Klang',h:'Ein Klangabend mit Brigitte',s:'Kopfhörer auf, Licht gedimmt.',len:'40 Minuten'},
+      {t:'do',img:'assets/circle-petra.jpg',pos:'50% 18%',tag:'Bewegung',h:'Bewegung mit Petra',s:'Kurze Einheiten zum Wiederholen.',items:['Zehn Minuten am Morgen','Zehn Minuten am Abend','Erzählen, wie es war']},
+      {t:'keep',img:'assets/alg-group.jpg',tag:'Nach einem Monat',h:'Vier Wochen, drei Lehrerinnen',s:'Sie wissen, an wen sie sich wenden.',next:'Ein Wochenende mit ihnen, vor Ort'}]}
+  ];
+  var RING='<svg class="sring" viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50"/><path class="ck" d="M42 61l12 12 24-26"/></svg>';
+  var WC=['--sky-s','--leaf-s','--sun-s','--teal-s'];
+  function scene(d,box){var x,y,i;box.textContent='';
+    if(d.t==='watch'){x=bgi(el('div','sw'),d.img);x.appendChild(el('i'));box.appendChild(x);y=el('div','sdays');for(i=1;i<=7;i++)y.appendChild(el('u',i===1?'on':'',String(i)));box.appendChild(y)}
+    else if(d.t==='do'){y=bgi(el('div','simg'),d.img);if(d.pos)y.style.backgroundPosition=d.pos;box.appendChild(y);x=el('div','sdo');d.items.forEach(function(t,n){var r=el('div',n<2?'ok':'',t);r.style.setProperty('--k',n);x.appendChild(r)});box.appendChild(x)}
+    else if(d.t==='listen'){x=bgi(el('div','sdisc'),d.img);if(d.pos)x.style.backgroundPosition=d.pos;box.appendChild(x);y=el('div','swave');for(i=0;i<14;i++){var u=el('u');u.style.setProperty('--k',(i*5)%11);y.appendChild(u)}box.appendChild(y);box.appendChild(el('div','slen',d.len))}
+    else if(d.t==='live'){x=el('div','sface');var im=document.createElement('img');im.src=d.img;im.alt='';x.appendChild(im);x.appendChild(el('b','','Live'));box.appendChild(x);y=el('div','sq');y.appendChild(el('small','','Ein Mitglied fragt'));y.appendChild(document.createTextNode(d.q));box.appendChild(y)}
+    else{x=el('div');x.innerHTML=RING;box.appendChild(x.firstChild);y=el('div','snext');y.appendChild(bgi(el('i'),d.img));var t=el('span');t.appendChild(el('small','','Als Nächstes'));t.appendChild(document.createTextNode(d.next));y.appendChild(t);box.appendChild(y)}}
+  var chipBox=$('mochips'),wrow=$('wrow'),cols=[],moAt=0,wkAt=0,wTouched=false,wTimer=null,wSeen=false;
+  function wkSet(k,lit){wkAt=k;cols.forEach(function(c,i){c.classList.toggle('on',i===k);c.classList.toggle('done',i<k);c.classList.toggle('dim',!lit&&i>k)});
+    scene(WANT[moAt].wk[k],cols[k].querySelector('.wsc'));
+    if(wSeen&&wrow.scrollWidth>wrow.clientWidth+4)wrow.scrollTo({left:cols[k].offsetLeft-(wrow.clientWidth-cols[k].offsetWidth)/2,behavior:reduce?'auto':'smooth'})}
+  function moBuild(){wrow.textContent='';cols=[];
+    WANT[moAt].wk.forEach(function(d,i){var c=el('div','wcol');c.setAttribute('role','button');c.tabIndex=0;c.setAttribute('aria-label','Woche '+(i+1)+': '+d.h);
+      var hd=el('div','whd');hd.appendChild(el('u','',String(i+1)));hd.appendChild(document.createTextNode('Woche '+(i+1)));c.appendChild(hd);
+      var sc=el('div','wsc');sc.style.setProperty('--c','var('+WC[i]+')');c.appendChild(sc);scene(d,sc);
+      c.appendChild(el('small','tag',d.tag));c.appendChild(el('b','h',d.h));c.appendChild(el('span','s',d.s));
+      function pick(){wTouched=true;clearInterval(wTimer);wkSet(i,true)}
+      c.addEventListener('click',pick);c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}});
+      wrow.appendChild(c);cols.push(c)})}
+  function moShow(k){moAt=k;all('button',chipBox).forEach(function(b,i){b.setAttribute('aria-pressed',String(i===k))});
+    var q=$('moq');q.textContent='';q.appendChild(document.createTextNode('„Ich will '));q.appendChild(el('em','',WANT[k].w+'.'));q.appendChild(document.createTextNode('“'));
+    moBuild();wkSet(0,reduce)}
+  function wRun(){clearInterval(wTimer);if(wTouched||reduce||!wSeen)return;wTimer=setInterval(function(){if(wkAt>=3){clearInterval(wTimer);return}wkSet(wkAt+1,false)},7000)}
+  WANT.forEach(function(w,i){var b=el('button');b.type='button';b.appendChild(bgi(el('i'),w.img));b.appendChild(document.createTextNode(w.c));b.addEventListener('click',function(){wTouched=false;moShow(i);wRun()});chipBox.appendChild(b)});
+  wrow.addEventListener('touchstart',function(){if(wTouched)return;wTouched=true;clearInterval(wTimer);cols.forEach(function(c){c.classList.remove('dim')})},{passive:true});
+  moShow(0);
+  watch(wrow,function(on){if(on&&!wSeen){wSeen=true;wkSet(0,false)}if(on)wRun();else clearInterval(wTimer)},.35);
+
+  /* the record counts up once */
+  function countUp(node){var to=+node.dataset.c,dec=+(node.dataset.dec||0),t0=null;
+    if(reduce){node.textContent=to.toFixed(dec).replace('.',',');return}
+    function tick(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1400),e=1-Math.pow(1-k,3);node.textContent=(to*e).toFixed(dec).replace('.',',');if(k<1)requestAnimationFrame(tick)}
+    requestAnimationFrame(tick)}
+  var rec=$('rec'),recDone=false;
+  function recGo(){if(recDone)return;recDone=true;all('[data-c]',rec).forEach(countUp)}
+  if(reduce||!('IntersectionObserver' in window)){recGo()}
+  else{new IntersectionObserver(function(es,o){if(es[0].isIntersecting){recGo();o.disconnect()}},{threshold:.3}).observe(rec)}
+
+  /* others who already do it */
+  var EX={
+    large:['Je eine Person. Alle zahlen, um dabei zu sein',[
+      ['Eternal Life Tribe','Atemarbeit, Kurse und zweimal im Monat eine Live-Fragestunde',['3.256 Mitglieder','55 $ im Monat'],'Bis zu etwa 179.000 $ im Monat','Ein Kreis mit Live-Stunden','https://www.skool.com/eternallifetribe/about','--teal-s'],
+      ['Angel Archetype Society','Eine private Bibliothek mit Meditationen und Ritualen',['997 Mitglieder','98 $ im Monat'],'Bis zu etwa 97.000 $ im Monat','Eine Bibliothek','https://www.skool.com/angelarchetype/about','--rose-s'],
+      ['Mindful Movemend','Sanfte Bewegung und Atmung, mit vier Live-Stunden im Monat',['1.867 Mitglieder','44 $ im Monat'],'Bis zu etwa 82.000 $ im Monat','Ein Kreis mit Live-Stunden','https://www.skool.com/mindfulmovemend/about','--sun-s'],
+      ['4biddenknowledge Academy','Verborgenes Wissen und Bewusstsein, von einem bekannten Redner',['1.364 Mitglieder','55 $ im Monat'],'Bis zu etwa 75.000 $ im Monat','Ein Kreis','https://www.skool.com/4biddenknowledge/about','--lilac-s']
+    ]],
+    small:['Ein paar hundert Mitglieder sind schon ein Geschäft',[
+      ['Club Raw','Vegane Rohkost, von einem einzelnen Gesundheitskanal auf YouTube',['616 Mitglieder','39 $ im Monat'],'Bis zu etwa 24.000 $ im Monat','Ein Kreis','https://www.skool.com/clubraw/about','--leaf-s'],
+      ['The University of Metaphysics','Eine Person, die über Geist und Bewusstsein lehrt',['1.063 Mitglieder','33 $ im Monat'],'Bis zu etwa 35.000 $ im Monat','Ein Kreis','https://www.skool.com/the-university-of-metaphysics-4287/about','--lilac-s'],
+      ['Reality Revolution','Ein Podcast über Bewusstsein, mit Live-Veranstaltungen im Kreis',['601 Mitglieder','55 $ im Monat'],'Bis zu etwa 33.000 $ im Monat','Ein Kreis','https://www.skool.com/realityrevolution/about','--rose-s'],
+      ['Harmony','Heilfrequenzen und Live-Konzerte online',['58.000 Mitglieder','27 $ im Monat für Premium'],'Kostenlos dabei, bezahlt für mehr Tiefe','Musik und ein Kreis','https://www.skool.com/harmony/about','--sky-s']
+    ]],
+    big:['Dieselbe Idee, groß geworden',[
+      ['Gaia','Eine Streaming-Bibliothek zu Bewusstsein, Yoga und Heilung',['883.000 Mitglieder','15,99 $ im Monat'],'99 Millionen $ im Jahr 2025','Eine Bibliothek','https://www.gaia.com','--teal-s'],
+      ['Food Revolution Network','Pflanzliche Ernährung. Jedes Jahr ein kostenloser Online-Kongress, danach eine Mitgliedschaft',['Kongresspaket etwa 97 $','Mitgliedschaft laut Liste 497 $ im Jahr'],'Ein Kongress füllt eine Mitgliedschaft','Ein Online-Kongress','https://foodrevolution.org','--leaf-s'],
+      ['Dr Joe Dispenza','Ein Meditationslehrer. Online-Kurse, danach einwöchige Retreats',['Etwa 2.500 $ pro Platz','Über 1.200 Menschen bei einer ausverkauften Woche'],'Kurse führen in den Saal','Treffen','https://drjoedispenza.com','--sun-s']
+    ]]
+  };
+  var exBox=$('exs'),exBtns=all('#exSeg button'),exTouched=false,exTimer=null,exAt='small',exOrder=['small','large','big'];
+  function exShow(kind){exAt=kind;exBtns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.x===kind))});$('exCap').textContent=EX[kind][0];exBox.textContent='';
+    EX[kind][1].forEach(function(x,i){var c=el('div','ex');c.style.setProperty('--k',i);var ic=el('i','',x[0].charAt(0));ic.style.setProperty('--c','var('+x[6]+')');c.appendChild(ic);c.appendChild(el('b','',x[0]));c.appendChild(el('span','',x[1]));
+      var n=el('div','exn');x[2].forEach(function(t){n.appendChild(el('u','',t))});n.appendChild(el('u','hot',x[3]));c.appendChild(n);
+      var f=el('div','exf');f.appendChild(el('span','','In deinem Plan: '+x[4]));var a=el('a','','Ansehen');a.href=x[5];a.target='_blank';a.rel='noopener';f.appendChild(a);c.appendChild(f);exBox.appendChild(c)})}
+  exBtns.forEach(function(b){b.addEventListener('click',function(){exTouched=true;clearInterval(exTimer);exShow(b.dataset.x)})});
+  exShow('small');
+  watch(exBox,function(on){clearInterval(exTimer);if(on&&!exTouched)exTimer=setInterval(function(){var k=(exOrder.indexOf(exAt)+1)%3;exShow(exOrder[k]);if(k===0){exTouched=true;clearInterval(exTimer)}},12000)},.3);
+
+  /* 4. from what you already have: each thing becomes three products, each opens */
+  var T1=YT('WKTXL7tSrPQ'),T2=YT('tYjOG6IIiCM'),T3=YT('S4PEgV4CiPQ'),T4=YT('2VoEj3Y7yw8'),T5=YT('uIR9xmJzFos'),T6=YT('JOcIgyjWb6Y');
+  var AMZ='Amazon druckt, versendet und kümmert sich in jedem Land um die Steuer.';
+  var ONCE='Einmal gebaut. Es kann sich jahrelang verkaufen, ohne mehr von deiner Zeit.';
+  var SMALL='Klein und leicht zu bejahen. Oft das Erste, was jemand kauft.';
+  var BOOKWE='Wir übersetzen es, ein muttersprachliches Lektorat feilt daran, und wir machen Satz, Cover und Veröffentlichung.';
+  var SRC=[
+    {n:'Reise in die Freiheit',img:'assets/real-book.jpg',p:[
+      {t:'book',img:'assets/real-book.jpg',fit:'contain',n:'Journey to freedom',k:'Dein Buch, auf Englisch',chip:'10 bis 25 €',price:'Etwa 10 bis 25 € pro Exemplar',earn:AMZ,ys:'Dein Okay',you:'Dein Okay und eine E-Mail an deinen Verlag, die wir für dich schreiben',we:BOOKWE,rows:[['E-Book','Auf jedem Handy oder Reader, noch am selben Tag'],['Hörbuch','In deiner eigenen Stimme, auf Englisch'],['Gedruckt','Einzeln gedruckt, wenn jemand bestellt']]},
+      {t:'prog',days:30,n:'Journey to freedom, 30 Tage',k:'Ein Programm zum Mitgehen',chip:'197 bis 497 €',price:'197 bis 497 €, einmalig',earn:ONCE,ys:'Dein Okay',you:'Dein Okay zu den Lektionen. Wenn du magst, zwei Minuten Begrüßung',we:'Wir machen aus dem Buch 30 kurze Lektionen, mit Ausschnitten aus Gesprächen, die du schon geführt hast.',rows:[['Tag 1','Was brauchst du wirklich?'],['Tag 9','Ein Tag ohne dein Handy'],['Tag 18','Was du besitzt und was dich besitzt'],['Tag 30','Dein eigener nächster Schritt']]},
+      {t:'guide',n:'The first step',k:'Ein kurzer Leitfaden',chip:'9 bis 29 €',price:'9 bis 29 €',earn:SMALL,ys:'Nichts Neues',you:'Nichts Neues',we:'Wir schreiben ihn aus dem Buch und gestalten ihn.',rows:[['Teil 1','Sieben Fragen aus dem Buch'],['Teil 2','Eine Woche kleiner Veränderungen'],['Teil 3','Wie es von hier weitergeht']]}
+    ]},
+    {n:'Dein veganes Kochbuch',img:'assets/real-cookbook.jpg',p:[
+      {t:'book',img:'assets/real-cookbook.jpg',n:'Das Kochbuch, auf Englisch',k:'Deine Rezepte, übersetzt',chip:'10 bis 25 €',price:'Etwa 10 bis 25 € pro Exemplar',earn:AMZ,ys:'Dein Okay',you:'Dein Okay und eine E-Mail an deinen Verlag, die wir für dich schreiben',we:BOOKWE,rows:[['E-Book','Auf jedem Handy oder Reader, noch am selben Tag'],['Gedruckt','Einzeln gedruckt, wenn jemand bestellt'],['Fotos','Die, die du schon hast']]},
+      {t:'prog',days:21,n:'The living kitchen, 21 Tage',k:'Ein Programm zum Mitkochen',chip:'197 bis 497 €',price:'197 bis 497 €, einmalig',earn:ONCE,ys:'Dein Okay',you:'Dein Okay. Rezepte und Fotos kommen aus deinem Buch',we:'Wir legen 21 Tage mit Rezepten, Einkaufslisten und kurzen Notizen an.',rows:[['Tag 1','Ein Regal ausräumen'],['Tag 3','Dein erster rein pflanzlicher Tag'],['Tag 10','Kochen für Menschen, die anders essen'],['Tag 21','Ein Abendessen für Freunde']]},
+      {t:'food',img:'assets/lp-bowl.jpg',tag:'Diese Woche',n:'Ein Rezept pro Woche',k:'Im Kreis',chip:'Im Kreis',price:'Teil der 50 € im Monat',earn:'Jede Woche etwas Neues ist ein Grund zu bleiben.',ys:'Nichts Neues',you:'Nichts Neues. Sie stehen in deinem Buch',we:'Wir stellen es ein, beantworten Fragen und wählen den Teller der Woche.',rows:[['Montag','Das Rezept, mit dem Foto aus deinem Buch'],['Wochenmitte','Mitglieder zeigen ihre eigenen Teller'],['Sonntag','Wir zeigen einen im Brief']]}
+    ]},
+    {n:'1.685 Gespräche',img:T1,p:[
+      {t:'summit',n:'The great shift, ein Online-Kongress',k:'Eine Online-Veranstaltung',chip:'97 bis 197 €',price:'97 bis 197 € für das Kongresspaket',earn:'48 Stunden kostenlos zu sehen. Wer es behalten will, zahlt einmal.',ys:'Eine Stunde',you:'Eine Live-Fragestunde. Unsere Nachricht an die Gäste geht in deinem Namen raus',we:'Wir wählen die Gespräche aus, vertonen sie auf Englisch, schreiben die Nachricht an jeden Gast und führen die Veranstaltung durch.',rows:[['Tag 1','Zwei Gespräche öffnen, 48 Stunden kostenlos'],['Tag 2','Zwei weitere. Neue Leser kommen zum Brief'],['Tag 4','Eine Live-Fragestunde mit dir'],['Danach','Das Kongresspaket enthält jede Aufzeichnung']]},
+      {t:'lib',n:'Die Bibliothek',k:'Im Kreis',chip:'Im Kreis',price:'Teil der 50 € im Monat',earn:'Ein Grund beizutreten, und sie wächst mit jedem Gespräch.',ys:'Nichts Neues',you:'Nichts Neues',we:'Wir ordnen jedes Gespräch nach Thema und halten sie aktuell.',rows:[['The great shift','Jedes Gespräch dazu, der Reihe nach'],['Hidden history','Vom ersten bis zum neuesten'],['People and machines','Was menschlich bleibt'],['Living food','Deine eigene Küche und deine Gewohnheiten']]},
+      {t:'clips',n:'Kurze Clips',k:'Kostenlos, jeden Tag',chip:'Kostenlos',price:'Kostenlos',earn:'Sie verdienen selbst nichts. Sie bringen jeden Tag neue Menschen zum Brief.',ys:'Nichts Neues',you:'Nichts Neues',we:'Wir schneiden sie, untertiteln sie und veröffentlichen sie.',rows:[['48 Clips','Aus den ersten acht Gesprächen geschnitten'],['Untertitel','Auf Englisch, in deinen Farben'],['Die letzte Sekunde','Führt zum Brief']]}
+    ]},
+    {n:'Wie du seit 17 lebst',img:'assets/lp-matthias.jpg',p:[
+      {t:'prog',days:14,n:'Plant-based, from the start',k:'Ein Programm zum Mitgehen',chip:'197 bis 497 €',price:'197 bis 497 €, einmalig',earn:ONCE,ys:'Ein Gespräch',you:'Ein aufgezeichnetes Gespräch mit Adam',we:'Wir stellen die Fragen, filmen es und schneiden es zu 14 Tagen.',rows:[['Tag 1','Warum du mit 17 angefangen hast'],['Tag 4','Was du an einem Tag isst'],['Tag 9','Auswärts essen, Reisen und Familie'],['Tag 14','Wie es ihr Eigenes wird']]},
+      {t:'live',n:'Eine Live-Stunde mit dir',k:'Im Kreis',chip:'Im Kreis',price:'Teil der 50 € im Monat',earn:'Dich direkt fragen zu können ist ein starker Grund beizutreten.',ys:'Eine Stunde im Monat',you:'Eine Stunde im Monat',we:'Wir sammeln die Fragen, moderieren die Stunde und stellen die Aufzeichnung ein.',rows:[['Davor','Mitglieder schicken Fragen und stimmen ab'],['Live','Du antwortest eine Stunde lang'],['Danach','Die Aufzeichnung kommt in die Bibliothek']]},
+      {t:'guide',n:'A day with Matthias',k:'Ein kurzer Leitfaden',chip:'9 bis 29 €',price:'9 bis 29 €',earn:SMALL,ys:'Zwanzig Minuten',you:'Zwanzig Minuten, im selben Gespräch mit Adam',we:'Wir schreiben es auf und gestalten es.',rows:[['Morgen','Wie du beginnst'],['Essen','Was auf dem Teller liegt'],['Bewegung','Wie du kräftig bleibst'],['Abend','Wie du den Tag beschließt']]}
+    ]}
+  ];
+  function bgi(node,u){node.style.backgroundImage='url('+u+')';return node}
+  function vis(p){var v=el('span','mpv'),x,i,d;
+    if(p.t==='book'){x=bgi(el('span','vbook'),p.img);if(p.fit)x.style.backgroundSize=p.fit}
+    else if(p.t==='prog'){x=el('span','vdays');x.style.gridTemplateColumns='repeat('+(p.days===30?10:7)+',1fr)';for(i=0;i<p.days;i++){d=el('i');d.style.setProperty('--d',i);x.appendChild(d)}}
+    else if(p.t==='guide'){x=el('span','vguide');for(i=0;i<3;i++)x.appendChild(el('i'))}
+    else if(p.t==='lib'){x=el('span','vlib');[T1,T3,T4,T2,T5,T6].forEach(function(u,n){d=bgi(el('i'),u);d.style.setProperty('--d',n);x.appendChild(d)})}
+    else if(p.t==='summit'){x=el('span','vpass');x.appendChild(el('b','','Kongresspaket'));x.appendChild(el('em','','The great shift'));var f=el('span');[T1,T2,T5,T3].forEach(function(u){f.appendChild(bgi(el('i'),u))});x.appendChild(f)}
+    else if(p.t==='clips'){x=el('span','vclips');[T2,T1,T3].forEach(function(u,n){d=bgi(el('i'),u);d.style.setProperty('--d',n);x.appendChild(d)})}
+    else if(p.t==='live'){x=el('span','vlive');var im=document.createElement('img');im.src='assets/lp-matthias.jpg';im.alt='';x.appendChild(im);x.appendChild(el('b','','Live'))}
+    else{x=bgi(el('span','vfood'),p.img);x.appendChild(el('b','',p.tag||'Diese Woche'))}
+    v.appendChild(x);return v}
+  var srcBox=$('srcs'),mkAt=0;
+  function mkOpen(j,byHand){var p=SRC[mkAt].p[j],box=$('mkin');
+    all('.mp',$('mps')).forEach(function(b,i){b.setAttribute('aria-pressed',String(i===j))});
+    box.textContent='';var h=el('h3','','Darin: '+p.n);h.appendChild(el('span','','Ein Entwurf'));box.appendChild(h);
+    var rows=el('div','mkrows');p.rows.forEach(function(r,i){var d=el('div','mkrow');d.style.setProperty('--k',i);d.appendChild(el('b','',r[0]));d.appendChild(el('span','',r[1]));rows.appendChild(d)});box.appendChild(rows);
+    var e=el('div','mkearn');e.appendChild(el('small','','So verdient es'));e.appendChild(el('b','',p.price));e.appendChild(el('p','',p.earn));e.appendChild(el('small','','Wir'));e.appendChild(el('em','',p.we));e.appendChild(el('small','you','Von dir'));e.appendChild(el('em','',p.you));box.appendChild(e);
+    if(byHand&&box.getBoundingClientRect().bottom>window.innerHeight)box.scrollIntoView({block:'nearest',behavior:reduce?'auto':'smooth'})}
+  function mkShow(k){mkAt=k;all('button',srcBox).forEach(function(b,i){b.setAttribute('aria-pressed',String(i===k))});$('mkName').textContent=SRC[k].n;
+    var box=$('mps');box.textContent='';
+    SRC[k].p.forEach(function(p,j){var b=el('button','mp');b.type='button';b.style.setProperty('--k',j);b.appendChild(vis(p));b.appendChild(el('b','',p.n));b.appendChild(el('small','',p.k));var ch=el('span','mpc');ch.appendChild(el('u','',p.chip));ch.appendChild(el('u','yo','Von dir: '+p.ys.charAt(0).toLowerCase()+p.ys.slice(1)));b.appendChild(ch);b.addEventListener('click',function(){mkOpen(j,true)});box.appendChild(b)});
+    mkOpen(0,false)}
+  SRC.forEach(function(sr,i){var b=el('button');b.type='button';b.appendChild(bgi(el('i'),sr.img));b.appendChild(el('b','',sr.n));b.addEventListener('click',function(){mkShow(i)});srcBox.appendChild(b)});
+  mkShow(0);
+  if(!reduce&&'IntersectionObserver' in window){new IntersectionObserver(function(es,o){if(es[0].isIntersecting){o.disconnect();mkShow(mkAt)}},{threshold:.35}).observe($('mps'))}
+
+  /* 7. who does what */
+  var WHO={
+    start:{we:['Die ersten sechs Gespräche übersetzen und vertonen','Jemand mit Englisch als Muttersprache prüft jedes Skript','Cover, Titel und kurze Clips','Den Brief und einen kostenlosen Leitfaden einrichten','Den Kreis aufbauen','Die Nachricht schreiben, die jeden Gast um sein Okay bittet','Die E-Mail an deinen Verlag zu den englischen Rechten schreiben','Die Zahlungskonten und die Steuerformulare vorbereiten'],
+      you:[['Ja sagen','und deine Stimme auf Englisch erlauben'],['Die sechs Gespräche auswählen',''],['Unsere Nachricht an diese sechs Gäste schicken','oder jemand aus deinem Team'],['Eine E-Mail an deinen Verlag schicken','wir schreiben sie'],['Die Zahlungskonten auf den Namen deiner Firma eröffnen','wir bereiten jeden Schritt vor']]},
+    month:{we:['Zwei Videos pro Woche übersetzen und vertonen','Den Sonntagsbrief schreiben und versenden','Den Kreis führen und Mitgliedern antworten','Programme und Leitfäden aus deinen Büchern bauen','Deine Bücher übersetzen und veröffentlichen','Den Online-Kongress durchführen, wenn es so weit ist','Dir die Zahlen schicken'],
+      you:[['Ein aufgezeichnetes Gespräch mit Adam','etwa zwei Stunden'],['Eine Live-Stunde im Kreis',''],['Lesen und freigeben','was in deinem Namen rausgeht']]}
+  };
+  var whoBtns=all('#whoSeg button');
+  function whoShow(k){var d=WHO[k],a=$('whoWeL'),b=$('whoYouL');whoBtns.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.w===k))});
+    a.textContent='';b.textContent='';
+    d.we.forEach(function(t,i){var li=el('li','',t);li.style.setProperty('--k',i);a.appendChild(li)});
+    d.you.forEach(function(t,i){var li=el('li','',t[0]);if(t[1])li.appendChild(el('small','',t[1]));li.style.setProperty('--k',i);b.appendChild(li)});
+    $('whoWeN').textContent=d.we.length;$('whoYouN').textContent=d.you.length;
+    var tot=d.we.length+d.you.length;$('whoWe').style.width=(d.we.length/tot*100)+'%';$('whoYou').style.width=(d.you.length/tot*100)+'%'}
+  whoBtns.forEach(function(x){x.addEventListener('click',function(){whoShow(x.dataset.w)})});
+  whoShow('start');
+
+  /* 5. estimator */
+  var GERMAN=2000000;
+  var MOODS=[{n:1000,c:.01,k:.005,s:.01},{n:750,c:.02,k:.01,s:.02},{n:400,c:.03,k:.015,s:.03}];
+  var PRICE={c:[50,5,20,100],k:[297,50,97,497],s:[147,25,47,247]};
+  var mood=1,vIn=$('vIn');
+  function fmt(n){return Math.round(n).toLocaleString('de-DE')}
+  function eur(n){return fmt(n)+' €'}
+  function pct(x){return String(Math.round(x*1000)/10).replace('.',',')+' %'}
+  var KEEP={c:['Der Kreis','im Monat',.029,.3,'Skool'],k:['Ein Programm','einmalig',.079,1,'Digistore24'],s:['Ein Kongresspaket','einmalig',.079,1,'Digistore24']},keepAt='c';
+  function money(n){return (Math.round(n*100)/100).toFixed(2).replace('.',',')+' €'}
+  function keepDraw(){var d=KEEP[keepAt],pr=PRICE[keepAt][0],fee=pr*d[2]+d[3],left=pr-fee;
+    all('#keepSeg button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.k===keepAt))});
+    $('keepPc').textContent=Math.round(left/pr*100)+' %';$('keepL').style.width=(left/pr*100)+'%';
+    $('keepLt').textContent=money(left)+' bleiben';$('keepFt').textContent=money(fee)+' Gebühr';
+    $('keepLine').textContent=d[0]+' zu '+eur(pr)+' '+d[1]+', verkauft über '+d[4]+'. Ändere oben den Preis, und das hier folgt.'}
+  all('#keepSeg button').forEach(function(b){b.addEventListener('click',function(){keepAt=b.dataset.k;keepDraw()})});
+  function calc(){
+    var m=MOODS[mood],mult=+vIn.value,views=GERMAN*mult,yearViews=views*12,readers=yearViews/m.n;
+    var members=readers*m.c,sales=readers*m.k,passes=readers*m.s,pc=PRICE.c[0],pk=PRICE.k[0],ps=PRICE.s[0];
+    var a=members*pc*12,b=sales*pk*2,c=passes*ps,tot=a+b+c;
+    $('vOut').textContent=fmt(views);
+    $('vX').textContent=mult===1?'so viel wie Deutsch heute':(mult===0.25?'ein Viertel von Deutsch heute':(mult===0.5?'die Hälfte von Deutsch heute':(mult<1?fmt(mult*100)+' % von Deutsch heute':String(Math.round(mult*100)/100).replace('.',',')+'-mal Deutsch heute')));
+    $('moodNote').textContent=(mood===1?'Auf Deutsch wurde etwa 1 von 750 Aufrufen zu einem Newsletter-Leser: 60.000 Leser aus 45 Millionen Aufrufen. Hier gilt dieselbe Quote. ':'Hier wird angenommen, dass 1 von '+fmt(m.n)+' Aufrufen zu einem Leser des Briefs wird. ')+'Von den Lesern treten '+pct(m.c)+' dem Kreis bei, '+pct(m.k)+' kaufen ein Programm und '+pct(m.s)+' kaufen ein Kongresspaket.';
+    $('fV').textContent=fmt(yearViews);$('fV').style.setProperty('--w','100%');
+    $('fR').textContent=fmt(readers);$('fR').style.setProperty('--w',Math.max(18,Math.min(70,30+Math.log(readers/1000)/Math.LN10*14))+'%');
+    $('fM').textContent=fmt(members);$('fM').style.setProperty('--w',Math.max(10,Math.min(40,12+Math.log(Math.max(members,10)/10)/Math.LN10*8))+'%');
+    $('oComm').textContent=eur(members*pc);$('hComm').textContent=fmt(members)+' Mitglieder zu je '+eur(pc);
+    $('oCourse').textContent=eur(sales*pk);$('hCourse').textContent=fmt(sales)+' Menschen zu je '+eur(pk);
+    $('oSummit').textContent=eur(passes*ps);$('hSummit').textContent=fmt(passes)+' Pakete zu je '+eur(ps);
+    $('pC').textContent=eur(pc);$('pK').textContent=eur(pk);$('pS').textContent=eur(ps);
+    $('oYear').textContent=eur(tot);
+    $('s1').style.width=(a/tot*100)+'%';$('s2').style.width=(b/tot*100)+'%';$('s3').style.width=(c/tot*100)+'%';keepDraw();
+  }
+  vIn.addEventListener('input',calc);
+  all('#moods button').forEach(function(b){b.addEventListener('click',function(){mood=+b.dataset.m;all('#moods button').forEach(function(o){o.setAttribute('aria-pressed',String(o===b))});calc()})});
+  all('.step button').forEach(function(b){b.addEventListener('click',function(){var pr=PRICE[b.dataset.k];pr[0]=Math.max(pr[2],Math.min(pr[3],pr[0]+pr[1]*(+b.dataset.d)));calc()})});
+  calc();
+
+  /* the language switch keeps your place on the page */
+  var secs=all('section');
+  all('.lang a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();if(a.hasAttribute('aria-current'))return;
+    var y=window.scrollY+window.innerHeight*.3,k=0;secs.forEach(function(sc,i){if(sc.offsetTop<=y)k=i});
+    var f=Math.max(0,Math.min(1,(window.scrollY-secs[k].offsetTop)/secs[k].offsetHeight));
+    location.href=a.getAttribute('href')+'#at='+k+'-'+f.toFixed(3)})});
+  var at=/^#at=([0-9]+)-([0-9.]+)$/.exec(location.hash);
+  if(at&&secs[+at[1]]){var jump=function(){var sc=secs[+at[1]],root=document.documentElement,old=root.style.scrollBehavior;root.style.scrollBehavior='auto';window.scrollTo(0,sc.offsetTop+sc.offsetHeight*parseFloat(at[2]));root.style.scrollBehavior=old};
+    jump();window.addEventListener('load',jump);try{history.replaceState(null,'',location.pathname+location.search)}catch(err){}}
+})();
+</script>
+</body>
+</html>
