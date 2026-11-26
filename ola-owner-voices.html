@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A small favour</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Six short questions for property owners, and a short video if you like.">
+<meta name="theme-color" content="#F5EFE4">
+<meta name="color-scheme" content="light only">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+  /* hallmark v2.0.0 | theme: custom (limestone, terracotta, sea blue) | genre: editorial | shape: single-column form flow */
+  /* critique: calm and plain on purpose; one action per screen; the only photo is Ola's own listing, with no words on it. */
+  :root {
+    --limestone: #F5EFE4; --paper: #FFFCF7; --sand: #EBE1D0; --line: #DDD0BB;
+    --ink: #25343D; --muted: #5C686D;
+    --terra: #B4532F; --terra-deep: #8F3E22; --terra-soft: #F3DDD0;
+    --sea: #1E5170; --sea-deep: #163D56; --sea-soft: #DCE8EE; --on-sea: #FFFCF7;
+    --shadow: 0 14px 34px rgba(37, 52, 61, .10);
+    --shadow-btn: 0 8px 20px rgba(30, 81, 112, .22);
+    --font-head: Fraunces, Georgia, "Times New Roman", serif;
+    --font-body: Figtree, "Helvetica Neue", Arial, sans-serif;
+    --r: 18px;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html, body { overflow-x: clip; }
+  body { margin: 0; background: var(--limestone); color: var(--ink); font: 17px/1.55 var(--font-body); -webkit-font-smoothing: antialiased; }
+  html[data-lang="pl"] .en, html[data-lang="en"] .pl { display: none !important; }
+  [hidden] { display: none !important; }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 0 20px 56px; }
+  h1, h2 { font-family: var(--font-head); font-weight: 500; letter-spacing: -.01em; margin: 0 0 10px; text-wrap: balance; overflow-wrap: break-word; min-width: 0; color: var(--ink); }
+  h1 { font-size: clamp(30px, 8vw, 40px); line-height: 1.1; }
+  h2 { font-size: clamp(26px, 6.6vw, 32px); line-height: 1.15; }
+  p { margin: 0 0 12px; }
+  .hint { color: var(--muted); font-size: 16px; margin: 0 0 20px; }
+  .tiny { font-size: 14px; color: var(--muted); line-height: 1.5; }
+  .bad { color: var(--terra-deep); }
+
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; }
+  .brand { font: 600 16px var(--font-head); color: var(--sea-deep); }
+  .lang { display: inline-flex; border: 1.5px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--paper); }
+  .lang button { font: 600 14px var(--font-body); padding: 8px 14px; min-height: 40px; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+  html[data-lang="en"] .lang button[data-set="en"], html[data-lang="pl"] .lang button[data-set="pl"] { background: var(--sea); color: var(--on-sea); }
+
+  .prog { display: flex; gap: 6px; margin: 4px 0 18px; }
+  .prog i { flex: 1; height: 4px; border-radius: 4px; background: var(--line); }
+  .prog i.done { background: var(--terra); }
+  .prog i.on { background: var(--sea); }
+
+  .step { display: none; background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: 26px 22px; box-shadow: var(--shadow); }
+  .step.active { display: block; animation: rise .35s ease-out both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+  .photo { margin: -26px -22px 22px; border-radius: 24px 24px 0 0; overflow: hidden; aspect-ratio: 16 / 10; background: var(--sand); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { position: relative; display: inline-flex; align-items: center; cursor: pointer; font: 500 16px var(--font-body); color: var(--ink); background: var(--limestone); border: 1.5px solid var(--line); border-radius: 999px; padding: 12px 18px; min-height: 48px; transition: background-color .15s, border-color .15s; }
+  .chip input { position: absolute; opacity: 0; pointer-events: none; }
+  .chip:has(input:checked) { background: var(--sea); border-color: var(--sea); color: var(--on-sea); }
+  .chip:has(input:focus-visible), .btn:focus-visible, .lang button:focus-visible, .scale label:has(input:focus-visible), .rec:focus-visible, .linkbtn:focus-visible { outline: 3px solid var(--terra); outline-offset: 2px; }
+  .chip.big { font-size: 18px; padding: 14px 26px; }
+
+  .scale { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+  .scale label { position: relative; text-align: center; cursor: pointer; background: var(--limestone); border: 1.5px solid var(--line); border-radius: var(--r); padding: 16px 0; font: 500 24px var(--font-head); min-height: 60px; transition: background-color .15s; }
+  .scale label input { position: absolute; opacity: 0; pointer-events: none; }
+  .scale label:has(input:checked) { background: var(--sea); border-color: var(--sea); color: var(--on-sea); }
+  .ends { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; font-size: 14px; color: var(--muted); }
+
+  label.f { display: grid; gap: 6px; font: 600 15px var(--font-body); color: var(--muted); margin-bottom: 14px; }
+  label.f input, label.f textarea { width: 100%; font: 400 17px var(--font-body); color: var(--ink); background: var(--limestone); border: 1.5px solid var(--line); border-radius: 14px; padding: 13px 15px; }
+  label.f input:focus-visible, label.f textarea:focus-visible { outline: 3px solid var(--terra); outline-offset: 1px; }
+  textarea { min-height: 84px; resize: vertical; }
+  .sub { font: 500 20px var(--font-head); margin: 24px 0 10px; color: var(--ink); }
+
+  .prompts { background: var(--sea-soft); border-radius: 14px; padding: 12px 14px; font-size: 15px; margin-bottom: 14px; color: var(--sea-deep); }
+  .cam { position: relative; border-radius: 20px; overflow: hidden; background: var(--sea-deep); aspect-ratio: 4 / 5; max-height: 440px; margin: 0 auto 14px; }
+  .cam video { width: 100%; height: 100%; object-fit: cover; display: block; transform: scaleX(-1); }
+  .cam video.play { transform: none; }
+  .cam .timer { position: absolute; top: 12px; left: 12px; background: var(--terra); color: var(--on-sea); font: 600 14px var(--font-body); padding: 6px 12px; border-radius: 999px; }
+  .cam .idle { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; font-size: 16px; background: var(--sand); color: var(--ink); }
+  .cam .idle b { display: block; font: 500 22px var(--font-head); margin-bottom: 6px; }
+  .camrow { display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap; }
+  .promise { border: 1.5px solid var(--line); background: var(--limestone); border-radius: 14px; padding: 14px 16px; margin-bottom: 14px; }
+  .promise p { margin: 0 0 12px; font-size: 15px; line-height: 1.5; color: var(--ink); }
+  .agree { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; cursor: pointer; font: 600 17px var(--font-body); color: var(--ink); }
+  .agree input { width: 24px; height: 24px; margin: 0; accent-color: var(--sea); flex: none; }
+  .agree:has(input:focus-visible) { outline: 3px solid var(--terra); outline-offset: 2px; border-radius: 6px; }
+  .rec:disabled { opacity: .35; cursor: default; }
+  .linkbtn.off { opacity: .4; pointer-events: none; }
+  .rec { width: 72px; height: 72px; border-radius: 50%; border: 5px solid var(--paper); outline: 2px solid var(--terra); background: var(--terra); cursor: pointer; position: relative; }
+  .rec.on { background: var(--paper); }
+  .rec.on::after { content: ""; position: absolute; inset: 18px; background: var(--terra); border-radius: 5px; }
+  .linkbtn { display: inline-block; cursor: pointer; font: 600 16px var(--font-body); color: var(--sea); text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; padding: 10px 6px; }
+  .picked { text-align: center; font-size: 15px; color: var(--sea-deep); margin: 8px 0 0; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 26px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; cursor: pointer; border: 0; font: 600 17px var(--font-body); padding: 14px 28px; min-height: 52px; border-radius: 999px; background: var(--sea); color: var(--on-sea); box-shadow: var(--shadow-btn); text-decoration: none; transition: background-color .15s; }
+  .btn:hover { background: var(--sea-deep); }
+  .btn:active { transform: translateY(1px); }
+  .btn.quiet { background: var(--sea-soft); color: var(--sea-deep); box-shadow: none; }
+  .btn.ghost { background: transparent; color: var(--muted); box-shadow: none; padding-left: 8px; padding-right: 8px; }
+  .btn[disabled] { opacity: .45; cursor: default; box-shadow: none; }
+  .btn.block { width: 100%; }
+  .thanks { text-align: center; padding-top: 40px; padding-bottom: 40px; }
+  .thanks .rule { width: 56px; height: 3px; background: var(--terra); border-radius: 3px; margin: 0 auto 22px; }
+  @media (prefers-reduced-motion: reduce) { .step.active { animation: none !important; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <span class="brand" id="brand"></span>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set="en">EN</button><button type="button" data-set="pl">PL</button></div>
+  </div>
+  <div class="prog" id="prog" aria-hidden="true"></div>
+
+  <!-- 0 Welcome -->
+  <section class="step" data-step="0">
+    <div class="photo"><img id="heroimg" src="https://talkgueststatic.blob.core.windows.net/optimized-images/c88ef37f-72ed-4df8-9fc9-ed681eb11f0e_1920_1080.webp" alt="" loading="eager"></div>
+    <h1><span class="en">Thank you for trusting me with your home.</span><span class="pl">Dziękuję za zaufanie i powierzony mi dom.</span></h1>
+    <p class="hint"><span class="en">Hi, it’s Aleks. If working together has gone well, would you say so in your own words? It helps the next owner decide. Six quick questions, about two minutes.</span><span class="pl">Cześć, tu Aleks. Jeśli nasza współpraca układa się dobrze, powiedz o tym własnymi słowami. Pomoże to kolejnemu właścicielowi w decyzji. Sześć krótkich pytań, około dwóch minut.</span></p>
+    <p class="tiny"><span class="en">You choose at the end what I may share. No pressure.</span><span class="pl">Na końcu sam decydujesz, co mogę pokazać dalej. Bez presji.</span></p>
+    <div class="nav"><span></span><button class="btn" type="button" data-next><span class="en">Start</span><span class="pl">Zaczynamy</span></button></div>
+  </section>
+
+  <!-- 1 Why -->
+  <section class="step" data-step="1">
+    <h2><span class="en">What made you choose me to look after your property?</span><span class="pl">Co przekonało Cię, żeby powierzyć mi opiekę nad swoją nieruchomością?</span></h2>
+    <p class="hint"><span class="en">Tap what applies.</span><span class="pl">Dotknij tego, co pasuje.</span></p>
+    <div class="chips">
+      <label class="chip"><input type="checkbox" name="why" value="Guest reviews"><span class="en">Guest reviews</span><span class="pl">Opinie gości</span></label>
+      <label class="chip"><input type="checkbox" name="why" value="Someone recommended you"><span class="en">Someone recommended me</span><span class="pl">Ktoś mnie polecił</span></label>
+      <label class="chip"><input type="checkbox" name="why" value="Quick replies"><span class="en">Quick replies</span><span class="pl">Szybkie odpowiedzi</span></label>
+      <label class="chip"><input type="checkbox" name="why" value="Trust from the first conversation"><span class="en">Trust from the first conversation</span><span class="pl">Zaufanie od pierwszej rozmowy</span></label>
+      <label class="chip"><input type="checkbox" name="why" value="Care for the property"><span class="en">Care for the property</span><span class="pl">Troska o nieruchomość</span></label>
+      <label class="chip"><input type="checkbox" name="why" value="Clear numbers"><span class="en">Clear numbers</span><span class="pl">Przejrzyste liczby</span></label>
+    </div>
+    <label class="f" style="margin-top:20px"><span class="en">Anything to add? (optional)</span><span class="pl">Coś dodać? (nieobowiązkowe)</span><textarea id="why_text" data-ph-en="In a line or two" data-ph-pl="W jednym lub dwóch zdaniach"></textarea></label>
+    <div class="nav"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="pl">Wstecz</span></button><button class="btn" type="button" data-next><span class="en">Next</span><span class="pl">Dalej</span></button></div>
+  </section>
+
+  <!-- 2 Change -->
+  <section class="step" data-step="2">
+    <h2><span class="en">What has changed for you since?</span><span class="pl">Co zmieniło się dla Ciebie od tego czasu?</span></h2>
+    <p class="hint"><span class="en">Tap what applies. Honest answers are the useful ones.</span><span class="pl">Dotknij tego, co pasuje. Najbardziej pomagają szczere odpowiedzi.</span></p>
+    <div class="chips">
+      <label class="chip"><input type="checkbox" name="change" value="I worry less"><span class="en">I worry less</span><span class="pl">Martwię się mniej</span></label>
+      <label class="chip"><input type="checkbox" name="change" value="Clearer reports"><span class="en">Clearer reports</span><span class="pl">Jaśniejsze raporty</span></label>
+      <label class="chip"><input type="checkbox" name="change" value="Less of my time"><span class="en">Less of my time spent</span><span class="pl">Mniej mojego czasu</span></label>
+      <label class="chip"><input type="checkbox" name="change" value="Home better cared for"><span class="en">Home better cared for</span><span class="pl">Dom jest lepiej zadbany</span></label>
+      <label class="chip"><input type="checkbox" name="change" value="More income"><span class="en">More income</span><span class="pl">Większy dochód</span></label>
+      <label class="chip"><input type="checkbox" name="change" value="Not much yet"><span class="en">Not much yet</span><span class="pl">Jeszcze niewiele</span></label>
+    </div>
+    <label class="f" style="margin-top:20px"><span class="en">In your own words (optional)</span><span class="pl">Własnymi słowami (nieobowiązkowe)</span><textarea id="change_text" data-ph-en="One thing I noticed was..." data-ph-pl="Zauważam, że..."></textarea></label>
+    <div class="nav"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="pl">Wstecz</span></button><button class="btn" type="button" data-next><span class="en">Next</span><span class="pl">Dalej</span></button></div>
+  </section>
+
+  <!-- 3 Communication -->
+  <section class="step" data-step="3">
+    <h2><span class="en">How would you describe our communication?</span><span class="pl">Jak oceniasz naszą komunikację?</span></h2>
+    <p class="hint"><span class="en">One tap, one to five.</span><span class="pl">Jedno dotknięcie, od jednego do pięciu.</span></p>
+    <div class="scale" role="radiogroup">
+      <label><input type="radio" name="comms" value="1">1</label>
+      <label><input type="radio" name="comms" value="2">2</label>
+      <label><input type="radio" name="comms" value="3">3</label>
+      <label><input type="radio" name="comms" value="4">4</label>
+      <label><input type="radio" name="comms" value="5">5</label>
+    </div>
+    <div class="ends"><span class="en">Needs work</span><span class="pl">Do poprawy</span><span class="en">Excellent</span><span class="pl">Doskonała</span></div>
+    <div class="nav"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="pl">Wstecz</span></button><button class="btn" type="button" data-next><span class="en">Next</span><span class="pl">Dalej</span></button></div>
+  </section>
+
+  <!-- 4 Recommend -->
+  <section class="step" data-step="4">
+    <h2><span class="en">Would you recommend me to another owner?</span><span class="pl">Czy polecisz mnie innemu właścicielowi?</span></h2>
+    <div class="chips" style="margin-top:14px">
+      <label class="chip big"><input type="radio" name="rec" value="yes"><span class="en">Yes</span><span class="pl">Tak</span></label>
+      <label class="chip big"><input type="radio" name="rec" value="no"><span class="en">No</span><span class="pl">Nie</span></label>
+    </div>
+    <label class="f" style="margin-top:22px"><span class="en">Why, in a line?</span><span class="pl">Dlaczego, w jednym zdaniu?</span><textarea id="rec_text" data-ph-en="Because..." data-ph-pl="Ponieważ..."></textarea></label>
+    <div class="nav"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="pl">Wstecz</span></button><button class="btn" type="button" data-next><span class="en">Next</span><span class="pl">Dalej</span></button></div>
+  </section>
+
+  <!-- 5 Video -->
+  <section class="step" data-step="5">
+    <h2><span class="en">Say it on video, if you like.</span><span class="pl">Powiedz to na wideo, jeśli masz ochotę.</span></h2>
+    <p class="hint"><span class="en">Thirty to sixty seconds on your phone, as if telling a friend. You can skip this.</span><span class="pl">Od trzydziestu do sześćdziesięciu sekund na telefonie, jak w rozmowie ze znajomym. Możesz pominąć.</span></p>
+    <div class="prompts"><span class="en">Not sure what to say? Where your property is, what changed for you, and what you would tell another owner.</span><span class="pl">Nie wiesz, co powiedzieć? Gdzie jest nieruchomość, co się zmieniło i co powiedziałbyś innemu właścicielowi.</span></div>
+    <div class="promise">
+      <p><span class="en">Your video is only for my website, so future owners can see who they would be trusting with their home. I will not share it with anyone else, and it will never go on social media.</span><span class="pl">Twoje wideo jest tylko na moją stronę, żeby przyszli właściciele widzieli, komu powierzają swój dom. Nie udostępnię go nikomu innemu i nigdy nie trafi do mediów społecznościowych.</span></p>
+      <label class="agree"><input type="checkbox" id="vidagree"><span class="en">I agree</span><span class="pl">Zgadzam się</span></label>
+    </div>
+    <div class="cam" id="cam">
+      <video id="preview" autoplay muted playsinline></video>
+      <div class="timer" id="timer" hidden>0:00</div>
+      <div class="idle" id="idle"><div><b><span class="en">Tap the button to turn on the camera</span><span class="pl">Dotknij przycisku, by włączyć kamerę</span></b><span class="en">Tick “I agree” above first.</span><span class="pl">Najpierw zaznacz „Zgadzam się” powyżej.</span></div></div>
+    </div>
+    <div class="camrow"><button class="rec" id="recbtn" type="button" aria-label="Record"></button></div>
+    <p class="tiny" id="camnote" style="text-align:center;margin-top:10px"></p>
+    <div class="camrow" id="afterrec" hidden>
+      <button class="btn quiet" type="button" id="redo"><span class="en">Record again</span><span class="pl">Nagraj jeszcze raz</span></button>
+      <button class="btn" type="button" data-next id="keepvid"><span class="en">Keep this one</span><span class="pl">Zostaje to</span></button>
+    </div>
+    <div class="camrow" id="uploadrow" style="margin-top:6px">
+      <label class="linkbtn" for="file"><span class="en">Or choose a video from your phone</span><span class="pl">Albo wybierz wideo z telefonu</span></label>
+      <input id="file" type="file" accept="video/*" style="position:absolute;opacity:0;width:1px;height:1px;pointer-events:none">
+    </div>
+    <p class="picked" id="picked" hidden></p>
+    <div class="nav"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="pl">Wstecz</span></button><button class="btn" type="button" data-next id="skipvid"><span class="en">Skip the video</span><span class="pl">Pomiń wideo</span></button></div>
+  </section>
+
+  <!-- 6 Permission, name, send -->
+  <section class="step" data-step="6">
+    <h2><span class="en">May I share your words?</span><span class="pl">Czy mogę pokazać Twoje słowa?</span></h2>
+    <p class="hint"><span class="en">Only if you say yes. Otherwise they stay with me.</span><span class="pl">Tylko jeśli się zgodzisz. W przeciwnym razie zostają u mnie.</span></p>
+    <form id="form" autocomplete="on" novalidate>
+      <div class="chips" style="flex-direction:column;align-items:stretch">
+        <label class="chip"><input type="radio" name="publish" value="name"><span class="en">Yes, with my first name</span><span class="pl">Tak, z moim imieniem</span></label>
+        <label class="chip"><input type="radio" name="publish" value="anon"><span class="en">Yes, without my name</span><span class="pl">Tak, bez imienia</span></label>
+        <label class="chip"><input type="radio" name="publish" value="private"><span class="en">No, just for Aleks to read</span><span class="pl">Nie, tylko do przeczytania dla Aleks</span></label>
+      </div>
+      <p class="sub"><span class="en">And you are?</span><span class="pl">A kim jesteś?</span></p>
+      <label class="f"><span class="en">Your first name</span><span class="pl">Twoje imię</span><input name="name" id="name" type="text" autocomplete="given-name" required></label>
+      <label class="f"><span class="en">Your property (optional)</span><span class="pl">Twoja nieruchomość (nieobowiązkowe)</span><input name="property" type="text" data-ph-en="Villa name or town" data-ph-pl="Nazwa willi lub miejscowość"></label>
+      <label class="f"><span class="en">Email or phone (optional)</span><span class="pl">Email lub telefon (nieobowiązkowe)</span><input name="contact" type="text" autocomplete="email" data-ph-en="Only if you would like Aleks to reply" data-ph-pl="Tylko jeśli chcesz, by Aleks odpowiedziała"></label>
+      <button class="btn block" type="submit" id="sendbtn" disabled><span class="en">Send to Aleks</span><span class="pl">Wyślij do Aleks</span></button>
+      <p class="tiny" id="note" style="margin-top:12px"><span class="en">Pick one of the three choices and add your name to send.</span><span class="pl">Wybierz jedną z trzech opcji i wpisz imię, aby wysłać.</span></p>
+    </form>
+    <div class="nav" style="margin-top:6px"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="pl">Wstecz</span></button><span></span></div>
+  </section>
+
+  <!-- 7 Done -->
+  <section class="step thanks" data-step="7">
+    <div class="rule"></div>
+    <h2><span class="en">Thank you, <span id="doname"></span>.</span><span class="pl">Dziękuję, <span id="doname2"></span>.</span></h2>
+    <p class="hint" id="donemsg"></p>
+  </section>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  /* The business name lives here only. Change it in one place if the rename goes ahead. */
+  var BRAND_NAME = "Pera Properties Management";
+
+  var SUPABASE_URL = "https://mfyykvrwukchowlxywnz.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_kT-2p3JgFG22wh4cff5jwg_5Zrnd_Ti";
+  var SLUG = "ola-owner-review";
+  var BUCKET = "ola-testimonials";
+  var CONTACT_EMAIL = "";           // fallback address shown if an upload fails; set Ola's address before sending
+  var MAX_SECONDS = 60;
+  var MAX_UPLOAD_MB = 60;           // matches the ola-testimonials bucket limit (62914560 bytes)
+
+  var html = document.documentElement;
+  var $ = function (id) { return document.getElementById(id); };
+  var state = { step: 0, video: null, videoType: '', seconds: 0, videoSource: '' };
+  var STEPS = 8;
+
+  function pl() { return html.getAttribute('data-lang') === 'pl'; }
+  function t(en, pol) { return pl() ? pol : en; }
+  $('brand').textContent = BRAND_NAME;
+  $('heroimg').addEventListener('error', function () { this.parentNode.hidden = true; });
+
+  function renderProg() {
+    var p = $('prog'); p.innerHTML = '';
+    for (var i = 0; i < STEPS - 1; i++) {
+      var b = document.createElement('i');
+      if (i < state.step) { b.className = 'done'; } else if (i === state.step) { b.className = 'on'; }
+      p.appendChild(b);
+    }
+    p.hidden = state.step >= STEPS - 1;
+  }
+  function go(n) {
+    state.step = Math.max(0, Math.min(STEPS - 1, n));
+    document.querySelectorAll('.step').forEach(function (s) { s.classList.toggle('active', parseInt(s.getAttribute('data-step'), 10) === state.step); });
+    renderProg();
+    if (state.step !== 5) { stopCamera(); }
+    window.scrollTo(0, 0);
+  }
+  document.querySelectorAll('[data-next]').forEach(function (b) { b.addEventListener('click', function () { go(state.step + 1); }); });
+  document.querySelectorAll('[data-prev]').forEach(function (b) { b.addEventListener('click', function () { go(state.step - 1); }); });
+
+  /* ---------- Language ---------- */
+  function setLang(l) {
+    l = l === 'pl' ? 'pl' : 'en';
+    html.setAttribute('data-lang', l); html.setAttribute('lang', l);
+    document.title = (l === 'pl' ? 'Mała prośba' : 'A small favour') + ' - ' + BRAND_NAME;
+    document.querySelectorAll('[data-ph-en]').forEach(function (el) { el.placeholder = el.getAttribute('data-ph-' + l) || ''; });
+    try { localStorage.setItem('ola-owner-lang', l); } catch (e) {}
+  }
+  var saved = null; try { saved = localStorage.getItem('ola-owner-lang'); } catch (e) {}
+  var q = /[?&]lang=(pl|en)/.exec(location.search);
+  setLang(q ? q[1] : (saved || 'en'));
+  document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-set')); }); });
+
+  /* ---------- Camera and recording ---------- */
+  var stream = null, rec = null, chunks = [], timerId = null;
+  var preview = $('preview');
+  function fmt(s) { return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+  function mime() {
+    var cands = ['video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm', 'video/mp4'];
+    for (var i = 0; i < cands.length; i++) { if (window.MediaRecorder && MediaRecorder.isTypeSupported(cands[i])) { return cands[i]; } }
+    return '';
+  }
+  function canRecord() { return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder); }
+  if (!canRecord()) {
+    $('cam').hidden = true; $('recbtn').parentNode.hidden = true;
+    $('camnote').textContent = t('This browser cannot record here. Choose a video from your phone, or skip this step.', 'Ta przeglądarka nie nagrywa tutaj. Wybierz wideo z telefonu albo pomiń ten krok.');
+  }
+  function startCamera() {
+    return navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 720 }, height: { ideal: 960 } }, audio: true }).then(function (s) {
+      stream = s; preview.srcObject = s; preview.muted = true; preview.classList.remove('play'); preview.controls = false; preview.play(); $('idle').hidden = true;
+    }).catch(function () { $('camnote').textContent = t('No camera access. You can choose a video from your phone instead, or skip.', 'Brak dostępu do kamery. Możesz wybrać wideo z telefonu albo pominąć.'); throw new Error('nocam'); });
+  }
+  function stopCamera() {
+    if (rec && rec.state === 'recording') { rec.stop(); }
+    if (stream) { stream.getTracks().forEach(function (tr) { tr.stop(); }); stream = null; }
+    if (timerId) { clearInterval(timerId); timerId = null; }
+  }
+  function showKept(label) {
+    $('afterrec').hidden = false; $('skipvid').hidden = true; $('uploadrow').hidden = true; $('picked').hidden = true;
+    $('camnote').textContent = label;
+  }
+  function startRec() {
+    chunks = []; state.videoType = mime();
+    rec = new MediaRecorder(stream, state.videoType ? { mimeType: state.videoType } : undefined);
+    rec.ondataavailable = function (e) { if (e.data && e.data.size) { chunks.push(e.data); } };
+    rec.onstop = function () {
+      var blob = new Blob(chunks, { type: state.videoType || 'video/webm' });
+      state.video = blob; state.videoSource = 'recorded';
+      if (stream) { stream.getTracks().forEach(function (tr) { tr.stop(); }); stream = null; }
+      preview.srcObject = null; preview.src = URL.createObjectURL(blob); preview.muted = false; preview.controls = true; preview.classList.add('play'); preview.play();
+      $('recbtn').parentNode.hidden = true; $('timer').hidden = true;
+      showKept(t('Have a look. If you like it, keep this one.', 'Obejrzyj. Jeśli się podoba, zostaje to.'));
+    };
+    rec.start(250);
+    state.seconds = 0; $('timer').hidden = false; $('timer').textContent = fmt(0);
+    $('recbtn').classList.add('on');
+    timerId = setInterval(function () { state.seconds++; $('timer').textContent = fmt(state.seconds) + ' / ' + fmt(MAX_SECONDS); if (state.seconds >= MAX_SECONDS) { stopRec(); } }, 1000);
+    $('camnote').textContent = t('Recording. Tap again to stop.', 'Nagrywam. Dotknij ponownie, by zatrzymać.');
+  }
+  function stopRec() { if (timerId) { clearInterval(timerId); timerId = null; } $('recbtn').classList.remove('on'); if (rec && rec.state === 'recording') { rec.stop(); } }
+  $('recbtn').addEventListener('click', function () {
+    if (rec && rec.state === 'recording') { stopRec(); return; }
+    if (!stream) { startCamera().then(function () { $('camnote').textContent = t('Camera on. Tap to start recording.', 'Kamera włączona. Dotknij, by zacząć nagrywanie.'); }).catch(function () {}); return; }
+    startRec();
+  });
+  $('redo').addEventListener('click', function () {
+    state.video = null; state.videoSource = ''; preview.controls = false; preview.src = ''; preview.classList.remove('play');
+    $('recbtn').parentNode.hidden = !canRecord(); $('afterrec').hidden = true; $('skipvid').hidden = false; $('uploadrow').hidden = false;
+    $('idle').hidden = false; $('cam').hidden = !canRecord(); $('camnote').textContent = ''; $('picked').hidden = true; $('file').value = '';
+  });
+  /* Upload from the camera roll: the fallback for any browser that will not record. */
+  $('file').addEventListener('change', function () {
+    var f = this.files && this.files[0];
+    if (!f) { return; }
+    if (f.size > MAX_UPLOAD_MB * 1024 * 1024) {
+      $('picked').hidden = false; $('picked').classList.add('bad');
+      $('picked').textContent = t('That file is over ' + MAX_UPLOAD_MB + ' MB. Try a shorter clip.', 'Ten plik ma ponad ' + MAX_UPLOAD_MB + ' MB. Spróbuj krótszego nagrania.');
+      this.value = ''; return;
+    }
+    stopCamera();
+    state.video = f; state.videoType = f.type || ''; state.seconds = 0; state.videoSource = 'uploaded';
+    preview.srcObject = null; preview.src = URL.createObjectURL(f); preview.muted = false; preview.controls = true; preview.classList.add('play'); $('idle').hidden = true;
+    $('cam').hidden = false; $('recbtn').parentNode.hidden = true;
+    $('picked').classList.remove('bad');
+    showKept(t('Video chosen: ', 'Wybrano wideo: ') + f.name);
+  });
+
+  /* The video is only recorded, chosen or kept once the owner has ticked "I agree". Skipping never needs it. */
+  function videoAgreed() { return $('vidagree').checked; }
+  function gateVideo() {
+    var ok = videoAgreed();
+    $('recbtn').disabled = !ok; $('file').disabled = !ok; $('keepvid').disabled = !ok;
+    document.querySelector('#uploadrow .linkbtn').classList.toggle('off', !ok);
+    if (!ok && rec && rec.state === 'recording') { stopRec(); }
+  }
+  $('vidagree').addEventListener('change', gateVideo);
+  gateVideo();
+
+  /* ---------- Send ---------- */
+  function val(name) { var e = document.querySelector('input[name=' + name + ']:checked'); return e ? e.value : ''; }
+  function vals(name) { return Array.prototype.map.call(document.querySelectorAll('input[name=' + name + ']:checked'), function (e) { return e.value; }); }
+  function makeCode() { var a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s = 'OWN-'; for (var i = 0; i < 4; i++) { s += a[Math.floor(Math.random() * a.length)]; } return s; }
+
+  /* Send stays off until a consent choice is made and a first name is given. */
+  function updateSend() {
+    var ok = !!val('publish') && $('name').value.trim().length > 0;
+    $('sendbtn').disabled = !ok;
+  }
+  document.querySelectorAll('input[name=publish]').forEach(function (e) { e.addEventListener('change', updateSend); });
+  $('name').addEventListener('input', updateSend);
+  updateSend();
+
+  /* The bucket accepts plain video types only, so any codec tag is stripped. If the upload still
+     fails, the words are sent anyway and the thank-you says the video did not make it. */
+  var videoFailed = false;
+  function uploadVideo(code) {
+    videoFailed = false;
+    if (!state.video || !videoAgreed()) { return Promise.resolve(null); }
+    var base = (state.video.type || state.videoType || 'video/webm').split(';')[0].trim() || 'video/webm';
+    var ext = base.indexOf('mp4') !== -1 ? 'mp4' : (base.indexOf('quicktime') !== -1 ? 'mov' : (base.indexOf('webm') !== -1 ? 'webm' : 'mp4'));
+    var path = 'owners/' + code + '.' + ext;
+    var plain = new Blob([state.video], { type: base });
+    return fetch(SUPABASE_URL + '/storage/v1/object/' + BUCKET + '/' + path, {
+      method: 'POST',
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': base, 'x-upsert': 'false' },
+      body: plain
+    }).then(function (r) { if (!r.ok) { throw new Error('upload ' + r.status); } return path; })
+      .catch(function () { videoFailed = true; return ''; });
+  }
+  $('form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if ($('sendbtn').disabled) { return; }
+    var f = new FormData($('form'));
+    var code = makeCode();
+    var name = (f.get('name') || '').trim();
+    var whyText = ($('why_text').value || '').trim(), changeText = ($('change_text').value || '').trim(), recText = ($('rec_text').value || '').trim();
+    $('sendbtn').disabled = true; $('note').classList.remove('bad');
+    var hasVideo = !!state.video && videoAgreed();
+    $('note').textContent = hasVideo ? t('Sending the video. It may take a moment.', 'Wysyłam wideo. To może chwilę potrwać.') : t('One moment.', 'Chwileczkę.');
+    uploadVideo(code).then(function (path) {
+      var answers = {
+        code:         { n: 0, question: 'Code', answer: code, type: 'text' },
+        name:         { n: 1, question: 'First name', answer: name, type: 'text' },
+        property:     { n: 2, question: 'Property (optional)', answer: (f.get('property') || '').trim(), type: 'text' },
+        contact:      { n: 3, question: 'Email or phone (optional)', answer: (f.get('contact') || '').trim(), type: 'text' },
+        why:          { n: 4, question: 'What made you choose me to look after your property?', answer: vals('why'), type: 'many' },
+        whyText:      { n: 5, question: 'Anything to add (why)', answer: whyText, type: 'text' },
+        change:       { n: 6, question: 'What has changed for you since?', answer: vals('change'), type: 'many' },
+        changeText:   { n: 7, question: 'In your own words (what changed)', answer: changeText, type: 'text' },
+        comms:        { n: 8, question: 'How would you describe our communication? (1 to 5)', answer: val('comms') ? parseInt(val('comms'), 10) : null, type: 'number' },
+        recommend:    { n: 9, question: 'Would you recommend me to another owner?', answer: val('rec'), type: 'one' },
+        recommendText:{ n: 10, question: 'Why, in a line?', answer: recText, type: 'text' },
+        publish:      { n: 11, question: 'Permission to publish', answer: val('publish'), type: 'one' },
+        video:        { n: 12, question: 'Video path in bucket ' + BUCKET, answer: path || '', type: 'text' },
+        videoSeconds: { n: 13, question: 'Video length', answer: (hasVideo && state.videoSource === 'recorded') ? state.seconds : 0, type: 'number', unit: 's' },
+        videoSource:  { n: 14, question: 'Video source', answer: hasVideo ? (state.videoSource || '') : '', type: 'one' },
+        videoFailed:  { n: 15, question: 'Video upload failed', answer: !!(hasVideo && videoFailed), type: 'one' },
+        videoConsent: { n: 17, question: 'Agreed: video only for the website, never social media', answer: hasVideo, type: 'one' },
+        lang:         { n: 16, question: 'Language', answer: pl() ? 'pl' : 'en', type: 'one' }
+      };
+      var firstLine = [whyText, changeText, recText].filter(Boolean).join(' / ');
+      return fetch(SUPABASE_URL + '/rest/v1/intake_responses', {
+        method: 'POST', headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ prospect_slug: SLUG, prospect_name: name.slice(0, 60), business: 'Ola owner review · ' + code, properties_target: null, answers: answers, worst_hour: firstLine || null, source: 'web' })
+      }).then(function (r) { if (!r.ok) { throw new Error('status ' + r.status); } });
+    }).then(function () {
+      $('doname').textContent = name; $('doname2').textContent = name;
+      var mail = CONTACT_EMAIL ? (' ' + CONTACT_EMAIL) : '';
+      $('donemsg').textContent = hasVideo && !videoFailed ? t('Your video and your words have reached Aleks.', 'Twoje wideo i słowa dotarły do Aleks.')
+        : hasVideo && videoFailed ? t('Your words have reached Aleks. The video did not make it up. If you can, send it to her by WhatsApp or email' + mail + '.', 'Twoje słowa dotarły do Aleks. Wideo się nie wysłało. Jeśli możesz, prześlij je jej przez WhatsApp lub email' + mail + '.')
+        : t('Your words have reached Aleks.', 'Twoje słowa dotarły do Aleks.');
+      go(7);
+    }).catch(function () {
+      updateSend(); $('note').classList.add('bad');
+      $('note').textContent = t('That did not go through. Please try again in a moment.', 'Nie udało się wysłać. Spróbuj ponownie za chwilę.');
+    });
+  });
+
+  renderProg(); go(0);
+})();
+</script>
+</body>
+</html>
