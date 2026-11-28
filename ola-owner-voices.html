@@ -216,19 +216,12 @@
 
   <!-- 6 Permission, name, send -->
   <section class="step" data-step="6">
-    <h2><span class="en">May I share your words?</span><span class="pl">Czy mogę pokazać Twoje słowa?</span></h2>
-    <p class="hint"><span class="en">Only if you say yes. Otherwise they stay with me.</span><span class="pl">Tylko jeśli się zgodzisz. W przeciwnym razie zostają u mnie.</span></p>
+    <h2><span class="en">Last thing: your name</span><span class="pl">Na koniec: Twoje imię</span></h2>
     <form id="form" autocomplete="on" novalidate>
-      <div class="chips" style="flex-direction:column;align-items:stretch">
-        <label class="chip"><input type="radio" name="publish" value="name"><span class="en">Yes, with my first name</span><span class="pl">Tak, z moim imieniem</span></label>
-        <label class="chip"><input type="radio" name="publish" value="anon"><span class="en">Yes, without my name</span><span class="pl">Tak, bez imienia</span></label>
-        <label class="chip"><input type="radio" name="publish" value="private"><span class="en">No, just for Aleks to read</span><span class="pl">Nie, tylko do przeczytania dla Aleks</span></label>
-      </div>
-      <p class="sub"><span class="en">And you are?</span><span class="pl">A kim jesteś?</span></p>
       <label class="f"><span class="en">Your first name</span><span class="pl">Twoje imię</span><input name="name" id="name" type="text" autocomplete="given-name" required></label>
-      <label class="f"><span class="en">Your property (optional)</span><span class="pl">Twoja nieruchomość (nieobowiązkowe)</span><input name="property" type="text" data-ph-en="Villa name or town" data-ph-pl="Nazwa willi lub miejscowość"></label>
+      <p style="margin:4px 0 18px"><label class="agree"><input type="checkbox" name="publish" value="name"><span class="en">Aleks may share my words</span><span class="pl">Aleks może pokazać moje słowa</span></label></p>
       <button class="btn block" type="submit" id="sendbtn" disabled><span class="en">Send to Aleks</span><span class="pl">Wyślij do Aleks</span></button>
-      <p class="tiny" id="note" style="margin-top:12px"><span class="en">Pick one of the three choices and add your name to send.</span><span class="pl">Wybierz jedną z trzech opcji i wpisz imię, aby wysłać.</span></p>
+      <p class="tiny" id="note" style="margin-top:12px"><span class="en">Add your name to send.</span><span class="pl">Wpisz imię, aby wysłać.</span></p>
     </form>
     <div class="nav" style="margin-top:6px"><button class="btn ghost" type="button" data-prev><span class="en">Back</span><span class="pl">Wstecz</span></button><span></span></div>
   </section>
@@ -389,7 +382,7 @@
 
   /* Send stays off until a consent choice is made and a first name is given. */
   function updateSend() {
-    var ok = !!val('publish') && $('name').value.trim().length > 0;
+    var ok = $('name').value.trim().length > 0;
     $('sendbtn').disabled = !ok;
   }
   document.querySelectorAll('input[name=publish]').forEach(function (e) { e.addEventListener('change', updateSend); });
@@ -427,7 +420,6 @@
       var answers = {
         code:         { n: 0, question: 'Code', answer: code, type: 'text' },
         name:         { n: 1, question: 'First name', answer: name, type: 'text' },
-        property:     { n: 2, question: 'Property (optional)', answer: (f.get('property') || '').trim(), type: 'text' },
         why:          { n: 4, question: 'What made you choose me to look after your property?', answer: vals('why'), type: 'many' },
         whyText:      { n: 5, question: 'Anything to add (why)', answer: whyText, type: 'text' },
         change:       { n: 6, question: 'What has changed for you since?', answer: vals('change'), type: 'many' },
@@ -435,7 +427,7 @@
         comms:        { n: 8, question: 'How would you describe our communication? (1 to 5)', answer: val('comms') ? parseInt(val('comms'), 10) : null, type: 'number' },
         recommend:    { n: 9, question: 'Would you recommend me to another owner?', answer: val('rec'), type: 'one' },
         recommendText:{ n: 10, question: 'Why, in a line?', answer: recText, type: 'text' },
-        publish:      { n: 11, question: 'Permission to publish', answer: val('publish'), type: 'one' },
+        publish:      { n: 11, question: 'Permission to publish', answer: val('publish') || 'private', type: 'one' },
         video:        { n: 12, question: 'Video path in bucket ' + BUCKET, answer: path || '', type: 'text' },
         videoSeconds: { n: 13, question: 'Video length', answer: (hasVideo && state.videoSource === 'recorded') ? state.seconds : 0, type: 'number', unit: 's' },
         videoSource:  { n: 14, question: 'Video source', answer: hasVideo ? (state.videoSource || '') : '', type: 'one' },
