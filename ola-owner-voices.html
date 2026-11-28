@@ -192,7 +192,7 @@
     <p class="hint"><span class="en">Thirty to sixty seconds on your phone, as if telling a friend. You can skip this.</span><span class="pl">Od trzydziestu do sześćdziesięciu sekund na telefonie, jak w rozmowie ze znajomym. Możesz pominąć.</span></p>
     <div class="prompts"><span class="en">Not sure what to say? Where your property is, what changed for you, and what you would tell another owner.</span><span class="pl">Nie wiesz, co powiedzieć? Gdzie jest nieruchomość, co się zmieniło i co powiedziałbyś innemu właścicielowi.</span></div>
     <div class="promise">
-      <p><span class="en">Your video is only for my website, so future owners can see who they would be trusting with their home. I will not share it with anyone else, and it will never go on social media.</span><span class="pl">Twoje wideo jest tylko na moją stronę, żeby przyszli właściciele widzieli, komu powierzają swój dom. Nie udostępnię go nikomu innemu i nigdy nie trafi do mediów społecznościowych.</span></p>
+      <p><span class="en">Your video is for my website and my business pages on social media, so future owners can see who they would be trusting with their home.</span><span class="pl">Twoje wideo pojawi się na mojej stronie i na profilach mojej firmy w mediach społecznościowych, żeby przyszli właściciele widzieli, komu powierzają swój dom.</span></p>
       <label class="agree"><input type="checkbox" id="vidagree"><span class="en">I agree</span><span class="pl">Zgadzam się</span></label>
     </div>
     <div class="cam" id="cam">
@@ -227,7 +227,6 @@
       <p class="sub"><span class="en">And you are?</span><span class="pl">A kim jesteś?</span></p>
       <label class="f"><span class="en">Your first name</span><span class="pl">Twoje imię</span><input name="name" id="name" type="text" autocomplete="given-name" required></label>
       <label class="f"><span class="en">Your property (optional)</span><span class="pl">Twoja nieruchomość (nieobowiązkowe)</span><input name="property" type="text" data-ph-en="Villa name or town" data-ph-pl="Nazwa willi lub miejscowość"></label>
-      <label class="f"><span class="en">Email or phone (optional)</span><span class="pl">Email lub telefon (nieobowiązkowe)</span><input name="contact" type="text" autocomplete="email" data-ph-en="Only if you would like Aleks to reply" data-ph-pl="Tylko jeśli chcesz, by Aleks odpowiedziała"></label>
       <button class="btn block" type="submit" id="sendbtn" disabled><span class="en">Send to Aleks</span><span class="pl">Wyślij do Aleks</span></button>
       <p class="tiny" id="note" style="margin-top:12px"><span class="en">Pick one of the three choices and add your name to send.</span><span class="pl">Wybierz jedną z trzech opcji i wpisz imię, aby wysłać.</span></p>
     </form>
@@ -429,7 +428,6 @@
         code:         { n: 0, question: 'Code', answer: code, type: 'text' },
         name:         { n: 1, question: 'First name', answer: name, type: 'text' },
         property:     { n: 2, question: 'Property (optional)', answer: (f.get('property') || '').trim(), type: 'text' },
-        contact:      { n: 3, question: 'Email or phone (optional)', answer: (f.get('contact') || '').trim(), type: 'text' },
         why:          { n: 4, question: 'What made you choose me to look after your property?', answer: vals('why'), type: 'many' },
         whyText:      { n: 5, question: 'Anything to add (why)', answer: whyText, type: 'text' },
         change:       { n: 6, question: 'What has changed for you since?', answer: vals('change'), type: 'many' },
@@ -442,7 +440,7 @@
         videoSeconds: { n: 13, question: 'Video length', answer: (hasVideo && state.videoSource === 'recorded') ? state.seconds : 0, type: 'number', unit: 's' },
         videoSource:  { n: 14, question: 'Video source', answer: hasVideo ? (state.videoSource || '') : '', type: 'one' },
         videoFailed:  { n: 15, question: 'Video upload failed', answer: !!(hasVideo && videoFailed), type: 'one' },
-        videoConsent: { n: 17, question: 'Agreed: video only for the website, never social media', answer: hasVideo, type: 'one' },
+        videoConsent: { n: 17, question: 'Agreed: video for the website and her business social media pages', answer: hasVideo, type: 'one' },
         lang:         { n: 16, question: 'Language', answer: pl() ? 'pl' : 'en', type: 'one' }
       };
       var firstLine = [whyText, changeText, recText].filter(Boolean).join(' / ');
